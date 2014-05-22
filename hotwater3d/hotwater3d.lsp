@@ -1,9 +1,9 @@
 [Title]
-simulation_title "Laser in 3D I = 1e18 W cm-2 "
+simulation_title "Hotwater in 3D I = 1e18 W cm-2 "
 ;
 [Control]
 ;Time-advance
- time_limit 200e-6 ;
+ time_limit 500e-6 ;
 ; time_limit 0.2e-6 
 ;number_of_steps 2
  time_step_ns 0.10e-6 ; 1/30th optical cycle for 1um laser light
@@ -60,15 +60,15 @@ end
 grid1
 xmin             -0.0030
 xmax              0.0030
-x-cells           200
+x-cells           325
 ;
 ymin             -0.0030
 ymax              0.0030
-y-cells           200
+y-cells           325
 ;
 zmin             -0.0030
 zmax              0.0030
-z-cells           200
+z-cells           325
 ;
 [Regions]
 ;
@@ -79,7 +79,7 @@ ymin -0.0030
 ymax  0.0030
 zmin -0.0030
 zmax  0.0030
-number_of_domains 48 
+number_of_domains 96
 split_direction ZSPLIT ;split into planes instead of lines
 number_of_cells AUTO
 
@@ -156,484 +156,473 @@ from -0.003 0.003 -0.003
 to 0.003 0.003 0.003
 phase_velocity 1.0
 drive_model NONE
+;;;;;;;;;;;;;;;;
+;; species
+;;;;;;;;;;;;;;;;
+[Materials]
 ;
-;; [Materials]
-;; ;
-;; material oxygen
-;; atomic_number 8
-;; atomic_weight 16
-;; ;ionization_potential 35.1; eV
-;; ionization_potential 13.6; eV
-;; specific_heat 4.186; J/gK
-;; thermal_conductivity 0.0058; (W / mK)/100 
-;; ;
-;; [Particle Species]
-;; species1 ; neutral O
-;; charge 0
-;; mass 29392
-;; atomic_number 8
-;; migrant_species_flag off
-;; implicit_species_flag on
-;; particle_motion_flag on
-;; particle_forces_option PRIMARY
-;; transverse_weighting_flag on
-;; particle_kinematics_option STANDARD
-;; scattering_flag off
-;; implicit_filtering_parameter 0.1
-;; selection_ratio 0.05
-;; ;
-;; species2 ; O+
-;; charge +1
-;; mass 29391
-;; atomic_number 8
-;; migrant_species_flag off
-;; implicit_species_flag on
-;; particle_motion_flag on
-;; particle_forces_option PRIMARY
-;; transverse_weighting_flag on
-;; particle_kinematics_option STANDARD
-;; scattering_flag off
-;; implicit_filtering_parameter 0.1
-;; selection_ratio 0.01
-;; ;
-;; species3 ; O++
-;; charge +2
-;; mass 29390
-;; atomic_number 8
-;; migrant_species_flag off
-;; implicit_species_flag on
-;; particle_motion_flag on
-;; particle_forces_option PRIMARY
-;; transverse_weighting_flag on
-;; particle_kinematics_option STANDARD
-;; scattering_flag off
-;; implicit_filtering_parameter 0.1
-;; selection_ratio 0.01
-;; ;
-;; species4 ; O 3+
-;; charge +3
-;; mass 29389
-;; atomic_number 8
-;; migrant_species_flag off
-;; implicit_species_flag on
-;; particle_motion_flag on
-;; particle_forces_option PRIMARY
-;; transverse_weighting_flag on
-;; particle_kinematics_option STANDARD
-;; scattering_flag off
-;; implicit_filtering_parameter 0.1
-;; selection_ratio 0.01
-;; ;
-;; species5 ; O 4+
-;; charge +4
-;; mass 29388
-;; atomic_number 8
-;; migrant_species_flag off
-;; implicit_species_flag on
-;; particle_motion_flag on
-;; particle_forces_option PRIMARY
-;; transverse_weighting_flag on
-;; particle_kinematics_option STANDARD
-;; scattering_flag off
-;; implicit_filtering_parameter 0.1
-;; selection_ratio 0.01
-;; ;
-;; species6 ; O 5+
-;; charge +5
-;; mass 29387
-;; atomic_number 8
-;; migrant_species_flag off
-;; implicit_species_flag on
-;; particle_motion_flag on
-;; particle_forces_option PRIMARY
-;; transverse_weighting_flag on
-;; particle_kinematics_option STANDARD
-;; scattering_flag off
-;; implicit_filtering_parameter 0.1
-;; selection_ratio 0.01
-;; ;
-;; species7 ; O 6+
-;; charge +6
-;; mass 29386
-;; atomic_number 8
-;; migrant_species_flag off
-;; implicit_species_flag on
-;; particle_motion_flag on
-;; particle_forces_option PRIMARY
-;; transverse_weighting_flag on
-;; particle_kinematics_option STANDARD
-;; scattering_flag off
-;; implicit_filtering_parameter 0.1
-;; selection_ratio 0.01
-;; ;
-;; species8 ; O 7+
-;; charge +7
-;; mass 29385
-;; atomic_number 8
-;; migrant_species_flag off
-;; implicit_species_flag on
-;; particle_motion_flag on
-;; particle_forces_option PRIMARY
-;; transverse_weighting_flag on
-;; particle_kinematics_option STANDARD
-;; scattering_flag off
-;; implicit_filtering_parameter 0.1
-;; selection_ratio 0.01
-;; ;
-;; species9 ; O 8+
-;; charge +8
-;; mass 29384
-;; atomic_number 8
-;; migrant_species_flag off
-;; implicit_species_flag on
-;; particle_motion_flag on
-;; particle_forces_option PRIMARY
-;; transverse_weighting_flag on
-;; particle_kinematics_option STANDARD
-;; scattering_flag off
-;; implicit_filtering_parameter 0.1
-;; selection_ratio 0.01
-;; ;
-;; species10 ; kinetic electrons
-;; charge -1
-;; mass 1.0
-;; migrant_species_flag off
-;; implicit_species_flag on
-;; particle_motion_flag on
-;; particle_forces_option PRIMARY
-;; transverse_weighting_flag on
-;; particle_kinematics_option STANDARD
-;; scattering_flag on
-;; implicit_filtering_parameter 0.1
-;; selection_ratio 0.01
-;; ;
-;; species11 ; protons
-;; charge +1
-;; mass 1836
-;; atomic_number 1
-;; migrant_species_flag off
-;; implicit_species_flag on
-;; particle_motion_flag on
-;; particle_forces_option PRIMARY
-;; transverse_weighting_flag on
-;; particle_kinematics_option STANDARD
-;; scattering_flag off
-;; implicit_filtering_parameter 0.1
-;; selection_ratio 0.01
+material oxygen
+atomic_number 8
+atomic_weight 16
+;ionization_potential 35.1; eV
+ionization_potential 13.6; eV
+specific_heat 4.186; J/gK
+thermal_conductivity 0.0058; (W / mK)/100 
 ;
-;[Particle Creation]
+[Particle Species]
+species1 ; neutral O
+charge 0
+mass 29392
+atomic_number 8
+migrant_species_flag off
+implicit_species_flag on
+particle_motion_flag on
+particle_forces_option PRIMARY
+transverse_weighting_flag on
+particle_kinematics_option STANDARD
+scattering_flag off
+implicit_filtering_parameter 0.1
+selection_ratio 0.05
 ;
-;plasma ; O+
-;from -0.001 0 -0.001
-;to 0.001 0 0.001
-;species 2
-;movie_tag 3
-;unbound off
-;discrete_numbers 7 1 7
-;density_function 4
-;reference_point 0 0 0
-;density_flags 1 0 1
-;momentum_flags 0 0 0
-;thermal_energy 1
-;movie_fraction 0.010
+species2 ; O+
+charge +1
+mass 29391
+atomic_number 8
+migrant_species_flag off
+implicit_species_flag on
+particle_motion_flag on
+particle_forces_option PRIMARY
+transverse_weighting_flag on
+particle_kinematics_option STANDARD
+scattering_flag off
+implicit_filtering_parameter 0.1
+selection_ratio 0.01
 ;
-;plasma ; e-
-;from -0.001 0 -0.001
-;to 0.001 0 0.001
-;species 10
-;movie_tag 3
-;unbound off
-;discrete_numbers 7 1 7
-;density_function 4
-;reference_point 0 0 0
-;density_flags 1 0 1
-;momentum_flags 0 0 0
-;thermal_energy 1
-;movie_fraction 0.010
+species3 ; O++
+charge +2
+mass 29390
+atomic_number 8
+migrant_species_flag off
+implicit_species_flag on
+particle_motion_flag on
+particle_forces_option PRIMARY
+transverse_weighting_flag on
+particle_kinematics_option STANDARD
+scattering_flag off
+implicit_filtering_parameter 0.1
+selection_ratio 0.01
 ;
-;; plasma ; O+
-;; from -0.0030 0 -0.0015
-;; to 0.0000 0 0.0015
-;; species 2
-;; movie_tag 3
-;; unbound off
-;; discrete_numbers 7 1 7
-;; density_function 6
-;; reference_point 0 0 0
-;; density_flags 1 0 0
-;; momentum_flags 0 0 0
-;; thermal_energy 1
-;; movie_fraction 0.000
-;; ;
-;; plasma ; e-
-;; from -0.0030 0 -0.0015
-;; to 0.0000 0 0.0015
-;; species 10
-;; movie_tag 3
-;; unbound off
-;; discrete_numbers 7 1 7
-;; density_function 5
-;; reference_point 0 0 0
-;; density_flags 1 0 0
-;; momentum_flags 0 0 0
-;; thermal_energy 1
-;; movie_fraction 0.050
-;; ;
-;; plasma ; p
-;; from -0.0030 0 -0.0015
-;; to 0.0000 0 0.0015
-;; species 11
-;; movie_tag 3
-;; unbound off
-;; discrete_numbers 7 1 7
-;; density_function 7
-;; reference_point 0 0 0
-;; density_flags 1 0 0
-;; momentum_flags 0 0 0
-;; thermal_energy 1
-;; movie_fraction 0.000
-;; ;
-;; higherstate              ; O -> O+
-;; from -0.0030 0 -0.0030
-;; to 0.0030 0 0.0030
-;; interval 1
-;; species 1
-;; ion_species 2
-;; movie_tag 5
-;; electron_species 10
-;; movie_tag 3
-;; ionization_potential 13.6
-;; cross_sections
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;; end
-;; movie_fraction 0.0
-;; ;
-;; higherstate              ; O+ -> O++
-;; from -0.0030 0 -0.0030
-;; to 0.0030 0 0.0030
-;; interval 1
-;; species 2
-;; ion_species 3
-;; movie_tag 5
-;; electron_species 10
-;; movie_tag 3
-;; ionization_potential 35.1
-;; cross_sections
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;; end
-;; movie_fraction 0.0
-;; ;
-;; higherstate              ; O++ -> O 3+
-;; from -0.0030 0 -0.0030
-;; to 0.0030 0 0.0030
-;; interval 1
-;; species 3
-;; ion_species 4
-;; movie_tag 5
-;; electron_species 10
-;; movie_tag 3
-;; ionization_potential 54.9
-;; cross_sections
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;; end
-;; movie_fraction 0.0
-;; ;
-;; higherstate              ; O 3+ -> O 4+
-;; from -0.0030 0 -0.0030
-;; to 0.0030 0 0.0030
-;; interval 1
-;; species 4
-;; ion_species 5
-;; movie_tag 5
-;; electron_species 10
-;; movie_tag 3
-;; ionization_potential 77.4
-;; cross_sections
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;; end
-;; movie_fraction 0.0
-;; ;
-;; higherstate              ; O 4+ -> O 5+
-;; from -0.0030 0 -0.0030
-;; to 0.0030 0 0.0030
-;; interval 1
-;; species 5
-;; ion_species 6
-;; movie_tag 5
-;; electron_species 10
-;; movie_tag 3
-;; ionization_potential 113.9
-;; cross_sections
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;; end
-;; movie_fraction 0.0
-;; ;
-;; ;
-;; higherstate              ; O 5+ -> O 6+
-;; from -0.0030 0 -0.0030
-;; to 0.0030 0 0.0030
-;; interval 1
-;; species 6
-;; ion_species 7
-;; movie_tag 5
-;; electron_species 10
-;; movie_tag 3
-;; ionization_potential 138.1
-;; cross_sections
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;; end
-;; movie_fraction 0.0
-;; ;
-;; higherstate              ; O 6+ -> O 7+
-;; from -0.0030 0 -0.0030
-;; to 0.0030 0 0.0030
-;; interval 1
-;; species 7
-;; ion_species 8
-;; movie_tag 5
-;; electron_species 10
-;; movie_tag 3
-;; ionization_potential 739.3
-;; cross_sections
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;; end
-;; movie_fraction 0.0
-;; ;
-;; higherstate              ; O 7+ -> O 8+
-;; from -0.0030 0 -0.0030
-;; to 0.0030 0 0.0030
-;; interval 1
-;; species 8
-;; ion_species 9
-;; movie_tag 5
-;; electron_species 10
-;; movie_tag 3
-;; ionization_potential 871.4
-;; cross_sections
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;;   0.0
-;; end
-;; movie_fraction 0.0
+species4 ; O 3+
+charge +3
+mass 29389
+atomic_number 8
+migrant_species_flag off
+implicit_species_flag on
+particle_motion_flag on
+particle_forces_option PRIMARY
+transverse_weighting_flag on
+particle_kinematics_option STANDARD
+scattering_flag off
+implicit_filtering_parameter 0.1
+selection_ratio 0.01
+;
+species5 ; O 4+
+charge +4
+mass 29388
+atomic_number 8
+migrant_species_flag off
+implicit_species_flag on
+particle_motion_flag on
+particle_forces_option PRIMARY
+transverse_weighting_flag on
+particle_kinematics_option STANDARD
+scattering_flag off
+implicit_filtering_parameter 0.1
+selection_ratio 0.01
+;
+species6 ; O 5+
+charge +5
+mass 29387
+atomic_number 8
+migrant_species_flag off
+implicit_species_flag on
+particle_motion_flag on
+particle_forces_option PRIMARY
+transverse_weighting_flag on
+particle_kinematics_option STANDARD
+scattering_flag off
+implicit_filtering_parameter 0.1
+selection_ratio 0.01
+;
+species7 ; O 6+
+charge +6
+mass 29386
+atomic_number 8
+migrant_species_flag off
+implicit_species_flag on
+particle_motion_flag on
+particle_forces_option PRIMARY
+transverse_weighting_flag on
+particle_kinematics_option STANDARD
+scattering_flag off
+implicit_filtering_parameter 0.1
+selection_ratio 0.01
+;
+species8 ; O 7+
+charge +7
+mass 29385
+atomic_number 8
+migrant_species_flag off
+implicit_species_flag on
+particle_motion_flag on
+particle_forces_option PRIMARY
+transverse_weighting_flag on
+particle_kinematics_option STANDARD
+scattering_flag off
+implicit_filtering_parameter 0.1
+selection_ratio 0.01
+;
+species9 ; O 8+
+charge +8
+mass 29384
+atomic_number 8
+migrant_species_flag off
+implicit_species_flag on
+particle_motion_flag on
+particle_forces_option PRIMARY
+transverse_weighting_flag on
+particle_kinematics_option STANDARD
+scattering_flag off
+implicit_filtering_parameter 0.1
+selection_ratio 0.01
+;
+species10 ; kinetic electrons
+charge -1
+mass 1.0
+migrant_species_flag off
+implicit_species_flag on
+particle_motion_flag on
+particle_forces_option PRIMARY
+transverse_weighting_flag on
+particle_kinematics_option STANDARD
+scattering_flag on
+implicit_filtering_parameter 0.1
+selection_ratio 0.01
+;
+species11 ; protons
+charge +1
+mass 1836
+atomic_number 1
+migrant_species_flag off
+implicit_species_flag on
+particle_motion_flag on
+particle_forces_option PRIMARY
+transverse_weighting_flag on
+particle_kinematics_option STANDARD
+scattering_flag off
+implicit_filtering_parameter 0.1
+selection_ratio 0.01
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[Particle Creation]
+
+;; initial states ;;
+
+plasma ; O+
+from -0.0030 -0.0030 -0.0015
+to 0.0000 0.0030 0.0015
+species 2
+movie_tag 3
+unbound off
+discrete_numbers 7 7 7
+density_function 6
+reference_point 0 0 0
+density_flags 1 0 0
+momentum_flags 0 0 0
+thermal_energy 1
+movie_fraction 0.000
+;
+plasma ; e-
+from -0.0030 -0.0030 -0.0015
+to 0.0000 0.0030 0.0015
+species 10
+movie_tag 3
+unbound off
+discrete_numbers 7 7 7
+density_function 5
+reference_point 0 0 0
+density_flags 1 0 0
+momentum_flags 0 0 0
+thermal_energy 1
+movie_fraction 0.050
+;
+plasma ; p
+from -0.0030 -0.0030 -0.0015
+to 0.0000 0.0030 0.0015
+species 11
+movie_tag 3
+unbound off
+discrete_numbers 7 7 7
+density_function 7
+reference_point 0 0 0
+density_flags 1 0 0
+momentum_flags 0 0 0
+thermal_energy 1
+movie_fraction 0.000
+
+;; ionization states ;;
+;
+higherstate              ; O -> O+
+from -0.0030 -0.0030 -0.0030
+to 0.0030 0.0030 0.0030
+interval 1
+species 1
+ion_species 2
+movie_tag 5
+electron_species 10
+movie_tag 3
+ionization_potential 13.6
+cross_sections
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+end
+movie_fraction 0.0
+;
+higherstate              ; O+ -> O++
+from -0.0030 -0.0030 -0.0030
+to 0.0030 0.0030 0.0030
+interval 1
+species 2
+ion_species 3
+movie_tag 5
+electron_species 10
+movie_tag 3
+ionization_potential 35.1
+cross_sections
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+end
+movie_fraction 0.0
+;
+higherstate              ; O++ -> O 3+
+from -0.0030 -0.0030 -0.0030
+to 0.0030 0.0030 0.0030
+interval 1
+species 3
+ion_species 4
+movie_tag 5
+electron_species 10
+movie_tag 3
+ionization_potential 54.9
+cross_sections
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+end
+movie_fraction 0.0
+;
+higherstate              ; O 3+ -> O 4+
+from -0.0030 -0.0030 -0.0030
+to 0.0030 0.0030 0.0030
+interval 1
+species 4
+ion_species 5
+movie_tag 5
+electron_species 10
+movie_tag 3
+ionization_potential 77.4
+cross_sections
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+end
+movie_fraction 0.0
+;
+higherstate              ; O 4+ -> O 5+
+from -0.0030 -0.0030 -0.0030
+to 0.0030 0.0030 0.0030
+interval 1
+species 5
+ion_species 6
+movie_tag 5
+electron_species 10
+movie_tag 3
+ionization_potential 113.9
+cross_sections
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+end
+movie_fraction 0.0
 ;
 ;
-;; [Particle Extraction]
-;; ;
-;; extract1
-;; species 10
-;; direction X
-;; maximum_number 1000000000
-;; start_time 0.0
-;; stop_time 1
-;; at -0.0030 0 0
-;; ;
-;; extract2
-;; species 10
-;; direction X
-;; maximum_number 1000000000
-;; start_time 0.0
-;; stop_time 1
-;; at 0.0030 0 0
-;; ;
-;; extract3
-;; species 10
-;; direction Z
-;; maximum_number 1000000000
-;; start_time 0.0
-;; stop_time 1
-;; at 0 0 0.0030
-;; ;
-;; extract4
-;; species 10
-;; direction Z
-;; maximum_number 1000000000
-;; start_time 0.0
-;; stop_time 1
-;; at 0 0 -0.0030
+higherstate              ; O 5+ -> O 6+
+from -0.0030 -0.0030 -0.0030
+to 0.0030 0.0030 0.0030
+interval 1
+species 6
+ion_species 7
+movie_tag 5
+electron_species 10
+movie_tag 3
+ionization_potential 138.1
+cross_sections
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+end
+movie_fraction 0.0
 ;
+higherstate              ; O 6+ -> O 7+
+from -0.0030 -0.0030 -0.0030
+to 0.0030 0.0030 0.0030
+interval 1
+species 7
+ion_species 8
+movie_tag 5
+electron_species 10
+movie_tag 3
+ionization_potential 739.3
+cross_sections
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+end
+movie_fraction 0.0
+;
+higherstate              ; O 7+ -> O 8+
+from -0.0030 -0.0030 -0.0030
+to 0.0030 0.0030 0.0030
+interval 1
+species 8
+ion_species 9
+movie_tag 5
+electron_species 10
+movie_tag 3
+ionization_potential 871.4
+cross_sections
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+end
+movie_fraction 0.0
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[Particle Extraction]
+;
+extract1
+species 10
+direction X
+maximum_number 1000000000
+start_time 0.0
+stop_time 1
+at -0.0030 0 0
+;
+extract2
+species 10
+direction X
+maximum_number 1000000000
+start_time 0.0
+stop_time 1
+at 0.0030 0 0
+;
+extract3
+species 10
+direction Z
+maximum_number 1000000000
+start_time 0.0
+stop_time 1
+at 0 0 0.0030
+;
+extract4
+species 10
+direction Z
+maximum_number 1000000000
+start_time 0.0
+stop_time 1
+at 0 0 -0.0030
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 [Functions]
 function1 ; laser temporal function
 type 30
 data_file sine700points.dat
-independent_variable_multiplier 60.0e-6 ; =2xFWHM,  70 fs FWHM pulse
+independent_variable_multiplier 60.0e-6 ; =2xFWHM,  30 fs FWHM pulse
 ;dependent_variable_multiplier 1.736e8  ; = Emax in kV/cm units, 1.736e8 => 4*10^19 W/cm^2
 ;dependent_variable_multiplier 8.68e5  ; = Emax in kV/cm units, 8.68e5 => 10^15 W/cm^2
 dependent_variable_multiplier 2.75e7  ; = Emax in kV/cm units, 2.75e7 => 10^18 W/cm^2
@@ -839,134 +828,112 @@ end
 ;
 ;
 [Probes]
-
-probe1 ;
-energy field_energy
-
-probe2
-performance cpu_time
- 
-;; energy field_energy
-;; ;
-;; probe33 ; 
-;; energy net_energy
-;; ;
-;; probe34 ; 
-;; energy dedx_loss
-;; ;
-;; probe35 ; 
-;; energy total_dedx_loss
-;; ;
-;; probe36 ;
-;; performance cpu_time
-
+probe1 ; ocmax1
+global ocmax species 1
 ;
-;; probe1 ; ocmax1
-;; global ocmax species 1
-;; ;
-;; probe2 ; ocmax2
-;; global ocmax species 2
-;; ;
-;; probe3 ; ocmax3
-;; global ocmax species 3
-;; ;
-;; probe4 ; ocmax10
-;; global ocmax species 10
-;; ;
-;; probe5 ; ocmax11
-;; global ocmax species 11
-;; ;
-;; probe6 ; opmax1
-;; global opmax species 1
-;; ;
-;; probe7 ; opmax2
-;; global opmax species 2
-;; ;
-;; probe8 ; opmax3
-;; global opmax species 3
-;; ;
-;; probe9 ; opmax10
-;; global opmax species 10
-;; ;
-;; probe10 ; opmax11
-;; global opmax species 11
-;; ;
-;; probe11 ; number1
-;; global number species 1
-;; ;
-;; probe12 ; number2
-;; global number species 2
-;; ;
-;; probe13 ; number3
-;; global number species 3
-;; ;
-;; probe14 ; number10
-;; global number species 10
-;; ;
-;; probe15 ; number11
-;; global number species 11
-;; ;
-;; probe16 ; charge1
-;; global charge species 1
-;; ;
-;; probe17 ; charge2
-;; global charge species 2
-;; ;
-;; probe18 ; charge3
-;; global charge species 3
-;; ;
-;; probe19 ; charge10
-;; global charge species 10
-;; ;
-;; probe20 ; ketot1
-;; global ketot species 1
-;; ;
-;; probe21 ; ketot2
-;; global ketot species 2
-;; ;
-;; probe22 ; ketot3
-;; global ketot species 3
-;; ;
-;; probe23 ; ketot10
-;; global ketot species 10
-;; ;
-;; probe24 ; ketot11
-;; global ketot species 11
-;; ;
-;; probe25 ; vxtot1
-;; global vxtot species 1
-;; ;
-;; probe26 ; vxtot2
-;; global vxtot species 2
-;; ;
-;; probe27 ; vxtot3
-;; global vxtot species 3
-;; ;
-;; probe28 ; vxtot10
-;; global vxtot species 10
-;; ;
-;; probe29 ; vxtot11
-;; global vxtot species 11
-;; ;
-;; probe30 ; 
-;; energy total_energy
-;; ;
-;; probe31 ; 
-;; energy particle_energy
-;; ;
-;; probe32 ; 
-;; energy field_energy
-;; ;
-;; probe33 ; 
-;; energy net_energy
-;; ;
-;; probe34 ; 
-;; energy dedx_loss
-;; ;
-;; probe35 ; 
-;; energy total_dedx_loss
-;; ;
-;; probe36 ;
-;; performance cpu_time
-;; ;
+probe2 ; ocmax2
+global ocmax species 2
+;
+probe3 ; ocmax3
+global ocmax species 3
+;
+probe4 ; ocmax10
+global ocmax species 10
+;
+probe5 ; ocmax11
+global ocmax species 11
+;
+probe6 ; opmax1
+global opmax species 1
+;
+probe7 ; opmax2
+global opmax species 2
+;
+probe8 ; opmax3
+global opmax species 3
+;
+probe9 ; opmax10
+global opmax species 10
+;
+probe10 ; opmax11
+global opmax species 11
+;
+probe11 ; number1
+global number species 1
+;
+probe12 ; number2
+global number species 2
+;
+probe13 ; number3
+global number species 3
+;
+probe14 ; number10
+global number species 10
+;
+probe15 ; number11
+global number species 11
+;
+probe16 ; charge1
+global charge species 1
+;
+probe17 ; charge2
+global charge species 2
+;
+probe18 ; charge3
+global charge species 3
+;
+probe19 ; charge10
+global charge species 10
+;
+probe20 ; ketot1
+global ketot species 1
+;
+probe21 ; ketot2
+global ketot species 2
+;
+probe22 ; ketot3
+global ketot species 3
+;
+probe23 ; ketot10
+global ketot species 10
+;
+probe24 ; ketot11
+global ketot species 11
+;
+probe25 ; vxtot1
+global vxtot species 1
+;
+probe26 ; vxtot2
+global vxtot species 2
+;
+probe27 ; vxtot3
+global vxtot species 3
+;
+probe28 ; vxtot10
+global vxtot species 10
+;
+probe29 ; vxtot11
+global vxtot species 11
+;
+probe30 ; 
+energy total_energy
+;
+probe31 ; 
+energy particle_energy
+;
+probe32 ; 
+energy field_energy
+;
+probe33 ; 
+energy net_energy
+;
+probe34 ; 
+energy dedx_loss
+;
+probe35 ; 
+energy total_dedx_loss
+;
+probe36 ;
+performance cpu_time
+;
 
