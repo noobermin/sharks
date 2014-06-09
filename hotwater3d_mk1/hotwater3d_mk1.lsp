@@ -3,13 +3,13 @@ simulation_title "Hotwater in 3D I = 1e18 W cm-2 "
 ;
 [Control]
 ;Time-advance
- time_limit 500e-6 ;
+ time_limit 250e-6 ;
 ;time_limit 0.2e-6 
 ;number_of_steps 2
 
  time_step_ns 0.10e-6 ; 1/30th optical cycle for 1um laser light
 ;Restarts
- restart_interval_ns 99e-6 ; probably much longer than max dump time
+ restart_interval_ns 75e-6 ; probably much longer than max dump time
  maximum_restart_dump_time 11.95 ;in hours
 ;Parallel Processing
  balance_interval_ns 0
@@ -63,7 +63,7 @@ end
 grid1
 xmin             -0.0030
 xmax              0.0005
-x-cells           300
+x-cells           350
 ;
 ymin             -0.0020
 ymax              0.0020
@@ -80,26 +80,110 @@ xmin -0.0030
 xmax  0.0005
 
 ymin -0.0020
+ymax -0.0015
+
+zmin -0.0020
+zmax  0.0020
+
+number_of_domains 24
+split_direction ZSPLIT ;split into planes instead of lines
+number_of_cells AUTO
+;
+region2
+xmin -0.0030
+xmax  0.0005
+
+ymin -0.0015
+ymax -0.0010
+
+zmin -0.0020
+zmax  0.0020
+
+number_of_domains 24
+split_direction ZSPLIT ;split into planes instead of lines
+number_of_cells AUTO
+;
+region3
+xmin -0.0030
+xmax  0.0005
+
+ymin -0.0010
+ymax -0.0005
+
+zmin -0.0020
+zmax  0.0020
+
+number_of_domains 24
+split_direction ZSPLIT ;split into planes instead of lines
+number_of_cells AUTO
+;
+region4
+xmin -0.0030
+xmax  0.0005
+
+ymin -0.0005
 ymax  0.0000
 
 zmin -0.0020
 zmax  0.0020
 
-number_of_domains 100 ; holy canoles!
+number_of_domains 24
 split_direction ZSPLIT ;split into planes instead of lines
 number_of_cells AUTO
-
-region2
+;
+region5
 xmin -0.0030
 xmax  0.0005
 
 ymin  0.0000
+ymax  0.0005
+
+zmin -0.0020
+zmax  0.0020
+
+number_of_domains 24
+split_direction ZSPLIT ;split into planes instead of lines
+number_of_cells AUTO
+;
+region6
+xmin -0.0030
+xmax  0.0005
+
+ymin  0.0005
+ymax  0.0010
+
+zmin -0.0020
+zmax  0.0020
+
+number_of_domains 24
+split_direction ZSPLIT ;split into planes instead of lines
+number_of_cells AUTO
+;
+region7
+xmin -0.0030
+xmax  0.0005
+
+ymin  0.0010
+ymax  0.0015
+
+zmin -0.0020
+zmax  0.0020
+
+number_of_domains 24
+split_direction ZSPLIT ;split into planes instead of lines
+number_of_cells AUTO
+;
+region8
+xmin -0.0030
+xmax  0.0005
+
+ymin  0.0015
 ymax  0.0020
 
 zmin -0.0020
 zmax  0.0020
 
-number_of_domains 100 ; holy canoles!
+number_of_domains 24
 split_direction ZSPLIT ;split into planes instead of lines
 number_of_cells AUTO
 
@@ -144,7 +228,7 @@ reference_point 0 0 0 ; focal point position
 direction 0 0 0
 magnitude 1.0
 wavelength 0.8e-4 ; 800 nm
-spotsize 1.27e-4 ;these replace the laser analytic function
+spotsize 2.26e-4 ;these replace the laser analytic function
 components 0 0 1
 phases 0 0 0 ; polarization
 temporal_function 1
@@ -182,15 +266,15 @@ drive_model NONE
 ;;;;;;;;;;;;;;;;
 ;; species
 ;;;;;;;;;;;;;;;;
-[Materials]
-;
-material oxygen
-atomic_number 8
-atomic_weight 16
-;ionization_potential 35.1; eV
-ionization_potential 13.6; eV
-specific_heat 4.186; J/gK
-thermal_conductivity 0.0058; (W / mK)/100 
+;; [Materials]
+;; ;
+;; material oxygen
+;; atomic_number 8
+;; atomic_weight 16
+;; ;ionization_potential 35.1; eV
+;; ionization_potential 13.6; eV
+;; specific_heat 4.186; J/gK
+;; thermal_conductivity 0.0058; (W / mK)/100 
 
 [Particle Species]
 species1 ; neutral O
@@ -355,8 +439,8 @@ selection_ratio 0.01
 ;; initial states ;;
 
 plasma ; O+
-from -0.0030 -0.0020 -0.0015
-to    0.0000  0.0020  0.0015
+from -0.0030 -0.0015 -0.0015
+to    0.0000  0.0015  0.0015
 species 2
 movie_tag 3
 unbound off
@@ -369,8 +453,8 @@ thermal_energy 1
 movie_fraction 0.000
 ;
 plasma ; e-
-from -0.0030 -0.0020 -0.0015
-to    0.0000  0.0020  0.0015
+from -0.0030 -0.0015 -0.0015
+to    0.0000  0.0015  0.0015
 species 10
 movie_tag 3
 unbound off
@@ -383,8 +467,8 @@ thermal_energy 1
 movie_fraction 0.050
 ;
 plasma ; p
-from -0.0030 -0.0020 -0.0015
-to    0.0000  0.0020  0.0015
+from -0.0030 -0.0015 -0.0015
+to    0.0000  0.0015  0.0015
 species 11
 movie_tag 3
 unbound off
@@ -603,39 +687,39 @@ movie_fraction 0.0
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-[Particle Extraction]
-;
-extract1
-species 10
-direction X
-maximum_number 1000000000
-start_time 0.0
-stop_time 1
-at -0.0030 0 0
-;
-extract2
-species 10
-direction X
-maximum_number 1000000000
-start_time 0.0
-stop_time 1
-at 0.0005 0 0
-;
-extract3
-species 10
-direction Z
-maximum_number 1000000000
-start_time 0.0
-stop_time 1
-at 0 0 0.0020
-;
-extract4
-species 10
-direction Z
-maximum_number 1000000000
-start_time 0.0
-stop_time 1
-at 0 0 -0.0020
+;; [Particle Extraction]
+;; ;
+;; extract1
+;; species 10
+;; direction X
+;; maximum_number 1000000000
+;; start_time 0.0
+;; stop_time 1
+;; at -0.0030 0 0
+;; ;
+;; extract2
+;; species 10
+;; direction X
+;; maximum_number 1000000000
+;; start_time 0.0
+;; stop_time 1
+;; at 0.0005 0 0
+;; ;
+;; extract3
+;; species 10
+;; direction Z
+;; maximum_number 1000000000
+;; start_time 0.0
+;; stop_time 1
+;; at 0 0 0.0020
+;; ;
+;; extract4
+;; species 10
+;; direction Z
+;; maximum_number 1000000000
+;; start_time 0.0
+;; stop_time 1
+;; at 0 0 -0.0020
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Functions
@@ -648,7 +732,8 @@ data_file sine700points.dat
 independent_variable_multiplier 60.0e-6 ; =2xFWHM,  30 fs FWHM pulse
 ;dependent_variable_multiplier 1.736e8  ; = Emax in kV/cm units, 1.736e8 => 4*10^19 W/cm^2
 ;dependent_variable_multiplier 8.68e5  ; = Emax in kV/cm units, 8.68e5 => 10^15 W/cm^2
-dependent_variable_multiplier 2.75e7  ; = Emax in kV/cm units, 2.75e7 => 10^18 W/cm^2
+;dependent_variable_multiplier 2.75e7  ; = Emax in kV/cm units, 2.75e7 => 10^18 W/cm^2
+dependent_variable_multiplier 4.763e7  ; = Emax in kV/cm units, 4.763e7 => 3 x 10^18 W/cm^2
 
 function2 ; Oxygen number dens
 type 1
