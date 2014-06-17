@@ -1,5 +1,5 @@
 #PBS -l walltime=48:00:00
-#PBS -l nodes=200:ppn=1
+#PBS -l nodes=192:ppn=1
 #PBS -N hotwater3d_mk1
 #PBS -j oe
 #PBS -m ae
@@ -26,5 +26,6 @@ cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/cat_nodefile.txt
 #cp $PBS_O_WORKDIR/sine*.dat . 
 #cp $PBS_O_WORKDIR/${DOTLSPFILE} .
 
-#mpiexec -n 150 ./lsp12_oakley hotwater3d_mk1.lsp > log.txt
-mpiexec -n 200 -verbose ./lsp12_glenn_v hotwater3d_mk1.lsp > log.txt
+#mpiexec -n 192 ./lsp12_oakley hotwater3d_mk1.lsp > log.txt
+#mpiexec -n 192 -verbose ./lsp12_glenn_v hotwater3d_mk1.lsp > log.txt
+mpiexec -n 192 -verbose ./lsp10_glenn hotwater3d_mk1.lsp > log.txt

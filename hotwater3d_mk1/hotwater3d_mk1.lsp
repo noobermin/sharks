@@ -225,13 +225,14 @@ to   -0.0030  0.0020  0.0020
 phase_velocity 1.0
 drive_model LASER
 reference_point 0 0 0 ; focal point position
-direction 0 0 0
-magnitude 1.0
-wavelength 0.8e-4 ; 800 nm
-spotsize 2.26e-4 ;these replace the laser analytic function
+;direction 0 0 0
+;magnitude 1.0
+;wavelength 0.8e-4 ; 800 nm
+;spotsize 2.26e-4 ;these replace the laser analytic function
 components 0 0 1
 phases 0 0 0 ; polarization
 temporal_function 1
+analytic_function 2
 time_delay 0.0
 ;front
 outlet
@@ -239,42 +240,43 @@ from 0.0005 -0.0020 -0.0020
 to   0.0005  0.0020  0.0020
 phase_velocity 1.0
 drive_model NONE
-;top
+;right
 outlet
 from -0.0030 -0.0020 0.0020
 to    0.0005  0.0020 0.0020
 phase_velocity 1.0
 drive_model NONE
-;bottom
+;left
 outlet
 from -0.0030 -0.0020 -0.0020
 to    0.0005  0.0020 -0.0020
 phase_velocity 1.0
 drive_model NONE
-;right
+;bottom
 outlet
 from -0.0030 -0.0020 -0.0020
 to    0.0005 -0.0020  0.0020
 phase_velocity 1.0
 drive_model NONE
-;right
+;top
 outlet
 from -0.0030 0.0020 -0.0020
 to    0.0005 0.0020  0.0020
 phase_velocity 1.0
 drive_model NONE
+
 ;;;;;;;;;;;;;;;;
 ;; species
 ;;;;;;;;;;;;;;;;
-;; [Materials]
-;; ;
-;; material oxygen
-;; atomic_number 8
-;; atomic_weight 16
-;; ;ionization_potential 35.1; eV
-;; ionization_potential 13.6; eV
-;; specific_heat 4.186; J/gK
-;; thermal_conductivity 0.0058; (W / mK)/100 
+[Materials]
+ ;
+ material oxygen
+ atomic_number 8
+ atomic_weight 16
+ ;ionization_potential 35.1; eV
+ ionization_potential 13.6; eV
+ specific_heat 4.186; J/gK
+ thermal_conductivity 0.0058; (W / mK)/100 
 
 [Particle Species]
 species1 ; neutral O
@@ -445,7 +447,7 @@ species 2
 movie_tag 3
 unbound off
 discrete_numbers 1 1 1
-density_function 5
+density_function 6
 reference_point 0 0 0
 density_flags 1 0 0
 momentum_flags 0 0 0
@@ -459,7 +461,7 @@ species 10
 movie_tag 3
 unbound off
 discrete_numbers 1 1 1
-density_function 4
+density_function 5
 reference_point 0 0 0
 density_flags 1 0 0
 momentum_flags 0 0 0
@@ -473,7 +475,7 @@ species 11
 movie_tag 3
 unbound off
 discrete_numbers 1 1 1
-density_function 6
+density_function 7
 reference_point 0 0 0
 density_flags 1 0 0
 momentum_flags 0 0 0
@@ -735,19 +737,23 @@ independent_variable_multiplier 60.0e-6 ; =2xFWHM,  30 fs FWHM pulse
 ;dependent_variable_multiplier 2.75e7  ; = Emax in kV/cm units, 2.75e7 => 10^18 W/cm^2
 dependent_variable_multiplier 4.763e7  ; = Emax in kV/cm units, 4.763e7 => 3 x 10^18 W/cm^2
 
-function2 ; Oxygen number dens
+function2 ;laser analytic function for lsp v10
+type 19   ; \lambda spotsize
+coefficients 0.8e-4 2.26e-4 end
+
+function3 ; Oxygen number dens
 type 1
 coefficients 3.33E+22 end 
 ;
-function3 ; Electron number dens
+function4 ; Electron number dens
 type 1
 coefficients 1.00E+23 end 
 ;
-function4 ; proton number dens
+function5 ; proton number dens
 type 1
 coefficients 6.67e+22 end 
 ;
-function4
+function5
 type 0
 data_pairs
 0       1.0e23
@@ -808,7 +814,7 @@ data_pairs
 0.002750000000000000    0.0
 end
 ;
-function5
+function6
 type 0
 data_pairs
 0       3.3e22
@@ -869,7 +875,7 @@ data_pairs
 0.002750000000000000    0.0
 end
 ;
-function6
+function7
 type 0
 data_pairs
 0       6.7e22
