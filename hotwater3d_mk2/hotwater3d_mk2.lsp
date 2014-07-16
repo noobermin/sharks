@@ -63,7 +63,7 @@ end
 grid1
 xmin             -0.0030
 xmax              0.0005
-x-cells           350
+x-cells           700
 ;
 ymin             -0.0020
 ymax              0.0020
@@ -85,7 +85,7 @@ ymax -0.0015
 zmin -0.0020
 zmax  0.0020
 
-number_of_domains 24
+number_of_domains 48
 split_direction ZSPLIT ;split into planes instead of lines
 number_of_cells AUTO
 ;
@@ -99,7 +99,7 @@ ymax -0.0010
 zmin -0.0020
 zmax  0.0020
 
-number_of_domains 24
+number_of_domains 48
 split_direction ZSPLIT ;split into planes instead of lines
 number_of_cells AUTO
 ;
@@ -113,7 +113,7 @@ ymax -0.0005
 zmin -0.0020
 zmax  0.0020
 
-number_of_domains 24
+number_of_domains 48
 split_direction ZSPLIT ;split into planes instead of lines
 number_of_cells AUTO
 ;
@@ -127,7 +127,7 @@ ymax  0.0000
 zmin -0.0020
 zmax  0.0020
 
-number_of_domains 24
+number_of_domains 48
 split_direction ZSPLIT ;split into planes instead of lines
 number_of_cells AUTO
 ;
@@ -141,7 +141,7 @@ ymax  0.0005
 zmin -0.0020
 zmax  0.0020
 
-number_of_domains 24
+number_of_domains 48
 split_direction ZSPLIT ;split into planes instead of lines
 number_of_cells AUTO
 ;
@@ -155,7 +155,7 @@ ymax  0.0010
 zmin -0.0020
 zmax  0.0020
 
-number_of_domains 24
+number_of_domains 48
 split_direction ZSPLIT ;split into planes instead of lines
 number_of_cells AUTO
 ;
@@ -169,7 +169,7 @@ ymax  0.0015
 zmin -0.0020
 zmax  0.0020
 
-number_of_domains 24
+number_of_domains 48
 split_direction ZSPLIT ;split into planes instead of lines
 number_of_cells AUTO
 ;
@@ -183,7 +183,7 @@ ymax  0.0020
 zmin -0.0020
 zmax  0.0020
 
-number_of_domains 24
+number_of_domains 48
 split_direction ZSPLIT ;split into planes instead of lines
 number_of_cells AUTO
 

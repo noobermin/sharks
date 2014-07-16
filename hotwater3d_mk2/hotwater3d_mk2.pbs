@@ -1,5 +1,5 @@
 #PBS -l walltime=48:00:00
-#PBS -l nodes=192:ppn=1
+#PBS -l nodes=96:ppn=4
 #PBS -N hotwater3d_mk2
 #PBS -j oe
 #PBS -m ae
@@ -14,7 +14,6 @@ module load mvapich2-1.6-gnu
 module load pvfs2
 
 cd $PBS_O_WORKDIR
-
 #This outputs the name of the root node to the directory where you submitted this PBS job
 echo $HOSTNAME > $PBS_O_WORKDIR/hostname.txt   
 cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/cat_nodefile.txt
@@ -28,4 +27,4 @@ cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/cat_nodefile.txt
 
 #mpiexec -n 192 ./lsp12_oakley hotwater3d_mk1.lsp > log.txt
 #mpiexec -n 192 -verbose ./lsp12_glenn_v hotwater3d_mk1.lsp > log.txt
-mpiexec -n 192 -verbose ./lsp10_glenn hotwater3d_mk1.lsp > log.txt
+mpiexec -n 384 -verbose $PBS_O_WORKDIR/lsp10_glenn hotwater3d_mk2.lsp > log.txt 2>&1
