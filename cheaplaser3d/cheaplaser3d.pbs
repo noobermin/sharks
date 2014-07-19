@@ -16,8 +16,6 @@ echo $HOSTNAME > $PBS_O_WORKDIR/hostname.txt
 cd $PBS_O_WORKDIR
 
 #mpirun -np 5  ./lsp10_osu_version cheaplaser3d.lsp  > /dev/null
-mpirun -np 5  ./lsp12.4_phi-eq_0 cheaplaser3d.lsp  > /dev/null
-
-
-
+#mpirun -np 5  ./lsp12.4_phi-eq_0 cheaplaser3d.lsp  > /dev/null
+mpiexec -np 5  ./lsp cheaplaser3d.lsp  > /dev/null
 
