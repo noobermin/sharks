@@ -58,7 +58,6 @@ end
 ;
 [Grid]
 ;
-
 grid1
 xmin             -0.0030
 xmax             -0.0025
@@ -72,6 +71,7 @@ zmin             -0.0001
 zmax              0.0001
 z-cells           4
 ;
+
 [Regions]
 ;
 region1
@@ -122,16 +122,16 @@ to   -0.003  0.0001  0.0001
 phase_velocity 1.0
 drive_model LASER
 reference_point 0 0 0
-;direction 1 0 0
-;magnitude 1.0
-;wavelength 0.8e-4 ; 800 nm
-;spotsize 2.26e-4 ;these replace the laser analytic function
+direction 1 0 0
+magnitude 1.0
+wavelength 0.8e-4 ; 800 nm
+spotsize 2.26e-4 ;these replace the laser analytic function
 components 0 0 1
 phases 0 0 0 ; polarization
 temporal_function 1
-;time_delay 100e-6
-analytic_function 2
-time_delay 0.0
+time_delay 98.807e-6
+;analytic_function 2
+;time_delay 0.0
 
 
 ;front
@@ -142,26 +142,26 @@ phase_velocity 1.0
 drive_model NONE
 ;top
 outlet
-from -0.003 -0.0001 0.0001
-to -0.0025 0.0001 0.0001
+from -0.003  -0.0001  0.0001
+to   -0.0025  0.0001  0.0001
 phase_velocity 1.0
 drive_model NONE
 ;bottom
 outlet
-from -0.003 -0.0001 -0.0001
-to -0.0025 0.0001 -0.0001
+from -0.003  -0.0001 -0.0001
+to   -0.0025  0.0001 -0.0001
 phase_velocity 1.0
 drive_model NONE
 ;right
 outlet
-from -0.003 -0.0001 -0.0001
-to -0.0025 -0.0001 0.0001
+from -0.003  -0.0001 -0.0001
+to   -0.0025 -0.0001  0.0001
 phase_velocity 1.0
 drive_model NONE
 ;right
 outlet
-from -0.003 0.0001 -0.0001
-to -0.0025 0.0001 0.0001
+from -0.003   0.0001 -0.0001
+to   -0.0025  0.0001  0.0001
 phase_velocity 1.0
 drive_model NONE
 ;
@@ -174,9 +174,17 @@ independent_variable_multiplier 60.0e-6 ; =2xFWHM,  70 fs FWHM pulse
 ;dependent_variable_multiplier 8.68e5  ; = Emax in kV/cm units, 8.68e5 => 10^15 W/cm^2
 dependent_variable_multiplier 2.75e7  ; = Emax in kV/cm units, 2.75e7 => 10^18 W/cm^2
 ;
-function2 ; laser analytic function
-type 19
-coefficients 0.8e-4 2.26e-4 end
+
+;
+;function2 ; laser analytic function
+;type 19
+;coefficients 0.8e-4 2.26e-4 end
+;
+
+;
+function3 ; laser analytic function
+type 1
+coefficients 2.75e7 end
 ;
 
 [Probes]
@@ -188,7 +196,7 @@ probe2
 performance cpu_time
 
 ;field point probes
- 
+
 probe3
 point E X
 at -0.0030 0 0
