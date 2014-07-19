@@ -64,7 +64,7 @@ end
 grid1
 xmin             -0.0030
 xmax              0.0005
-x-cells           350
+x-cells           700
 ;
 zmin             -0.0020
 zmax              0.0020
@@ -85,35 +85,6 @@ number_of_cells AUTO
 ;
 
 ;
-;[Objects]
-;
-;object1 BLOCK ;
-;conductor off medium 1 potential 0
-;  from -0.0030 0 -0.0030
-;  to    0.0030 0 0.0030
-;
-;[MediumModels]
-;
-;medium1 ; Oxygen
-;method 4
-;type TENUOUS
-;dielectric_constant 1.0
-;permeability 1.0
-;species 10
-;conductivity off
-;electron_density 0.0
-;initial_temperature 300.0
-;xgen_data_file H2O.its
-;;electron_cutoff_energy 100
-;;photon_cutoff_energy 100
-;electron_transport_flag 1
-;photon_probability_factor 10.0
-;diagnostic_flag on
-;components 
-;oxygen fraction 1.0
-;end
-;energy_units EV
-;
 [Boundaries]
 ;back this is the laser
 outlet
@@ -122,14 +93,14 @@ to   -0.0030  0  0.0020
 phase_velocity 1.0
 drive_model LASER
 reference_point 0 0 0 ; focal point position
-direction 0 0 0
+direction 1 0 0
 magnitude 1.0
 wavelength 0.8e-4 ; 800 nm
 spotsize 2.26e-4 ;these replace the laser analytic function
 components 0 0 1
 phases 0 0 0 ; polarization
 temporal_function 1
-time_delay 0.0
+time_delay 98.807e-6
 ;front
 outlet
 from  0.0005  0 -0.0020
@@ -152,15 +123,6 @@ drive_model NONE
 ;;;;;;;;;;;;;;;;
 ;; species
 ;;;;;;;;;;;;;;;;
-;; [Materials]
-;; ;
-;; material oxygen
-;; atomic_number 8
-;; atomic_weight 16
-;; ;ionization_potential 35.1; eV
-;; ionization_potential 13.6; eV
-;; specific_heat 4.186; J/gK
-;; thermal_conductivity 0.0058; (W / mK)/100 
 
 [Particle Species]
 species1 ; neutral O
@@ -330,7 +292,7 @@ to    0.0000  0  0.0015
 species 2
 movie_tag 3
 unbound off
-discrete_numbers 1 1 1
+discrete_numbers 7 7 7
 density_function 5
 reference_point 0 0 0
 density_flags 1 0 0
@@ -344,7 +306,7 @@ to    0.0000  0  0.0015
 species 10
 movie_tag 3
 unbound off
-discrete_numbers 1 1 1
+discrete_numbers 7 7 7
 density_function 4
 reference_point 0 0 0
 density_flags 1 0 0
@@ -358,7 +320,7 @@ to    0.0000  0  0.0015
 species 11
 movie_tag 3
 unbound off
-discrete_numbers 1 1 1
+discrete_numbers 7 7 7
 density_function 6
 reference_point 0 0 0
 density_flags 1 0 0
@@ -573,40 +535,42 @@ movie_fraction 0.0
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; [Particle Extraction]
-;; ;
-;; extract1
-;; species 10
-;; direction X
-;; maximum_number 1000000000
-;; start_time 0.0
-;; stop_time 1
-;; at -0.0030 0 0
-;; ;
-;; extract2
-;; species 10
-;; direction X
-;; maximum_number 1000000000
-;; start_time 0.0
-;; stop_time 1
-;; at 0.0005 0 0
-;; ;
-;; extract3
-;; species 10
-;; direction Z
-;; maximum_number 1000000000
-;; start_time 0.0
-;; stop_time 1
-;; at 0 0 0.0020
-;; ;
-;; extract4
-;; species 10
-;; direction Z
-;; maximum_number 1000000000
-;; start_time 0.0
-;; stop_time 1
-;; at 0 0 -0.0020
 ;
+[Particle Extraction]
+;
+extract1
+species 10
+direction X
+maximum_number 1000000000
+start_time 0.0
+stop_time 1
+at -0.0030 0 0
+;
+extract2
+species 10
+direction X
+maximum_number 1000000000
+start_time 0.0
+stop_time 1
+at 0.0005 0 0
+;
+extract3
+species 10
+direction Z
+maximum_number 1000000000
+start_time 0.0
+stop_time 1
+at 0 0 0.0020
+;
+extract4
+species 10
+direction Z
+maximum_number 1000000000
+start_time 0.0
+stop_time 1
+at 0 0 -0.0020
+;
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Functions
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -815,115 +779,115 @@ data_pairs
 0.002700000000000000    8.01809e17
 0.002750000000000000    0.0
 end
-;
+
 ;
 [Probes]
-probe1 ; ocmax1
-global ocmax species 1
+;; probe1 ; ocmax1
+;; global ocmax species 1
+;; ;
+;; probe2 ; ocmax2
+;; global ocmax species 2
+;; ;
+;; probe3 ; ocmax3
+;; global ocmax species 3
+;; ;
+;; probe4 ; ocmax10
+;; global ocmax species 10
+;; ;
+;; probe5 ; ocmax11
+;; global ocmax species 11
+;; ;
+;; probe6 ; opmax1
+;; global opmax species 1
+;; ;
+;; probe7 ; opmax2
+;; global opmax species 2
+;; ;
+;; probe8 ; opmax3
+;; global opmax species 3
+;; ;
+;; probe9 ; opmax10
+;; global opmax species 10
+;; ;
+;; probe10 ; opmax11
+;; global opmax species 11
 ;
-probe2 ; ocmax2
-global ocmax species 2
-;
-probe3 ; ocmax3
-global ocmax species 3
-;
-probe4 ; ocmax10
-global ocmax species 10
-;
-probe5 ; ocmax11
-global ocmax species 11
-;
-probe6 ; opmax1
-global opmax species 1
-;
-probe7 ; opmax2
-global opmax species 2
-;
-probe8 ; opmax3
-global opmax species 3
-;
-probe9 ; opmax10
-global opmax species 10
-;
-probe10 ; opmax11
-global opmax species 11
-;
-probe11 ; number1
+probe1 ; number1
 global number species 1
 ;
-probe12 ; number2
+probe2 ; number2
 global number species 2
 ;
-probe13 ; number3
+probe3 ; number3
 global number species 3
 ;
-probe14 ; number10
+probe4 ; number10
 global number species 10
 ;
-probe15 ; number11
+probe5 ; number11
 global number species 11
 ;
-probe16 ; charge1
+probe6 ; charge1
 global charge species 1
 ;
-probe17 ; charge2
+probe7 ; charge2
 global charge species 2
 ;
-probe18 ; charge3
+probe8 ; charge3
 global charge species 3
 ;
-probe19 ; charge10
+probe9 ; charge10
 global charge species 10
 ;
-probe20 ; ketot1
+probe10 ; ketot1
 global ketot species 1
 ;
-probe21 ; ketot2
+probe11 ; ketot2
 global ketot species 2
 ;
-probe22 ; ketot3
+probe12 ; ketot3
 global ketot species 3
 ;
-probe23 ; ketot10
+probe13 ; ketot10
 global ketot species 10
 ;
-probe24 ; ketot11
+probe14 ; ketot11
 global ketot species 11
 ;
-probe25 ; vxtot1
+probe15 ; vxtot1
 global vxtot species 1
 ;
-probe26 ; vxtot2
+probe16 ; vxtot2
 global vxtot species 2
 ;
-probe27 ; vxtot3
+probe17 ; vxtot3
 global vxtot species 3
 ;
-probe28 ; vxtot10
+probe18 ; vxtot10
 global vxtot species 10
 ;
-probe29 ; vxtot11
+probe19 ; vxtot11
 global vxtot species 11
 ;
-probe30 ; 
+probe20 ; 
 energy total_energy
 ;
-probe31 ; 
+probe21 ; 
 energy particle_energy
 ;
-probe32 ; 
+probe22 ; 
 energy field_energy
 ;
-probe33 ; 
+probe23 ; 
 energy net_energy
 ;
-probe34 ; 
+probe24 ; 
 energy dedx_loss
 ;
-probe35 ; 
+probe25 ; 
 energy total_dedx_loss
 ;
-probe36 ;
+probe26 ;
 performance cpu_time
 ;
 

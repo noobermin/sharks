@@ -14,20 +14,10 @@ module load openmpi-1.4.3-gnu
 echo $HOSTNAME > $PBS_O_WORKDIR/hostname.txt   
 cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/cat_nodefile.txt
 
-#mkdir /tmp/${USER}_${PBS_JOBID}
-
-#DOTLSPFILE=hotwater.lsp
 cd $PBS_O_WORKDIR
 
-#cd /tmp/${USER}_${PBS_JOBID}
-
-#cp $PBS_O_WORKDIR/lsp .
-#cp $PBS_O_WORKDIR/sine*.dat .
-#cp $PBS_O_WORKDIR/${DOTLSPFILE} .
-
-mpirun -np 48 -hostfile $PBS_NODEFILE ./lsp12_ramsusii_oldlaser_2d 2dsim.lsp >log.txt
-#mpirun -np 48 -hostfile $PBS_NODEFILE ./lsp12_ramsusii_oldlaser_2d 2dsim.lsp >log.txt
-#mpirun -np 48 ./lsp2d_glenn hotwater.lsp > log.txt
+mpirun -np 48 -hostfile $PBS_NODEFILE ./lsp12.4 2dsim.lsp >/dev/null
+#mpirun -np 48 ./lsp2d_glenn hotwater.lsp > /dev/null
 
 
 
