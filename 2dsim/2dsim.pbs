@@ -25,7 +25,7 @@ cd $PBS_O_WORKDIR
 #cp $PBS_O_WORKDIR/sine*.dat .
 #cp $PBS_O_WORKDIR/${DOTLSPFILE} .
 
-mpirun -np 48 -hostfile $PBS_NODEFILE ./lsp12_ramsusii_2d 2dsim.lsp >log.txt
+mpirun -np 48 -hostfile $PBS_NODEFILE ./lsp12_ramsusii_oldlaser_2d 2dsim.lsp >log.txt
 #mpirun -np 48 -hostfile $PBS_NODEFILE ./lsp12_ramsusii_oldlaser_2d 2dsim.lsp >log.txt
 #mpirun -np 48 ./lsp2d_glenn hotwater.lsp > log.txt
 

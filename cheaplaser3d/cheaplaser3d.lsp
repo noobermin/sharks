@@ -1,5 +1,5 @@
 [Title]
-simulation_title "Laser in 3D I = 1e18 W cm-2 "
+simulation_title "Cheap Laser in 3D I = 1e18 W cm-2 "
 ;
 [Control]
 ;Time-advance
@@ -61,27 +61,27 @@ end
 
 grid1
 xmin             -0.0030
-xmax              0.0005
-x-cells           350
+xmax             -0.0025
+x-cells           50
 ;
-ymin             -0.0010
-ymax              0.0010
-y-cells           100
+ymin             -0.0001
+ymax              0.0001
+y-cells           4
 ;
-zmin             -0.0010
-zmax              0.0010
-z-cells           100
+zmin             -0.0001
+zmax              0.0001
+z-cells           4
 ;
 [Regions]
 ;
 region1
 xmin -0.0030
-xmax  0.0005
-ymin -0.0010
-ymax  0.0010
-zmin -0.0010
-zmax  0.0010
-number_of_domains 48
+xmax -0.0025
+ymin -0.0001
+ymax  0.0001
+zmin -0.0001
+zmax  0.0001
+number_of_domains 5
 split_direction XSPLIT 
 number_of_cells AUTO
 
@@ -117,50 +117,51 @@ number_of_cells AUTO
 [Boundaries]
 ;back
 outlet
-from -0.003 -0.001 -0.001
-to   -0.003  0.001  0.001
+from -0.003 -0.0001 -0.0001
+to   -0.003  0.0001  0.0001
 phase_velocity 1.0
 drive_model LASER
 reference_point 0 0 0
-direction 1 0 0
-magnitude 1.0
-wavelength 0.8e-4 ; 800 nm
-spotsize 2.26e-4 ;these replace the laser analytic function
+;direction 1 0 0
+;magnitude 1.0
+;wavelength 0.8e-4 ; 800 nm
+;spotsize 2.26e-4 ;these replace the laser analytic function
 components 0 0 1
 phases 0 0 0 ; polarization
 temporal_function 1
-time_delay 100e-6
-;time_delay 0.0
-;analytic_function 2
+;time_delay 100e-6
+analytic_function 2
+time_delay 0.0
+
 
 ;front
 outlet
-from 0.0005 -0.001 -0.001
-to   0.0005  0.001  0.001
+from -0.0025 -0.0001 -0.0001
+to   -0.0025  0.0001  0.0001
 phase_velocity 1.0
 drive_model NONE
 ;top
 outlet
-from -0.003 -0.001 0.001
-to 0.0005 0.001 0.001
+from -0.003 -0.0001 0.0001
+to -0.0025 0.0001 0.0001
 phase_velocity 1.0
 drive_model NONE
 ;bottom
 outlet
-from -0.003 -0.001 -0.001
-to 0.0005 0.001 -0.001
+from -0.003 -0.0001 -0.0001
+to -0.0025 0.0001 -0.0001
 phase_velocity 1.0
 drive_model NONE
 ;right
 outlet
-from -0.003 -0.001 -0.001
-to 0.0005 -0.001 0.001
+from -0.003 -0.0001 -0.0001
+to -0.0025 -0.0001 0.0001
 phase_velocity 1.0
 drive_model NONE
 ;right
 outlet
-from -0.003 0.001 -0.001
-to 0.0005 0.001 0.001
+from -0.003 0.0001 -0.0001
+to -0.0025 0.0001 0.0001
 phase_velocity 1.0
 drive_model NONE
 ;
@@ -173,9 +174,9 @@ independent_variable_multiplier 60.0e-6 ; =2xFWHM,  70 fs FWHM pulse
 ;dependent_variable_multiplier 8.68e5  ; = Emax in kV/cm units, 8.68e5 => 10^15 W/cm^2
 dependent_variable_multiplier 2.75e7  ; = Emax in kV/cm units, 2.75e7 => 10^18 W/cm^2
 ;
-;function2 ; laser analytic function
-;type 19
-;coefficients 0.8e-4 1.27e-4 end
+function2 ; laser analytic function
+type 19
+coefficients 0.8e-4 2.26e-4 end
 ;
 
 [Probes]
