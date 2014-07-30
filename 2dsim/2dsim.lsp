@@ -3,7 +3,8 @@ simulation_title "Hotwater in 2d I = 3e18 W cm-2 "
 ;
 [Control]
 ;Time-advance
- time_limit 200e-6 ;
+time_limit 60e-6 ;
+;time_limit 200e-6 ;
 ;time_limit 0.2e-6 
 ;number_of_steps 2
 
@@ -37,14 +38,14 @@ simulation_title "Hotwater in 2d I = 3e18 W cm-2 "
  extract_photons_flag ON
  dump_particles_flag OFF
 ;(Diagnostic Output) Dump Intervals
- dump_interval_ns 1e-6
+ dump_interval_ns 0.1e-6
  dump_steps
 1 
 end
  spatial_skip_x 1
 ; spatial_skip_y 1
  spatial_skip_z 1
- probe_interval 100
+ probe_interval 1
 ;(Diagnostic Output) Formats
  photon_output_format ASCII
  target_output_format ASCII

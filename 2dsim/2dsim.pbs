@@ -1,5 +1,5 @@
 #PBS -l walltime=48:00:00
-#PBS -l nodes=1:ppn=48
+#PBS -l nodes=1:ppn=48:node02
 #PBS -N 2dsim
 #PBS -S /bin/bash
 #PBS -j oe
@@ -8,14 +8,19 @@
 
 #module load intel-compilers-11.1
 #module load openmpi-1.4.3-intel    #this is needed for mpirun to work
+
+source $HOME/.bashrc
 module load openmpi-1.4.3-gnu
 
 #This outputs the name of the root node to the directory where you submitted this PBS job
 echo $HOSTNAME > $PBS_O_WORKDIR/hostname.txt   
 cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/cat_nodefile.txt
 
+D=/tmp/ngirmang.1_2dsim_`mkdate`
+mkdir -p $D
 cd $PBS_O_WORKDIR
-
+cp ./lsp12.4 2dsim.lsp sine700points.dat $D/
+cd $D
 mpirun -np 48 -hostfile $PBS_NODEFILE ./lsp12.4 2dsim.lsp >/dev/null
 #mpirun -np 48 ./lsp2d_glenn hotwater.lsp > /dev/null
 
