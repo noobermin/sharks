@@ -446,7 +446,7 @@ to    0.0000  0.0015  0.0015
 species 2
 movie_tag 3
 unbound off
-discrete_numbers 1 1 1
+discrete_numbers 3 3 3
 density_function 6
 reference_point 0 0 0
 density_flags 1 0 0
@@ -460,7 +460,7 @@ to    0.0000  0.0015  0.0015
 species 10
 movie_tag 3
 unbound off
-discrete_numbers 1 1 1
+discrete_numbers 3 3 3
 density_function 5
 reference_point 0 0 0
 density_flags 1 0 0
@@ -474,7 +474,7 @@ to    0.0000  0.0015  0.0015
 species 11
 movie_tag 3
 unbound off
-discrete_numbers 1 1 1
+discrete_numbers 3 3 3
 density_function 7
 reference_point 0 0 0
 density_flags 1 0 0
@@ -689,39 +689,55 @@ movie_fraction 0.0
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; [Particle Extraction]
-;; ;
-;; extract1
-;; species 10
-;; direction X
-;; maximum_number 1000000000
-;; start_time 0.0
-;; stop_time 1
-;; at -0.0030 0 0
-;; ;
-;; extract2
-;; species 10
-;; direction X
-;; maximum_number 1000000000
-;; start_time 0.0
-;; stop_time 1
-;; at 0.0005 0 0
-;; ;
-;; extract3
-;; species 10
-;; direction Z
-;; maximum_number 1000000000
-;; start_time 0.0
-;; stop_time 1
-;; at 0 0 0.0020
-;; ;
-;; extract4
-;; species 10
-;; direction Z
-;; maximum_number 1000000000
-;; start_time 0.0
-;; stop_time 1
-;; at 0 0 -0.0020
+[Particle Extraction]
+;
+extract1
+species 10
+direction X
+maximum_number 1000000000
+start_time 0.0
+stop_time 1
+at -0.0030 0 0
+;
+extract2
+species 10
+direction X
+maximum_number 1000000000
+start_time 0.0
+stop_time 1
+at 0.0005 0 0
+;
+extract3
+species 10
+direction Z
+maximum_number 1000000000
+start_time 0.0
+stop_time 1
+at 0 0 0.0020
+;
+extract4
+species 10
+direction Z
+maximum_number 1000000000
+start_time 0.0
+stop_time 1
+at 0 0 -0.0020
+;
+extract5
+species 10
+direction Y
+maximum_number 1000000000
+start_time 0.0
+stop_time 1
+at 0 0.0020 0
+;
+extract6
+species 10
+direction Y
+maximum_number 1000000000
+start_time 0.0
+stop_time 1
+at 0 -0.0020 0
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Functions
@@ -741,17 +757,17 @@ function2 ;laser analytic function for lsp v10
 type 19   ; \lambda spotsize
 coefficients 0.8e-4 2.26e-4 end
 
-function3 ; Oxygen number dens
-type 1
-coefficients 3.33E+22 end 
+;function3 ; Oxygen number dens
+;type 1
+;coefficients 3.33E+22 end 
 ;
-function4 ; Electron number dens
-type 1
-coefficients 1.00E+23 end 
+;function4 ; Electron number dens
+;type 1
+;coefficients 1.00E+23 end 
 ;
-function5 ; proton number dens
-type 1
-coefficients 6.67e+22 end 
+;function5 ; proton number dens
+;type 1
+;coefficients 6.67e+22 end 
 ;
 function5
 type 0

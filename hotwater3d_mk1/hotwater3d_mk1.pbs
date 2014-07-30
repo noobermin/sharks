@@ -1,5 +1,5 @@
 #PBS -l walltime=48:00:00
-#PBS -l nodes=192:ppn=1
+#PBS -l nodes=32:ppn=6
 #PBS -N hotwater3d_mk1
 #PBS -j oe
 #PBS -m ae
@@ -9,9 +9,9 @@
 #module load intel-compilers-11.1
 #module load openmpi-1.4.3-intel    #this is needed for mpirun to work
 #module load openmpi-1.4.3-gnu
-module unload mpi
-module load mvapich2-1.6-gnu
-module load pvfs2
+#module unload mpi
+#module load mvapich2-1.6-gnu
+#module load pvfs2
 
 cd $PBS_O_WORKDIR
 
@@ -26,6 +26,7 @@ cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/cat_nodefile.txt
 #cp $PBS_O_WORKDIR/sine*.dat . 
 #cp $PBS_O_WORKDIR/${DOTLSPFILE} .
 
-#mpiexec -n 192 ./lsp12_oakley hotwater3d_mk1.lsp > log.txt
+#mpiexec -n 192 ./lsp10_oakley hotwater3d_mk1.lsp > /dev/null 
+mpiexec -n 192 ./lsp10_oakley -r hotwater3d_mk1.lsp > /dev/null 
 #mpiexec -n 192 -verbose ./lsp12_glenn_v hotwater3d_mk1.lsp > log.txt
-mpiexec -n 192 -verbose ./lsp10_glenn hotwater3d_mk1.lsp > log.txt
+#mpiexec -n 192 -verbose ./lsp10_glenn hotwater3d_mk1.lsp > /dev/null
