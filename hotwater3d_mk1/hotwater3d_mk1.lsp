@@ -9,8 +9,8 @@ simulation_title "Hotwater in 3D I = 1e18 W cm-2 "
 
  time_step_ns 0.10e-6 ; 1/30th optical cycle for 1um laser light
 ;Restarts
- restart_interval_ns 75e-6 ; probably much longer than max dump time
- maximum_restart_dump_time 11.95 ;in hours
+ restart_interval_ns 75000e-6 ; probably much longer than max dump time
+ maximum_restart_dump_time 11.5 ;in hours
 ;Parallel Processing
  balance_interval_ns 0
  load_balance_flag OFF
@@ -38,6 +38,7 @@ simulation_title "Hotwater in 3D I = 1e18 W cm-2 "
  dump_particles_flag OFF
 ;(Diagnostic Output) Dump Intervals
  dump_interval_ns 1e-6
+ ;dump_interval_ns 0.2e-6
  dump_steps
 1 
 end
@@ -52,6 +53,7 @@ end
  print_region_flag OFF
 ;(Diagnostic Output) Movie Controls
  particle_movie_interval_ns 0.5e-6
+ ;particle_movie_interval_ns 0.2e-6
  particle_movie_components Q X Y Z VX VY VZ XI YI ZI
 ;Numerical Checks and Reports
  domain_boundary_check ON
@@ -751,11 +753,13 @@ independent_variable_multiplier 60.0e-6 ; =2xFWHM,  30 fs FWHM pulse
 ;dependent_variable_multiplier 1.736e8  ; = Emax in kV/cm units, 1.736e8 => 4*10^19 W/cm^2
 ;dependent_variable_multiplier 8.68e5  ; = Emax in kV/cm units, 8.68e5 => 10^15 W/cm^2
 ;dependent_variable_multiplier 2.75e7  ; = Emax in kV/cm units, 2.75e7 => 10^18 W/cm^2
-dependent_variable_multiplier 4.763e7  ; = Emax in kV/cm units, 4.763e7 => 3 x 10^18 W/cm^2
+;dependent_variable_multiplier 4.763e7  ; = Emax in kV/cm units, 4.763e7 => 3 x 10^18 W/cm^2
+dependent_variable_multiplier 2.02e7  ; = Emax in kV/cm units, 2.02e7 => 3 x 5.4^17 W/cm^2
 
 function2 ;laser analytic function for lsp v10
 type 19   ; \lambda spotsize
-coefficients 0.8e-4 2.26e-4 end
+;coefficients 0.8e-4 2.26e-4 end
+coefficients 0.8e-4 2.174e-4 end
 
 ;function3 ; Oxygen number dens
 ;type 1
@@ -953,113 +957,16 @@ data_pairs
 end
 ;
 ;
-[Probes]
-probe1 ; ocmax1
-global ocmax species 1
-;
-probe2 ; ocmax2
-global ocmax species 2
-;
-probe3 ; ocmax3
-global ocmax species 3
-;
-probe4 ; ocmax10
-global ocmax species 10
-;
-probe5 ; ocmax11
-global ocmax species 11
-;
-probe6 ; opmax1
-global opmax species 1
-;
-probe7 ; opmax2
-global opmax species 2
-;
-probe8 ; opmax3
-global opmax species 3
-;
-probe9 ; opmax10
-global opmax species 10
-;
-probe10 ; opmax11
-global opmax species 11
-;
-probe11 ; number1
-global number species 1
-;
-probe12 ; number2
-global number species 2
-;
-probe13 ; number3
-global number species 3
-;
-probe14 ; number10
-global number species 10
-;
-probe15 ; number11
-global number species 11
-;
-probe16 ; charge1
-global charge species 1
-;
-probe17 ; charge2
-global charge species 2
-;
-probe18 ; charge3
-global charge species 3
-;
-probe19 ; charge10
-global charge species 10
-;
-probe20 ; ketot1
-global ketot species 1
-;
-probe21 ; ketot2
-global ketot species 2
-;
-probe22 ; ketot3
-global ketot species 3
-;
-probe23 ; ketot10
-global ketot species 10
-;
-probe24 ; ketot11
-global ketot species 11
-;
-probe25 ; vxtot1
-global vxtot species 1
-;
-probe26 ; vxtot2
-global vxtot species 2
-;
-probe27 ; vxtot3
-global vxtot species 3
-;
-probe28 ; vxtot10
-global vxtot species 10
-;
-probe29 ; vxtot11
-global vxtot species 11
-;
-probe30 ; 
-energy total_energy
-;
-probe31 ; 
-energy particle_energy
-;
-probe32 ; 
-energy field_energy
-;
-probe33 ; 
-energy net_energy
-;
-probe34 ; 
-energy dedx_loss
-;
-probe35 ; 
-energy total_dedx_loss
-;
-probe36 ;
-performance cpu_time
-;
+probe1
+point E Z
+at -0.0030 0 0
 
+probe2
+point B Y
+at -0.0030 0 0
+
+probe3
+performance cpu_time
+
+probe4
+energy net_energy
