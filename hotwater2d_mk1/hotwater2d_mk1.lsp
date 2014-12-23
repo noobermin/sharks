@@ -85,21 +85,6 @@ xmax  0.0005
 ;ymax -0.0015
 
 zmin -0.0020
-zmax  0.0000
-
-number_of_domains 48
-split_direction ZSPLIT ;split into planes instead of lines
-number_of_cells AUTO
-
-;
-region2
-xmin -0.0030
-xmax  0.0005
-
-;ymin -0.0020
-;ymax -0.0015
-
-zmin  0.0000
 zmax  0.0020
 
 number_of_domains 48
