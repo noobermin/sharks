@@ -1,0 +1,35 @@
+#PBS -l walltime=48:00:00
+#PBS -l nodes=2:ppn=48
+#PBS -N hotwater2d_mk1
+#PBS -j oe
+#PBS -m ae
+#PBS -M ngirmang.1@osu.edu
+
+# the thing for mail is capital M :)
+#module load intel-compilers-11.1
+#module load openmpi-1.4.3-intel    #this is needed for mpirun to work
+#module load openmpi-1.4.3-gnu
+#module unload mpi
+#module load mvapich2-1.6-gnu
+#module load pvfs2
+
+cd $PBS_O_WORKDIR
+
+#This outputs the name of the root node to the directory where you submitted this PBS job
+echo $HOSTNAME > $PBS_O_WORKDIR/hostname.txt   
+cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/cat_nodefile.txt
+
+#mkdir /tmp/${USER}_${PBS_JOBID}
+#cd /tmp/${USER}_${PBS_JOBID}
+
+#cp $PBS_O_WORKDIR/lsp .
+#cp $PBS_O_WORKDIR/sine*.dat . 
+#cp $PBS_O_WORKDIR/${DOTLSPFILE} .
+
+#for ramses
+mpirun -n 96 ./lsp  hotwater2d_mk1.lsp > /dev/null
+
+#mpiexec -n 96 ./lsp10_oakley hotwater2d_mk1.lsp > /dev/null 
+#mpiexec -n 96 ./lsp10_oakley -r hotwater2d_mk1.lsp > /dev/null 
+#mpiexec -n 96 -verbose ./lsp12_glenn_v hotwater2d_mk1.lsp > log.txt
+#mpiexec -n 96 -verbose ./lsp10_glenn hotwater2d_mk1.lsp > /dev/null
