@@ -101,7 +101,8 @@ spotsize 2.26e-4 ;these replace the laser analytic function
 components 0 0 1
 phases 0 0 0 ; polarization
 temporal_function 1
-time_delay 98.807e-6
+time_delay 0
+;time_delay 98.807e-6
 ;front
 outlet
 from  0.0005  0 -0.0020

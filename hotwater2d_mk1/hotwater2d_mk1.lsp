@@ -7,7 +7,7 @@ simulation_title "Hotwater in 2D I = 5.4e17 W cm-2 "
 ;time_limit 0.2e-6 
 ;number_of_steps 2
 
- time_step_ns 0.10e-6 ; 1/30th optical cycle for 1um laser light
+ time_step_ns 0.05e-6 ; 1/30th optical cycle for 1um laser light
 ;Restarts
  restart_interval_ns 75000e-6 ; probably much longer than max dump time
  maximum_restart_dump_time 11.5 ;in hours
@@ -29,12 +29,13 @@ simulation_title "Hotwater in 2D I = 5.4e17 W cm-2 "
  fluid_ion_streaming_factor 0.01 ;Tony insists this is 0.01 instead of 0.005
  flux_limit_fraction 0.2
 ;(Diagnostic Output) Flags
+ dump_fields_flag OFF
  dump_current_density_flag OFF
- dump_number_densities_flag ON
- dump_plasma_quantities_flag ON
- dump_velocities_flag ON
+ dump_number_densities_flag ON 
+ dump_plasma_quantities_flag OFF 
+ dump_velocities_flag OFF 
  ;dump_time_zero_flag ON ; dump the results of the 'zeroth' time step...does it actually start?
- extract_photons_flag ON
+ extract_photons_flag OFF 
  dump_particles_flag OFF
 ;(Diagnostic Output) Dump Intervals
  dump_interval_ns 1e-6
@@ -45,16 +46,16 @@ end
  spatial_skip_x 1
  spatial_skip_y 1
  spatial_skip_z 1
- probe_interval 100
+ probe_interval 1
 ;(Diagnostic Output) Formats
  photon_output_format ASCII
  target_output_format ASCII
  use_its_format_flag OFF
  print_region_flag OFF
 ;(Diagnostic Output) Movie Controls
- particle_movie_interval_ns 0.5e-6
+ ;particle_movie_interval_ns 0.5e-6
  ;particle_movie_interval_ns 0.2e-6
- particle_movie_components Q X Y Z VX VY VZ XI YI ZI
+; particle_movie_components Q X Y Z VX VY VZ XI YI ZI
 ;Numerical Checks and Reports
  domain_boundary_check ON
  report_timing_flag ON
@@ -65,7 +66,7 @@ end
 grid1
 xmin             -0.0030
 xmax              0.0005
-x-cells           700
+x-cells           1400
 ;
 ;ymin             -0.0020
 ;ymax              0.0020
@@ -73,7 +74,7 @@ x-cells           700
 ;
 zmin             -0.0020
 zmax              0.0020
-z-cells           800
+z-cells           2400
 ;
 [Regions]
 ;
@@ -87,7 +88,7 @@ xmax  0.0005
 zmin -0.0020
 zmax  0.0020
 
-number_of_domains 48
+number_of_domains 96
 split_direction ZSPLIT ;split into planes instead of lines
 number_of_cells AUTO
 
@@ -124,8 +125,8 @@ number_of_cells AUTO
 [Boundaries]
 ;back this is the laser
 outlet
-from -0.0030 -0.0020 -0.0020
-to   -0.0030  0.0020  0.0020
+from -0.0030 -0.0000 -0.0020
+to   -0.0030  0.0000  0.0020
 phase_velocity 1.0
 drive_model LASER
 reference_point 0 0 0 ; focal point position
@@ -140,34 +141,34 @@ analytic_function 2
 time_delay 0.0
 ;front
 outlet
-from 0.0005 -0.0020 -0.0020
-to   0.0005  0.0020  0.0020
+from 0.0005 -0.0000 -0.0020
+to   0.0005  0.0000  0.0020
 phase_velocity 1.0
 drive_model NONE
 ;right
 outlet
-from -0.0030 -0.0020 0.0020
-to    0.0005  0.0020 0.0020
+from -0.0030 -0.0000 0.0020
+to    0.0005  0.0000 0.0020
 phase_velocity 1.0
 drive_model NONE
 ;left
 outlet
-from -0.0030 -0.0020 -0.0020
-to    0.0005  0.0020 -0.0020
+from -0.0030 -0.0000 -0.0020
+to    0.0005  0.0000 -0.0020
 phase_velocity 1.0
 drive_model NONE
-;bottom
-outlet
-from -0.0030 -0.0020 -0.0020
-to    0.0005 -0.0020  0.0020
-phase_velocity 1.0
-drive_model NONE
-;top
-outlet
-from -0.0030 0.0020 -0.0020
-to    0.0005 0.0020  0.0020
-phase_velocity 1.0
-drive_model NONE
+;; ;bottom
+;; outlet
+;; from -0.0030 -0.0020 -0.0020
+;; to    0.0005 -0.0020  0.0020
+;; phase_velocity 1.0
+;; drive_model NONE
+;; ;top
+;; outlet
+;; from -0.0030 0.0020 -0.0020
+;; to    0.0005 0.0020  0.0020
+;; phase_velocity 1.0
+;; drive_model NONE
 
 ;;;;;;;;;;;;;;;;
 ;; species
@@ -627,21 +628,21 @@ start_time 0.0
 stop_time 1
 at 0 0 -0.0020
 ;
-extract5
-species 10
-direction Y
-maximum_number 1000000000
-start_time 0.0
-stop_time 1
-at 0 0.0020 0
-;
-extract6
-species 10
-direction Y
-maximum_number 1000000000
-start_time 0.0
-stop_time 1
-at 0 -0.0020 0
+;; extract5
+;; species 10
+;; direction Y
+;; maximum_number 1000000000
+;; start_time 0.0
+;; stop_time 1
+;; at 0 0.0020 0
+;; ;
+;; extract6
+;; species 10
+;; direction Y
+;; maximum_number 1000000000
+;; start_time 0.0
+;; stop_time 1
+;; at 0 -0.0020 0
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Functions
@@ -859,6 +860,7 @@ data_pairs
 end
 ;
 ;
+[Probes]
 probe1
 point E Z
 at -0.0030 0 0
