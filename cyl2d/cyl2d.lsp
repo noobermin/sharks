@@ -343,10 +343,10 @@ higherstate              ; O -> O+
 from -0.0030 -0.0020 -0.0000
 to    0.0020  0.0020  0.0000
 interval 1
-species 4
-ion_species 2
+species 3
+ion_species 4
 movie_tag 5
-electron_species 10
+electron_species 1
 movie_tag 3
 ionization_potential 13.6
 cross_sections
@@ -368,10 +368,10 @@ higherstate              ; O+ -> O++
 from -0.0030 -0.0020  0.0000
 to    0.0020  0.0020  0.0000
 interval 1
-species 5
-ion_species 3
+species 4
+ion_species 5
 movie_tag 5
-electron_species 10
+electron_species 1
 movie_tag 3
 ionization_potential 35.1
 cross_sections
@@ -393,10 +393,10 @@ higherstate              ; O++ -> O 3+
 from -0.0030 -0.0020  0.0000
 to    0.0020  0.0020  0.0000
 interval 1
-species 6
-ion_species 4
+species 5
+ion_species 6
 movie_tag 5
-electron_species 10
+electron_species 1
 movie_tag 3
 ionization_potential 54.9
 cross_sections
@@ -418,10 +418,10 @@ higherstate              ; O 3+ -> O 4+
 from -0.0030 -0.0020  0.0000
 to    0.0020  0.0020  0.0000
 interval 1
-species 7
-ion_species 5
+species 6
+ion_species 7
 movie_tag 5
-electron_species 10
+electron_species 1
 movie_tag 3
 ionization_potential 77.4
 cross_sections
@@ -443,10 +443,10 @@ higherstate              ; O 4+ -> O 5+
 from -0.0030 -0.0020  0.0000
 to    0.0020  0.0020  0.0000
 interval 1
-species 8
-ion_species 6
+species 7
+ion_species 8
 movie_tag 5
-electron_species 10
+electron_species 1
 movie_tag 3
 ionization_potential 113.9
 cross_sections
@@ -469,10 +469,10 @@ higherstate              ; O 5+ -> O 6+
 from -0.0030 -0.0020 -0.0000
 to    0.0020  0.0020  0.0000
 interval 1
-species 9
-ion_species 7
+species 8
+ion_species 9
 movie_tag 5
-electron_species 10
+electron_species 1
 movie_tag 3
 ionization_potential 138.1
 cross_sections
@@ -494,10 +494,10 @@ higherstate              ; O 6+ -> O 7+
 from -0.0030 -0.0020 -0.0000
 to    0.0020  0.0020  0.0000
 interval 1
-species 10
-ion_species 8
+species 9
+ion_species 10
 movie_tag 5
-electron_species 10
+electron_species 1
 movie_tag 3
 ionization_potential 739.3
 cross_sections
@@ -519,10 +519,10 @@ higherstate              ; O 7+ -> O 8+
 from -0.0030 -0.0020  0.0000
 to    0.0020  0.0020  0.0000
 interval 1
-species 11
-ion_species 9
+species 10
+ion_species 11
 movie_tag 5
-electron_species 10
+electron_species 1
 movie_tag 3
 ionization_potential 871.4
 cross_sections
@@ -598,17 +598,17 @@ type 19   ; \lambda spotsize
 coefficients 0.8e-4 2.26e-4 end
 ;
 function3 ; e- number density
-type 50
+type 40
 data_file watercolumn.dat
 dependent_variable_multiplier 1.0
 ;
 function4 ; p+ number density
-type 50
+type 40
 data_file watercolumn.dat
 dependent_variable_multiplier 0.333
 ;
 function5 ; O+ number density
-type 50
+type 40
 data_file watercolumn.dat
 dependent_variable_multiplier 0.667
 ;
