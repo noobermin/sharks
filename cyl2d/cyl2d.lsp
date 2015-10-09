@@ -84,7 +84,7 @@ ymin -0.0020
 ymax  0.0020
 
 number_of_domains 48
-split_direction ZSPLIT 
+split_direction YSPLIT 
 number_of_cells AUTO
 
 [Boundaries]
