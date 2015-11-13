@@ -15,9 +15,9 @@ from docopt import docopt
 import numpy as np;
 from cStringIO import StringIO;
 
-def mkdecay(solid, sdims, xmin, l):
+def mkdecay(solid, sdims, xdims, l):
     def out(x):
-        if x < xmin or x > sdims[1]:
+        if x <= xdims[0] or x >= xdims[1]:
             return 0.0;
         elif sdims[0] <= x <= sdims[1]:
             return solid;
@@ -26,12 +26,12 @@ def mkdecay(solid, sdims, xmin, l):
     return np.vectorize(out);
 
 opts = docopt(__doc__,help=True);
-xmin,xmax = eval(opts['--x-dims']);
+xdims = eval(opts['--x-dims']);
 l = float(opts['--scale']);
 n_s = float(opts['--solid']);
 sdims = eval(opts['--solid-dims']);
-x = np.linspace(xmin-1e-5,xmax,100);
-y = mkdecay(n_s, sdims, xmin,l)(x);
+x = np.linspace(xdims[0],xdims[1],100);
+y = mkdecay(n_s, sdims, xdims,l)(x);
 s = StringIO();
 np.savetxt(s,np.array([x,y]).T,fmt='%.8e',); s.write("\n");
 print(s.getvalue());
