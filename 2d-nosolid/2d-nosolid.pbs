@@ -17,7 +17,7 @@ cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/cat_nodefile.txt
 D=/tmp/ngirmang.1-$PBSBASE-`mkdate`
 mkdir -p $D
 cd $PBS_O_WORKDIR
-cp ./lsp-10 *.lsp sine700points.dat $D/
+cp ./lsp-10 *.lsp *.dat $D/
 cd $D
 echo `ls` >> $PBS_O_WORKDIR/pwd
 mpirun -np 48 ./lsp-10 $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
