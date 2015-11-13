@@ -31,10 +31,10 @@ simulation_title "Hotwater in 3D with cylindrical geometry, I = 1e18 W cm-2 "
 ;(Diagnostic Output) Flags
  dump_current_density_flag OFF
  dump_number_densities_flag ON
- dump_plasma_quantities_flag OFF
+ dump_plasma_quantities_flag ON
  dump_velocities_flag OFF
  ;dump_time_zero_flag ON ; dump the results of the 'zeroth' time step...does it actually start?
- extract_photons_flag ON
+ extract_photons_flag OFF
  dump_particles_flag OFF
 ;(Diagnostic Output) Dump Intervals
  dump_interval_ns 1e-6
@@ -63,8 +63,8 @@ end
 ;
 grid1
 xmin             -0.0030
-xmax              0.0020
-x-cells           1000
+xmax              0.0005
+x-cells           700
 ;
 ymin             -0.0020
 ymax              0.0020
@@ -78,7 +78,7 @@ z-cells           200
 ;
 region1
 xmin -0.0030
-xmax  0.0020
+xmax  0.0005
 
 ymin -0.0020
 ymax  0.0020
@@ -87,12 +87,12 @@ zmin -0.0010
 zmax -0.0006
 
 number_of_domains 4
-split_direction ZSPLIT ;split into planes instead of lines
+split_direction ZSPLIT 
 number_of_cells AUTO
 ;
 region2
 xmin -0.0030
-xmax  0.0020
+xmax  0.0005
 
 ymin -0.0020
 ymax  0.0020
@@ -101,12 +101,12 @@ zmin -0.0006
 zmax -0.0002
 
 number_of_domains 4
-split_direction ZSPLIT ;split into planes instead of lines
+split_direction ZSPLIT 
 number_of_cells AUTO
 ;
 region3
 xmin -0.0030
-xmax  0.0020
+xmax  0.0005
 
 ymin -0.0020
 ymax  0.0020
@@ -115,12 +115,12 @@ zmin -0.0002
 zmax  0.0002
 
 number_of_domains 4
-split_direction ZSPLIT ;split into planes instead of lines
+split_direction ZSPLIT 
 number_of_cells AUTO
 ;
 region4
 xmin -0.0030
-xmax  0.0020
+xmax  0.0005
 
 ymin -0.0020
 ymax  0.0020
@@ -129,12 +129,12 @@ zmin  0.0002
 zmax  0.0006
 
 number_of_domains 4
-split_direction ZSPLIT ;split into planes instead of lines
+split_direction ZSPLIT 
 number_of_cells AUTO
 ;
 region5
 xmin -0.0030
-xmax  0.0020
+xmax  0.0005
 
 ymin -0.0020
 ymax  0.0020
@@ -143,7 +143,7 @@ zmin  0.0006
 zmax  0.0010
 
 number_of_domains 4
-split_direction ZSPLIT ;split into planes instead of lines
+split_direction ZSPLIT 
 number_of_cells AUTO
 
 ;
@@ -673,21 +673,13 @@ at 0.0005 0 0
 ;
 extract3
 species 10
-direction Z
+direction Y
 maximum_number 1000000000
 start_time 0.0
 stop_time 1
-at 0 0 0.0020
+at 0 -0.0020 0
 ;
 extract4
-species 10
-direction Z
-maximum_number 1000000000
-start_time 0.0
-stop_time 1
-at 0 0 -0.0020
-;
-extract5
 species 10
 direction Y
 maximum_number 1000000000
@@ -695,14 +687,21 @@ start_time 0.0
 stop_time 1
 at 0 0.0020 0
 ;
-extract6
+extract5
 species 10
-direction Y
+direction Z
 maximum_number 1000000000
 start_time 0.0
 stop_time 1
-at 0 -0.0020 0
+at 0 0 -0.0010
 ;
+extract6
+species 10
+direction Z
+maximum_number 1000000000
+start_time 0.0
+stop_time 1
+at 0 0 0.0010
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Functions
@@ -715,25 +714,25 @@ data_file sine700points.dat
 independent_variable_multiplier 60.0e-6 ; =2xFWHM,  30 fs FWHM pulse
 ;dependent_variable_multiplier 1.736e8  ; = Emax in kV/cm units, 1.736e8 => 4*10^19 W/cm^2
 ;dependent_variable_multiplier 8.68e5  ; = Emax in kV/cm units, 8.68e5 => 10^15 W/cm^2
-dependent_variable_multiplier 2.75e7  ; = Emax in kV/cm units, 2.75e7 => 10^18 W/cm^2
-;dependent_variable_multiplier 4.763e7  ; = Emax in kV/cm units, 4.763e7 => 3 x 10^18 W/cm^2
+;dependent_variable_multiplier 2.75e7  ; = Emax in kV/cm units, 2.75e7 => 10^18 W/cm^2
+dependent_variable_multiplier 4.763e7  ; = Emax in kV/cm units, 4.763e7 => 3 x 10^18 W/cm^2
 ;
 function2 ;laser analytic function for lsp v10
 type 19   ; \lambda spotsize
 coefficients 0.8e-4 2.26e-4 end
 ;
 function3 ; e- number density
-type 50
+type 30
 data_file watercolumn.dat
 dependent_variable_multiplier 1.0
 ;
 function4 ; p+ number density
-type 50
+type 30
 data_file watercolumn.dat
 dependent_variable_multiplier 0.333
 ;
 function5 ; O+ number density
-type 50
+type 30
 data_file watercolumn.dat
 dependent_variable_multiplier 0.667
 ;
