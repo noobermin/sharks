@@ -64,7 +64,7 @@ end
 ;
 grid1
 xmin             -0.0020
-xmax             -0.0005
+xmax              0.0005
 x-cells           1000
 ;
 zmin             -0.0020
