@@ -34,6 +34,7 @@ simulation_title "Hotwater in 2D I = 3e18 W cm-2, with no solid"
  dump_scalars_flag ON
  dump_velocities_flag OFF
  dump_particles_flag OFF
+ dump_number_densities_flag ON
  ;dump_time_zero_flag ON ; dump the results of the 'zeroth' time step...does it actually start?
  extract_photons_flag OFF
  dump_particles_flag OFF
