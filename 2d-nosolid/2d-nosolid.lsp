@@ -327,7 +327,7 @@ selection_ratio 0.01
 
 plasma ; O+
 from -0.0020 -0.0000 -0.0015
-to   -0.0010  0.0000  0.0015
+to    0.0000  0.0000  0.0015
 species 2
 movie_tag 3
 unbound off
@@ -341,7 +341,7 @@ movie_fraction 0.000
 ;
 plasma ; e-
 from -0.0020 -0.0000 -0.0015
-to   -0.0010  0.0000  0.0015
+to    0.0000  0.0000  0.0015
 species 10
 movie_tag 3
 unbound off
@@ -355,7 +355,7 @@ movie_fraction 0.050
 ;
 plasma ; p
 from -0.0020 -0.0000 -0.0015
-to   -0.0010  0.0000  0.0015
+to    0.0000  0.0000  0.0015
 species 11
 movie_tag 3
 unbound off
@@ -371,7 +371,7 @@ movie_fraction 0.000
 ;
 higherstate              ; O -> O+
 from -0.0020 -0.0000 -0.0020
-to   -0.0005  0.0000  0.0020
+to    0.0005  0.0000  0.0020
 interval 1
 species 1
 ion_species 2
@@ -396,7 +396,7 @@ movie_fraction 0.0
 ;
 higherstate              ; O+ -> O++
 from -0.0020 -0.0000 -0.0020
-to   -0.0005  0.0000  0.0020
+to    0.0005  0.0000  0.0020
 interval 1
 species 2
 ion_species 3
@@ -421,7 +421,7 @@ movie_fraction 0.0
 ;
 higherstate              ; O++ -> O 3+
 from -0.0020 -0.0000 -0.0020
-to   -0.0005  0.0000  0.0020
+to    0.0005  0.0000  0.0020
 interval 1
 species 3
 ion_species 4
@@ -446,7 +446,7 @@ movie_fraction 0.0
 ;
 higherstate              ; O 3+ -> O 4+
 from -0.0020 -0.0000 -0.0020
-to   -0.0005  0.0000  0.0020
+to    0.0005  0.0000  0.0020
 interval 1
 species 4
 ion_species 5
@@ -471,7 +471,7 @@ movie_fraction 0.0
 ;
 higherstate              ; O 4+ -> O 5+
 from -0.0020 -0.0000 -0.0020
-to   -0.0005  0.0000  0.0020
+to    0.0005  0.0000  0.0020
 interval 1
 species 5
 ion_species 6
@@ -497,7 +497,7 @@ movie_fraction 0.0
 ;
 higherstate              ; O 5+ -> O 6+
 from -0.0020 -0.0000 -0.0020
-to   -0.0005  0.0000  0.0020
+to    0.0005  0.0000  0.0020
 interval 1
 species 6
 ion_species 7
@@ -522,7 +522,7 @@ movie_fraction 0.0
 ;
 higherstate              ; O 6+ -> O 7+
 from -0.0020 -0.0000 -0.0020
-to   -0.0005  0.0000  0.0020
+to    0.0005  0.0000  0.0020
 interval 1
 species 7
 ion_species 8
@@ -547,7 +547,7 @@ movie_fraction 0.0
 ;
 higherstate              ; O 7+ -> O 8+
 from -0.0020 -0.0000 -0.0020
-to   -0.0005  0.0000  0.0020
+to    0.0005  0.0000  0.0020
 interval 1
 species 8
 ion_species 9
@@ -590,7 +590,7 @@ direction X
 maximum_number 1000000000
 start_time 0.0
 stop_time 1
-at -0.0005 0 0
+at  0.0005 0 0
 ;
 extract3
 species 10
