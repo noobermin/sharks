@@ -16,13 +16,13 @@ from docopt import docopt;
 
 def mkcolumn(scale, r, solid):
     def F(x,y,z):
-        if (x**2+y**2) > r:
+        if (x**2+y**2) < r**2:
             return solid;
         else:
             return solid*np.exp(-(x**2+y**2)/scale);
     return np.vectorize(F);
-
 opts=docopt(__doc__,help=True);
+
 solid = float(opts['--solid'])
 radius = float(opts['--radius'])
 scale = float(opts['--scale'])
