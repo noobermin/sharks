@@ -75,7 +75,7 @@ z-cells           1600
 ;
 region1
 xmin -0.0020
-xmax -0.0005
+xmax  0.0005
 
 zmin -0.0020
 zmax  0.0020
@@ -133,20 +133,20 @@ analytic_function 2
 time_delay 0.0
 ;front
 outlet
-from -0.0005 -0.0000 -0.0020
-to   -0.0005  0.0000  0.0020
+from  0.0005 -0.0000 -0.0020
+to    0.0005  0.0000  0.0020
 phase_velocity 1.0
 drive_model NONE
 ;right
 outlet
 from -0.0020 -0.0000 0.0020
-to   -0.0005  0.0000 0.0020
+to    0.0005  0.0000 0.0020
 phase_velocity 1.0
 drive_model NONE
 ;left
 outlet
 from -0.0020 -0.0020 -0.0020
-to   -0.0005  0.0020 -0.0020
+to    0.0005  0.0020 -0.0020
 phase_velocity 1.0
 drive_model NONE
 

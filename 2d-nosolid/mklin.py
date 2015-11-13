@@ -22,7 +22,7 @@ def mkdecay(solid, sdims, xmin, l):
         elif sdims[0] <= x <= sdims[1]:
             return solid;
         else:
-            return -np.abs(x-sdims[0])/l;
+            return np.exp(-np.abs(x-sdims[0])/l)*solid;
     return np.vectorize(out);
 
 opts = docopt(__doc__,help=True);
