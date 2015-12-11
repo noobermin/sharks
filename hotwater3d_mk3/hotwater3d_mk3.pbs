@@ -1,5 +1,7 @@
+##choose between short or long runs
 #PBS -l walltime=48:00:00
-#PBS -l nodes=96:ppn=4
+##PBS -l walltime=48:00:00
+#PBS -l nodes=10:ppn=4
 #PBS -N hotwater3d_mk3
 #PBS -j oe
 #PBS -m ae
@@ -25,6 +27,7 @@ cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/cat_nodefile.txt
 #cp $PBS_O_WORKDIR/sine*.dat . 
 #cp $PBS_O_WORKDIR/${DOTLSPFILE} .
 
-#mpiexec -n 192 ./lsp12_oakley hotwater3d_mk1.lsp > log.txt
-#mpiexec -n 192 -verbose ./lsp12_glenn_v hotwater3d_mk1.lsp > log.txt
-mpiexec -n 384 -verbose $PBS_O_WORKDIR/lsp10_glenn hotwater3d_mk3.lsp > log.txt 2>&1
+#need to put ramses here!
+#mpiexec -n 40 ./lsp12_oakley hotwater3d_mk3.lsp > log.txt
+# 8*5 = 40
+mpiexec -n 40 -verbose ./lsp10_glenn hotwater3d_mk3.lsp > log.txt 2>&1
