@@ -1,5 +1,5 @@
 [Title]
-simulation_title "Hotwater in 3D with cylindrical geometry, I = 1e18 W cm-2 "
+simulation_title "Hotwater in 3D mark 3, I = 3e18 W cm-2 "
 ;
 [Control]
 ;Time-advance
@@ -42,8 +42,8 @@ simulation_title "Hotwater in 3D with cylindrical geometry, I = 1e18 W cm-2 "
  dump_steps
 1 
 end
- spatial_skip_x 1
- spatial_skip_y 1
+ spatial_skip_x 2
+ spatial_skip_y 2
  spatial_skip_z 1
  probe_interval 1
 ;(Diagnostic Output) Formats
@@ -60,7 +60,7 @@ end
  dump_timing_flag ON
 ;
 [Grid]
-;
+; lambda by 32, or 
 grid1
 xmin             -0.0030
 xmax              0.0005
@@ -179,8 +179,8 @@ number_of_cells AUTO
 [Boundaries]
 ;back this is the laser
 outlet
-from -0.0030 -0.0020 -0.0020
-to   -0.0030  0.0020  0.0020
+from -0.0030 -0.0020 -0.0010
+to   -0.0030  0.0020  0.0010
 phase_velocity 1.0
 drive_model LASER
 reference_point 0 0 0 ; focal point position
@@ -197,32 +197,32 @@ analytic_function 2
 
 ;front
 outlet
-from 0.0005 -0.0020 -0.0020
-to   0.0005  0.0020  0.0020
+from 0.0005 -0.0020 -0.0010
+to   0.0005  0.0020  0.0010
 phase_velocity 1.0
 drive_model NONE
 ;right
 outlet
-from -0.0030 -0.0020 0.0020
-to    0.0005  0.0020 0.0020
+from -0.0030 -0.0020 0.0010
+to    0.0005  0.0020 0.0010
 phase_velocity 1.0
 drive_model NONE
 ;left
 outlet
-from -0.0030 -0.0020 -0.0020
-to    0.0005  0.0020 -0.0020
+from -0.0030 -0.0020 -0.0010
+to    0.0005  0.0020 -0.0010
 phase_velocity 1.0
 drive_model NONE
 ;bottom
 outlet
-from -0.0030 -0.0020 -0.0020
-to    0.0005 -0.0020  0.0020
+from -0.0030 -0.0020 -0.0010
+to    0.0005 -0.0020  0.0010
 phase_velocity 1.0
 drive_model NONE
 ;top
 outlet
-from -0.0030 0.0020 -0.0020
-to    0.0005 0.0020  0.0020
+from -0.0030 0.0020 -0.0010
+to    0.0005 0.0020  0.0010
 phase_velocity 1.0
 drive_model NONE
 
@@ -403,8 +403,8 @@ selection_ratio 0.01
 
 ;
 plasma ; e-
-from -0.0030 -0.0015 -0.0015
-to    0.0000  0.0015  0.0015
+from -0.0030 -0.0015 -0.0005
+to    0.0000  0.0015  0.0005
 species 10
 movie_tag 3
 unbound off
@@ -417,8 +417,8 @@ thermal_energy 1
 movie_fraction 0.050
 ;
 plasma ; p+
-from -0.0030 -0.0015 -0.0015
-to    0.0000  0.0015  0.0015
+from -0.0030 -0.0015 -0.0005
+to    0.0000  0.0015  0.0005
 species 11
 movie_tag 3
 unbound off
@@ -431,8 +431,8 @@ thermal_energy 1
 movie_fraction 0.000
 ;
 plasma ; O+
-from -0.0030 -0.0015 -0.0015
-to    0.0000  0.0015  0.0015
+from -0.0030 -0.0015 -0.0005
+to    0.0000  0.0015  0.0005
 species 2
 movie_tag 3
 unbound off
@@ -449,8 +449,8 @@ movie_fraction 0.000
 ;; ionization states ;;
 ;
 higherstate              ; O -> O+
-from -0.0030 -0.0020 -0.0020
-to    0.0005  0.0020  0.0020
+from -0.0030 -0.0020 -0.0010
+to    0.0005  0.0020  0.0010
 interval 1
 species 1
 ion_species 2
@@ -474,8 +474,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O+ -> O++
-from -0.0030 -0.0020 -0.0020
-to    0.0005  0.0020  0.0020
+from -0.0030 -0.0020 -0.0010
+to    0.0005  0.0020  0.0010
 interval 1
 species 2
 ion_species 3
@@ -499,8 +499,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O++ -> O 3+
-from -0.0030 -0.0020 -0.0020
-to    0.0005  0.0020  0.0020
+from -0.0030 -0.0020 -0.0010
+to    0.0005  0.0020  0.0010
 interval 1
 species 3
 ion_species 4
@@ -524,8 +524,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O 3+ -> O 4+
-from -0.0030 -0.0020 -0.0020
-to    0.0005  0.0020  0.0020
+from -0.0030 -0.0020 -0.0010
+to    0.0005  0.0020  0.0010
 interval 1
 species 4
 ion_species 5
@@ -549,8 +549,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O 4+ -> O 5+
-from -0.0030 -0.0020 -0.0020
-to    0.0005  0.0020  0.0020
+from -0.0030 -0.0020 -0.0010
+to    0.0005  0.0020  0.0010
 interval 1
 species 5
 ion_species 6
@@ -575,8 +575,8 @@ movie_fraction 0.0
 ;
 ;
 higherstate              ; O 5+ -> O 6+
-from -0.0030 -0.0020 -0.0020
-to    0.0005  0.0020  0.0020
+from -0.0030 -0.0020 -0.0010
+to    0.0005  0.0020  0.0010
 interval 1
 species 6
 ion_species 7
@@ -600,8 +600,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O 6+ -> O 7+
-from -0.0030 -0.0020 -0.0020
-to    0.0005  0.0020  0.0020
+from -0.0030 -0.0020 -0.0010
+to    0.0005  0.0020  0.0010
 interval 1
 species 7
 ion_species 8
@@ -625,8 +625,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O 7+ -> O 8+
-from -0.0030 -0.0020 -0.0020
-to    0.0005  0.0020  0.0020
+from -0.0030 -0.0020 -0.0010
+to    0.0005  0.0020  0.0010
 interval 1
 species 8
 ion_species 9
