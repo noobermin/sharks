@@ -1,14 +1,15 @@
 #!/usr/bin/env python2
 '''
-Create the dat file for the exponential fall-off.
+Create the dat file for the exponential fall-off in 1D. Note that
+dimensions must be positive for now. 
 
 Usage:
   ./mklin.py [options]
 
 Options:
-  --x-dims=XDIM -x XDIM      Set the x dimensions. [default: (-27.5e-4,0e-4)]
+  --x-dims=XDIM -x XDIM      Set the x dimensions. [default: (0, 27.5e-4)]
   --scale=SCALE -l SCALE     Set the scale length. [default: 1.5e-4]
-  --solid-dims=SDIM -s SDIM  Set the solid dimensions. [default: (-10e-4,0)]
+  --solid-dims=SDIM -s SDIM  Set the solid dimensions. [default: (0,10e-4)]
   --solid=SDIM -S SDIM       Set the solid number density. [default: 1.0e23]
 '''
 from docopt import docopt
@@ -22,7 +23,7 @@ def mkdecay(solid, sdims, xdims, l):
         elif sdims[0] <= x <= sdims[1]:
             return solid;
         else:
-            return np.exp(-np.abs(x-sdims[0])/l)*solid;
+            return np.exp(-np.abs(x-sdims[1])/l)*solid;
     return np.vectorize(out);
 
 opts = docopt(__doc__,help=True);
