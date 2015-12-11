@@ -79,15 +79,14 @@ zmax              0.0010
 z-cells           200
 ;
 [Regions]
-;; there are 20 domains, so 2.8e6 per domain.
 ;; we divide by z in 5 regions, so 4 microns each
 ;; or, 4e3/50 0.8e2=80 cells wide along z.
 ;; the other dimensions have 700x400, or 2.8e5 cells
 ;; the least cell width lsp will allow per domain is 4,
 ;; so we have 20 domains as a maximum. 
 ;; given that the wing will have very little, let's try putting
-;; more domains in the bulk. try 10 on the middle three and 2 on the
-;; two edge domains. So, 32 in all.
+;; more domains in the bulk. try 12 on the middle three and 2 on the
+;; two edge domains. So, 40 in all.
 ;
 region1
 xmin -0.0030
@@ -113,7 +112,7 @@ ymax  0.0020
 zmin -0.0006
 zmax -0.0002
 
-number_of_domains 10
+number_of_domains 12
 split_direction ZSPLIT 
 number_of_cells AUTO
 ;
@@ -127,7 +126,7 @@ ymax  0.0020
 zmin -0.0002
 zmax  0.0002
 
-number_of_domains 10
+number_of_domains 12
 split_direction ZSPLIT 
 number_of_cells AUTO
 ;
@@ -141,7 +140,7 @@ ymax  0.0020
 zmin  0.0002
 zmax  0.0006
 
-number_of_domains 10
+number_of_domains 12
 split_direction ZSPLIT 
 number_of_cells AUTO
 ;
