@@ -28,6 +28,6 @@ cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/cat_nodefile.txt
 #cp $PBS_O_WORKDIR/${DOTLSPFILE} .
 
 #need to put ramses here!
-#mpiexec -n 44 ./lsp12_oakley hotwater3d_mk3.lsp > log.txt
-# 2+2+40 = 44
-mpiexec -n 44 -verbose ./lsp10_glenn hotwater3d_mk3.lsp > log.txt 2>&1
+#mpiexec -n 45 ./lsp12_oakley hotwater3d_mk3.lsp > log.txt
+# 2+2+40 = 45
+mpiexec -n 45 -verbose ./lsp10_glenn hotwater3d_mk3.lsp > log.txt 2>&1
