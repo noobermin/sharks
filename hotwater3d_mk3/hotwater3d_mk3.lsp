@@ -96,12 +96,15 @@ ymin -0.0020
 ymax  0.0020
 
 zmin -0.0010
-zmax -0.0006
+zmax -0.0005
 
 number_of_domains 2
 split_direction ZSPLIT 
 number_of_cells AUTO
-;
+;; middle region's got everything.
+;; a total of 200 cells.
+;; 4 microns/10 => 8 cells per each didn't work,
+;; so let's try 10 microns/32 or 6 wide cells.
 region2
 xmin -0.0030
 xmax  0.0005
@@ -109,10 +112,10 @@ xmax  0.0005
 ymin -0.0020
 ymax  0.0020
 
-zmin -0.0006
-zmax -0.0002
+zmin -0.0005
+zmax  0.0005
 
-number_of_domains 12
+number_of_domains 32
 split_direction ZSPLIT 
 number_of_cells AUTO
 ;
@@ -123,35 +126,7 @@ xmax  0.0005
 ymin -0.0020
 ymax  0.0020
 
-zmin -0.0002
-zmax  0.0002
-
-number_of_domains 12
-split_direction ZSPLIT 
-number_of_cells AUTO
-;
-region4
-xmin -0.0030
-xmax  0.0005
-
-ymin -0.0020
-ymax  0.0020
-
-zmin  0.0002
-zmax  0.0006
-
-number_of_domains 12
-split_direction ZSPLIT 
-number_of_cells AUTO
-;
-region5
-xmin -0.0030
-xmax  0.0005
-
-ymin -0.0020
-ymax  0.0020
-
-zmin  0.0006
+zmin  0.0005
 zmax  0.0010
 
 number_of_domains 2
