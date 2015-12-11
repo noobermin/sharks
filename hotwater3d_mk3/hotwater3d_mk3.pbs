@@ -1,5 +1,5 @@
 ##choose between short or long runs
-#PBS -l walltime=48:00:00
+#PBS -l walltime=00:10:00
 ##PBS -l walltime=48:00:00
 #PBS -l nodes=10:ppn=4
 #PBS -N hotwater3d_mk3
