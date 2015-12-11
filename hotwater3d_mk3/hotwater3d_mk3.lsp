@@ -84,9 +84,10 @@ z-cells           200
 ;; or, 4e3/50 0.8e2=80 cells wide along z.
 ;; the other dimensions have 700x400, or 2.8e5 cells
 ;; the least cell width lsp will allow per domain is 4,
-;; so we have 20 domains as a maximum. We'll test 8 first and check out the
-;; memory usage. Thus, each processor will have 10 cells, for a total of 2.8e6
-;; cells.
+;; so we have 20 domains as a maximum. 
+;; given that the wing will have very little, let's try putting
+;; more domains in the bulk. try 10 on the middle three and 2 on the
+;; two edge domains. So, 32 in all.
 ;
 region1
 xmin -0.0030
@@ -98,7 +99,7 @@ ymax  0.0020
 zmin -0.0010
 zmax -0.0006
 
-number_of_domains 8
+number_of_domains 2
 split_direction ZSPLIT 
 number_of_cells AUTO
 ;
@@ -112,7 +113,7 @@ ymax  0.0020
 zmin -0.0006
 zmax -0.0002
 
-number_of_domains 8
+number_of_domains 10
 split_direction ZSPLIT 
 number_of_cells AUTO
 ;
@@ -126,7 +127,7 @@ ymax  0.0020
 zmin -0.0002
 zmax  0.0002
 
-number_of_domains 8
+number_of_domains 10
 split_direction ZSPLIT 
 number_of_cells AUTO
 ;
@@ -140,7 +141,7 @@ ymax  0.0020
 zmin  0.0002
 zmax  0.0006
 
-number_of_domains 8
+number_of_domains 10
 split_direction ZSPLIT 
 number_of_cells AUTO
 ;
@@ -154,7 +155,7 @@ ymax  0.0020
 zmin  0.0006
 zmax  0.0010
 
-number_of_domains 8
+number_of_domains 2
 split_direction ZSPLIT 
 number_of_cells AUTO
 
