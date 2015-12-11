@@ -115,7 +115,7 @@ ymax  0.0020
 zmin -0.0005
 zmax  0.0005
 
-number_of_domains 40
+number_of_domains 41
 split_direction ZSPLIT 
 number_of_cells AUTO
 ;
