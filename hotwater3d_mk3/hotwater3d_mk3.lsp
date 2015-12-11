@@ -61,10 +61,8 @@ end
  dump_timing_flag ON
 ;
 [Grid]
-;; lambda by 32, or 50 nm
-;;
-;; We have that the number of cells is 56x10^6 = 5.6x10^7
-;; 
+;; lambda by 16, or 50 nm
+;; lambda by 8 in the transverse dimentions
 grid1
 xmin             -0.0030
 xmax              0.0005
@@ -102,11 +100,29 @@ number_of_domains 2
 split_direction ZSPLIT 
 number_of_cells AUTO
 ;; middle region's got everything.
-;; a total of 200 cells.
-;; 4 microns/10 => 8 cells per each didn't work,
-;; so let's try 10 microns/32 or 6 wide cells.
+;; a total of 100 cells.
+;; I couldn't count before. Let's try something.
+
+;;region2 now has 25 domains by z, so we have
+;; 400x4x400 cells in each domain here.
 region2
 xmin -0.0030
+xmax -0.0010
+
+ymin -0.0020
+ymax  0.0020
+
+zmin -0.0005
+zmax  0.0005
+
+number_of_domains 25
+split_direction ZSPLIT 
+number_of_cells AUTO
+;;region3 now has 25 domains by z, so we have
+;; 400x4x300 cells in each domain here.
+
+region3
+xmin -0.0010
 xmax  0.0005
 
 ymin -0.0020
@@ -115,11 +131,12 @@ ymax  0.0020
 zmin -0.0005
 zmax  0.0005
 
-number_of_domains 41
+number_of_domains 16
 split_direction ZSPLIT 
 number_of_cells AUTO
+
 ;
-region3
+region4
 xmin -0.0030
 xmax  0.0005
 
