@@ -196,7 +196,7 @@ to   -0.0030  0.0020  0.0010
 phase_velocity 1.0
 drive_model LASER
 reference_point 0 0 0 ; focal point position
-direction 1 0 0
+;; direction 1 0 0
 ;; magnitude 1.0
 ;; wavelength 0.8e-4 ; 800 nm
 ;; spotsize 2.26e-4 ;these replace the laser analytic function
@@ -213,25 +213,25 @@ from 0.0005 -0.0020 -0.0010
 to   0.0005  0.0020  0.0010
 phase_velocity 1.0
 drive_model NONE
-;right
+;top
 outlet
 from -0.0030 -0.0020 0.0010
 to    0.0005  0.0020 0.0010
 phase_velocity 1.0
 drive_model NONE
-;left
+;bottom
 outlet
 from -0.0030 -0.0020 -0.0010
 to    0.0005  0.0020 -0.0010
 phase_velocity 1.0
 drive_model NONE
-;bottom
+;left
 outlet
 from -0.0030 -0.0020 -0.0010
 to    0.0005 -0.0020  0.0010
 phase_velocity 1.0
 drive_model NONE
-;top
+;right
 outlet
 from -0.0030 0.0020 -0.0010
 to    0.0005 0.0020  0.0010
