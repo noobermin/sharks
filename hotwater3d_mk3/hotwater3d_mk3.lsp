@@ -77,15 +77,10 @@ zmax              0.0010
 z-cells           200
 ;
 [Regions]
-;; we divide by z in 5 regions, so 4 microns each
-;; or, 4e3/50 0.8e2=80 cells wide along z.
-;; the other dimensions have 700x400, or 2.8e5 cells
-;; the least cell width lsp will allow per domain is 4,
-;; so we have 20 domains as a maximum. 
-;; given that the wing will have very little, let's try putting
-;; more domains in the bulk. try 12 on the middle three and 2 on the
-;; two edge domains. So, 40 in all.
-;
+;; the current system is still overusing, so
+;; let's try something new...again.
+                                        ;
+;; this is empty space
 region1
 xmin -0.0030
 xmax  0.0005
@@ -99,14 +94,29 @@ zmax -0.0005
 number_of_domains 2
 split_direction ZSPLIT 
 number_of_cells AUTO
-;; middle region's got everything.
-;; a total of 100 cells.
-;; I couldn't count before. Let's try something.
 
-;;region2 now has 25 domains by z, so we have
-;; 400x4x400 cells in each domain here.
+;; region2 contains the very underdense stuff.
+;; 200x4x400 cells in each domain here.
 region2
 xmin -0.0030
+xmax -0.0020
+
+ymin -0.0020
+ymax  0.0020
+
+zmin -0.0005
+zmax  0.0005
+
+number_of_domains 20
+split_direction ZSPLIT 
+number_of_cells AUTO
+
+;; region3 contains the main interaction region
+;; near the critical density surface
+;; 400x4x300 cells in each domain here.
+
+region3
+xmin -0.0020
 xmax -0.0010
 
 ymin -0.0020
@@ -115,13 +125,16 @@ ymax  0.0020
 zmin -0.0005
 zmax  0.0005
 
-number_of_domains 25
+number_of_domains 20
 split_direction ZSPLIT 
 number_of_cells AUTO
-;;region3 now has 25 domains by z, so we have
-;; 400x4x300 cells in each domain here.
 
-region3
+;; region4 contains the solid density.
+;; I've done 2D sims that show this does nothing for the
+;; acceleration. I want to cut this out but will
+;; Christ let me?
+
+region4
 xmin -0.0010
 xmax  0.0005
 
@@ -131,11 +144,11 @@ ymax  0.0020
 zmin -0.0005
 zmax  0.0005
 
-number_of_domains 18
+number_of_domains 20
 split_direction ZSPLIT 
 number_of_cells AUTO
 
-;
+;; more empty space
 region4
 xmin -0.0030
 xmax  0.0005
