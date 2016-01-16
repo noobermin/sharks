@@ -1,5 +1,6 @@
 [Title]
-simulation_title "Hotwater in 2D I = 3e18 W cm-2, with no solid"
+simulation_title "Hotwater in 3D I = 3e18 W cm-2 "
+;simulation_title "Hotwater in 3D I = 5.4e17 W cm-2 "
 ;
 [Control]
 ;Time-advance
@@ -7,7 +8,7 @@ simulation_title "Hotwater in 2D I = 3e18 W cm-2, with no solid"
 ;time_limit 0.2e-6 
 ;number_of_steps 2
 
- time_step_ns 0.10e-6 ; 1/30th optical cycle for 1um laser light
+ time_step_ns 0.10e-6 ; ~1/30th optical cycle for 1um laser light
 ;Restarts
  restart_interval_ns 75000e-6 ; probably much longer than max dump time
  maximum_restart_dump_time 11.5 ;in hours
@@ -30,30 +31,30 @@ simulation_title "Hotwater in 2D I = 3e18 W cm-2, with no solid"
  flux_limit_fraction 0.2
 ;(Diagnostic Output) Flags
  dump_current_density_flag OFF
- dump_fields_flag ON
- dump_scalars_flag ON
- dump_velocities_flag OFF
- dump_particles_flag OFF
  dump_number_densities_flag ON
+ dump_plasma_quantities_flag ON
+ dump_velocities_flag OFF
  ;dump_time_zero_flag ON ; dump the results of the 'zeroth' time step...does it actually start?
- extract_photons_flag OFF
+ extract_photons_flag ON
  dump_particles_flag OFF
 ;(Diagnostic Output) Dump Intervals
- dump_interval_ns 0.2e-6
+ dump_interval_ns 1e-6
+ ;dump_interval_ns 0.2e-6
  dump_steps
 1 
 end
  spatial_skip_x 1
  spatial_skip_y 1
  spatial_skip_z 1
- probe_interval 1
+ probe_interval 100
 ;(Diagnostic Output) Formats
  photon_output_format ASCII
  target_output_format ASCII
  use_its_format_flag OFF
  print_region_flag OFF
 ;(Diagnostic Output) Movie Controls
- particle_movie_interval_ns 0.2e-6
+ particle_movie_interval_ns 0.5e-6
+ ;particle_movie_interval_ns 0.2e-6
  particle_movie_components Q X Y Z VX VY VZ XI YI ZI
 ;Numerical Checks and Reports
  domain_boundary_check ON
@@ -65,11 +66,15 @@ end
 grid1
 xmin             -0.0020
 xmax              0.0005
-x-cells           1000
+x-cells           375
+;
+ymin             -0.0020
+ymax              0.0020
+y-cells           400
 ;
 zmin             -0.0020
 zmax              0.0020
-z-cells           1600
+z-cells           400
 ;
 [Regions]
 ;
@@ -77,20 +82,138 @@ region1
 xmin -0.0020
 xmax  0.0005
 
-zmin -0.0020
-zmax  0.0020
+ymin -0.0020
+ymax -0.0020
 
-number_of_domains 48
-split_direction ZSPLIT 
+zmin -0.0020
+zmax -0.0015
+
+number_of_domains 10
+split_direction ZSPLIT ;
 number_of_cells AUTO
 ;
+region2
+xmin -0.0020
+xmax  0.0005
 
+ymin -0.0020
+ymax -0.0020
+
+zmin -0.00150
+zmax -0.00125
+
+number_of_domains 12
+split_direction ZSPLIT ;
+number_of_cells AUTO
+;
+region3
+xmin -0.0020
+xmax  0.0005
+
+ymin -0.0020
+ymax -0.0020
+
+zmin -0.00125
+zmax -0.00075
+
+number_of_domains 25
+split_direction ZSPLIT ;
+number_of_cells AUTO
+;
+region4
+xmin -0.0020
+xmax  0.0005
+
+ymin -0.0020
+ymax  0.0020
+
+zmin -0.00075
+zmax -0.00025
+
+number_of_domains 25
+split_direction ZSPLIT ;
+number_of_cells AUTO
+;
+region5
+xmin -0.0020
+xmax  0.0005
+
+ymin -0.0020
+ymax  0.0020
+
+zmin -0.00025 ;; specifically did this to
+zmax  0.00025 ;; keep the spot size in a single domain.
+
+number_of_domains 25
+split_direction ZSPLIT ;
+number_of_cells AUTO
+;
+region6
+xmin -0.0020
+xmax  0.0005
+
+ymin -0.0020
+ymax  0.0020
+
+zmin  0.00025
+zmax  0.00075
+
+number_of_domains 25
+split_direction ZSPLIT ;
+number_of_cells AUTO
+;
+region7
+xmin -0.0020
+xmax  0.0005
+
+ymin -0.0020
+ymax  0.0020
+
+zmin  0.00075
+zmax  0.00125
+
+number_of_domains 25
+split_direction ZSPLIT ;
+number_of_cells AUTO
+;
+region8
+xmin -0.0020
+xmax  0.0005
+
+ymin -0.0020
+ymax  0.0020
+
+zmin  0.00125
+zmax  0.00150
+
+number_of_domains 12
+;
+split_direction ZSPLIT ;
+number_of_cells AUTO
+region8
+xmin -0.0020
+xmax  0.0005
+
+ymin -0.0020
+ymax  0.0020
+
+zmin  0.00150
+zmax  0.00200
+
+number_of_domains 10
+split_direction ZSPLIT ;
+number_of_cells AUTO
+
+;; total domains:
+;;    10*2 + 12*2 + 25*5 = 169
+
+;
 ;[Objects]
 ;
 ;object1 BLOCK ;
 ;conductor off medium 1 potential 0
-;  from -0.0020 0 -0.0020
-;  to    0.0020 0 0.0020
+;  from -0.0030 0 -0.0030
+;  to    0.0030 0 0.0030
 ;
 ;[MediumModels]
 ;
@@ -117,8 +240,8 @@ number_of_cells AUTO
 [Boundaries]
 ;back this is the laser
 outlet
-from -0.0020 -0.0000 -0.0020
-to   -0.0020  0.0000  0.0020
+from -0.0020 -0.0020 -0.0020
+to   -0.0020  0.0020  0.0020
 phase_velocity 1.0
 drive_model LASER
 reference_point 0 0 0 ; focal point position
@@ -126,27 +249,39 @@ reference_point 0 0 0 ; focal point position
 ;magnitude 1.0
 ;wavelength 0.8e-4 ; 800 nm
 ;spotsize 2.26e-4 ;these replace the laser analytic function
-components 0 0 1
-phases 0 0 0 ; polarization 1.1781
+components 0 1 0 ; we need to stop this polarization along z once and for all
+phases 0 0 0 ; polarization
 temporal_function 1
 analytic_function 2
 time_delay 0.0
 ;front
 outlet
-from  0.0005 -0.0000 -0.0020
-to    0.0005  0.0000  0.0020
+from 0.0005 -0.0020 -0.0020
+to   0.0005  0.0020  0.0020
 phase_velocity 1.0
 drive_model NONE
 ;right
 outlet
-from -0.0020 -0.0000 0.0020
-to    0.0005  0.0000 0.0020
+from -0.0020 -0.0020 0.0020
+to    0.0005  0.0020 0.0020
 phase_velocity 1.0
 drive_model NONE
 ;left
 outlet
 from -0.0020 -0.0020 -0.0020
 to    0.0005  0.0020 -0.0020
+phase_velocity 1.0
+drive_model NONE
+;bottom
+outlet
+from -0.0020 -0.0020 -0.0020
+to    0.0005 -0.0020  0.0020
+phase_velocity 1.0
+drive_model NONE
+;top
+outlet
+from -0.0020 0.0020 -0.0020
+to    0.0005 0.0020  0.0020
 phase_velocity 1.0
 drive_model NONE
 
@@ -326,8 +461,8 @@ selection_ratio 0.01
 ;; initial states ;;
 
 plasma ; O+
-from -0.0020 -0.0000 -0.0015
-to    0.0000  0.0000  0.0015
+from -0.0020 -0.0015 -0.0015
+to    0.0000  0.0015  0.0015
 species 2
 movie_tag 3
 unbound off
@@ -340,8 +475,8 @@ thermal_energy 1
 movie_fraction 0.000
 ;
 plasma ; e-
-from -0.0020 -0.0000 -0.0015
-to    0.0000  0.0000  0.0015
+from -0.0020 -0.0015 -0.0015
+to    0.0000  0.0015  0.0015
 species 10
 movie_tag 3
 unbound off
@@ -354,8 +489,8 @@ thermal_energy 1
 movie_fraction 0.050
 ;
 plasma ; p
-from -0.0020 -0.0000 -0.0015
-to    0.0000  0.0000  0.0015
+from -0.0020 -0.0015 -0.0015
+to    0.0000  0.0015  0.0015
 species 11
 movie_tag 3
 unbound off
@@ -370,8 +505,8 @@ movie_fraction 0.000
 ;; ionization states ;;
 ;
 higherstate              ; O -> O+
-from -0.0020 -0.0000 -0.0020
-to    0.0005  0.0000  0.0020
+from -0.0020 -0.0020 -0.0020
+to    0.0005  0.0020  0.0020
 interval 1
 species 1
 ion_species 2
@@ -395,8 +530,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O+ -> O++
-from -0.0020 -0.0000 -0.0020
-to    0.0005  0.0000  0.0020
+from -0.0020 -0.0020 -0.0020
+to    0.0005  0.0020  0.0020
 interval 1
 species 2
 ion_species 3
@@ -420,8 +555,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O++ -> O 3+
-from -0.0020 -0.0000 -0.0020
-to    0.0005  0.0000  0.0020
+from -0.0020 -0.0020 -0.0020
+to    0.0005  0.0020  0.0020
 interval 1
 species 3
 ion_species 4
@@ -445,8 +580,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O 3+ -> O 4+
-from -0.0020 -0.0000 -0.0020
-to    0.0005  0.0000  0.0020
+from -0.0020 -0.0020 -0.0020
+to    0.0005  0.0020  0.0020
 interval 1
 species 4
 ion_species 5
@@ -470,8 +605,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O 4+ -> O 5+
-from -0.0020 -0.0000 -0.0020
-to    0.0005  0.0000  0.0020
+from -0.0020 -0.0020 -0.0020
+to    0.0005  0.0020  0.0020
 interval 1
 species 5
 ion_species 6
@@ -496,8 +631,8 @@ movie_fraction 0.0
 ;
 ;
 higherstate              ; O 5+ -> O 6+
-from -0.0020 -0.0000 -0.0020
-to    0.0005  0.0000  0.0020
+from -0.0020 -0.0020 -0.0020
+to    0.0005  0.0020  0.0020
 interval 1
 species 6
 ion_species 7
@@ -521,8 +656,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O 6+ -> O 7+
-from -0.0020 -0.0000 -0.0020
-to    0.0005  0.0000  0.0020
+from -0.0020 -0.0020 -0.0020
+to    0.0005  0.0020  0.0020
 interval 1
 species 7
 ion_species 8
@@ -546,8 +681,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O 7+ -> O 8+
-from -0.0020 -0.0000 -0.0020
-to    0.0005  0.0000  0.0020
+from -0.0020 -0.0020 -0.0020
+to    0.0005  0.0020  0.0020
 interval 1
 species 8
 ion_species 9
@@ -590,7 +725,7 @@ direction X
 maximum_number 1000000000
 start_time 0.0
 stop_time 1
-at  0.0005 0 0
+at 0.0005 0 0
 ;
 extract3
 species 10
@@ -608,7 +743,21 @@ start_time 0.0
 stop_time 1
 at 0 0 -0.0020
 ;
-
+extract5
+species 10
+direction Y
+maximum_number 1000000000
+start_time 0.0
+stop_time 1
+at 0 0.0020 0
+;
+extract6
+species 10
+direction Y
+maximum_number 1000000000
+start_time 0.0
+stop_time 1
+at 0 -0.0020 0
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Functions
@@ -623,15 +772,26 @@ independent_variable_multiplier 60.0e-6 ; =2xFWHM,  30 fs FWHM pulse
 ;dependent_variable_multiplier 8.68e5  ; = Emax in kV/cm units, 8.68e5 => 10^15 W/cm^2
 ;dependent_variable_multiplier 2.75e7  ; = Emax in kV/cm units, 2.75e7 => 10^18 W/cm^2
 dependent_variable_multiplier 4.763e7  ; = Emax in kV/cm units, 4.763e7 => 3 x 10^18 W/cm^2
-;dependent_variable_multiplier 2.02e7  ; = Emax in kV/cm units, 2.02e7 => 5.4 x 10^17 W/cm^2
+;dependent_variable_multiplier 2.02e7  ; = Emax in kV/cm units, 2.02e7 => 3 x 5.4^17 W/cm^2
 
 function2 ;laser analytic function for lsp v10
 type 19   ; \lambda spotsize
 coefficients 0.8e-4 2.26e-4 end
 ;coefficients 0.8e-4 2.174e-4 end
 
-;;
-function5 ; electrons
+;function3 ; Oxygen number dens
+;type 1
+;coefficients 3.33E+22 end 
+;
+;function4 ; Electron number dens
+;type 1
+;coefficients 1.00E+23 end 
+;
+;function5 ; proton number dens
+;type 1
+;coefficients 6.67e+22 end 
+;
+function5 ; kinetic electrons
 type 30
 data_file watercolumn.dat
 dependent_variable_multiplier 1.0
@@ -645,36 +805,19 @@ function7 ; Protons
 type 30
 data_file watercolumn.dat
 dependent_variable_multiplier 0.67
-;;
 
-[Probes]
-probe1 ; 
-point E X
-at -0.0020 0 0
 ;
-probe2 ; 
-point E Y
-at -0.0020 0 0
-;                                        ;
-probe3 ; 
+;
+probe1
 point E Z
 at -0.0020 0 0
-;
-probe4 ;
-point B X
-at -0.0020 0 0
-;                                        
-probe5 ;
+
+probe2
 point B Y
 at -0.0020 0 0
-                                        ;
-probe6 ;
-point B Z
-at -0.0020 0 0
 
-probe7
+probe3
 performance cpu_time
-;
-probe8
+
+probe4
 energy net_energy
-;
