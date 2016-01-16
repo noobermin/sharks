@@ -1,21 +1,22 @@
-##choose between short or long runs
-#PBS -l walltime=00:05:00
-##PBS -l walltime=48:00:00
-#PBS -l nodes=16:ppn=8
-#PBS -N hotwater3d_mk3
+#PBS -l walltime=48:00:00
+#PBS -l nodes=28:ppn=8
+#PBS -N water-nosolid-3d
 #PBS -j oe
 #PBS -m ae
 #PBS -M ngirmang.1@osu.edu
+
+BASENAME=water-nosolid-3d
 
 # the thing for mail is capital M :)
 #module load intel-compilers-11.1
 #module load openmpi-1.4.3-intel    #this is needed for mpirun to work
 #module load openmpi-1.4.3-gnu
-module unload mpi
-module load mvapich2-1.6-gnu
-module load pvfs2
+#module unload mpi
+#module load mvapich2-1.6-gnu
+#module load pvfs2
 
 cd $PBS_O_WORKDIR
+
 #This outputs the name of the root node to the directory where you submitted this PBS job
 echo $HOSTNAME > $PBS_O_WORKDIR/hostname.txt   
 cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/cat_nodefile.txt
@@ -27,7 +28,6 @@ cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/cat_nodefile.txt
 #cp $PBS_O_WORKDIR/sine*.dat . 
 #cp $PBS_O_WORKDIR/${DOTLSPFILE} .
 
-#need to put ramses here!
-#mpiexec -n 64 ./lsp10_oakley hotwater3d_mk4.lsp > log.txt
-# 2+2+20*3 = 64
-mpiexec -n 64 -verbose ./lsp10_glenn hotwater3d_mk4.lsp > log.txt 2>&1
+#mpiexec -n 169 ./lsp10_oakley $BASENAME.lsp > $BASENAME.txt
+# see script
+mpiexec -n 169 -verbose ./lsp10_glenn $BASENAME.lsp > $BASENAME.txt 2>&1
