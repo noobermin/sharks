@@ -99,10 +99,10 @@ xmax  0.0005
 ymin -0.0020
 ymax -0.0020
 
-zmin -0.00150
-zmax -0.00125
+zmin -0.0015
+zmax -0.0005
 
-number_of_domains 12
+number_of_domains 25
 split_direction ZSPLIT ;
 number_of_cells AUTO
 ;
@@ -113,8 +113,8 @@ xmax  0.0005
 ymin -0.0020
 ymax -0.0020
 
-zmin -0.00125
-zmax -0.00075
+zmin -0.0005
+zmax  0.0005
 
 number_of_domains 25
 split_direction ZSPLIT ;
@@ -127,8 +127,8 @@ xmax  0.0005
 ymin -0.0020
 ymax  0.0020
 
-zmin -0.00075
-zmax -0.00025
+zmin  0.0005
+zmax  0.0015
 
 number_of_domains 25
 split_direction ZSPLIT ;
@@ -141,71 +141,15 @@ xmax  0.0005
 ymin -0.0020
 ymax  0.0020
 
-zmin -0.00025 ;; specifically did this to
-zmax  0.00025 ;; keep the spot size in a single domain.
-
-number_of_domains 25
-split_direction ZSPLIT ;
-number_of_cells AUTO
-;
-region6
-xmin -0.0020
-xmax  0.0005
-
-ymin -0.0020
-ymax  0.0020
-
-zmin  0.00025
-zmax  0.00075
-
-number_of_domains 25
-split_direction ZSPLIT ;
-number_of_cells AUTO
-;
-region7
-xmin -0.0020
-xmax  0.0005
-
-ymin -0.0020
-ymax  0.0020
-
-zmin  0.00075
-zmax  0.00125
-
-number_of_domains 25
-split_direction ZSPLIT ;
-number_of_cells AUTO
-;
-region8
-xmin -0.0020
-xmax  0.0005
-
-ymin -0.0020
-ymax  0.0020
-
-zmin  0.00125
-zmax  0.00150
-
-number_of_domains 12
-;
-split_direction ZSPLIT ;
-number_of_cells AUTO
-region8
-xmin -0.0020
-xmax  0.0005
-
-ymin -0.0020
-ymax  0.0020
-
-zmin  0.00150
-zmax  0.00200
+zmin  0.0015
+zmax  0.0020
 
 number_of_domains 10
 split_direction ZSPLIT ;
 number_of_cells AUTO
 
 ;; total domains:
-;;    10*2 + 12*2 + 25*5 = 169
+;;    10*2 + 25*3 = 95 
 
 ;
 ;[Objects]

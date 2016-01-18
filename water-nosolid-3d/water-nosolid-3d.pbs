@@ -1,5 +1,5 @@
-#PBS -l walltime=00:05:00
-#PBS -l nodes=28:ppn=8
+#PBS -l walltime=00:02:00
+#PBS -l nodes=16:ppn=8
 #PBS -N water-nosolid-3d
 #PBS -j oe
 #PBS -m ae
@@ -30,4 +30,4 @@ cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/cat_nodefile.txt
 
 #mpiexec -n 169 ./lsp10_oakley $BASENAME.lsp > $BASENAME.txt
 # see script
-mpiexec -n 169 -verbose ./lsp10_glenn $BASENAME.lsp > $BASENAME.txt 2>&1
+mpiexec -n 95 -verbose ./lsp10_glenn $BASENAME.lsp > $BASENAME.txt 2>&1
