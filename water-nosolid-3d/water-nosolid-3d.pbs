@@ -1,4 +1,4 @@
-#PBS -l walltime=00:02:00
+#PBS -l walltime=00:01:00
 #PBS -l nodes=22:ppn=8
 #PBS -N water-nosolid-3d
 #PBS -j oe
