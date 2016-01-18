@@ -88,7 +88,7 @@ ymax -0.0020
 zmin -0.0020
 zmax -0.0015
 
-number_of_domains 12
+number_of_domains 13
 split_direction ZSPLIT ;
 number_of_cells AUTO
 ;
@@ -186,7 +186,7 @@ ymax  0.0020
 zmin  0.0015
 zmax  0.0020
 
-number_of_domains 12
+number_of_domains 13
 split_direction ZSPLIT ;
 number_of_cells AUTO
 
