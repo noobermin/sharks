@@ -1,4 +1,4 @@
-#PBS -l walltime=48:00:00
+#PBS -l walltime=00:05:00
 #PBS -l nodes=28:ppn=8
 #PBS -N water-nosolid-3d
 #PBS -j oe
@@ -11,9 +11,9 @@ BASENAME=water-nosolid-3d
 #module load intel-compilers-11.1
 #module load openmpi-1.4.3-intel    #this is needed for mpirun to work
 #module load openmpi-1.4.3-gnu
-#module unload mpi
-#module load mvapich2-1.6-gnu
-#module load pvfs2
+module unload mpi
+module load mvapich2-1.6-gnu
+module load pvfs2
 
 cd $PBS_O_WORKDIR
 

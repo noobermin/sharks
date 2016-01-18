@@ -806,18 +806,34 @@ type 30
 data_file watercolumn.dat
 dependent_variable_multiplier 0.67
 
-;
+[Probes]
 ;
 probe1
-point E Z
+point E X 
 at -0.0020 0 0
 
-probe2
-point B Y
+probe2 ; 
+point E Y 
+at -0.0020 0 0 
+;             
+probe3 ;     
+point E Z   
 at -0.0020 0 0
-
-probe3
+;            
+probe4 ;    
+point B X  
+at -0.0020 0 0 
+;             
+probe5 ;     
+point B Y   
+at -0.0020 0 0
+                    
+probe6 ;           
+point B Z         
+at -0.0020 0 0   
+                
+probe7         
 performance cpu_time
-
-probe4
-energy net_energy
+;                  
+probe8            
+energy net_energy    
