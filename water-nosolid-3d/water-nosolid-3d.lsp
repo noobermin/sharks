@@ -80,7 +80,7 @@ z-cells           400
 ;
 region1
 xmin -0.0020
-xmax  0.0005
+xmax -0.00125
 
 ymin -0.0020
 ymax -0.0020
@@ -88,11 +88,25 @@ ymax -0.0020
 zmin -0.0020
 zmax -0.0015
 
-number_of_domains 12
+number_of_domains 10
 split_direction ZSPLIT ;
 number_of_cells AUTO
 ;
 region2
+xmin -0.00125
+xmax  0.00050
+
+ymin -0.0020
+ymax -0.0020
+
+zmin -0.0020
+zmax -0.0015
+
+number_of_domains 10
+split_direction ZSPLIT ;
+number_of_cells AUTO
+;
+region3
 xmin -0.00200
 xmax -0.00125
 
@@ -106,7 +120,7 @@ number_of_domains 25
 split_direction ZSPLIT ;
 number_of_cells AUTO
 ;
-region3
+region4
 xmin -0.00200
 xmax -0.00125
 
@@ -120,7 +134,7 @@ number_of_domains 25
 split_direction ZSPLIT ;
 number_of_cells AUTO
 ;
-region4
+region5
 xmin -0.00200
 xmax -0.00125
 
@@ -177,8 +191,8 @@ split_direction ZSPLIT ;
 number_of_cells AUTO
 ;
 region9
-xmin -0.0020
-xmax  0.0005
+xmin -0.00200
+xmax -0.00125
 
 ymin -0.0020
 ymax  0.0020
@@ -186,12 +200,26 @@ ymax  0.0020
 zmin  0.0015
 zmax  0.0020
 
-number_of_domains 12
+number_of_domains 10
+split_direction ZSPLIT ;
+number_of_cells AUTO
+;
+region10
+xmin -0.00125
+xmax  0.00050
+
+ymin -0.0020
+ymax  0.0020
+
+zmin  0.0015
+zmax  0.0020
+
+number_of_domains 10
 split_direction ZSPLIT ;
 number_of_cells AUTO
 
 ;; total domains:
-;;    12*2 + 25*6 = 174
+;;    10*4 + 25*6 = 190
 
 ;
 ;[Objects]
