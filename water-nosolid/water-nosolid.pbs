@@ -46,6 +46,6 @@ cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/cat_nodefile.txt
 #mpiexec -n  250 ./lsp10_oakley $BASENAME.lsp > $BASENAME.txt
 # see script
 #mpiexec -n 236 -verbose ./lsp10_glenn $BASENAME.lsp > $BASENAME.txt 2>&1
-aprun -n 250 ./lsp-garnet $BASENAME.lsp > $BASENAME.txt 2>&1
+aprun -n 236 ./lsp-garnet $BASENAME.lsp > $BASENAME.txt 2>&1
 #kill $MPID
 
