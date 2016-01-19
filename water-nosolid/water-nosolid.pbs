@@ -1,11 +1,11 @@
 ## For garnet and friends
 #PBS -l walltime=00:10:00
-#PBS -l select=12:ncpus=32:mpiprocs=16
+#PBS -l select=8:ncpus=32:mpiprocs=32
 ## for debug
 #PBS -q debug
 ## for a real submission
 ##PBS -q standard_lw
-#PBS -N water_nosolid
+#PBS -N water-nosolid
 #PBS -A AFVAW35874EAX
 #PBS -j oe
 #PBS -m ae
@@ -13,12 +13,12 @@
 ## For osc and friends
 ##PBS -l walltime=00:01:00
 ##PBS -l nodes=24:ppn=8
-##PBS -N water-nosolid-3d
+##PBS -N water-nosolid
 ##PBS -j oe
 ##PBS -m ae
 ##PBS -M ngirmang.1@osu.edu
 #
-BASENAME=water-nosolid-3d
+BASENAME=water-nosolid
 
 # the thing for mail is capital M :)
 #module load intel-compilers-11.1
@@ -43,9 +43,9 @@ cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/cat_nodefile.txt
 
 #./monitor > monitor.txt&
 #MPID=$!
-#mpiexec -n  ./lsp10_oakley $BASENAME.lsp > $BASENAME.txt
+#mpiexec -n  250 ./lsp10_oakley $BASENAME.lsp > $BASENAME.txt
 # see script
-#mpiexec -n 190 -verbose ./lsp10_glenn $BASENAME.lsp > $BASENAME.txt 2>&1
-aprun -n 190 ./lsp-garnet $BASENAME.lsp > $BASENAME.txt 2>&1
+#mpiexec -n 250 -verbose ./lsp10_glenn $BASENAME.lsp > $BASENAME.txt 2>&1
+aprun -n 250 ./lsp-garnet $BASENAME.lsp > $BASENAME.txt 2>&1
 #kill $MPID
 
