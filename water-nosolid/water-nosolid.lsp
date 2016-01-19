@@ -89,39 +89,39 @@ region1
 xmin -20e-4
 xmax -10e-4
 
-ymin -0.0020
-ymax -0.0020
+ymin -20e-4
+ymax  20e-4
 
-zmin -0.0020
-zmax  0.0020
+zmin -20e-4
+zmax  20e-4
 
 number_of_domains 100
 split_direction ZSPLIT 
 number_of_cells AUTO
 ;
 region2
-xmin -0.0010
-xmax  0.0000
+xmin -10e-4
+xmax   0
 
-ymin -0.0020
-ymax -0.0020
+ymin -20e-4
+ymax  20e-4
 
-zmin -0.0020
-zmax  0.0020
+zmin -20e-4
+zmax  20e-4
 ;
 number_of_domains 100
 split_direction ZSPLIT
 number_of_cells AUTO
 ;
 region3
-xmin  20e-4
+xmin   0
 xmax   5e-4
 
-ymin -0.0020
-ymax -0.0020
+ymin -20e-4
+ymax  20e-4
 
-zmin -0.0020
-zmax  0.0020
+zmin -20e-4
+zmax  20e-4
 
 number_of_domains  50
 split_direction ZSPLIT
