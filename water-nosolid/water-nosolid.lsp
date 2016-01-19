@@ -70,17 +70,34 @@ x-cells              440
 dx-start    5e-6            ;5e-2 um, or \lambda/16
 x-intervals
   length      20e-4 for 400
-  dx-start  1.25e-5         ;1.25e-1 um, or \lambda/8
+  dx-start  1.25e-5         ;1.25e-1 um
   length       5e-4 for  40
 end
 ;
 ymin             -20e-4
 ymax              20e-4
-y-cells             400    ;1e-1 um, or \lambda/8
+y-cells          380      
+dy-start      1.25e-5
+y-intervals
+  length         5e-4 for  40 
+  dy-start    1e-5         
+  length        30e-4 for 300 ;1 um, or \lambda/8
+  dy-start    1.25e-5
+  length         5e-4 for  40
+end
 ;
 zmin             -20e-4
 zmax              20e-4
-z-cells             400    ;1e-1 um, or \lambda/8
+z-cells          380      
+dz-start      1.25e-5
+z-intervals
+  length         5e-4 for  40 
+  dz-start    1e-5         
+  length        30e-4 for 300 ;1 um, or \lambda/8
+  dz-start    1.25e-5
+  length         5e-4 for  40
+end
+
 ;
 
 [Regions]
@@ -95,7 +112,7 @@ ymax  20e-4
 zmin -20e-4
 zmax  20e-4
 
-number_of_domains 100
+number_of_domains 95
 split_direction ZSPLIT 
 number_of_cells AUTO
 ;
@@ -109,7 +126,7 @@ ymax  20e-4
 zmin -20e-4
 zmax  20e-4
 ;
-number_of_domains 100
+number_of_domains 95
 split_direction ZSPLIT
 number_of_cells AUTO
 ;
@@ -123,7 +140,7 @@ ymax  20e-4
 zmin -20e-4
 zmax  20e-4
 
-number_of_domains  50
+number_of_domains 46
 split_direction ZSPLIT
 number_of_cells AUTO
 ;
