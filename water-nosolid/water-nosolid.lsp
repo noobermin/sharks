@@ -146,7 +146,7 @@ number_of_cells AUTO
 ;
 
 ;; total domains:
-;;    250
+;;    95*2+46 = 236
 
 ;
 ;[Objects]
