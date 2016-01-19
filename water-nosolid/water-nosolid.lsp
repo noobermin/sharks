@@ -66,7 +66,7 @@ end
 grid1 
 xmin              -20e-4
 xmax                5e-4
-x-cells              450
+x-cells              440
 dx-start    5e-6            ;5e-2 um, or \lambda/16
 x-intervals
   length      20e-4 for 400
