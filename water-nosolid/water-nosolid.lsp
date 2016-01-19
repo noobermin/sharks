@@ -62,50 +62,98 @@ end
  dump_timing_flag ON
 ;
 [Grid]
+;recall that 1e-4 is one um in cm
+grid1 
+xmin              -20e-4
+xmax                5e-4
+x-cells              450
+dx-start    5e-6            ;5e-2 um, or \lambda/16
+x-intervals
+  length      20e-4 for 400
+  dx-start  1.25e-5         ;1.25e-1 um, or \lambda/8
+  length       5e-4 for  40
+end
 ;
-grid1
-xmin             -0.0020
-xmax              0.0005
-x-cells           400
+ymin             -20e-4
+ymax              20e-4
+y-cells             400    ;1e-1 um, or \lambda/8
 ;
-ymin             -0.0020
-ymax              0.0020
-y-cells           400
+zmin             -20e-4
+zmax              20e-4
+z-cells             400    ;1e-1 um, or \lambda/8
 ;
-zmin             -0.0020
-zmax              0.0020
-z-cells           400
-;
+
 [Regions]
 ;
 region1
-xmin -0.0020
+xmin -20e-4
+xmax -10e-4
+
+ymin -0.0020
+ymax -0.0020
+
+zmin -0.0020
+zmax  0.0020
+
+number_of_domains 100
+split_direction ZSPLIT 
+number_of_cells AUTO
+;
+region2
+xmin -0.0010
+xmax  0.0000
+
+ymin -0.0020
+ymax -0.0020
+
+zmin -0.0020
+zmax  0.0020
+;
+number_of_domains 100
+split_direction ZSPLIT
+number_of_cells AUTO
+;
+region3
+xmin  20e-4
+xmax   5e-4
+
+ymin -0.0020
+ymax -0.0020
+
+zmin -0.0020
+zmax  0.0020
+
+number_of_domains  50
+split_direction ZSPLIT
+number_of_cells AUTO
+;
+region4
+xmin -0.00200
 xmax -0.00125
 
 ymin -0.0020
 ymax -0.0020
 
-zmin -0.0020
-zmax -0.0015
+zmin -0.0005
+zmax  0.0005
 
 number_of_domains 25
 split_direction ZSPLIT ;
 number_of_cells AUTO
 ;
-region2
-xmin -0.00125
-xmax  0.00050
+region5
+xmin -0.00200
+xmax -0.00125
 
 ymin -0.0020
-ymax -0.0020
+ymax  0.0020
 
-zmin -0.0020
-zmax -0.0015
+zmin  0.0005
+zmax  0.0015
 
 number_of_domains 25
 split_direction ZSPLIT ;
 number_of_cells AUTO
-;
 region3
 xmin -0.00200
 xmax -0.00125

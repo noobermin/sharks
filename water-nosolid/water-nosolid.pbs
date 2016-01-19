@@ -12,7 +12,7 @@
 #PBS -M ngirmang.1@osu.edu
 ## For osc and friends
 ##PBS -l walltime=00:01:00
-##PBS -l nodes=24:ppn=8
+##PBS -l nodes=32:ppn=8
 ##PBS -N water-nosolid
 ##PBS -j oe
 ##PBS -m ae
