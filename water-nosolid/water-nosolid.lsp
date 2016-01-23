@@ -143,7 +143,7 @@ split_direction ZSPLIT
 number_of_cells AUTO
 ;;
 region4
-xmin -16e-4
+xmin -14e-4
 xmax -12e-4
 
 ymin -20e-4
