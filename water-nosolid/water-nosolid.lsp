@@ -76,7 +76,7 @@ end
 ;
 ymin             -20e-4
 ymax              20e-4
-y-cells          380      
+y-cells             380      
 dy-start      1.25e-5
 y-intervals
   length         5e-4 for  40 
@@ -88,7 +88,7 @@ end
 ;
 zmin             -20e-4
 zmax              20e-4
-z-cells          380      
+z-cells             380      
 dz-start      1.25e-5
 z-intervals
   length         5e-4 for  40 
@@ -110,7 +110,7 @@ ymax  20e-4
 zmin -20e-4
 zmax  20e-4
 
-number_of_domains 32
+number_of_domains 24
 split_direction ZSPLIT 
 number_of_cells AUTO
 ;;
@@ -124,7 +124,7 @@ ymax  20e-4
 zmin -20e-4
 zmax  20e-4
 
-number_of_domains 32
+number_of_domains 24
 split_direction ZSPLIT 
 number_of_cells AUTO
 ;;
@@ -138,7 +138,7 @@ ymax  20e-4
 zmin -20e-4
 zmax  20e-4
 
-number_of_domains 32
+number_of_domains 24
 split_direction ZSPLIT
 number_of_cells AUTO
 ;;
@@ -152,7 +152,7 @@ ymax  20e-4
 zmin -20e-4
 zmax  20e-4
 
-number_of_domains 32
+number_of_domains 24
 split_direction ZSPLIT
 number_of_cells AUTO
 ;;
@@ -166,7 +166,7 @@ ymax  20e-4
 zmin -20e-4
 zmax  20e-4
 
-number_of_domains 32
+number_of_domains 24
 split_direction ZSPLIT
 number_of_cells AUTO
 ;;
@@ -180,7 +180,7 @@ ymax  20e-4
 zmin -20e-4
 zmax  20e-4
 
-number_of_domains 32
+number_of_domains 24
 split_direction ZSPLIT
 number_of_cells AUTO
 ;;
@@ -194,7 +194,7 @@ ymax  20e-4
 zmin -20e-4
 zmax  20e-4
 
-number_of_domains 32
+number_of_domains 24
 split_direction ZSPLIT
 number_of_cells AUTO
 ;;
@@ -208,7 +208,7 @@ ymax  20e-4
 zmin -20e-4
 zmax  20e-4
 
-number_of_domains 32
+number_of_domains 24
 split_direction ZSPLIT
 number_of_cells AUTO
 ;;
@@ -222,7 +222,7 @@ ymax  20e-4
 zmin -20e-4
 zmax  20e-4
 
-number_of_domains 32
+number_of_domains 24
 split_direction ZSPLIT
 number_of_cells AUTO
 ;;
@@ -236,7 +236,7 @@ ymax  20e-4
 zmin -20e-4
 zmax  20e-4
 
-number_of_domains 32
+number_of_domains 24
 split_direction ZSPLIT
 number_of_cells AUTO
 ;;
@@ -250,7 +250,7 @@ ymax  20e-4
 zmin -20e-4
 zmax  20e-4
 
-number_of_domains 32
+number_of_domains 24
 split_direction ZSPLIT
 number_of_cells AUTO
 ;;
@@ -264,13 +264,13 @@ ymax  20e-4
 zmin -20e-4
 zmax  20e-4
 
-number_of_domains 32
+number_of_domains 24
 split_direction ZSPLIT
 number_of_cells AUTO
 ;
 
 ;; total domains:
-;;    32*12 = 384
+;;    24*12 = 288
 
 ;
 ;[Objects]
