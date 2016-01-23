@@ -98,12 +98,24 @@ z-intervals
   length         5e-4 for  40
 end
 
-;
-
 [Regions]
-;
+;;
 region1
 xmin -20e-4
+xmax -18e-4
+
+ymin -20e-4
+ymax  20e-4
+
+zmin -20e-4
+zmax  20e-4
+
+number_of_domains 32
+split_direction ZSPLIT 
+number_of_cells AUTO
+;;
+region2
+xmin -18e-4
 xmax -16e-4
 
 ymin -20e-4
@@ -115,8 +127,22 @@ zmax  20e-4
 number_of_domains 32
 split_direction ZSPLIT 
 number_of_cells AUTO
-;
-region2
+;;
+region3
+xmin -16e-4
+xmax -14e-4
+
+ymin -20e-4
+ymax  20e-4
+
+zmin -20e-4
+zmax  20e-4
+
+number_of_domains 32
+split_direction ZSPLIT
+number_of_cells AUTO
+;;
+region4
 xmin -16e-4
 xmax -12e-4
 
@@ -125,13 +151,27 @@ ymax  20e-4
 
 zmin -20e-4
 zmax  20e-4
-;
+
 number_of_domains 32
 split_direction ZSPLIT
 number_of_cells AUTO
-;
-region3
+;;
+region5
 xmin -12e-4
+xmax  10e-4
+
+ymin -20e-4
+ymax  20e-4
+
+zmin -20e-4
+zmax  20e-4
+
+number_of_domains 32
+split_direction ZSPLIT
+number_of_cells AUTO
+;;
+region6
+xmin -10e-4
 xmax  -8e-4
 
 ymin -20e-4
@@ -143,9 +183,23 @@ zmax  20e-4
 number_of_domains 32
 split_direction ZSPLIT
 number_of_cells AUTO
-;
-region4
+;;
+region7
 xmin  -8e-4
+xmax  -6e-4
+
+ymin -20e-4
+ymax  20e-4
+
+zmin -20e-4
+zmax  20e-4
+
+number_of_domains 32
+split_direction ZSPLIT
+number_of_cells AUTO
+;;
+region8
+xmin  -6e-4
 xmax  -4e-4
 
 ymin -20e-4
@@ -157,9 +211,23 @@ zmax  20e-4
 number_of_domains 32
 split_direction ZSPLIT
 number_of_cells AUTO
-;
-region5
+;;
+region9
 xmin  -4e-4
+xmax  -2e-4
+
+ymin -20e-4
+ymax  20e-4
+
+zmin -20e-4
+zmax  20e-4
+
+number_of_domains 32
+split_direction ZSPLIT
+number_of_cells AUTO
+;;
+region10
+xmin  -2e-4
 xmax   0
 
 ymin -20e-4
@@ -171,9 +239,19 @@ zmax  20e-4
 number_of_domains 32
 split_direction ZSPLIT
 number_of_cells AUTO
-;
-region6
+;;
+region11
 xmin   0
+xmax   2.5e-4
+
+ymin -20e-4
+ymax  20e-4
+
+zmin -20e-4
+zmax  20e-4
+;;
+region12
+xmin   2.5e-4
 xmax   5e-4
 
 ymin -20e-4
@@ -188,7 +266,7 @@ number_of_cells AUTO
 ;
 
 ;; total domains:
-;;    32*6 = 192
+;;    32*12 = 384
 
 ;
 ;[Objects]
