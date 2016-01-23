@@ -112,7 +112,7 @@ ymax  20e-4
 zmin -20e-4
 zmax  20e-4
 
-number_of_domains 32
+number_of_domains 38
 split_direction ZSPLIT 
 number_of_cells AUTO
 ;
@@ -126,7 +126,7 @@ ymax  20e-4
 zmin -20e-4
 zmax  20e-4
 ;
-number_of_domains 32
+number_of_domains 38
 split_direction ZSPLIT
 number_of_cells AUTO
 ;
@@ -140,7 +140,7 @@ ymax  20e-4
 zmin -20e-4
 zmax  20e-4
 
-number_of_domains 32
+number_of_domains 38
 split_direction ZSPLIT
 number_of_cells AUTO
 ;
@@ -154,7 +154,7 @@ ymax  20e-4
 zmin -20e-4
 zmax  20e-4
 
-number_of_domains 32
+number_of_domains 38
 split_direction ZSPLIT
 number_of_cells AUTO
 ;
@@ -168,7 +168,7 @@ ymax  20e-4
 zmin -20e-4
 zmax  20e-4
 
-number_of_domains 32
+number_of_domains 38
 split_direction ZSPLIT
 number_of_cells AUTO
 ;
@@ -182,13 +182,13 @@ ymax  20e-4
 zmin -20e-4
 zmax  20e-4
 
-number_of_domains 32
+number_of_domains 38
 split_direction ZSPLIT
 number_of_cells AUTO
 ;
 
 ;; total domains:
-;;    32*6 = 192
+;;    32*6+6*6 = 192+36 = 248
 
 ;
 ;[Objects]
