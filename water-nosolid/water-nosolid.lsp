@@ -158,7 +158,7 @@ number_of_cells AUTO
 ;;
 region5
 xmin -12e-4
-xmax  10e-4
+xmax -10e-4
 
 ymin -20e-4
 ymax  20e-4
