@@ -249,6 +249,10 @@ ymax  20e-4
 
 zmin -20e-4
 zmax  20e-4
+
+number_of_domains 32
+split_direction ZSPLIT
+number_of_cells AUTO
 ;;
 region12
 xmin   2.5e-4
