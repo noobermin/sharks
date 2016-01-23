@@ -44,8 +44,8 @@ simulation_title "Hotwater in 3D I = 3e18 W cm-2 "
 1 
 end
  spatial_skip_x 2
- spatial_skip_y 2
- spatial_skip_z 2
+ spatial_skip_y 4
+ spatial_skip_z 4
  probe_interval 10
 ;(Diagnostic Output) Formats
  photon_output_format ASCII
