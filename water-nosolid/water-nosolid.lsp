@@ -104,7 +104,7 @@ end
 ;
 region1
 xmin -20e-4
-xmax -10e-4
+xmax -16e-4
 
 ymin -20e-4
 ymax  20e-4
@@ -112,12 +112,54 @@ ymax  20e-4
 zmin -20e-4
 zmax  20e-4
 
-number_of_domains 95
+number_of_domains 32
 split_direction ZSPLIT 
 number_of_cells AUTO
 ;
 region2
-xmin -10e-4
+xmin -16e-4
+xmax -12e-4
+
+ymin -20e-4
+ymax  20e-4
+
+zmin -20e-4
+zmax  20e-4
+;
+number_of_domains 32
+split_direction ZSPLIT
+number_of_cells AUTO
+;
+region3
+xmin -12e-4
+xmax  -8e-4
+
+ymin -20e-4
+ymax  20e-4
+
+zmin -20e-4
+zmax  20e-4
+
+number_of_domains 32
+split_direction ZSPLIT
+number_of_cells AUTO
+;
+region4
+xmin  -8e-4
+xmax  -4e-4
+
+ymin -20e-4
+ymax  20e-4
+
+zmin -20e-4
+zmax  20e-4
+
+number_of_domains 32
+split_direction ZSPLIT
+number_of_cells AUTO
+;
+region5
+xmin  -4e-4
 xmax   0
 
 ymin -20e-4
@@ -125,12 +167,12 @@ ymax  20e-4
 
 zmin -20e-4
 zmax  20e-4
-;
-number_of_domains 95
+
+number_of_domains 32
 split_direction ZSPLIT
 number_of_cells AUTO
 ;
-region3
+region6
 xmin   0
 xmax   5e-4
 
@@ -140,13 +182,13 @@ ymax  20e-4
 zmin -20e-4
 zmax  20e-4
 
-number_of_domains 46
+number_of_domains 32
 split_direction ZSPLIT
 number_of_cells AUTO
 ;
 
 ;; total domains:
-;;    95*2+46 = 236
+;;    32*6 = 192
 
 ;
 ;[Objects]

@@ -1,6 +1,6 @@
 ## For garnet and friends
 #PBS -l walltime=00:10:00
-#PBS -l select=8:ncpus=32:mpiprocs=32
+#PBS -l select=6:ncpus=32:mpiprocs=32
 ## for debug
 #PBS -q debug
 ## for a real submission
@@ -12,7 +12,7 @@
 #PBS -M ngirmang.1@osu.edu
 ## For osc and friends
 ##PBS -l walltime=00:01:00
-##PBS -l nodes=32:ppn=8
+##PBS -l nodes=12:ppn=8
 ##PBS -N water-nosolid
 ##PBS -j oe
 ##PBS -m ae
@@ -43,9 +43,9 @@ cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/cat_nodefile.txt
 
 #./monitor > monitor.txt&
 #MPID=$!
-#mpiexec -n  250 ./lsp10_oakley $BASENAME.lsp > $BASENAME.txt
+#mpiexec -n  192 ./lsp10_oakley $BASENAME.lsp > $BASENAME.txt
 # see script
-#mpiexec -n 236 -verbose ./lsp10_glenn $BASENAME.lsp > $BASENAME.txt 2>&1
-aprun -n 236 ./lsp-garnet $BASENAME.lsp > $BASENAME.txt 2>&1
+#mpiexec -n 192 -verbose ./lsp10_glenn $BASENAME.lsp > $BASENAME.txt 2>&1
+aprun -n 192 ./lsp-garnet $BASENAME.lsp > $BASENAME.txt 2>&1
 #kill $MPID
 
