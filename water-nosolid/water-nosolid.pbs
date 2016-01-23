@@ -1,6 +1,6 @@
 ## For garnet and friends
 #PBS -l walltime=00:10:00
-#PBS -l select=12:ncpus=32:mpiprocs=16
+#PBS -l select=6:ncpus=32:mpiprocs=32
 ## for debug
 #PBS -q debug
 ## for a real submission
