@@ -7,7 +7,7 @@ simulation_title "Hotwater in 2D I = 3e18 W cm-2, with no solid"
 ;time_limit 0.2e-6 
 ;number_of_steps 2
 
- time_step_ns 0.10e-6 ; 1/30th optical cycle for 1um laser light
+ time_step_ns 5e-8 ; 1/60th optical cycle for 1um laser light
 ;Restarts
  restart_interval_ns 75000e-6 ; probably much longer than max dump time
  maximum_restart_dump_time 11.5 ;in hours
