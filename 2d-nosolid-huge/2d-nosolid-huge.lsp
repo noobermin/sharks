@@ -602,7 +602,7 @@ at 0 20e-4 0
 ;
 extract4
 species 10
-direction Z
+direction Y
 maximum_number 1000000000
 start_time 0.0
 stop_time 1
