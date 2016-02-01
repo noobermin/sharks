@@ -14,15 +14,15 @@ module load openmpi-1.4.3-gnu
 echo $HOSTNAME > $PBS_O_WORKDIR/hostname.txt   
 cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/cat_nodefile.txt
 
-D=/tmp/ngirmang.1-$PBSBASE-`mkdate`
-mkdir -p $D
-cd $PBS_O_WORKDIR
-cp ./lsp* *.lsp *.dat $D/
-cd $D
+#D=/tmp/ngirmang.1-$PBSBASE-`mkdate`
+#mkdir -p $D
+#cd $PBS_O_WORKDIR
+#cp ./lsp* *.lsp *.dat $D/
+#cd $D
 
 #mpirun -np 48 ./lsp-10 $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
-mpirun -np 96 ./lsp-10-xy $PBSBASE.lsp >$PBSBASE.o.txt
+mpirun -np 96 -hostfile $PBS_NODEFILE ./lsp-10-xy $PBSBASE.lsp >$PBSBASE.o.txt
+#mpirun -np 96 -hostfile $PBS_NODEFILE ./lsp-10-xy -r $PBSBASE.lsp >>$PBSBASE.o.txt
 #mpiexec -n 96 ./lsp2d_glenn $PBSBASE.lsp > $PBSBASE.o.txt
 
 echo "ended run at $(date)" >> $PBSBASE.o.txt
-
