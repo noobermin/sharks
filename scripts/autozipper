@@ -20,14 +20,15 @@ automover(){
 }
 if [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
     echo "usage: ./autozipper [ outputdir [ duration] ]"
+fi;
 OUTPUT=$1
 SLEEPTIME=$([ -n "$2" ] && echo "$2" || echo 120);
 while true; do
-    echo sleeping ...
-    echo ""
+    echo sleeping ...;
+    echo "";
     sleep $SLEEPTIME;
-    echo running autozipper at $(date)
-    autozipper
-    echo outputting to $OUTPUT at $(date)
+    echo running autozipper at $(date);
+    autozipper;
+    echo outputting to $OUTPUT at $(date);
     [ -n "$OUTPUT" ] && [ "$OUTPUT" != "." ] && automover "$OUTPUT"
-done
+done;
