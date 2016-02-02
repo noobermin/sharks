@@ -3,7 +3,7 @@ simulation_title "2d-nosolid-huge in 2D I = 3e18 W cm-2, finding the 'true' max-
 ;
 [Control]
 ;Time-advance
- time_limit 350e-6 ;
+ time_limit 400e-6 ;
 ;time_limit 0.2e-6 
 ;number_of_steps 2
 
