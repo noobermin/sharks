@@ -29,6 +29,8 @@ while true; do
     sleep $SLEEPTIME;
     echo running autozipper at $(date);
     autozipper;
-    echo outputting to $OUTPUT at $(date);
-    [ -n "$OUTPUT" ] && [ "$OUTPUT" != "." ] && automover "$OUTPUT"
+    if [ -n "$OUTPUT" ] && [ "$OUTPUT" != "." ]; then
+        echo outputting to $OUTPUT at $(date);
+        automover "$OUTPUT"
+    fi;
 done;
