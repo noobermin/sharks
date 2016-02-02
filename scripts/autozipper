@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+getsorted(){
+   ls | grep $1'.*.p4$' |\
+         sed s/^$1'\([0-9]\+\)\.p4$/\1/' |\
+         sort -n |\
+         sed 's/\(^.*$\)/'$1'\1.p4/' |\
+         head -n -1 
+}
+autozipper(){
+    FLDS=$(getsorted flds);
+    SCLR=$(getsorted sclr);
+    PMOV=$(getsorted pmovie);
+    [ -n "$FLDS" ] && gzip -v $FLDS || echo "no new flds"
+    [ -n "$SCLR" ] && gzip -v $SCLR || echo "no new sclr"
+    [ -n "$PMOV" ] && gzip -v $PMOV || echo "no new pmovie"
+}
+automover(){
+    [ -n "$(ls | grep '.*\.gz$' )" ] && mv -v *.gz "$1"
+}
+if [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
+    echo "usage: ./autozipper [ outputdir [ duration] ]"
+OUTPUT=$1
+SLEEPTIME=[ -n "$2" ] && echo "$2" || echo 120;
+while true; do
+    echo sleeping ...
+    echo
+    sleep $SLEEPTIME;
+    echo running autozipper at $(date)
+    autozipper
+    echo outputting to $OUTPUT at $(date)
+    [ -n "$OUTPUT" ] && [ "$OUTPUT" != "." ] &&  automover "$OUTPUT"
+done
