@@ -3,11 +3,11 @@ simulation_title "TNSA with water in 2D I = 1e18 W cm-2, with a thin target."
 ;
 [Control]
 ;Time-advance
- time_limit 2000e-6 ;
+ time_limit 1500e-6 ;
 ;time_limit 0.2e-6 
 ;number_of_steps 2
 
- time_step_ns 5e-8 ; 1/60th optical cycle for 0.8um laser light
+ time_step_ns 4e-8 ; >1/60th optical cycle for 0.8um laser light
 ;Restarts
  restart_interval_ns 75000e-6 ; probably much longer than max dump time
  maximum_restart_dump_time 11.5 ;in hours
@@ -54,7 +54,8 @@ end
  print_region_flag OFF
 ;(Diagnostic Output) Movie Controls
  particle_movie_interval_ns 1e-6
- particle_movie_components Q X Y Z VX VY VZ XI YI ZI
+ particle_movie_components Q X Y VX VY XI YI
+;particle_movie_components Q X Y Z VX VY VZ XI YI ZI
 ;Numerical Checks and Reports
  domain_boundary_check ON
  report_timing_flag ON
