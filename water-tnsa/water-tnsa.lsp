@@ -64,25 +64,25 @@ end
 [Grid]
 ;
 grid1
-xmin             -0.0025
-xmax              0.0025
-x-cells           2000
+xmin             -25e-4
+xmax              15e-4
+x-cells           1600
 ;
-zmin             -0.0020
-zmax              0.0020
+zmin             -20e-4
+zmax              20e-4
 z-cells           1600
 ;
 [Regions]
 ;
 region1
-xmin -0.0025
-xmax  0.0025
+xmin -25e-4
+xmax  15e-4
 
-zmin -0.0020
-zmax  0.0020
+zmin -20e-4
+zmax  20e-4
 
 number_of_domains 96
-split_direction ZSPLIT 
+split_direction XSPLIT 
 number_of_cells AUTO
 ;
 
@@ -134,20 +134,20 @@ analytic_function 2
 time_delay 0.0
 ;front
 outlet
-from  25e-4 -20e-4 0
-to    25e-4  20e-4 0
+from  20e-4 -20e-4 0
+to    20e-4  20e-4 0
 phase_velocity 1.0
 drive_model NONE
 ;right
 outlet
 from -25e-4  20e-4 0
-to    25e-4  20e-4 0
+to    20e-4  20e-4 0
 phase_velocity 1.0
 drive_model NONE
 ;left
 outlet
 from -25e-4 -20e-4 0
-to    25e-4 -20e-4 0
+to    20e-4 -20e-4 0
 phase_velocity 1.0
 drive_model NONE
 
@@ -372,7 +372,7 @@ movie_fraction 0.000
 ;
 higherstate              ; O -> O+
 from -25e-4 -20e-4  0
-to    25e-4  20e-4  0
+to    20e-4  20e-4  0
 interval 1
 species 1
 ion_species 2
@@ -397,7 +397,7 @@ movie_fraction 0.0
 ;
 higherstate              ; O+ -> O++
 from -25e-4 -20e-4  0
-to    25e-4  20e-4  0
+to    20e-4  20e-4  0
 interval 1
 species 2
 ion_species 3
@@ -422,7 +422,7 @@ movie_fraction 0.0
 ;
 higherstate              ; O++ -> O 3+
 from -25e-4 -20e-4  0
-to    25e-4  20e-4  0
+to    20e-4  20e-4  0
 interval 1
 species 3
 ion_species 4
@@ -447,7 +447,7 @@ movie_fraction 0.0
 ;
 higherstate              ; O 3+ -> O 4+
 from -25e-4 -20e-4  0
-to    25e-4  20e-4  0
+to    20e-4  20e-4  0
 interval 1
 species 4
 ion_species 5
@@ -472,7 +472,7 @@ movie_fraction 0.0
 ;
 higherstate              ; O 4+ -> O 5+
 from -25e-4 -20e-4  0
-to    25e-4  20e-4  0
+to    20e-4  20e-4  0
 interval 1
 species 5
 ion_species 6
@@ -498,7 +498,7 @@ movie_fraction 0.0
 ;
 higherstate              ; O 5+ -> O 6+
 from -25e-4 -20e-4  0
-to    25e-4  20e-4  0
+to    20e-4  20e-4  0
 interval 1
 species 6
 ion_species 7
@@ -523,7 +523,7 @@ movie_fraction 0.0
 ;
 higherstate              ; O 6+ -> O 7+
 from -25e-4 -20e-4  0
-to    25e-4  20e-4  0
+to    20e-4  20e-4  0
 interval 1
 species 7
 ion_species 8
@@ -548,7 +548,7 @@ movie_fraction 0.0
 ;
 higherstate              ; O 7+ -> O 8+
 from -25e-4 -20e-4  0
-to    25e-4  20e-4  0
+to    20e-4  20e-4  0
 interval 1
 species 8
 ion_species 9
@@ -585,7 +585,7 @@ direction X
 maximum_number 1000000000
 start_time 160e-6
 stop_time 1
-at 25e-4 0 0
+at 20e-4 0 0
 ;
 extract2
 species 2
@@ -593,7 +593,7 @@ direction X
 maximum_number 1000000000
 start_time 160e-6
 stop_time 1
-at  25e-4 0 0
+at  20e-4 0 0
 ;;
 extract3
 species 3
@@ -601,7 +601,7 @@ direction X
 maximum_number 1000000000
 start_time 160e-6
 stop_time 1
-at  25e-4 0 0
+at  20e-4 0 0
 ;;
 extract4
 species 4
@@ -609,7 +609,7 @@ direction X
 maximum_number 1000000000
 start_time 160e-6
 stop_time 1
-at  25e-4 0 0
+at  20e-4 0 0
 ;;
 extract5
 species 5
@@ -617,7 +617,7 @@ direction X
 maximum_number 1000000000
 start_time 160e-6
 stop_time 1
-at  25e-4 0 0
+at  20e-4 0 0
 ;;
 extract6
 species 6
@@ -625,7 +625,7 @@ direction X
 maximum_number 1000000000
 start_time 160e-6
 stop_time 1
-at  25e-4 0 0
+at  20e-4 0 0
 ;;
 extract7
 species 7
@@ -633,7 +633,7 @@ direction X
 maximum_number 1000000000
 start_time 160e-6
 stop_time 1
-at  25e-4 0 0
+at  20e-4 0 0
 ;;
 extract8
 species 8
@@ -641,7 +641,7 @@ direction X
 maximum_number 1000000000
 start_time 160e-6
 stop_time 1
-at  25e-4 0 0
+at  20e-4 0 0
 ;;
 extract9
 species 9
@@ -649,7 +649,7 @@ direction X
 maximum_number 1000000000
 start_time 160e-6
 stop_time 1
-at  25e-4 0 0
+at  20e-4 0 0
 ;;
 extract10
 species 10
@@ -657,7 +657,7 @@ direction X
 maximum_number 1000000000
 start_time 160e-6
 stop_time 1
-at  25e-4 0 0
+at  20e-4 0 0
 ;;
 extract11
 species 11
@@ -665,7 +665,7 @@ direction X
 maximum_number 1000000000
 start_time 160e-6
 stop_time 1
-at  25e-4 0 0
+at  20e-4 0 0
 ;;
 
 ;; LEFT
