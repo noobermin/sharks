@@ -19,7 +19,7 @@ mkdir -p $D
 cd $PBS_O_WORKDIR
 # autozipper
 cp ../scripts/autozipper $D/
-cp ./lsp-10-xy *.lsp *.dat $D/
+cp lsp-10-xy *.lsp *.dat $D/
 cd $D
 ./autozipper
 mpirun -np 48 ./lsp-10-xy $PBSBASE.lsp >$PBSBASE.o.txt

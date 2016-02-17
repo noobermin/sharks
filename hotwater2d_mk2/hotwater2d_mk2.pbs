@@ -11,15 +11,15 @@ PBSBASE=hotwater2d_mk2
 module load openmpi-1.4.3-gnu-rpm
 
 echo $HOSTNAME > $PBS_O_WORKDIR/hostname.txt   
-cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/cat_nodefile.txt
+cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/nodefile.txt
 
 D=/tmp/ngirmang.1-$PBSBASE-`mkdate`
 mkdir -p $D
 cd $PBS_O_WORKDIR
 cp ../scripts/autozipper $D/
-cp ./lsp-10-xy *.lsp *.dat $D/
+cp lsp-10-xy *.lsp *.dat $D/
 cd $D
-./autozipper > $PBS_O_WORKDIR/autozipper.log
+./autozipper > $PBS_O_WORKDIR/autozipper.log&
 
 mpirun -np 48 ./lsp-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/autozipper.log
 #mpirun -np 48 -hostfile $PBS_NODEFILE \
