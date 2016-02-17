@@ -21,10 +21,11 @@ cd $PBS_O_WORKDIR
 cp ../scripts/autozipper $D/
 cp lsp-10-xy *.lsp *.dat $D/
 cd $D
-./autozipper
-mpirun -np 48 ./lsp-10-xy $PBSBASE.lsp >$PBSBASE.o.txt
-#mpirun -np 48 -hostfile $PBS_NODEFILE ./lsp-10 $PBSBASE.lsp >$PBSBASE.o.txt
-#mpirun -np 48 ./lsp2d_glenn 2d-nosolid.lsp > /dev/null
+./autozipper > $PBS_O_WORKDIR/autozipper.log&
+mpirun -np 48 ./lsp-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+#mpirun -np 48 -hostfile $PBS_NODEFILE \
+#       ./lsp-10 $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+#mpirun -np 48 ./lsp2d_glenn 2d-nosolid.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
 
 
 
