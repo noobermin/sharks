@@ -32,6 +32,7 @@ simulation_title "hotwater, I = 3e18 W cm-2"
  dump_current_density_flag OFF
  dump_fields_flag ON
  dump_scalars_flag ON
+ dump_plamsa_quantities_flag ON
  dump_velocities_flag OFF
  dump_particles_flag OFF
  dump_number_densities_flag ON
@@ -591,14 +592,15 @@ data_file sine700points.dat
 independent_variable_multiplier 60.0e-6 ; =2xFWHM,  30 fs FWHM pulse
 ;dependent_variable_multiplier 1.736e8  ; = Emax in kV/cm units, 1.736e8 => 4*10^19 W/cm^2
 ;dependent_variable_multiplier 8.68e5  ; = Emax in kV/cm units, 8.68e5 => 10^15 W/cm^2
-dependent_variable_multiplier 2.75e7  ; = Emax in kV/cm units, 2.75e7 => 10^18 W/cm^2
-;dependent_variable_multiplier 4.763e7  ; = Emax in kV/cm units, 4.763e7 => 3 x 10^18 W/cm^2
+;dependent_variable_multiplier 2.75e7  ; = Emax in kV/cm units, 2.75e7 => 10^18 W/cm^2
+dependent_variable_multiplier 4.763e7  ; = Emax in kV/cm units, 4.763e7 => 3 x 10^18 W/cm^2
 ;dependent_variable_multiplier 2.02e7  ; = Emax in kV/cm units, 2.02e7 => 5.4 x 10^17 W/cm^2
 
 function2 ;laser analytic function for lsp v10
 type 19   ; \lambda spotsize
 ;coefficients 0.8e-4 2.26e-4 end
-coefficients 0.78e-4 2.174e-4 end
+coefficients 0.78e-4 2.26e-4 end
+;coefficients 0.78e-4 2.174e-4 end
 
 ;;
 function5 ; electrons
