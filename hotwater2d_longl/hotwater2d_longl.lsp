@@ -32,6 +32,7 @@ simulation_title "hotwater, I = 3e18 W cm-2"
  dump_current_density_flag OFF
  dump_fields_flag ON
  dump_scalars_flag ON
+ dump_plasma_quantities_flag ON
  dump_velocities_flag OFF
  dump_particles_flag OFF
  dump_number_densities_flag ON
