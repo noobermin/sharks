@@ -109,7 +109,7 @@ components 0 1 0
 phases 0 0 0 ; polarization
 temporal_function 3
 analytic_function 4
-time_delay 0.0
+time_delay 30e-6
 
 ;front
 outlet
@@ -138,7 +138,7 @@ drive_model NONE
 function1 ; laser temporal function
 type 30
 data_file sine700points.dat
-independent_variable_multiplier 60.0e-6 ; =2xFWHM,  30 fs FWHM pulse
+independent_variable_multiplier 30.0e-6 ; =2xFWHM,  15 fs FWHM pulse
 ;dependent_variable_multiplier 1.736e8  ; = Emax in kV/cm units, 1.736e8 => 4*10^19 W/cm^2
 ;dependent_variable_multiplier 8.68e5  ; = Emax in kV/cm units, 8.68e5 => 10^15 W/cm^2
 ;dependent_variable_multiplier 2.75e7  ; = Emax in kV/cm units, 2.75e7 => 10^18 W/cm^2
@@ -151,13 +151,13 @@ coefficients 0.78e-4 2.17e-4 end
 function3 ; laser temporal function
 type 30
 data_file sine700points.dat
-independent_variable_multiplier 60.0e-6 ; =2xFWHM,  30 fs FWHM pulse
+independent_variable_multiplier 30.0e-6 ; =2xFWHM,  30 fs FWHM pulse
 ;dependent_variable_multiplier 1.736e8  ; = Emax in kV/cm units, 1.736e8 => 4*10^19 W/cm^2
 ;dependent_variable_multiplier 8.68e5  ; = Emax in kV/cm units, 8.68e5 => 10^15 W/cm^2
 ;dependent_variable_multiplier 2.75e7  ; = Emax in kV/cm units, 2.75e7 => 10^18 W/cm^2
 ;;dependent_variable_multiplier 4.763e7  ; = Emax in kV/cm units, 4.763e7 => 3 x 10^18 W/cm^2
-;dependent_variable_multiplier 4.7543e7  ; 4.754e7 => 3 x 10^18 W/cm^2
-dependent_variable_multiplier 1.5035e7  ; 1.5035e7 => 3 x 10^17 W/cm^2
+dependent_variable_multiplier 4.7543e7  ; 4.754e7 => 3 x 10^18 W/cm^2
+;dependent_variable_multiplier 1.5035e7  ; 1.5035e7 => 3 x 10^17 W/cm^2
 ;
 function4 ; laser analytic function, 2w
 type 19   ; \lambda spotsize
