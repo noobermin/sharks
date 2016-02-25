@@ -91,7 +91,7 @@ from -10e-4 -20e-4 0
 to   -10e-4  20e-4 0
 phase_velocity 1.0
 drive_model LASER
-reference_point 0 0 0 ; focal point position
+reference_point -5e-4 0 0 ; focal point position
 components 0 1 0
 phases 0 0 0 ; polarization
 temporal_function 1
@@ -104,12 +104,12 @@ from -10e-4 -20e-4 0
 to   -10e-4  20e-4 0
 phase_velocity 1.0
 drive_model LASER
-reference_point 0 0 0 ; focal point position
+reference_point 5e-4 0 0 ; focal point position
 components 0 1 0
 phases 0 0 0 ; polarization
 temporal_function 3
 analytic_function 4
-time_delay 30e-6
+time_delay 0.0
 
 ;front
 outlet
