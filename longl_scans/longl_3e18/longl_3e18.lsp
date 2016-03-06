@@ -87,7 +87,7 @@ number_of_cells AUTO
 ;back this is the laser
 outlet
 from -4.000000e-03 -2.000000e-03 0
-to   1.000000e-03 2.000000e-03 0
+to   -4.000000e-03 2.000000e-03 0
 phase_velocity 1.0
 drive_model LASER
 reference_point 0.0 0.0 0.0 ; focal point position

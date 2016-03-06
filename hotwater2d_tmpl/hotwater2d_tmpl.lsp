@@ -87,7 +87,7 @@ number_of_cells AUTO
 ;back this is the laser
 outlet
 from {xmin:e} {ymin:e} 0
-to   {xmax:e} {ymax:e} 0
+to   {xmin:e} {ymax:e} 0
 phase_velocity 1.0
 drive_model LASER
 reference_point {fp} ; focal point position
