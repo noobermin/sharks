@@ -37,23 +37,23 @@ c  = 299792458
 e0 = 8.8541878176e-12
 E0 = np.sqrt(2*float(opts['--I'])*1e4/(c*e0))*1e-5
 numrx=r"[-+]{0,1}\d+\.{0,1}\d*(?:[eE][-+]{0,1}\d+){0,1}";
-def gettuple(l,length=4):
+def gettuple(l,length=4,scale=1e-4):
     rx = r"\( *"+' *, *'.join([numrx]*length)+r" *\)";
     if re.match(rx,opts[l]) is None:
         print('option "{}" invalid.'.format(l));
         print(__doc__);
         exit(1);
-    return [x*1e-4 for x in eval(opts[l])]
+    return [x*scale for x in eval(opts[l])]
 
 xmin,xmax, ymin,ymax = gettuple("--lim")
 fp = " ".join([str(i) for i in gettuple("--fp",3)]);
 l = float(opts['--l'])*100.0
 if opts['--resd']:
-    xres,yres = gettuple("--resd",2);
+    xres,yres = gettuple("--resd",length=2,scale=1);
     xcells = (xmax-xmin)/(l/xres);
     ycells = (ymax-ymin)/(l/yres);
 else:
-    xcells,ycells = gettuple("--res",2);
+    xcells,ycells = gettuple("--res",length=2,scale=1);
 w0 = float(opts['--w'])*100.0;
 T  = float(opts['--T'])*1e9;
 targ_xmin,targ_xmax, targ_ymin,targ_ymax = gettuple('--tlim')
