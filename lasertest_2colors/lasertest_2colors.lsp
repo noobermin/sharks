@@ -3,7 +3,7 @@ simulation_title "A test of 2 colors at 1e18 W/cm^2 "
 ;
 [Control]
 ;Time-advance
- time_limit 150e-6 ;
+ time_limit 80e-6 ;
 ;time_limit 0.2e-6 
 ;number_of_steps 2
  time_step_ns 4e-8 ; >1/60th of 0.780 um light
@@ -91,7 +91,7 @@ from -10e-4 -20e-4 0
 to   -10e-4  20e-4 0
 phase_velocity 1.0
 drive_model LASER
-reference_point -5e-4 0 0 ; focal point position
+reference_point 0 -5e-4 0 ; focal point position
 components 0 1 0
 phases 0 0 0 ; polarization
 temporal_function 1
@@ -104,7 +104,7 @@ from -10e-4 -20e-4 0
 to   -10e-4  20e-4 0
 phase_velocity 1.0
 drive_model LASER
-reference_point 5e-4 0 0 ; focal point position
+reference_point 0 5e-4 0 ; focal point position
 components 0 1 0
 phases 0 0 0 ; polarization
 temporal_function 3
