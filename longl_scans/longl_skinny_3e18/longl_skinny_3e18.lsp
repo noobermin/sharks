@@ -1,5 +1,5 @@
 [Title]
-simulation_title "long wavelength hotwater, I = 5e17 W/cm^2"
+simulation_title "long wavelength hotwater, I = 3e18 W/cm^2"
 ;
 [Control]
 ;Time-advance
@@ -291,8 +291,8 @@ selection_ratio 0.01
 ;; initial states ;;
 
 plasma ; O+
-from -3.000000e-03  -1.500000e-03  0
-to   0.000000e+00  1.500000e-03  0
+from -3.000000e-03  -1.000000e-03  0
+to   0.000000e+00  1.000000e-03  0
 species 2
 movie_tag 3
 unbound off
@@ -305,8 +305,8 @@ thermal_energy 1
 movie_fraction 0.000
 ;
 plasma ; e-
-from -3.000000e-03 -1.500000e-03  0
-to   0.000000e+00 1.500000e-03  0
+from -3.000000e-03 -1.000000e-03  0
+to   0.000000e+00 1.000000e-03  0
 species 10
 movie_tag 3
 unbound off
@@ -319,8 +319,8 @@ thermal_energy 1
 movie_fraction 0.050
 ;
 plasma ; p+
-from -3.000000e-03 -1.500000e-03  0
-to   0.000000e+00 1.500000e-03  0
+from -3.000000e-03 -1.000000e-03  0
+to   0.000000e+00 1.000000e-03  0
 species 11
 movie_tag 3
 unbound off
@@ -585,7 +585,7 @@ data_file sine700points.dat
 ;; pulse duration length, 2xFWHM
 independent_variable_multiplier 1.200000e-04
 ;; Emax
-dependent_variable_multiplier   1.940954e+07
+dependent_variable_multiplier   4.754347e+07
 
 function2 ;laser analytic function for lsp v10
 type 19   ; f-number: ~4.26209403337

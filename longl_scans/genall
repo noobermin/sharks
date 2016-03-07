@@ -7,7 +7,7 @@ mkdir -p $BASE
 ./genlsp.py -I $INTENSITY -l 3e-6  -w 8.14e-6 \
     -T 120e-15                  \
     --lim="(-40, 10,-20, 20)"   \
-    --tlim="(-30, 0,-10, 10)"   \
+    --tlim="(-30, 0,-15, 15)"   \
     --res="(800,800)" \
     --step="8e-17">$BASE/$BASE.lsp
 ./genpbs.py -p $BASE |\
@@ -22,7 +22,7 @@ mkdir -p $BASE
 ./genlsp.py -I $INTENSITY -l 3e-6  -w 8.14e-6 \
     -T 120e-15                  \
     --lim="(-40, 10,-20, 20)"   \
-    --tlim="(-30, 0,-10, 10)"   \
+    --tlim="(-30, 0,-15, 15)"   \
     --res="(800,800)" \
     --step="8e-17">$BASE/$BASE.lsp
 ./genpbs.py -p $BASE |\
@@ -32,6 +32,51 @@ cp *.dat $BASE/
 
 #longl_1e19
 BASE=longl_1e19
+INTENSITY=1e19
+mkdir -p $BASE
+./genlsp.py -I $INTENSITY -l 3e-6  -w 8.14e-6 \
+    -T 120e-15                  \
+    --lim="(-40, 10,-20, 20)"   \
+    --tlim="(-30, 0,-15, 15)"   \
+    --res="(800,800)" \
+    --step="8e-17">$BASE/$BASE.lsp
+./genpbs.py -p $BASE |\
+    sed 's:../scripts/autozipper:../../scripts/autozipper:'\
+    >$BASE/$BASE.pbs
+cp *.dat $BASE/
+
+#longl_skinny_3e18
+BASE=longl_skinny_3e18
+INTENSITY=3e18
+mkdir -p $BASE
+./genlsp.py -I $INTENSITY -l 3e-6  -w 8.14e-6 \
+    -T 120e-15                  \
+    --lim="(-40, 10,-20, 20)"   \
+    --tlim="(-30, 0,-10, 10)"   \
+    --res="(800,800)" \
+    --step="8e-17">$BASE/$BASE.lsp
+./genpbs.py -p $BASE |\
+    sed 's:../scripts/autozipper:../../scripts/autozipper:'\
+    >$BASE/$BASE.pbs
+cp *.dat $BASE/
+
+#longl_skinny_5e17
+BASE=longl_skinny_5e17
+INTENSITY=5e17
+mkdir -p $BASE
+./genlsp.py -I $INTENSITY -l 3e-6  -w 8.14e-6 \
+    -T 120e-15                  \
+    --lim="(-40, 10,-20, 20)"   \
+    --tlim="(-30, 0,-10, 10)"   \
+    --res="(800,800)" \
+    --step="8e-17">$BASE/$BASE.lsp
+./genpbs.py -p $BASE |\
+    sed 's:../scripts/autozipper:../../scripts/autozipper:'\
+    >$BASE/$BASE.pbs
+cp *.dat $BASE/
+
+#longl_skinny_1e19
+BASE=longl_skinny_1e19
 INTENSITY=1e19
 mkdir -p $BASE
 ./genlsp.py -I $INTENSITY -l 3e-6  -w 8.14e-6 \
