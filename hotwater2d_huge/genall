@@ -2,7 +2,8 @@
 PBSBASE=hotwater2d_huge
 ./genlsp.py --lim="(-50,10,-20,20)" \
             --res="(2400,1600)" \
-            --domains=96>$PBSBASE.lsp
+            --domains=96 \
+            --time=325e-15>$PBSBASE.lsp
 ./genpbs.py --domains=96 --pbsbase=$PBSBASE>$PBSBASE.pbs
 
 

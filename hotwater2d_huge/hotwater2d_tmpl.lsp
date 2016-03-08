@@ -37,7 +37,7 @@ simulation_title "long wavelength hotwater, I = {intensity} W/cm^2"
  extract_photons_flag OFF
  dump_particles_flag OFF
 ;(Diagnostic Output) Dump Intervals
- dump_interval_ns 0.2e-6
+ dump_interval_ns 0.5e-6
  dump_steps
 1 
 end
@@ -51,7 +51,7 @@ end
  use_its_format_flag OFF
  print_region_flag OFF
 ;(Diagnostic Output) Movie Controls
- particle_movie_interval_ns 0.2e-6
+ particle_movie_interval_ns 0.5e-6
  particle_movie_components Q X Y VX VY XI YI
 ;Numerical Checks and Reports
  domain_boundary_check ON
@@ -613,4 +613,7 @@ dependent_variable_multiplier 0.67
 ;
 probe1
 energy net_energy
+;
+probe2
+energy total_energy
 ;
