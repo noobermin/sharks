@@ -44,24 +44,20 @@ defaults = {
     'totaltime':300e-15,
     'timestep':4e-17
 };
-def genlsp(**kw):
     
 from docopt import docopt;
 opts=docopt(__doc__,help=True);
+#requires pys
 
+from pys import parse_ftuple
 c  = 299792458
 e0 = 8.8541878176e-12
 E0 = np.sqrt(2*float(opts['--I'])*1e4/(c*e0))*1e-5
 
-def gettuple(l,length=4,scale=1e-4):
-    rx = r"\( *"+' *, *'.join([numrx]*length)+r" *\)";
-    if re.match(rx,opts[l]) is None:
-        print('option "{}" invalid.'.format(l));
-        print(__doc__);
-        exit(1);
-    return [x*scale for x in eval(opts[l])]
+gettuple = lambda l,length=4,scale=1: parse_ftuple(
+    opts[l],length=length,scale=scale);
 
-xmin,xmax, ymin,ymax = gettuple("--lim")
+xmin,xmax, ymin,ymax = gettuple("--lim",scale=1e-4)
 fp = " ".join([str(i) for i in gettuple("--fp",3)]);
 l = float(opts['--l'])*100.0
 if opts['--resd']:
@@ -72,7 +68,7 @@ else:
     xcells,ycells = gettuple("--res",length=2,scale=1);
 w0 = float(opts['--w'])*100.0;
 T  = float(opts['--T'])*1e9;
-targ_xmin,targ_xmax, targ_ymin,targ_ymax = gettuple('--tlim')
+targ_xmin,targ_xmax, targ_ymin,targ_ymax = gettuple('--tlim',scale=1e-4)
 domains=int(opts['--domains']);
 # we have that na~l/(pi*w), and the f-number~1/2na, thus
 # f-number ~ pi*w/2l

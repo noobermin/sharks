@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+PBSBASE=hotwater2d_huge
+./genlsp.py --lim="(-50,10,-20,20)" \
+            --res="(2400,1600)" \
+            --domains=96>$PBSBASE.lsp
+./genpbs.py --domains=96 --pbsbase=$PBSBASE>$PBSBASE.pbs
+
+
+

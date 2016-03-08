@@ -1,0 +1,28 @@
+#PBS -l walltime=999:00:00
+#PBS -l nodes=2:ppn=48
+#PBS -N hotwater2d_huge
+#PBS -S /bin/bash
+#PBS -j oe
+#PBS -m ae
+#PBS -M ngirmang.1@osu.edu
+
+PBSBASE=hotwater2d_huge
+#source $HOME/.bashrc
+module load openmpi-1.4.3-gnu-rpm
+
+#This outputs the name of the root node to the directory where you submitted this PBS job
+echo $HOSTNAME > $PBS_O_WORKDIR/hostname.txt   
+cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/nodesfile.txt
+
+
+cd $PBS_O_WORKDIR
+cp ../scripts/autozipper ./
+
+
+# autozipper
+./autozipper > $PBS_O_WORKDIR/autozipper.log&
+mpirun -np 96 -hostfile $PBS_NODEFILE ./lsp-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+
+
+
+
