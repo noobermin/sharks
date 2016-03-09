@@ -91,8 +91,8 @@ to   {xmin:e} {ymax:e} 0
 phase_velocity 1.0
 drive_model LASER
 reference_point {fp} ; focal point position
-components 0 1 0
-phases 0 0 0 ; polarization 1.1781
+components {components}
+phases {phases} ; polarization 1.1781
 temporal_function 1
 analytic_function 2
 time_delay 0.0
@@ -595,17 +595,17 @@ coefficients {l:e} {w0:e} end
 ;;
 function3 ; electrons
 type 30
-data_file watercolumn.dat
+data_file {targetdat}
 dependent_variable_multiplier 1.0
 ;;
 function4 ; Oxygen
 type 30
-data_file watercolumn.dat
+data_file {targetdat}
 dependent_variable_multiplier 0.33
 ;;
 function5 ; Protons
 type 30
-data_file watercolumn.dat
+data_file {targetdat}
 dependent_variable_multiplier 0.67
 ;;
 
