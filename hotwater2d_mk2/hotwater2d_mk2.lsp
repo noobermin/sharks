@@ -98,7 +98,7 @@ reference_point 0 0 0 ; focal point position
 ;magnitude 1.0
 ;wavelength 0.8e-4 ; 800 nm
 ;spotsize 2.26e-4 ;these replace the laser analytic function
-components 0 0 1
+components 0 1 0
 phases 0 0 0 ; polarization 1.1781
 temporal_function 1
 analytic_function 2
@@ -599,8 +599,8 @@ dependent_variable_multiplier 4.763e7  ; = Emax in kV/cm units, 4.763e7 => 3 x 1
 function2 ;laser analytic function for lsp v10
 type 19   ; \lambda spotsize
 ;coefficients 0.8e-4 2.26e-4 end
-coefficients 0.78e-4 2.26e-4 end
-;coefficients 0.78e-4 2.174e-4 end
+;coefficients 0.78e-4 2.26e-4 end
+coefficients 0.78e-4 2.174e-4 end
 
 ;;
 function5 ; electrons
@@ -624,3 +624,5 @@ dependent_variable_multiplier 0.67
 probe1
 energy net_energy
 ;
+probe2
+energy total_energy
