@@ -4,7 +4,7 @@ simulation_title "micron lwfa?, I = 5e+17 W/cm^2"
 [Control]
 ;Time-advance
  time_limit   2.500000e-04
- time_step_ns 1e-08
+ time_step_ns 1e-07
 ;Restarts
  restart_interval_ns 75000e-6 ; probably much longer than max dump time
  maximum_restart_dump_time 11.5 ;in hours
@@ -298,7 +298,7 @@ movie_tag 3
 unbound off
 discrete_numbers 3 3 3
 density_function 4
-reference_point 0 0 0
+reference_point -2.5e-3 0 0
 density_flags 1 0 0
 momentum_flags 0 0 0
 thermal_energy 1
@@ -312,7 +312,7 @@ movie_tag 3
 unbound off
 discrete_numbers 3 3 3
 density_function 3
-reference_point 0 0 0
+reference_point -2.5e-3 0 0
 density_flags 1 0 0
 momentum_flags 0 0 0
 thermal_energy 1
@@ -326,7 +326,7 @@ movie_tag 3
 unbound off
 discrete_numbers 3 3 3
 density_function 5
-reference_point 0 0 0
+reference_point -2.5e-3 0 0
 density_flags 1 0 0
 momentum_flags 0 0 0
 thermal_energy 1
