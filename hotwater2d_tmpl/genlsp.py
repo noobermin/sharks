@@ -31,6 +31,8 @@ Options:
    --time=T       Total simulation time in s.[default: 300e-15]
    --step=T       Time steps in s. [default: 4e-17]
    --targetdat=D  Set the target .dat filename [default: watercolumn.dat]
+   --dumpinterval=T   Specify the dump interval [default: 2e-16 ]
+   --description=D    Set the description [default: Hotwater]
 '''
 
 import re;
@@ -50,7 +52,9 @@ defaults = {
     'timestep':4e-17,
     'components':(0,1,0),
     'phases':(0,0,0),
-    'targetdat':'watercolumn.dat'
+    'targetdat':'watercolumn.dat',
+    'dumpinterval':2e-16,
+    'description':'Hotwater in 2d'
 };
 c  = 299792458
 e0 = 8.8541878176e-12
@@ -88,13 +92,15 @@ def genlsp(**kw):
     fnum=np.pi*w0/2/l;
     totalt=getkw('totaltime')*1e9
     timestep=getkw('timestep')*1e9;
-    targetdat = getkw('targetdat');
     couraunt = min(
         ((xmax-xmin)/xcells/c)*1e9,
         ((ymax-ymin)/ycells/c)*1e9)
     if timestep > couraunt:
         import sys
         sys.stderr.write("warning: timestep exceeds couraunt limit\n");
+    targetdat = getkw('targetdat');
+    dumpinterval=getkw('dumpinterval')*1e9;
+    description=getkw('description');
     with open("hotwater2d_tmpl.lsp") as f:
         s=f.read();
     s=s.format(
@@ -108,7 +114,9 @@ def genlsp(**kw):
         intensity=getkw('I'),
         domains=domains,totalt=totalt,
         timestep=timestep,
-        targetdat=targetdat
+        targetdat=targetdat,
+        dumpinterval=dumpinterval,
+        description=description
     );
     return s;
 if __name__ == "__main__":

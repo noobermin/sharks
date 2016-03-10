@@ -1,5 +1,5 @@
 [Title]
-simulation_title "long wavelength hotwater, I = {intensity} W/cm^2"
+simulation_title "{description}, I = {intensity} W/cm^2"
 ;
 [Control]
 ;Time-advance
@@ -37,7 +37,7 @@ simulation_title "long wavelength hotwater, I = {intensity} W/cm^2"
  extract_photons_flag OFF
  dump_particles_flag OFF
 ;(Diagnostic Output) Dump Intervals
- dump_interval_ns 0.2e-6
+ dump_interval_ns {dumpinterval}
  dump_steps
 1 
 end
@@ -51,7 +51,7 @@ end
  use_its_format_flag OFF
  print_region_flag OFF
 ;(Diagnostic Output) Movie Controls
- particle_movie_interval_ns 0.2e-6
+ particle_movie_interval_ns {dumpinterval}
  particle_movie_components Q X Y VX VY XI YI
 ;Numerical Checks and Reports
  domain_boundary_check ON
