@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ $# -eq 1 ]; then 
+    D=$1;
+else
+    D=$PWD;
+fi;
+NAME=`basename $D`
+cd $D
+qdel `qstat | grep $NAME | cut -d . -f 1`

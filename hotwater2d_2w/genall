@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+cp ../start ../terminate ../chmem  ./
+
+PBSBASE=hotwater2d_w_baseline
+mkdir -p $PBSBASE
+./genlsp.py --lim="(-40,10,-20,20)" \
+            --res="(2000,1600)" \
+            --description="two colors with hotwater2d, baseline" \
+            --domains=48 \
+            --time=300e-15>$PBSBASE/$PBSBASE.lsp
+./genpbs.py --domains=48 --pbsbase=$PBSBASE>$PBSBASE/$PBSBASE.pbs
+
+PBSBASE=hotwater2d_2w
+mkdir -p $PBSBASE
+
+#hack, but it works
+TWOOMEGA="coefficients 7.8e-5 2.17e-4 3.9e-5 2.17e-4 end"
+./genlsp.py --lim="(-40,10,-20,20)" \
+            --res="(2000,1600)" \
+            --domains=48 \
+            --description="two colors with hotwater2d, 2w" \
+            --time=300e-15 |\
+    sed 's/type *19/type 85/' |\
+    sed 's/^.*coefficients 7.80*e-0*5.*$/'"${TWOOMEGA}/" \
+        >$PBSBASE/$PBSBASE.lsp
+./genpbs.py --domains=48 --pbsbase=$PBSBASE |\
+    sed 's/lsp-10-xy/lsp-10-xy-multilaser/' >$PBSBASE/$PBSBASE.pbs
