@@ -6,33 +6,33 @@ Usage:
   ./genlsp.py [options]
 
 Options:
-   --I=I -I I     Set the laser intesity in W/cm^2. [default: 3e18]
-   --l=L -l L     Set the laser wavelength in m. [default: 780e-9]
-   --w=W -w W     Set the Gaussian waist in m. [default: 2.17e-6]
-   --T=T -T T     Set the pulse duration in s. [default: 60e-15]
-   --lim=L -x L   Set the spatial limits of the sim as a tuple of
-                  limits of the form (xmin,xmax,ymin,ymax)
-                  in microns. [default: (-30, 5, -20, 20)]
-   --res=R -r R   Set the spatial resolution as a tuple of the
-                  form (xres,yres). [default: (1400,1600)]
-   --resd=R       Set the spatial resolution as a tuple of the
-                  form (xres,yres) but where the resolutions are
-                  number of divisions of the wavelength in
-                  each direction. If this is set, the usual
-                  res option is ignored.
-   --tlim=L -t L  Set the spatial limits of the target as a tuple of
-                  limits of the form (xmin,xmax,ymin,ymax)
-                  in microns [default: (-30, 0, -15, 15)]
-   --comp=C       Set the components (polarization) [default: (0,1,0)]
-   --phases=PS    Set the component phases [default: (0,0,0)]
-   --fp=F -f F    The focal point as a tuple of positions in
-                  microns [default: (0,0,0)]
-   --domains=D    Set the number of domains. [default: 48]
-   --time=T       Total simulation time in s.[default: 300e-15]
-   --step=T       Time steps in s. [default: 4e-17]
-   --targetdat=D  Set the target .dat filename [default: watercolumn.dat]
-   --dumpinterval=T   Specify the dump interval [default: 2e-16 ]
-   --description=D    Set the description [default: Hotwater]
+   --I=I -I I        Set the laser intesity in W/cm^2. [default: 3e18]
+   --l=L -l L        Set the laser wavelength in m. [default: 780e-9]
+   --w=W -w W        Set the Gaussian waist in m. [default: 2.17e-6]
+   --T=T -T T        Set the pulse duration in s. [default: 60e-15]
+   --lim=L -x L      Set the spatial limits of the sim as a tuple of
+                     limits of the form (xmin,xmax,ymin,ymax)
+                     in microns. [default: (-30, 5, -20, 20)]
+   --res=R -r R      Set the spatial resolution as a tuple of the
+                     form (xres,yres). [default: (1400,1600)]
+   --resd=R          Set the spatial resolution as a tuple of the
+                     form (xres,yres) but where the resolutions are
+                     number of divisions of the wavelength in
+                     each direction. If this is set, the usual
+                     res option is ignored.
+   --tlim=L -t L     Set the spatial limits of the target as a tuple of
+                     limits of the form (xmin,xmax,ymin,ymax)
+                     in microns [default: (-30, 0, -15, 15)]
+   --comp=C          Set the components (polarization) [default: (0,1,0)]
+   --phases=PS       Set the component phases [default: (0,0,0)]
+   --fp=F -f F       The focal point as a tuple of positions in
+                     microns [default: (0,0,0)]
+   --domains=D       Set the number of domains. [default: 48]
+   --time=T          Total simulation time in s.[default: 300e-15]
+   --step=T          Time steps in s. [default: 4e-17]
+   --targetdat=D     Set the target .dat filename [default: watercolumn.dat]
+   --dumpinterval=T  Specify the dump interval [default: 2e-16 ]
+   --description=D   Set the description [default: Hotwater]
 '''
 
 import re;
@@ -135,6 +135,7 @@ if __name__ == "__main__":
         timestep=float(opts['--step']),
         components=gettuple("--comp",length=3),
         phases=gettuple("--phases",length=3),
+        description=opts['--description'],
         targetdat=opts['--targetdat']
     );
     if opts['--resd']:
