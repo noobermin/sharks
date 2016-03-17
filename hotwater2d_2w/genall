@@ -15,14 +15,18 @@ PBSBASE=hotwater2d_2w
 mkdir -p $PBSBASE
 
 #hack, but it works
-TWOOMEGA="coefficients 7.8e-5 2.17e-4 3.9e-5 2.17e-4 end"
+TWOOMEGA="\
+coefficients \
+1.00 7.8e-5 2.17e-4 \
+0.36 3.9e-5 2.17e-4 end"
 ./genlsp.py --lim="(-40,10,-20,20)" \
             --res="(2000,1600)" \
             --domains=48 \
             --description="two colors with hotwater2d, 2w" \
             --time=300e-15 |\
-    sed 's/type *19/type 85/' |\
-    sed 's/^.*coefficients 7.80*e-0*5.*$/'"${TWOOMEGA}/" \
+    sed 's/type *19.*$/type 85/' |\
+    sed 's/^.*\\lambda.*$//' |\
+    sed 's/^.*coefficients 7.80*e-0*5.*$/'"${TWOOMEGA}"/ \
         >$PBSBASE/$PBSBASE.lsp
 ./genpbs.py --domains=48 --pbsbase=$PBSBASE |\
     sed 's/lsp-10-xy/lsp-10-xy-multilaser/' >$PBSBASE/$PBSBASE.pbs

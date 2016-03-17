@@ -588,9 +588,9 @@ independent_variable_multiplier 6.000000e-05
 dependent_variable_multiplier   4.754347e+07
 
 function2 ;laser analytic function for lsp v10
-type 85   ; f-number: ~4.3700359348
-          ; \lambda spotsize
-coefficients 7.8e-5 2.17e-4 3.9e-5 2.17e-4 end
+type 85
+
+coefficients 1.00 7.8e-5 2.17e-4 0.36 3.9e-5 2.17e-4 end
 
 ;;
 function3 ; electrons
