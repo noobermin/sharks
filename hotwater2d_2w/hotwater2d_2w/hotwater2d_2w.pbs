@@ -18,7 +18,7 @@ cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/nodesfile.txt
 D=/tmp/ngirmang.1-$PBSBASE-`mkdate`
 mkdir -p $D
 cd $PBS_O_WORKDIR
-cp ../scripts/autozipper $D/
+cp ../../scripts/autozipper $D/
 cp lsp-10-xy-multilaser *.lsp *.dat $D/
 cd $D
 

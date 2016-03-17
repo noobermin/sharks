@@ -8,7 +8,9 @@ mkdir -p $PBSBASE
             --description="two colors with hotwater2d, baseline" \
             --domains=48 \
             --time=300e-15>$PBSBASE/$PBSBASE.lsp
-./genpbs.py --domains=48 --pbsbase=$PBSBASE>$PBSBASE/$PBSBASE.pbs
+./genpbs.py --domains=48 --pbsbase=$PBSBASE |\
+    sed 's:../scripts/autozipper:../../scripts/autozipper:'\
+    >$PBSBASE/$PBSBASE.pbs
 cp *.dat $PBSBASE/
 
 PBSBASE=hotwater2d_2w
@@ -29,5 +31,8 @@ coefficients \
     sed 's/^.*coefficients 7.80*e-0*5.*$/'"${TWOOMEGA}"/ \
         >$PBSBASE/$PBSBASE.lsp
 ./genpbs.py --domains=48 --pbsbase=$PBSBASE |\
-    sed 's/lsp-10-xy/lsp-10-xy-multilaser/' >$PBSBASE/$PBSBASE.pbs
+    sed 's/lsp-10-xy/lsp-10-xy-multilaser/' |\
+    sed 's:../scripts/autozipper:../../scripts/autozipper:'\
+    >$PBSBASE/$PBSBASE.pbs
+
 cp *.dat $PBSBASE/
