@@ -9,6 +9,7 @@ mkdir -p $PBSBASE
             --domains=48 \
             --time=300e-15>$PBSBASE/$PBSBASE.lsp
 ./genpbs.py --domains=48 --pbsbase=$PBSBASE>$PBSBASE/$PBSBASE.pbs
+cp *.dat $PBSBASE/
 
 PBSBASE=hotwater2d_2w
 mkdir -p $PBSBASE
@@ -25,3 +26,4 @@ TWOOMEGA="coefficients 7.8e-5 2.17e-4 3.9e-5 2.17e-4 end"
         >$PBSBASE/$PBSBASE.lsp
 ./genpbs.py --domains=48 --pbsbase=$PBSBASE |\
     sed 's/lsp-10-xy/lsp-10-xy-multilaser/' >$PBSBASE/$PBSBASE.pbs
+cp *.dat $PBSBASE/
