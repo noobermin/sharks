@@ -27,11 +27,13 @@ def mkdecay(solid, sdims, xdims, l):
 
 opts = docopt(__doc__,help=True);
 xdims = eval(opts['--x-dims']);
+xs = min(*xdims),max(*xdims)
 l = float(opts['--scale']);
 n_s = float(opts['--solid']);
 sdims = eval(opts['--solid-dims']);
+ss = min(*sdims),max(*sdims);
 x = np.linspace(xdims[0],xdims[1],100);
-y = mkdecay(n_s, sdims, xdims,l)(x);
+y = mkdecay(n_s, ss, xs, l)(x);
 s = StringIO();
 np.savetxt(s,np.array([x,y]).T,fmt='%.8e',); s.write("\n");
 print(s.getvalue());
