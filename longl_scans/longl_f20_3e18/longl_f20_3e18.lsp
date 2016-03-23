@@ -1,5 +1,5 @@
 [Title]
-simulation_title "long wavelength hotwater, I = 3e18 W/cm^2"
+simulation_title "Hotwater, I = 3e+18 W/cm^2"
 ;
 [Control]
 ;Time-advance
@@ -37,7 +37,7 @@ simulation_title "long wavelength hotwater, I = 3e18 W/cm^2"
  extract_photons_flag OFF
  dump_particles_flag OFF
 ;(Diagnostic Output) Dump Intervals
- dump_interval_ns 0.2e-6
+ dump_interval_ns 2e-07
  dump_steps
 1 
 end
@@ -51,7 +51,7 @@ end
  use_its_format_flag OFF
  print_region_flag OFF
 ;(Diagnostic Output) Movie Controls
- particle_movie_interval_ns 0.2e-6
+ particle_movie_interval_ns 2e-07
  particle_movie_components Q X Y VX VY XI YI
 ;Numerical Checks and Reports
  domain_boundary_check ON
@@ -90,7 +90,7 @@ from -4.000000e-03 -2.000000e-03 0
 to   -4.000000e-03 2.000000e-03 0
 phase_velocity 1.0
 drive_model LASER
-reference_point -0.002 0.0 0.0 ; focal point position
+reference_point -20 0 0 ; focal point position
 components 0 1 0
 phases 0 0 0 ; polarization 1.1781
 temporal_function 1
@@ -298,7 +298,7 @@ movie_tag 3
 unbound off
 discrete_numbers 3 3 3
 density_function 4
-reference_point 0 0 0
+reference_point -3.000000e-03 -1.500000e-03 0
 density_flags 1 0 0
 momentum_flags 0 0 0
 thermal_energy 1
@@ -312,7 +312,7 @@ movie_tag 3
 unbound off
 discrete_numbers 3 3 3
 density_function 3
-reference_point 0 0 0
+reference_point -3.000000e-03 -1.500000e-03 0
 density_flags 1 0 0
 momentum_flags 0 0 0
 thermal_energy 1
@@ -326,7 +326,7 @@ movie_tag 3
 unbound off
 discrete_numbers 3 3 3
 density_function 5
-reference_point 0 0 0
+reference_point -3.000000e-03 -1.500000e-03 0
 density_flags 1 0 0
 momentum_flags 0 0 0
 thermal_energy 1
@@ -614,4 +614,6 @@ dependent_variable_multiplier 0.67
 probe1
 energy net_energy
 ;
+probe2
+energy total_energy
 

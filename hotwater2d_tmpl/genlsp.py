@@ -129,6 +129,8 @@ if __name__ == "__main__":
         fp  = gettuple("--fp",length=3),
         w   = float(opts['--w']),
         T   = float(opts['--T']),
+        l   = float(opts['--l']),
+        I   = float(opts['--I']),
         tlim= gettuple('--tlim'),
         domains=int(opts['--domains']),
         totaltime=float(opts['--time']),

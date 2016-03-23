@@ -8,7 +8,7 @@ Usage:
 Options:
   --x-dims=XDIM -x XDIM      Set the x dimensions. [default: (0.0, 27.5e-4)]
   --scale=SCALE -l SCALE     Set the scale length. [default: 1.5e-4]
-  --solid-dims=SDIM -s SDIM  Set the solid dimensions. [default: (0.0, 10e-4)]
+  --solid-dims=SDIM -s SDIM  Set the solid dimensions. [default: (17.5e-4, 27.5e-4)]
   --solid=SDIM -S SDIM       Set the solid number density. [default: 1.0e23]
 '''
 from docopt import docopt
