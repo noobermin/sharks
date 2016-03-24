@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+if [ -z "$1" ] || [ "$1" == "-h" ]; then
+   echo "usage: mkhotwater2d <newdir>"
+   echo ""
+   echo "call in the sharks directory"
+   exit 0
+fi
+
+mkdir -p "$1"
+ln -s ../hotwater2d_tmpl/hotwater2d_tmpl.lsp $1/
+ln -s ../hotwater2d_tmpl/hotwater2d_tmpl.pbs $1/
+ln -s ../hotwater2d_tmpl/genpbs.py $1/
+ln -s ../hotwater2d_tmpl/genlsp.py $1/
+ln -s ../hotwater2d_tmpl/mklin.py $1/
+cp hotwater2d_tmpl/*.dat hotwater2d_tmpl/mkcolumn $1/
