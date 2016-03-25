@@ -1,12 +1,12 @@
 #PBS -l walltime=999:00:00
 #PBS -l nodes=1:ppn=48
-#PBS -N hotwater2d_templ
+#PBS -N hotwater2d_mk3
 #PBS -S /bin/bash
 #PBS -j oe
 #PBS -m ae
 #PBS -M ngirmang.1@osu.edu
 
-PBSBASE=hotwater2d_templ
+PBSBASE=hotwater2d_mk3
 #source $HOME/.bashrc
 module load openmpi-1.4.3-gnu-rpm
 

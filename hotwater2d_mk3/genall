@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+PBSBASE=hotwater2d_mk3
+./genlsp.py>$PBSBASE.lsp
+./genpbs.py --domains=48 --pbsbase=$PBSBASE>$PBSBASE.pbs
