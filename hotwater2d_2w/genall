@@ -77,6 +77,7 @@ coefficients \
             --domains=96 \
             --description="huuuger two colors with hotwater2d, 2w" \
             --fp="(-50,0,0)" \
+            --targetdat="superlong.dat" \
             --time=350e-15 |\
     sed 's/type *19.*$/type 85/' |\
     sed 's/^.*\\lambda.*$//' |\

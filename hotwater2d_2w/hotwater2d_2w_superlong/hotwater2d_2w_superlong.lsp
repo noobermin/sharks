@@ -595,17 +595,17 @@ coefficients 1.00 7.8e-5 2.17e-4 0.36 3.9e-5 2.17e-4 end
 ;;
 function3 ; electrons
 type 30
-data_file watercolumn.dat
+data_file superlong.dat
 dependent_variable_multiplier 1.0
 ;;
 function4 ; Oxygen
 type 30
-data_file watercolumn.dat
+data_file superlong.dat
 dependent_variable_multiplier 0.33
 ;;
 function5 ; Protons
 type 30
-data_file watercolumn.dat
+data_file superlong.dat
 dependent_variable_multiplier 0.67
 ;;
 
