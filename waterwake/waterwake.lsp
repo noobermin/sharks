@@ -298,7 +298,7 @@ movie_tag 3
 unbound off
 discrete_numbers 3 3 3
 density_function 4
-reference_point -2.5e-3 0 0
+reference_point -2.500000e-03 -1.500000e-03 0
 density_flags 1 0 0
 momentum_flags 0 0 0
 thermal_energy 1
@@ -312,7 +312,7 @@ movie_tag 3
 unbound off
 discrete_numbers 3 3 3
 density_function 3
-reference_point -2.5e-3 0 0
+reference_point -2.500000e-03 -1.500000e-03 0
 density_flags 1 0 0
 momentum_flags 0 0 0
 thermal_energy 1
@@ -326,7 +326,7 @@ movie_tag 3
 unbound off
 discrete_numbers 3 3 3
 density_function 5
-reference_point -2.5e-3 0 0
+reference_point -2.500000e-03 -1.500000e-03 0
 density_flags 1 0 0
 momentum_flags 0 0 0
 thermal_energy 1
@@ -583,7 +583,7 @@ function1 ; laser temporal function
 type 30
 data_file sine700points.dat
 ;; pulse duration length, 2xFWHM
-independent_variable_multiplier 1.200000e+05
+independent_variable_multiplier 1.200000e-04
 ;; Emax
 dependent_variable_multiplier   1.940954e+07
 

@@ -6,7 +6,7 @@ from genpbs import genpbs;
 pbsbase = "waterwake"
 lsp = genlsp(
     w=8.17e-6,
-    T=120e-6,
+    T=120e-15,
     l=3e-6,
     I=5e17,
     fp=(0,0,0),
