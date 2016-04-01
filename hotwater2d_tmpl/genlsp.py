@@ -33,6 +33,7 @@ Options:
    --targetdat=D     Set the target .dat filename [default: watercolumn.dat]
    --dumpinterval=T  Specify the dump interval [default: 2e-16 ]
    --description=D   Set the description [default: Hotwater]
+   --restart=R       Set the restart time.
 '''
 
 import re;
@@ -54,7 +55,8 @@ defaults = {
     'phases':(0,0,0),
     'targetdat':'watercolumn.dat',
     'dumpinterval':2e-16,
-    'description':'Hotwater in 2d'
+    'description':'Hotwater in 2d',
+    'restart':None
 };
 c  = 299792458
 e0 = 8.8541878176e-12
@@ -101,6 +103,8 @@ def genlsp(**kw):
     targetdat = getkw('targetdat');
     dumpinterval=getkw('dumpinterval')*1e9;
     description=getkw('description');
+    restart = getkw('restart');
+    restarts = "maximum_restart_dump_time {}".format(restart) if restart else "";
     with open("hotwater2d_tmpl.lsp") as f:
         s=f.read();
     s=s.format(
@@ -116,7 +120,8 @@ def genlsp(**kw):
         timestep=timestep,
         targetdat=targetdat,
         dumpinterval=dumpinterval,
-        description=description
+        description=description,
+        restarts=restarts
     );
     return s;
 if __name__ == "__main__":
@@ -138,7 +143,8 @@ if __name__ == "__main__":
         components=gettuple("--comp",length=3),
         phases=gettuple("--phases",length=3),
         description=opts['--description'],
-        targetdat=opts['--targetdat']
+        targetdat=opts['--targetdat'],
+        restart = float(opts['--restart']) if opts['--restart'] else None
     );
     if opts['--resd']:
         kw.update({'resd':gettuple("--resd",length=2,scale=1)});

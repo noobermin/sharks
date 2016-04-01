@@ -5,9 +5,8 @@ simulation_title "micron lwfa?, I = 5e+17 W/cm^2"
 ;Time-advance
  time_limit   2.500000e-04
  time_step_ns 1e-07
-;Restarts
- restart_interval_ns 75000e-6 ; probably much longer than max dump time
- maximum_restart_dump_time 11.5 ;in hours
+;Restart
+
 ;Parallel Processing
  balance_interval_ns 0
  load_balance_flag OFF

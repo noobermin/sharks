@@ -5,9 +5,8 @@ simulation_title "{description}, I = {intensity} W/cm^2"
 ;Time-advance
  time_limit   {totalt:e}
  time_step_ns {timestep}
-;Restarts
- restart_interval_ns 75000e-6 ; probably much longer than max dump time
- maximum_restart_dump_time 11.5 ;in hours
+;Restart
+{restarts}
 ;Parallel Processing
  balance_interval_ns 0
  load_balance_flag OFF
