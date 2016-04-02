@@ -5,9 +5,8 @@ simulation_title "long wavelength, no preplasma, I = 3e+18 W/cm^2"
 ;Time-advance
  time_limit   3.000000e-04
  time_step_ns 8e-08
-;Restarts
- restart_interval_ns 75000e-6 ; probably much longer than max dump time
- maximum_restart_dump_time 11.5 ;in hours
+;Restart
+
 ;Parallel Processing
  balance_interval_ns 0
  load_balance_flag OFF

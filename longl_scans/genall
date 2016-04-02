@@ -190,6 +190,7 @@ cp *.dat $BASE/
 BASE=longl_1e19_no-preplasma
 INTENSITY=1e19
 mkdir -p $BASE
+
 ./genlsp.py -I $INTENSITY -l 3e-6  -w 8.14e-6 \
     -T 120e-15                  \
     --lim="(-20, 20,-25, 25)"   \
@@ -205,3 +206,21 @@ mkdir -p $BASE
 cp *.dat $BASE/
 
 
+#
+#longl_longer_3e18
+BASE=longl_longer_3e18
+INTENSITY=3e18
+mkdir -p $BASE
+./genlsp.py -I $INTENSITY -l 3e-6  -w 8.14e-6 \
+    -T 120e-15                  \
+    --lim="(-45, 10,-20, 20)"   \
+    --tlim="(-35, 0,-15, 15)"   \
+    --res="(1100,800)"          \
+    --targetdat="watercolumn-longer.dat" \
+    --description="longer sim for long wavelength"      \
+    --fp="(-20,0,0)"                     \
+    --step="8e-17">$BASE/$BASE.lsp
+./genpbs.py -p $BASE |\
+    sed 's:../scripts/autozipper:../../scripts/autozipper:'\
+    >$BASE/$BASE.pbs
+cp *.dat $BASE/
