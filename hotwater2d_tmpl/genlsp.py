@@ -75,7 +75,7 @@ def genlsp(**kw):
             return defaults[l];
     E0 = np.sqrt(2*getkw('I')*1e4/(c*e0))*1e-5
     xmin,xmax, ymin,ymax = getkw('lim',scale=1e-4)
-    fp = joinspace(getkw("fp"));
+    fp = joinspace(getkw("fp",scale=1e-4));
     components = joinspace(getkw("components"));
     phases = joinspace(getkw("phases"));
     l = getkw('l')*100.0

@@ -89,7 +89,7 @@ from -4.000000e-03 -2.500000e-03 0
 to   -4.000000e-03 2.500000e-03 0
 phase_velocity 1.0
 drive_model LASER
-reference_point 0 0 0 ; focal point position
+reference_point 0.0 0.0 0.0 ; focal point position
 components 0 1 0
 phases 0 0 0 ; polarization 1.1781
 temporal_function 1
