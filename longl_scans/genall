@@ -206,7 +206,26 @@ mkdir -p $BASE
 cp *.dat $BASE/
 
 
-#
+#longer
+#longl_longer_2e17
+BASE=longl_longer_2e17
+#this intensity has a0 = 1.18 like 3e18W/cm^2 for 800nm light.
+INTENSITY=2.12e17
+mkdir -p $BASE
+./genlsp.py -I $INTENSITY -l 3e-6  -w 8.14e-6 \
+    -T 120e-15                  \
+    --lim="(-45, 10,-20, 20)"   \
+    --tlim="(-35, 0,-15, 15)"   \
+    --res="(1100,800)"          \
+    --targetdat="watercolumn-longer.dat" \
+    --description="longer sim for long wavelength"      \
+    --fp="(-20,0,0)"                     \
+    --step="8e-17">$BASE/$BASE.lsp
+./genpbs.py -p $BASE |\
+    sed 's:../scripts/autozipper:../../scripts/autozipper:'\
+    >$BASE/$BASE.pbs
+cp *.dat $BASE/
+
 #longl_longer_3e18
 BASE=longl_longer_3e18
 INTENSITY=3e18
