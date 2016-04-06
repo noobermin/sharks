@@ -3,7 +3,7 @@ simulation_title "long wavelength, no preplasma, I = 3e+18 W/cm^2"
 ;
 [Control]
 ;Time-advance
- time_limit   3.000000e-04
+ time_limit   5.000000e-04
  time_step_ns 8e-08
 ;Restart
 

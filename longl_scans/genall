@@ -179,6 +179,7 @@ mkdir -p $BASE
     --fp="(-5, 0, 0)"\
     --targetdat="nopreplasma-thicker.dat"\
     --description="long wavelength, no preplasma"\
+    --time=500e-15 \
     --step="8e-17">$BASE/$BASE.lsp
 ./genpbs.py -p $BASE |\
     sed 's:../scripts/autozipper:../../scripts/autozipper:'\
