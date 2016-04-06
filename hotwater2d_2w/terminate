@@ -7,4 +7,11 @@ else
 fi;
 NAME=`basename $D`
 cd $D
-qdel `qstat | grep $NAME | cut -d . -f 1`
+MATCH="$(qstat | grep "$NAME" | head -n 1 | cut -d . -f 1)"
+if [ -n "$MATCH" ]; then
+    echo killing $NAME with jobid $MATCH;
+    qdel "$MATCH";
+else
+    echo $NAME not found
+fi
+
