@@ -132,11 +132,25 @@ independent_variable_multiplier 30.0e-6 ; =2xFWHM,  15 fs FWHM pulse
 dependent_variable_multiplier 4.7543e7  ; 4.754e7 => 3 x 10^18 W/cm^2
 ;
 function2 ; laser analytic function
-type 85   
-coefficients
+type 85
+
+laser
+amplitude   1.0
+wavelength  0.78e-4
+spot        2.17e-4
+phase       3.14
+
+laser
+amplitude   0.5
+wavelength  0.39e-4
+spot        2.17e-4
+phase       3.14
+
+end
+;coefficients
 ; E-factor    \lambda   spotsize
-    1.0        .78e-4    2.17e-4
-    0.5        .49e-4    2.17e-4    end
+;    1.0        .78e-4    2.17e-4
+;    0.5        .49e-4    2.17e-4    end
 
 
 [Probes]
