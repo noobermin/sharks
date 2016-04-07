@@ -144,7 +144,7 @@ laser
 amplitude   0.5
 wavelength  0.39e-4
 spot        2.17e-4
-phase       3.14
+phase       0
 
 end
 ;coefficients
