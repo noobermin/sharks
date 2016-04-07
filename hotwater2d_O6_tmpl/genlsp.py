@@ -22,7 +22,7 @@ Options:
                   res option is ignored.
    --tlim=L -t L  Set the spatial limits of the target as a tuple of
                   limits of the form (xmin,xmax,ymin,ymax)
-                  in microns [default: (-30, 0, -15, 15)]
+                  in microns [default: (-27.5, 0, -15, 15)]
    --comp=C       Set the components (polarization) [default: (0,1,0)]
    --phases=PS    Set the component phases [default: (0,0,0)]
    --fp=F -f F    The focal point as a tuple of positions in
@@ -45,7 +45,7 @@ defaults = {
     'T':60e-15,
     'lim':(-30,5,-20,20),
     'res':(1400,1600),
-    'tlim':(-30,0,-15,15),
+    'tlim':(-27.5,0,-15,15),
     'fp':(0,0,0),
     'domains':48,
     'totaltime':300e-15,
