@@ -137,13 +137,13 @@ type 85
 laser
 amplitude   1.0
 wavelength  0.78e-4
-spot        2.17e-4
+spotsize    2.17e-4
 phase       3.14
 
 laser
 amplitude   0.5
 wavelength  0.39e-4
-spot        2.17e-4
+spotsize    2.17e-4
 phase       0
 
 end
