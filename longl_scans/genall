@@ -180,6 +180,7 @@ mkdir -p $BASE
     --targetdat="nopreplasma-thicker.dat"\
     --description="long wavelength, no preplasma"\
     --time=500e-15 \
+    --pext-species="(10,11)" \
     --step="8e-17">$BASE/$BASE.lsp
 ./genpbs.py -p $BASE |\
     sed 's:../scripts/autozipper:../../scripts/autozipper:'\
@@ -207,7 +208,9 @@ mkdir -p $BASE
 cp *.dat $BASE/
 
 
+###################################################################
 #longer
+
 #longl_longer_2e17
 BASE=longl_longer_2e17
 #this intensity has a0 = 1.18 like 3e18W/cm^2 for 800nm light.

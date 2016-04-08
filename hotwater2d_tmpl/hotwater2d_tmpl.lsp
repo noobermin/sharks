@@ -540,38 +540,39 @@ movie_fraction 0.0
 
 [Particle Extraction]
 ;
-extract1
-species 10
-direction X
-maximum_number 1000000000
-start_time 0.0
-stop_time 1
-at {xmin:e} 0 0
+;;extract1
+;;species 10
+;;direction X
+;;maximum_number 1000000000
+;;start_time 0.0
+;;stop_time 1
+;;at {xmin:e} 0 0
 ;
-extract2
-species 10
-direction X
-maximum_number 1000000000
-start_time 0.0
-stop_time 1
-at {xmax:e} 0 0
+;;extract2
+;;species 10
+;;direction X
+;;maximum_number 1000000000
+;;start_time 0.0
+;;stop_time 1
+;;at {xmax:e} 0 0
 ;
-extract3
-species 10
-direction Y
-maximum_number 1000000000
-start_time 0.0
-stop_time 1
-at 0 {ymax:e} 0
+;;extract3
+;;species 10
+;;direction Y
+;;maximum_number 1000000000
+;;start_time 0.0
+;;stop_time 1
+;;at 0 {ymax:e} 0
 ;
-extract4
-species 10
-direction Y
-maximum_number 1000000000
-start_time 0.0
-stop_time 1
-at 0 {ymin:e} 0
+;;extract4
+;;species 10
+;;direction Y
+;;maximum_number 1000000000
+;;start_time 0.0
+;;stop_time 1
+;;at 0 {ymin:e} 0
 ;
+{pexts}
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Functions

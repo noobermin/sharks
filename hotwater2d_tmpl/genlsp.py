@@ -30,6 +30,7 @@ Options:
    --domains=D       Set the number of domains. [default: 48]
    --time=T          Total simulation time in s.[default: 300e-15]
    --step=T          Time steps in s. [default: 4e-17]
+   --pext-species=S  List of pext species to track. [default: (11,)]  
    --targetdat=D     Set the target .dat filename [default: watercolumn.dat]
    --dumpinterval=T  Specify the dump interval [default: 2e-16 ]
    --description=D   Set the description [default: Hotwater]
@@ -38,7 +39,7 @@ Options:
 
 import re;
 import numpy as np;
-from pys import test,parse_ftuple;
+from pys import test,parse_numtuple,sd;
 defaults = {
     'I':3e18,
     'l':780e-9,
@@ -56,23 +57,70 @@ defaults = {
     'targetdat':'watercolumn.dat',
     'dumpinterval':2e-16,
     'description':'Hotwater in 2d',
+    'pext_species':(10,),
     'restart':None
 };
+pext_defaults = sd(
+    defaults,
+    species=(10,),
+    start_time=0,
+    stop_time=1);
+                   
 c  = 299792458
 e0 = 8.8541878176e-12
 
-gettuple = lambda l,length=4,scale=1: parse_ftuple(
-    opts[l],length=length,scale=scale);
 
 joinspace = lambda l: " ".join([str(i) for i in l]);
+def genpext(**kw):
+    def getkw(l,scale=None):
+        if test(kw, l):
+            ret = kw[l]
+        else:
+            ret = pext_defaults[l];
+        if scale:
+            return [scale*i for i in ret];
+        return ret;
+
+    tmpl='''
+;
+extract{i}
+species {species}
+direction {direction}
+maximum_number  1000000000
+start_time {start_time}
+stop_time  {stop_time}
+at {position}
+'''
+    lims = list(getkw('lim',scale=1e-4));
+    lims[0] = [lims[0],0,0];
+    lims[1] = [lims[1],0,0];
+    lims[2] = [0,lims[2],0];
+    lims[3] = [0,lims[3],0];
+    dirs = ['X','X','Y','Y'];
+    def formatsp(sp,i):
+        return [
+            dict(i=i+j+1,
+                 species=sp,
+                 direction=d,
+                 start_time=getkw('start_time'),
+                 stop_time =getkw('stop_time'),
+                 position  =joinspace(lim))
+            for j,(d,lim) in enumerate(zip(dirs,lims))];
+    return joinspace(
+        [tmpl.format(**d)
+         for i,sp in enumerate(getkw('species'))
+         for d in formatsp(sp,4*i)])
+
 def genlsp(**kw):
     def getkw(l,scale=None):
         if test(kw, l):
-            if scale:
-                return [scale*i for i in kw[l]];
-            return kw[l];
+            ret = kw[l]
         else:
-            return defaults[l];
+            ret = defaults[l];
+        if scale:
+            return [scale*i for i in ret];
+        return ret;
+
     E0 = np.sqrt(2*getkw('I')*1e4/(c*e0))*1e-5
     xmin,xmax, ymin,ymax = getkw('lim',scale=1e-4)
     fp = joinspace(getkw("fp",scale=1e-4));
@@ -100,6 +148,7 @@ def genlsp(**kw):
     if timestep > couraunt:
         import sys
         sys.stderr.write("warning: timestep exceeds couraunt limit\n");
+    pexts = genpext(**sd(kw,species=getkw('pext_species')));
     targetdat = getkw('targetdat');
     dumpinterval=getkw('dumpinterval')*1e9;
     description=getkw('description');
@@ -116,7 +165,9 @@ def genlsp(**kw):
         targ_ymin=targ_ymin, targ_ymax=targ_ymax,
         fp=fp,pulse=T,components=components,phases=phases,
         intensity=getkw('I'),
-        domains=domains,totalt=totalt,
+        pexts=pexts,
+        domains=domains,
+        totalt=totalt,
         timestep=timestep,
         targetdat=targetdat,
         dumpinterval=dumpinterval,
@@ -127,6 +178,8 @@ def genlsp(**kw):
 if __name__ == "__main__":
     from docopt import docopt;
     opts=docopt(__doc__,help=True);
+    gettuple = lambda l,length=4,scale=1,intype=float: parse_numtuple(
+        opts[l],intype,length=length,scale=scale);
     #requires pys
     from pys import parse_ftuple
     kw =dict(
@@ -142,6 +195,7 @@ if __name__ == "__main__":
         timestep=float(opts['--step']),
         components=gettuple("--comp",length=3),
         phases=gettuple("--phases",length=3),
+        pext_species= gettuple("--pext-species",length=None,intype=int),
         description=opts['--description'],
         targetdat=opts['--targetdat'],
         restart = float(opts['--restart']) if opts['--restart'] else None
