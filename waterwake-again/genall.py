@@ -2,7 +2,7 @@
 
 from genlsp import genlsp;
 from genpbs import genpbs;
-pbsbase = "waterwake-longer"
+pbsbase = "waterwake-again"
 lsp = genlsp(
     w=8.17e-6,
     T=60e-15,
