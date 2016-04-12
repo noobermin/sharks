@@ -14,7 +14,8 @@ lsp = genlsp(
     res=(170*10,50*20),
     tlim=(-75,75,-15,15),
     timestep=1e-16,
-    totaltime=6e-13,
+    totaltime=1e-12,
+    dumptime=5e-16,
     targetdat="steamjet.dat",
     description="longer micron lwfa?"
 );

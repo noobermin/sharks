@@ -36,7 +36,7 @@ simulation_title "longer micron lwfa?, I = 1.52e+17 W/cm^2"
  extract_photons_flag OFF
  dump_particles_flag OFF
 ;(Diagnostic Output) Dump Intervals
- dump_interval_ns 2e-07
+ dump_interval_ns 5e-07
  dump_steps
 1 
 end
@@ -50,7 +50,7 @@ end
  use_its_format_flag OFF
  print_region_flag OFF
 ;(Diagnostic Output) Movie Controls
- particle_movie_interval_ns 2e-07
+ particle_movie_interval_ns 5e-07
  particle_movie_components Q X Y VX VY XI YI
 ;Numerical Checks and Reports
  domain_boundary_check ON
@@ -619,7 +619,7 @@ function1 ; laser temporal function
 type 30
 data_file sine700points.dat
 ;; pulse duration length, 2xFWHM
-independent_variable_multiplier 6.000000e-05
+independent_variable_multiplier 1.200000e-04
 ;; Emax
 dependent_variable_multiplier   1.070168e+07
 

@@ -3,7 +3,7 @@ simulation_title "longer micron lwfa?, I = 1e+17 W/cm^2"
 ;
 [Control]
 ;Time-advance
- time_limit   6.000000e-04
+ time_limit   1.000000e-03
  time_step_ns 1e-07
 ;Restart
 
@@ -89,7 +89,7 @@ from -8.500000e-03 -2.500000e-03 0
 to   -8.500000e-03 2.500000e-03 0
 phase_velocity 1.0
 drive_model LASER
-reference_point 0 0 0 ; focal point position
+reference_point 0.0 0.0 0.0 ; focal point position
 components 0 1 0
 phases 0 0 0 ; polarization 1.1781
 temporal_function 1
@@ -540,38 +540,75 @@ movie_fraction 0.0
 
 [Particle Extraction]
 ;
+;;extract1
+;;species 10
+;;direction X
+;;maximum_number 1000000000
+;;start_time 0.0
+;;stop_time 1
+;;at -8.500000e-03 0 0
+;
+;;extract2
+;;species 10
+;;direction X
+;;maximum_number 1000000000
+;;start_time 0.0
+;;stop_time 1
+;;at 8.500000e-03 0 0
+;
+;;extract3
+;;species 10
+;;direction Y
+;;maximum_number 1000000000
+;;start_time 0.0
+;;stop_time 1
+;;at 0 2.500000e-03 0
+;
+;;extract4
+;;species 10
+;;direction Y
+;;maximum_number 1000000000
+;;start_time 0.0
+;;stop_time 1
+;;at 0 -2.500000e-03 0
+;
+
+;
 extract1
 species 10
 direction X
-maximum_number 1000000000
-start_time 0.0
-stop_time 1
-at -8.500000e-03 0 0
+maximum_number  1000000000
+start_time 0
+stop_time  1
+at -0.0085 0 0
+ 
 ;
 extract2
 species 10
 direction X
-maximum_number 1000000000
-start_time 0.0
-stop_time 1
-at 8.500000e-03 0 0
+maximum_number  1000000000
+start_time 0
+stop_time  1
+at 0.0085 0 0
+ 
 ;
 extract3
 species 10
 direction Y
-maximum_number 1000000000
-start_time 0.0
-stop_time 1
-at 0 2.500000e-03 0
+maximum_number  1000000000
+start_time 0
+stop_time  1
+at 0 -0.0025 0
+ 
 ;
 extract4
 species 10
 direction Y
-maximum_number 1000000000
-start_time 0.0
-stop_time 1
-at 0 -2.500000e-03 0
-;
+maximum_number  1000000000
+start_time 0
+stop_time  1
+at 0 0.0025 0
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Functions
