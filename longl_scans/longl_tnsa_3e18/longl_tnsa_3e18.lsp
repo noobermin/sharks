@@ -3,8 +3,8 @@ simulation_title "long wavelength, no preplasma, I = 3e+18 W/cm^2"
 ;
 [Control]
 ;Time-advance
- time_limit   5.000000e-05
- time_step_ns 8e-08
+ time_limit   1.000000e-03
+ time_step_ns 1e-07
 ;Restart
 
 ;Parallel Processing
@@ -50,8 +50,8 @@ end
  use_its_format_flag OFF
  print_region_flag OFF
 ;(Diagnostic Output) Movie Controls
- particle_movie_interval_ns 2e-07
- particle_movie_components Q X Y VX VY XI YI
+;particle_movie_interval_ns 2e-07
+;particle_movie_components Q X Y VX VY XI YI
 ;Numerical Checks and Reports
  domain_boundary_check ON
  report_timing_flag ON

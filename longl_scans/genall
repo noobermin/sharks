@@ -166,7 +166,6 @@ mkdir -p $BASE
     >$BASE/$BASE.pbs
 cp *.dat $BASE/
 
-
 #longl_3e18_no-preplasma
 BASE=longl_3e18_no-preplasma
 INTENSITY=3e18
@@ -179,16 +178,16 @@ mkdir -p $BASE
     --fp="(-5, 0, 0)"\
     --targetdat="nopreplasma-thicker.dat"\
     --description="long wavelength, no preplasma"\
-    --time=500e-15 \
+    --time=500e-16 \
     --pext-species="(10,11)" \
-    --step="8e-17">$BASE/$BASE.lsp
+    --step="8e-17" >$BASE/$BASE.lsp
 ./genpbs.py -p $BASE |\
     sed 's:../scripts/autozipper:../../scripts/autozipper:'\
     >$BASE/$BASE.pbs
 cp *.dat $BASE/
 
 
-#longl_1e19_no-preplasma
+#Longl_1e19_no-preplasma
 BASE=longl_1e19_no-preplasma
 INTENSITY=1e19
 mkdir -p $BASE
@@ -247,3 +246,33 @@ mkdir -p $BASE
     sed 's:../scripts/autozipper:../../scripts/autozipper:'\
     >$BASE/$BASE.pbs
 cp *.dat $BASE/
+
+
+
+
+
+###############################################################
+# TNSA
+
+BASE=longl_tnsa_3e18
+INTENSITY=3e18
+mkdir -p $BASE
+./genlsp.py -I $INTENSITY -l 3e-6  -w 8.14e-6 \
+    -T 120e-15                  \
+    --lim="(-20, 20,-25, 25)"   \
+    --tlim="(-10,10,-15, 15)"   \
+    --res="(800,1000)" \
+    --fp="(-5, 0, 0)"\
+    --targetdat="nopreplasma-thicker.dat"\
+    --description="long wavelength, no preplasma"\
+    --time=1e-12 \
+    --dumpinterval="5e-16" \
+    --pext-species="(10,11)" \
+    --step="1e-16" |\
+    sed 's/^ *\(particle_movie.*$\)/;\1/'>$BASE/$BASE.lsp
+./genpbs.py -p $BASE |\
+    sed 's:../scripts/autozipper:../../scripts/autozipper:'\
+    >$BASE/$BASE.pbs
+cp nopreplasma-thicker.dat sine700points.dat $BASE/
+
+
