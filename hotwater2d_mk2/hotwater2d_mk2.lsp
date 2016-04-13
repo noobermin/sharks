@@ -1,13 +1,12 @@
 [Title]
-simulation_title "Hotwater, I = 3e+18 W/cm^2"
+simulation_title "Hotwater in 2d, I = 3e+18 W/cm^2"
 ;
 [Control]
 ;Time-advance
  time_limit   3.000000e-04
- time_step_ns 4e-08
-;Restarts
- restart_interval_ns 75000e-6 ; probably much longer than max dump time
- maximum_restart_dump_time 11.5 ;in hours
+ time_step_ns 4e-07
+;Restart
+
 ;Parallel Processing
  balance_interval_ns 0
  load_balance_flag OFF
@@ -61,22 +60,22 @@ end
 [Grid]
 ;
 grid1
-xmin             -3.000000e-03
-xmax             5.000000e-04
-x-cells          1400
+xmin             -4.000000e-03
+xmax             1.200000e-03
+x-cells          1664
 ;
-ymin             -2.000000e-03
-ymax             2.000000e-03
+ymin             -2.500000e-03
+ymax             2.500000e-03
 y-cells          1600
 ;
 [Regions]
 ;
 region1
-xmin             -3.000000e-03
-xmax             5.000000e-04
+xmin             -4.000000e-03
+xmax             1.200000e-03
 
-ymin             -2.000000e-03
-ymax             2.000000e-03
+ymin             -2.500000e-03
+ymax             2.500000e-03
 
 number_of_domains 48
 split_direction XSPLIT
@@ -86,11 +85,11 @@ number_of_cells AUTO
 [Boundaries]
 ;back this is the laser
 outlet
-from -3.000000e-03 -2.000000e-03 0
-to   -3.000000e-03 2.000000e-03 0
+from -4.000000e-03 -2.500000e-03 0
+to   -4.000000e-03 2.500000e-03 0
 phase_velocity 1.0
 drive_model LASER
-reference_point 0 0 0 ; focal point position
+reference_point 0.0 0.0 0.0 ; focal point position
 components 0 1 0
 phases 0 0 0 ; polarization 1.1781
 temporal_function 1
@@ -98,20 +97,20 @@ analytic_function 2
 time_delay 0.0
 ;front (back of the target)
 outlet
-from  5.000000e-04 -2.000000e-03 0
-to    5.000000e-04 2.000000e-03 0
+from  1.200000e-03 -2.500000e-03 0
+to    1.200000e-03 2.500000e-03 0
 phase_velocity 1.0
 drive_model NONE
 ;right
 outlet
-from -3.000000e-03  2.000000e-03 0
-to   5.000000e-04  2.000000e-03 0
+from -4.000000e-03  2.500000e-03 0
+to   1.200000e-03  2.500000e-03 0
 phase_velocity 1.0
 drive_model NONE
 ;left
 outlet
-from -3.000000e-03 -2.000000e-03 0
-to     5.000000e-04 -2.000000e-03 0
+from -4.000000e-03 -2.500000e-03 0
+to     1.200000e-03 -2.500000e-03 0
 phase_velocity 1.0
 drive_model NONE
 
@@ -335,8 +334,8 @@ movie_fraction 0.000
 ;; ionization states ;;
 ;
 higherstate              ; O -> O+
-from -3.000000e-03 -2.000000e-03  0
-to   5.000000e-04 2.000000e-03  0
+from -4.000000e-03 -2.500000e-03  0
+to   1.200000e-03 2.500000e-03  0
 interval 1
 species 1
 ion_species 2
@@ -360,8 +359,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O+ -> O++
-from -3.000000e-03 -2.000000e-03  0
-to   5.000000e-04 2.000000e-03  0
+from -4.000000e-03 -2.500000e-03  0
+to   1.200000e-03 2.500000e-03  0
 interval 1
 species 2
 ion_species 3
@@ -385,8 +384,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O++ -> O 3+
-from -3.000000e-03 -2.000000e-03  0
-to   5.000000e-04 2.000000e-03  0
+from -4.000000e-03 -2.500000e-03  0
+to   1.200000e-03 2.500000e-03  0
 interval 1
 species 3
 ion_species 4
@@ -410,8 +409,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O 3+ -> O 4+
-from -3.000000e-03 -2.000000e-03  0
-to   5.000000e-04 2.000000e-03  0
+from -4.000000e-03 -2.500000e-03  0
+to   1.200000e-03 2.500000e-03  0
 interval 1
 species 4
 ion_species 5
@@ -435,8 +434,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O 4+ -> O 5+
-from -3.000000e-03 -2.000000e-03  0
-to   5.000000e-04 2.000000e-03  0
+from -4.000000e-03 -2.500000e-03  0
+to   1.200000e-03 2.500000e-03  0
 interval 1
 species 5
 ion_species 6
@@ -461,8 +460,8 @@ movie_fraction 0.0
 ;
 ;
 higherstate              ; O 5+ -> O 6+
-from -3.000000e-03 -2.000000e-03  0
-to   5.000000e-04 2.000000e-03  0
+from -4.000000e-03 -2.500000e-03  0
+to   1.200000e-03 2.500000e-03  0
 interval 1
 species 6
 ion_species 7
@@ -486,8 +485,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O 6+ -> O 7+
-from -3.000000e-03 -2.000000e-03  0
-to   5.000000e-04 2.000000e-03  0
+from -4.000000e-03 -2.500000e-03  0
+to   1.200000e-03 2.500000e-03  0
 interval 1
 species 7
 ion_species 8
@@ -511,8 +510,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O 7+ -> O 8+
-from -3.000000e-03 -2.000000e-03  0
-to   5.000000e-04 2.000000e-03  0
+from -4.000000e-03 -2.500000e-03  0
+to   1.200000e-03 2.500000e-03  0
 interval 1
 species 8
 ion_species 9
@@ -541,38 +540,75 @@ movie_fraction 0.0
 
 [Particle Extraction]
 ;
+;;extract1
+;;species 10
+;;direction X
+;;maximum_number 1000000000
+;;start_time 0.0
+;;stop_time 1
+;;at -4.000000e-03 0 0
+;
+;;extract2
+;;species 10
+;;direction X
+;;maximum_number 1000000000
+;;start_time 0.0
+;;stop_time 1
+;;at 1.200000e-03 0 0
+;
+;;extract3
+;;species 10
+;;direction Y
+;;maximum_number 1000000000
+;;start_time 0.0
+;;stop_time 1
+;;at 0 2.500000e-03 0
+;
+;;extract4
+;;species 10
+;;direction Y
+;;maximum_number 1000000000
+;;start_time 0.0
+;;stop_time 1
+;;at 0 -2.500000e-03 0
+;
+
+;
 extract1
 species 10
 direction X
-maximum_number 1000000000
-start_time 0.0
-stop_time 1
-at -3.000000e-03 0 0
+maximum_number  1000000000
+start_time 0
+stop_time  1
+at -0.004 0 0
+ 
 ;
 extract2
 species 10
 direction X
-maximum_number 1000000000
-start_time 0.0
-stop_time 1
-at 5.000000e-04 0 0
+maximum_number  1000000000
+start_time 0
+stop_time  1
+at 0.0012 0 0
+ 
 ;
 extract3
 species 10
 direction Y
-maximum_number 1000000000
-start_time 0.0
-stop_time 1
-at 0 2.000000e-03 0
+maximum_number  1000000000
+start_time 0
+stop_time  1
+at 0 -0.0025 0
+ 
 ;
 extract4
 species 10
 direction Y
-maximum_number 1000000000
-start_time 0.0
-stop_time 1
-at 0 -2.000000e-03 0
-;
+maximum_number  1000000000
+start_time 0
+stop_time  1
+at 0 0.0025 0
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Functions
@@ -616,4 +652,3 @@ energy net_energy
 ;
 probe2
 energy total_energy
-
