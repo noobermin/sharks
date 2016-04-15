@@ -28,8 +28,9 @@ Options:
    --fp=F -f F       The focal point as a tuple of positions in
                      microns [default: (0,0,0)]
    --domains=D       Set the number of domains. [default: 48]
-   --time=T          Total simulation time in s.[default: 300e-15]
-   --step=T          Time steps in s. [default: 4e-17]
+   --no-pmovies      Turn off pmovies.   
+   --totaltime=T     Total simulation time in s.[default: 300e-15]
+   --timestep=T      Time steps in s. [default: 4e-17]
    --pext-species=S  List of pext species to track. [default: (11,)]  
    --targetdat=D     Set the target .dat filename [default: watercolumn.dat]
    --dumpinterval=T  Specify the dump interval [default: 2e-16 ]
@@ -153,6 +154,13 @@ def genlsp(**kw):
     dumpinterval=getkw('dumpinterval')*1e9;
     description=getkw('description');
     restart = getkw('restart');
+    if not test(kw,"no_pmovies"):
+        pmovies ='''
+particle_movie_interval_ns {dumpinterval}
+particle_movie_components Q X Y VX VY XI YI
+'''.format(dumpinterval=dumpinterval);
+    else:
+        pmovies = '';
     restarts = "maximum_restart_dump_time {}".format(restart) if restart else "";
     with open("hotwater2d_tmpl.lsp") as f:
         s=f.read();
@@ -165,6 +173,7 @@ def genlsp(**kw):
         targ_ymin=targ_ymin, targ_ymax=targ_ymax,
         fp=fp,pulse=T,components=components,phases=phases,
         intensity=getkw('I'),
+        pmovies=pmovies,
         pexts=pexts,
         domains=domains,
         totalt=totalt,
@@ -198,6 +207,7 @@ if __name__ == "__main__":
         pext_species= gettuple("--pext-species",length=None,intype=int),
         description=opts['--description'],
         targetdat=opts['--targetdat'],
+        no_pmovies=opts['--no-pmovies'],
         restart = float(opts['--restart']) if opts['--restart'] else None
     );
     if opts['--resd']:

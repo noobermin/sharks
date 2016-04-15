@@ -15,7 +15,7 @@ import numpy as np;
 from docopt import docopt;
 
 def genpbs(pbsbase="hotwater2d_templ",domains=48):
-    nodes=domains/48
+    nodes=int(domains/48);
     if domains%48 > 0: nodes+=1;
     
     if nodes == 1:
