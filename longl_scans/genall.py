@@ -87,4 +87,5 @@ for I in [1e18,3e18,1e19]:
           timestep=1e-16,
           no_pmovies=True,
           targetdat="nopreplasma-thicker.dat",
+          pext_species=(10,11),
           descriptiong="long wavelength tnsa");
