@@ -60,7 +60,7 @@ end
         lsp = re.sub('.*coefficients 7.80*e-03.*$', lasers,lsp,flags=re.MULTILINE);
     pbs=genpbs(pbsbase=pbsbase,domains=myd['domains']);
     pbs = re.sub("../scripts/autozipper","../../scripts/autozipper",pbs);
-    pbs = re.sub("lap-10-xy","lsp-10-xy-multilaser",pbs);
+    pbs = re.sub("lsp-10-xy","lsp-10-xy-multilaser",pbs);
     output(lsp,pbs,pbsbase,
            dats=["sine700points.dat", myd['targetdat']],
            dir=pbsbase);

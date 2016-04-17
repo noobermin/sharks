@@ -21,7 +21,7 @@ cp ../../scripts/autozipper ./
 
 # autozipper
 ./autozipper > $PBS_O_WORKDIR/autozipper.log&
-mpirun -np 96 -hostfile $PBS_NODEFILE ./lsp-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+mpirun -np 96 -hostfile $PBS_NODEFILE ./lsp-10-xy-multilaser $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
 
 
 
