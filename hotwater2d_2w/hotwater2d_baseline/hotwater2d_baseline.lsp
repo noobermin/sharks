@@ -1,5 +1,5 @@
 [Title]
-simulation_title "two colors with hotwater2d, baseline, I = 3e+18 W/cm^2"
+simulation_title "two colors, I = 3e+18 W/cm^2"
 ;
 [Control]
 ;Time-advance
@@ -50,8 +50,12 @@ end
  use_its_format_flag OFF
  print_region_flag OFF
 ;(Diagnostic Output) Movie Controls
- particle_movie_interval_ns 2e-07
- particle_movie_components Q X Y VX VY XI YI
+;particle_movie_interval_ns 2e-07
+;particle_movie_components Q X Y VX VY XI YI
+
+particle_movie_interval_ns 2e-07
+particle_movie_components Q X Y VX VY XI YI
+
 ;Numerical Checks and Reports
  domain_boundary_check ON
  report_timing_flag ON
@@ -540,38 +544,75 @@ movie_fraction 0.0
 
 [Particle Extraction]
 ;
+;;extract1
+;;species 10
+;;direction X
+;;maximum_number 1000000000
+;;start_time 0.0
+;;stop_time 1
+;;at -4.000000e-03 0 0
+;
+;;extract2
+;;species 10
+;;direction X
+;;maximum_number 1000000000
+;;start_time 0.0
+;;stop_time 1
+;;at 1.000000e-03 0 0
+;
+;;extract3
+;;species 10
+;;direction Y
+;;maximum_number 1000000000
+;;start_time 0.0
+;;stop_time 1
+;;at 0 2.000000e-03 0
+;
+;;extract4
+;;species 10
+;;direction Y
+;;maximum_number 1000000000
+;;start_time 0.0
+;;stop_time 1
+;;at 0 -2.000000e-03 0
+;
+
+;
 extract1
 species 10
 direction X
-maximum_number 1000000000
-start_time 0.0
-stop_time 1
-at -4.000000e-03 0 0
+maximum_number  1000000000
+start_time 0
+stop_time  1
+at -0.004 0 0
+ 
 ;
 extract2
 species 10
 direction X
-maximum_number 1000000000
-start_time 0.0
-stop_time 1
-at 1.000000e-03 0 0
+maximum_number  1000000000
+start_time 0
+stop_time  1
+at 0.001 0 0
+ 
 ;
 extract3
 species 10
 direction Y
-maximum_number 1000000000
-start_time 0.0
-stop_time 1
-at 0 2.000000e-03 0
+maximum_number  1000000000
+start_time 0
+stop_time  1
+at 0 -0.002 0
+ 
 ;
 extract4
 species 10
 direction Y
-maximum_number 1000000000
-start_time 0.0
-stop_time 1
-at 0 -2.000000e-03 0
-;
+maximum_number  1000000000
+start_time 0
+stop_time  1
+at 0 0.002 0
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Functions
@@ -587,9 +628,9 @@ independent_variable_multiplier 6.000000e-05
 dependent_variable_multiplier   4.754347e+07
 
 function2 ;laser analytic function for lsp v10
-type 19   ; f-number: ~4.3700359348
+type 19   ; f-number: ~4.370035934801187
           ; \lambda spotsize
-coefficients 7.800000e-05 2.170000e-04 end
+coefficients 7.800000e-03 2.170000e-02 end
 
 ;;
 function3 ; electrons
@@ -615,4 +656,3 @@ energy net_energy
 ;
 probe2
 energy total_energy
-
