@@ -86,6 +86,7 @@ mksim("hotwater2d_superlong_baseline",
       domains=96,
       totaltime=350e-15,
       description="huuger two colors",
+      no_pmovies=True,
       fp=(-50,0,0));
 
 
