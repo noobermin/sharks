@@ -40,7 +40,12 @@ Options:
 
 import re;
 import numpy as np;
-from pys import test,parse_numtuple,sd;
+from pys import test,parse_numtuple,sd,take;
+joinspace = lambda l: " ".join([str(i) for i in l]);
+
+c  = 299792458
+e0 = 8.8541878176e-12
+
 defaults = {
     'I':3e18,
     'l':780e-9,
@@ -61,17 +66,13 @@ defaults = {
     'pext_species':(10,),
     'restart':None
 };
+
 pext_defaults = sd(
     defaults,
     species=(10,),
     start_time=0,
     stop_time=1);
-                   
-c  = 299792458
-e0 = 8.8541878176e-12
 
-
-joinspace = lambda l: " ".join([str(i) for i in l]);
 def genpext(**kw):
     def getkw(l,scale=None):
         if test(kw, l):
@@ -112,6 +113,58 @@ at {position}
          for i,sp in enumerate(getkw('species'))
          for d in formatsp(sp,4*i)])
 
+region_defaults = sd(
+    defaults,
+    region_split=('z',1),
+    split_dir='x');
+
+region_tmpl=''';
+region{i}
+xmin             {xmin:e}
+xmax             {xmax:e}
+
+ymin             {ymin:e}
+ymax             {ymax:e}
+
+zmin             {zmin:e}
+zmax             {zmax:e}
+;
+number_of_domains {domains}
+split_direction {split}
+number_of_cells AUTO
+;
+'''
+
+def mkregion_str(regions):
+    return ''.join([region_tmpl.format(**region)
+                    for region in regions ]);
+def genregions(**kw):
+    def getkw(l,scale=None):
+        if test(kw, l):
+            ret = kw[l]
+        else:
+            ret = region_defaults[l];
+        if scale:
+            return [scale*i for i in ret];
+        return ret;
+    regsplit_dir, subdivs = getkw('region_split');
+    
+    nonsplits = [x for x in ['x','y','z']
+                 if x != regsplit_dir ];
+    limkw = [x+lims
+             for x in ['x','y','z']
+             for lims in ['min','max']];
+    lims = {k:lim for k,lim in zip(limkw,getkw('lims'))};
+    
+    total_doms = getkw('domains');
+    doms =  [total_doms//subdivs for i in range(subdivs)];
+    doms[-1] += total_doms % subdivs;
+    mn,mx = lims[regsplit_dir+'min'],lims[regsplit_dir+'max']
+    edges = [mn+i*(mx-mn)/subdivs
+             for i in range(subdivs)] + [mx];
+    regions = []
+    for i in range(subdivs):
+        --here
 def genlsp(**kw):
     def getkw(l,scale=None):
         if test(kw, l):

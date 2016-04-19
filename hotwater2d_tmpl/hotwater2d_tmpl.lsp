@@ -585,7 +585,7 @@ type 30
 data_file sine700points.dat
 ;; pulse duration length, 2xFWHM
 independent_variable_multiplier {pulse:e}
-;; Emax
+;; Emax, intensity={intensity:e} W/cm^2
 dependent_variable_multiplier   {E0:e}
 
 function2 ;laser analytic function for lsp v10
