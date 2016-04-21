@@ -51,8 +51,8 @@ end
  use_its_format_flag OFF
  print_region_flag OFF
 ;(Diagnostic Output) Movie Controls
- particle_movie_interval_ns 2e-07
- particle_movie_components Q X Y VX VY XI YI
+;particle_movie_interval_ns 2e-07
+;particle_movie_components Q X Y VX VY XI YI
 ;Numerical Checks and Reports
  domain_boundary_check ON
  report_timing_flag ON
