@@ -1,5 +1,5 @@
 #PBS -l walltime=96:0:00
-#PBS -l nodes=65:ppn=12
+#PBS -l nodes=47:ppn=12
 #PBS -N hotwater3d_5.4e+17
 #PBS -S /bin/bash
 #PBS -j oe
@@ -22,7 +22,7 @@ cp ../scripts/autozipper ./
 
 # autozipper
 ./autozipper > $PBS_O_WORKDIR/autozipper.log&
-mpiexec -n 780 ./lsp-10-3d $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+mpiexec -n 560 ./lsp-10-3d $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
 
 
 

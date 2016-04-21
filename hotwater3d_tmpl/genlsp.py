@@ -133,13 +133,21 @@ zmax             {zmax:e}
 ;
 number_of_domains {domains}
 split_direction {split}
-number_of_cells AUTO
+number_of_cells AUTO ; {cells}
 ;
 '''
 
 def mkregion_str(regions):
-    return ''.join([region_tmpl.format(**region)
+    def format_region(region):
+        if not test(region,"cells"):
+            region['cells'] = ""
+        else:
+            region['cells'] = "cells = {}".format(region['cells'])
+        return region_tmpl.format(**region);
+    
+    return ''.join([format_region(region)
                     for region in regions ]);
+
 def genregions(**kw):
     def getkw(l,scale=None):
         if test(kw, l):
@@ -156,7 +164,7 @@ def genregions(**kw):
     limkw = [x+lims
              for x in ['x','y','z']
              for lims in ['min','max']];
-    lims = {k:lim for k,lim in zip(limkw,getkw('lim'))};
+    lims = {k:lim for k,lim in zip(limkw,getkw('lim',scale=1e-4))};
     
     total_doms = getkw('domains');
     doms =  [total_doms//subdivs for i in range(subdivs)];
@@ -167,9 +175,18 @@ def genregions(**kw):
              for i in range(subdivs)] + [mx];
     mins = edges[:-1];
     maxs = edges[1:];
+    if test(kw,"xcells") and test(kw,"ycells") and test(kw,"zcells"):
+        zcells_per_region = [kw['zcells']//subdivs 
+                             for i in range(subdivs)]
+        zcells_per_region[-1] += kw['zcells'] % subdivs;
+        
+        cellses = [ kw['xcells']*kw['ycells']*zc
+                    for i,zc in enumerate(zcells_per_region)];
+    else:
+        cellses = [None for i in range(subdivs)];
     reg = sd(lims,split=getkw("region_dom_split").upper()+"SPLIT")
-    regions = [ sd(reg,**{lmn:mn,lmx:mx,'i':i+1,'domains':di})
-                for i,(mn,mx,di) in enumerate(zip(mins,maxs,doms)) ];
+    regions = [ sd(reg,**{lmn:mn,lmx:mx,'i':i+1,'domains':di,'cells':cells})
+                for i,(mn,mx,di,cells) in enumerate(zip(mins,maxs,doms,cellses)) ];
     return mkregion_str(regions);
         
 def genlsp(**kw):
@@ -190,11 +207,12 @@ def genlsp(**kw):
     l = getkw('l')*100.0
     if test(kw,'resd'):
         xres,yres,zres = getkw("resd");
-        xcells = (xmax-xmin)/(l/xres);
-        ycells = (ymax-ymin)/(l/yres);
-        zcells = (zmax-zmin)/(l/zres);
+        kw['xcells'] = (xmax-xmin)/(l/xres);
+        kw['ycells'] = (ymax-ymin)/(l/yres);
+        kw['zcells'] = (zmax-zmin)/(l/zres);
     else:
-        xcells, ycells, zcells = getkw("res");
+        kw['xcells'], kw['ycells'], kw['zcells'] = getkw("res");
+    xcells, ycells, zcells = kw['xcells'], kw['ycells'], kw['zcells']
     w0 = getkw('w')*100.0;
     T  = getkw('T')*1e9;
     txmin,txmax,tymin,tymax,tzmin,tzmax=getkw('tlim',scale=1e-4);
@@ -235,7 +253,7 @@ particle_movie_components Q X Y Z VX VY VZ XI YI ZI
         xmin=xmin,xmax=xmax,
         ymin=ymin,ymax=ymax,
         zmin=zmin,zmax=zmax,
-        xcells=xcells,ycells=ycells,zcells=zcells,
+        xcells=kw['xcells'],ycells=kw['ycells'],zcells=kw['zcells'],
         l=l,w0=w0,E0=E0,
         fnum=fnum,
         targ_xmin=txmin, targ_xmax=txmax,

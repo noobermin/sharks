@@ -15,13 +15,14 @@ lsp_d=dict(
     lim= (-30, 5, -20,20, -20,20),
     res=( 35*10, 40*10, 40*10),
     tlim=(-27.5,0,-15,15,-15,15),
-    timestep=4e-17,
+    timestep=1e-16,
     totaltime=500e-15,
     dumpinterval=5e-16,
     targetdat="watercolumn.dat",
     description="hotwater in 3d",
-    domains=780,
-    region_split=('z',5),
+    domains=560,
+    region_split=('z',40),
+    pext_species=(10,11),
 );
 
 def mkdir(dir):
