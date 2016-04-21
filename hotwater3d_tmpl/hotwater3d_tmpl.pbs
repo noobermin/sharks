@@ -1,0 +1,25 @@
+#PBS -l walltime={walltime}
+#PBS -l {portions}
+#PBS -N {pbsbase}
+#PBS -S /bin/bash
+#PBS -j oe
+#PBS -m ae
+#PBS -M ngirmang.1@osu.edu
+{extra_headers}
+
+PBSBASE={pbsbase}
+#source $HOME/.bashrc
+
+#This outputs the name of the root node
+#to the directory where you submitted this PBS job
+echo $HOSTNAME > $PBS_O_WORKDIR/hostname.txt   
+cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/nodesfile.txt
+
+{pre}
+
+# autozipper
+./autozipper > $PBS_O_WORKDIR/autozipper.log&
+{mpirun} ./{lspexec} $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+
+
+

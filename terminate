@@ -1,17 +1,58 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+USAGE="Stop a simulation
+
+Usage:
+    ./terminate [options] [<regex>]
+
+Options:
+    -h        Print help
+    -a        Kill all matching
+
+"
+ALL=
+while getopts ':ha:' opt; do
+      case $opt in
+          h)
+              echo "$USAGE"
+              exit 0
+              ;;
+          a)
+              ALL=1
+              ;;
+          \?)
+              echo "Invalid option: $OPTARG">&2
+              exit 1
+              ;;
+          :)
+              echo "Option -$OPTARG requires an argument.">&2
+              exit 1
+              ;;
+      esac
+done
+shift "$((OPTIND-1))"
+
 
 if [ $# -eq 1 ]; then 
     D=$1;
 else
     D=$PWD;
 fi;
+
 NAME=`basename $D`
 cd $D
-MATCH="$(qstat | grep "$NAME" | head -n 1 | cut -d . -f 1)"
-if [ -n "$MATCH" ]; then
-    echo killing $NAME with jobid $MATCH;
-    qdel "$MATCH";
+
+killmatch(){
+    echo killing $1 with jobid $2;
+    qdel $2
+}
+
+if [ -n "$ALL" ]; then
+    for i in "$(qstat | grep "$NAME" | cut -d . -f 1)"; do
+        killmatch "$NAME" $i
+    done
 else
-    echo $NAME not found
+    MATCH="$(qstat | grep "$NAME" | head -1 | cut -d . -f 1 )"
+    [ ! -n "$MATCH" ] && killmatch "$NAME" "$MATCH"
 fi
 

@@ -1,10 +1,43 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-if [ $# -eq 1 ]; then 
+USAGE="Start a simulation
+
+Usage:
+    ./start [options] [<dir>]
+
+Options:
+    -h        Print help
+    -a A      Append a part to the pbs.
+
+"
+APPEND=
+while getopts ':ha:' opt; do
+      case $opt in
+          h)
+              echo "$USAGE"
+              exit 0
+              ;;
+          a)
+              APPEND=$OPTARG
+              ;;
+          \?)
+              echo "Invalid option: $OPTARG">&2
+              exit 1
+              ;;
+          :)
+              echo "Option -$OPTARG requires an argument.">&2
+              exit 1
+              ;;
+      esac
+done
+shift "$((OPTIND-1))"
+
+
+if [ $# -ge 1 ]; then 
     D=$1;
 else
     D=$PWD;
 fi;
 NAME=`basename $D`
 cd $D
-qsub $NAME.pbs
+qsub $NAME$APPEND.pbs

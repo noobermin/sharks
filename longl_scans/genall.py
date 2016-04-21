@@ -7,12 +7,7 @@ from pys import sd,test;
 import shutil as sh;
 def mkdir(dir):
     os.makedirs(dir, exist_ok=True);
-    return;
-    try: 
-        os.makedirs(dir)
-    except OSError:
-        if not os.path.isdir(dir):
-            raise
+
 def output(lsp,pbs,pbsbase,
            dats=["sine700points.dat","watercolumn.dat"],
            dir=None):
