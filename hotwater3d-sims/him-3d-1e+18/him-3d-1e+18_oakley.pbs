@@ -1,16 +1,13 @@
-#PBS -l walltime=168:0:00
-#PBS -l select=35:ncpus=32:mpiprocs=16
-#PBS -N H2O-3d-3e+18
+#PBS -l walltime=96:0:00
+#PBS -l nodes=59:ppn=12
+#PBS -N him-3d-1e+18
 #PBS -S /bin/bash
 #PBS -j oe
 #PBS -m ae
 #PBS -M ngirmang.1@osu.edu
 
-#PBS -A __projectid__
-#PBS -q standard_lw
 
-
-PBSBASE=H2O-3d-3e+18
+PBSBASE=him-3d-1e+18
 #source $HOME/.bashrc
 
 #This outputs the name of the root node
@@ -25,7 +22,7 @@ cp ../scripts/autozipper ./
 
 # autozipper
 ./autozipper > $PBS_O_WORKDIR/autozipper.log&
-aprun -n 560 ./lsp-10-3d $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+mpiexec -n 700 ./lsp-10-3d $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
 
 
 

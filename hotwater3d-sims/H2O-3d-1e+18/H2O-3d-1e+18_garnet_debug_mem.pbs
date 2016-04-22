@@ -1,5 +1,5 @@
 #PBS -l walltime=1:0:00
-#PBS -l select=24:ncpus=32:mpiprocs=24
+#PBS -l select=35:ncpus=32:mpiprocs=16
 #PBS -N H2O-3d-1e+18
 #PBS -S /bin/bash
 #PBS -j oe
