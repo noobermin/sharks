@@ -917,7 +917,7 @@ selection_ratio 0.01
 
 plasma ; O+
 from -2.750000e-03  -1.500000e-03  -1.500000e-03
-to   0.000000e+00  1.500000e-03  -1.500000e-03
+to   0.000000e+00  1.500000e-03  1.500000e-03
 species 2
 movie_tag 3
 unbound off

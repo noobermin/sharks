@@ -314,7 +314,7 @@ selection_ratio 0.01
 
 plasma ; O+
 from {targ_xmin:e}  {targ_ymin:e}  {targ_zmin:e}
-to   {targ_xmax:e}  {targ_ymax:e}  {targ_zmin:e}
+to   {targ_xmax:e}  {targ_ymax:e}  {targ_zmax:e}
 species 2
 movie_tag 3
 unbound off
