@@ -1,6 +1,6 @@
 #!/usr/bin/env python2
 '''
-Generate an lsp file.
+Generate an lsp fileg.
 
 Usage:
   ./genlsp.py [options]
@@ -31,7 +31,7 @@ Options:
    --no-pmovies      Turn off pmovies.   
    --totaltime=T     Total simulation time in s.[default: 300e-15]
    --timestep=T      Time steps in s. [default: 4e-17]
-   --pext-species=S  List of pext species to track. [default: (11,)]  
+   --pext-species=S  List of pext species to track. [default: (10,)]  
    --targetdat=D     Set the target .dat filename [default: watercolumn.dat]
    --dumpinterval=T  Specify the dump interval [default: 2e-16 ]
    --description=D   Set the description [default: Hotwater]

@@ -1,6 +1,6 @@
 #PBS -l walltime=168:0:00
 #PBS -l select=18:ncpus=32:mpiprocs=32
-#PBS -N hotwater3d_1e+18
+#PBS -N H2O-3d-1e+19
 #PBS -S /bin/bash
 #PBS -j oe
 #PBS -m ae
@@ -10,7 +10,7 @@
 #PBS -q standard_lw
 
 
-PBSBASE=hotwater3d_1e+18
+PBSBASE=H2O-3d-1e+19
 #source $HOME/.bashrc
 
 #This outputs the name of the root node

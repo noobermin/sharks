@@ -22,33 +22,34 @@ defaults = dict(
     pbsbase="hotwater3d_test",
     domains=48,
     cluster="ramses",
+    ppn=48,
     walltime=inf,
     lspexec='lsp-10-3d'
 )
 cluster =  dict(
-    ppn=48,max_walltime=9999,mpi='mpirun -np {}',
+    ppn=48,max_walltime=9999,mpi='mpirun -np {}',max_ppn=48,
 )
 clusters= {
     'ramses':cluster,
     'oakley':sd(
         cluster,
-        ppn=12,
+        max_ppn=12,
         max_walltime=96,
         mpi='mpiexec -n {}'),
     'garnet_standard_lw':sd(
         cluster,
-        ppn=32,
+        max_ppn=32,
         max_walltime=168,
         mpi='aprun -n {}'),
     'garnet_debug':sd(
         cluster,
-        ppn=32,
+        max_ppn=32,
         max_walltime=1,
         mpi='aprun -n {}'),
 };
 
 normal_portion_tmpl="nodes={nodes}:ppn={ppn}"
-garnet_portion_tmpl="select={nodes}:ncpus={ppn}:mpiprocs={mpiprocs}"
+garnet_portion_tmpl="select={nodes}:ncpus={max_ppn}:mpiprocs={ppn}"
 
 intflr = lambda f: int(np.floor(f));
 def hours_to_walltime(walltime):
@@ -69,7 +70,7 @@ def genpbs(**kw):
     if test(kw,'ppn'):
         ppn = kw['ppn'];
     else:
-        ppn = mycluster['ppn'];
+        ppn = mycluster['max_ppn'];
     nodes=int(domains/ppn);
     if domains%ppn > 0: nodes+=1;
 
@@ -110,8 +111,8 @@ cd $D
             kw['mpiprocs']=ppn;    
         portions = garnet_portion_tmpl.format(
             nodes=nodes,
-            ppn=ppn,
-            mpiprocs=kw['mpiprocs']);
+            max_ppn=mycluster['max_ppn'],
+            ppn=ppn);
         extra_headers='''
 #PBS -A __projectid__
 #PBS -q {}

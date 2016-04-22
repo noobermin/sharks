@@ -44,11 +44,24 @@ def mksim(pbsbase,**d):
             domains=myd['domains'],
             cluster='garnet',
             queue='debug'),
+        garnet_debug_mem=genpbs(
+            pbsbase=pbsbase,
+            domains=myd['domains'],
+            cluster='garnet',
+            ppn=24,
+            queue='debug'),
         garnet=genpbs(
             pbsbase=pbsbase,
             domains=myd['domains'],
             cluster='garnet',
-            queue='standard_lw'));
+            queue='standard_lw'),
+        garnet_mem=genpbs(
+            pbsbase=pbsbase,
+            domains=myd['domains'],
+            cluster='garnet',
+            ppn=24,
+            queue='standard_lw'),
+    );
     mkdir(pbsbase);    
     auxs = [
         "sine700points.dat", myd['targetdat'],
@@ -70,5 +83,5 @@ Is= [5.4e17, 1e18, 1.5e18, 3e18, 1e19];
 
 #vanillas
 for I in Is:
-    mksim("hotwater3d_{}".format(I),I=I);
+    mksim("H2O-3d-{}".format(I),I=I);
 
