@@ -1,5 +1,5 @@
 #PBS -l walltime=1:00:00
-#PBS -l select=12:ncpus=32:mpiprocs=16
+#PBS -l select=24:ncpus=32:mpiprocs=8
 #PBS -N hotwater3d_mk1
 #PBS -j oe
 #PBS -m ae
