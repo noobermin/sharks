@@ -1,0 +1,15 @@
+#PBS -l walltime=1:00:00
+#PBS -l nodes=12:ncpus=32:mpiprocs=16
+#PBS -N hotwater3d_mk1
+#PBS -j oe
+#PBS -m ae
+#PBS -M ngirmang.1@osu.edu
+#PBS -A __projectid__
+#PBS -q debug
+
+cd $PBS_O_WORKDIR
+
+echo $HOSTNAME > $PBS_O_WORKDIR/hostname.txt   
+cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/cat_nodefile.txt
+
+aprun -n 192 ./lsp-10-3d hotwater3d_mk1.lsp > hotwater3d_mk1.o.txt 
