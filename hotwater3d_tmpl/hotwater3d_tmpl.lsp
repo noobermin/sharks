@@ -127,7 +127,7 @@ drive_model NONE
 ;bottom
 outlet
 from {xmin:e} {ymin:e} {zmin:e}
-to   {xmax:e} {ymin:e} {zmin:e}
+to   {xmax:e} {ymax:e} {zmin:e}
 phase_velocity 1.0
 drive_model NONE
 ;top

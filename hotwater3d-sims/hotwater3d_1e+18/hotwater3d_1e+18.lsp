@@ -730,7 +730,7 @@ drive_model NONE
 ;bottom
 outlet
 from -3.000000e-03 -2.000000e-03 -2.000000e-03
-to   5.000000e-04 -2.000000e-03 -2.000000e-03
+to   5.000000e-04 2.000000e-03 -2.000000e-03
 phase_velocity 1.0
 drive_model NONE
 ;top
