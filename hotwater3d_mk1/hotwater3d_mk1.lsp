@@ -45,7 +45,7 @@ end
  spatial_skip_x 1
  spatial_skip_y 1
  spatial_skip_z 1
- probe_interval 100
+ probe_interval 1
 ;(Diagnostic Output) Formats
  photon_output_format ASCII
  target_output_format ASCII
