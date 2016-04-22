@@ -957,6 +957,7 @@ data_pairs
 end
 ;
 ;
+[Probes]
 probe1
 point E Z
 at -0.0030 0 0
