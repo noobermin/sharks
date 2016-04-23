@@ -17,11 +17,8 @@ cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/nodesfile.txt
 
 
 cd $PBS_O_WORKDIR
-cp ../scripts/autozipper ./
 
 
-# autozipper
-./autozipper > $PBS_O_WORKDIR/autozipper.log&
 mpiexec -n 560 ./lsp-10-3d $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
 
 

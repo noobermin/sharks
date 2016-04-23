@@ -17,8 +17,6 @@ cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/nodesfile.txt
 
 {pre}
 
-# autozipper
-./autozipper > $PBS_O_WORKDIR/autozipper.log&
 {mpirun} ./{lspexec} $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
 
 

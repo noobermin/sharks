@@ -92,3 +92,11 @@ for I in Is:
         domains=700,
         region_split=('z',50),
     );
+
+#more domains
+mksim(
+    "more-res",
+    I=I,
+    domains=1400,
+    region_split=('z',50),
+);

@@ -24,7 +24,8 @@ defaults = dict(
     cluster="ramses",
     ppn=48,
     walltime=inf,
-    lspexec='lsp-10-3d'
+    lspexec='lsp-10-3d',
+    autozipper=True,
 )
 cluster =  dict(
     ppn=48,max_walltime=9999,mpi='mpirun -np {}',max_ppn=48,
@@ -78,7 +79,6 @@ def genpbs(**kw):
     mpirun= mycluster['mpi'].format(domains);
     pre = '''
 cd $PBS_O_WORKDIR
-cp ../scripts/autozipper ./
 ''';
     portions = normal_portion_tmpl.format(
         nodes=nodes,ppn=ppn);
@@ -117,6 +117,10 @@ cd $D
 #PBS -A __projectid__
 #PBS -q {}
 '''.format(kw['queue']);
+    if test(kw, 'autozipper'):
+        pre+='''#autozipper
+./autozipper > $PBS_O_WORKDIR/autozipper.log&
+'''
     with open("hotwater3d_tmpl.pbs") as f:
         s=f.read();
     return s.format(
