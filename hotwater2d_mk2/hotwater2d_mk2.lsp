@@ -4,7 +4,7 @@ simulation_title "Hotwater in 2d, I = 3e+18 W/cm^2"
 [Control]
 ;Time-advance
  time_limit   3.000000e-04
- time_step_ns 4e-07
+ time_step_ns 4e-08
 ;Restart
 
 ;Parallel Processing
@@ -625,7 +625,7 @@ data_file sine700points.dat
 ;; pulse duration length, 2xFWHM
 independent_variable_multiplier 6.000000e-05
 ;; Emax, intensity=3.000000e+18 W/cm^2
-dependent_variable_multiplier   4.754347e+07
+dependent_variable_multiplier   4.754347e+06
 
 function2 ;laser analytic function for lsp v10
 type 19   ; f-number: ~4.3700359348

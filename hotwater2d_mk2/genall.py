@@ -7,7 +7,7 @@ lsp = genlsp(
     lim=(-40,12,-25,25),
     res=(52*32,50*32),
     tlim=(-27.5,0,-15,15),
-    timestep=4e-16,);
+    timestep=4e-17,);
 pbs = genpbs(pbsbase=pbsbase);
 with open(pbsbase+".lsp","w") as f:
     f.write(lsp)

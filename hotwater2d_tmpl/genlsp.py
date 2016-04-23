@@ -43,7 +43,7 @@ import numpy as np;
 from pys import test,parse_numtuple,sd,take;
 joinspace = lambda l: " ".join([str(i) for i in l]);
 
-c  = 299792458
+c  = 299792458*100
 e0 = 8.8541878176e-12
 
 defaults = {
