@@ -23,6 +23,7 @@ lsp_d=dict(
     domains=560,
     region_split=('z',40),
     pext_species=(10,11),
+    restart=23.95,
 );
 
 def mkdir(dir):
@@ -97,6 +98,6 @@ for I in Is:
 mksim(
     "more-res",
     I=I,
-    domains=1400,
-    region_split=('z',50),
+    domains=700,
+    region_split=('z',80),
 );
