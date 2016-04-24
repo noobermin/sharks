@@ -20,8 +20,8 @@ lsp_d=dict(
     dumpinterval=5e-16,
     targetdat="watercolumn.dat",
     description="hotwater in 3d",
-    domains=560,
-    region_split=('z',40),
+    domains=700,
+    region_split=('z',50),
     pext_species=(10,11),
     restart=23.95,
 );
@@ -85,14 +85,6 @@ Is= [5.4e17, 1e18, 1.5e18, 3e18, 1e19];
 #vanillas
 for I in Is:
     mksim("H2O-3d-{}".format(I),I=I);
-#subdiv by 50
-for I in Is:
-    mksim(
-        "him-3d-{}".format(I),
-        I=I,
-        domains=700,
-        region_split=('z',50),
-    );
 
 #more domains
 mksim(
