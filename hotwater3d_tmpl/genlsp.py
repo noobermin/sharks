@@ -1,6 +1,6 @@
 #!/usr/bin/env python2
 '''
-Generate an lsp fileg.
+Generate an lsp file.
 
 Usage:
   ./genlsp.py [options]

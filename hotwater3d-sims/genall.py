@@ -8,7 +8,7 @@ import os;
 import shutil as sh;
 lsp_d=dict(
     w=2.2e-6,
-    T=40e-15,
+    T=80e-15,
     l=780e-9,
     I=3e18,
     fp=(0,0,0),
