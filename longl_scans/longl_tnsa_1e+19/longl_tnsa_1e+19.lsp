@@ -1,5 +1,5 @@
 [Title]
-simulation_title "long wavelength, I = 1e+19 W/cm^2"
+simulation_title "long wavelength tnsa, I = 1e+19 W/cm^2"
 ;
 [Control]
 ;Time-advance
@@ -658,7 +658,7 @@ data_file sine700points.dat
 ;; pulse duration length, 2xFWHM
 independent_variable_multiplier 1.200000e-04
 ;; Emax, intensity=1.000000e+19 W/cm^2
-dependent_variable_multiplier   8.680211e+06
+dependent_variable_multiplier   8.680211e+07
 
 function2 ;laser analytic function for lsp v10
 type 19   ; f-number: ~4.262094033370152

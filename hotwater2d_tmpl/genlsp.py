@@ -43,7 +43,8 @@ import numpy as np;
 from pys import test,parse_numtuple,sd,take;
 joinspace = lambda l: " ".join([str(i) for i in l]);
 
-c  = 299792458*100
+c  = 299792458
+c_cgs=c*100
 e0 = 8.8541878176e-12
 
 defaults = {
@@ -179,7 +180,7 @@ def genlsp(**kw):
         if scale:
             return [scale*i for i in ret];
         return ret;
-
+    intensity=getkw('I');
     E0 = np.sqrt(2*getkw('I')*1e4/(c*e0))*1e-5
     xmin,xmax, ymin,ymax = getkw('lim',scale=1e-4)
     fp = joinspace(getkw("fp",scale=1e-4));
@@ -202,8 +203,8 @@ def genlsp(**kw):
     totalt=getkw('totaltime')*1e9
     timestep=getkw('timestep')*1e9;
     couraunt = min(
-        ((xmax-xmin)/xcells/c)*1e9,
-        ((ymax-ymin)/ycells/c)*1e9)
+        ((xmax-xmin)/xcells/c_cgs)*1e9,
+        ((ymax-ymin)/ycells/c_cgs)*1e9)
     if timestep > couraunt:
         import sys
         sys.stderr.write("warning: timestep exceeds couraunt limit\n");

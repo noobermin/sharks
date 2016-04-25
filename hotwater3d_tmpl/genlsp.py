@@ -44,6 +44,7 @@ from pys import test,parse_numtuple,sd,take;
 joinspace = lambda l: " ".join([str(i) for i in l]);
 
 c  = 299792458
+c_cgs=c*100;
 e0 = 8.8541878176e-12
 
 defaults = {
@@ -223,9 +224,9 @@ def genlsp(**kw):
     totaltime=getkw('totaltime')*1e9
     timestep=getkw('timestep')*1e9;
     couraunt = min(
-        ((xmax-xmin)/xcells/c)*1e9,
-        ((ymax-ymin)/ycells/c)*1e9,
-        ((zmax-zmin)/zcells/c)*1e9,)
+        ((xmax-xmin)/xcells/c_cgs)*1e9,
+        ((ymax-ymin)/ycells/c_cgs)*1e9,
+        ((zmax-zmin)/zcells/c_cgs)*1e9,)
     if timestep > couraunt:
         import sys
         sys.stderr.write("warning: timestep exceeds couraunt limit\n");
