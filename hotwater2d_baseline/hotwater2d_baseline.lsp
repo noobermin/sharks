@@ -622,7 +622,7 @@ data_file sine700points.dat
 ;; pulse duration length, 2xFWHM
 independent_variable_multiplier 6.000000e-05
 ;; Emax, intensity=3.000000e+18 W/cm^2
-dependent_variable_multiplier   4.754347e+06
+dependent_variable_multiplier   4.754347e+07
 
 function2 ;laser analytic function for lsp v10
 type 19   ; f-number: ~4.3700359348
@@ -653,3 +653,6 @@ energy net_energy
 ;
 probe2
 energy total_energy
+;
+probe3
+performance cpu_time
