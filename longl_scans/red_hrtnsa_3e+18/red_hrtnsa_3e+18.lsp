@@ -1,10 +1,10 @@
 [Title]
-simulation_title "long wavelength, no preplasma, I = 3e+18 W/cm^2"
+simulation_title "long wavelength, I = 3e+18 W/cm^2"
 ;
 [Control]
 ;Time-advance
- time_limit   6.000000e-04
- time_step_ns 8e-08
+ time_limit   2.000000e-03
+ time_step_ns 5e-08
 ;Restart
 
 ;Parallel Processing
@@ -36,7 +36,7 @@ simulation_title "long wavelength, no preplasma, I = 3e+18 W/cm^2"
  extract_photons_flag OFF
  dump_particles_flag OFF
 ;(Diagnostic Output) Dump Intervals
- dump_interval_ns 2e-07
+ dump_interval_ns 5.000000000000001e-07
  dump_steps
 1 
 end
@@ -50,11 +50,8 @@ end
  use_its_format_flag OFF
  print_region_flag OFF
 ;(Diagnostic Output) Movie Controls
-;particle_movie_interval_ns 2e-07
+;particle_movie_interval_ns 5.000000000000001e-07
 ;particle_movie_components Q X Y VX VY XI YI
-
-particle_movie_interval_ns 2e-07
-particle_movie_components Q X Y VX VY XI YI
 
 ;Numerical Checks and Reports
  domain_boundary_check ON
@@ -66,11 +63,11 @@ particle_movie_components Q X Y VX VY XI YI
 grid1
 xmin             -2.000000e-03
 xmax             2.000000e-03
-x-cells          800
+x-cells          1600
 ;
 ymin             -2.500000e-03
 ymax             2.500000e-03
-y-cells          1000
+y-cells          2000
 ;
 [Regions]
 ;
@@ -659,14 +656,14 @@ function1 ; laser temporal function
 type 30
 data_file sine700points.dat
 ;; pulse duration length, 2xFWHM
-independent_variable_multiplier 1.200000e-04
+independent_variable_multiplier 4.200000e-05
 ;; Emax, intensity=3.000000e+18 W/cm^2
 dependent_variable_multiplier   4.754347e+06
 
 function2 ;laser analytic function for lsp v10
-type 19   ; f-number: ~4.262094033370152
+type 19   ; f-number: ~4.319689898685966
           ; \lambda spotsize
-coefficients 3.000000e-04 8.140000e-04 end
+coefficients 8.000000e-05 2.200000e-04 end
 
 ;;
 function3 ; electrons

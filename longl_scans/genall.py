@@ -84,3 +84,36 @@ for I in [1e18,3e18,1e19]:
           targetdat="nopreplasma-thicker.dat",
           pext_species=(10,11),
           descriptiong="long wavelength tnsa");
+
+
+#now, high res tnsa
+for I in [1e18,3e18,1e19]:
+    mksim("longl_hrtnsa_{}".format(I),
+          I=I,
+          lim=(-20,20,-25,25),
+          tlim=(-10,10,-15,15),
+          res=(1600,2000),
+          fp=(-5,0,0),
+          totaltime=2e-12,
+          dumpinterval=5e-16,
+          timestep=5e-17,
+          no_pmovies=True,
+          targetdat="nopreplasma-thicker.dat",
+          pext_species=(10,11),
+          descriptiong="long wavelength tnsa");
+    mksim("red_hrtnsa_{}".format(I),
+          I=I,
+          l=800e-9,
+          w=2.2e-6,
+          T=42e-15,
+          lim=(-20,20,-25,25),
+          tlim=(-10,10,-15,15),
+          res=(1600,2000),
+          fp=(-5,0,0),
+          totaltime=2e-12,
+          dumpinterval=5e-16,
+          timestep=5e-17,
+          no_pmovies=True,
+          targetdat="nopreplasma-thicker.dat",
+          pext_species=(10,11),
+          descriptiong="long wavelength tnsa");

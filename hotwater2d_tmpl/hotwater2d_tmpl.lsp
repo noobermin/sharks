@@ -617,3 +617,6 @@ energy net_energy
 ;
 probe2
 energy total_energy
+;
+probe3
+performance cpu_time
