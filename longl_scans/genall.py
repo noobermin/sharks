@@ -117,3 +117,25 @@ for I in [1e18,3e18,1e19]:
           targetdat="nopreplasma-thicker.dat",
           pext_species=(10,11),
           description="long wavelength tnsa");
+
+#these are simulations with longer scale length
+def mkscale_sim(I=1e18,dat="5.625um"):
+    datf="water-{}.dat".format(dat);
+    mksim("longl_l={}_{}".format(dat,I),
+          lim=(-50,50,-25,25),
+          tlim=(-40,40,-15,15),
+          res=(1000,500),
+          fp=(-36,0,0),
+          totaltime=400e-15,
+          dumpinterval=5e-16,
+          timestep=5e-17,
+          no_pmovies=True,
+          targetdat=datf,
+          pext_species=(10,11),
+          description="long wavelength with scale {}".format(dat));
+
+[ mkscale_sim(I,dat)
+  for I in [2.1333e17,5e17,1e18,3e18]
+  for dat in ["5.625um"] ];
+
+

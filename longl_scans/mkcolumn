@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-./mklin.py>watercolumn.dat
-./mklin.py -l 0.4e-4 -x '(0.0,20e-4)' -s '(5e-4,20e-4)'\
-           >nopreplasma-thicker.dat
-./mklin.py -x '(0,35e-4)' -s '(25e-4,35e-4)'>watercolumn-longer.dat
