@@ -119,24 +119,37 @@ for I in [1e18,3e18,1e19]:
           description="long wavelength tnsa");
 
 #these are simulations with longer scale length
-def mkscale_sim(I=1e18,dat="5.625um",fp=(-4,0,0)):
-    datf="water-{}.dat".format(dat);
-    mksim("longl_l={}_{}".format(dat,I),
-          lim=(-50,50,-25,25),
-          tlim=(-40,40,-15,15),
-          res=(1000,500),
-          fp=fp,
-          totaltime=400e-15,
-          dumpinterval=5e-16,
-          timestep=5e-17,
-          no_pmovies=True,
-          targetdat=datf,
-          pext_species=(10,11),
-          description="long wavelength with scale {}".format(dat));
+scale_sim = sd(
+    lsp_d,
+    lim=(-50,50,-25,25),
+    tlim=(-40,40,-15,15),
+    res=(1000,500),
+    fp=(-4,0,0),
+    totaltime=400e-15,
+    dumpinterval=5e-16,
+    timestep=5e-17,
+    no_pmovies=True,
+    dat="5.625um",
+    pext_species=(10,11));
+               
+def mkscale_sim(**d):
+    datf="water-{}.dat".format(d['dat']);
+    d = sd(
+        d,targetdat=datf,
+        description="scale length sim with {}".format(d['dat']));
+    if not test(d, "name"):
+        name = "longl_l={}_{}".format(d['dat'],d['I']);
+    else:
+        name = d['name'];
+    mksim(name,**d);
 
-[ mkscale_sim(I,dat,fp)
+[ mkscale_sim(I=I,dat=dat,fp=fp)
   for I in [2.1333e17,5e17,1e18,3e18]
-  for dat in ["5.625um"]
-  for fp in [(-40,0,0)]];
-
+  for dat in ["5.625um"] for fp in [(-4,0,0)]];
+#wider
+mkscale_sim(I=2.1333e17,dat="5.625um",fp=(-4,0,0),
+            lim=(-50,50,-35,35),
+            tlim=(-40,40,-25,25),
+            res=(1000,700),
+            name="longl_l=5.625um-wider_2.1333e+17");
 
