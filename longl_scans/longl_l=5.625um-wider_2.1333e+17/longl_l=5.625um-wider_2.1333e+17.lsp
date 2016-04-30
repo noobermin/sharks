@@ -3,8 +3,8 @@ simulation_title "scale length sim with 5.625um, I = 2.1333e+17 W/cm^2"
 ;
 [Control]
 ;Time-advance
- time_limit   3.000000e-04
- time_step_ns 8e-08
+ time_limit   4.500000e-04
+ time_step_ns 5e-08
 ;Restart
 
 ;Parallel Processing
@@ -36,7 +36,7 @@ simulation_title "scale length sim with 5.625um, I = 2.1333e+17 W/cm^2"
  extract_photons_flag OFF
  dump_particles_flag OFF
 ;(Diagnostic Output) Dump Intervals
- dump_interval_ns 2e-07
+ dump_interval_ns 5.000000000000001e-07
  dump_steps
 1 
 end
@@ -50,11 +50,8 @@ end
  use_its_format_flag OFF
  print_region_flag OFF
 ;(Diagnostic Output) Movie Controls
-;particle_movie_interval_ns 2e-07
+;particle_movie_interval_ns 5.000000000000001e-07
 ;particle_movie_components Q X Y VX VY XI YI
-
-particle_movie_interval_ns 2e-07
-particle_movie_components Q X Y VX VY XI YI
 
 ;Numerical Checks and Reports
  domain_boundary_check ON
@@ -607,6 +604,42 @@ at 0 -0.0035 0
 ;
 extract4
 species 10
+direction Y
+maximum_number  1000000000
+start_time 0
+stop_time  1
+at 0 0.0035 0
+ 
+;
+extract5
+species 11
+direction X
+maximum_number  1000000000
+start_time 0
+stop_time  1
+at -0.005 0 0
+ 
+;
+extract6
+species 11
+direction X
+maximum_number  1000000000
+start_time 0
+stop_time  1
+at 0.005 0 0
+ 
+;
+extract7
+species 11
+direction Y
+maximum_number  1000000000
+start_time 0
+stop_time  1
+at 0 -0.0035 0
+ 
+;
+extract8
+species 11
 direction Y
 maximum_number  1000000000
 start_time 0

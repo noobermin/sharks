@@ -125,7 +125,7 @@ scale_sim = sd(
     tlim=(-40,40,-15,15),
     res=(1000,500),
     fp=(-4,0,0),
-    totaltime=400e-15,
+    totaltime=450e-15,
     dumpinterval=5e-16,
     timestep=5e-17,
     no_pmovies=True,
@@ -134,9 +134,9 @@ scale_sim = sd(
                
 def mkscale_sim(**d):
     datf="water-{}.dat".format(d['dat']);
-    d = sd(
-        d,targetdat=datf,
-        description="scale length sim with {}".format(d['dat']));
+    d = sd(scale_sim, **d);
+    d['targetdat']=datf;
+    d['description']="scale length sim with {}".format(d['dat']);
     if not test(d, "name"):
         name = "longl_l={}_{}".format(d['dat'],d['I']);
     else:
