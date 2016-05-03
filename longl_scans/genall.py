@@ -170,3 +170,29 @@ mkscale_sim(I=2.1333e17,dat="5.625um",fp=(-4,0,0),
             tlim=(-40,40,-25,25),
             res=(1000,700),
             name="longl_l=5.625um-shortT_2.1333e+17");
+
+#no collisions test
+def nocoll(pbsbase,**d):
+    print("making {}".format(pbsbase));
+    myd = sd(lsp_d, **d);
+    lsp=genlsp(**myd);
+    pbs=genpbs(pbsbase=pbsbase);
+    pbs = re.sub("../scripts/autozipper","../../scripts/autozipper",pbs);
+    pbs = re.sub("lsp-10-xy","lsp-10-xy-no_collisions",pbs);
+    output(lsp,pbs,pbsbase,
+           dats=["sine700points.dat", myd['targetdat']],
+           dir=pbsbase);
+nocoll(
+    "longl_l=5.625um-wider-nocoll_2.1333e+17",
+    **sd(scale_sim,
+         fp=(-4,0,0),
+         I=2.1333e17,
+         T=120e-15,
+         lim=(-50,50,-35,35),
+         tlim=(-40,40,-25,25),
+         res=(1000,700),
+         targetdat="water-5.625um.dat",
+         timestep=1e-16,
+         totaltime=550e-15,
+         dumpinterval=5e-16,
+         no_pmovies=True));
