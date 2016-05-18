@@ -1404,7 +1404,7 @@ stop_time  1
 at 0 0 0.002
  
 ;
-extract5
+extract7
 species 11
 direction X
 maximum_number  1000000000
@@ -1413,7 +1413,7 @@ stop_time  1
 at -0.003 0 0
  
 ;
-extract6
+extract8
 species 11
 direction X
 maximum_number  1000000000
@@ -1422,7 +1422,7 @@ stop_time  1
 at 0.0005 0 0
  
 ;
-extract7
+extract9
 species 11
 direction Y
 maximum_number  1000000000
@@ -1431,7 +1431,7 @@ stop_time  1
 at 0 -0.002 0
  
 ;
-extract8
+extract10
 species 11
 direction Y
 maximum_number  1000000000
@@ -1440,7 +1440,7 @@ stop_time  1
 at 0 0.002 0
  
 ;
-extract9
+extract11
 species 11
 direction Z
 maximum_number  1000000000
@@ -1449,7 +1449,7 @@ stop_time  1
 at 0 0 -0.002
  
 ;
-extract10
+extract12
 species 11
 direction Z
 maximum_number  1000000000
