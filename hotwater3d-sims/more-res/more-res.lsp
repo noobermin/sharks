@@ -105,7 +105,7 @@ zmax             -1.950000e-03
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region2
@@ -120,7 +120,7 @@ zmax             -1.900000e-03
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region3
@@ -135,7 +135,7 @@ zmax             -1.850000e-03
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region4
@@ -150,7 +150,7 @@ zmax             -1.800000e-03
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region5
@@ -165,7 +165,7 @@ zmax             -1.750000e-03
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region6
@@ -180,7 +180,7 @@ zmax             -1.700000e-03
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region7
@@ -195,7 +195,7 @@ zmax             -1.650000e-03
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region8
@@ -210,7 +210,7 @@ zmax             -1.600000e-03
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region9
@@ -225,7 +225,7 @@ zmax             -1.550000e-03
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region10
@@ -240,7 +240,7 @@ zmax             -1.500000e-03
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region11
@@ -255,7 +255,7 @@ zmax             -1.450000e-03
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region12
@@ -270,7 +270,7 @@ zmax             -1.400000e-03
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region13
@@ -285,7 +285,7 @@ zmax             -1.350000e-03
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region14
@@ -300,7 +300,7 @@ zmax             -1.300000e-03
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region15
@@ -315,7 +315,7 @@ zmax             -1.250000e-03
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region16
@@ -330,7 +330,7 @@ zmax             -1.200000e-03
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region17
@@ -345,7 +345,7 @@ zmax             -1.150000e-03
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region18
@@ -360,7 +360,7 @@ zmax             -1.100000e-03
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region19
@@ -375,7 +375,7 @@ zmax             -1.050000e-03
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region20
@@ -390,7 +390,7 @@ zmax             -1.000000e-03
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region21
@@ -405,7 +405,7 @@ zmax             -9.500000e-04
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region22
@@ -420,7 +420,7 @@ zmax             -9.000000e-04
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region23
@@ -435,7 +435,7 @@ zmax             -8.500000e-04
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region24
@@ -450,7 +450,7 @@ zmax             -8.000000e-04
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region25
@@ -465,7 +465,7 @@ zmax             -7.500000e-04
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region26
@@ -480,7 +480,7 @@ zmax             -7.000000e-04
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region27
@@ -495,7 +495,7 @@ zmax             -6.500000e-04
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region28
@@ -510,7 +510,7 @@ zmax             -6.000000e-04
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region29
@@ -525,7 +525,7 @@ zmax             -5.500000e-04
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region30
@@ -540,7 +540,7 @@ zmax             -5.000000e-04
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region31
@@ -555,7 +555,7 @@ zmax             -4.500000e-04
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region32
@@ -570,7 +570,7 @@ zmax             -4.000000e-04
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region33
@@ -585,7 +585,7 @@ zmax             -3.500000e-04
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region34
@@ -600,7 +600,7 @@ zmax             -3.000000e-04
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region35
@@ -615,7 +615,7 @@ zmax             -2.500000e-04
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region36
@@ -630,7 +630,7 @@ zmax             -2.000000e-04
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region37
@@ -645,7 +645,7 @@ zmax             -1.500000e-04
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region38
@@ -660,7 +660,7 @@ zmax             -1.000000e-04
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region39
@@ -675,7 +675,7 @@ zmax             -5.000000e-05
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region40
@@ -690,7 +690,7 @@ zmax             0.000000e+00
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region41
@@ -705,7 +705,7 @@ zmax             5.000000e-05
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region42
@@ -720,7 +720,7 @@ zmax             1.000000e-04
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region43
@@ -735,7 +735,7 @@ zmax             1.500000e-04
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region44
@@ -750,7 +750,7 @@ zmax             2.000000e-04
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region45
@@ -765,7 +765,7 @@ zmax             2.500000e-04
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region46
@@ -780,7 +780,7 @@ zmax             3.000000e-04
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region47
@@ -795,7 +795,7 @@ zmax             3.500000e-04
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region48
@@ -810,7 +810,7 @@ zmax             4.000000e-04
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region49
@@ -825,7 +825,7 @@ zmax             4.500000e-04
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region50
@@ -840,7 +840,7 @@ zmax             5.000000e-04
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region51
@@ -855,7 +855,7 @@ zmax             5.500000e-04
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region52
@@ -870,7 +870,7 @@ zmax             6.000000e-04
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region53
@@ -885,7 +885,7 @@ zmax             6.500000e-04
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region54
@@ -900,7 +900,7 @@ zmax             7.000000e-04
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region55
@@ -915,7 +915,7 @@ zmax             7.500000e-04
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region56
@@ -930,7 +930,7 @@ zmax             8.000000e-04
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region57
@@ -945,7 +945,7 @@ zmax             8.500000e-04
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region58
@@ -960,7 +960,7 @@ zmax             9.000000e-04
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region59
@@ -975,7 +975,7 @@ zmax             9.500000e-04
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region60
@@ -990,7 +990,7 @@ zmax             1.000000e-03
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region61
@@ -1005,7 +1005,7 @@ zmax             1.050000e-03
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region62
@@ -1020,7 +1020,7 @@ zmax             1.100000e-03
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region63
@@ -1035,7 +1035,7 @@ zmax             1.150000e-03
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region64
@@ -1050,7 +1050,7 @@ zmax             1.200000e-03
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region65
@@ -1065,7 +1065,7 @@ zmax             1.250000e-03
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region66
@@ -1080,7 +1080,7 @@ zmax             1.300000e-03
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region67
@@ -1095,7 +1095,7 @@ zmax             1.350000e-03
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region68
@@ -1110,7 +1110,7 @@ zmax             1.400000e-03
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region69
@@ -1125,7 +1125,7 @@ zmax             1.450000e-03
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region70
@@ -1140,7 +1140,7 @@ zmax             1.500000e-03
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region71
@@ -1155,7 +1155,7 @@ zmax             1.550000e-03
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region72
@@ -1170,7 +1170,7 @@ zmax             1.600000e-03
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region73
@@ -1185,7 +1185,7 @@ zmax             1.650000e-03
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region74
@@ -1200,7 +1200,7 @@ zmax             1.700000e-03
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region75
@@ -1215,7 +1215,7 @@ zmax             1.750000e-03
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region76
@@ -1230,7 +1230,7 @@ zmax             1.800000e-03
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region77
@@ -1245,7 +1245,7 @@ zmax             1.850000e-03
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region78
@@ -1260,7 +1260,7 @@ zmax             1.900000e-03
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region79
@@ -1275,7 +1275,7 @@ zmax             1.950000e-03
 ;
 number_of_domains 8
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 ;
 region80
@@ -1290,7 +1290,7 @@ zmax             2.000000e-03
 ;
 number_of_domains 68
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 700000
+number_of_cells AUTO ; cells=cells = 700000
 ;
 
 

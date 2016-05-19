@@ -56,6 +56,12 @@ def mksim(pbsbase,**d):
             domains=myd['domains'],
             cluster='garnet',
             queue='standard_lw'),
+        garnet_short=genpbs(
+            pbsbase=pbsbase,
+            domains=myd['domains'],
+            cluster='garnet',
+            walltime=144,
+            queue='standard_lw'),
         garnet_mem=genpbs(
             pbsbase=pbsbase,
             domains=myd['domains'],
