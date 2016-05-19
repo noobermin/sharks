@@ -134,7 +134,7 @@ zmax             {zmax:e}
 ;
 number_of_domains {domains}
 split_direction {split}
-number_of_cells AUTO ; {cells}
+number_of_cells AUTO ; cells={cells}
 ;
 '''
 
