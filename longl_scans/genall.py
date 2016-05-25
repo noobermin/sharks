@@ -171,6 +171,18 @@ mkscale_sim(I=2.1333e17,dat="5.625um",fp=(-4,0,0),
             res=(1000,700),
             name="longl_l=5.625um-shortT_2.1333e+17");
 
+#longer pulse
+mkscale_sim(I=2.1333e17,dat="5.625um",fp=(-4,0,0),
+            totaltime=650e-15,
+            T=231e-15,
+            timestep=1e-16,
+            lim=(-50,50,-35,35),
+            tlim=(-40,40,-25,25),
+            res=(1000,700),
+            name="longl_l=5.625um-longT_2.1333e+17");
+
+
+
 #no collisions test
 def nocoll(pbsbase,**d):
     print("making {}".format(pbsbase));
