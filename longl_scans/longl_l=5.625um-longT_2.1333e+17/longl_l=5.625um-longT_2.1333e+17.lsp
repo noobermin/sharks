@@ -3,7 +3,7 @@ simulation_title "scale length sim with 5.625um, I = 2.1333e+17 W/cm^2"
 ;
 [Control]
 ;Time-advance
- time_limit   6.500000e-04
+ time_limit   8.000000e-04
  time_step_ns 1e-07
 ;Restart
 

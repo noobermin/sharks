@@ -173,7 +173,7 @@ mkscale_sim(I=2.1333e17,dat="5.625um",fp=(-4,0,0),
 
 #longer pulse
 mkscale_sim(I=2.1333e17,dat="5.625um",fp=(-4,0,0),
-            totaltime=650e-15,
+            totaltime=800e-15,
             T=231e-15,
             timestep=1e-16,
             lim=(-50,50,-35,35),
