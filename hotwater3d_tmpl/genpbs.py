@@ -93,9 +93,8 @@ cd $PBS_O_WORKDIR
     walltime = hours_to_walltime(walltime);
     
     if cluster == "ramses":
-        pre = "module load openmpi-1.4.3-gnu-rpm\n\n"+pre;
         if nodes == 1:
-            pre = '''
+            pre += '''
 D=/tmp/ngirmang.1-`mkdate`-$PBSBASE
 mkdir -p $D
 cd $PBS_O_WORKDIR
@@ -105,6 +104,7 @@ cd $D
             pass;
         else:
             mpirun+="-hostfile $PBS_NODEFILE";
+        pre = "module load openmpi-1.4.3-gnu-rpm\n\n"+pre;
     elif cluster == "garnet":
         if not test(kw,'queue'):
             kw['queue']="standard_lw";

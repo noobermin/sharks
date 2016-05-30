@@ -15,6 +15,10 @@ PBSBASE=test3d2d
 echo $HOSTNAME > $PBS_O_WORKDIR/hostname.txt   
 cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/nodesfile.txt
 
+module load openmpi-1.4.3-gnu-rpm
+
+
+cd $PBS_O_WORKDIR
 
 D=/tmp/ngirmang.1-`mkdate`-$PBSBASE
 mkdir -p $D
