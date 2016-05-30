@@ -3,4 +3,6 @@
 */*.p4
 */*.txt
 */*.log
+*/__pycache__
+*/*.pyc
 

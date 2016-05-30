@@ -19,11 +19,11 @@ cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/nodesfile.txt
 D=/tmp/ngirmang.1-`mkdate`-$PBSBASE
 mkdir -p $D
 cd $PBS_O_WORKDIR
-cp autozipper lsp-10-3d test3d2d.lsp *.dat $D/
+cp autozipper lsp-10-xy test3d2d.lsp *.dat $D/
 cd $D
 
 
-mpirun -np 48 ./lsp-10-3d $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+mpirun -np 48 ./lsp-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
 
 
 

@@ -28,5 +28,8 @@ lsp=genlsp(
     res =(1400,
           8000,
              0));
-pbs=genpbs(pbsbase=pbsbase);
+pbs=genpbs(
+    pbsbase=pbsbase,
+    lspexec='lsp-10-xy'
+);
 output(lsp,pbs,pbsbase);
