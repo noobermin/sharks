@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./mklin.py -x '(0.0,27.5e-4)' -s '(17.5e-4,27.5e-4)'>watercolumn.dat
+./mklin.py>watercolumn.dat
