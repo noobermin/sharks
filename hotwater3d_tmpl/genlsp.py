@@ -134,7 +134,7 @@ zmax             {zmax:e}
 ;
 number_of_domains {domains}
 split_direction {split}
-number_of_cells AUTO ; cells={cells}
+number_of_cells AUTO ; {cells}
 ;
 '''
 
@@ -208,9 +208,18 @@ def genlsp(**kw):
     l = getkw('l')*100.0
     if test(kw,'resd'):
         xres,yres,zres = getkw("resd");
-        kw['xcells'] = (xmax-xmin)/(l/xres);
-        kw['ycells'] = (ymax-ymin)/(l/yres);
-        kw['zcells'] = (zmax-zmin)/(l/zres);
+        if xres > 0:
+            kw['xcells'] = (xmax-xmin)/(l/xres);
+        else:
+            kw['xcells'] = 0;
+        if yres > 0:
+            kw['ycells'] = (ymax-ymin)/(l/yres);
+        else:
+            kw['ycells'] = 0;
+        if zres > 0:
+            kw['zcells'] = (zmax-zmin)/(l/zres);
+        else:
+            kw['zcells'] = 0;
     else:
         kw['xcells'], kw['ycells'], kw['zcells'] = getkw("res");
     xcells, ycells, zcells = kw['xcells'], kw['ycells'], kw['zcells']
@@ -223,10 +232,11 @@ def genlsp(**kw):
     fnum=np.pi*w0/2/l;
     totaltime=getkw('totaltime')*1e9
     timestep=getkw('timestep')*1e9;
+    # calculate courant
     couraunt = min(
-        ((xmax-xmin)/xcells/c_cgs)*1e9,
-        ((ymax-ymin)/ycells/c_cgs)*1e9,
-        ((zmax-zmin)/zcells/c_cgs)*1e9,)
+        ((xmax-xmin)/xcells/c_cgs)*1e9 if xcells > 0 else float('inf'),
+        ((ymax-ymin)/ycells/c_cgs)*1e9 if ycells > 0 else float('inf'),
+        ((zmax-zmin)/zcells/c_cgs)*1e9 if zcells > 0 else float('inf'),)
     if timestep > couraunt:
         import sys
         sys.stderr.write("warning: timestep exceeds couraunt limit\n");

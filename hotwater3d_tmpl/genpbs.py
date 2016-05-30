@@ -62,6 +62,7 @@ def genpbs(**kw):
     getkw = mk_getkw(kw,defaults);
     domains=getkw('domains');
     lspexec=getkw('lspexec');
+    pbsbase=getkw('pbsbase');
     cluster = getkw("cluster");
     clusterq = cluster;
     if test(kw,"queue"):
