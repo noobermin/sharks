@@ -99,3 +99,14 @@ mksim(
     domains=700,
     region_split=('z',100),
 );
+
+#high res test
+
+mksim("highres-test",
+      I=3e18,
+      lim= (-30, 5, -20,20, -20,20),
+      res=( 35*20, 40*10, 40*10),
+      tlim=(-27.5,0,-15,15,-15,15),
+      domains=1400,
+      region_split=('z',100));
+      
