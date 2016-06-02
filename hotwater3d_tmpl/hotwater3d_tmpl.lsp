@@ -112,44 +112,11 @@ from  {xmax:e} {ymin:e} {zmin:e}
 to    {xmax:e} {ymax:e} {zmax:e}
 phase_velocity 1.0
 drive_model NONE
-;right
-outlet
-from {xmin:e}  {ymax:e} {zmin:e}
-to   {xmax:e}  {ymax:e} {zmax:e}
-phase_velocity 1.0
-drive_model NONE
-;left
-outlet
-from {xmin:e} {ymin:e} {zmin:e}
-to   {xmax:e} {ymin:e} {zmax:e}
-phase_velocity 1.0
-drive_model NONE
-;bottom
-outlet
-from {xmin:e} {ymin:e} {zmin:e}
-to   {xmax:e} {ymax:e} {zmin:e}
-phase_velocity 1.0
-drive_model NONE
-;top
-outlet
-from {xmin:e} {ymin:e} {zmax:e}
-to   {xmax:e} {ymax:e} {zmax:e}
-phase_velocity 1.0
-drive_model NONE
+{other_outlets}
 
 ;;;;;;;;;;;;;;;;
 ;; species
 ;;;;;;;;;;;;;;;;
-[Materials]
- ;
- material oxygen
- atomic_number 8
- atomic_weight 16
- ;ionization_potential 35.1; eV
- ionization_potential 13.6; eV
- specific_heat 4.186; J/gK
- thermal_conductivity 0.0058; (W / mK)/100 
-
 [Particle Species]
 species1 ; neutral O
 charge 0

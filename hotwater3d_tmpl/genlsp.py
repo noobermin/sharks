@@ -102,6 +102,11 @@ at {position}
     lims[4] = [0,0,lims[4]];
     lims[5] = [0,0,lims[5]];
     dirs = ['X','X','Y','Y','Z','Z'];
+    planes = list(zip(dirs,lims));
+    if kw['zcells'] == 0:
+        del planes[4:6];
+    if kw['ycells'] == 0:
+        del planes[2:4];
     def formatsp(sp,i):
         return [
             dict(i=i+j+1,
@@ -110,11 +115,11 @@ at {position}
                  start_time=getkw('start_time'),
                  stop_time =getkw('stop_time'),
                  position  =joinspace(lim))
-            for j,(d,lim) in enumerate(zip(dirs,lims))];
+            for j,(d,lim) in enumerate(planes)];
     return joinspace(
         [tmpl.format(**d)
          for i,sp in enumerate(getkw('species'))
-         for d in formatsp(sp,6*i)])
+         for d in formatsp(sp,len(lims)*i)])
 
 region_defaults = sd(
     defaults,
@@ -189,7 +194,40 @@ def genregions(**kw):
     regions = [ sd(reg,**{lmn:mn,lmx:mx,'i':i+1,'domains':di,'cells':cells})
                 for i,(mn,mx,di,cells) in enumerate(zip(mins,maxs,doms,cellses)) ];
     return mkregion_str(regions);
-        
+
+def genoutlets(**kw):
+    outlet_tmpl='''
+;{side}
+outlet
+from {xf:e}  {yf:e} {zf:e}
+to   {xt:e}  {yt:e} {zt:e}
+phase_velocity 1.0
+drive_model NONE''';
+    retoutlets = ''
+    if kw['ycells'] > 0:
+        retoutlets += outlet_tmpl.format(
+            side='right',
+            xf = kw['xmin'], xt = kw['xmax'],
+            yf = kw['ymax'], yt = kw['ymax'],
+            zf = kw['zmin'], zt = kw['zmax'],)
+        retoutlets += outlet_tmpl.format(
+            side='left',
+            xf = kw['xmin'], xt = kw['xmax'],
+            yf = kw['ymin'], yt = kw['ymin'],
+            zf = kw['zmin'], zt = kw['zmax'],)
+    if kw['zcells'] > 0:
+        retoutlets += outlet_tmpl.format(
+            side='top',
+            xf = kw['xmin'], xt = kw['xmax'],
+            yf = kw['ymin'], yt = kw['ymax'],
+            zf = kw['zmax'], zt = kw['zmax'],)
+        retoutlets += outlet_tmpl.format(
+            side='bottom',
+            xf = kw['xmin'], xt = kw['xmax'],
+            yf = kw['ymin'], yt = kw['ymax'],
+            zf = kw['zmin'], zt = kw['zmin'],)
+    return retoutlets;
+
 def genlsp(**kw):
     def getkw(l,scale=None):
         if test(kw, l):
@@ -202,27 +240,23 @@ def genlsp(**kw):
 
     E0 = np.sqrt(2*getkw('I')*1e4/(c*e0))*1e-5
     xmin,xmax, ymin,ymax, zmin,zmax = getkw('lim',scale=1e-4)
+    kw['xmin'],kw['xmax']=xmin,xmax
+    kw['ymin'],kw['ymax']=ymin,ymax
+    kw['zmin'],kw['zmax']=zmin,zmax 
     fp = joinspace(getkw("fp",scale=1e-4));
     components = joinspace(getkw("components"));
     phases = joinspace(getkw("phases"));
     l = getkw('l')*100.0
     if test(kw,'resd'):
         xres,yres,zres = getkw("resd");
-        if xres > 0:
-            kw['xcells'] = (xmax-xmin)/(l/xres);
-        else:
-            kw['xcells'] = 0;
-        if yres > 0:
-            kw['ycells'] = (ymax-ymin)/(l/yres);
-        else:
-            kw['ycells'] = 0;
-        if zres > 0:
-            kw['zcells'] = (zmax-zmin)/(l/zres);
-        else:
-            kw['zcells'] = 0;
+        kw['xcells'] = (xmax-xmin)/(l/xres) if xres > 0 else 0;
+        kw['ycells'] = (ymax-ymin)/(l/yres) if yres > 0 else 0;
+        kw['zcells'] = (zmax-zmin)/(l/zres) if zres > 0 else 0;
     else:
         kw['xcells'], kw['ycells'], kw['zcells'] = getkw("res");
-    xcells, ycells, zcells = kw['xcells'], kw['ycells'], kw['zcells']
+    xcells, ycells, zcells = kw['xcells'], kw['ycells'], kw['zcells'];
+    #generating non x outlets
+    other_outlets=genoutlets(**kw);
     w0 = getkw('w')*100.0;
     T  = getkw('T')*1e9;
     txmin,txmax,tymin,tymax,tzmin,tzmax=getkw('tlim',scale=1e-4);
@@ -264,7 +298,8 @@ particle_movie_components Q X Y Z VX VY VZ XI YI ZI
         xmin=xmin,xmax=xmax,
         ymin=ymin,ymax=ymax,
         zmin=zmin,zmax=zmax,
-        xcells=kw['xcells'],ycells=kw['ycells'],zcells=kw['zcells'],
+        xcells=xcells,ycells=ycells,zcells=zcells,
+        other_outlets=other_outlets,
         l=l,w0=w0,E0=E0,
         fnum=fnum,
         targ_xmin=txmin, targ_xmax=txmax,

@@ -130,6 +130,7 @@ from  5.000000e-04 -2.000000e-03 0.000000e+00
 to    5.000000e-04 2.000000e-03 0.000000e+00
 phase_velocity 1.0
 drive_model NONE
+
 ;right
 outlet
 from -3.000000e-03  2.000000e-03 0.000000e+00
@@ -138,36 +139,14 @@ phase_velocity 1.0
 drive_model NONE
 ;left
 outlet
-from -3.000000e-03 -2.000000e-03 0.000000e+00
-to   5.000000e-04 -2.000000e-03 0.000000e+00
-phase_velocity 1.0
-drive_model NONE
-;bottom
-outlet
-from -3.000000e-03 -2.000000e-03 0.000000e+00
-to   5.000000e-04 2.000000e-03 0.000000e+00
-phase_velocity 1.0
-drive_model NONE
-;top
-outlet
-from -3.000000e-03 -2.000000e-03 0.000000e+00
-to   5.000000e-04 2.000000e-03 0.000000e+00
+from -3.000000e-03  -2.000000e-03 0.000000e+00
+to   5.000000e-04  -2.000000e-03 0.000000e+00
 phase_velocity 1.0
 drive_model NONE
 
 ;;;;;;;;;;;;;;;;
 ;; species
 ;;;;;;;;;;;;;;;;
-[Materials]
- ;
- material oxygen
- atomic_number 8
- atomic_weight 16
- ;ionization_potential 35.1; eV
- ionization_potential 13.6; eV
- specific_heat 4.186; J/gK
- thermal_conductivity 0.0058; (W / mK)/100 
-
 [Particle Species]
 species1 ; neutral O
 charge 0
@@ -649,24 +628,6 @@ maximum_number  1000000000
 start_time 0
 stop_time  1
 at 0 0.002 0
- 
-;
-extract5
-species 10
-direction Z
-maximum_number  1000000000
-start_time 0
-stop_time  1
-at 0 0 0.0
- 
-;
-extract6
-species 10
-direction Z
-maximum_number  1000000000
-start_time 0
-stop_time  1
-at 0 0 0.0
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
