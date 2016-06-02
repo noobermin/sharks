@@ -97,5 +97,5 @@ mksim(
     "more-res",
     I=I,
     domains=700,
-    region_split=('z',80),
+    region_split=('z',100),
 );
