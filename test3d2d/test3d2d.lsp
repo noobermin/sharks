@@ -71,7 +71,7 @@ x-cells          1400
 ;
 ymin             -2.000000e-03
 ymax             2.000000e-03
-y-cells          8000
+y-cells          1600
 
 
 

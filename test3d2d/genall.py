@@ -26,7 +26,7 @@ lsp=genlsp(
           -15  ,15,
             0  ,0),
     res =(1400,
-          8000,
+          1600,
              0));
 pbs=genpbs(
     pbsbase=pbsbase,
