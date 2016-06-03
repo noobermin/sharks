@@ -67,30 +67,18 @@ grid1
 xmin             -3.000000e-03
 xmax             5.000000e-04
 x-cells          1400
+                                        ;
 ;
 ymin             -2.000000e-03
 ymax             2.000000e-03
 y-cells          8000
-;
-zmin             0.000000e+00
-zmax             0.000000e+00
-z-cells          0
-;
+
+
+
 [Regions]
 ;
-;;region1
-;;xmin             -3.000000e-03
-;;xmax             5.000000e-04
-;
-;;ymin             -2.000000e-03
-;;ymax             2.000000e-03
-;
-;;zmin             0.000000e+00
-;;zmax             0.000000e+00
-;
-;;number_of_domains 48
-;;split_direction XSPLIT
-;;number_of_cells AUTO
+
+;total number of domains: 48
 
 ;
 region1

@@ -64,30 +64,15 @@ grid1
 xmin             {xmin:e}
 xmax             {xmax:e}
 x-cells          {xcells}
-;
-ymin             {ymin:e}
-ymax             {ymax:e}
-y-cells          {ycells}
-;
-zmin             {zmin:e}
-zmax             {zmax:e}
-z-cells          {zcells}
-;
+                                        ;
+{ygrid}
+
+{zgrid}
+
 [Regions]
 ;
-;;region1
-;;xmin             {xmin:e}
-;;xmax             {xmax:e}
-;
-;;ymin             {ymin:e}
-;;ymax             {ymax:e}
-;
-;;zmin             {zmin:e}
-;;zmax             {zmax:e}
-;
-;;number_of_domains {domains}
-;;split_direction XSPLIT
-;;number_of_cells AUTO
+
+;total number of domains: {domains}
 
 {regions}
 

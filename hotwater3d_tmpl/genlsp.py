@@ -259,6 +259,20 @@ def genlsp(**kw):
     other_outlets=genoutlets(**kw);
     w0 = getkw('w')*100.0;
     T  = getkw('T')*1e9;
+    #generating grid
+    ygrid=zgrid='';
+    if ycells > 0:
+        ygrid=''';
+ymin             {ymin:e}
+ymax             {ymax:e}
+y-cells          {ycells}'''.format(ymin=ymin,ymax=ymax,ycells=ycells);
+    if zcells > 0:
+        zgrid=''';
+zmin             {zmin:e}
+zmax             {zmax:e}
+z-cells          {zcells}'''.format(zmin=zmin,zmax=zmax,zcells=zcells);
+
+
     txmin,txmax,tymin,tymax,tzmin,tzmax=getkw('tlim',scale=1e-4);
     domains=getkw('domains');
     # we have that na~l/(pi*w), and the f-number~1/2na, thus
@@ -299,6 +313,8 @@ particle_movie_components Q X Y Z VX VY VZ XI YI ZI
         ymin=ymin,ymax=ymax,
         zmin=zmin,zmax=zmax,
         xcells=xcells,ycells=ycells,zcells=zcells,
+        ygrid=ygrid,
+        zgrid=zgrid,
         other_outlets=other_outlets,
         l=l,w0=w0,E0=E0,
         fnum=fnum,
