@@ -84,6 +84,7 @@ for E in Es:
         res =( 60*4, 500*4, 0),
         dens_dat = '1.5um.dat',
         timestep = 4e-16,
+        dumpintervale=4e-15,
         totaltime= d['T']*3.5,
         fp = (16.3-40,0,0),));
     dens = mkonescale(**d);
