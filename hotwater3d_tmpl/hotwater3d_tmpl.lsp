@@ -3,8 +3,8 @@ simulation_title "{description}, I = {intensity} W/cm^2"
 ;
 [Control]
 ;Time-advance
- time_limit   {totaltime:e}
- time_step_ns {timestep}
+ time_limit   {totaltime:0.4e}
+ time_step_ns {timestep:0.4e}
 ;Restart
 {restarts}
 ;Parallel Processing
@@ -569,19 +569,13 @@ coefficients {l:e} {w0:e} end
 
 ;;
 function3 ; electrons
-type 30
-data_file {targetdat}
-dependent_variable_multiplier 1.0
+{n_e}
 ;;
 function4 ; Oxygen
-type 30
-data_file {targetdat}
-dependent_variable_multiplier 0.33
+{n_O}
 ;;
 function5 ; Protons
-type 30
-data_file {targetdat}
-dependent_variable_multiplier 0.67
+{n_p}
 ;;
 
 [Probes]

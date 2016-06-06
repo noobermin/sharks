@@ -118,7 +118,7 @@ cd $D
 #PBS -A __projectid__
 #PBS -q {}
 '''.format(kw['queue']);
-    if test(kw, 'autozipper'):
+    if getkw('autozipper'):
         pre+='''#autozipper
 ./autozipper > $PBS_O_WORKDIR/autozipper.log&
 '''

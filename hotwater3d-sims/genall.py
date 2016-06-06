@@ -18,9 +18,9 @@ lsp_d=dict(
     timestep=1e-16,
     totaltime=500e-15,
     dumpinterval=5e-16,
-    targetdat="watercolumn.dat",
     description="hotwater in 3d",
     domains=700,
+    dens_dat='watercolumn.dat',
     region_split=('z',50),
     pext_species=(10,11),
     restart=23.95,
@@ -71,7 +71,7 @@ def mksim(pbsbase,**d):
     );
     mkdir(pbsbase);    
     auxs = [
-        "sine700points.dat", myd['targetdat'],
+        "sine700points.dat", myd['dens_dat'],
         "autozipper"
     ];
     for aux in auxs:

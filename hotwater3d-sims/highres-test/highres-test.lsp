@@ -67,30 +67,21 @@ grid1
 xmin             -3.000000e-03
 xmax             5.000000e-04
 x-cells          700
+                                        ;
 ;
 ymin             -2.000000e-03
 ymax             2.000000e-03
 y-cells          400
+
 ;
 zmin             -2.000000e-03
 zmax             2.000000e-03
 z-cells          400
-;
+
 [Regions]
 ;
-;;region1
-;;xmin             -3.000000e-03
-;;xmax             5.000000e-04
-;
-;;ymin             -2.000000e-03
-;;ymax             2.000000e-03
-;
-;;zmin             -2.000000e-03
-;;zmax             2.000000e-03
-;
-;;number_of_domains 1400
-;;split_direction XSPLIT
-;;number_of_cells AUTO
+
+;total number of domains: 1400
 
 ;
 region1
@@ -2219,19 +2210,28 @@ coefficients 7.800000e-05 2.200000e-04 end
 
 ;;
 function3 ; electrons
+
 type 30
 data_file watercolumn.dat
+independent_variable_multiplier 1.0
 dependent_variable_multiplier 1.0
+
 ;;
 function4 ; Oxygen
+
 type 30
 data_file watercolumn.dat
+independent_variable_multiplier 1.0
 dependent_variable_multiplier 0.33
+
 ;;
 function5 ; Protons
+
 type 30
 data_file watercolumn.dat
+independent_variable_multiplier 1.0
 dependent_variable_multiplier 0.67
+
 ;;
 
 [Probes]

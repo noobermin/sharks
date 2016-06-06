@@ -1,10 +1,10 @@
 [Title]
-simulation_title "Hotwater in 2d, I = 3e+18 W/cm^2"
+simulation_title "10 um, I = 3.283063950060916e+17 W/cm^2"
 ;
 [Control]
 ;Time-advance
- time_limit   1.0000e-05
- time_step_ns 1.0000e-08
+ time_limit   1.7949e-03
+ time_step_ns 4.0000e-07
 ;Restart
 
 ;Parallel Processing
@@ -64,14 +64,14 @@ particle_movie_components Q X Y Z VX VY VZ XI YI ZI
 [Grid]
 ;
 grid1
-xmin             -3.000000e-03
-xmax             5.000000e-04
-x-cells          1400
+xmin             -5.000000e-03
+xmax             1.000000e-03
+x-cells          240
                                         ;
 ;
-ymin             -2.000000e-03
-ymax             2.000000e-03
-y-cells          1600
+ymin             -2.500000e-02
+ymax             2.500000e-02
+y-cells          2000
 
 
 
@@ -82,11 +82,11 @@ y-cells          1600
 
 ;
 region1
-xmin             -3.000000e-03
-xmax             5.000000e-04
+xmin             -5.000000e-03
+xmax             1.000000e-03
 
-ymin             -2.000000e-03
-ymax             2.000000e-03
+ymin             -2.500000e-02
+ymax             2.500000e-02
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -102,11 +102,11 @@ number_of_cells AUTO ;
 [Boundaries]
 ;back this is the laser
 outlet
-from -3.000000e-03 -2.000000e-03 0.000000e+00
-to   -3.000000e-03 2.000000e-03 0.000000e+00
+from -5.000000e-03 -2.500000e-02 0.000000e+00
+to   -5.000000e-03 2.500000e-02 0.000000e+00
 phase_velocity 1.0
 drive_model LASER
-reference_point 0.0 0.0 0.0 ; focal point position
+reference_point -0.00237 0.0 0.0 ; focal point position
 components 0 1 0
 phases 0 0 0 ; polarization 1.1781
 temporal_function 1
@@ -114,21 +114,21 @@ analytic_function 2
 time_delay 0.0
 ;front (back of the target)
 outlet
-from  5.000000e-04 -2.000000e-03 0.000000e+00
-to    5.000000e-04 2.000000e-03 0.000000e+00
+from  1.000000e-03 -2.500000e-02 0.000000e+00
+to    1.000000e-03 2.500000e-02 0.000000e+00
 phase_velocity 1.0
 drive_model NONE
 
 ;right
 outlet
-from -3.000000e-03  2.000000e-03 0.000000e+00
-to   5.000000e-04  2.000000e-03 0.000000e+00
+from -5.000000e-03  2.500000e-02 0.000000e+00
+to   1.000000e-03  2.500000e-02 0.000000e+00
 phase_velocity 1.0
 drive_model NONE
 ;left
 outlet
-from -3.000000e-03  -2.000000e-03 0.000000e+00
-to   5.000000e-04  -2.000000e-03 0.000000e+00
+from -5.000000e-03  -2.500000e-02 0.000000e+00
+to   1.000000e-03  -2.500000e-02 0.000000e+00
 phase_velocity 1.0
 drive_model NONE
 
@@ -298,42 +298,42 @@ selection_ratio 0.01
 ;; initial states ;;
 
 plasma ; O+
-from -2.750000e-03  -1.500000e-03  0.000000e+00
-to   0.000000e+00  1.500000e-03  0.000000e+00
+from -4.000000e-03  -2.400000e-02  0.000000e+00
+to   0.000000e+00  2.400000e-02  0.000000e+00
 species 2
 movie_tag 3
 unbound off
 discrete_numbers 3 3 3
 density_function 4
-reference_point -2.750000e-03 -1.500000e-03 0.000000e+00
+reference_point -4.000000e-03 -2.400000e-02 0.000000e+00
 density_flags 1 0 0
 momentum_flags 0 0 0
 thermal_energy 1
 movie_fraction 0.000
 ;
 plasma ; e-
-from -2.750000e-03 -1.500000e-03  0.000000e+00
-to   0.000000e+00 1.500000e-03  0.000000e+00
+from -4.000000e-03 -2.400000e-02  0.000000e+00
+to   0.000000e+00 2.400000e-02  0.000000e+00
 species 10
 movie_tag 3
 unbound off
 discrete_numbers 3 3 3
 density_function 3
-reference_point -2.750000e-03 -1.500000e-03 0.000000e+00
+reference_point -4.000000e-03 -2.400000e-02 0.000000e+00
 density_flags 1 0 0
 momentum_flags 0 0 0
 thermal_energy 1
 movie_fraction 0.050
 ;
 plasma ; p+
-from -2.750000e-03 -1.500000e-03  0.000000e+00
-to   0.000000e+00 1.500000e-03  0.000000e+00
+from -4.000000e-03 -2.400000e-02  0.000000e+00
+to   0.000000e+00 2.400000e-02  0.000000e+00
 species 11
 movie_tag 3
 unbound off
 discrete_numbers 3 3 3
 density_function 5
-reference_point -2.750000e-03 -1.500000e-03 0.000000e+00
+reference_point -4.000000e-03 -2.400000e-02 0.000000e+00
 density_flags 1 0 0
 momentum_flags 0 0 0
 thermal_energy 1
@@ -342,8 +342,8 @@ movie_fraction 0.000
 ;; ionization states ;;
 ;
 higherstate              ; O -> O+
-from -3.000000e-03 -2.000000e-03  0.000000e+00
-to   5.000000e-04 2.000000e-03  0.000000e+00
+from -5.000000e-03 -2.500000e-02  0.000000e+00
+to   1.000000e-03 2.500000e-02  0.000000e+00
 interval 1
 species 1
 ion_species 2
@@ -367,8 +367,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O+ -> O++
-from -3.000000e-03 -2.000000e-03  0.000000e+00
-to   5.000000e-04 2.000000e-03  0.000000e+00
+from -5.000000e-03 -2.500000e-02  0.000000e+00
+to   1.000000e-03 2.500000e-02  0.000000e+00
 interval 1
 species 2
 ion_species 3
@@ -392,8 +392,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O++ -> O 3+
-from -3.000000e-03 -2.000000e-03  0.000000e+00
-to   5.000000e-04 2.000000e-03  0.000000e+00
+from -5.000000e-03 -2.500000e-02  0.000000e+00
+to   1.000000e-03 2.500000e-02  0.000000e+00
 interval 1
 species 3
 ion_species 4
@@ -417,8 +417,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O 3+ -> O 4+
-from -3.000000e-03 -2.000000e-03  0.000000e+00
-to   5.000000e-04 2.000000e-03  0.000000e+00
+from -5.000000e-03 -2.500000e-02  0.000000e+00
+to   1.000000e-03 2.500000e-02  0.000000e+00
 interval 1
 species 4
 ion_species 5
@@ -442,8 +442,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O 4+ -> O 5+
-from -3.000000e-03 -2.000000e-03  0.000000e+00
-to   5.000000e-04 2.000000e-03  0.000000e+00
+from -5.000000e-03 -2.500000e-02  0.000000e+00
+to   1.000000e-03 2.500000e-02  0.000000e+00
 interval 1
 species 5
 ion_species 6
@@ -468,8 +468,8 @@ movie_fraction 0.0
 ;
 ;
 higherstate              ; O 5+ -> O 6+
-from -3.000000e-03 -2.000000e-03  0.000000e+00
-to   5.000000e-04 2.000000e-03  0.000000e+00
+from -5.000000e-03 -2.500000e-02  0.000000e+00
+to   1.000000e-03 2.500000e-02  0.000000e+00
 interval 1
 species 6
 ion_species 7
@@ -493,8 +493,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O 6+ -> O 7+
-from -3.000000e-03 -2.000000e-03  0.000000e+00
-to   5.000000e-04 2.000000e-03  0.000000e+00
+from -5.000000e-03 -2.500000e-02  0.000000e+00
+to   1.000000e-03 2.500000e-02  0.000000e+00
 interval 1
 species 7
 ion_species 8
@@ -518,8 +518,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O 7+ -> O 8+
-from -3.000000e-03 -2.000000e-03  0.000000e+00
-to   5.000000e-04 2.000000e-03  0.000000e+00
+from -5.000000e-03 -2.500000e-02  0.000000e+00
+to   1.000000e-03 2.500000e-02  0.000000e+00
 interval 1
 species 8
 ion_species 9
@@ -554,7 +554,7 @@ movie_fraction 0.0
 ;;maximum_number 1000000000
 ;;start_time 0.0
 ;;stop_time 1
-;;at -3.000000e-03 0 0
+;;at -5.000000e-03 0 0
 ;
 ;;extract2
 ;;species 10
@@ -562,7 +562,7 @@ movie_fraction 0.0
 ;;maximum_number 1000000000
 ;;start_time 0.0
 ;;stop_time 1
-;;at 5.000000e-04 0 0
+;;at 1.000000e-03 0 0
 ;
 ;;extract3
 ;;species 10
@@ -570,7 +570,7 @@ movie_fraction 0.0
 ;;maximum_number 1000000000
 ;;start_time 0.0
 ;;stop_time 1
-;;at 0 2.000000e-03 0
+;;at 0 2.500000e-02 0
 ;
 ;;extract4
 ;;species 10
@@ -578,7 +578,7 @@ movie_fraction 0.0
 ;;maximum_number 1000000000
 ;;start_time 0.0
 ;;stop_time 1
-;;at 0 -2.000000e-03 0
+;;at 0 -2.500000e-02 0
 ;
 
 ;
@@ -588,7 +588,7 @@ direction X
 maximum_number  1000000000
 start_time 0
 stop_time  1
-at -0.003 0 0
+at -0.005 0 0
  
 ;
 extract2
@@ -597,7 +597,7 @@ direction X
 maximum_number  1000000000
 start_time 0
 stop_time  1
-at 0.0005 0 0
+at 0.001 0 0
  
 ;
 extract3
@@ -606,7 +606,7 @@ direction Y
 maximum_number  1000000000
 start_time 0
 stop_time  1
-at 0 -0.002 0
+at 0 -0.025 0
  
 ;
 extract4
@@ -615,7 +615,7 @@ direction Y
 maximum_number  1000000000
 start_time 0
 stop_time  1
-at 0 0.002 0
+at 0 0.025 0
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -627,20 +627,20 @@ function1 ; laser temporal function
 type 30
 data_file sine700points.dat
 ;; pulse duration length, 2xFWHM
-independent_variable_multiplier 6.000000e-05
-;; Emax, intensity=3.000000e+18 W/cm^2
-dependent_variable_multiplier   4.754347e+07
+independent_variable_multiplier 5.128205e-04
+;; Emax, intensity=3.283064e+17 W/cm^2
+dependent_variable_multiplier   1.572787e+07
 
 function2 ;laser analytic function for lsp v10
-type 19   ; f-number: ~4.370035934801186
+type 19   ; f-number: ~4.319689898685966
           ; \lambda spotsize
-coefficients 7.800000e-05 2.170000e-04 end
+coefficients 1.000000e-03 2.750000e-03 end
 
 ;;
 function3 ; electrons
 
 type 30
-data_file watercolumn
+data_file 1.5um.dat
 independent_variable_multiplier 1.0
 dependent_variable_multiplier 1.0
 
@@ -648,7 +648,7 @@ dependent_variable_multiplier 1.0
 function4 ; Oxygen
 
 type 30
-data_file watercolumn
+data_file 1.5um.dat
 independent_variable_multiplier 1.0
 dependent_variable_multiplier 0.33
 
@@ -656,7 +656,7 @@ dependent_variable_multiplier 0.33
 function5 ; Protons
 
 type 30
-data_file watercolumn
+data_file 1.5um.dat
 independent_variable_multiplier 1.0
 dependent_variable_multiplier 0.67
 

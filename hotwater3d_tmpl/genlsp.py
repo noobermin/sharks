@@ -32,7 +32,7 @@ Options:
    --totaltime=T     Total simulation time in s.[default: 300e-15]
    --timestep=T      Time steps in s. [default: 4e-17]
    --pext-species=S  List of pext species to track. [default: (10,)]  
-   --targetdat=D     Set the target .dat filename [default: watercolumn.dat]
+   --dens_dat=D      Set the target .dat filename [default: watercolumn.dat]
    --dumpinterval=T  Specify the dump interval [default: 2e-16 ]
    --description=D   Set the description [default: Hotwater]
    --restart=R       Set the restart time.
@@ -61,7 +61,9 @@ defaults = {
     'timestep':1e-16,
     'components':(0,1,0),
     'phases':(0,0,0),
-    'targetdat':'watercolumn.dat',
+    'dens_dat':'watercolumn.dat',
+    'dens_type': '30',
+    'dens_imul': 1.0,
     'dumpinterval':2e-16,
     'description':'Hotwater in 2d',
     'pext_species':(10,),
@@ -194,6 +196,54 @@ def genregions(**kw):
     regions = [ sd(reg,**{lmn:mn,lmx:mx,'i':i+1,'domains':di,'cells':cells})
                 for i,(mn,mx,di,cells) in enumerate(zip(mins,maxs,doms,cellses)) ];
     return mkregion_str(regions);
+def gendens(**kw):
+    densityfile_tmpl = '''
+type {type}
+data_file {targetdat}
+independent_variable_multiplier {imul}
+dependent_variable_multiplier {dmul}
+'''
+    densitypairs_tmpl = '''
+type 0
+data_pairs
+{data}
+end
+'''
+    if test(kw,'target_density'):
+        dens=kw['target_density'];
+        if type(dens) == tuple:
+            n_e,n_O,n_p=dens;
+        else:
+            if hasattr(dens, '__call__'):
+                n_e = dens
+                n_O = lambda x: 0.33*dens(x);
+                n_p = lambda x: 0.67*dens(x);
+            else:
+                n_e = dens;
+                n_O = 0.33*dens;
+                n_p = 0.67*dens;
+        if hasattr(n_e,'__call__'):
+            x = np.linspace(kw['txmin'][0],kw['txmax'][1],20);
+            n_e = n_e(x);
+            n_O = n_O(x);
+            n_p = n_p(x);
+        kw['n_e'] = densitypairs_tmpl.format(data=n_e);
+        kw['n_O'] = densitypairs_tmpl.format(data=n_O);
+        kw['n_p'] = densitypairs_tmpl.format(data=n_p);
+    else:
+        if not test(kw,'dens_dat'): kw['dens_dat'] = 'watercolumn';
+        if not test(kw,'dens_imul'): kw['dens_imul'] = 1.0;
+        if not test(kw,'dens_type'): kw['dens_type'] = '30';
+        kw['n_e'] = densityfile_tmpl.format(
+            targetdat=kw['dens_dat'], type=kw['dens_type'],
+            imul=kw['dens_imul'],dmul=1.0);
+        kw['n_O'] = densityfile_tmpl.format(
+            targetdat=kw['dens_dat'], type=kw['dens_type'],
+            imul=kw['dens_imul'],dmul=0.33);
+        kw['n_p'] = densityfile_tmpl.format(
+            targetdat=kw['dens_dat'], type=kw['dens_type'],
+            imul=kw['dens_imul'],dmul=0.67);
+    return kw;
 
 def genoutlets(**kw):
     outlet_tmpl='''
@@ -242,7 +292,12 @@ def genlsp(**kw):
     xmin,xmax, ymin,ymax, zmin,zmax = getkw('lim',scale=1e-4)
     kw['xmin'],kw['xmax']=xmin,xmax
     kw['ymin'],kw['ymax']=ymin,ymax
-    kw['zmin'],kw['zmax']=zmin,zmax 
+    kw['zmin'],kw['zmax']=zmin,zmax
+    txmin,txmax,tymin,tymax,tzmin,tzmax=getkw('tlim',scale=1e-4);
+    kw['txmin'],kw['txmax']=txmin,txmax
+    kw['tymin'],kw['tymax']=tymin,tymax
+    kw['tzmin'],kw['tzmax']=tzmin,tzmax 
+
     fp = joinspace(getkw("fp",scale=1e-4));
     components = joinspace(getkw("components"));
     phases = joinspace(getkw("phases"));
@@ -271,9 +326,6 @@ y-cells          {ycells}'''.format(ymin=ymin,ymax=ymax,ycells=ycells);
 zmin             {zmin:e}
 zmax             {zmax:e}
 z-cells          {zcells}'''.format(zmin=zmin,zmax=zmax,zcells=zcells);
-
-
-    txmin,txmax,tymin,tymax,tzmin,tzmax=getkw('tlim',scale=1e-4);
     domains=getkw('domains');
     # we have that na~l/(pi*w), and the f-number~1/2na, thus
     # f-number ~ pi*w/2l
@@ -288,7 +340,8 @@ z-cells          {zcells}'''.format(zmin=zmin,zmax=zmax,zcells=zcells);
     if timestep > couraunt:
         import sys
         sys.stderr.write("warning: timestep exceeds couraunt limit\n");
-    targetdat = getkw('targetdat');
+    #target
+    kw = gendens(**kw);
     dumpinterval=getkw('dumpinterval')*1e9;
     description=getkw('description');
     restart = getkw('restart');
@@ -329,7 +382,9 @@ particle_movie_components Q X Y Z VX VY VZ XI YI ZI
         domains=domains,
         totaltime=totaltime,
         timestep=timestep,
-        targetdat=targetdat,
+        n_e=kw['n_e'],
+        n_O=kw['n_O'],
+        n_p=kw['n_p'],
         dumpinterval=dumpinterval,
         description=description,
         restarts=restarts,

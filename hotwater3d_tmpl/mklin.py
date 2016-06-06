@@ -14,26 +14,17 @@ Options:
 from docopt import docopt
 import numpy as np;
 from cStringIO import StringIO;
-
-def mkdecay(solid, sdims, xdims, l):
-    def out(x):
-        if x <= xdims[0] or x >= xdims[1]:
-            return 0.0;
-        elif sdims[0] <= x <= sdims[1]:
-            return solid;
-        else:
-            return np.exp(-np.abs(x-sdims[0])/l)*solid;
-    return np.vectorize(out);
-
+from gendat import gentargetdat
 opts = docopt(__doc__,help=True);
-xdims = eval(opts['--x-dims']);
-xs = min(*xdims),max(*xdims)
-l = float(opts['--scale']);
+xdim = eval(opts['--x-dims']);
+xdim = min(*xdim),max(*xdim)
+scale = float(opts['--scale']);
 n_s = float(opts['--solid']);
-sdims = eval(opts['--solid-dims']);
-ss = min(*sdims),max(*sdims);
-x = np.linspace(xdims[0],xdims[1],100);
-y = mkdecay(n_s, ss, xs, l)(x);
-s = StringIO();
-np.savetxt(s,np.array([x,y]).T,fmt='%.8e',); s.write("\n");
-print(s.getvalue());
+sdim = eval(opts['--solid-dims']);
+sdim = min(*sdim),max(*sdim);
+print(gentargetdat(
+    sdim=sdim + (0,0,0,0,),
+    tlim=xdim + (0,0,0,0,),
+    scale=scale,
+    n_s=n_s))
+
