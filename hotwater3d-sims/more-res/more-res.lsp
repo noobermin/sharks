@@ -3,8 +3,8 @@ simulation_title "hotwater in 3d, I = 1e+19 W/cm^2"
 ;
 [Control]
 ;Time-advance
- time_limit   5.000000e-04
- time_step_ns 1e-07
+ time_limit   5.0000e-04
+ time_step_ns 1.0000e-07
 ;Restart
 maximum_restart_dump_time 23.95
 ;Parallel Processing
