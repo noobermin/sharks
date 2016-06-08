@@ -88,7 +88,7 @@ densd = dict(
     n_s=1e23,
     scale=1.5e-4);
 for d in ds:
-    mydensd = sd(densd, xlen=d['tlim'][1]-d['tlim'][0]);
+    mydensd = sd(densd, xlen=(d['tlim'][1]-d['tlim'][0])*1e-4);
     dens = genonescale(**mydensd);
     fpx = get_roundfpx(mydensd,d);
     d['extra_files'] = [('1.5um.dat',dens)]
