@@ -50,6 +50,8 @@ e0  = 8.8541878176e-12
 m_e=9.10938356e-31
 r_e = e**2/m_e/c**2/(4*np.pi*e0)
 def_cycles=40e-15/(780e-9/c);
+nc = lambda l,gm=1,m=m_e,q=e: e0*m*(2*np.pi*c/l)**2/q**2/gm*1e-6
+
 def fromenergy(En,cycles=def_cycles,l=10e-6,l2w=2.75):
     w=l*l2w;
     T=cycles*l/c;
@@ -58,8 +60,7 @@ def fromenergy(En,cycles=def_cycles,l=10e-6,l2w=2.75):
         lsp_d,
         w=w,T=T,I=I)
 Es = [10,1,0.1,0.01,0.001,1e-4];
-ds = [ fromenergy(E) for E in Es ];
-#10um, scale=1.5um
+ds=[]
 for E in Es:
     d = fromenergy(E);
     d.update(dict(
@@ -67,15 +68,55 @@ for E in Es:
         lim =( -50, 10, -120, 120,0,0),
         tlim=( -40,  0, -110, 110,0,0),
         res =( 60*5, 240*5, 0),
-        dens_dat = '1.5um.dat',
         timestep = 2e-16,
         dumpinterval=1e-15,
-        totaltime= d['T']*3.0,
-        fp = (16.3-40,0,0),));
-    dens = genonescale(
-        xlen = 40e-4,
-        solid_len=10e-4,
-        scale=1.5e-4);
+        totaltime= d['T']*3.0,));
+    ds.append(d);
+nc10um = nc(10e-6);
+def get_roundfpx(dens,d):
+    dx = -np.log(nc(d['l'])/dens['n_s'])*dens['scale']/1e-4;
+    return d['tlim'][1]-dens['solid_len']-dx;
+
+
+####################################
+# 10um scans
+####################################
+#10um, scale=1.5um
+densd = dict(
+    xlen = 40e-4,
+    solid_len=10e-4,
+    n_s=1e23,
+    scale=1.5e-4);
+for d in ds:
+    mydensd = sd(densd, xlen=d['tlim'][1]-d['tlim'][0]);
+    dens = genonescale(**mydensd);
+    fpx = get_roundfpx(mydensd,d);
     d['extra_files'] = [('1.5um.dat',dens)]
-    name='{l}um-{I:0.2e}-l={scale}um'.format(l=int(d['l']/1e-6),I=d['I'],scale=1.5);
+    d.update(dict(
+        dens_dat='1.5um.dat',
+        fp = (fpx,0,0)));
+    name='{l}um-{I:0.2e}-l={scale:0.2}um'.format(
+        l=int(d['l']/1e-6),I=d['I'],scale=mydensd['scale']/1e-4);
+    mksim(name,**d);
+#10um, scale=19.2um
+densd19 = sd(densd,
+    solid_len=10e-4,
+    n_s=1e21,
+    scale=19.2e-4);
+for d in ds:
+    mydensd = sd(densd19, xlen=d['tlim'][1]-d['tlim'][0]);
+    d=sd(
+        d,
+        lim =( -250, 10, -120, 120,0,0),
+        tlim=( -240,  0, -110, 110,0,0),
+        res =( 260*4, 240*4, 0),
+        totaltime=d['T']*3.5,)
+    dens = genonescale(**mydensd);
+    fpx = get_roundfpx(mydensd,d);
+    d['extra_files'] = [('19.2um.dat',dens)]
+    d.update(dict(
+        dens_dat='19.2um.dat',
+        fp = (fpx,0,0)));
+    name='{l}um-{I:0.2e}-l={scale:0.3}um'.format(
+        l=int(d['l']/1e-6),I=d['I'],scale=mydensd['scale']/1e-4);
     mksim(name,**d);

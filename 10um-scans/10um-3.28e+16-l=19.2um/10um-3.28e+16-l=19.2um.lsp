@@ -1,9 +1,9 @@
 [Title]
-simulation_title "10 um, I = 3.283063950060916e+17 W/cm^2"
+simulation_title "10 um, I = 3.283063950060916e+16 W/cm^2"
 ;
 [Control]
 ;Time-advance
- time_limit   1.5385e-03
+ time_limit   1.7949e-03
  time_step_ns 2.0000e-07
 ;Restart
 
@@ -64,14 +64,14 @@ particle_movie_components Q X Y Z VX VY VZ XI YI ZI
 [Grid]
 ;
 grid1
-xmin             -5.000000e-03
+xmin             -2.500000e-02
 xmax             1.000000e-03
-x-cells          300
+x-cells          1040
                                         ;
 ;
 ymin             -1.200000e-02
 ymax             1.200000e-02
-y-cells          1200
+y-cells          960
 
 
 
@@ -82,7 +82,7 @@ y-cells          1200
 
 ;
 region1
-xmin             -5.000000e-03
+xmin             -2.500000e-02
 xmax             1.000000e-03
 
 ymin             -1.200000e-02
@@ -102,11 +102,11 @@ number_of_cells AUTO ;
 [Boundaries]
 ;back this is the laser
 outlet
-from -5.000000e-03 -1.200000e-02 0.000000e+00
-to   -5.000000e-03 1.200000e-02 0.000000e+00
+from -2.500000e-02 -1.200000e-02 0.000000e+00
+to   -2.500000e-02 1.200000e-02 0.000000e+00
 phase_velocity 1.0
 drive_model LASER
-reference_point -0.001365342431 0.0 0.0 ; focal point position
+reference_point -0.00863327635968 0.0 0.0 ; focal point position
 components 0 1 0
 phases 0 0 0 ; polarization 1.1781
 temporal_function 1
@@ -121,13 +121,13 @@ drive_model NONE
 
 ;right
 outlet
-from -5.000000e-03  1.200000e-02 0.000000e+00
+from -2.500000e-02  1.200000e-02 0.000000e+00
 to   1.000000e-03  1.200000e-02 0.000000e+00
 phase_velocity 1.0
 drive_model NONE
 ;left
 outlet
-from -5.000000e-03  -1.200000e-02 0.000000e+00
+from -2.500000e-02  -1.200000e-02 0.000000e+00
 to   1.000000e-03  -1.200000e-02 0.000000e+00
 phase_velocity 1.0
 drive_model NONE
@@ -298,42 +298,42 @@ selection_ratio 0.01
 ;; initial states ;;
 
 plasma ; O+
-from -4.000000e-03  -1.100000e-02  0.000000e+00
+from -2.400000e-02  -1.100000e-02  0.000000e+00
 to   0.000000e+00  1.100000e-02  0.000000e+00
 species 2
 movie_tag 3
 unbound off
 discrete_numbers 3 3 3
 density_function 4
-reference_point -4.000000e-03 -1.100000e-02 0.000000e+00
+reference_point -2.400000e-02 -1.100000e-02 0.000000e+00
 density_flags 1 0 0
 momentum_flags 0 0 0
 thermal_energy 1
 movie_fraction 0.000
 ;
 plasma ; e-
-from -4.000000e-03 -1.100000e-02  0.000000e+00
+from -2.400000e-02 -1.100000e-02  0.000000e+00
 to   0.000000e+00 1.100000e-02  0.000000e+00
 species 10
 movie_tag 3
 unbound off
 discrete_numbers 3 3 3
 density_function 3
-reference_point -4.000000e-03 -1.100000e-02 0.000000e+00
+reference_point -2.400000e-02 -1.100000e-02 0.000000e+00
 density_flags 1 0 0
 momentum_flags 0 0 0
 thermal_energy 1
 movie_fraction 0.050
 ;
 plasma ; p+
-from -4.000000e-03 -1.100000e-02  0.000000e+00
+from -2.400000e-02 -1.100000e-02  0.000000e+00
 to   0.000000e+00 1.100000e-02  0.000000e+00
 species 11
 movie_tag 3
 unbound off
 discrete_numbers 3 3 3
 density_function 5
-reference_point -4.000000e-03 -1.100000e-02 0.000000e+00
+reference_point -2.400000e-02 -1.100000e-02 0.000000e+00
 density_flags 1 0 0
 momentum_flags 0 0 0
 thermal_energy 1
@@ -342,7 +342,7 @@ movie_fraction 0.000
 ;; ionization states ;;
 ;
 higherstate              ; O -> O+
-from -5.000000e-03 -1.200000e-02  0.000000e+00
+from -2.500000e-02 -1.200000e-02  0.000000e+00
 to   1.000000e-03 1.200000e-02  0.000000e+00
 interval 1
 species 1
@@ -367,7 +367,7 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O+ -> O++
-from -5.000000e-03 -1.200000e-02  0.000000e+00
+from -2.500000e-02 -1.200000e-02  0.000000e+00
 to   1.000000e-03 1.200000e-02  0.000000e+00
 interval 1
 species 2
@@ -392,7 +392,7 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O++ -> O 3+
-from -5.000000e-03 -1.200000e-02  0.000000e+00
+from -2.500000e-02 -1.200000e-02  0.000000e+00
 to   1.000000e-03 1.200000e-02  0.000000e+00
 interval 1
 species 3
@@ -417,7 +417,7 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O 3+ -> O 4+
-from -5.000000e-03 -1.200000e-02  0.000000e+00
+from -2.500000e-02 -1.200000e-02  0.000000e+00
 to   1.000000e-03 1.200000e-02  0.000000e+00
 interval 1
 species 4
@@ -442,7 +442,7 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O 4+ -> O 5+
-from -5.000000e-03 -1.200000e-02  0.000000e+00
+from -2.500000e-02 -1.200000e-02  0.000000e+00
 to   1.000000e-03 1.200000e-02  0.000000e+00
 interval 1
 species 5
@@ -468,7 +468,7 @@ movie_fraction 0.0
 ;
 ;
 higherstate              ; O 5+ -> O 6+
-from -5.000000e-03 -1.200000e-02  0.000000e+00
+from -2.500000e-02 -1.200000e-02  0.000000e+00
 to   1.000000e-03 1.200000e-02  0.000000e+00
 interval 1
 species 6
@@ -493,7 +493,7 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O 6+ -> O 7+
-from -5.000000e-03 -1.200000e-02  0.000000e+00
+from -2.500000e-02 -1.200000e-02  0.000000e+00
 to   1.000000e-03 1.200000e-02  0.000000e+00
 interval 1
 species 7
@@ -518,7 +518,7 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O 7+ -> O 8+
-from -5.000000e-03 -1.200000e-02  0.000000e+00
+from -2.500000e-02 -1.200000e-02  0.000000e+00
 to   1.000000e-03 1.200000e-02  0.000000e+00
 interval 1
 species 8
@@ -554,7 +554,7 @@ movie_fraction 0.0
 ;;maximum_number 1000000000
 ;;start_time 0.0
 ;;stop_time 1
-;;at -5.000000e-03 0 0
+;;at -2.500000e-02 0 0
 ;
 ;;extract2
 ;;species 10
@@ -588,7 +588,7 @@ direction X
 maximum_number  1000000000
 start_time 0
 stop_time  1
-at -0.005 0 0
+at -0.025 0 0
  
 ;
 extract2
@@ -628,8 +628,8 @@ type 30
 data_file sine700points.dat
 ;; pulse duration length, 2xFWHM
 independent_variable_multiplier 5.128205e-04
-;; Emax, intensity=3.283064e+17 W/cm^2
-dependent_variable_multiplier   1.572787e+07
+;; Emax, intensity=3.283064e+16 W/cm^2
+dependent_variable_multiplier   4.973590e+06
 
 function2 ;laser analytic function for lsp v10
 type 19   ; f-number: ~4.319689898685966
@@ -640,7 +640,7 @@ coefficients 1.000000e-03 2.750000e-03 end
 function3 ; electrons
 
 type 30
-data_file 1.5um.dat
+data_file 19.2um.dat
 independent_variable_multiplier 1.0
 dependent_variable_multiplier 1.0
 
@@ -648,7 +648,7 @@ dependent_variable_multiplier 1.0
 function4 ; Oxygen
 
 type 30
-data_file 1.5um.dat
+data_file 19.2um.dat
 independent_variable_multiplier 1.0
 dependent_variable_multiplier 0.33
 
@@ -656,7 +656,7 @@ dependent_variable_multiplier 0.33
 function5 ; Protons
 
 type 30
-data_file 1.5um.dat
+data_file 19.2um.dat
 independent_variable_multiplier 1.0
 dependent_variable_multiplier 0.67
 
