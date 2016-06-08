@@ -79,13 +79,13 @@ for E in Es:
     d = fromenergy(E);
     d.update(dict(
         l   = 10e-6,
-        lim =( -50, 10, -250, 250,0,0),
-        tlim=( -40,  0, -240, 240,0,0),
-        res =( 60*4, 500*4, 0),
+        lim =( -50, 10, -120, 120,0,0),
+        tlim=( -40,  0, -110, 110,0,0),
+        res =( 60*5, 240*5, 0),
         dens_dat = '1.5um.dat',
-        timestep = 4e-16,
-        dumpinterval=4e-15,
-        totaltime= d['T']*3.5,
+        timestep = 2e-16,
+        dumpinterval=1e-15,
+        totaltime= d['T']*3.0,
         fp = (16.3-40,0,0),));
     dens = mkonescale(**d);
     d['extra_files'] = [('1.5um.dat',dens)]
