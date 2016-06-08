@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from genlsp import genlsp;
 from genpbs import genpbs;
-from gendat import gentargetdat,tlim_mvorig
+from gendat import gentargetdat,genonescale;
 import re;
 import os;
 from pys import sd,test;
@@ -42,22 +42,7 @@ def mksim(pbsbase,**d):
     files.append((pbsbase+"-nocoll.pbs", pbs));
     if test(d,'extra_files'):
         files.extend(d['extra_files']);
-    output(dir=pbsbase,files=files);
-
-def mkonescale(**d):
-    #requires tlim to be specified
-    tlim = scaletuple(d['tlim'],1e-4);
-    tlim = tlim_mvorig(tlim);
-    myd=sd(
-        d,
-        tlim=tlim,);
-    if not test(d,'solidlen'): d['solidlen'] = 10e-4;
-    if not test(d,'targetscale'): d['targetscale'] = 1.5e-4;
-    myd.update(dict(
-        sdim=(tlim[1]-d['solidlen'],tlim[1]),
-        scale=d['targetscale']));
-    return gentargetdat(**myd);
-        
+    output(dir=pbsbase,files=files);        
            
 c=299792458
 e=1.602176208e-19
@@ -87,7 +72,10 @@ for E in Es:
         dumpinterval=1e-15,
         totaltime= d['T']*3.0,
         fp = (16.3-40,0,0),));
-    dens = mkonescale(**d);
+    dens = genonescale(
+        xlen = 40e-4,
+        solid_len=10e-4,
+        scale=1.5e-4);
     d['extra_files'] = [('1.5um.dat',dens)]
     name='{l}um-{I:0.2e}-l={scale}um'.format(l=int(d['l']/1e-6),I=d['I'],scale=1.5);
     mksim(name,**d);
