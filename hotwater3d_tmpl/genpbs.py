@@ -71,13 +71,15 @@ def gen_movne(**kw):
         sclrq_path = 'export PATH="{}:$PATH"\n'.format(sclrq_path);
     else:
         sclrq_path ='';
+    if getkw('cluster') == 'ramses':
+        sclrq_path+='source ~/.bashrc\n';
     if not test(kw,'plotI'):
         plotI=getkw('I')/10;
     if test(kw,'condafile'):
         conda = kw['condafile'];
     else:
         conda = clusters[getkw('cluster')]['condafile']
-    with open("mkmovne_tmpl") as f:
+    with open("movne_tmpl") as f:
         s=f.read();
     return s.format(
         conda=conda,
