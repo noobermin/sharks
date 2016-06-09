@@ -159,7 +159,7 @@ cp {lspexec} {pbsbase}.lsp *.dat $D/
     for concurrent in concurrents:
         script = concurrent[0]
         pre+='''#{script}
-./loopscript {script}>$PBS_O_WORKDIR/{script}.log&
+./loopscript {script} &> $PBS_O_WORKDIR/{script}.log&
 {script}_PID=$!
 '''.format(script=script);
         post+="kill ${script}_PID\n".format(script=script);
