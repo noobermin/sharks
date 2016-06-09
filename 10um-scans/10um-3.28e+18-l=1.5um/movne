@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-CONDAFILE=('~/conda',)
+CONDAFILE=~/conda
 [ -n "$CONDAFILE" ] && source $CONDAFILE
 [ ! -n "$WAITDELAY" ] && WAITDELAY=1;
 DIR=$([ -n "$1" ] && echo "$1" || echo ".")

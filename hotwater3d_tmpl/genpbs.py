@@ -76,7 +76,7 @@ def gen_movne(**kw):
     if test(kw,'condafile'):
         conda = kw['condafile'];
     else:
-        conda=clusters[getkw('cluster')]['condafile'],
+        conda = clusters[getkw('cluster')]['condafile']
     with open("mkmovne_tmpl") as f:
         s=f.read();
     return s.format(
