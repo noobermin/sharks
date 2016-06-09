@@ -53,9 +53,6 @@ end
 ;particle_movie_interval_ns 1.0000000000000002e-06
 ;particle_movie_components Q X Y Z VX VY VZ XI YI ZI
 
-particle_movie_interval_ns 1.0000000000000002e-06
-particle_movie_components Q X Y Z VX VY VZ XI YI ZI
-
 ;Numerical Checks and Reports
  domain_boundary_check ON
  report_timing_flag ON

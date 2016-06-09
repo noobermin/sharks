@@ -8,7 +8,6 @@ if [ ! -n "$OUTDIR" ]; then
 fi
 mkdir -p "$OUTDIR"
 [ ! -n "$NPROCS" ] && NPROCS=1;
-source ~/.bashrc #for ffmpeg
 
 for i in $(ls "$DIR" | grep 'sclr[0-9]\+\.p4\.gz' | sort -V); do
     n=$(echo ${i#sclr*} | sed s/\.p4\.gz//)
@@ -24,5 +23,6 @@ while [ $(pgrep python2 | wc -l ) -gt 0 ]; do
     echo waiting...
     sleep 5; done;
 OUTMOV="10um-3.28e+18-l=1.5um-ne-laser.mp4"
+which ffmpeg
 ffmpeg -pattern_type glob -i "$DIR/"'*.png' -c:v libx264 -pix_fmt yuv420p $OUTMOV
 rcp $OUTMOV $PBS_O_WORKDIR
