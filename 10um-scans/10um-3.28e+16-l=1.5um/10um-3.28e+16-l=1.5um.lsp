@@ -1,5 +1,5 @@
 [Title]
-simulation_title "10 um, I = 3.283063950060916e+16 W/cm^2"
+simulation_title "10um, I = 3.283064e+16 W/cm^2"
 ;
 [Control]
 ;Time-advance
@@ -106,7 +106,7 @@ from -5.000000e-03 -1.200000e-02 0.000000e+00
 to   -5.000000e-03 1.200000e-02 0.000000e+00
 phase_velocity 1.0
 drive_model LASER
-reference_point -0.001365342431 0.0 0.0 ; focal point position
+reference_point -0.002365242431 0.0 0.0 ; focal point position
 components 0 1 0
 phases 0 0 0 ; polarization 1.1781
 temporal_function 1

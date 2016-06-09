@@ -19,5 +19,4 @@ cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/nodesfile.txt
 
 {mpirun} ./{lspexec} $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
 
-
-
+{post}

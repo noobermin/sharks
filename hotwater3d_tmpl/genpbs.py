@@ -18,7 +18,7 @@ from docopt import docopt;
 from pys import mk_getkw, sd, test;
 
 inf = float('inf');
-defaults = dict(
+pbsdefaults = dict(
     pbsbase="hotwater3d_test",
     domains=48,
     cluster="ramses",
@@ -26,9 +26,10 @@ defaults = dict(
     walltime=inf,
     lspexec='lsp-10-3d',
     autozipper=True,
+    concurrents=[],
 )
 cluster =  dict(
-    ppn=48,max_walltime=9999,mpi='mpirun -np {}',max_ppn=48,
+    ppn=48,max_walltime=9999,mpi='mpirun -np {}',max_ppn=48,condafile="~/conda"
 )
 clusters= {
     'ramses':cluster,
@@ -57,18 +58,51 @@ def hours_to_walltime(walltime):
     hr = intflr(walltime);
     return '{}:{}:00'.format(
         hr,intflr((walltime-hr)*60));
+movne_defaults = sd(
+    pbsdefaults,
+    I=3e18,
+    lims=(1e17,1.5e23),
+    n_c=1e21,
+    sclrq_path=None);
+
+def gen_movne(**kw):
+    getkw = mk_getkw(kw,movne_defaults);
+    if test(kw,'sclrq_path'):
+        sclrq_path = 'export PATH="{}:$PATH"'.format(sclrq_path);
+    else:
+        sclrq_path ='';
+    if not test(kw,'plotI'):
+        plotI=getkw('I')/10;
+    if test(kw,'condafile'):
+        conda = kw['condafile'];
+    else:
+        conda=clusters[getkw('cluster')]['condafile'],
+    with open("mkmovne_tmpl") as f:
+        s=f.read();
+    return s.format(
+        conda=conda,
+        pbsbase=getkw('pbsbase'),
+        sclrq_path=sclrq_path,
+        plotI = plotI,
+        lims=str(getkw('clim')),
+        n_c=getkw('n_c'));
 
 def genpbs(**kw):
-    getkw = mk_getkw(kw,defaults);
+    getkw = mk_getkw(kw,pbsdefaults);
     domains=getkw('domains');
     lspexec=getkw('lspexec');
     pbsbase=getkw('pbsbase');
     cluster = getkw("cluster");
     clusterq = cluster;
+    concurrents = getkw('concurrents');
+    if 'autozipper' not in kw or kw['autozipper']:
+        concurrents = [
+            ('zipper','./zipper -a >$PBS_O_WORKDIR')
+        ]+concurrents
+    movne=False;
     if test(kw,"queue"):
         clusterq += "_"+kw['queue'];
-    mycluster = clusters[clusterq]
-    
+    mycluster = clusters[clusterq];
     if test(kw,'ppn'):
         ppn = kw['ppn'];
     else:
@@ -91,17 +125,18 @@ cd $PBS_O_WORKDIR
         sys.stderr.write("walltime exceedes allowed for {}".format(
             clusterq));
     walltime = hours_to_walltime(walltime);
-    
+    post=''
     if cluster == "ramses":
         if nodes == 1:
             pre += '''
 D=/tmp/ngirmang.1-`mkdate`-$PBSBASE
 mkdir -p $D
 cd $PBS_O_WORKDIR
-cp autozipper {lspexec} {pbsbase}.lsp *.dat $D/
-cd $D
+cp {lspexec} {pbsbase}.lsp *.dat $D/
 '''.format(lspexec=lspexec,pbsbase=pbsbase);
-            pass;
+            for concurrent in concurrents:
+                pre+='cp {} $D/\n'.format(concurrent[0]);
+            pre+='cd $D\n'
         else:
             mpirun+="-hostfile $PBS_NODEFILE";
         pre = "module load openmpi-1.4.3-gnu-rpm\n\n"+pre;
@@ -118,16 +153,24 @@ cd $D
 #PBS -A __projectid__
 #PBS -q {}
 '''.format(kw['queue']);
-    if 'autozipper' not in kw or kw['autozipper']:
-        pre+='''#autozipper
-./autozipper > $PBS_O_WORKDIR/autozipper.log&
-'''
+    #handling conncurrent scripts
+    for concurrent in concurrents:
+        script = concurrent[0]
+        pre+='''#{script}
+./loopscript {script}>$PBS_O_WORKDIR/{script}.log&
+{script}_PID=$!
+'''.format(script=script);
+        post+="kill ${script}_PID\n".format(script=script);
+        if len(concurrent)>1:
+            post+="{}\n".format(concurrent[1]);
+    #finally outputting
     with open("hotwater3d_tmpl.pbs") as f:
         s=f.read();
     return s.format(
         nodes=nodes,
         mpirun_opts=mpirun,
         pre=pre,
+        post=post,
         ppn=ppn,
         portions=portions,
         pbsbase=getkw('pbsbase'),

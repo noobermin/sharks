@@ -10,22 +10,24 @@ except ImportError:
 import re;
 import numpy as np;
 from pys import test,parse_numtuple,sd,take,mk_getkw;
-joinspace = lambda l: " ".join([str(i) for i in l]);
+mt  = lambda t,m=1e-4: tuple([i*m for i in t]);
 
 c  = 299792458
 c_cgs=c*100;
 e0 = 8.8541878176e-12
 
-defaults = {
-    'scale': 1.5e-4,
-    'tlim': (0,27.5e-4, 0,0,0.0 ,0.0,0.0),
+datdefaults = {
+    'expl': 1.5,
+    'tlim': (0,27.5, 0,0,0.0 ,0.0,0.0),
     'n_s'  : 1e23,
-    'sdim': (17.5e-4,27.5e-4, 0.0,0.0, 0.0,0.0),
+    'sdim': (17.5,27.5, 0.0,0.0, 0.0,0.0),
     'type' : 'singlescale',
+    'unit' : 1e-4,
 };
 def gentargetdat(**kw):
-    getkw=mk_getkw(kw,defaults);
-    tlim = getkw('tlim');
+    getkw=mk_getkw(kw,datdefaults);
+    unit=getkw('unit');
+    tlim = mt(getkw('tlim'),m=unit);
     if test(kw,'f_1D') or test(kw, 'data1D'):
         dim = 1;
     elif (test(kw,'f_2D') or test(kw, 'data2D')) and test(kw, 'tlim'):
@@ -96,26 +98,28 @@ def tlim_mvorig(tlim):
         0, tlim[5]-tlim[4])
 
 def genf(**kw):
-    getkw=mk_getkw(kw,defaults);
+    getkw=mk_getkw(kw,datdefaults);
     if getkw('type') == 'singlescale':
-        tlim = getkw('tlim');
-        xdim = tlim[0],tlim[1];
+        tlim = mt(getkw('tlim'),m=getkw('unit'));
+        xdim = tlim[0], tlim[1];
         return mkdecay(
-            getkw('n_s'),getkw('sdim'),xdim,getkw('scale'))
+            getkw('n_s'), mt(getkw('sdim'),m=getkw('unit')),
+            xdim, getkw('expl')*getkw('unit'));
     else:
         raise NotImplementedError("Coming soon!");
-    #NOTE This uses xy indexing over ij indexing.
 
 onescale_defaults = sd(
-    defaults,
-    solid_len=10e-4,
-    xlen=27.5e-4,
+    datdefaults,
+    solid_len=10,
+    xlen=27.5,
 );
 def genonescale(**kw):
     getkw=mk_getkw(kw,onescale_defaults);
     slen = getkw("solid_len");
     xlen = getkw("xlen");
-    kw['tlim']= (0.0, xlen) + (0.0,0.0,0.0,0.0);
-    kw['sdim']= (xlen-slen, xlen) + (0.0,0.0,0.0,0.0);
-    kw['f_1D']= genf(**kw);
-    return gentargetdat(**kw);
+    kw1 = sd(
+        kw,
+        tlim=(0.0, xlen) + (0.0,0.0,0.0,0.0),
+        sdim= (xlen-slen, xlen) + (0.0,0.0,0.0,0.0));
+    kw1['f_1D']= genf(**kw1)
+    return gentargetdat(**kw1);

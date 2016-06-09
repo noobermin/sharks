@@ -1,5 +1,5 @@
 [Title]
-simulation_title "10 um, I = 3.2830639500609157e+18 W/cm^2"
+simulation_title "10um, I = 3.283064e+18 W/cm^2"
 ;
 [Control]
 ;Time-advance
@@ -106,7 +106,7 @@ from -2.500000e-02 -1.200000e-02 0.000000e+00
 to   -2.500000e-02 1.200000e-02 0.000000e+00
 phase_velocity 1.0
 drive_model LASER
-reference_point -0.00863327635968 0.0 0.0 ; focal point position
+reference_point -0.0016744669031 0.0 0.0 ; focal point position
 components 0 1 0
 phases 0 0 0 ; polarization 1.1781
 temporal_function 1
@@ -640,7 +640,7 @@ coefficients 1.000000e-03 2.750000e-03 end
 function3 ; electrons
 
 type 30
-data_file 19.2um.dat
+data_file 1.5um.dat
 independent_variable_multiplier 1.0
 dependent_variable_multiplier 1.0
 
@@ -648,7 +648,7 @@ dependent_variable_multiplier 1.0
 function4 ; Oxygen
 
 type 30
-data_file 19.2um.dat
+data_file 1.5um.dat
 independent_variable_multiplier 1.0
 dependent_variable_multiplier 0.33
 
@@ -656,7 +656,7 @@ dependent_variable_multiplier 0.33
 function5 ; Protons
 
 type 30
-data_file 19.2um.dat
+data_file 1.5um.dat
 independent_variable_multiplier 1.0
 dependent_variable_multiplier 0.67
 

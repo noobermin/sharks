@@ -23,13 +23,21 @@ cd $PBS_O_WORKDIR
 D=/tmp/ngirmang.1-`mkdate`-$PBSBASE
 mkdir -p $D
 cd $PBS_O_WORKDIR
-cp autozipper lsp-10-xy 10um-3.28e+14-l=19.2um.lsp *.dat $D/
+cp lsp-10-xy 10um-3.28e+14-l=19.2um.lsp *.dat $D/
+cp zipper $D/
+cp movne $D/
 cd $D
-#autozipper
-./autozipper > $PBS_O_WORKDIR/autozipper.log&
+#zipper
+./loopscript zipper>$PBS_O_WORKDIR/zipper.log&
+zipper_PID=$!
+#movne
+./loopscript movne>$PBS_O_WORKDIR/movne.log&
+movne_PID=$!
 
 
 mpirun -np 48 ./lsp-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
 
-
-
+kill $zipper_PID
+./zipper -a >$PBS_O_WORKDIR
+kill $movne_PID
+./movne

@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 '''
 Generate an lsp file.
 
@@ -47,7 +47,7 @@ c  = 299792458
 c_cgs=c*100;
 e0 = 8.8541878176e-12
 
-defaults = {
+lspdefaults = {
     'I':3e18,
     'l':780e-9,
     'w':2.17e-6,
@@ -71,7 +71,7 @@ defaults = {
 };
 
 pext_defaults = sd(
-    defaults,
+    lspdefaults,
     species=(10,),
     start_time=0,
     stop_time=1);
@@ -124,7 +124,7 @@ at {position}
          for d in formatsp(sp,len(lims)*i)])
 
 region_defaults = sd(
-    defaults,
+    lspdefaults,
     region_split=('z',1),
     region_dom_split='x');
 
@@ -283,7 +283,7 @@ def genlsp(**kw):
         if test(kw, l):
             ret = kw[l]
         else:
-            ret = defaults[l];
+            ret = lspdefaults[l];
         if scale:
             return [scale*i for i in ret];
         return ret;

@@ -1,5 +1,5 @@
 [Title]
-simulation_title "{description}, I = {intensity} W/cm^2"
+simulation_title "{description}, I = {intensity:e} W/cm^2"
 ;
 [Control]
 ;Time-advance

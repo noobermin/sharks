@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 '''
 Create the dat file for the exponential fall-off.
 
@@ -13,7 +13,6 @@ Options:
 '''
 from docopt import docopt
 import numpy as np;
-from cStringIO import StringIO;
 from gendat import gentargetdat
 opts = docopt(__doc__,help=True);
 xdim = eval(opts['--x-dims']);
@@ -26,5 +25,4 @@ print(gentargetdat(
     sdim=sdim + (0,0,0,0,),
     tlim=xdim + (0,0,0,0,),
     scale=scale,
-    n_s=n_s))
-
+    n_s=n_s).decode('utf-8'))
