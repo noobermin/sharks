@@ -17,12 +17,12 @@ for i in $(ls "$DIR" | grep 'sclr[0-9]\+\.p4\.gz' | sort -V); do
     while [ $(pgrep python2 | wc -l ) -ge $NPROCS ]; do sleep $WAITDELAY; done;
     sleep 0.25;
     echo $i...
-    sclrq.py -D "$DIR" $n "$OUTDIR"/$I.png --intensity="3.283064e+16" \
+    sclrq.py -D "$DIR" $n "$OUTDIR"/$I.png --intensity="1.215950e+15" \
         -l --lims="(1000000000000000.0, 1e+22)" --highlight="1.238728e+20" --laser -Q RhoN10 &
 done
 while [ $(pgrep python2 | wc -l ) -gt 0 ]; do
     echo waiting...
     sleep 5; done;
-OUTMOV="3um-3.28e+17-l=1.5um-ne-laser.mp4"
-ffmpeg -pattern_type glob -i "$OUTDIR/\*.png" -c:v libx264 -pix_fmt yuv420p -y $OUTMOV
+OUTMOV="3um-1.22e+16-l=1.5um-ne-laser.mp4"
+ffmpeg -pattern_type glob -i "$OUTDIR/*.png" -c:v libx264 -pix_fmt yuv420p -y $OUTMOV
 [ -e $OUTMOV ] && rcp $OUTMOV $PBS_O_WORKDIR

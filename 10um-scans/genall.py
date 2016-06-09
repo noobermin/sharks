@@ -72,7 +72,7 @@ for d in longs:
 #3um, scale=1.5um
 def3umds=[]
 for E in Es:
-    d = sd(fromenergy(E), **defd);
+    d = sd(fromenergy(E,l=3e-6), **defd);
     d.update(dict(
         l   = 3e-6,
         lim =( -50, 10, -60, 60, 0,0),

@@ -1,9 +1,9 @@
 [Title]
-simulation_title "3um, I = 3.283064e+18 W/cm^2"
+simulation_title "3um, I = 1.215950e+20 W/cm^2"
 ;
 [Control]
 ;Time-advance
- time_limit   1.5385e-03
+ time_limit   4.6154e-04
  time_step_ns 1.0000e-07
 ;Restart
 
@@ -624,14 +624,14 @@ function1 ; laser temporal function
 type 30
 data_file sine700points.dat
 ;; pulse duration length, 2xFWHM
-independent_variable_multiplier 5.128205e-04
-;; Emax, intensity=3.283064e+18 W/cm^2
-dependent_variable_multiplier   4.973590e+07
+independent_variable_multiplier 1.538462e-04
+;; Emax, intensity=1.215950e+20 W/cm^2
+dependent_variable_multiplier   3.026830e+08
 
 function2 ;laser analytic function for lsp v10
-type 19   ; f-number: ~14.398966328953218
+type 19   ; f-number: ~4.319689898685966
           ; \lambda spotsize
-coefficients 3.000000e-04 2.750000e-03 end
+coefficients 3.000000e-04 8.250000e-04 end
 
 ;;
 function3 ; electrons

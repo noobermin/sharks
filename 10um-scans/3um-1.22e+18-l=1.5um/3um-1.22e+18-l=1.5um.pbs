@@ -1,13 +1,13 @@
 #PBS -l walltime=9999:0:00
 #PBS -l nodes=1:ppn=48
-#PBS -N 3um-3.28e+14-l=1.5um
+#PBS -N 3um-1.22e+18-l=1.5um
 #PBS -S /bin/bash
 #PBS -j oe
 #PBS -m ae
 #PBS -M ngirmang.1@osu.edu
 
 
-PBSBASE=3um-3.28e+14-l=1.5um
+PBSBASE=3um-1.22e+18-l=1.5um
 #source $HOME/.bashrc
 
 #This outputs the name of the root node
@@ -23,7 +23,7 @@ cd $PBS_O_WORKDIR
 D=/tmp/ngirmang.1-`mkdate`-$PBSBASE
 mkdir -p $D
 cd $PBS_O_WORKDIR
-cp lsp-10-xy-no_collisions 3um-3.28e+14-l=1.5um.lsp *.dat $D/
+cp lsp-10-xy 3um-1.22e+18-l=1.5um.lsp *.dat $D/
 cp zipper $D/
 cp movne $D/
 cp loopscript $D/
@@ -36,7 +36,7 @@ zipper_PID=$!
 movne_PID=$!
 
 
-mpirun -np 48 ./lsp-10-xy-no_collisions $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+mpirun -np 48 ./lsp-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
 
 kill $zipper_PID
 ./zipper -a >$PBS_O_WORKDIR
