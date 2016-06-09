@@ -26,6 +26,7 @@ cd $PBS_O_WORKDIR
 cp lsp-10-xy-no_collisions 10um-3.28e+17-l=1.5um.lsp *.dat $D/
 cp zipper $D/
 cp movne $D/
+cp loopscript $D/
 cd $D
 #zipper
 ./loopscript zipper>$PBS_O_WORKDIR/zipper.log&

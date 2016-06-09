@@ -136,6 +136,8 @@ cp {lspexec} {pbsbase}.lsp *.dat $D/
 '''.format(lspexec=lspexec,pbsbase=pbsbase);
             for concurrent in concurrents:
                 pre+='cp {} $D/\n'.format(concurrent[0]);
+            if len(concurrents) > 0:
+                pre+='cp loopscript $D/\n';
             pre+='cd $D\n'
         else:
             mpirun+="-hostfile $PBS_NODEFILE";
