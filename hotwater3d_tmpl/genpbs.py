@@ -68,7 +68,7 @@ movne_defaults = sd(
 def gen_movne(**kw):
     getkw = mk_getkw(kw,movne_defaults);
     if test(kw,'sclrq_path'):
-        sclrq_path = 'export PATH="{}:$PATH"'.format(sclrq_path);
+        sclrq_path = 'export PATH="{}:$PATH"\n'.format(sclrq_path);
     else:
         sclrq_path ='';
     if not test(kw,'plotI'):

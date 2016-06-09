@@ -15,7 +15,7 @@ for E in Es:
         dumpinterval=1e-15,
         totaltime= d['T']*3.0,
         singlescale=True,
-        no_pmovies=False,
+        no_pmovies=True,
         description="10um",
         lspexec='lsp-10-xy',
         fp='nc',
