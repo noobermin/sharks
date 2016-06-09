@@ -18,7 +18,8 @@ defd = dict(
     #pbs options
     autozipper=True,
     dir=True,
-) 
+)
+pbsfmt='{l}um-{I:0.2e}-l={scale:0.3}um'
 defds=[]
 for E in Es:
     d = sd(fromenergy(E), **defd);
@@ -41,7 +42,7 @@ for E in Es:
 ####################################
 #10um, scale=1.5um
 for d in defds:
-    d['pbsbase']='{l}um-{I:0.2e}-l={scale:0.2}um'.format(
+    d['pbsbase']=pbsfmt.format(
         l=int(d['l']/1e-6),I=d['I'],scale=d['expf']);
     d['pbses'] = [
         dict(pbsname=d['pbsbase']),
@@ -59,7 +60,7 @@ longs = [sd(
     totaltime=d['T']*3.5,)
          for d in defds];
 for d in longs:
-    d['pbsbase']='{l}um-{I:0.2e}-l={scale:0.3}um'.format(
+    d['pbsbase']=pbsfmt.format(
         l=int(d['l']/1e-6),I=d['I'],scale=d['expf']);
     d['pbses'] = [
         dict(pbsname=d['pbsbase']),
@@ -84,7 +85,7 @@ for E in Es:
         #movne
         movne={'clim':(1e15,1e22)},
     ));
-    d['pbsbase']='{l}um-{I:0.2e}-l={scale:0.3}um'.format(
+    d['pbsbase']=pbsfmt.format(
         l=int(d['l']/1e-6),I=d['I'],scale=d['expf']);
     d['pbses'] = [
         dict(pbsname=d['pbsbase']),
