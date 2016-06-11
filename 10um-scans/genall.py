@@ -71,7 +71,7 @@ for d in longs:
 # 3um scans
 ####################################
 #3um, scale=1.5um
-def3umds=[]
+def3umds=[];
 for E in Es:
     d = sd(fromenergy(E,l=3e-6), **defd);
     d.update(dict(
@@ -80,7 +80,7 @@ for E in Es:
         tlim=( -40,  0, -50, 50, 0,0),
         res =( 60*10, 120*10, 0),
         timestep = 1e-16,
-        totaltime= d['T']*3.0,
+        totaltime= d['T']*3.75,
         description="3um",
         #movne
         movne={'clim':(1e15,1e22)},
