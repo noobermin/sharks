@@ -17,7 +17,7 @@ c_cgs=c*100;
 e0 = 8.8541878176e-12
 
 datdefaults = {
-    'expl': 1.5,
+    'expf': 1.5,
     'tlim': (0,27.5, 0,0,0.0 ,0.0,0.0),
     'n_s'  : 1e23,
     'sdim': (17.5,27.5, 0.0,0.0, 0.0,0.0),
@@ -104,7 +104,7 @@ def genf(**kw):
         xdim = tlim[0], tlim[1];
         return mkdecay(
             getkw('n_s'), mt(getkw('sdim'),m=getkw('unit')),
-            xdim, getkw('expl')*getkw('unit'));
+            xdim, getkw('expf')*getkw('unit'));
     else:
         raise NotImplementedError("Coming soon!");
 

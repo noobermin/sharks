@@ -48,7 +48,7 @@ defaults.update(dict(
 ));
 
 def get_roundfpx(d):
-    dx = -np.log(nc(d['l'])/d['n_s'])*d['expl'];
+    dx = -np.log(nc(d['l'])/d['n_s'])*d['expf'];
     return d['tlim'][1]-d['solid_len']-dx;
 
 def gensim(**kw):
@@ -69,7 +69,7 @@ def gensim(**kw):
         tlim = getkw('tlim')
         kw['xlen'] = tlim[1]-tlim[0];
         dens = genonescale(**kw);
-        kw['dens_dat'] = "{}um.dat".format(getkw('expl'));
+        kw['dens_dat'] = "{}um.dat".format(getkw('expf'));
         files.append((kw['dens_dat'], dens));
     if test(kw, "movne"):
         if type(kw['movne']) == dict:

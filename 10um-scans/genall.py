@@ -92,3 +92,6 @@ for E in Es:
         dict(pbsname=d['pbsbase']+'-nocoll',
              lspexec='lsp-10-xy-no_collisions'),];
     gensim(**d);
+####################################
+# 3um scans with 
+####################################
