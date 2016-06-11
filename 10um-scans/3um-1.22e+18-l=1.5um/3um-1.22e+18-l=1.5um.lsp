@@ -295,42 +295,42 @@ selection_ratio 0.01
 ;; initial states ;;
 
 plasma ; O+
-from -4.000000e-03  -6.000000e-03  0.000000e+00
-to   0.000000e+00  6.000000e-03  0.000000e+00
+from -4.000000e-03  -5.000000e-03  0.000000e+00
+to   0.000000e+00  5.000000e-03  0.000000e+00
 species 2
 movie_tag 3
 unbound off
 discrete_numbers 3 3 3
 density_function 4
-reference_point -4.000000e-03 -6.000000e-03 0.000000e+00
+reference_point -4.000000e-03 -5.000000e-03 0.000000e+00
 density_flags 1 0 0
 momentum_flags 0 0 0
 thermal_energy 1
 movie_fraction 0.000
 ;
 plasma ; e-
-from -4.000000e-03 -6.000000e-03  0.000000e+00
-to   0.000000e+00 6.000000e-03  0.000000e+00
+from -4.000000e-03 -5.000000e-03  0.000000e+00
+to   0.000000e+00 5.000000e-03  0.000000e+00
 species 10
 movie_tag 3
 unbound off
 discrete_numbers 3 3 3
 density_function 3
-reference_point -4.000000e-03 -6.000000e-03 0.000000e+00
+reference_point -4.000000e-03 -5.000000e-03 0.000000e+00
 density_flags 1 0 0
 momentum_flags 0 0 0
 thermal_energy 1
 movie_fraction 0.050
 ;
 plasma ; p+
-from -4.000000e-03 -6.000000e-03  0.000000e+00
-to   0.000000e+00 6.000000e-03  0.000000e+00
+from -4.000000e-03 -5.000000e-03  0.000000e+00
+to   0.000000e+00 5.000000e-03  0.000000e+00
 species 11
 movie_tag 3
 unbound off
 discrete_numbers 3 3 3
 density_function 5
-reference_point -4.000000e-03 -6.000000e-03 0.000000e+00
+reference_point -4.000000e-03 -5.000000e-03 0.000000e+00
 density_flags 1 0 0
 momentum_flags 0 0 0
 thermal_energy 1

@@ -77,7 +77,7 @@ for E in Es:
     d.update(dict(
         l   = 3e-6,
         lim =( -50, 10, -60, 60, 0,0),
-        tlim=( -40,  0, -60, 60, 0,0),
+        tlim=( -40,  0, -50, 50, 0,0),
         res =( 60*10, 120*10, 0),
         timestep = 1e-16,
         totaltime= d['T']*3.0,
