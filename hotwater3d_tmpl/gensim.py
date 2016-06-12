@@ -60,7 +60,7 @@ def gensim(**kw):
         files.append('zipper');
     files.append('loopscript');
     # for singlescale
-    if getkw('singlescale'):
+    if test(kw,'singlescale'):
         if type(getkw('fp')) != tuple:
             fpx = get_roundfpx(kw);
             if getkw('fp') != 'nc':
@@ -70,6 +70,13 @@ def gensim(**kw):
         kw['xlen'] = tlim[1]-tlim[0];
         dens = genonescale(**kw);
         kw['dens_dat'] = "{}um.dat".format(getkw('expf'));
+        files.append((kw['dens_dat'], dens));
+    elif getkw('externalf_1D'):
+        tlim = getkw('tlim');
+        kwp = sd(kw, tlim=(0, tlim[1]-tlim[0], 0,0, 0,0))
+        dens = gentargetdat(**kwp);
+        if not test(kw, 'dens_dat'):
+            kw['dens_dat'] = "watercolumn.dat";
         files.append((kw['dens_dat'], dens));
     if test(kw, "movne"):
         if type(kw['movne']) == dict:
