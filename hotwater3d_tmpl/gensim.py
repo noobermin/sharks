@@ -43,6 +43,7 @@ defaults.update(dict(
     pbsbase="hotwater3d",
     autozipper=None,
     movne=False,
+    angular=False,
     pbses=None,
     dir=None,
 ));
@@ -90,6 +91,13 @@ def gensim(**kw):
         else:
             kw['concurrents'] = [('movne','./movne')];
         files.append( ('movne',movne,0o755) );
+    if test(kw,'angular'):
+        #adding it to pbs
+        if test(kw, "concurrents"):
+            kw['concurrents'] += [('genangular','./genangular')];
+        else:
+            kw['concurrents'] = [('genangular','./genangular')];
+        files.append('angular');
     lsp=genlsp(**kw);
     files.append((pbsbase+".lsp", lsp));
     if pbses is None:
