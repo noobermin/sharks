@@ -97,7 +97,7 @@ def gensim(**kw):
             kw['concurrents'] += [('genangular','./genangular')];
         else:
             kw['concurrents'] = [('genangular','./genangular')];
-        files.append('angular');
+        files.append('genangular');
     lsp=genlsp(**kw);
     files.append((pbsbase+".lsp", lsp));
     if pbses is None:

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+while true; do
+    echo sleeping...
+    echo
+    sleep 120;
+    echo running autozipper at $(date)
+    ./autozipper
+done

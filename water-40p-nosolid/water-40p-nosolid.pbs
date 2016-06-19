@@ -1,0 +1,51 @@
+## For garnet and friends
+#PBS -l walltime=00:10:00
+#PBS -l select=8:ncpus=32:mpiprocs=32
+## for debug
+#PBS -q debug
+## for a real submission
+##PBS -q standard_lw
+#PBS -N water-nosolid
+#PBS -A AFVAW35874EAX
+#PBS -j oe
+#PBS -m ae
+#PBS -M ngirmang.1@osu.edu
+## For osc and friends
+##PBS -l walltime=00:01:00
+##PBS -l nodes=32:ppn=8
+##PBS -N water-nosolid
+##PBS -j oe
+##PBS -m ae
+##PBS -M ngirmang.1@osu.edu
+#
+BASENAME=water-nosolid
+
+# the thing for mail is capital M :)
+#module load intel-compilers-11.1
+#module load openmpi-1.4.3-intel    #this is needed for mpirun to work
+#module load openmpi-1.4.3-gnu
+#module unload mpi
+#module load mvapich2-1.6-gnu
+#module load pvfs2
+
+cd $PBS_O_WORKDIR
+
+#This outputs the name of the root node to the directory where you submitted this PBS job
+echo $HOSTNAME > $PBS_O_WORKDIR/hostname.txt   
+cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/cat_nodefile.txt
+
+#mkdir /tmp/${USER}_${PBS_JOBID}
+#cd /tmp/${USER}_${PBS_JOBID}
+
+#cp $PBS_O_WORKDIR/lsp .
+#cp $PBS_O_WORKDIR/sine*.dat . 
+#cp $PBS_O_WORKDIR/${DOTLSPFILE} .
+
+#./monitor > monitor.txt&
+#MPID=$!
+#mpiexec -n  250 ./lsp10_oakley $BASENAME.lsp > $BASENAME.txt
+# see script
+#mpiexec -n 236 -verbose ./lsp10_glenn $BASENAME.lsp > $BASENAME.txt 2>&1
+aprun -n 236 ./lsp-garnet $BASENAME.lsp > $BASENAME.txt 2>&1
+#kill $MPID
+

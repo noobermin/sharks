@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+while true; do
+    echo $(date)--
+    ../chmem ./cat_nodefile.txt
+    sleep 5;
+done;

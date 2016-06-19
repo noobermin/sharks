@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+PBSBASE=hotwater2d_skinny
+
+./genlsp.py --tlim="(-30,0,-10.5,10.5)">hotwater2d_skinny.lsp
+./genpbs.py -p $PBSBASE>hotwater2d_skinny.pbs

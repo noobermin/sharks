@@ -34,6 +34,7 @@ for E in Es:
         description="10um",
         #movne
         movne={'clim':(1e14,1e21)},
+        angular=True,
     ));
     defds.append(d);
 
