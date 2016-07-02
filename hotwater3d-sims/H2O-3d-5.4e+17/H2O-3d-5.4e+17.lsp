@@ -1,5 +1,5 @@
 [Title]
-simulation_title "hotwater in 3d, I = 5.4e+17 W/cm^2"
+simulation_title "hotwater in 3d, I = 5.400000e+17 W/cm^2"
 ;
 [Control]
 ;Time-advance
