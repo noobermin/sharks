@@ -94,6 +94,30 @@ for E in Es:
         dict(pbsname=d['pbsbase']+'-nocoll',
              lspexec='lsp-10-xy-no_collisions'),];
     gensim(**d);
+#3um, scale=5.77um
+for E in Es:
+    d = sd(fromenergy(E,l=3e-6), **defd);
+    d.update(dict(
+        l   = 3e-6,
+        n_s=1e23,
+        expf=5.77,
+        lim =( -90, 10, -60, 60, 0,0),
+        tlim=( -80,  0, -50, 50, 0,0),
+        res =( 100*10, 120*10, 0),
+        totaltime=d['T']*3.75,
+        timestep = 1e-16,
+        description="3um w/ 5.77um scale plasma",
+        #movne
+        movne={'clim':(1e15,1e22)},
+    ));
+    d['pbsbase']=pbsfmt.format(
+        l=int(d['l']/1e-6),I=d['I'],scale=d['expf']);
+    d['pbses'] = [
+        dict(pbsname=d['pbsbase']),
+        dict(pbsname=d['pbsbase']+'-nocoll',
+             lspexec='lsp-10-xy-no_collisions'),];
+    gensim(**d);
+
 ####################################
 # 3um scans with shelf
 ####################################
