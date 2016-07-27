@@ -22,11 +22,20 @@ defd = dict(
     dir=True,
 )
 pbsfmt='{l}um-{I:0.2e}-l={scale:0.3}um'
+def mkpbsbase(d):
+    d['pbsbase']=pbsfmt.format(
+        l=int(d['l']/1e-6),I=d['I'],scale=d['expf']);
+def mkpbs(d):
+    d['pbses'] = [
+        dict(pbsname=d['pbsbase']),
+        dict(pbsname=d['pbsbase']+'-nocoll',
+             lspexec='lsp-10-xy-no_collisions'),];
+    return d;
+
 defds=[]
 for E in Es:
     d = sd(fromenergy(E,cycles=cycles), **defd);
-    d.update(dict(
-        l   = 10e-6,
+    d.update(
         lim =( -50, 10, -120, 120,0,0),
         tlim=( -40,  0, -110, 110,0,0),
         res =( 60*5, 240*5, 0),
@@ -36,7 +45,7 @@ for E in Es:
         #movne
         movne={'clim':(1e14,1e21)},
         angular=True,
-    ));
+    );
     defds.append(d);
 
 
@@ -63,22 +72,16 @@ longs = [sd(
     totaltime=d['T']*3.5,)
          for d in defds];
 for d in longs:
-    d['pbsbase']=pbsfmt.format(
-        l=int(d['l']/1e-6),I=d['I'],scale=d['expf']);
-    d['pbses'] = [
-        dict(pbsname=d['pbsbase']),
-        dict(pbsname=d['pbsbase']+'-nocoll',
-             lspexec='lsp-10-xy-no_collisions'),];
+    mkpbsbase(d);
+    mkpbs(d);
     gensim(**d);
 ####################################
 # 3um scans
 ####################################
 #3um, scale=1.5um
-def3umds=[];
 for E in Es:
     d = sd(fromenergy(E,l=3e-6,cycles=cycles), **defd);
-    d.update(dict(
-        l   = 3e-6,
+    d.update(
         lim =( -50, 10, -60, 60, 0,0),
         tlim=( -40,  0, -50, 50, 0,0),
         res =( 60*10, 120*10, 0),
@@ -87,19 +90,14 @@ for E in Es:
         description="3um",
         #movne
         movne={'clim':(1e15,1e22)},
-    ));
-    d['pbsbase']=pbsfmt.format(
-        l=int(d['l']/1e-6),I=d['I'],scale=d['expf']);
-    d['pbses'] = [
-        dict(pbsname=d['pbsbase']),
-        dict(pbsname=d['pbsbase']+'-nocoll',
-             lspexec='lsp-10-xy-no_collisions'),];
+    );
+    mkpbsbase(d);
+    mkpbs(d);
     gensim(**d);
 #3um, scale=5.77um
 for E in Es:
     d = sd(fromenergy(E,l=3e-6,cycles=cycles), **defd);
-    d.update(dict(
-        l   = 3e-6,
+    d.update(
         n_s=1e23,
         expf=5.77,
         lim =( -90, 10, -60, 60, 0,0),
@@ -110,13 +108,9 @@ for E in Es:
         description="3um w/ 5.77um scale plasma",
         #movne
         movne={'clim':(1e15,1e22)},
-    ));
-    d['pbsbase']=pbsfmt.format(
-        l=int(d['l']/1e-6),I=d['I'],scale=d['expf']);
-    d['pbses'] = [
-        dict(pbsname=d['pbsbase']),
-        dict(pbsname=d['pbsbase']+'-nocoll',
-             lspexec='lsp-10-xy-no_collisions'),];
+    );
+    mkpbsbase(d);
+    mkpbs(d);
     gensim(**d);
 
 ####################################
@@ -138,8 +132,7 @@ def mkshelf(xdim=(0,50e-4),
 
 for E in Es:
     d = sd(fromenergy(E,l=3e-6,cycles=cycles), **defd);
-    d.update(dict(
-        l   = 3e-6,
+    d.update(
         lim =( -50, 20, -45, 45, 0,0),
         tlim=( -40, 10, -35, 35, 0,0),
         res =( 70*10, 90*10, 0),
@@ -154,11 +147,68 @@ for E in Es:
         dens_dat="shelf.dat",
         externalf_1D=True,
         f_1D=mkshelf(),
-    ));
+    );
     d['pbsbase']='{l}um-{I:0.2e}-shelf'.format(
         l=int(d['l']/1e-6),I=d['I']);
-    d['pbses'] = [
-        dict(pbsname=d['pbsbase']),
-        dict(pbsname=d['pbsbase']+'-nocoll',
-             lspexec='lsp-10-xy-no_collisions'),];
+    mkpbs(d);
+    gensim(**d);
+
+#############################
+# 1um scans
+#############################
+for E in Es:
+    d = sd(fromenergy(E,l=1e-6,cycles=cycles), **defd);
+    d.update(
+        n_s=1e23,
+        expf=1.92,
+        #
+        lim =( -42.5, 10, -15, 15, 0,0),
+        tlim=( -32.5,  0, -10, 10, 0,0),
+        res =( 52.5*30, 30*30, 0),
+        timestep = 1e-16,
+        totaltime= d['T']*4,
+        description="1um",
+        #movne
+        movne={'clim':(5e17,1e23)},
+    );
+    mkpbsbase(d);
+    mkpbs(d);
+    gensim(**d);
+
+
+#############################
+# 1um shelf
+#############################
+shelf_1um=[]
+for E in Es:
+    d = sd(fromenergy(E,l=1e-6,cycles=cycles), **defd);
+    d.update(
+        lim =( -42.5, 10, -15, 15, 0,0),
+        tlim=( -32.5,  0, -10, 10, 0,0),
+        res =( 52.5*30, 30*30, 0),
+        timestep = 1e-16,
+        totaltime= d['T']*4,
+        description="1um",
+        fp=(0,0,0),
+        #movne
+        movne={'clim':(5e17,1e23)},
+        #density
+        singlescale=None,
+        dens_dat="shelf.dat",
+        externalf_1D=True,
+        f_1D=mkshelf(xdim=(0,42.5e-4),sh=1e19),
+    );
+    d['pbsbase']='{l}um-{I:0.2e}-shelf={sh}'.format(
+        l=int(d['l']/1e-6),I=d['I'],sh=1e19);
+    mkpbs(d);
+    gensim(**d);
+    shelf_1um.append(d);
+    
+for d in shelf_1um:
+    sh = 1e18
+    d.update(
+        f_1D=mkshelf(xdim=(0,42.5e-4),sh=sh));
+    d['pbsbase']='{l}um-{I:0.2e}-shelf={sh}'.format(
+        l=int(d['l']/1e-6),I=d['I'],sh=sh);
+    mkpbs(d);
     gensim(**d);

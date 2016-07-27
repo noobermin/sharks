@@ -117,4 +117,4 @@ def fromenergy(En,cycles=def_cycles,l=10e-6,l2w=2.75):
     w=l*l2w;
     T=cycles*l/c;
     I=En/(w**2*np.pi/2.0*T/2.0)*1e-4;
-    return sd(defaults,w=w,T=T,I=I)
+    return sd(defaults,w=w,T=T,I=I,l=l)
