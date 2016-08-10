@@ -48,11 +48,11 @@ def gentargetdat(**kw):
     elif dim == 2:
         if test(kw,'f_2D'):
             x = np.linspace(tlim[0],tlim[1],100);
-            if isnp.close(tlim[2]-tlim[3],0):
+            if np.isclose(tlim[2]-tlim[3],0):
                 y = np.linspace(tlim[4],tlim[5],100);
             else:
                 y = np.linspace(tlim[2],tlim[3],100);
-            X,Y = np.meshgrid(x,y);
+            X,Y = np.meshgrid(x,y,indexing='ij');
             d = getkw('f_2D')(X,Y);
         elif test(kw,'data2D'):
             x,y,d = getkw('data2D');
@@ -63,22 +63,27 @@ def gentargetdat(**kw):
         np.savetxt(s,np.array(d).T,fmt='%.8e',);
         return s.getvalue();
     else:
-        raise NotImplementedError("Not yet!");
-        # if test(kw, 'f_3D'):
-        #     x = np.linspace(tlim[0],tlim[1],100);
-        #     y = np.linspace(tlim[2],tlim[3],100);
-        #     z = np.linspace(tlim[4],tlim[5],100);
-        #     X,Y,Z = np.meshgrid(x,y,z);
-        #     d = getkw('f_3d')(X,Y,Z);
-        # else:
-        #     x,y,z,d = getkw('data3D');
-        # s = StringIO();
-        # s.write("{} {} {}\n".format(d.shape[0],d.shape[1], d.shape[2]));
-        # np.savetxt(s,np.array([x]).T,fmt='%.8e')
-        # np.savetxt(s,np.array([y]).T,fmt='%.8e')
-        # np.savetxt(s,np.array([z]).T,fmt='%.8e')
-        # np.savetxt(s,np.array(d).T,fmt='%.8e',); s.write("\n");
-        # return s.getvalue();
+        if test(kw, 'f_3d'):
+            x = np.linspace(tlim[0],tlim[1],100);
+            y = np.linspace(tlim[2],tlim[3],100);
+            z = np.linspace(tlim[4],tlim[5],100);
+            X,Y,Z = np.meshgrid(x,y,z,indexing='ij');
+            d = getkw('f_3d')(X,Y,Z);
+        elif test(kw,'data3D'):
+            x,y,z,d = getkw('data3D');
+        s = StringIO();
+        s.write("{} {} {}\n".format(
+            d.shape[0],d.shape[1],d.shape[2]));
+        s.write("# x\n")
+        np.savetxt(s,np.array(x).reshape(1,-1),fmt='%.8e');
+        s.write("# y\n")
+        np.savetxt(s,np.array(y).reshape(1,-1),fmt='%.8e');
+        s.write("# z\n")
+        np.savetxt(s,np.array(z).reshape(1,-1),fmt='%.8e');
+        s.write("# data\n")
+        for sub in np.rollaxis(d,1):
+            np.savetxt(s,np.array(sub).T,fmt='%.8e',);
+        return s.getvalue();
     pass;
 
 def mkdecay(solid, sdim, xdim, l):
