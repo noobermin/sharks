@@ -22,9 +22,11 @@ def mkdir(dir):
 def output(dir='.',files=["sine700points.dat","watercolumn.dat","autozipper"]):
     if dir:
         mkdir(dir);
+    else:
+        dir='.';
     for file in files:
         if type(file) == str:
-            sh.copy(file,dir);
+            if dir != '.': sh.copy(file,dir);
         else:
             fname=dir+'/'+file[0]
             outstr=file[1];
@@ -72,7 +74,16 @@ def gensim(**kw):
         dens = genonescale(**kw);
         kw['dens_dat'] = "{}um.dat".format(getkw('expf'));
         files.append((kw['dens_dat'], dens));
-    elif getkw('externalf_1D'):
+    #elif test(kw,'shelf'):
+    #    if type(getkw('fp')) != tuple:
+            # tlim = getkw('tlim');
+            # kw['xlen'] = tlim[1]-tlim[0];
+            # if test(kw, 'slen'):
+                
+            # if getkw('fp') != 'nc':
+            #     fpx += getkw('fp');
+            # kw['fp'] = (fpx,0.0,0.0);
+    elif test(kw,'externalf_1D'):
         tlim = getkw('tlim');
         kwp = sd(kw, tlim=(0, tlim[1]-tlim[0], 0,0, 0,0))
         dens = gentargetdat(**kwp);

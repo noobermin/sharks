@@ -16,6 +16,6 @@ ln -s ../hotwater3d_tmpl/genlsp.py $1/
 ln -s ../hotwater3d_tmpl/gendat.py $1/
 ln -s ../hotwater3d_tmpl/gensim.py $1/
 ln -s ../hotwater3d_tmpl/mklin.py $1/
-cp hotwater3d_tmpl/*.dat hotwater3d_tmpl/mkmovneloop $1/
+cp hotwater3d_tmpl/*.dat $1/
 cp scripts/loopscript scripts/zipper scripts/autozipper $1/
 cp hotwater3d_tmpl/genangular $1/

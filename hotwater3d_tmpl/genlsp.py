@@ -231,7 +231,7 @@ end
         kw['n_O'] = densitypairs_tmpl.format(data=n_O);
         kw['n_p'] = densitypairs_tmpl.format(data=n_p);
     else:
-        if not test(kw,'dens_dat'): kw['dens_dat'] = 'watercolumn';
+        if not test(kw,'dens_dat'): kw['dens_dat'] = 'watercolumn.dat';
         if not test(kw,'dens_imul'): kw['dens_imul'] = 1.0;
         if not test(kw,'dens_type'): kw['dens_type'] = '30';
         kw['n_e'] = densityfile_tmpl.format(
