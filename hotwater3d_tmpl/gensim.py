@@ -79,7 +79,6 @@ def gensim(**kw):
             # tlim = getkw('tlim');
             # kw['xlen'] = tlim[1]-tlim[0];
             # if test(kw, 'slen'):
-                
             # if getkw('fp') != 'nc':
             #     fpx += getkw('fp');
             # kw['fp'] = (fpx,0.0,0.0);
