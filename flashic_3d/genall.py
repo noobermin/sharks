@@ -52,5 +52,5 @@ gensim(
     domains=1000,
     region_split=('z',68),
     pbses=pbses,
-    restart=23.95,
+    restart=23.5,
 );
