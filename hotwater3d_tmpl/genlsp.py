@@ -351,7 +351,7 @@ z-cells          {zcells}'''.format(zmin=zmin,zmax=zmax,zcells=zcells);
     fmtd['dens_flags']= joinspace([
         1 if i else 0 for i in getkw("dens_flags")]);
     for idim,v in zip(mkdims(),getkw('tref')):
-        if not v: v = kw['t'+idim+'min'];
+        if v is None: v = kw['t'+idim+'min'];
         fmtd['targref'+idim] = v;
     dumpinterval=getkw('dumpinterval')*1e9;
     description=getkw('description');

@@ -39,6 +39,8 @@ gensim(
     T = 60e-15,
     lspexec='lsp-10-3d',
     fp=(0,0,0),
+    tref=(0,0,0),
+    dens_flags=(True,True,True),
     lim =( -41, 9, -17, 17,-17, 17),
     tlim=( -36, 4, -12, 12,-12, 12),
     res =( 50*10, 34*10, 34*10),
