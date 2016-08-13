@@ -270,10 +270,10 @@ to   {targ_xmax:e}  {targ_ymax:e}  {targ_zmax:e}
 species 2
 movie_tag 3
 unbound off
-discrete_numbers 3 3 3
+discrete_numbers {discrete}
 density_function 4
-reference_point {targ_xmin:e} {targ_ymin:e} {targ_zmin:e}
-density_flags 1 0 0
+reference_point {targrefx:e} {targrefy:e} {targrefz:e}
+density_flags {dens_flags}
 momentum_flags 0 0 0
 thermal_energy 1
 movie_fraction 0.000
@@ -284,10 +284,10 @@ to   {targ_xmax:e} {targ_ymax:e}  {targ_zmax:e}
 species 10
 movie_tag 3
 unbound off
-discrete_numbers 3 3 3
+discrete_numbers {discrete}
 density_function 3
-reference_point {targ_xmin:e} {targ_ymin:e} {targ_zmin:e}
-density_flags 1 0 0
+reference_point {targrefx:e} {targrefy:e} {targrefz:e}
+density_flags {dens_flags}
 momentum_flags 0 0 0
 thermal_energy 1
 movie_fraction 0.050
@@ -298,10 +298,10 @@ to   {targ_xmax:e} {targ_ymax:e}  {targ_zmax:e}
 species 11
 movie_tag 3
 unbound off
-discrete_numbers 3 3 3
+discrete_numbers {discrete}
 density_function 5
-reference_point {targ_xmin:e} {targ_ymin:e} {targ_zmin:e}
-density_flags 1 0 0
+reference_point {targrefx:e} {targrefy:e} {targrefz:e}
+density_flags {dens_flags}
 momentum_flags 0 0 0
 thermal_energy 1
 movie_fraction 0.000

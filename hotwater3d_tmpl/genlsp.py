@@ -55,6 +55,7 @@ lspdefaults = {
     'lim':(-30,5,-20,20, -20, 20),
     'res':(350,400,400),
     'tlim':(-27.5,0, -15,15, -15, 15),
+    'tref': (None,None,None),
     'fp':(0,0,0),
     'domains':48,
     'totaltime':300e-15,
@@ -64,6 +65,8 @@ lspdefaults = {
     'dens_dat':'watercolumn.dat',
     'dens_type': '30',
     'dens_imul': 1.0,
+    'dens_flags': (True, False, False),
+    'discrete':(3,3,3),
     'dumpinterval':2e-16,
     'description':'Hotwater in 2d',
     'pext_species':(10,),
@@ -287,8 +290,10 @@ def genlsp(**kw):
         if scale:
             return [scale*i for i in ret];
         return ret;
-
-    E0 = np.sqrt(2*getkw('I')*1e4/(c*e0))*1e-5
+    def mkdims(s=''):
+        return [s+'x',s+'y',s+'z']
+    fmtd = {};
+    fmtd['E0'] = np.sqrt(2*getkw('I')*1e4/(c*e0))*1e-5
     xmin,xmax, ymin,ymax, zmin,zmax = getkw('lim',scale=1e-4)
     kw['xmin'],kw['xmax']=xmin,xmax
     kw['ymin'],kw['ymax']=ymin,ymax
@@ -298,10 +303,10 @@ def genlsp(**kw):
     kw['tymin'],kw['tymax']=tymin,tymax
     kw['tzmin'],kw['tzmax']=tzmin,tzmax 
 
-    fp = joinspace(getkw("fp",scale=1e-4));
-    components = joinspace(getkw("components"));
-    phases = joinspace(getkw("phases"));
-    l = getkw('l')*100.0
+    fmtd['fp'] = joinspace(getkw("fp",scale=1e-4));
+    fmtd['components'] = joinspace(getkw("components"));
+    fmtd['phases'] = joinspace(getkw("phases"));
+    l=fmtd['l'] = getkw('l')*100.0
     if test(kw,'resd'):
         xres,yres,zres = getkw("resd");
         kw['xcells'] = (xmax-xmin)/(l/xres) if xres > 0 else 0;
@@ -312,8 +317,8 @@ def genlsp(**kw):
     xcells, ycells, zcells = kw['xcells'], kw['ycells'], kw['zcells'];
     #generating non x outlets
     other_outlets=genoutlets(**kw);
-    w0 = getkw('w')*100.0;
-    T  = getkw('T')*1e9;
+    w0=fmtd['w0'] = getkw('w')*100.0;
+    fmtd['pulse']  = getkw('T')*1e9;
     #generating grid
     ygrid=zgrid='';
     if ycells > 0:
@@ -326,22 +331,28 @@ y-cells          {ycells}'''.format(ymin=ymin,ymax=ymax,ycells=ycells);
 zmin             {zmin:e}
 zmax             {zmax:e}
 z-cells          {zcells}'''.format(zmin=zmin,zmax=zmax,zcells=zcells);
-    domains=getkw('domains');
+    fmtd['domains']=getkw('domains');
     # we have that na~l/(pi*w), and the f-number~1/2na, thus
     # f-number ~ pi*w/2l
-    fnum=np.pi*w0/2/l;
-    totaltime=getkw('totaltime')*1e9
-    timestep=getkw('timestep')*1e9;
+    fmtd['fnum']=np.pi*w0/2/l;
+    fmtd['totaltime']=getkw('totaltime')*1e9
+    fmtd['timestep']=getkw('timestep')*1e9;
     # calculate courant
     couraunt = min(
         ((xmax-xmin)/xcells/c_cgs)*1e9 if xcells > 0 else float('inf'),
         ((ymax-ymin)/ycells/c_cgs)*1e9 if ycells > 0 else float('inf'),
         ((zmax-zmin)/zcells/c_cgs)*1e9 if zcells > 0 else float('inf'),)
-    if timestep > couraunt:
+    if fmtd['timestep'] > couraunt:
         import sys
         sys.stderr.write("warning: timestep exceeds couraunt limit\n");
     #target
     kw = gendens(**kw);
+    fmtd['discrete']  = joinspace(getkw("discrete"));
+    fmtd['dens_flags']= joinspace([
+        1 if i else 0 for i in getkw("dens_flags")]);
+    for idim,v in zip(mkdims(),getkw('tref')):
+        if not v: v = kw['t'+idim+'min'];
+        fmtd['targref'+idim] = v;
     dumpinterval=getkw('dumpinterval')*1e9;
     description=getkw('description');
     restart = getkw('restart');
@@ -369,25 +380,20 @@ particle_movie_components Q X Y Z VX VY VZ XI YI ZI
         ygrid=ygrid,
         zgrid=zgrid,
         other_outlets=other_outlets,
-        l=l,w0=w0,E0=E0,
-        fnum=fnum,
         targ_xmin=txmin, targ_xmax=txmax,
         targ_ymin=tymin, targ_ymax=tymax,
         targ_zmin=tzmin, targ_zmax=tzmax,
-        fp=fp,pulse=T,components=components,phases=phases,
         intensity=getkw('I'),
         pmovies=pmovies,
         regions=regions,
         pexts=pexts,
-        domains=domains,
-        totaltime=totaltime,
-        timestep=timestep,
         n_e=kw['n_e'],
         n_O=kw['n_O'],
         n_p=kw['n_p'],
         dumpinterval=dumpinterval,
         description=description,
         restarts=restarts,
+        **fmtd
     );
     return s;
 if __name__ == "__main__":
