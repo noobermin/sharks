@@ -1678,7 +1678,7 @@ coefficients 8.000000e-05 2.260000e-04 end
 function3 ; electrons
 
 type 50
-data_file flashic-20160810.dat
+data_file flashic-20160816.dat
 independent_variable_multiplier 1.0
 dependent_variable_multiplier 1.0
 
@@ -1686,7 +1686,7 @@ dependent_variable_multiplier 1.0
 function4 ; Oxygen
 
 type 50
-data_file flashic-20160810.dat
+data_file flashic-20160816.dat
 independent_variable_multiplier 1.0
 dependent_variable_multiplier 0.33
 
@@ -1694,7 +1694,7 @@ dependent_variable_multiplier 0.33
 function5 ; Protons
 
 type 50
-data_file flashic-20160810.dat
+data_file flashic-20160816.dat
 independent_variable_multiplier 1.0
 dependent_variable_multiplier 0.67
 

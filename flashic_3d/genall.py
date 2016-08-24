@@ -45,7 +45,7 @@ gensim(
     tlim=( -36, 4, -12, 12,-12, 12),
     res =( 50*10, 34*10, 34*10),
     totaltime=350e-15,
-    dens_dat='flashic-20160810.dat',
+    dens_dat='flashic-20160816.dat',
     dens_type='50',
     pbsbase=pbsbase,
     description="Flash to LSP as IC in 3D",
