@@ -44,7 +44,7 @@ gensim(
     lim =( -41, 9, -17, 17,-17, 17),
     tlim=( -36, 4, -12, 12,-12, 12),
     res =( 50*10, 34*10, 34*10),
-    totaltime=250e-15,
+    totaltime=350e-15,
     dens_dat='flashic-20160810.dat',
     dens_type='50',
     pbsbase=pbsbase,

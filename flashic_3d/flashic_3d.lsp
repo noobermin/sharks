@@ -3,7 +3,7 @@ simulation_title "Flash to LSP as IC in 3D, I = 3.000000e+18 W/cm^2"
 ;
 [Control]
 ;Time-advance
- time_limit   2.5000e-04
+ time_limit   3.5000e-04
  time_step_ns 1.0000e-07
 ;Restart
 maximum_restart_dump_time 23.5
