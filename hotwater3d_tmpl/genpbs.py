@@ -48,6 +48,16 @@ clusters= {
         max_ppn=32,
         max_walltime=1,
         mpi='aprun -n {}'),
+    'armstrong_standard':sd(
+        cluster,
+        max_ppn=24,
+        max_walltime=168,
+        mpi='aprun -n {}'),
+    'armstrong_debug':sd(
+        cluster,
+        max_ppn=24,
+        max_walltime=0.5,
+        mpi='aprun -n {}'),
 };
 
 normal_portion_tmpl="nodes={nodes}:ppn={ppn}"

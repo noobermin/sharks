@@ -74,6 +74,25 @@ def mksim(pbsbase,**d):
             ppn=16,
             queue='standard_lw',
             autozipper=False,),
+        armstrong_standard=genpbs(
+            pbsbase=pbsbase,
+            domains=myd['domains'],
+            cluster='armstrong',
+            queue='standard',
+            autozipper=False,),
+        armstrong_short=genpbs(
+            pbsbase=pbsbase,
+            domains=myd['domains'],
+            cluster='armstrong',
+            walltime=48,
+            queue='standard',
+            autozipper=False,),
+        armstrong_debug=genpbs(
+            pbsbase=pbsbase,
+            domains=myd['domains'],
+            cluster='armstrong',
+            queue='debug',
+            autozipper=False,),
     );
     mkdir(pbsbase);    
     auxs = [

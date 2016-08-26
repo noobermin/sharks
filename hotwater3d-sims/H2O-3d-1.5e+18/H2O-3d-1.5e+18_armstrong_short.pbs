@@ -1,0 +1,23 @@
+#PBS -l walltime=48:0:00
+#PBS -l nodes=30:ppn=24
+#PBS -N H2O-3d-1.5e+18
+#PBS -S /bin/bash
+#PBS -j oe
+#PBS -m ae
+#PBS -M ngirmang.1@osu.edu
+
+
+PBSBASE=H2O-3d-1.5e+18
+#source $HOME/.bashrc
+
+#This outputs the name of the root node
+#to the directory where you submitted this PBS job
+echo $HOSTNAME > $PBS_O_WORKDIR/hostname.txt   
+cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/nodesfile.txt
+
+
+cd $PBS_O_WORKDIR
+
+
+aprun -n 700 ./lsp-10-3d $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+
