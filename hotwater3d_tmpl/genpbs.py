@@ -154,7 +154,7 @@ cp {lspexec} {pbsbase}.lsp *.dat $D/
         else:
             mpirun+="-hostfile $PBS_NODEFILE";
         pre = "module load openmpi-1.4.3-gnu-rpm\n\n"+pre;
-    elif cluster == "garnet":
+    elif cluster == "garnet" or cluster == "armstrong":
         if not test(kw,'queue'):
             kw['queue']="standard_lw";
         if not test(kw,'mpiprocs'):

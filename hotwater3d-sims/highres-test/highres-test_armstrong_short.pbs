@@ -1,10 +1,13 @@
 #PBS -l walltime=48:0:00
-#PBS -l nodes=59:ppn=24
+#PBS -l select=59:ncpus=24:mpiprocs=24
 #PBS -N highres-test
 #PBS -S /bin/bash
 #PBS -j oe
 #PBS -m ae
 #PBS -M ngirmang.1@osu.edu
+
+#PBS -A __projectid__
+#PBS -q standard
 
 
 PBSBASE=highres-test

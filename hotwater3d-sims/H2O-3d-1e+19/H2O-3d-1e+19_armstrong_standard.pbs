@@ -1,10 +1,13 @@
 #PBS -l walltime=168:0:00
-#PBS -l nodes=30:ppn=24
+#PBS -l select=30:ncpus=24:mpiprocs=24
 #PBS -N H2O-3d-1e+19
 #PBS -S /bin/bash
 #PBS -j oe
 #PBS -m ae
 #PBS -M ngirmang.1@osu.edu
+
+#PBS -A __projectid__
+#PBS -q standard
 
 
 PBSBASE=H2O-3d-1e+19
