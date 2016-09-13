@@ -1,1 +1,0 @@
-/Users/noobermin/t/lspreader/lspreader/dotlsp.py

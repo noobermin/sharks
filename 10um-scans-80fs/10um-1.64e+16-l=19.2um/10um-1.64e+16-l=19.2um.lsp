@@ -4,7 +4,7 @@ simulation_title "10um, I = 1.641532e+16 W/cm^2"
 [Control]
 ;Time-advance
  time_limit   3.5897e-03
- time_step_ns 2.0000e-07
+ time_step_ns 5.0000e-07
 ;Restart
 
 ;Parallel Processing
@@ -90,7 +90,7 @@ zmax             0.000000e+00
 ;
 number_of_domains 48
 split_direction XSPLIT
-number_of_cells AUTO ; 
+number_of_cells AUTO ; cells = 0
 ;
 
 

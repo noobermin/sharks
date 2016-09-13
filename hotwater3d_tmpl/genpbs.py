@@ -26,7 +26,7 @@ pbsdefaults = dict(
     walltime=inf,
     lspexec='lsp-10-3d',
     autozipper=True,
-    concurrents=[],
+    concurrents=None,
 )
 cluster =  dict(
     ppn=48,max_walltime=9999,mpi='mpirun -np {}',max_ppn=48,condafile="~/conda"
@@ -107,6 +107,7 @@ def genpbs(**kw):
     cluster = getkw("cluster");
     clusterq = cluster;
     concurrents = getkw('concurrents');
+    if not concurrents: concurrents=[];
     if 'autozipper' not in kw or kw['autozipper']:
         concurrents = [
             ('zipper','./zipper -a >$PBS_O_WORKDIR')

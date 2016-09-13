@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from pys import sd;
+from pys import sd,test;
 from gensim import gensim, fromenergy;
 import numpy as np;
 c=299792458
@@ -23,8 +23,13 @@ defd = dict(
 )
 pbsfmt='{l}um-{I:0.2e}-l={scale:0.3}um'
 def mkpbsbase(d):
+    l = d['l']/1e-6;
+    if l > 1:
+        l = int(l);
+    else:
+        l = '{:0.1f}'.format(l)
     d['pbsbase']=pbsfmt.format(
-        l=int(d['l']/1e-6),I=d['I'],scale=d['expf']);
+        l=l,I=d['I'],scale=d['expf']);
 def mkpbs(d):
     d['pbses'] = [
         dict(pbsname=d['pbsbase']),
@@ -38,8 +43,8 @@ for E in Es:
     d.update(
         lim =( -50, 10, -120, 120,0,0),
         tlim=( -40,  0, -110, 110,0,0),
-        res =( 60*5, 240*5, 0),
-        timestep = 2e-16,
+        res =( 60*4, 240*4, 0),
+        timestep = 5e-16,
         totaltime= d['T']*3.0,
         description="10um",
         #movne
@@ -47,7 +52,6 @@ for E in Es:
         angular=True,
     );
     defds.append(d);
-
 
 ####################################
 # 10um scans
@@ -61,6 +65,7 @@ for d in defds:
         dict(pbsname=d['pbsbase']+'-nocoll',
            lspexec='lsp-10-xy-no_collisions'),];
     gensim(**d);
+
 #10um, scale=19.2um
 longs = [sd(
     d,
@@ -85,7 +90,7 @@ for E in Es:
         lim =( -50, 10, -60, 60, 0,0),
         tlim=( -40,  0, -50, 50, 0,0),
         res =( 60*10, 120*10, 0),
-        timestep = 1e-16,
+        timestep = 1.5e-16,
         totaltime= d['T']*3.75,
         description="3um",
         #movne
@@ -104,7 +109,7 @@ for E in Es:
         tlim=( -80,  0, -50, 50, 0,0),
         res =( 100*10, 120*10, 0),
         totaltime=d['T']*3.75,
-        timestep = 1e-16,
+        timestep = 1.5e-16,
         description="3um w/ 5.77um scale plasma",
         #movne
         movne={'clim':(1e15,1e22)},
@@ -154,20 +159,21 @@ for E in Es:
     gensim(**d);
 
 #############################
-# 1um scans
+# 0.78um scans
+# DESPITE THE NAME, it's 780nm, NOT 800nm
 #############################
 for E in Es:
-    d = sd(fromenergy(E,l=1e-6,cycles=cycles), **defd);
+    d = sd(fromenergy(E,l=0.78e-6,cycles=cycles), **defd);
     d.update(
         n_s=1e23,
-        expf=1.92,
+        expf=1.5,
         #
         lim =( -42.5, 10, -15, 15, 0,0),
         tlim=( -32.5,  0, -10, 10, 0,0),
         res =( 52.5*30, 30*30, 0),
         timestep = 1e-16,
         totaltime= d['T']*4,
-        description="1um",
+        description="800nm",
         #movne
         movne={'clim':(5e17,1e23)},
     );
@@ -177,11 +183,12 @@ for E in Es:
 
 
 #############################
-# 1um shelf
+# 0.8um shelf
 #############################
-shelf_1um=[]
+shelf_780nm=[]
 for E in Es:
-    d = sd(fromenergy(E,l=1e-6,cycles=cycles), **defd);
+    sh_den=1e19
+    d = sd(fromenergy(E,l=0.78e-6,cycles=cycles), **defd);
     d.update(
         lim =( -42.5, 10, -15, 15, 0,0),
         tlim=( -32.5,  0, -10, 10, 0,0),
@@ -196,19 +203,19 @@ for E in Es:
         singlescale=None,
         dens_dat="shelf.dat",
         externalf_1D=True,
-        f_1D=mkshelf(xdim=(0,42.5e-4),sh=1e19),
+        f_1D=mkshelf(xdim=(0,42.5e-4),sh=sh_den),
     );
     d['pbsbase']='{l}um-{I:0.2e}-shelf={sh}'.format(
-        l=int(d['l']/1e-6),I=d['I'],sh=1e19);
+        l='0.8',I=d['I'],sh=sh_den);
     mkpbs(d);
     gensim(**d);
-    shelf_1um.append(d);
+    shelf_780nm.append(d);
     
-for d in shelf_1um:
+for d in shelf_780nm:
     sh = 1e18
     d.update(
         f_1D=mkshelf(xdim=(0,42.5e-4),sh=sh));
     d['pbsbase']='{l}um-{I:0.2e}-shelf={sh}'.format(
-        l=int(d['l']/1e-6),I=d['I'],sh=sh);
+        l='0.8',I=d['I'],sh=sh);
     mkpbs(d);
     gensim(**d);

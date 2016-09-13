@@ -4,7 +4,7 @@ simulation_title "10um, I = 1.641532e+17 W/cm^2"
 [Control]
 ;Time-advance
  time_limit   3.0769e-03
- time_step_ns 2.0000e-07
+ time_step_ns 5.0000e-07
 ;Restart
 
 ;Parallel Processing
@@ -63,12 +63,12 @@ end
 grid1
 xmin             -5.000000e-03
 xmax             1.000000e-03
-x-cells          300
+x-cells          240
                                         ;
 ;
 ymin             -1.200000e-02
 ymax             1.200000e-02
-y-cells          1200
+y-cells          960
 
 
 
@@ -90,7 +90,7 @@ zmax             0.000000e+00
 ;
 number_of_domains 48
 split_direction XSPLIT
-number_of_cells AUTO ; 
+number_of_cells AUTO ; cells = 0
 ;
 
 

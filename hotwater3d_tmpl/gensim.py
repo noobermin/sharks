@@ -96,14 +96,14 @@ def gensim(**kw):
             movned['n_c'] = nc(kw['l']);
         movne=gen_movne(**movned);
         #adding it to pbs
-        if test(kw, "concurrents"):
+        if test(kw, "concurrents") and kw['concurrents'] is not None:
             kw['concurrents'] += [('movne','./movne')];
         else:
             kw['concurrents'] = [('movne','./movne')];
         files.append( ('movne',movne,0o755) );
     if test(kw,'angular'):
         #adding it to pbs
-        if test(kw, "concurrents"):
+        if test(kw, "concurrents") and kw['concurrents'] is not None:
             kw['concurrents'] += [('genangular','./genangular')];
         else:
             kw['concurrents'] = [('genangular','./genangular')];
@@ -121,7 +121,7 @@ def gensim(**kw):
         files.extend(kw['extra_files']);
     dir=getkw('dir');
     if dir == True: dir = pbsbase;
-    output(dir=dir,files=files);        
+    output(dir=dir,files=files);
 
 def fromenergy(En,cycles=def_cycles,l=10e-6,l2w=2.75):
     w=l*l2w;
