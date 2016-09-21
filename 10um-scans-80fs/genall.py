@@ -31,11 +31,55 @@ def mkpbsbase(d):
     d['pbsbase']=pbsfmt.format(
         l=l,I=d['I'],scale=d['expf']);
 def mkpbs(d):
+    pbsbase = d['pbsbase']
     d['pbses'] = [
-        dict(pbsname=d['pbsbase']),
-        dict(pbsname=d['pbsbase']+'-nocoll',
-             lspexec='lsp-10-xy-no_collisions'),];
+        dict(pbsname=pbsbase),
+        dict(pbsname=pbsbase+'-nocoll',
+             lspexec='lsp-10-xy-no_collisions')
+    ];
     return d;
+def mk_noextrapbs(d):
+    dd = sd(d);
+    pbsbase = dd['pbsbase']
+    hpcmp_defpbs =  dict(
+        pbsbase=pbsbase,
+        pbsname=pbsbase,
+        cluster='oakley',
+        autozipper=False,
+        queue=None,
+        ppn=None,);
+    dd['movne'] = False;
+    dd['angular']=False;
+    dd['pbses'] = [
+        sd(
+            hpcmp_defpbs,
+            pbsname=pbsbase+"_garnet",
+            cluster='garnet',
+            queue='standard_lw'),
+        sd(
+            hpcmp_defpbs,
+            pbsname=pbsbase+"_garnet_short",
+            cluster='garnet',
+            queue='standard_lw',
+            walltime=48),
+        sd(
+            hpcmp_defpbs,
+            pbsname=pbsbase+"_armstrong_debug",
+            cluster='armstrong',
+            queue='debug'),
+        sd(
+            hpcmp_defpbs,
+            pbsname=pbsbase+"_armstrong",
+            cluster='armstrong',
+            queue='standard'),
+        sd(
+            hpcmp_defpbs,
+            pbsname=pbsbase+"_armstrong_short",
+            cluster='armstrong',
+            queue='standard',
+            walltime=48),
+    ];
+    return dd;
 
 defds=[]
 for E in Es:
@@ -65,6 +109,8 @@ for d in defds:
         dict(pbsname=d['pbsbase']+'-nocoll',
            lspexec='lsp-10-xy-no_collisions'),];
     gensim(**d);
+    dd=mk_noextrapbs(d);
+    gensim(**dd);
 
 #10um, scale=19.2um
 longs = [sd(
@@ -80,6 +126,9 @@ for d in longs:
     mkpbsbase(d);
     mkpbs(d);
     gensim(**d);
+    dd=mk_noextrapbs(d);
+    gensim(**dd);
+    
 ####################################
 # 3um scans
 ####################################
@@ -99,6 +148,9 @@ for E in Es:
     mkpbsbase(d);
     mkpbs(d);
     gensim(**d);
+    dd=mk_noextrapbs(d);
+    gensim(**dd);
+
 #3um, scale=5.77um
 for E in Es:
     d = sd(fromenergy(E,l=3e-6,cycles=cycles), **defd);
@@ -117,6 +169,9 @@ for E in Es:
     mkpbsbase(d);
     mkpbs(d);
     gensim(**d);
+    dd=mk_noextrapbs(d);
+    gensim(**dd);
+
 
 ####################################
 # 3um scans with shelf
@@ -157,6 +212,9 @@ for E in Es:
         l=int(d['l']/1e-6),I=d['I']);
     mkpbs(d);
     gensim(**d);
+    dd=mk_noextrapbs(d);
+    gensim(**dd);
+
 
 #############################
 # 0.78um scans
@@ -180,6 +238,9 @@ for E in Es:
     mkpbsbase(d);
     mkpbs(d);
     gensim(**d);
+    dd=mk_noextrapbs(d);
+    gensim(**dd);
+
 
 
 #############################
@@ -210,6 +271,9 @@ for E in Es:
     mkpbs(d);
     gensim(**d);
     shelf_780nm.append(d);
+    dd=mk_noextrapbs(d);
+    gensim(**dd);
+
     
 for d in shelf_780nm:
     sh = 1e18
@@ -219,3 +283,6 @@ for d in shelf_780nm:
         l='0.8',I=d['I'],sh=sh);
     mkpbs(d);
     gensim(**d);
+    dd=mk_noextrapbs(d);
+    gensim(**dd);
+

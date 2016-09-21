@@ -26,7 +26,6 @@ cd $PBS_O_WORKDIR
 cp lsp-10-xy-no_collisions 3um-6.08e+16-shelf.lsp *.dat $D/
 cp zipper $D/
 cp movne $D/
-cp genangular $D/
 cp loopscript $D/
 cd $D
 #zipper
@@ -35,9 +34,6 @@ zipper_PID=$!
 #movne
 ./loopscript movne &> $PBS_O_WORKDIR/movne.log&
 movne_PID=$!
-#genangular
-./loopscript genangular &> $PBS_O_WORKDIR/genangular.log&
-genangular_PID=$!
 
 
 mpirun -np 48 ./lsp-10-xy-no_collisions $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
@@ -46,5 +42,3 @@ kill $zipper_PID
 ./zipper -a >$PBS_O_WORKDIR
 kill $movne_PID
 ./movne
-kill $genangular_PID
-./genangular
