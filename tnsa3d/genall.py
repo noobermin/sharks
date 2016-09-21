@@ -34,12 +34,12 @@ pbses=[
         walltime=48),
     sd(
         defpbs,
-        pbsname=pbsbase+"_amstrong_debug",
+        pbsname=pbsbase+"_armstrong_debug",
         cluster='armstrong',
         queue='debug'),
     sd(
         defpbs,
-        pbsname=pbsbase+"_amstrong",
+        pbsname=pbsbase+"_armstrong",
         cluster='armstrong',
         queue='standard'),
     sd(
