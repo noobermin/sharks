@@ -199,6 +199,7 @@ def genregions(**kw):
     regions = [ sd(reg,**{lmn:mn,lmx:mx,'i':i+1,'domains':di,'cells':cells})
                 for i,(mn,mx,di,cells) in enumerate(zip(mins,maxs,doms,cellses)) ];
     return mkregion_str(regions);
+
 def gendens(**kw):
     densityfile_tmpl = '''
 type {type}

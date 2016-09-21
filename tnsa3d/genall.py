@@ -64,7 +64,9 @@ def mkslab(
             return n;
         return 0.0;
     return f;
-
+#custom regioning
+#split y by half
+#and   z by n
 gensim(
     l = 0.8e-6,
     w = 2.2e-6,
@@ -82,8 +84,8 @@ gensim(
     description="LSP TNSA stage 1",
     dumpinterval=5e-16,
     timestep=0.5e-16,
-    domains=125*200,
-    region_split=('z',200),
+    domains=125*100,
+    region_split=('z',100),
     pbses=pbses,
     restart=23.75,
     #density
