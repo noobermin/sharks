@@ -78,6 +78,13 @@ def mk_noextrapbs(d):
             cluster='armstrong',
             queue='standard',
             walltime=48),
+        sd(
+            hpcmp_defpbs,
+            pbsname=pbsbase+"_armstrong_shorter",
+            cluster='armstrong',
+            queue='standard',
+            walltime=18),
+
     ];
     return dd;
 
