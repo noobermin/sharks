@@ -68,7 +68,11 @@ def mk_noextrapbs(d):
             cluster='garnet',
             queue='standard_sm',
             walltime=12),
-
+        sd(
+            hpcmp_defpbs,
+            pbsname=pbsbase+"_garnet_debug",
+            cluster='garnet',
+            queue='debug',),
         sd(
             hpcmp_defpbs,
             pbsname=pbsbase+"_armstrong_debug",
