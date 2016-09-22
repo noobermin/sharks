@@ -1,6 +1,6 @@
 #PBS -l walltime={walltime}
 #PBS -l {portions}
-#PBS -N {pbsbase}
+#PBS -N {label}
 #PBS -S /bin/bash
 #PBS -j oe
 #PBS -m ae

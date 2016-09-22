@@ -27,6 +27,7 @@ pbsdefaults = dict(
     lspexec='lsp-10-3d',
     autozipper=True,
     concurrents=None,
+    label=None,
 )
 cluster =  dict(
     ppn=48,max_walltime=9999,mpi='mpirun -np {}',max_ppn=48,condafile="~/conda"
@@ -104,6 +105,9 @@ def genpbs(**kw):
     domains=getkw('domains');
     lspexec=getkw('lspexec');
     pbsbase=getkw('pbsbase');
+    label = getkw('label');
+    if not label:
+        label = pbsbase;
     cluster = getkw("cluster");
     clusterq = cluster;
     concurrents = getkw('concurrents');
@@ -168,6 +172,9 @@ cp {lspexec} {pbsbase}.lsp *.dat $D/
 #PBS -A __projectid__
 #PBS -q {}
 '''.format(kw['queue']);
+    if cluster == "garnet":
+        #truncate name because life sucks
+        label = label[:14];
     #handling conncurrent scripts
     for concurrent in concurrents:
         script = concurrent[0]
@@ -182,6 +189,7 @@ cp {lspexec} {pbsbase}.lsp *.dat $D/
     with open("hotwater3d_tmpl.pbs") as f:
         s=f.read();
     return s.format(
+        label=label,
         nodes=nodes,
         mpirun_opts=mpirun,
         pre=pre,

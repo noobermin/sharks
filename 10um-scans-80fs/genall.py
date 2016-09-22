@@ -64,6 +64,13 @@ def mk_noextrapbs(d):
             walltime=48),
         sd(
             hpcmp_defpbs,
+            pbsname=pbsbase+"_garnet_shorter",
+            cluster='garnet',
+            queue='standard_lw',
+            walltime=12),
+
+        sd(
+            hpcmp_defpbs,
             pbsname=pbsbase+"_armstrong_debug",
             cluster='armstrong',
             queue='debug'),
