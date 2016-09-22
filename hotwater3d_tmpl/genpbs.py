@@ -44,6 +44,11 @@ clusters= {
         max_ppn=32,
         max_walltime=168,
         mpi='aprun -n {}'),
+    'garnet_standard_sm':sd(
+        cluster,
+        max_ppn=32,
+        max_walltime=24,
+        mpi='aprun -n {}'),
     'garnet_debug':sd(
         cluster,
         max_ppn=32,

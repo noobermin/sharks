@@ -7,7 +7,7 @@
 #PBS -M ngirmang.1@osu.edu
 
 #PBS -A __projectid__
-#PBS -q standard_lw
+#PBS -q standard_sm
 
 
 PBSBASE=10um-1.64e+18-l=19.2um
