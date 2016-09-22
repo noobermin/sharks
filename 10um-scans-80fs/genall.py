@@ -90,7 +90,7 @@ def mk_noextrapbs(d):
             pbsname=pbsbase+"_armstrong_shorter",
             cluster='armstrong',
             queue='standard',
-            walltime=10),
+            walltime=14),
 
     ];
     return dd;
