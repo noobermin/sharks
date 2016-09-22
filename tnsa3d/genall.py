@@ -3,13 +3,11 @@ from pys import sd;
 from genpbs import genpbs;
 from gensim import gensim;
 import numpy as np;
-domains=1000;
 region_split=('z',68);
 pbsbase="tnsa3d_s1";
 defpbs = dict(
     pbsbase=pbsbase,
     pbsname=pbsbase+"_oakley",
-    domains=domains,
     cluster='oakley',
     autozipper=False,
     queue=None,
@@ -84,8 +82,8 @@ gensim(
     description="LSP TNSA stage 1",
     dumpinterval=5e-16,
     timestep=0.5e-16,
-    domains=125*100,
-    region_split=('z',100),
+    domains=25*80,
+    region_split=('z',80),
     pbses=pbses,
     restart=23.75,
     #density
