@@ -1,4 +1,4 @@
-#PBS -l walltime=18:0:00
+#PBS -l walltime=10:0:00
 #PBS -l select=2:ncpus=24:mpiprocs=24
 #PBS -N 0.8um-3.46e+16-shelf=1e+18
 #PBS -S /bin/bash
