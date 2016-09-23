@@ -60,7 +60,7 @@ def mk_noextrapbs(d):
             hpcmp_defpbs,
             pbsname=pbsbase+"_garnet_short",
             cluster='garnet',
-            queue='standard_sm',
+            queue='standard_lw',
             walltime=48),
         sd(
             hpcmp_defpbs,
