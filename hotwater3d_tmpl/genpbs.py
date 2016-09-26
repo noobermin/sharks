@@ -67,7 +67,7 @@ clusters= {
 };
 
 normal_portion_tmpl="nodes={nodes}:ppn={ppn}"
-garnet_portion_tmpl="select={nodes}:ncpus={max_ppn}:mpiprocs={ppn}"
+garnet_portion_tmpl="select={nodes}:ncpus={ppn}:mpiprocs={mpiprocs}"
 
 intflr = lambda f: int(np.floor(f));
 def hours_to_walltime(walltime):
@@ -131,9 +131,8 @@ def genpbs(**kw):
         ppn = mycluster['max_ppn'];
     nodes=int(domains/ppn);
     if domains%ppn > 0: nodes+=1;
-
+    mpiformat = mycluster['mpi']
     extra_headers='';
-    mpirun= mycluster['mpi'].format(domains);
     pre = '''
 cd $PBS_O_WORKDIR
 ''';
@@ -167,12 +166,17 @@ cp {lspexec} {pbsbase}.lsp *.dat $D/
     elif cluster == "garnet" or cluster == "armstrong":
         if not test(kw,'queue'):
             kw['queue']="standard_lw";
-        if not test(kw,'mpiprocs'):
-            kw['mpiprocs']=ppn;    
+        if test(kw,'mpiprocs') and kw['mpiprocs'] != ppn:
+            mpiformat = 'aprun -n {{}} -N {}'.format(
+                kw['mpiprocs'])
+            nodes=int(domains/kw['mpiprocs']);
+            if domains%kw['mpiprocs'] > 0: nodes+=1;
+        else:
+            kw['mpiprocs'] = ppn;
         portions = garnet_portion_tmpl.format(
             nodes=nodes,
-            max_ppn=mycluster['max_ppn'],
-            ppn=ppn);
+            ppn=ppn,
+            mpiprocs=kw['mpiprocs']);
         extra_headers='''
 #PBS -A __projectid__
 #PBS -q {}
@@ -190,6 +194,7 @@ cp {lspexec} {pbsbase}.lsp *.dat $D/
         post+="kill ${script}_PID\n".format(script=script);
         if len(concurrent)>1:
             post+="{}\n".format(concurrent[1]);
+    mpirun= mpiformat.format(domains);
     #finally outputting
     with open("hotwater3d_tmpl.pbs") as f:
         s=f.read();

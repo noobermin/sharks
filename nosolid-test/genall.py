@@ -74,6 +74,13 @@ def mk_extrapbs(d):
             walltime=20),
         sd(
             hpcmp_defpbs,
+            pbsname=pbsbase+"_garnet_24_mem2",
+            cluster='garnet',
+            queue='standard_sm',
+            mpiprocs=16,
+            walltime=24),
+        sd(
+            hpcmp_defpbs,
             pbsname=pbsbase+"_garnet_shorter",
             cluster='garnet',
             queue='standard_sm',
