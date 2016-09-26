@@ -40,7 +40,7 @@ Options:
 
 import re;
 import numpy as np;
-from pys import test,parse_numtuple,sd,take;
+from pys import test,parse_numtuple,sd,take,mk_getkw;
 joinspace = lambda l: " ".join([str(i) for i in l]);
 
 c  = 299792458
@@ -200,6 +200,11 @@ def genregions(**kw):
                 for i,(mn,mx,di,cells) in enumerate(zip(mins,maxs,doms,cellses)) ];
     return mkregion_str(regions);
 
+densdefaults = sd(
+    lspdefaults,
+    speciesl = ['e', 'O', 'p'],
+    fracs = [1.0, 0.33, 0.67],
+);
 def gendens(**kw):
     densityfile_tmpl = '''
 type {type}
@@ -213,40 +218,51 @@ data_pairs
 {data}
 end
 '''
+    getkw = mk_getkw(kw, densdefaults);
+    speciesl =  getkw('speciesl');
     if test(kw,'target_density'):
         dens=kw['target_density'];
         if type(dens) == tuple:
-            n_e,n_O,n_p=dens;
+            #the reason for tuple and not a general iterable
+            #is when we pass a single scale, for example, which
+            #we scale by fracs
+            pass;
         else:
             if hasattr(dens, '__call__'):
-                n_e = dens
-                n_O = lambda x: 0.33*dens(x);
-                n_p = lambda x: 0.67*dens(x);
+                dens[:] = [
+                    lambda x: frac*idensf(x)
+                    for frac,idensf in zip(fracs,dens)
+                ];
             else:
-                n_e = dens;
-                n_O = 0.33*dens;
-                n_p = 0.67*dens;
-        if hasattr(n_e,'__call__'):
+                dens[:] = [
+                    frac*idens
+                    for frac,idens in zip(fracs,dens)
+                ];
+        if hasattr(n_e[0],'__call__'):
+            #invariant: txmin,txmax are in cm.
             x = np.linspace(kw['txmin'][0],kw['txmax'][1],20);
-            n_e = n_e(x);
-            n_O = n_O(x);
-            n_p = n_p(x);
-        kw['n_e'] = densitypairs_tmpl.format(data=n_e);
-        kw['n_O'] = densitypairs_tmpl.format(data=n_O);
-        kw['n_p'] = densitypairs_tmpl.format(data=n_p);
+            dens[:] = [idens(x) for idens in dens];
+        for species,idens in zip(speciesl,dens):
+            kw['n_' + species] = densitypairs_tmpl.format(
+                data = idens)
     else:
-        if not test(kw,'dens_dat'): kw['dens_dat'] = 'watercolumn.dat';
-        if not test(kw,'dens_imul'): kw['dens_imul'] = 1.0;
-        if not test(kw,'dens_type'): kw['dens_type'] = '30';
-        kw['n_e'] = densityfile_tmpl.format(
-            targetdat=kw['dens_dat'], type=kw['dens_type'],
-            imul=kw['dens_imul'],dmul=1.0);
-        kw['n_O'] = densityfile_tmpl.format(
-            targetdat=kw['dens_dat'], type=kw['dens_type'],
-            imul=kw['dens_imul'],dmul=0.33);
-        kw['n_p'] = densityfile_tmpl.format(
-            targetdat=kw['dens_dat'], type=kw['dens_type'],
-            imul=kw['dens_imul'],dmul=0.67);
+        kw['dens_dat'] = getkw('dens_dat');
+        kw['dens_imul'] = getkw('dens_imul');
+        kw['dens_type'] = getkw('dens_type');
+        kw['fracs']     = getkw('fracs');
+        def copy_kw(l):
+            if type(kw[l]) != tuple:
+                kw[l] = (kw[l],)*len(speciesl)
+        copy_kw('dens_dat');
+        copy_kw('dens_imul');
+        copy_kw('dens_type');
+        for i,species in enumerate(speciesl):
+            kw['n_'+species] = densityfile_tmpl.format(
+                targetdat = kw['dens_dat'][i],
+                type = kw['dens_type'][i],
+                imul = kw['dens_imul'][i],
+                dmul = kw['fracs'][i]);
+        pass;
     return kw;
 
 def genoutlets(**kw):
