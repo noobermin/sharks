@@ -4,7 +4,7 @@ from genpbs import genpbs,gen_movne,pbsdefaults,movne_defaults;
 from gendat import gentargetdat,genonescale,datdefaults;
 import re;
 import os,stat;
-from pys import sd,test,mk_getkw;
+from pys import sd,test,mk_getkw,take;
 import shutil as sh;
 import numpy as np;
 
@@ -74,6 +74,40 @@ def gensim(**kw):
         dens = genonescale(**kw);
         kw['dens_dat'] = "{}um.dat".format(getkw('expf'));
         files.append((kw['dens_dat'], dens));
+    elif test(kw, 'scale_with_min'):
+        #this involves a single scale where we
+        #pick the min. We figure out the longitudinal
+        #dimensions ourselves
+        if not test(kw,'long_res'):
+            raise ValueError(
+                "you must supply a longitudinal resolution for scale_with_min");
+        long_margin = getkw('long_margin');
+        long_res = kw['long_res'];
+        expf,n_s,n_min,slen=getkw('expf','n_s','n_min','solid_len');
+        pp_len = expf*np.log(n_s/n_min);
+        if test(kw,'roundup_pp'):
+            pp_len = np.ceil(pp_len);
+        elif test(kw,'roundup_ten_pp'):
+            pp_len = np.ceil(pp_len/10) * 10;
+        if type(getkw('fp')) != tuple:
+            fpx = get_roundfpx(kw);
+            if getkw('fp') != 'nc':
+                fpx += getkw('fp');
+            kw['fp'] = (fpx,0.0,0.0);
+        kw['lim'] = list(getkw('lim'));
+        kw['tlim'] = list(getkw('tlim'));
+        kw['res']  = list(getkw('res'));
+        kw['tlim'][0] = -pp_len;
+        kw['tlim'][1] = slen;
+        kw['lim'][0] = kw['tlim'][0] - long_margin[0];
+        kw['lim'][1] = kw['tlim'][1] + long_margin[1];
+        xlen = kw['lim'][1] - kw['lim'][0]
+        kw['res'][0]  = xlen * long_res;
+        kw['timestep'] = getkw('timestep');
+        if xlen*1e-6/long_res < c*kw['timestep']:
+            kw['timestep'] = xlen*1e-6/long_res/c;
+        print("from scale_with_min, generated dimensions:");
+        print(take(kw,['expf','res','tlim','lim','timestep']))
     #elif test(kw,'shelf'):
     #    if type(getkw('fp')) != tuple:
             # tlim = getkw('tlim');

@@ -20,6 +20,8 @@ datdefaults = {
     'expf': 1.5,
     'tlim': (0,27.5, 0,0,0.0 ,0.0,0.0),
     'n_s'  : 1e23,
+    'n_min' : 1e18,
+    'long_margin' : [2.5, 5.0],
     'sdim': (17.5,27.5, 0.0,0.0, 0.0,0.0),
     'type' : 'singlescale',
     'unit' : 1e-4,
