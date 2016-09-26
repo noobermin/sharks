@@ -640,7 +640,7 @@ coefficients 7.800000e-05 2.145000e-04 end
 function3 ; electrons
 
 type 30
-data_file watercolumn.dat
+data_file 1.5um.dat
 independent_variable_multiplier 1.0
 dependent_variable_multiplier 1.0
 
@@ -648,7 +648,7 @@ dependent_variable_multiplier 1.0
 function4 ; Oxygen
 
 type 30
-data_file watercolumn.dat
+data_file 1.5um.dat
 independent_variable_multiplier 1.0
 dependent_variable_multiplier 0.33
 
@@ -656,7 +656,7 @@ dependent_variable_multiplier 0.33
 function5 ; Protons
 
 type 30
-data_file watercolumn.dat
+data_file 1.5um.dat
 independent_variable_multiplier 1.0
 dependent_variable_multiplier 0.67
 

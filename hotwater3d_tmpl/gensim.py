@@ -106,6 +106,9 @@ def gensim(**kw):
         kw['timestep'] = getkw('timestep');
         if xlen*1e-6/long_res < c*kw['timestep']:
             kw['timestep'] = xlen*1e-6/long_res/c;
+        dens = genonescale(**kw);
+        kw['dens_dat'] = "{}um.dat".format(getkw('expf'));
+        files.append((kw['dens_dat'], dens));
         print("from scale_with_min, generated dimensions:");
         print(take(kw,['expf','res','tlim','lim','timestep']))
     #elif test(kw,'shelf'):
