@@ -13,7 +13,7 @@ defd = dict(
     solid_len=10,
     expf=1.5,
     #movne
-    movne={'clim':(1e16,1e22)},
+    movne=dict(clim=(1e16,1e22)),
     #pbs options
     angular=True,
     autozipper=True,
