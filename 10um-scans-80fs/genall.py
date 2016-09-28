@@ -58,10 +58,11 @@ def mk_noextrapbs(d):
             queue='standard_lw'),
         sd(
             hpcmp_defpbs,
-            pbsname=pbsbase+"_garnet_short",
-            cluster="garnet",
-            queue="standard_lw",
-            walltime=48),
+            pbsname=pbsbase+"_garnet_20",
+            cluster='garnet',
+            queue='standard_sm',
+            walltime=20),
+
         sd(
             hpcmp_defpbs,
             pbsname=pbsbase+"_garnet_24",
@@ -70,10 +71,22 @@ def mk_noextrapbs(d):
             walltime=24),
         sd(
             hpcmp_defpbs,
-            pbsname=pbsbase+"_garnet_20",
-            cluster='garnet',
-            queue='standard_sm',
-            walltime=20),
+            pbsname=pbsbase+"_garnet_short",
+            cluster="garnet",
+            queue="standard_lw",
+            walltime=48),
+        sd(
+            hpcmp_defpbs,
+            pbsname=pbsbase+"_garnet_64",
+            cluster="garnet",
+            queue="standard_lw",
+            walltime=64),
+        sd(
+            hpcmp_defpbs,
+            pbsname=pbsbase+"_garnet_72",
+            cluster="garnet",
+            queue="standard_lw",
+            walltime=72),
         sd(
             hpcmp_defpbs,
             pbsname=pbsbase+"_garnet_shorter",
