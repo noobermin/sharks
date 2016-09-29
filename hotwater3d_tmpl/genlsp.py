@@ -47,31 +47,33 @@ c  = 299792458
 c_cgs=c*100;
 e0 = 8.8541878176e-12
 
-lspdefaults = {
-    'I':3e18,
-    'l':780e-9,
-    'w':2.17e-6,
-    'T':60e-15,
-    'lim':(-30,5,-20,20, -20, 20),
-    'res':(350,400,400),
-    'tlim':(-27.5,0, -15,15, -15, 15),
-    'tref': (None,None,None),
-    'fp':(0,0,0),
-    'domains':48,
-    'totaltime':300e-15,
-    'timestep':1e-16,
-    'components':(0,1,0),
-    'phases':(0,0,0),
-    'dens_dat':'watercolumn.dat',
-    'dens_type': '30',
-    'dens_imul': 1.0,
-    'dens_flags': (True, False, False),
-    'discrete':(3,3,3),
-    'dumpinterval':2e-16,
-    'description':'Hotwater in 2d',
-    'pext_species':(10,),
-    'restart':None,
-};
+lspdefaults = dict(
+    I=3e18,
+    l=780e-9,
+    w=2.17e-6,
+    T=60e-15,
+    lim=(-30,5,-20,20, -20, 20),
+    res=(350,400,400),
+    tlim=(-27.5,0, -15,15, -15, 15),
+    tref= (None,None,None),
+    fp=(0,0,0),
+    domains=48,
+    totaltime=300e-15,
+    timestep=1e-16,
+    components=(0,1,0),
+    phases=(0,0,0),
+    dens_dat='watercolumn.dat',
+    dens_type= '30',
+    dens_imul= 1.0,
+    dens_flags= (True, False, False),
+    speciesl = ['e', 'O', 'p'],
+    discrete=(3,3,3),
+    dumpinterval=2e-16,
+    description='Hotwater in 2d',
+    pext_species=(10,),
+    restart=None,
+    template='hotwater3d_tmpl.lsp',
+);
 
 pext_defaults = sd(
     lspdefaults,
@@ -202,7 +204,6 @@ def genregions(**kw):
 
 densdefaults = sd(
     lspdefaults,
-    speciesl = ['e', 'O', 'p'],
     fracs = [1.0, 0.33, 0.67],
 );
 def gendens(**kw):
@@ -364,6 +365,9 @@ z-cells          {zcells}'''.format(zmin=zmin,zmax=zmax,zcells=zcells);
         sys.stderr.write("warning: timestep exceeds couraunt limit\n");
     #target
     kw = gendens(**kw);
+    for species in getkw('speciesl'):
+        l = 'n_'+species;
+        fmtd[l] = kw[l];
     fmtd['discrete']  = joinspace(getkw("discrete"));
     fmtd['dens_flags']= joinspace([
         1 if i else 0 for i in getkw("dens_flags")]);
@@ -387,7 +391,8 @@ particle_movie_components Q X Y Z VX VY VZ XI YI ZI
     else:
         pmovies = '';
     restarts = "maximum_restart_dump_time {}".format(restart) if restart else "";
-    with open("hotwater3d_tmpl.lsp") as f:
+    template=getkw("template");
+    with open(template) as f:
         s=f.read();
     s=s.format(
         xmin=xmin,xmax=xmax,
@@ -404,9 +409,6 @@ particle_movie_components Q X Y Z VX VY VZ XI YI ZI
         pmovies=pmovies,
         regions=regions,
         pexts=pexts,
-        n_e=kw['n_e'],
-        n_O=kw['n_O'],
-        n_p=kw['n_p'],
         dumpinterval=dumpinterval,
         description=description,
         restarts=restarts,
