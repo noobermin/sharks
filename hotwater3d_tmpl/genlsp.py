@@ -72,7 +72,7 @@ lspdefaults = dict(
     description='Hotwater in 2d',
     pext_species=(10,),
     restart=None,
-    template='hotwater3d_tmpl.lsp',
+    lsptemplate='hotwater3d_tmpl.lsp',
 );
 
 pext_defaults = sd(
@@ -391,8 +391,8 @@ particle_movie_components Q X Y Z VX VY VZ XI YI ZI
     else:
         pmovies = '';
     restarts = "maximum_restart_dump_time {}".format(restart) if restart else "";
-    template=getkw("template");
-    with open(template) as f:
+    lsptemplate=getkw("lsptemplate");
+    with open(lsptemplate) as f:
         s=f.read();
     s=s.format(
         xmin=xmin,xmax=xmax,
