@@ -44,6 +44,12 @@ pbses=[
         queue='debug'),
     sd(
         defpbs,
+        pbsname=pbsbase+"_armstrong_mem2_debug",
+        cluster='armstrong',
+        mpiprocs=12,
+        queue='debug'),
+    sd(
+        defpbs,
         pbsname=pbsbase+"_armstrong",
         cluster='armstrong',
         queue='standard'),
