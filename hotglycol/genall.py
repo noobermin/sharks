@@ -102,7 +102,6 @@ gensim(
     #PIC/grid details
     domains=96,
     pext_species=(16,17),
-    region_split=('y',2),
     pbses=pbses,
     #target information
     lsptemplate="hotglycol.lsp",
