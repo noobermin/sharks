@@ -110,5 +110,7 @@ gensim(
     dens_dat="target.dat",
     externalf_1D=True,
     f_1D=mkslab(),
+    #misc
+    lspexec='lsp-10-xy',
     dir=True,
 );
