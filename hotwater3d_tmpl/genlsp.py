@@ -126,7 +126,7 @@ at {position}
     return joinspace(
         [tmpl.format(**d)
          for i,sp in enumerate(getkw('species'))
-         for d in formatsp(sp,len(lims)*i)])
+         for d in formatsp(sp,len(planes)*i)])
 
 region_defaults = sd(
     lspdefaults,

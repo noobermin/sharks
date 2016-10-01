@@ -78,7 +78,7 @@ y-cells          3400
 [Regions]
 ;
 
-;total number of domains: 250
+;total number of domains: 200
 
 ;
 region1
@@ -86,12 +86,27 @@ xmin             -2.500000e-04
 xmax             2.500000e-04
 
 ymin             -8.500000e-04
+ymax             0.000000e+00
+
+zmin             0.000000e+00
+zmax             0.000000e+00
+;
+number_of_domains 100
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 0
+;
+;
+region2
+xmin             -2.500000e-04
+xmax             2.500000e-04
+
+ymin             0.000000e+00
 ymax             8.500000e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
 ;
-number_of_domains 250
+number_of_domains 100
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 0
 ;
@@ -818,7 +833,7 @@ movie_fraction 0.0
 
 ;
 extract1
-species 10
+species 16
 direction X
 maximum_number  1000000000
 start_time 0
@@ -827,7 +842,7 @@ at -0.00025 0 0
  
 ;
 extract2
-species 10
+species 16
 direction X
 maximum_number  1000000000
 start_time 0
@@ -836,7 +851,7 @@ at 0.00025 0 0
  
 ;
 extract3
-species 10
+species 16
 direction Y
 maximum_number  1000000000
 start_time 0
@@ -845,7 +860,43 @@ at 0 -0.0008500000000000001 0
  
 ;
 extract4
-species 10
+species 16
+direction Y
+maximum_number  1000000000
+start_time 0
+stop_time  1
+at 0 0.0008500000000000001 0
+ 
+;
+extract5
+species 17
+direction X
+maximum_number  1000000000
+start_time 0
+stop_time  1
+at -0.00025 0 0
+ 
+;
+extract6
+species 17
+direction X
+maximum_number  1000000000
+start_time 0
+stop_time  1
+at 0.00025 0 0
+ 
+;
+extract7
+species 17
+direction Y
+maximum_number  1000000000
+start_time 0
+stop_time  1
+at 0 -0.0008500000000000001 0
+ 
+;
+extract8
+species 17
 direction Y
 maximum_number  1000000000
 start_time 0
