@@ -106,9 +106,9 @@ gensim(
     description="hotglycol TNSA stage 1",
     dumpinterval=5e-17,
     #PIC/grid details
-    domains=48*4,
+    domains=48*5,
     pext_species=(17,18),
-    region_split=('y',8),
+    region_split=('y',5),
     pbses=pbses,
     #target information
     lsptemplate="hotglycol.lsp",
