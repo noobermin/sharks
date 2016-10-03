@@ -107,8 +107,8 @@ gensim(
     dumpinterval=5e-17,
     #PIC/grid details
     domains=48*4,
-    pext_species=(16,17),
-    region_split=('y',4),
+    pext_species=(17,18),
+    region_split=('y',8),
     pbses=pbses,
     #target information
     lsptemplate="hotglycol.lsp",
