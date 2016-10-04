@@ -10,19 +10,19 @@ mkdir -p "$OUTDIR"
 [ ! -n "$NPROCS" ] && NPROCS=1;
 source ~/.bashrc
 
-for i in $(ls "$DIR" | grep 'sclr[0-9]\+\.p4\.gz' | sort -V); do
+for i in $(ls "$DIR" | grep 'sclr[0-9]\+\.p4' | sort -V); do
     n=$(echo ${i#sclr*} | sed s/\.p4\.gz//)
     I=$(printf '%05d' "$n" )
     [ -e "$OUTDIR"/$I.png ] && [ ! -n "$DONTSKIP" ] && echo skipping...$i &&  continue;
     while [ $(pgrep -f 'python[23]* *.*sclrq.py' | wc -l ) -ge $NPROCS ]; do sleep $WAITDELAY; done;
     sleep 0.25;
     echo $i...
-    sclrq.py -D "$DIR" $n "$OUTDIR"/$I.png --intensity="3.459119e+15" \
+    sclrq.py -D "$DIR" $n "$OUTDIR"/$I.png --intensity="3.459119e+15" $EXTRA_MOVNE_ARGS \
         -l --lims="(5e+17, 1e+23)" --highlight="1.832437e+21" --laser -Q RhoN10 &
 done
-while [ $(pgrep python2 | wc -l ) -gt 0 ]; do
+while [ $(pgrep -f 'python[23]* *.*sclrq.py' | wc -l ) -gt 0 ]; do
     echo waiting...
     sleep 5; done;
-OUTMOV="0.8um-3.46e+16-shelf=1e+19-ne-laser.mp4"
+[ ! -n "$OUTMOV"] && OUTMOV="0.8um-3.46e+16-shelf=1e+19-ne-laser.mp4"
 ffmpeg -pattern_type glob -i "$OUTDIR/*.png" -c:v libx264 -pix_fmt yuv420p -y $OUTMOV
 [ -e $OUTMOV ] && rcp $OUTMOV $PBS_O_WORKDIR

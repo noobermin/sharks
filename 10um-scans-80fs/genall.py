@@ -285,6 +285,7 @@ for E in Es:
         res =( 52.5*30, 30*30, 0),
         timestep = 1e-16,
         totaltime= d['T']*4,
+        dumpinterval = 2e-16,
         description="800nm",
         #movne
         movne={'clim':(5e17,1e23)},

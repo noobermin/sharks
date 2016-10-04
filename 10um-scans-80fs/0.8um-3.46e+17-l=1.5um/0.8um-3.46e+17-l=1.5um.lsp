@@ -36,7 +36,7 @@ simulation_title "800nm, I = 3.459119e+17 W/cm^2"
  extract_photons_flag OFF
  dump_particles_flag OFF
 ;(Diagnostic Output) Dump Intervals
- dump_interval_ns 1.0000000000000002e-06
+ dump_interval_ns 2e-07
  dump_steps
 1 
 end
@@ -50,7 +50,7 @@ end
  use_its_format_flag OFF
  print_region_flag OFF
 ;(Diagnostic Output) Movie Controls
-;particle_movie_interval_ns 1.0000000000000002e-06
+;particle_movie_interval_ns 2e-07
 ;particle_movie_components Q X Y Z VX VY VZ XI YI ZI
 
 ;Numerical Checks and Reports
