@@ -11,7 +11,7 @@ mkdir -p "$OUTDIR"
 source ~/.bashrc
 
 for i in $(ls "$DIR" | grep 'sclr[0-9]\+\.p4' | sort -V); do
-    n=$(echo ${i#sclr*} | sed s/\.p4\.gz//)
+    n=$(echo ${i#sclr*} | sed 's/\.p4.*$//')
     I=$(printf '%05d' "$n" )
     [ -e "$OUTDIR"/$I.png ] && [ ! -n "$DONTSKIP" ] && echo skipping...$i &&  continue;
     while [ $(pgrep -f 'python[23]* *.*sclrq.py' | wc -l ) -ge $NPROCS ]; do sleep $WAITDELAY; done;
