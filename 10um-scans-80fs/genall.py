@@ -20,7 +20,7 @@ defd = dict(
     #pbs options
     autozipper=True,
     dir=True,
-)
+);
 pbsfmt='{l}um-{I:0.2e}-l={scale:0.3}um'
 def mkpbsbase(d):
     l = d['l']/1e-6;
@@ -146,7 +146,7 @@ for E in Es:
         totaltime= d['T']*3.0,
         description="10um",
         #movne
-        movne={'clim':(1e14,1e21)},
+        movne={'clim':(1e16,1e21)},
         angular=True,
     );
     defds.append(d);
@@ -197,7 +197,7 @@ for E in Es:
         totaltime= d['T']*3.75,
         description="3um",
         #movne
-        movne={'clim':(1e15,1e22)},
+        movne={'clim':(1e17,1e23)},
     );
     mkpbsbase(d);
     mkpbs(d);
@@ -218,7 +218,7 @@ for E in Es:
         timestep = 1.5e-16,
         description="3um w/ 5.77um scale plasma",
         #movne
-        movne={'clim':(1e15,1e22)},
+        movne={'clim':(1e17,1e23)},
     );
     mkpbsbase(d);
     mkpbs(d);
@@ -255,7 +255,7 @@ for E in Es:
         description="3um",
         fp=(0,0,0),
         #movne
-        movne={'clim':(1e15,1e22)},
+        movne={'clim':(1e17,1e23)},
         #density
         singlescale=None,
         dens_dat="shelf.dat",

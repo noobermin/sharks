@@ -2,15 +2,16 @@
 CONDAFILE=~/conda
 [ -n "$CONDAFILE" ] && source $CONDAFILE
 WAITDELAY=${WAITDELAY:-1}
-DIR=$([ -n "$1" ] && echo "$1" || echo ".")
+DIR=${1:-"."}
 if [ ! -n "$OUTDIR" ]; then
-    OUTDIR=$([ -n "$2" ] && echo "$2" || echo movne-laser)
+    OUTDIR=${2:-"movne-laser"}
 fi
 mkdir -p "$OUTDIR"
 INTENSITY=${INTENSITY:-"6.079748e+13"}
-LIMS=${LIMS:-"(1000000000000000.0, 1e+22)"}
+LIMS=${LIMS:-"(1e+17, 1e+23)"}
 HIGHLIGHT=${HIGHLIGHT:-"1.238728e+20"}
-[ ! -n "$NPROCS" ] && NPROCS=1;
+QUANTITY=${QUANTITY:-"RhoN10"}
+NPROCS=${NPROCS:-1}
 source ~/.bashrc
 
 for i in $(ls "$DIR" | grep 'sclr[0-9]\+\.p4' | sort -V); do
@@ -21,11 +22,11 @@ for i in $(ls "$DIR" | grep 'sclr[0-9]\+\.p4' | sort -V); do
     sleep 0.25;
     echo $i...
     sclrq.py -D "$DIR" $n "$OUTDIR"/$I.png --intensity="$INTENSITY" $EXTRA_MOVNE_ARGS \
-        -l --lims="$LIMS" --highlight="$HIGHLIGHT" --laser -Q RhoN10 &
+        -l --lims="$LIMS" --highlight="$HIGHLIGHT" --laser -Q "$QUANTITY" &
 done
 while [ $(pgrep -f 'python[23]* *.*sclrq.py' | wc -l ) -gt 0 ]; do
     echo waiting...
     sleep 5; done;
-[ ! -n "$OUTMOV"] && OUTMOV="3um-6.08e+14-l=5.77um-ne-laser.mp4"
+OUTMOV=${OUTMOV:-"3um-6.08e+14-l=5.77um-ne-laser.mp4"}
 ffmpeg -pattern_type glob -i "$OUTDIR/*.png" -c:v libx264 -pix_fmt yuv420p -y $OUTMOV
 [ -e $OUTMOV ] && rcp $OUTMOV $PBS_O_WORKDIR
