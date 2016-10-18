@@ -8,7 +8,7 @@ if [ ! -n "$OUTDIR" ]; then
 fi
 mkdir -p "$OUTDIR"
 INTENSITY=${INTENSITY:-"5.252902e+11"}
-LIMS=${LIMS:-"(1000000000000000.0, 1e+21)"}
+LIMS=${LIMS:-"(1000000000000000.0, 1e+19)"}
 HIGHLIGHT=${HIGHLIGHT:-"4.459419e+17"}
 [ ! -n "$NPROCS" ] && NPROCS=1;
 source ~/.bashrc

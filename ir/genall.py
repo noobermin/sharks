@@ -149,7 +149,7 @@ for E in Es:
         description="50um laser in search of 100 MeV",
         dumpinterval=10e-15,
         #movne
-        movne={'clim':(1e15,1e21)},
+        movne={'clim':(1e15,1e19)},
     );
     mkpbsbase(d);
     mkpbs(d);
