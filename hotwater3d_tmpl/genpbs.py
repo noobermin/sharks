@@ -74,36 +74,76 @@ def hours_to_walltime(walltime):
     hr = intflr(walltime);
     return '{}:{}:00'.format(
         hr,intflr((walltime-hr)*60));
-movne_defaults = sd(
+mov_defaults = sd(
     pbsdefaults,
     I=3e18,
-    lims=(1e17,1.5e23),
+    clim=(1e17,1.5e23),
     n_c=1e21,
-    sclrq_path=None);
+    sclrq_path=None,
+    linthresh=1e15,
+    averaging=(0,0),
+    cmap='viridis',
+    
+    dq_cmap='PRGn',
+    ne_species='RhoN10',
+    ni_species=[
+        ("RhoN9",8.0),
+        ("RhoN8",7.0),
+        ("RhoN7",6.0),
+        ("RhoN6",5.0),
+        ("RhoN5",4.0),
+        ("RhoN4",3.0),
+        ("RhoN3",2.0),
+        ("RhoN2",1.0),
+        ("RhoN11",1.0),],
+)
+mov_defaults['dq_species'] = (
+    mov_defaults['ni_species'] + [ ("RhoN10", -1.0) ]);
 
-def gen_movne(**kw):
-    getkw = mk_getkw(kw,movne_defaults);
+def gen_mov(**kw):
+    getkw = mk_getkw(kw,mov_defaults);
+    spec = dict();
     if test(kw,'sclrq_path'):
-        sclrq_path = 'export PATH="{}:$PATH"\n'.format(sclrq_path);
+        spec['sclrq_path'] = 'export PATH="{}:$PATH"\n'.format(
+            sclrq_path);
     else:
-        sclrq_path ='';
+        spec['sclrq_path'] ='';
     if getkw('cluster') == 'ramses':
-        sclrq_path+='source ~/.bashrc\n';
+        spec['sclrq_path']+='source ~/.bashrc\n';
     if not test(kw,'plotI'):
-        plotI=getkw('I')/10;
+        spec['plotI']=getkw('I')/10;
     if test(kw,'condafile'):
-        conda = kw['condafile'];
+        spec['conda'] = kw['condafile'];
     else:
-        conda = clusters[getkw('cluster')]['condafile']
-    with open("movne_tmpl") as f:
-        s=f.read();
-    return s.format(
-        conda=conda,
+        spec['conda'] = clusters[getkw('cluster')]['condafile']
+    spec.update(dict(
         pbsbase=getkw('pbsbase'),
-        sclrq_path=sclrq_path,
-        plotI = plotI,
-        lims=str(getkw('clim')),
-        n_c=getkw('n_c'));
+        lims=kw['clim'],
+        n_c=getkw('n_c')));
+    if getkw('type')=='ni' or getkw('type')=='dq':
+        Q,q = zip(*getkw(getkw('type')+'_species'));
+        Q = ",".join(str(i) for i in Q);
+        Q = "("+Q+")";
+        spec.update(dict(
+            linthresh=getkw("linthresh"),
+            quantity=Q,
+            weights=str(q),
+            averaging=getkw("averaging"),
+            cmap=( getkw("cmap") if type == 'ni'
+                   else getkw("dq_cmap")),
+            type=getkw('type'),
+            
+        ));
+        kw['movtmpl'] = 'movni_tmpl'
+    elif getkw('type') == 'ne':
+        spec['quantity'] = getkw('ne_species');
+    if test(kw, 'movtmpl'):
+        fname = kw['movtmpl'];
+    else:
+        fname = 'mov{}_tmpl'.format(getkw('type'));
+    with open(fname) as f:
+        s=f.read();
+    return s.format(**spec);
 
 def genpbs(**kw):
     getkw = mk_getkw(kw,pbsdefaults);

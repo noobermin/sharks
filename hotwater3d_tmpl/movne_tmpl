@@ -10,7 +10,7 @@ mkdir -p "$OUTDIR"
 INTENSITY=${{INTENSITY:-"{plotI:e}"}}
 LIMS=${{LIMS:-"{lims}"}}
 HIGHLIGHT=${{HIGHLIGHT:-"{n_c:e}"}}
-QUANTITY=${{QUANTITY:-"RhoN10"}}
+QUANTITY=${{QUANTITY:-"{quantity}"}}
 NPROCS=${{NPROCS:-1}}
 {sclrq_path}
 for i in $(ls "$DIR" | grep 'sclr[0-9]\+\.p4' | sort -V); do

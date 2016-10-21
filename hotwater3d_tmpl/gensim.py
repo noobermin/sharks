@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 from genlsp import genlsp,lspdefaults
-from genpbs import genpbs,gen_movne,pbsdefaults,movne_defaults;
+from genpbs import genpbs,gen_mov,pbsdefaults,mov_defaults;
 from gendat import gentargetdat,genonescale,datdefaults;
 import re;
 import os,stat;
-from pys import sd,test,mk_getkw,take;
+from pys import sd,test,mk_getkw,take,takef
 import shutil as sh;
 import numpy as np;
 
@@ -45,6 +45,8 @@ defaults.update(dict(
     pbsbase="hotwater3d",
     autozipper=None,
     movne=False,
+    movni=False,
+    movdq=False,
     angular=False,
     pbses=None,
     dir=None,
@@ -126,18 +128,29 @@ def gensim(**kw):
         if not test(kw, 'dens_dat'):
             kw['dens_dat'] = "watercolumn.dat";
         files.append((kw['dens_dat'], dens));
-    if test(kw, "movne"):
-        if type(kw['movne']) == dict:
-            movned = sd(kw,**kw['movne']);
-        if not test(movned,'n_c'):
-            movned['n_c'] = nc(kw['l']);
-        movne=gen_movne(**movned);
+    #movies
+    movs = takef(kw,['movne','movni','movdq']);
+    #yes really.
+    tyf = lambda s: re.search(r"mov(\w+)",s).group(1);
+    movs = { tyf(k) : movs[k]
+             for k in movs
+             if movs[k]};
+    for movtype in movs:
+        sname ='mov'+movtype;
+        movd={};
+        if type(kw[sname]) == dict:
+            movd = sd(kw,**kw[sname]);
+        if not test(movd,'n_c'):
+            movd['n_c'] = nc(kw['l']);
+        movd['type'] = movtype;
+        movstr=gen_mov(**movd);
         #adding it to pbs
-        if test(kw, "concurrents") and kw['concurrents'] is not None:
-            kw['concurrents'] += [('movne','./movne')];
+        if not test(kw, "concurrents") or kw['concurrents'] is None:
+            kw['concurrents'] = [(sname,'./'+sname)];
         else:
-            kw['concurrents'] = [('movne','./movne')];
-        files.append( ('movne',movne,0o755) );
+            kw['concurrents'] += [(sname,'./'+sname)];
+        files.append((sname,movstr,0o755) );
+    
     if test(kw,'angular'):
         #adding it to pbs
         if test(kw, "concurrents") and kw['concurrents'] is not None:

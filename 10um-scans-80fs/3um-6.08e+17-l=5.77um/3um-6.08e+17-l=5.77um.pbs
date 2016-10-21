@@ -25,12 +25,20 @@ mkdir -p $D
 cd $PBS_O_WORKDIR
 cp lsp-10-xy 3um-6.08e+17-l=5.77um.lsp *.dat $D/
 cp zipper $D/
+cp movni $D/
+cp movdq $D/
 cp movne $D/
 cp loopscript $D/
 cd $D
 #zipper
 ./loopscript zipper &> $PBS_O_WORKDIR/zipper.log&
 zipper_PID=$!
+#movni
+./loopscript movni &> $PBS_O_WORKDIR/movni.log&
+movni_PID=$!
+#movdq
+./loopscript movdq &> $PBS_O_WORKDIR/movdq.log&
+movdq_PID=$!
 #movne
 ./loopscript movne &> $PBS_O_WORKDIR/movne.log&
 movne_PID=$!
@@ -40,5 +48,9 @@ mpirun -np 48 ./lsp-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
 
 kill $zipper_PID
 ./zipper -a >$PBS_O_WORKDIR
+kill $movni_PID
+./movni
+kill $movdq_PID
+./movdq
 kill $movne_PID
 ./movne

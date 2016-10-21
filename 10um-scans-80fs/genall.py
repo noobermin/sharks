@@ -15,11 +15,15 @@ defd = dict(
     n_s=1e23,
     solid_len=10,
     expf=1.5,
-    #movne
-    movne={'clim':(1e14,1e21)},
     #pbs options
     autozipper=True,
     dir=True,
+    #movne
+    movne=dict(clim=(1e17,1e23)),
+    movni=dict(clim=(1e17,1e23)),
+    movdq=dict(clim=(-1e19,1e19),
+               linthresh=1e15),
+
 );
 pbsfmt='{l}um-{I:0.2e}-l={scale:0.3}um'
 def mkpbsbase(d):
@@ -48,7 +52,7 @@ def mk_noextrapbs(d):
         autozipper=False,
         queue=None,
         ppn=None,);
-    dd['movne'] = False;
+    dd['movne'] = dd['movni'] = dd['movdq'] = False;
     dd['angular']=False;
     dd['pbses'] = [
         sd(
@@ -135,6 +139,9 @@ def mk_noextrapbs(d):
     ];
     return dd;
 
+####################################
+# 10um scans
+####################################
 defds=[]
 for E in Es:
     d = sd(fromenergy(E,cycles=cycles), **defd);
@@ -145,15 +152,10 @@ for E in Es:
         timestep = 5e-16,
         totaltime= d['T']*3.0,
         description="10um",
-        #movne
-        movne={'clim':(1e16,1e21)},
         angular=True,
     );
     defds.append(d);
 
-####################################
-# 10um scans
-####################################
 #10um, scale=1.5um
 for d in defds:
     d['pbsbase']=pbsfmt.format(
@@ -165,7 +167,6 @@ for d in defds:
     gensim(**d);
     dd=mk_noextrapbs(d);
     gensim(**dd);
-
 #10um, scale=19.2um
 longs = [sd(
     d,
@@ -174,7 +175,12 @@ longs = [sd(
     lim =( -250, 10, -120, 120,0,0),
     tlim=( -240,  0, -110, 110,0,0),
     res =( 260*4, 240*4, 0),
-    totaltime=d['T']*3.5,)
+    totaltime=d['T']*3.5,
+    #movne
+    movne=dict(clim=(1e16,1e21)),
+    movni=dict(clim=(1e16,1e21)),
+    movdq=dict(clim=(-1e18,1e18),
+               linthresh=1e15),)
          for d in defds];
 for d in longs:
     mkpbsbase(d);
@@ -196,8 +202,6 @@ for E in Es:
         timestep = 1.5e-16,
         totaltime= d['T']*3.75,
         description="3um",
-        #movne
-        movne={'clim':(1e17,1e23)},
     );
     mkpbsbase(d);
     mkpbs(d);
@@ -217,8 +221,11 @@ for E in Es:
         totaltime=d['T']*3.75,
         timestep = 1.5e-16,
         description="3um w/ 5.77um scale plasma",
-        #movne
-        movne={'clim':(1e17,1e23)},
+        #mov
+        movne=dict(clim=(1e16,1e21)),
+        movni=dict(clim=(1e16,1e21)),
+        movdq=dict(clim=(-1e18,1e18),
+                   linthresh=1e15,)
     );
     mkpbsbase(d);
     mkpbs(d);
@@ -254,8 +261,6 @@ for E in Es:
         totaltime= d['T']*4,
         description="3um",
         fp=(0,0,0),
-        #movne
-        movne={'clim':(1e17,1e23)},
         #density
         singlescale=None,
         dens_dat="shelf.dat",
@@ -287,8 +292,6 @@ for E in Es:
         totaltime= d['T']*4,
         dumpinterval = 2e-16,
         description="800nm",
-        #movne
-        movne={'clim':(5e17,1e23)},
     );
     mkpbsbase(d);
     mkpbs(d);
@@ -313,8 +316,6 @@ for E in Es:
         totaltime= d['T']*4,
         description="1um",
         fp=(0,0,0),
-        #movne
-        movne={'clim':(5e17,1e23)},
         #density
         singlescale=None,
         dens_dat="shelf.dat",
