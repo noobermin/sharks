@@ -150,7 +150,7 @@ for E in Es:
         tlim=( -40,  0, -110, 110,0,0),
         res =( 60*4, 240*4, 0),
         timestep = 5e-16,
-        totaltime= d['T']*3.0,
+        totaltime= d['T']*3.75,
         description="10um",
         angular=True,
     );
@@ -175,7 +175,7 @@ longs = [sd(
     lim =( -250, 10, -120, 120,0,0),
     tlim=( -240,  0, -110, 110,0,0),
     res =( 260*4, 240*4, 0),
-    totaltime=d['T']*3.5,
+    totaltime=d['T']*3.75,
     #movne
     movne=dict(clim=(1e16,1e21)),
     movni=dict(clim=(1e16,1e21)),
