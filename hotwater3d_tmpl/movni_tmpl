@@ -25,7 +25,7 @@ for i in $(ls "$DIR" | grep 'sclr[0-9]\+\.p4' | sort -V); do
     sleep 0.25;
     echo $i...
     ion.py -D "$DIR" $n "$OUTDIR"/$I.png --intensity="$INTENSITY" $EXTRA_ION_ARGS \
-           -l --lims="$LIMS" --laser Q "$QUANTITY" -q "$WEIGHTS" --linthresh="$LINTHRESH" \
+           -l --lims="$LIMS" --laser -Q "$QUANTITY" -q "$WEIGHTS" --linthresh="$LINTHRESH" \
            -A "$AVG" --cmap="$CMAP" &
 done
 while [ $(pgrep -f 'python[23]* *.*ion.py' | wc -l ) -gt 0 ]; do
