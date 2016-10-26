@@ -23,7 +23,8 @@ defd = dict(
     movni=dict(clim=(1e17,1e23)),
     movdq=dict(clim=(-1e19,1e19),
                linthresh=1e15),
-
+    movrho=dict(clim=(-1e19,1e19),
+                linthresh=1e15),    
 );
 pbsfmt='{l}um-{I:0.2e}-l={scale:0.3}um'
 def mkpbsbase(d):
@@ -52,7 +53,7 @@ def mk_noextrapbs(d):
         autozipper=False,
         queue=None,
         ppn=None,);
-    dd['movne'] = dd['movni'] = dd['movdq'] = False;
+    dd['movne'] = dd['movni'] = dd['movdq'] = dd['movrho'] = False;
     dd['angular']=False;
     dd['pbses'] = [
         sd(
@@ -180,7 +181,9 @@ longs = [sd(
     movne=dict(clim=(1e16,1e21)),
     movni=dict(clim=(1e16,1e21)),
     movdq=dict(clim=(-1e18,1e18),
-               linthresh=1e15),)
+               linthresh=1e15),
+    movrho=dict(clim=(-1e18,1e18),
+                linthresh=1e15),)
          for d in defds];
 for d in longs:
     mkpbsbase(d);
@@ -225,7 +228,10 @@ for E in Es:
         movne=dict(clim=(1e16,1e21)),
         movni=dict(clim=(1e16,1e21)),
         movdq=dict(clim=(-1e18,1e18),
+                   linthresh=1e15,),
+        movrho=dict(clim=(-1e18,1e18),
                    linthresh=1e15,)
+
     );
     mkpbsbase(d);
     mkpbs(d);

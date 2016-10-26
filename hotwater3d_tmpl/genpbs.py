@@ -137,6 +137,10 @@ def gen_mov(**kw):
         kw['movtmpl'] = 'movni_tmpl'
     elif getkw('type') == 'ne':
         spec['quantity'] = getkw('ne_species');
+    elif getkw('type') == 'rho':
+        spec['quantity'] = getkw('ne_species');
+        spec['cmap']  = getkw('dq_cmap');
+        spec['linthresh'] = getkw('linthresh');
     if test(kw, 'movtmpl'):
         fname = kw['movtmpl'];
     else:

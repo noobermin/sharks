@@ -47,6 +47,7 @@ defaults.update(dict(
     movne=False,
     movni=False,
     movdq=False,
+    movrho=False,
     angular=False,
     pbses=None,
     dir=None,
@@ -129,7 +130,7 @@ def gensim(**kw):
             kw['dens_dat'] = "watercolumn.dat";
         files.append((kw['dens_dat'], dens));
     #movies
-    movs = takef(kw,['movne','movni','movdq']);
+    movs = takef(kw,['movne','movni','movdq','movrho']);
     #yes really.
     tyf = lambda s: re.search(r"mov(\w+)",s).group(1);
     movs = { tyf(k) : movs[k]
@@ -150,7 +151,6 @@ def gensim(**kw):
         else:
             kw['concurrents'] += [(sname,'./'+sname)];
         files.append((sname,movstr,0o755) );
-    
     if test(kw,'angular'):
         #adding it to pbs
         if test(kw, "concurrents") and kw['concurrents'] is not None:
