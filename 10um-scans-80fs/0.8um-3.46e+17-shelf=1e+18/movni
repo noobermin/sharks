@@ -15,7 +15,8 @@ WEIGHTS=${WEIGHTS:-"(8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0, 1.0)"}
 NPROCS=${NPROCS:-1}
 LINTHRESH=${LINTHRESH:-"1.000000e+15"}
 AVG=${AVG:-"(0, 0)"}
-CMAP=${CMAP:-"PRGn"}
+CMAP=${CMAP:-"viridis"}
+TITLE=${TITLE:-"Ion Density"}
 source ~/.bashrc
 
 for i in $(ls "$DIR" | grep 'sclr[0-9]\+\.p4' | sort -V); do
@@ -27,7 +28,7 @@ for i in $(ls "$DIR" | grep 'sclr[0-9]\+\.p4' | sort -V); do
     echo $i...
     ion.py -D "$DIR" $n "$OUTDIR"/$I.png --intensity="$INTENSITY" $EXTRA_ION_ARGS \
            -l --lims="$LIMS" --laser -Q "$QUANTITY" -q "$WEIGHTS" --linthresh="$LINTHRESH" \
-           -A "$AVG" --cmap="$CMAP" &
+           -A "$AVG" --cmap="$CMAP" --title="$TITLE" &
 done
 while [ $(pgrep -f 'python[23]* *.*ion.py' | wc -l ) -gt 0 ]; do
     echo waiting...

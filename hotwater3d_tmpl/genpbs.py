@@ -129,10 +129,10 @@ def gen_mov(**kw):
             quantity=Q,
             weights=str(q),
             averaging=getkw("averaging"),
-            cmap=( getkw("cmap") if type == 'ni'
+            cmap=( getkw("cmap") if getkw('type') == 'ni'
                    else getkw("dq_cmap")),
             type=getkw('type'),
-            
+            title="Ion Density" if getkw('type') == 'ni' else 'Charge Density',
         ));
         kw['movtmpl'] = 'movni_tmpl'
     elif getkw('type') == 'ne':

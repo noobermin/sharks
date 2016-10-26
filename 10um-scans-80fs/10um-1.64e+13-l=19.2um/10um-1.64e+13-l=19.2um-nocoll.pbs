@@ -26,9 +26,9 @@ cd $PBS_O_WORKDIR
 cp lsp-10-xy-no_collisions 10um-1.64e+13-l=19.2um.lsp *.dat $D/
 cp zipper $D/
 cp movdq $D/
-cp movrho $D/
-cp movne $D/
 cp movni $D/
+cp movne $D/
+cp movrho $D/
 cp genangular $D/
 cp loopscript $D/
 cd $D
@@ -38,15 +38,15 @@ zipper_PID=$!
 #movdq
 ./loopscript movdq &> $PBS_O_WORKDIR/movdq.log&
 movdq_PID=$!
-#movrho
-./loopscript movrho &> $PBS_O_WORKDIR/movrho.log&
-movrho_PID=$!
-#movne
-./loopscript movne &> $PBS_O_WORKDIR/movne.log&
-movne_PID=$!
 #movni
 ./loopscript movni &> $PBS_O_WORKDIR/movni.log&
 movni_PID=$!
+#movne
+./loopscript movne &> $PBS_O_WORKDIR/movne.log&
+movne_PID=$!
+#movrho
+./loopscript movrho &> $PBS_O_WORKDIR/movrho.log&
+movrho_PID=$!
 #genangular
 ./loopscript genangular &> $PBS_O_WORKDIR/genangular.log&
 genangular_PID=$!
@@ -58,11 +58,11 @@ kill $zipper_PID
 ./zipper -a >$PBS_O_WORKDIR
 kill $movdq_PID
 ./movdq
-kill $movrho_PID
-./movrho
-kill $movne_PID
-./movne
 kill $movni_PID
 ./movni
+kill $movne_PID
+./movne
+kill $movrho_PID
+./movrho
 kill $genangular_PID
 ./genangular
