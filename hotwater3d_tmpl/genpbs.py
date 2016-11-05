@@ -33,7 +33,9 @@ cluster =  dict(
     ppn=48,max_walltime=9999,mpi='mpirun -np {}',max_ppn=48,condafile="~/conda"
 )
 clusters= {
-    'ramses':cluster,
+    'ramses':sd(
+        cluster,
+        mpi = 'mpirun -np {} -hostfile $PBS_NODEFILE',),
     'oakley':sd(
         cluster,
         max_ppn=12,
@@ -204,8 +206,6 @@ cp {lspexec} {pbsbase}.lsp *.dat $D/
             if len(concurrents) > 0:
                 pre+='cp loopscript $D/\n';
             pre+='cd $D\n'
-        else:
-            mpirun+="-hostfile $PBS_NODEFILE";
         pre = "module load openmpi-1.4.3-gnu-rpm\n\n"+pre;
     elif cluster == "garnet" or cluster == "armstrong":
         if not test(kw,'queue'):
@@ -238,7 +238,7 @@ cp {lspexec} {pbsbase}.lsp *.dat $D/
         post+="kill ${script}_PID\n".format(script=script);
         if len(concurrent)>1:
             post+="{}\n".format(concurrent[1]);
-    mpirun= mpiformat.format(domains);
+    mpirun = mpiformat.format(domains);
     #finally outputting
     with open("hotwater3d_tmpl.pbs") as f:
         s=f.read();
