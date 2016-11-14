@@ -3,7 +3,7 @@ from pys import sd;
 from genpbs import genpbs,mk_hpcmp_pbses;
 from gensim import gensim;
 import numpy as np;
-domains=72*100;
+domains=72*25;
 region_split=('z',72);
 pbsbase="flashic_3da";
 pbses = mk_hpcmp_pbses(

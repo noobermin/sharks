@@ -1,5 +1,5 @@
 #PBS -l walltime=14:0:00
-#PBS -l select=300:ncpus=24:mpiprocs=24
+#PBS -l select=75:ncpus=24:mpiprocs=24
 #PBS -N flashic_3da
 #PBS -S /bin/bash
 #PBS -j oe
@@ -22,5 +22,5 @@ cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/nodesfile.txt
 cd $PBS_O_WORKDIR
 
 
-aprun -n 7200 ./lsp-10-3d $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+aprun -n 1800 ./lsp-10-3d $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
 

@@ -81,7 +81,7 @@ z-cells          360
 [Regions]
 ;
 
-;total number of domains: 7200
+;total number of domains: 1800
 
 ;
 region1
@@ -94,7 +94,7 @@ ymax             1.800000e-03
 zmin             -1.800000e-03
 zmax             -1.750000e-03
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -109,7 +109,7 @@ ymax             1.800000e-03
 zmin             -1.750000e-03
 zmax             -1.700000e-03
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -124,7 +124,7 @@ ymax             1.800000e-03
 zmin             -1.700000e-03
 zmax             -1.650000e-03
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -139,7 +139,7 @@ ymax             1.800000e-03
 zmin             -1.650000e-03
 zmax             -1.600000e-03
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -154,7 +154,7 @@ ymax             1.800000e-03
 zmin             -1.600000e-03
 zmax             -1.550000e-03
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -169,7 +169,7 @@ ymax             1.800000e-03
 zmin             -1.550000e-03
 zmax             -1.500000e-03
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -184,7 +184,7 @@ ymax             1.800000e-03
 zmin             -1.500000e-03
 zmax             -1.450000e-03
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -199,7 +199,7 @@ ymax             1.800000e-03
 zmin             -1.450000e-03
 zmax             -1.400000e-03
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -214,7 +214,7 @@ ymax             1.800000e-03
 zmin             -1.400000e-03
 zmax             -1.350000e-03
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -229,7 +229,7 @@ ymax             1.800000e-03
 zmin             -1.350000e-03
 zmax             -1.300000e-03
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -244,7 +244,7 @@ ymax             1.800000e-03
 zmin             -1.300000e-03
 zmax             -1.250000e-03
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -259,7 +259,7 @@ ymax             1.800000e-03
 zmin             -1.250000e-03
 zmax             -1.200000e-03
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -274,7 +274,7 @@ ymax             1.800000e-03
 zmin             -1.200000e-03
 zmax             -1.150000e-03
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -289,7 +289,7 @@ ymax             1.800000e-03
 zmin             -1.150000e-03
 zmax             -1.100000e-03
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -304,7 +304,7 @@ ymax             1.800000e-03
 zmin             -1.100000e-03
 zmax             -1.050000e-03
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -319,7 +319,7 @@ ymax             1.800000e-03
 zmin             -1.050000e-03
 zmax             -1.000000e-03
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -334,7 +334,7 @@ ymax             1.800000e-03
 zmin             -1.000000e-03
 zmax             -9.500000e-04
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -349,7 +349,7 @@ ymax             1.800000e-03
 zmin             -9.500000e-04
 zmax             -9.000000e-04
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -364,7 +364,7 @@ ymax             1.800000e-03
 zmin             -9.000000e-04
 zmax             -8.500000e-04
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -379,7 +379,7 @@ ymax             1.800000e-03
 zmin             -8.500000e-04
 zmax             -8.000000e-04
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -394,7 +394,7 @@ ymax             1.800000e-03
 zmin             -8.000000e-04
 zmax             -7.500000e-04
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -409,7 +409,7 @@ ymax             1.800000e-03
 zmin             -7.500000e-04
 zmax             -7.000000e-04
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -424,7 +424,7 @@ ymax             1.800000e-03
 zmin             -7.000000e-04
 zmax             -6.500000e-04
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -439,7 +439,7 @@ ymax             1.800000e-03
 zmin             -6.500000e-04
 zmax             -6.000000e-04
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -454,7 +454,7 @@ ymax             1.800000e-03
 zmin             -6.000000e-04
 zmax             -5.500000e-04
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -469,7 +469,7 @@ ymax             1.800000e-03
 zmin             -5.500000e-04
 zmax             -5.000000e-04
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -484,7 +484,7 @@ ymax             1.800000e-03
 zmin             -5.000000e-04
 zmax             -4.500000e-04
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -499,7 +499,7 @@ ymax             1.800000e-03
 zmin             -4.500000e-04
 zmax             -4.000000e-04
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -514,7 +514,7 @@ ymax             1.800000e-03
 zmin             -4.000000e-04
 zmax             -3.500000e-04
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -529,7 +529,7 @@ ymax             1.800000e-03
 zmin             -3.500000e-04
 zmax             -3.000000e-04
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -544,7 +544,7 @@ ymax             1.800000e-03
 zmin             -3.000000e-04
 zmax             -2.500000e-04
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -559,7 +559,7 @@ ymax             1.800000e-03
 zmin             -2.500000e-04
 zmax             -2.000000e-04
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -574,7 +574,7 @@ ymax             1.800000e-03
 zmin             -2.000000e-04
 zmax             -1.500000e-04
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -589,7 +589,7 @@ ymax             1.800000e-03
 zmin             -1.500000e-04
 zmax             -1.000000e-04
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -604,7 +604,7 @@ ymax             1.800000e-03
 zmin             -1.000000e-04
 zmax             -5.000000e-05
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -619,7 +619,7 @@ ymax             1.800000e-03
 zmin             -5.000000e-05
 zmax             2.168404e-19
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -634,7 +634,7 @@ ymax             1.800000e-03
 zmin             2.168404e-19
 zmax             5.000000e-05
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -649,7 +649,7 @@ ymax             1.800000e-03
 zmin             5.000000e-05
 zmax             1.000000e-04
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -664,7 +664,7 @@ ymax             1.800000e-03
 zmin             1.000000e-04
 zmax             1.500000e-04
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -679,7 +679,7 @@ ymax             1.800000e-03
 zmin             1.500000e-04
 zmax             2.000000e-04
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -694,7 +694,7 @@ ymax             1.800000e-03
 zmin             2.000000e-04
 zmax             2.500000e-04
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -709,7 +709,7 @@ ymax             1.800000e-03
 zmin             2.500000e-04
 zmax             3.000000e-04
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -724,7 +724,7 @@ ymax             1.800000e-03
 zmin             3.000000e-04
 zmax             3.500000e-04
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -739,7 +739,7 @@ ymax             1.800000e-03
 zmin             3.500000e-04
 zmax             4.000000e-04
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -754,7 +754,7 @@ ymax             1.800000e-03
 zmin             4.000000e-04
 zmax             4.500000e-04
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -769,7 +769,7 @@ ymax             1.800000e-03
 zmin             4.500000e-04
 zmax             5.000000e-04
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -784,7 +784,7 @@ ymax             1.800000e-03
 zmin             5.000000e-04
 zmax             5.500000e-04
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -799,7 +799,7 @@ ymax             1.800000e-03
 zmin             5.500000e-04
 zmax             6.000000e-04
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -814,7 +814,7 @@ ymax             1.800000e-03
 zmin             6.000000e-04
 zmax             6.500000e-04
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -829,7 +829,7 @@ ymax             1.800000e-03
 zmin             6.500000e-04
 zmax             7.000000e-04
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -844,7 +844,7 @@ ymax             1.800000e-03
 zmin             7.000000e-04
 zmax             7.500000e-04
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -859,7 +859,7 @@ ymax             1.800000e-03
 zmin             7.500000e-04
 zmax             8.000000e-04
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -874,7 +874,7 @@ ymax             1.800000e-03
 zmin             8.000000e-04
 zmax             8.500000e-04
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -889,7 +889,7 @@ ymax             1.800000e-03
 zmin             8.500000e-04
 zmax             9.000000e-04
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -904,7 +904,7 @@ ymax             1.800000e-03
 zmin             9.000000e-04
 zmax             9.500000e-04
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -919,7 +919,7 @@ ymax             1.800000e-03
 zmin             9.500000e-04
 zmax             1.000000e-03
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -934,7 +934,7 @@ ymax             1.800000e-03
 zmin             1.000000e-03
 zmax             1.050000e-03
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -949,7 +949,7 @@ ymax             1.800000e-03
 zmin             1.050000e-03
 zmax             1.100000e-03
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -964,7 +964,7 @@ ymax             1.800000e-03
 zmin             1.100000e-03
 zmax             1.150000e-03
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -979,7 +979,7 @@ ymax             1.800000e-03
 zmin             1.150000e-03
 zmax             1.200000e-03
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -994,7 +994,7 @@ ymax             1.800000e-03
 zmin             1.200000e-03
 zmax             1.250000e-03
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -1009,7 +1009,7 @@ ymax             1.800000e-03
 zmin             1.250000e-03
 zmax             1.300000e-03
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -1024,7 +1024,7 @@ ymax             1.800000e-03
 zmin             1.300000e-03
 zmax             1.350000e-03
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -1039,7 +1039,7 @@ ymax             1.800000e-03
 zmin             1.350000e-03
 zmax             1.400000e-03
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -1054,7 +1054,7 @@ ymax             1.800000e-03
 zmin             1.400000e-03
 zmax             1.450000e-03
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -1069,7 +1069,7 @@ ymax             1.800000e-03
 zmin             1.450000e-03
 zmax             1.500000e-03
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -1084,7 +1084,7 @@ ymax             1.800000e-03
 zmin             1.500000e-03
 zmax             1.550000e-03
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -1099,7 +1099,7 @@ ymax             1.800000e-03
 zmin             1.550000e-03
 zmax             1.600000e-03
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -1114,7 +1114,7 @@ ymax             1.800000e-03
 zmin             1.600000e-03
 zmax             1.650000e-03
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -1129,7 +1129,7 @@ ymax             1.800000e-03
 zmin             1.650000e-03
 zmax             1.700000e-03
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -1144,7 +1144,7 @@ ymax             1.800000e-03
 zmin             1.700000e-03
 zmax             1.750000e-03
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
@@ -1159,7 +1159,7 @@ ymax             1.800000e-03
 zmin             1.750000e-03
 zmax             1.800000e-03
 ;
-number_of_domains 100
+number_of_domains 25
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 1440000
 ;
