@@ -51,8 +51,8 @@ gensim(
     description="Flash to LSP as IC in 3D",
     dumpinterval=5e-16,
     timestep=1e-16,
-    domains=1000,
-    region_split=('z',68),
+    domains=domains,
+    region_split=region_split,
     pbses=pbses,
     restart=23.5,
 );

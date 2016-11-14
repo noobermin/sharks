@@ -255,6 +255,66 @@ cp {lspexec} {pbsbase}.lsp *.dat $D/
         mpirun=mpirun,
         extra_headers=extra_headers,
         lspexec=lspexec,);
+def mk_hpcmp_pbses(pbsbase='hotwater3d_tmpl',**kw):
+    hpcmp_defpbs = dict(
+        pbsbase = pbsbase,
+        pbsname = pbsbase+'_oakley',
+        cluster = 'oakley',
+        autozipper = False,
+        queue = None,
+        ppn = None,);
+    hpcmp_defpbs.update(kw);
+    return [
+        sd(
+            hpcmp_defpbs),
+        sd(
+            hpcmp_defpbs,
+            pbsname=pbsbase+"_garnet",
+            cluster='garnet',
+            queue='standard_lw'),
+        sd(
+            hpcmp_defpbs,
+            pbsname=pbsbase+"_garnet_sm",
+            cluster='garnet',
+            queue='standard_sm',
+            walltime=24),
+        sd(
+            hpcmp_defpbs,
+            pbsname=pbsbase+"_garnet_48",
+            cluster="garnet",
+            queue="standard_lw",
+            walltime=48),
+        sd(
+            hpcmp_defpbs,
+            pbsname=pbsbase+"_garnet_debug",
+            cluster='garnet',
+            queue='debug',),
+        sd(
+            hpcmp_defpbs,
+            pbsname=pbsbase+"_armstrong",
+            cluster='armstrong',
+            queue='standard'),
+        sd(
+            hpcmp_defpbs,
+            pbsname=pbsbase+"_armstrong_debug",
+            cluster='armstrong',
+            queue='debug'),
+        sd(
+            hpcmp_defpbs,
+            pbsname=pbsbase+"_armstrong_48",
+            cluster='armstrong',
+            queue='standard',
+            walltime=48),
+        sd(
+            hpcmp_defpbs,
+            pbsname=pbsbase+"_armstrong_14",
+            cluster='armstrong',
+            queue='standard',
+            walltime=14),
+        ];
+
+
+
 if __name__=="__main__":
     opts=docopt(__doc__,help=True);
     print("not implemented!");
