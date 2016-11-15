@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from pys import sd,test;
 from gensim import gensim, fromenergy;
+from genpbs import mk_hpcmp_pbses;
 import numpy as np;
 c=299792458
 cycles = 80e-15/(780e-9/c);
@@ -45,99 +46,10 @@ def mkpbs(d):
     return d;
 def mk_noextrapbs(d):
     dd = sd(d);
-    pbsbase = dd['pbsbase']
-    hpcmp_defpbs =  dict(
-        pbsbase=pbsbase,
-        pbsname=pbsbase,
-        cluster='oakley',
-        autozipper=False,
-        queue=None,
-        ppn=None,);
+    pbsbase = dd['pbsbase'];
     dd['movne'] = dd['movni'] = dd['movdq'] = dd['movrho'] = False;
     dd['angular']=False;
-    dd['pbses'] = [
-        sd(
-            hpcmp_defpbs,
-            pbsname=pbsbase+"_garnet",
-            cluster='garnet',
-            queue='standard_lw'),
-        sd(
-            hpcmp_defpbs,
-            pbsname=pbsbase+"_garnet_20",
-            cluster='garnet',
-            queue='standard_sm',
-            walltime=20),
-
-        sd(
-            hpcmp_defpbs,
-            pbsname=pbsbase+"_garnet_24",
-            cluster='garnet',
-            queue='standard_sm',
-            walltime=24),
-        sd(
-            hpcmp_defpbs,
-            pbsname=pbsbase+"_garnet_short",
-            cluster="garnet",
-            queue="standard_lw",
-            walltime=48),
-        sd(
-            hpcmp_defpbs,
-            pbsname=pbsbase+"_garnet_64",
-            cluster="garnet",
-            queue="standard_lw",
-            walltime=64),
-        sd(
-            hpcmp_defpbs,
-            pbsname=pbsbase+"_garnet_72",
-            cluster="garnet",
-            queue="standard_lw",
-            walltime=72),
-        sd(
-            hpcmp_defpbs,
-            pbsname=pbsbase+"_garnet_shorter",
-            cluster='garnet',
-            queue='standard_sm',
-            walltime=12),
-        sd(
-            hpcmp_defpbs,
-            pbsname=pbsbase+"_garnet_debug",
-            cluster='garnet',
-            queue='debug',),
-        sd(
-            hpcmp_defpbs,
-            pbsname=pbsbase+"_armstrong_debug",
-            cluster='armstrong',
-            queue='debug'),
-        sd(
-            hpcmp_defpbs,
-            pbsname=pbsbase+"_armstrong",
-            cluster='armstrong',
-            queue='standard'),
-        sd(
-            hpcmp_defpbs,
-            pbsname=pbsbase+"_armstrong_short",
-            cluster='armstrong',
-            queue='standard',
-            walltime=48),
-        sd(
-            hpcmp_defpbs,
-            pbsname=pbsbase+"_armstrong_shorter",
-            cluster='armstrong',
-            queue='standard',
-            walltime=14),
-        sd(
-            hpcmp_defpbs,
-            pbsname=pbsbase+"_armstrong_24",
-            cluster='armstrong',
-            queue='standard',
-            walltime=24),
-        sd(
-            hpcmp_defpbs,
-            pbsname=pbsbase+"_armstrong_36",
-            cluster='armstrong',
-            queue='standard',
-            walltime=36),
-    ];
+    dd['pbses'] = mk_hpcmp_pbses(pbsbase=pbsbase,domains = d['domains']);
     return dd;
 
 ####################################

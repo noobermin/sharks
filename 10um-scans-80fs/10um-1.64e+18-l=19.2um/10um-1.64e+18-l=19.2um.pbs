@@ -52,7 +52,7 @@ movrho_PID=$!
 genangular_PID=$!
 
 
-mpirun -np 48 ./lsp-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+mpirun -np 48 -hostfile $PBS_NODEFILE ./lsp-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
 
 kill $zipper_PID
 ./zipper -a >$PBS_O_WORKDIR

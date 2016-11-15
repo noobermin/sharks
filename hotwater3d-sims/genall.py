@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
 from genlsp import genlsp;
-from genpbs import genpbs;
+from genpbs import genpbs,mk_hpcmp_pbses
+from gensim import gensim;
 from pys import test,sd;
 import re;
 import os;
@@ -26,112 +27,35 @@ lsp_d=dict(
     restart=23.95,
 );
 
-def mkdir(dir):
-    os.makedirs(dir, exist_ok=True);
-
-def mksim(pbsbase,**d):
-    print("making {}".format(pbsbase));
-    myd = sd(lsp_d, **d);
-    lsp=genlsp(**myd);
-
-    #making for different servers
-    pbses=dict(
-        oakley=genpbs(
-            pbsbase=pbsbase,
-            domains=myd['domains'],
-            cluster='oakley',
-            autozipper=False,),
-        garnet_debug=genpbs(
-            pbsbase=pbsbase,
-            domains=myd['domains'],
-            cluster='garnet',
-            queue='debug',
-            autozipper=False,),
-        garnet_debug_mem=genpbs(
-            pbsbase=pbsbase,
-            domains=myd['domains'],
-            cluster='garnet',
-            ppn=16,
-            queue='debug',
-            autozipper=False,),
-        garnet=genpbs(
-            pbsbase=pbsbase,
-            domains=myd['domains'],
-            cluster='garnet',
-            queue='standard_lw',
-            autozipper=False,),
-        garnet_short=genpbs(
-            pbsbase=pbsbase,
-            domains=myd['domains'],
-            cluster='garnet',
-            walltime=48,
-            queue='standard_lw',
-            autozipper=False,),
-        garnet_mem=genpbs(
-            pbsbase=pbsbase,
-            domains=myd['domains'],
-            cluster='garnet',
-            ppn=16,
-            queue='standard_lw',
-            autozipper=False,),
-        armstrong_standard=genpbs(
-            pbsbase=pbsbase,
-            domains=myd['domains'],
-            cluster='armstrong',
-            queue='standard',
-            autozipper=False,),
-        armstrong_short=genpbs(
-            pbsbase=pbsbase,
-            domains=myd['domains'],
-            cluster='armstrong',
-            walltime=48,
-            queue='standard',
-            autozipper=False,),
-        armstrong_debug=genpbs(
-            pbsbase=pbsbase,
-            domains=myd['domains'],
-            cluster='armstrong',
-            queue='debug',
-            autozipper=False,),
-    );
-    mkdir(pbsbase);    
-    auxs = [
-        "sine700points.dat", myd['dens_dat'],
-        "autozipper"
-    ];
-    for aux in auxs:
-        sh.copy(aux, pbsbase);
-    pbsbase = "{0}/{0}".format(pbsbase);
-    with open(pbsbase+".lsp","w") as f:
-        f.write(lsp);
-    for pbsk in pbses:
-        fname = "{}_{}.pbs".format(
-            pbsbase,pbsk);
-        with open(fname,"w") as f:
-            f.write(pbses[pbsk]);
-
-
 Is= [5.4e17, 1e18, 1.5e18, 3e18, 1e19];
-
 #vanillas
 for I in Is:
-    mksim("H2O-3d-{}".format(I),I=I);
+    pbsbase="H2O-3d-{}".format(I);
+    d = sd(
+        lsp_d,
+        I=I,
+        pbsbase=pbsbase,
+        pbses=mk_hpcmp_pbses(
+            pbsbase=pbsbase,
+            domains=lsp_d['domains']),
+    );
+    gensim(dir=True,**d);
 
 #more domains
-mksim(
-    "more-res",
-    I=I,
-    domains=700,
-    region_split=('z',100),
-);
+#mksim(
+#    "more-res",
+#    I=I,
+#    domains=700,
+#    region_split=('z',100),
+#);
 
 #high res test
 
-mksim("highres-test",
-      I=3e18,
-      lim= (-30, 5, -20,20, -20,20),
-      res=( 35*20, 40*10, 40*10),
-      tlim=(-27.5,0,-15,15,-15,15),
-      domains=1400,
-      region_split=('z',100));
+#mksim("highres-test",
+#      I=3e18,
+#      lim= (-30, 5, -20,20, -20,20),
+#      res=( 35*20, 40*10, 40*10),
+#      tlim=(-27.5,0,-15,15,-15,15),
+#      domains=1400,
+#      region_split=('z',100));
       
