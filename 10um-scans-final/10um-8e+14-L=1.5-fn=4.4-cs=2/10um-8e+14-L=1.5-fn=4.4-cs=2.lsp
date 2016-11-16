@@ -75,7 +75,7 @@ y-cells          724
 [Regions]
 ;
 
-;total number of domains: 96
+;total number of domains: 64
 
 ;
 region1
@@ -88,7 +88,7 @@ ymax             1.810000e-02
 zmin             0.000000e+00
 zmax             0.000000e+00
 ;
-number_of_domains 96
+number_of_domains 64
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 0
 ;
