@@ -180,7 +180,7 @@ def genpbs(**kw):
     mpiformat = mycluster['mpi']
     extra_headers='';
     pre = '''
-cd $PBS_O_WORKDIR
+cd "$PBS_O_WORKDIR"
 ''';
     portions = normal_portion_tmpl.format(
         nodes=nodes,ppn=ppn);
@@ -198,7 +198,7 @@ cd $PBS_O_WORKDIR
             pre += '''
 D=/tmp/ngirmang.1-`mkdate`-$PBSBASE
 mkdir -p $D
-cd $PBS_O_WORKDIR
+cd "$PBS_O_WORKDIR"
 cp {lspexec} {pbsbase}.lsp *.dat $D/
 '''.format(lspexec=lspexec,pbsbase=pbsbase);
             for concurrent in concurrents:
