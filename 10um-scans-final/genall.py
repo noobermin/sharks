@@ -26,7 +26,7 @@ defd = dict(
     movrho=dict(clim=(-1e19,1e19),linthresh=1e15),
 );
     
-pbsfmt='{l}um-{I:0.0e}-L={scale:0.1f}um-fn={fn:0.1f}-cs={cs}'
+pbsfmt='{l}um-{I:0.0e}-L={scale:0.1f}-fn={fn:0.1f}-cs={cs}'
 def mksim(E,l,fn,cy):
     scale = 1.5;
     d = fromenergy(
@@ -49,7 +49,7 @@ def mksim(E,l,fn,cy):
         cs= int(cy));
     pbses = mk_hpcmp_pbses(
         pbsbase=pbsbase,
-        domains=96, lspexec='lsp-10-xy');
+        domains=64, lspexec='lsp-10-xy');
     print("processing {}".format(pbsbase));  
     #original targets
     d.update(
