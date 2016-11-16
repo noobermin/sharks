@@ -229,15 +229,16 @@ cp {lspexec} {pbsbase}.lsp *.dat $D/
         #truncate name because life sucks
         label = label[:14];
     #handling conncurrent scripts
-    for concurrent in concurrents:
-        script = concurrent[0]
-        pre+='''#{script}
+    if cluster != 'garnet' and cluster != 'armstrong' and cluster != 'shepard':
+        for concurrent in concurrents:
+            script = concurrent[0]
+            pre+='''#{script}
 ./loopscript {script} &> $PBS_O_WORKDIR/{script}.log&
 {script}_PID=$!
 '''.format(script=script);
-        post+="kill ${script}_PID\n".format(script=script);
-        if len(concurrent)>1:
-            post+="{}\n".format(concurrent[1]);
+            post+="kill ${script}_PID\n".format(script=script);
+            if len(concurrent)>1:
+                post+="{}\n".format(concurrent[1]);
     mpirun = mpiformat.format(domains);
     #finally outputting
     with open("hotwater3d_tmpl.pbs") as f:
@@ -262,7 +263,11 @@ def mk_hpcmp_pbses(pbsbase='hotwater3d_tmpl',**kw):
         cluster = 'oakley',
         autozipper = False,
         queue = None,
-        ppn = None,);
+        ppn = None,
+        movne=None,
+        movni=None,
+        movdq=None,
+        movrho=None,);
     hpcmp_defpbs.update(kw);
     return [
         sd(

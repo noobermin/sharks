@@ -19,11 +19,6 @@ cs = [ 1.0, 2.0];
 domains = 64;
 defd = dict(
     no_pmovies=True,
-    #movs
-    movne =dict(clim=(1e17,1e23)),
-    movni =dict(clim=(1e17,1e23)),
-    movdq =dict(clim=(-1e19,1e19),linthresh=1e15),
-    movrho=dict(clim=(-1e19,1e19),linthresh=1e15),
 );
     
 pbsfmt='{l}um-{I:0.0e}-L={scale:0.1f}-fn={fn:0.1f}-cs={cs}'
@@ -74,6 +69,11 @@ def mksim(E,l,fn,cy):
         description=pbsbase,
         pbses=pbses,
         domains=domains,
+        #movs
+        movne =dict(clim=(1e17,1e23)),
+        movni =dict(clim=(1e17,1e23)),
+        movdq =dict(clim=(-1e19,1e19),linthresh=1e15),
+        movrho=dict(clim=(-1e19,1e19),linthresh=1e15),
         dir=True,
     );
     gensim(**d);
@@ -92,6 +92,7 @@ def mksim(E,l,fn,cy):
         pbsbase=pbsbase,
         domains=96, lspexec='lsp-10-xy');
     if np.isclose(l,10.0): d['n_min']=5e16;
+    #note I DO NOT remake movnes, because 1e17 is close enough.
     gensim(**d);
     
 
