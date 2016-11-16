@@ -16,7 +16,7 @@ Es = [10, 1.0, 0.1, 0.01, 0.001, 1e-4];
 ls = [ 0.78, 3.0, 10.0 ];
 fns= [ 0.50, 1.0, 2.0 ];
 cs = [ 1.0, 2.0];
-
+domains = 64;
 defd = dict(
     no_pmovies=True,
     #movs
@@ -49,7 +49,7 @@ def mksim(E,l,fn,cy):
         cs= int(cy));
     pbses = mk_hpcmp_pbses(
         pbsbase=pbsbase,
-        domains=64, lspexec='lsp-10-xy');
+        domains=domains, lspexec='lsp-10-xy');
     print("processing {}".format(pbsbase));  
     #original targets
     d.update(
@@ -73,7 +73,7 @@ def mksim(E,l,fn,cy):
         totaltime= d['T']*3.5,
         description=pbsbase,
         pbses=pbses,
-        domains=96,
+        domains=domains,
         dir=True,
     );
     gensim(**d);
