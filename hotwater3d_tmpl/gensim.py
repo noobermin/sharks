@@ -81,11 +81,10 @@ def gensim(**kw):
         #this involves a single scale where we
         #pick the min. We figure out the longitudinal
         #dimensions ourselves
-        if not test(kw,'long_res'):
+        if not test(kw,'long_res') and not test(kw,'long_resd'):
             raise ValueError(
                 "you must supply a longitudinal resolution for scale_with_min");
         long_margin = getkw('long_margin');
-        long_res = kw['long_res'];
         expf,n_s,n_min,slen=getkw('expf','n_s','n_min','solid_len');
         pp_len = expf*np.log(n_s/n_min);
         if test(kw,'roundup_pp'):
@@ -104,13 +103,17 @@ def gensim(**kw):
         kw['tlim'][1] = slen;
         kw['lim'][0] = kw['tlim'][0] - long_margin[0];
         kw['lim'][1] = kw['tlim'][1] + long_margin[1];
-        xlen = kw['lim'][1] - kw['lim'][0]
-        kw['res'][0]  = xlen * long_res;
+        xlen = kw['lim'][1] - kw['lim'][0];
+        if test(kw, 'long_res'):
+            kw['res'][0]  = xlen * kw['long_res']
+        elif test(kw, 'long_resd'):
+            kw['res'][0]  = int(np.ceil(xlen / (getkw('l')*1e6 / kw['long_resd'])));
         kw['timestep'] = getkw('timestep');
-        if xlen*1e-6/long_res < c*kw['timestep']:
-            kw['timestep'] = xlen*1e-6/long_res/c;
-        dens = genonescale(**kw);
-        kw['dens_dat'] = "{}um.dat".format(getkw('expf'));
+        if xlen*1e-6/kw['res'][0] < c*kw['timestep']:
+            print("adapting timestep...");
+            kw['timestep'] = xlen*1e-6/kw['res'][0];
+        dens = genonescale(xlen=kw['tlim'][1]-kw['tlim'][0], **kw);
+        kw['dens_dat'] = "{:0.2f}um.dat".format(getkw('expf'));
         files.append((kw['dens_dat'], dens));
         print("from scale_with_min, generated dimensions:");
         print(take(kw,['expf','res','tlim','lim','timestep']))
