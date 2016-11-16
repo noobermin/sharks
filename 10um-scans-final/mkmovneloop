@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+while true; do ./mkmovne && echo "sleeping..." && sleep 60; done;
