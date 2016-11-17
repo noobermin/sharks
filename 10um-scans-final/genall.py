@@ -65,7 +65,7 @@ def mksim(E,l,fn,cy):
         tlim=( 0, 0, -mywidth, mywidth, 0, 0),
         res = (0,yres,0),
         timestep = timestep,
-        dumpinterval = timestep*5,
+        dumpinterval = timestep*2,
         totaltime= d['T']*3.5,
         description=pbsbase,
         pbses=pbses,

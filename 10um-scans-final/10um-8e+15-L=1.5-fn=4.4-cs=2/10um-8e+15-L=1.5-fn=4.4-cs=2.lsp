@@ -36,7 +36,7 @@ simulation_title "10um-8e+15-L=1.5-fn=4.4-cs=2, I = 7.802407e+15 W/cm^2"
  extract_photons_flag OFF
  dump_particles_flag OFF
 ;(Diagnostic Output) Dump Intervals
- dump_interval_ns 6.414694138426001e-06
+ dump_interval_ns 2.5658776553704005e-06
  dump_steps
 1 
 end
@@ -50,7 +50,7 @@ end
  use_its_format_flag OFF
  print_region_flag OFF
 ;(Diagnostic Output) Movie Controls
-;particle_movie_interval_ns 6.414694138426001e-06
+;particle_movie_interval_ns 2.5658776553704005e-06
 ;particle_movie_components Q X Y Z VX VY VZ XI YI ZI
 
 ;Numerical Checks and Reports
