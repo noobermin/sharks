@@ -9,7 +9,7 @@ cycles = 80e-15 / (780e-9/c);
 l2w    = 2.20 / 0.78
 width  = 10.0 / 0.78
 l2L    = 1.50 / 0.78
-margin =  4.0 / 0.78
+#margin =  4.0 / 0.78
 tstep  = 26; # 0.78e-6/c  / 1e-16
 
 Es = [10, 1.0, 0.1, 0.01, 0.001, 1e-4];
@@ -32,8 +32,9 @@ def mksim(E,l,fn,cy):
     );
     d = sd(defd, **d);
     mywidth = np.ceil(width * l);
-    mymargin= np.ceil(margin* l);
-    myedges = np.ceil(margin* l)+mywidth;
+    margin = 15.0;
+    mymargin= np.ceil(margin);
+    myedges = np.ceil(margin)+mywidth;
     timestep = l*1e-6/c/tstep;
     yres = int(np.ceil((2*myedges) / (l / 20)));
     pbsbase = pbsfmt.format(
@@ -57,7 +58,7 @@ def mksim(E,l,fn,cy):
         scale_with_min=True,
         long_resd = 20,
         long_margin = (mymargin,mymargin),
-        n_min = 1e17,
+        n_min = 1e16,
         roundup_pp = True,
         # others
         lim =( 0, 0, -myedges, myedges, 0, 0),
@@ -70,8 +71,8 @@ def mksim(E,l,fn,cy):
         pbses=pbses,
         domains=domains,
         #movs
-        movne =dict(clim=(1e17,1e23)),
-        movni =dict(clim=(1e17,1e23)),
+        movne =dict(clim=(1e16,1e23)),
+        movni =dict(clim=(1e16,1e23)),
         movdq =dict(clim=(-1e19,1e19),linthresh=1e15),
         movrho=dict(clim=(-1e19,1e19),linthresh=1e15),
         dir=True,

@@ -8,7 +8,7 @@ if [ ! -n "$OUTDIR" ]; then
 fi
 mkdir -p "$OUTDIR"
 INTENSITY=${INTENSITY:-"6.241925e+15"}
-LIMS=${LIMS:-"(1e+17, 1e+23)"}
+LIMS=${LIMS:-"(1e+16, 1e+23)"}
 HIGHLIGHT=${HIGHLIGHT:-"1.114855e+19"}
 QUANTITY=${QUANTITY:-"(RhoN9,RhoN8,RhoN7,RhoN6,RhoN5,RhoN4,RhoN3,RhoN2,RhoN11)"}
 WEIGHTS=${WEIGHTS:-"(8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0, 1.0)"}
