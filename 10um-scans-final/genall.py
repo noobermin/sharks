@@ -70,6 +70,7 @@ def mksim(E,l,fn,cy):
         description=pbsbase,
         pbses=pbses,
         domains=domains,
+        region_dom_split='y',
         #movs
         movne =dict(clim=(1e16,1e23)),
         movni =dict(clim=(1e16,1e23)),

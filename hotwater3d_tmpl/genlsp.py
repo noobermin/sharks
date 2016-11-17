@@ -37,7 +37,7 @@ Options:
    --description=D   Set the description [default: Hotwater]
    --restart=R       Set the restart time.
 '''
-
+import sys;
 import re;
 import numpy as np;
 from pys import test,parse_numtuple,sd,take,mk_getkw;
@@ -200,6 +200,8 @@ def genregions(**kw):
     reg = sd(lims,split=getkw("region_dom_split").upper()+"SPLIT")
     regions = [ sd(reg,**{lmn:mn,lmx:mx,'i':i+1,'domains':di,'cells':cells})
                 for i,(mn,mx,di,cells) in enumerate(zip(mins,maxs,doms,cellses)) ];
+    if float(getkw(getkw("region_dom_split")+'cells')) / total_doms < 4.0:
+        print("warning: {} limits less than 4 cells thick".format(getkw('region_dom_split')));
     return mkregion_str(regions);
 
 densdefaults = sd(
@@ -361,8 +363,7 @@ z-cells          {zcells}'''.format(zmin=zmin,zmax=zmax,zcells=zcells);
         ((ymax-ymin)/ycells/c_cgs)*1e9 if ycells > 0 else float('inf'),
         ((zmax-zmin)/zcells/c_cgs)*1e9 if zcells > 0 else float('inf'),)
     if fmtd['timestep'] > couraunt:
-        import sys
-        sys.stderr.write("warning: timestep exceeds couraunt limit\n");
+        print("warning: timestep exceeds couraunt limit\n");
     #target
     kw = gendens(**kw);
     for species in getkw('speciesl'):

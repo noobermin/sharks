@@ -89,7 +89,7 @@ zmin             0.000000e+00
 zmax             0.000000e+00
 ;
 number_of_domains 64
-split_direction XSPLIT
+split_direction YSPLIT
 number_of_cells AUTO ; cells = 0
 ;
 
