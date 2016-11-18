@@ -1,0 +1,43 @@
+#PBS -l walltime=96:0:00
+#PBS -l nodes=8:ppn=12
+#PBS -N 3um-7e+17-L=5.8-fn=8.9-cs=2
+#PBS -S /bin/bash
+#PBS -j oe
+#PBS -m ae
+#PBS -M ngirmang.1@osu.edu
+
+
+PBSBASE=3um-7e+17-L=5.8-fn=8.9-cs=2
+#source $HOME/.bashrc
+
+#This outputs the name of the root node
+#to the directory where you submitted this PBS job
+echo $HOSTNAME > $PBS_O_WORKDIR/hostname.txt   
+cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/nodesfile.txt
+
+
+cd "$PBS_O_WORKDIR"
+#movni
+./loopscript movni &> $PBS_O_WORKDIR/movni.log&
+movni_PID=$!
+#movdq
+./loopscript movdq &> $PBS_O_WORKDIR/movdq.log&
+movdq_PID=$!
+#movrho
+./loopscript movrho &> $PBS_O_WORKDIR/movrho.log&
+movrho_PID=$!
+#movne
+./loopscript movne &> $PBS_O_WORKDIR/movne.log&
+movne_PID=$!
+
+
+mpiexec -n 96 ./lsp-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+
+kill $movni_PID
+./movni
+kill $movdq_PID
+./movdq
+kill $movrho_PID
+./movrho
+kill $movne_PID
+./movne
