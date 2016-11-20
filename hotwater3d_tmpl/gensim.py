@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from genlsp import genlsp,lspdefaults
-from genpbs import genpbs,gen_mov,pbsdefaults,mov_defaults;
+from genpbs import genpbs,gen_mov,pbsdefaults,mov_defaults,mk_hpcmp_pbses;
 from gendat import gentargetdat,genonescale,datdefaults;
 import re;
 import os,stat;
@@ -13,7 +13,7 @@ e=1.602176208e-19
 e0  = 8.8541878176e-12
 m_e=9.10938356e-31
 r_e = e**2/m_e/c**2/(4*np.pi*e0)
-def_cycles=40e-15/(780e-9/c);
+def_cycles=80e-15/(780e-9/c);
 nc = lambda l,gm=1,m=m_e,q=e: e0*m*(2*np.pi*c/l)**2/q**2/gm*1e-6
 
 def mkdir(dir):
@@ -44,11 +44,11 @@ defaults = sd(defaults,**lspdefaults);
 defaults.update(dict(
     pbsbase="hotwater3d",
     autozipper=None,
-    movne=False,
-    movni=False,
-    movdq=False,
-    movrho=False,
-    angular=False,
+    movne=None,
+    movni=None,
+    movdq=None,
+    movrho=None,
+    angular=None,
     pbses=None,
     dir=None,
 ));
@@ -166,6 +166,8 @@ def gensim(**kw):
     if pbses is None:
         files.append((pbsbase+".pbs",genpbs(**kw)))
     else:
+        if pbses == "defaults":
+            pbses = mk_hpcmp_pbses(**kw);
         for pbs in pbses:
             files.append(
                 (pbs['pbsname']+".pbs", genpbs(**sd(kw,**pbs)))

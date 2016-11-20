@@ -18,45 +18,45 @@ cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/nodesfile.txt
 module load openmpi-1.4.3-gnu-rpm
 
 
-cd $PBS_O_WORKDIR
+cd "$PBS_O_WORKDIR"
 
 D=/tmp/ngirmang.1-`mkdate`-$PBSBASE
 mkdir -p $D
-cd $PBS_O_WORKDIR
+cd "$PBS_O_WORKDIR"
 cp lsp-10-xy 3um-6.08e+17-shelf.lsp *.dat $D/
 cp zipper $D/
-cp movdq $D/
-cp movni $D/
 cp movne $D/
+cp movdq $D/
 cp movrho $D/
+cp movni $D/
 cp loopscript $D/
 cd $D
 #zipper
 ./loopscript zipper &> $PBS_O_WORKDIR/zipper.log&
 zipper_PID=$!
-#movdq
-./loopscript movdq &> $PBS_O_WORKDIR/movdq.log&
-movdq_PID=$!
-#movni
-./loopscript movni &> $PBS_O_WORKDIR/movni.log&
-movni_PID=$!
 #movne
 ./loopscript movne &> $PBS_O_WORKDIR/movne.log&
 movne_PID=$!
+#movdq
+./loopscript movdq &> $PBS_O_WORKDIR/movdq.log&
+movdq_PID=$!
 #movrho
 ./loopscript movrho &> $PBS_O_WORKDIR/movrho.log&
 movrho_PID=$!
+#movni
+./loopscript movni &> $PBS_O_WORKDIR/movni.log&
+movni_PID=$!
 
 
 mpirun -np 48 -hostfile $PBS_NODEFILE ./lsp-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
 
 kill $zipper_PID
 ./zipper -a >$PBS_O_WORKDIR
-kill $movdq_PID
-./movdq
-kill $movni_PID
-./movni
 kill $movne_PID
 ./movne
+kill $movdq_PID
+./movdq
 kill $movrho_PID
 ./movrho
+kill $movni_PID
+./movni

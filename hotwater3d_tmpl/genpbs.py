@@ -25,7 +25,6 @@ pbsdefaults = dict(
     ppn=48,
     walltime=inf,
     lspexec='lsp-10-3d',
-    autozipper=True,
     concurrents=None,
     label=None,
 )
@@ -257,21 +256,20 @@ cp {lspexec} {pbsbase}.lsp *.dat $D/
         extra_headers=extra_headers,
         lspexec=lspexec,);
 def mk_hpcmp_pbses(pbsbase='hotwater3d_tmpl',**kw):
-    hpcmp_defpbs = dict(
+    hpcmp_defpbs = sd(kw,
         pbsbase = pbsbase,
         pbsname = pbsbase+'_oakley',
         cluster = 'oakley',
-        autozipper = False,
+        concurrents=None,
         queue = None,
-        ppn = None,
-        movne=None,
-        movni=None,
-        movdq=None,
-        movrho=None,);
-    hpcmp_defpbs.update(kw);
+        ppn = None,);
     return [
-        sd(
-            hpcmp_defpbs),
+        dict(
+            pbsname=pbsbase),
+        dict(
+            pbsname = pbsbase+'_oakley_autos',
+            cluster = 'oakley',),
+        hpcmp_defpbs,
         sd(
             hpcmp_defpbs,
             pbsname=pbsbase+"_garnet",
