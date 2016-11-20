@@ -1,5 +1,5 @@
 [Title]
-simulation_title "800nm, I = 3.459119e+21 W/cm^2"
+simulation_title "780nm, I = 3.459119e+21 W/cm^2"
 ;
 [Control]
 ;Time-advance

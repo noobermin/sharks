@@ -175,9 +175,14 @@ for E in Es:
         timestep = 1e-16,
         totaltime= d['T']*4,
         dumpinterval = 2e-16,
-        description="800nm",
+        description="780nm",
     );
     mkpbsbase(d);
+    gensim(**d);
+    d.update(
+        timestep=5e-17,
+        pbsbase=d['pbsbase']+"-convg",
+        description="780nm convergence test",)
     gensim(**d);
 
 

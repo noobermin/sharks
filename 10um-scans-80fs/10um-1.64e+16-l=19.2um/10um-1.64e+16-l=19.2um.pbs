@@ -25,28 +25,28 @@ mkdir -p $D
 cd "$PBS_O_WORKDIR"
 cp lsp-10-xy 10um-1.64e+16-l=19.2um.lsp *.dat $D/
 cp zipper $D/
-cp movne $D/
 cp movdq $D/
-cp movrho $D/
 cp movni $D/
+cp movrho $D/
+cp movne $D/
 cp genangular $D/
 cp loopscript $D/
 cd $D
 #zipper
 ./loopscript zipper &> $PBS_O_WORKDIR/zipper.log&
 zipper_PID=$!
-#movne
-./loopscript movne &> $PBS_O_WORKDIR/movne.log&
-movne_PID=$!
 #movdq
 ./loopscript movdq &> $PBS_O_WORKDIR/movdq.log&
 movdq_PID=$!
-#movrho
-./loopscript movrho &> $PBS_O_WORKDIR/movrho.log&
-movrho_PID=$!
 #movni
 ./loopscript movni &> $PBS_O_WORKDIR/movni.log&
 movni_PID=$!
+#movrho
+./loopscript movrho &> $PBS_O_WORKDIR/movrho.log&
+movrho_PID=$!
+#movne
+./loopscript movne &> $PBS_O_WORKDIR/movne.log&
+movne_PID=$!
 #genangular
 ./loopscript genangular &> $PBS_O_WORKDIR/genangular.log&
 genangular_PID=$!
@@ -56,13 +56,13 @@ mpirun -np 48 -hostfile $PBS_NODEFILE ./lsp-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$
 
 kill $zipper_PID
 ./zipper -a >$PBS_O_WORKDIR
-kill $movne_PID
-./movne
 kill $movdq_PID
 ./movdq
-kill $movrho_PID
-./movrho
 kill $movni_PID
 ./movni
+kill $movrho_PID
+./movrho
+kill $movne_PID
+./movne
 kill $genangular_PID
 ./genangular
