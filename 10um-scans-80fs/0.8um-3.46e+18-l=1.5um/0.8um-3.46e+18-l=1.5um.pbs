@@ -27,8 +27,8 @@ cp lsp-10-xy 0.8um-3.46e+18-l=1.5um.lsp *.dat $D/
 cp zipper $D/
 cp movdq $D/
 cp movni $D/
-cp movrho $D/
 cp movne $D/
+cp movrho $D/
 cp loopscript $D/
 cd $D
 #zipper
@@ -40,12 +40,12 @@ movdq_PID=$!
 #movni
 ./loopscript movni &> $PBS_O_WORKDIR/movni.log&
 movni_PID=$!
-#movrho
-./loopscript movrho &> $PBS_O_WORKDIR/movrho.log&
-movrho_PID=$!
 #movne
 ./loopscript movne &> $PBS_O_WORKDIR/movne.log&
 movne_PID=$!
+#movrho
+./loopscript movrho &> $PBS_O_WORKDIR/movrho.log&
+movrho_PID=$!
 
 
 mpirun -np 48 -hostfile $PBS_NODEFILE ./lsp-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
@@ -56,7 +56,7 @@ kill $movdq_PID
 ./movdq
 kill $movni_PID
 ./movni
-kill $movrho_PID
-./movrho
 kill $movne_PID
 ./movne
+kill $movrho_PID
+./movrho
