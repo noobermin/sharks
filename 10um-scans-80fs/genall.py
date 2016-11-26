@@ -180,6 +180,7 @@ for E in Es:
     mkpbsbase(d);
     gensim(**d);
     d.update(
+        domains=64,
         restart=23.95,
         timestep=5e-17,
         pbsbase=d['pbsbase']+"-convg",

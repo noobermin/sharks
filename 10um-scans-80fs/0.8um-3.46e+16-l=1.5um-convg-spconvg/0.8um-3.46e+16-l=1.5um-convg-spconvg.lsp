@@ -6,7 +6,7 @@ simulation_title "spatial 780nm convergence test, I = 3.459119e+16 W/cm^2"
  time_limit   3.2000e-04
  time_step_ns 5.0000e-08
 ;Restart
-
+maximum_restart_dump_time 23.95
 ;Parallel Processing
  balance_interval_ns 0
  load_balance_flag OFF

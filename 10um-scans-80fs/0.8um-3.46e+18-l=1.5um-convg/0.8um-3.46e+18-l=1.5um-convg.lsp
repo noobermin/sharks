@@ -6,7 +6,7 @@ simulation_title "780nm convergence test, I = 3.459119e+18 W/cm^2"
  time_limit   3.2000e-04
  time_step_ns 5.0000e-08
 ;Restart
-
+maximum_restart_dump_time 23.95
 ;Parallel Processing
  balance_interval_ns 0
  load_balance_flag OFF
@@ -75,7 +75,7 @@ y-cells          900
 [Regions]
 ;
 
-;total number of domains: 48
+;total number of domains: 64
 
 ;
 region1
@@ -88,7 +88,7 @@ ymax             1.500000e-03
 zmin             0.000000e+00
 zmax             0.000000e+00
 ;
-number_of_domains 48
+number_of_domains 64
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 0.0
 ;
