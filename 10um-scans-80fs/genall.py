@@ -191,7 +191,6 @@ for E in Es:
         restart=23.95,
         timestep=5e-17,
         pbsbase=d['pbsbase']+"-spconvg",
-        domains=64,
         res =( 52.5*60, 30*60, 0),
         description="spatial 780nm convergence test",);
     gensim(**d);

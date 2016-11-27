@@ -1,5 +1,5 @@
 #PBS -l walltime=96:0:00
-#PBS -l nodes=6:ppn=12
+#PBS -l nodes=11:ppn=12
 #PBS -N 0.8um-3.46e+16-l=1.5um-convg-spconvg
 #PBS -S /bin/bash
 #PBS -j oe
@@ -22,7 +22,7 @@ cd "$PBS_O_WORKDIR"
 zipper_PID=$!
 
 
-mpiexec -n 64 ./lsp-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+mpiexec -n 128 ./lsp-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
 
 kill $zipper_PID
 ./zipper -a >$PBS_O_WORKDIR
