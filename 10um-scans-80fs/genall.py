@@ -180,14 +180,14 @@ for E in Es:
     mkpbsbase(d);
     gensim(**d);
     d.update(
-        domains=128,
+        domains=124,
         restart=23.95,
         timestep=5e-17,
         pbsbase=d['pbsbase']+"-convg",
         description="780nm convergence test",);
     gensim(**d);
     d.update(
-        domains=128,
+        domains=124,
         restart=23.95,
         timestep=5e-17,
         pbsbase=d['pbsbase']+"-spconvg",
