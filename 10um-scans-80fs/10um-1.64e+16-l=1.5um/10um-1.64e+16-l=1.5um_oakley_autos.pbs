@@ -20,15 +20,15 @@ cd "$PBS_O_WORKDIR"
 #zipper
 ./loopscript zipper &> $PBS_O_WORKDIR/zipper.log&
 zipper_PID=$!
-#movne
-./loopscript movne &> $PBS_O_WORKDIR/movne.log&
-movne_PID=$!
 #movrho
 ./loopscript movrho &> $PBS_O_WORKDIR/movrho.log&
 movrho_PID=$!
 #movdq
 ./loopscript movdq &> $PBS_O_WORKDIR/movdq.log&
 movdq_PID=$!
+#movne
+./loopscript movne &> $PBS_O_WORKDIR/movne.log&
+movne_PID=$!
 #movni
 ./loopscript movni &> $PBS_O_WORKDIR/movni.log&
 movni_PID=$!
@@ -41,12 +41,12 @@ mpiexec -n 48 ./lsp-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
 
 kill $zipper_PID
 ./zipper -a >$PBS_O_WORKDIR
-kill $movne_PID
-./movne
 kill $movrho_PID
 ./movrho
 kill $movdq_PID
 ./movdq
+kill $movne_PID
+./movne
 kill $movni_PID
 ./movni
 kill $genangular_PID

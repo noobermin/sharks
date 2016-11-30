@@ -68,6 +68,7 @@ longs = [sd(
     tlim=( -240,  0, -110, 110,0,0),
     res =( 260*4, 240*4, 0),
     totaltime=d['T']*3.75,
+    domains=64,
     #movne
     movne=dict(clim=(1e16,1e21)),
     movni=dict(clim=(1e16,1e21)),
@@ -91,6 +92,7 @@ for E in Es:
         tlim=( -40,  0, -50, 50, 0,0),
         res =( 60*10, 120*10, 0),
         timestep = 1.5e-16,
+        domains=64,
         totaltime= d['T']*3.75,
         description="3um",
     );
@@ -108,6 +110,7 @@ for E in Es:
         res =( 100*10, 120*10, 0),
         totaltime=d['T']*3.75,
         timestep = 1.5e-16,
+        domains=64,
         description="3um w/ 5.77um scale plasma",
         #mov
         movne=dict(clim=(1e16,1e21)),
@@ -148,6 +151,7 @@ for E in Es:
         timestep = 1e-16,
         totaltime= d['T']*4,
         description="3um",
+        domains=64,
         fp=(0,0,0),
         #density
         singlescale=None,
