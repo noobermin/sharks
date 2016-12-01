@@ -56,8 +56,7 @@ for E in Es:
 
 #10um, scale=1.5um
 for d in defds:
-    d['pbsbase']=pbsfmt.format(
-        l=int(d['l']/1e-6),I=d['I'],scale=d['expf']);
+    mkpbsbase(d)
     gensim(**d);
 #10um, scale=19.2um
 longs = [sd(

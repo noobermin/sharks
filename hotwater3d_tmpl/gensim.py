@@ -19,7 +19,8 @@ nc = lambda l,gm=1,m=m_e,q=e: e0*m*(2*np.pi*c/l)**2/q**2/gm*1e-6
 def mkdir(dir):
     os.makedirs(dir, exist_ok=True);
 
-def output(dir='.',files=["sine700points.dat","watercolumn.dat","autozipper"]):
+def output(dir='.',
+           files=["sine700points.dat","watercolumn.dat","autozipper"]):
     if dir:
         mkdir(dir);
     else:
@@ -139,7 +140,7 @@ def gensim(**kw):
     movs = { tyf(k) : movs[k]
              for k in movs
              if movs[k]};
-    for movtype in movs:
+    for movtype in sorted(movs.keys()):
         sname ='mov'+movtype;
         movd={};
         if type(kw[sname]) == dict:
