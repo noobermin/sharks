@@ -41,7 +41,14 @@ import sys;
 import re;
 import numpy as np;
 from pys import test,parse_numtuple,sd,take,mk_getkw;
+from collections import OrderedDict;
 joinspace = lambda l: " ".join([str(i) for i in l]);
+def scaletuple(t,scale=1e-4):
+    return tuple([it*scale for it in t]);
+import types;
+def isvalue(v):
+    t = type(v)
+    return isinstance(t,types.StringTypes) or isinstance(t,float) or isinstance(t,int);
 
 c  = 299792458
 c_cgs=c*100;
@@ -68,19 +75,134 @@ lspdefaults = dict(
     dens_flags= (True, False, False),
     speciesl = ['e', 'O', 'p'],
     discrete=(3,3,3),
-    dumpinterval=2e-16,
     description='Hotwater in 2d',
     pext_species=(10,),
     restart=None,
     lsptemplate='hotwater3d_tmpl.lsp',
+    #dump
+    dumpinterval=2e-16,
+    dumpsteps=(,),
+    dumptimes=(,),
+    #if these aren't set, we ignore other options
+    dump_field=True,
+    dump_scalar=True,
+    dump_particle=False,
 );
+
+###############
+## options
+#6.2.2
+restart_opts = ('Restarts', OrderedDict(
+    dump_restart_flag=False,
+    maximum_restart_dump_time=None,
+    rename_restart_flag=False,
+    restart_interval=False,
+),)
+#6.2.3 balancing, todo
+balance_opts = ('Load Balancing', OrderedDict(
+    balance_interval=0.0,
+    balance_interval_ns=0.0,
+    load_balance_flag=None,
+    region_balance_flag=None,
+    initial_balance_flag=None,
+),)
+#6.2.4 Field solution, do not touch.
+#...
+options_dont_touch = '''
+;Field Solution and Modification
+ time_bias_coefficient 0
+ time_bias_iterations 1
+;Implicit Field Algorithm
+ error_current_filtering_parameter 0.95
+ implicit_iterations 10
+ implicit_tolerance 1.e-5
+;Matrix Solution Algorithm
+ preconditioner JACOBI
+ linear_solution GMRES
+;Fluid Physics Algorithm
+ fluid_electron_streaming_factor 0.1
+ fluid_ion_streaming_factor 0.01 ;Tony insists this is 0.01 instead of 0.005
+ flux_limit_fraction 0.2
+'''
+#6.2.8 Kinematics Checks
+kinematic_opts = ('Kinematics', OrderedDict(
+    plasma_frequency_limit=2.0,#default in manual
+),)
+#6.2.9 Collisions, let's try some, or not
+#6.2.12 diagnostics
+dump_opts = OrderedDict(
+    accelerations=False,
+    charge_density=False,
+    collision_energies=False,
+    current_density=False,
+    montecarlo_diagnostics=False,
+    number_densities=True,
+    plasma_quantities=True,
+    potential=False,
+    velocities=False,
+);
+#no shame.
+for k in dumps:
+    d["dump_"+k+"_flag"] = dumps[k];
+    del dumps[k];
+dumps = ("Diagnostic Dumps",dumps);
+
+bigdumps = ['field','scalar','particle'];
+
+numeric_opts = ('Numeric Checks', OrderedDict(
+    plasma_frequency_check=None,
+),);
+
+def genoptions(**kw):
+    getkw_outer = mk_getkw(kw,lspdefaults);
+    if test(kw,"options"):
+        kw = sd(kw,kw['options']);
+    def genopt(k,getkw=getkw,flag=False):
+        if not flag: flag = k;
+        i = getkw(k)
+        if i is None or i is False: return "";
+        elif isvalue(i):
+            return "{} {}\n".format(k,i);
+        else:
+            return "{} {} end\n".format(k,joinspace(i));
+    def genopts(opts):
+        title,opts = opts;
+        getkw = mk_getkw(kw,opts);
+        tmpl=";;{}\n{}\n"
+        all_opts = "".join([ genopt(i) for k in opts ]);
+        return tmpl.format(title,all_opts);
+    out=''.join([
+        genopts(iopts)
+        for iopts in [restart_opts, balance_opts,]
+    ]);
+    out+=options_dont_touch
+    out+=''.join([
+        genopts(iopts) for iopts in [kinematic_opts,dump_opts,]
+    ]);
+
+    #now we do big dumps
+    kw['dump_interval_ns'] = getkw_outer("dumpinterval");
+    kw['dump_times_ns']    = getkw_outer("dumptimes");
+    kw['dump_steps']       = getkw_outer("dumpsteps");
+    def gen_dumpopt(dump,opt):
+        label = dump+"_"+opt
+        if test(kw, flag):
+            return genopt(label);
+        else:
+            return genopt(opt,flag=label);    
+    for dump in bigdumps:
+        if not getkw_outer("dump_"+dump): continue;
+        out += "dump_{} ON\n".format(dump);
+        for iopt in ['interval_ns','times','steps']:
+            out += genopt(dump,iopt);
+    return out;
+    
 
 pext_defaults = sd(
     lspdefaults,
     species=(10,),
     start_time=0,
     stop_time=1);
-
 def genpext(**kw):
     def getkw(l,scale=None):
         if test(kw, l):
@@ -313,6 +435,8 @@ def genlsp(**kw):
     def mkdims(s=''):
         return [s+'x',s+'y',s+'z']
     fmtd = {};
+
+    fmtd['options'] = genoptions(**kw);
     fmtd['E0'] = np.sqrt(2*getkw('I')*1e4/(c*e0))*1e-5
     xmin,xmax, ymin,ymax, zmin,zmax = getkw('lim',scale=1e-4)
     kw['xmin'],kw['xmax']=xmin,xmax
@@ -375,7 +499,7 @@ z-cells          {zcells}'''.format(zmin=zmin,zmax=zmax,zcells=zcells);
     for idim,v in zip(mkdims(),getkw('tref')):
         if v is None: v = kw['t'+idim+'min'];
         fmtd['targref'+idim] = v;
-    dumpinterval=getkw('dumpinterval')*1e9;
+    fmtd['dumpinterval']=getkw('dumpinterval')*1e9;
     description=getkw('description');
     restart = getkw('restart');
 
@@ -391,11 +515,11 @@ particle_movie_components Q X Y Z VX VY VZ XI YI ZI
 '''.format(dumpinterval=dumpinterval);
     else:
         pmovies = '';
-    restarts = "maximum_restart_dump_time {}".format(restart) if restart else "";
     lsptemplate=getkw("lsptemplate");
     with open(lsptemplate) as f:
         s=f.read();
     s=s.format(
+        options=options,
         xmin=xmin,xmax=xmax,
         ymin=ymin,ymax=ymax,
         zmin=zmin,zmax=zmax,
@@ -410,9 +534,7 @@ particle_movie_components Q X Y Z VX VY VZ XI YI ZI
         pmovies=pmovies,
         regions=regions,
         pexts=pexts,
-        dumpinterval=dumpinterval,
         description=description,
-        restarts=restarts,
         **fmtd
     );
     return s;

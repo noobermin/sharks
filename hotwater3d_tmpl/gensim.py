@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from genlsp import genlsp,lspdefaults
+from genlsp import genlsp,lspdefaults,scaletuple;
 from genpbs import genpbs,gen_mov,pbsdefaults,mov_defaults,mk_hpcmp_pbses;
 from gendat import gentargetdat,genonescale,datdefaults;
 import re;
@@ -37,8 +37,6 @@ def output(dir='.',files=["sine700points.dat","watercolumn.dat","autozipper"]):
             if len(file)>2:
                 os.chmod(fname, file[2]);
     pass;
-def scaletuple(t,scale=1e-4):
-    return tuple([it*scale for it in t]);
 defaults = sd(datdefaults,**pbsdefaults);
 defaults = sd(defaults,**lspdefaults);
 defaults.update(dict(

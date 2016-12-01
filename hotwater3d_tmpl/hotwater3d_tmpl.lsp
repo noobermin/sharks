@@ -5,58 +5,10 @@ simulation_title "{description}, I = {intensity:e} W/cm^2"
 ;Time-advance
  time_limit   {totaltime:0.4e}
  time_step_ns {timestep:0.4e}
-;Restart
-{restarts}
-;Parallel Processing
- balance_interval_ns 0
- load_balance_flag OFF
-;Field Solution and Modification
- time_bias_coefficient 0
- time_bias_iterations 1
-;Implicit Field Algorithm
- error_current_filtering_parameter 0.95
- implicit_iterations 10
- implicit_tolerance 1.e-5
-;Matrix Solution Algorithm
- preconditioner JACOBI
- linear_solution GMRES
-;Fluid Physics Algorithm
- fluid_electron_streaming_factor 0.1
- fluid_ion_streaming_factor 0.01 ;Tony insists this is 0.01 instead of 0.005
- flux_limit_fraction 0.2
-;(Diagnostic Output) Flags
- dump_current_density_flag OFF
- dump_fields_flag ON
- dump_scalars_flag ON
- dump_plasma_quantities_flag ON
- dump_velocities_flag OFF
- dump_particles_flag OFF
- dump_number_densities_flag ON
- ;dump_time_zero_flag ON ; dump the results of the 'zeroth' time step...does it actually start?
- extract_photons_flag OFF
- dump_particles_flag OFF
-;(Diagnostic Output) Dump Intervals
- dump_interval_ns {dumpinterval}
- dump_steps
-1 
-end
- spatial_skip_x 1
- spatial_skip_y 1
- spatial_skip_z 1
- probe_interval 1
-;(Diagnostic Output) Formats
- photon_output_format ASCII
- target_output_format ASCII
- use_its_format_flag OFF
- print_region_flag OFF
-;(Diagnostic Output) Movie Controls
-;particle_movie_interval_ns {dumpinterval}
-;particle_movie_components Q X Y Z VX VY VZ XI YI ZI
+
+{options}
+;;pmovies
 {pmovies}
-;Numerical Checks and Reports
- domain_boundary_check ON
- report_timing_flag ON
- dump_timing_flag ON
 ;
 [Grid]
 ;
