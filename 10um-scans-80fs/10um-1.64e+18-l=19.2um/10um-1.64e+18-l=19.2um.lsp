@@ -7,11 +7,13 @@ simulation_title "10um, I = 1.641532e+18 W/cm^2"
  time_step_ns 5.0000e-07
 
 ;;Restarts
+rename_restart_flag ON
+dump_restart_flag OFF
 
 ;;Load Balancing
-balance_interval 0.0
+load_balance_flag OFF
 balance_interval_ns 0.0
-
+balance_interval 0.0
 
 ;Field Solution and Modification
  time_bias_coefficient 0
@@ -27,21 +29,18 @@ balance_interval_ns 0.0
  fluid_electron_streaming_factor 0.1
  fluid_ion_streaming_factor 0.01 ;Tony insists this is 0.01 instead of 0.005
  flux_limit_fraction 0.2
+
 ;;Kinematics
 plasma_frequency_limit 2.0
 
 ;;Diagnostic Dumps
-dump_number_densities_flag True
-dump_plasma_quantities_flag True
+dump_number_densities_flag ON
+dump_plasma_quantities_flag ON
 
-dump_field ON
-interval_ns 1e-15
-times_ns  end
-steps  end
-dump_scalar ON
-interval_ns 1e-15
-times_ns  end
-steps  end
+dump_fields_flag ON
+field_dump_interval_ns 1e-15
+dump_scalars_flag ON
+scalar_dump_interval_ns 1e-15
 
 ;;pmovies
 

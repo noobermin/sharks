@@ -94,24 +94,23 @@ lspdefaults = dict(
 ###############
 ## options
 #6.2.2
-restart_opts = ('Restarts', OrderedDict(
+restart_opts = ('Restarts', dict(
     dump_restart_flag=False,
     maximum_restart_dump_time=None,
-    rename_restart_flag=False,
-    restart_interval=False,
+    rename_restart_flag=True,
+    restart_interval=None,
 ),)
 #6.2.3 balancing, todo
-balance_opts = ('Load Balancing', OrderedDict(
+balance_opts = ('Load Balancing', dict(
     balance_interval = 0.0,
     balance_interval_ns = 0.0,
-    load_balance_flag=None,
+    load_balance_flag=False,
     region_balance_flag=None,
     initial_balance_flag=None,
 ),)
 #6.2.4 Field solution, do not touch.
 #...
-options_dont_touch = '''
-;Field Solution and Modification
+options_dont_touch = ''';Field Solution and Modification
  time_bias_coefficient 0
  time_bias_iterations 1
 ;Implicit Field Algorithm
@@ -125,56 +124,83 @@ options_dont_touch = '''
  fluid_electron_streaming_factor 0.1
  fluid_ion_streaming_factor 0.01 ;Tony insists this is 0.01 instead of 0.005
  flux_limit_fraction 0.2
+
 '''
 #6.2.8 Kinematics Checks
-kinematic_opts = ('Kinematics', OrderedDict(
+kinematic_opts = ('Kinematics', dict(
     plasma_frequency_limit=2.0,#default in manual
 ),)
 #6.2.9 Collisions, let's try some, or not
 #6.2.12 diagnostics
-dump_opts = OrderedDict(
-    accelerations=False,
-    charge_density=False,
-    collision_energies=False,
-    current_density=False,
-    montecarlo_diagnostics=False,
+dump_opts = dict(
+    accelerations =None,
+    charge_density=None,
+    collision_energies=None,
+    current_density=None,
+    montecarlo_diagnostics=None,
     number_densities=True,
     plasma_quantities=True,
-    potential=False,
-    velocities=False,
+    potential=None,
+    velocities=None,
 );
 #no shame.
 keys = list(dump_opts.keys());
 for k in keys:
     dump_opts["dump_"+k+"_flag"] = dump_opts[k];
     del dump_opts[k];
-
+dump_opts.update(
+    spatial_skip_x = 1,
+    spatial_skip_y = 1,
+    spatial_skip_z = 1,
+    probe_interval = 1,
+    probe_output_digits=None,
+);
+    
+    
 dump_opts = ("Diagnostic Dumps",dump_opts);
 
 bigdumps = ['field','scalar','particle'];
 
-numeric_opts = ('Numeric Checks', OrderedDict(
+numeric_opts = ('Numeric Checks', dict(
+    domain_boundary_check=True,
     plasma_frequency_check=None,
+    print_convergence_flag=None,
+    print_region_flag=None,
+    dump_timing_flag=True,
+    report_timing_flag=None,
 ),);
 
 def genoptions(**kw):
     if test(kw,"options"):
         kw = sd(kw,kw['options']);
+    #quirks
     getkw_outer = mk_getkw(kw,lspdefaults);
+    kw['maximum_restart_dump_time'] = getkw_outer('restart')
     def genopt(k,getkw=getkw_outer,flag=False):
         if not flag: flag = k;
         i = getkw(k);
-        if i is None or i is False:
+        if re.search("_ns$",flag):
+            if isvalue(i):
+                i*=1e9;
+            else:
+                scaletuple(i,1e9);
+            
+        if i is None or i is ():
             return "";
+        elif i is True:
+            return "{} ON\n".format(flag);
+        elif i is False:
+            return "{} OFF\n".format(flag);
         elif isvalue(i):
-            return "{} {}\n".format(k,i);
+            return "{} {}\n".format(flag,i);
         else:
-            return "{} {} end\n".format(k,joinspace(i));
+            return "{} {} end\n".format(flag,joinspace(i));
     def genopts(opts):
         title,opts = opts;
         getkw = mk_getkw(kw,opts);
         tmpl=";;{}\n{}\n"
-        all_opts = "".join([ genopt(k,getkw) for k in opts ]);
+        all_opts = "".join([
+            genopt(k,getkw) for k in sorted(opts.keys()) ]);
         return tmpl.format(title,all_opts);
     out=''.join([
         genopts(iopts)
@@ -190,14 +216,14 @@ def genoptions(**kw):
     kw['times_ns']    = getkw_outer("dumptimes");
     kw['steps']       = getkw_outer("dumpsteps");
     def gen_dumpopt(dump,opt):
-        label = dump+"_"+opt
+        label = "{}_dump_{}".format(dump,opt);
         if test(kw, label):
             return genopt(label);
         else:
             return genopt(opt,flag=label);
     for dump in bigdumps:
-        if not getkw_outer("dump_"+dump): continue;
-        out += "dump_{} ON\n".format(dump);
+        if not getkw_outer("dump_{}".format(dump)) : continue;
+        out += "dump_{}s_flag ON\n".format(dump);
         for iopt in ['interval_ns','times_ns','steps']:
             out += gen_dumpopt(dump,iopt);
     return out;
@@ -517,7 +543,7 @@ z-cells          {zcells}'''.format(zmin=zmin,zmax=zmax,zcells=zcells);
         pmovies ='''
 particle_movie_interval_ns {dumpinterval}
 particle_movie_components Q X Y Z VX VY VZ XI YI ZI
-'''.format(dumpinterval=dumpinterval);
+'''.format(dumpinterval=fmtd['dumpinterval']);
     else:
         pmovies = '';
     lsptemplate=getkw("lsptemplate");

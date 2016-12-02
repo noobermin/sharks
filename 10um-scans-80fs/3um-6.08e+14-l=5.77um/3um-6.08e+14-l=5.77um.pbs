@@ -25,15 +25,15 @@ zipper_PID=$!
 #movrho
 ./loopscript movrho &> $PBS_O_WORKDIR/movrho.log&
 movrho_PID=$!
-#movdq
-./loopscript movdq &> $PBS_O_WORKDIR/movdq.log&
-movdq_PID=$!
-#movni
-./loopscript movni &> $PBS_O_WORKDIR/movni.log&
-movni_PID=$!
 #movne
 ./loopscript movne &> $PBS_O_WORKDIR/movne.log&
 movne_PID=$!
+#movni
+./loopscript movni &> $PBS_O_WORKDIR/movni.log&
+movni_PID=$!
+#movdq
+./loopscript movdq &> $PBS_O_WORKDIR/movdq.log&
+movdq_PID=$!
 
 
 mpirun -np 64 -hostfile $PBS_NODEFILE ./lsp-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
@@ -42,9 +42,9 @@ kill $zipper_PID
 ./zipper -a >$PBS_O_WORKDIR
 kill $movrho_PID
 ./movrho
-kill $movdq_PID
-./movdq
-kill $movni_PID
-./movni
 kill $movne_PID
 ./movne
+kill $movni_PID
+./movni
+kill $movdq_PID
+./movdq
