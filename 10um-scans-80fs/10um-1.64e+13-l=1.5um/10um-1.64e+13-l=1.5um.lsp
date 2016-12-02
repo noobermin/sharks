@@ -7,13 +7,13 @@ simulation_title "10um, I = 1.641532e+13 W/cm^2"
  time_step_ns 5.0000e-07
 
 ;;Restarts
-rename_restart_flag ON
 dump_restart_flag OFF
+rename_restart_flag ON
 
 ;;Load Balancing
-load_balance_flag OFF
-balance_interval_ns 0.0
 balance_interval 0.0
+balance_interval_ns 0.0
+load_balance_flag OFF
 
 ;Field Solution and Modification
  time_bias_coefficient 0
@@ -36,11 +36,15 @@ plasma_frequency_limit 2.0
 ;;Diagnostic Dumps
 dump_number_densities_flag ON
 dump_plasma_quantities_flag ON
+probe_interval 1
+spatial_skip_x 1
+spatial_skip_y 1
+spatial_skip_z 1
 
 dump_fields_flag ON
-field_dump_interval_ns 1e-15
+field_dump_interval_ns 1.0000000000000002e-06
 dump_scalars_flag ON
-scalar_dump_interval_ns 1e-15
+scalar_dump_interval_ns 1.0000000000000002e-06
 
 ;;pmovies
 
