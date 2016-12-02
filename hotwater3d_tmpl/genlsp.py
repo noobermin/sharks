@@ -47,8 +47,10 @@ def scaletuple(t,scale=1e-4):
     return tuple([it*scale for it in t]);
 import types;
 def isvalue(v):
-    t = type(v)
-    return isinstance(t,types.StringTypes) or isinstance(t,float) or isinstance(t,int);
+    a = isinstance(v, str);
+    b = isinstance(v, float);
+    c = isinstance(v, int);
+    return a or b or c;
 
 c  = 299792458
 c_cgs=c*100;
@@ -81,8 +83,8 @@ lspdefaults = dict(
     lsptemplate='hotwater3d_tmpl.lsp',
     #dump
     dumpinterval=2e-16,
-    dumpsteps=(,),
-    dumptimes=(,),
+    dumpsteps=(),
+    dumptimes=(),
     #if these aren't set, we ignore other options
     dump_field=True,
     dump_scalar=True,
@@ -100,8 +102,8 @@ restart_opts = ('Restarts', OrderedDict(
 ),)
 #6.2.3 balancing, todo
 balance_opts = ('Load Balancing', OrderedDict(
-    balance_interval=0.0,
-    balance_interval_ns=0.0,
+    balance_interval = 0.0,
+    balance_interval_ns = 0.0,
     load_balance_flag=None,
     region_balance_flag=None,
     initial_balance_flag=None,
@@ -142,10 +144,12 @@ dump_opts = OrderedDict(
     velocities=False,
 );
 #no shame.
-for k in dumps:
-    d["dump_"+k+"_flag"] = dumps[k];
-    del dumps[k];
-dumps = ("Diagnostic Dumps",dumps);
+keys = list(dump_opts.keys());
+for k in keys:
+    dump_opts["dump_"+k+"_flag"] = dump_opts[k];
+    del dump_opts[k];
+
+dump_opts = ("Diagnostic Dumps",dump_opts);
 
 bigdumps = ['field','scalar','particle'];
 
@@ -154,13 +158,14 @@ numeric_opts = ('Numeric Checks', OrderedDict(
 ),);
 
 def genoptions(**kw):
-    getkw_outer = mk_getkw(kw,lspdefaults);
     if test(kw,"options"):
         kw = sd(kw,kw['options']);
-    def genopt(k,getkw=getkw,flag=False):
+    getkw_outer = mk_getkw(kw,lspdefaults);
+    def genopt(k,getkw=getkw_outer,flag=False):
         if not flag: flag = k;
-        i = getkw(k)
-        if i is None or i is False: return "";
+        i = getkw(k);
+        if i is None or i is False:
+            return "";
         elif isvalue(i):
             return "{} {}\n".format(k,i);
         else:
@@ -169,7 +174,7 @@ def genoptions(**kw):
         title,opts = opts;
         getkw = mk_getkw(kw,opts);
         tmpl=";;{}\n{}\n"
-        all_opts = "".join([ genopt(i) for k in opts ]);
+        all_opts = "".join([ genopt(k,getkw) for k in opts ]);
         return tmpl.format(title,all_opts);
     out=''.join([
         genopts(iopts)
@@ -181,20 +186,20 @@ def genoptions(**kw):
     ]);
 
     #now we do big dumps
-    kw['dump_interval_ns'] = getkw_outer("dumpinterval");
-    kw['dump_times_ns']    = getkw_outer("dumptimes");
-    kw['dump_steps']       = getkw_outer("dumpsteps");
+    kw['interval_ns'] = getkw_outer("dumpinterval");
+    kw['times_ns']    = getkw_outer("dumptimes");
+    kw['steps']       = getkw_outer("dumpsteps");
     def gen_dumpopt(dump,opt):
         label = dump+"_"+opt
-        if test(kw, flag):
+        if test(kw, label):
             return genopt(label);
         else:
-            return genopt(opt,flag=label);    
+            return genopt(opt,flag=label);
     for dump in bigdumps:
         if not getkw_outer("dump_"+dump): continue;
         out += "dump_{} ON\n".format(dump);
-        for iopt in ['interval_ns','times','steps']:
-            out += genopt(dump,iopt);
+        for iopt in ['interval_ns','times_ns','steps']:
+            out += gen_dumpopt(dump,iopt);
     return out;
     
 
@@ -519,7 +524,6 @@ particle_movie_components Q X Y Z VX VY VZ XI YI ZI
     with open(lsptemplate) as f:
         s=f.read();
     s=s.format(
-        options=options,
         xmin=xmin,xmax=xmax,
         ymin=ymin,ymax=ymax,
         zmin=zmin,zmax=zmax,

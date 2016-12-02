@@ -5,11 +5,14 @@ simulation_title "780nm convergence test, I = 3.459119e+16 W/cm^2"
 ;Time-advance
  time_limit   3.2000e-04
  time_step_ns 5.0000e-08
-;Restart
-maximum_restart_dump_time 23.95
-;Parallel Processing
- balance_interval_ns 0
- load_balance_flag OFF
+
+;;Restarts
+
+;;Load Balancing
+balance_interval 0.0
+balance_interval_ns 0.0
+
+
 ;Field Solution and Modification
  time_bias_coefficient 0
  time_bias_iterations 1
@@ -24,39 +27,24 @@ maximum_restart_dump_time 23.95
  fluid_electron_streaming_factor 0.1
  fluid_ion_streaming_factor 0.01 ;Tony insists this is 0.01 instead of 0.005
  flux_limit_fraction 0.2
-;(Diagnostic Output) Flags
- dump_current_density_flag OFF
- dump_fields_flag ON
- dump_scalars_flag ON
- dump_plasma_quantities_flag ON
- dump_velocities_flag OFF
- dump_particles_flag OFF
- dump_number_densities_flag ON
- ;dump_time_zero_flag ON ; dump the results of the 'zeroth' time step...does it actually start?
- extract_photons_flag OFF
- dump_particles_flag OFF
-;(Diagnostic Output) Dump Intervals
- dump_interval_ns 2e-07
- dump_steps
-1 
-end
- spatial_skip_x 1
- spatial_skip_y 1
- spatial_skip_z 1
- probe_interval 1
-;(Diagnostic Output) Formats
- photon_output_format ASCII
- target_output_format ASCII
- use_its_format_flag OFF
- print_region_flag OFF
-;(Diagnostic Output) Movie Controls
-;particle_movie_interval_ns 2e-07
-;particle_movie_components Q X Y Z VX VY VZ XI YI ZI
+;;Kinematics
+plasma_frequency_limit 2.0
 
-;Numerical Checks and Reports
- domain_boundary_check ON
- report_timing_flag ON
- dump_timing_flag ON
+;;Diagnostic Dumps
+dump_number_densities_flag True
+dump_plasma_quantities_flag True
+
+dump_field ON
+interval_ns 2e-16
+times_ns  end
+steps  end
+dump_scalar ON
+interval_ns 2e-16
+times_ns  end
+steps  end
+
+;;pmovies
+
 ;
 [Grid]
 ;
