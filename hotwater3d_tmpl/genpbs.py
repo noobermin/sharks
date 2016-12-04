@@ -27,6 +27,7 @@ pbsdefaults = dict(
     lspexec='lsp-10-3d',
     concurrents=None,
     label=None,
+    mkrundir=False,
 )
 cluster =  dict(
     ppn=48,max_walltime=9999,mpi='mpirun -np {}',max_ppn=48,condafile="~/conda"
@@ -75,6 +76,9 @@ def hours_to_walltime(walltime):
     hr = intflr(walltime);
     return '{}:{}:00'.format(
         hr,intflr((walltime-hr)*60));
+
+def dodcluster(cluster):
+    return cluster == "garnet" or cluster == "armstrong" or cluster == "shepard";
 mov_defaults = sd(
     pbsdefaults,
     I=3e18,
@@ -192,6 +196,9 @@ cd "$PBS_O_WORKDIR"
             clusterq));
     walltime = hours_to_walltime(walltime);
     post=''
+    #
+    # server quirks
+    #
     if cluster == "ramses":
         if nodes == 1:
             pre += '''
@@ -206,9 +213,8 @@ cp {lspexec} {pbsbase}.lsp *.dat $D/
                 pre+='cp loopscript $D/\n';
             pre+='cd $D\n'
         pre = "module load openmpi-1.4.3-gnu-rpm\n\n"+pre;
-    elif cluster == "garnet" or cluster == "armstrong":
-        if not test(kw,'queue'):
-            kw['queue']="standard_lw";
+    
+    if dodcluster(cluster):
         if test(kw,'mpiprocs') and kw['mpiprocs'] != ppn:
             mpiformat = 'aprun -n {{}} -N {}'.format(
                 kw['mpiprocs'])
@@ -220,15 +226,22 @@ cp {lspexec} {pbsbase}.lsp *.dat $D/
             nodes=nodes,
             ppn=ppn,
             mpiprocs=kw['mpiprocs']);
-        extra_headers='''
-#PBS -A __projectid__
-#PBS -q {}
-'''.format(kw['queue']);
+        extra_headers="#PBS -A __projectid__\n#PBS -q {}\n".format(
+            kw['queue']);
+        if test(kw, "mkrundir"):
+            pre += (
+                'export RUNDIR="${{PBS_JOBNAME}}_${{PBS_JOBID}}"\n'
+                'mkdir -p $RUNDIR'
+                'rcp {lspexec} {pbsbase}.lsp *.dat $RUNDIR'
+                'cd $RUNDIR'
+            );
     if cluster == "garnet":
         #truncate name because life sucks
         label = label[:14];
+        if not test(kw,'queue'):
+            kw['queue']="standard_lw";
     #handling conncurrent scripts
-    if cluster != 'garnet' and cluster != 'armstrong' and cluster != 'shepard':
+    if not dodcluster(cluster):
         for concurrent in concurrents:
             script = concurrent[0]
             pre+='''#{script}
@@ -255,6 +268,7 @@ cp {lspexec} {pbsbase}.lsp *.dat $D/
         mpirun=mpirun,
         extra_headers=extra_headers,
         lspexec=lspexec,);
+
 def mk_hpcmp_pbses(pbsbase='hotwater3d_tmpl',**kw):
     hpcmp_defpbs = sd(kw,
         pbsbase = pbsbase,

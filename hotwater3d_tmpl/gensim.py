@@ -64,7 +64,9 @@ def gensim(**kw):
     if test(kw, "autozipper"):
         files.append('zipper');
     files.append('loopscript');
-    # for singlescale
+    #
+    # target creation
+    #
     if test(kw,'singlescale'):
         if type(getkw('fp')) != tuple:
             fpx = get_roundfpx(kw);
@@ -131,7 +133,9 @@ def gensim(**kw):
         if not test(kw, 'dens_dat'):
             kw['dens_dat'] = "watercolumn.dat";
         files.append((kw['dens_dat'], dens));
-    #movies
+    #
+    # movies
+    #
     movs = takef(kw,['movne','movni','movdq','movrho']);
     #yes really.
     tyf = lambda s: re.search(r"mov(\w+)",s).group(1);
@@ -160,11 +164,45 @@ def gensim(**kw):
         else:
             kw['concurrents'] = [('genangular','./genangular')];
         files.append('genangular');
+
+    #
+    #special subdivisions
+    #
+    if test(kw, "splittime"):
+        totaltime = getkw("totaltime");
+        # Structure of splittime 
+        # [ (totaltime, dict) ]
+        # Each tuple represents a slice of the restarts
+        # totaltime is supposed to be the end of that time slice.
+        # The dict is what enters subdiv.
+        # 
+        # This does very little, it just overloads totaltime and
+        # sets each `lspexec` of the restarts to r. It also adds a `pre`
+        # that copies the restart files, facilitated by the "setrestart"
+        # script.
+        #
+        # We read the last totaltime over the passed keyword.
+        st = getkw("splittime");
+        kw['subdivs'] = [];
+        for itime, id in st:
+            igetkw = mk_getkw(
+                sd(kw,**id),
+                defaults
+            );
+            cur = dict(
+                totaltime=itime,
+                lspexec = igetkw("lspexec")+" -r "
+            )
+            kw['subdivs'].append(
+                sd(id,
+                   totaltime=itime,
+                   lspexec  =igetkw("lspexec")+" -r "));
     subdivs = getkw("subdivs");
     if len(subdivs) == 0:
         subdivs = [kw];
     for subdiv in subdivs:
-        ikw = sd(kw, subdiv);
+        if not subdiv: subdiv=dict();
+        ikw = sd(kw,**subdiv);
         pbsbase = kw['pbsbase'];
         lsp=genlsp(**kw);
         files.append((pbsbase+".lsp", lsp));
