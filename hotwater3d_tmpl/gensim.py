@@ -41,6 +41,7 @@ defaults = sd(datdefaults,**pbsdefaults);
 defaults = sd(defaults,**lspdefaults);
 defaults.update(dict(
     pbsbase="hotwater3d",
+    subdivs=[],
     autozipper=None,
     movne=None,
     movni=None,
@@ -137,7 +138,7 @@ def gensim(**kw):
     movs = { tyf(k) : movs[k]
              for k in movs
              if movs[k]};
-    for movtype in movs:
+    for movtype in sorted(movs.keys()):
         sname ='mov'+movtype;
         movd={};
         if type(kw[sname]) == dict:
@@ -159,17 +160,23 @@ def gensim(**kw):
         else:
             kw['concurrents'] = [('genangular','./genangular')];
         files.append('genangular');
-    lsp=genlsp(**kw);
-    files.append((pbsbase+".lsp", lsp));
-    if pbses is None:
-        files.append((pbsbase+".pbs",genpbs(**kw)))
-    else:
-        if pbses == "defaults":
-            pbses = mk_hpcmp_pbses(**kw);
-        for pbs in pbses:
-            files.append(
-                (pbs['pbsname']+".pbs", genpbs(**sd(kw,**pbs)))
-            );
+    subdivs = getkw("subdivs");
+    if len(subdivs) == 0:
+        subdivs = [kw];
+    for subdiv in subdivs:
+        ikw = sd(kw, subdiv);
+        pbsbase = kw['pbsbase'];
+        lsp=genlsp(**kw);
+        files.append((pbsbase+".lsp", lsp));
+        if pbses is None:
+            files.append((pbsbase+".pbs",genpbs(**kw)))
+        else:
+            if pbses == "defaults":
+                pbses = mk_hpcmp_pbses(**kw);
+            for pbs in pbses:
+                files.append(
+                    (pbs['pbsname']+".pbs", genpbs(**sd(kw,**pbs)))
+                );
     if test(kw,'extra_files'):
         files.extend(kw['extra_files']);
     dir=getkw('dir');
