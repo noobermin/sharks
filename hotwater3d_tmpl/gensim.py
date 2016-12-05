@@ -60,7 +60,6 @@ def gensim(**kw):
     getkw =  mk_getkw(kw,defaults);
     pbsbase=getkw("pbsbase");
     files = ["sine700points.dat"];
-    pbses = getkw("pbses");
     if test(kw, "autozipper"):
         files.append('zipper');
     files.append('loopscript');
@@ -184,36 +183,43 @@ def gensim(**kw):
         # We read the last totaltime over the passed keyword.
         st = getkw("splittime");
         kw['subdivs'] = [];
-        for itime, id in st:
+        for i,(itime, id) in enumerate(st):
+            if id is None: id = {};
             igetkw = mk_getkw(
                 sd(kw,**id),
                 defaults
             );
-            cur = dict(
-                totaltime=itime,
-                lspexec = igetkw("lspexec")+" -r "
-            )
+            if i == 0:
+                si = '';
+            else:
+                si =  '_{}'.format(i);
             kw['subdivs'].append(
                 sd(id,
                    totaltime=itime,
-                   lspexec  =igetkw("lspexec")+" -r "));
+                   lspexec  =igetkw("lspexec")+" -r ",
+                   dump_restart_flag=True,
+                   pbsbase=pbsbase+si,));
     subdivs = getkw("subdivs");
     if len(subdivs) == 0:
         subdivs = [kw];
     for subdiv in subdivs:
         if not subdiv: subdiv=dict();
         ikw = sd(kw,**subdiv);
-        pbsbase = kw['pbsbase'];
-        lsp=genlsp(**kw);
-        files.append((pbsbase+".lsp", lsp));
+        igetkw = mk_getkw(ikw, defaults);
+        pbses = igetkw('pbses');
+        ipbsbase = igetkw('pbsbase');
+        lsp=genlsp(**ikw);
+        files.append((ipbsbase+".lsp", lsp));
         if pbses is None:
-            files.append((pbsbase+".pbs",genpbs(**kw)))
+            files.append((ipbsbase+".pbs",genpbs(**ikw)))
         else:
             if pbses == "defaults":
-                pbses = mk_hpcmp_pbses(**kw);
+                pbses = mk_hpcmp_pbses(
+                    **ikw);
             for pbs in pbses:
                 files.append(
-                    (pbs['pbsname']+".pbs", genpbs(**sd(kw,**pbs)))
+                    (pbs['pbsname']+".pbs",
+                     genpbs(**sd(ikw,**pbs)))
                 );
     if test(kw,'extra_files'):
         files.extend(kw['extra_files']);
