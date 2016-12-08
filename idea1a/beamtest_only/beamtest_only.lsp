@@ -331,6 +331,7 @@ injection ; p+ beam
 from 1.500000e-03 -1.500000e-03  0.000000e+00
 to   1.500000e-03  1.500000e-03  0.000000e+00
 normal -X
+interval 1
 species 11
 discrete_numbers 3 3 3
 reference_point  5e-4 0.0 0.0
