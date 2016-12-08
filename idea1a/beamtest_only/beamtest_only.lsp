@@ -334,13 +334,15 @@ normal -X
 interval 1
 species 11
 discrete_numbers 3 3 3
-reference_point 5.0e-04 0. 0.
 temporal_function 6
 spatial_function 0
-spatial_flags 0 1 0
 radius_function 7
 spatial_momentum_function  0
 temporal_momentum_function 0
+;these two must be last and in order... fuck lsp.
+reference_point 5.0e-04 0. 0.
+spatial_flags 0 1 0
+
 
 ;; ionization states ;;
 ;
