@@ -98,8 +98,8 @@ for E in Es:
         description="3um",
         #test!
         splittime=[
-            (375e-15, None),
-            (575e-15, dict(
+            (210e-15, None),
+            (450e-15, dict(
                 timestep=0.75e-16)),
             (d['T']*3.75, None),
         ],
@@ -127,8 +127,8 @@ for E in Es:
                     linthresh=1e15,),
         #test!
         splittime=[
-            (375e-15, None),
-            (575e-15, dict(
+            (210e-15, None),
+            (450e-15, dict(
                 timestep=0.75e-16)),
             (d['T']*3.75, None),
         ],
