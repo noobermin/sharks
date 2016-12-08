@@ -334,11 +334,11 @@ normal -X
 interval 1
 species 11
 discrete_numbers 3 3 3
-reference_point  5e-4 0.0 0.0
-spatial_flags 0 1 0
-spatial_function  9
+reference_point 5e-4 0.0 0.0
 temporal_function 6
-radius_function   7
+spatial_function 0
+spatial_flags 0 1 0
+radius_function 7
 spatial_momentum_function  0
 temporal_momentum_function 0
 
@@ -664,25 +664,29 @@ independent_variable_multiplier 1.0
 dependent_variable_multiplier 0.67
 ;;
 function6 ; Beam Time
+
 type 30
 data_file sine700points.dat
 independent_variable_multiplier 8.00e-15
 dependent_variable_multiplier   1.00
 ;;
 function7 ; Beam Space
-;;
-type 16   ; space pulse
-;current density is
-coefficients 4e18  4.29e-4
+
+type 3   ;space pulse
+coefficients 4e18  4.29e-4 ;current density is
 ;type 16   ; gaussian
 ;coefficients 1e-17 4.29e-4 10e-4 0
 ;;
 ;;
+
 function8 ; Beam Space Gamma Beta
+
 type 3   ; 
 coefficients 1e-17 4.29e-4
 ;;
+
 function9 ; Constant function
+
 type 1
 coefficients 1
 
