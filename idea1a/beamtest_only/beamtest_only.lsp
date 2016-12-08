@@ -334,7 +334,7 @@ normal -X
 interval 1
 species 11
 discrete_numbers 3 3 3
-reference_point 5e-4 0.0 0.0
+reference_point 5.0e-04 0. 0.
 temporal_function 6
 spatial_function 0
 spatial_flags 0 1 0
@@ -667,7 +667,7 @@ function6 ; Beam Time
 
 type 30
 data_file sine700points.dat
-independent_variable_multiplier 8.00e-15
+independent_variable_multiplier 8.00e-6
 dependent_variable_multiplier   1.00
 ;;
 function7 ; Beam Space
