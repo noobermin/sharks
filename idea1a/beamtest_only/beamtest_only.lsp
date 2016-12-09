@@ -622,6 +622,42 @@ start_time 0
 stop_time  1
 at 0 0.0015 0
 
+;
+extract5
+species 11
+direction X
+maximum_number  1000000000
+start_time 0
+stop_time  1
+at -0.0025 0 0
+ 
+;
+extract6
+species 11
+direction X
+maximum_number  1000000000
+start_time 0
+stop_time  1
+at 0.0015 0 0
+ 
+;
+extract7
+species 11
+direction Y
+maximum_number  1000000000
+start_time 0
+stop_time  1
+at 0 -0.0015 0
+ 
+;
+extract8
+species 11
+direction Y
+maximum_number  1000000000
+start_time 0
+stop_time  1
+at 0 0.0015 0
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Functions
