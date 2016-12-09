@@ -22,7 +22,7 @@ cd "$PBS_O_WORKDIR"
 genangular_PID=$!
 
 
-mpiexec -n 48 ./lsp-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+mpiexec -n 48 ./lsp-10-x $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
 
 kill $genangular_PID
 ./genangular

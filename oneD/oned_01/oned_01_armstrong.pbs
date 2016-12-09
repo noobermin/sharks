@@ -1,6 +1,6 @@
 #PBS -l walltime=168:0:00
 #PBS -l select=2:ncpus=24:mpiprocs=24
-#PBS -N oned_01
+#PBS -N oned_tmpl
 #PBS -S /bin/bash
 #PBS -j oe
 #PBS -m ae
@@ -9,7 +9,7 @@
 #PBS -q standard
 
 
-PBSBASE=oned_01
+PBSBASE=oned_tmpl
 #source $HOME/.bashrc
 
 #This outputs the name of the root node
@@ -21,5 +21,5 @@ cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/nodesfile.txt
 cd "$PBS_O_WORKDIR"
 
 
-aprun -n 48 ./lsp-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+aprun -n 48 ./lsp-10-x $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
 

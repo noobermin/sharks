@@ -51,7 +51,7 @@ d.update(
     lim =( -550, 550,   0,0,0,0),
     tlim=( -500, 500,   0,0,0,0),
     res =( 1100*100, 0, 0),
-    lspexec='lsp-10-xy',
+    lspexec='lsp-10-x',
     fp=(0,0,0),
     #target
     dens_dat='target.dat',

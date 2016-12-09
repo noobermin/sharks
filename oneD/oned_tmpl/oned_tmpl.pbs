@@ -23,7 +23,7 @@ cd "$PBS_O_WORKDIR"
 D=/tmp/ngirmang.1-`mkdate`-$PBSBASE
 mkdir -p $D
 cd "$PBS_O_WORKDIR"
-cp lsp-10-xy oned_tmpl.lsp *.dat $D/
+cp lsp-10-x oned_tmpl.lsp *.dat $D/
 cp genangular $D/
 cp loopscript $D/
 cd $D
@@ -32,7 +32,7 @@ cd $D
 genangular_PID=$!
 
 
-mpirun -np 48 -hostfile $PBS_NODEFILE ./lsp-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+mpirun -np 48 -hostfile $PBS_NODEFILE ./lsp-10-x $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
 
 kill $genangular_PID
 ./genangular
