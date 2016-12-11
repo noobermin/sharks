@@ -35,9 +35,9 @@ for I in Is:
         lsp_d,
         I=I,
         pbsbase=pbsbase,
-        pbses=mk_hpcmp_pbses(
-            pbsbase=pbsbase,
-            domains=lsp_d['domains']),
+        pbses='defaults',
+        #pbsbase=pbsbase,
+        #domains=lsp_d['domains']),
     );
     gensim(dir=True,**d);
 
