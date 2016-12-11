@@ -27,9 +27,6 @@ def mkpbsbase(d):
     d['pbsbase']=pbsfmt.format(
         l=l,I=d['I'],scale=d['expf']);
 
-####################################
-# 10um scans
-####################################
 def mktarget(
         xdim=(0.0,0.1),
         sdim=(0.0485,0.0515),
@@ -64,6 +61,36 @@ d.update(
     description="1D",
     pext_species=(10,11),
     angular=True,
+    pbses='defaults',
+    dir=True,
+);
+gensim(**d);
+# 2D sim for absorption
+d.update(
+    pbsbase='absorption',
+    lim =(  -25,  25, -25,25,0,0),
+    tlim=(  -15,  15, -15,15,0,0),
+    res =( 50*30,  50*30, 0),
+    lspexec='lsp-10-xy',
+    fp=(0,0,0),
+    #target
+    dens_dat='surround_target.dat',
+    externalf_1D=True,
+    f_1D=mktarget(
+        xdim = (  0.0, 30e-4),
+        sdim = (14e-4, 16e-4),
+        solid= 1e23,
+        sh   = 2e18,
+    ),
+    dat_xres=1000,
+    timestep     = 5e-17,
+    dumpinterval = 1e-15,
+    totaltime= 200e-15,
+    description="2D absorption",
+    pext_species=(10,11),
+    angular=True,
+    region_split=('y', 3),
+    domains=96,
     pbses='defaults',
     dir=True,
 );
