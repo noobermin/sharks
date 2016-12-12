@@ -10,12 +10,6 @@ defd = dict(
     dir=True,
     pbses='defaults',
     #movne
-    movne=dict(clim=(1e17,1e23)),
-    movni=dict(clim=(1e17,1e23)),
-    movdq=dict(clim=(-1e19,1e19),
-               linthresh=1e15),
-    movrho=dict(clim=(-1e19,1e19),
-                linthresh=1e15),    
 );
 pbsfmt='{l}um-{I:0.2e}-l={scale:0.3}um'
 def mkpbsbase(d):
@@ -63,6 +57,13 @@ d.update(
     angular=True,
     pbses='defaults',
     dir=True,
+    movne=dict(clim=(1e17,1e23)),
+    movni=dict(clim=(1e17,1e23)),
+    movdq=dict(clim=(-1e19,1e19),
+               linthresh=1e15),
+    movrho=dict(clim=(-1e19,1e19),
+                linthresh=1e15),    
+
 );
 gensim(**d);
 # 2D sim for absorption
