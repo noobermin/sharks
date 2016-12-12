@@ -270,7 +270,6 @@ cp {lspexec} {pbsbase}.lsp *.dat $D/
         lspexec=lspexec,);
 
 def mk_hpcmp_pbses(pbsbase='hotwater3d_tmpl',**kw):
-    print(pbsbase);
     hpcmp_defpbs = sd(kw,
         pbsbase = pbsbase,
         pbsname = pbsbase+'_oakley',

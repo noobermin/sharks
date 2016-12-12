@@ -25,9 +25,11 @@ datdefaults = {
     'sdim': (17.5,27.5, 0.0,0.0, 0.0,0.0),
     'type' : 'singlescale',
     'unit' : 1e-4,
+    'dat_xres'  : 100,
 };
 def gentargetdat(**kw):
     getkw=mk_getkw(kw,datdefaults);
+    res = getkw('dat_xres');
     unit=getkw('unit');
     tlim = mt(getkw('tlim'),m=unit);
     if test(kw,'f_1D') or test(kw, 'data1D'):
@@ -40,7 +42,7 @@ def gentargetdat(**kw):
         raise ValueError("Cannot reckon data dimensionality");
     if dim == 1:
         if test(kw,'f_1D'):
-            x = np.linspace(tlim[0],tlim[1],100);
+            x = np.linspace(tlim[0],tlim[1],res);
             d = getkw('f_1D')(x);
         elif test(kw,'data1D'):
             x,d = getkw('data1D');
@@ -49,11 +51,11 @@ def gentargetdat(**kw):
         return s.getvalue();
     elif dim == 2:
         if test(kw,'f_2D'):
-            x = np.linspace(tlim[0],tlim[1],100);
+            x = np.linspace(tlim[0],tlim[1],res);
             if np.isclose(tlim[2]-tlim[3],0):
-                y = np.linspace(tlim[4],tlim[5],100);
+                y = np.linspace(tlim[4],tlim[5],res);
             else:
-                y = np.linspace(tlim[2],tlim[3],100);
+                y = np.linspace(tlim[2],tlim[3],res);
             X,Y = np.meshgrid(x,y,indexing='ij');
             d = getkw('f_2D')(X,Y);
         elif test(kw,'data2D'):
@@ -66,9 +68,9 @@ def gentargetdat(**kw):
         return s.getvalue();
     else:
         if test(kw, 'f_3d'):
-            x = np.linspace(tlim[0],tlim[1],100);
-            y = np.linspace(tlim[2],tlim[3],100);
-            z = np.linspace(tlim[4],tlim[5],100);
+            x = np.linspace(tlim[0],tlim[1],res);
+            y = np.linspace(tlim[2],tlim[3],res);
+            z = np.linspace(tlim[4],tlim[5],res);
             X,Y,Z = np.meshgrid(x,y,z,indexing='ij');
             d = getkw('f_3d')(X,Y,Z);
         elif test(kw,'data3D'):
