@@ -51,7 +51,7 @@ for I in Is:
         pbsbase=pbsbase,
         pbses='defaults',
         domains=384,
-        region_split=('z',10),
+        region_split=('z',16),
     )
     gensim(dir=True,**d);
 
