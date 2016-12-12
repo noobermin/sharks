@@ -7,7 +7,7 @@ simulation_title "spatial 780nm convergence test, I = 3.459119e+21 W/cm^2"
  time_step_ns 5.0000e-08
 
 ;;Restarts
-dump_restart_flag OFF
+dump_restart_flag ON
 maximum_restart_dump_time 23.95
 rename_restart_flag ON
 

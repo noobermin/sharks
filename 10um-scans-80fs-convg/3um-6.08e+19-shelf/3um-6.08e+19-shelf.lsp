@@ -7,7 +7,7 @@ simulation_title "3um, I = 6.079748e+19 W/cm^2"
  time_step_ns 1.0000e-07
 
 ;;Restarts
-dump_restart_flag OFF
+dump_restart_flag ON
 rename_restart_flag ON
 
 ;;Load Balancing

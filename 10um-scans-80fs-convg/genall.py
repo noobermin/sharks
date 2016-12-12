@@ -25,7 +25,9 @@ defd = dict(
     movdq=dict(clim=(-1e19,1e19),
                linthresh=1e15),
     movrho=dict(clim=(-1e19,1e19),
-                linthresh=1e15),    
+                linthresh=1e15),
+    dump_restart_flag=True,
+    dump_collisions_energies_flag=True,
 );
 pbsfmt='{l}um-{I:0.2e}-l={scale:0.3}um'
 def mkpbsbase(d):
