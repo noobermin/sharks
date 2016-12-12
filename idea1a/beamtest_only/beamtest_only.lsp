@@ -705,7 +705,7 @@ function6 ; Beam Time
 
 type 30
 data_file sine700points.dat
-independent_variable_multiplier 8.00e-6
+independent_variable_multiplier 8.00e-5
 dependent_variable_multiplier   1.00
 ;;
 function7 ; Beam Space
