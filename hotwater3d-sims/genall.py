@@ -20,25 +20,39 @@ lsp_d=dict(
     totaltime=500e-15,
     dumpinterval=5e-16,
     description="hotwater in 3d",
-    domains=700,
     dens_dat='watercolumn.dat',
+    domains=700,
     region_split=('z',50),
     pext_species=(10,11),
     restart=23.95,
+    dump_restart_flag=True,
 );
 
 Is= [5.4e17, 1e18, 1.5e18, 3e18, 1e19];
 #vanillas
 for I in Is:
     pbsbase="H2O-3d-{}".format(I);
+    print(pbsbase);
     d = sd(
         lsp_d,
         I=I,
         pbsbase=pbsbase,
-        pbses=mk_hpcmp_pbses(
-            pbsbase=pbsbase,
-            domains=lsp_d['domains']),
+        pbses='defaults',
     );
+    gensim(dir=True,**d);
+
+
+for I in Is:
+    pbsbase="H2Osm-3d-{}".format(I);
+    print(pbsbase);
+    d = sd(
+        lsp_d,
+        I=I,
+        pbsbase=pbsbase,
+        pbses='defaults',
+        domains=384,
+        region_split=('z',16),
+    )
     gensim(dir=True,**d);
 
 #more domains

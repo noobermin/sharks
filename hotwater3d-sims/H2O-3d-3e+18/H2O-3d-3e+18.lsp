@@ -7,7 +7,7 @@ simulation_title "hotwater in 3d, I = 3.000000e+18 W/cm^2"
  time_step_ns 1.0000e-07
 
 ;;Restarts
-dump_restart_flag OFF
+dump_restart_flag ON
 maximum_restart_dump_time 23.95
 rename_restart_flag ON
 
