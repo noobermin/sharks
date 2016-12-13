@@ -113,8 +113,8 @@ for E in Es:
         domains=64,
         description="3um w/ 5.77um scale plasma",
         #mov
-        movne=dict(clim=(1e16,1e21)),
-        movni=dict(clim=(1e16,1e21)),
+        movne=dict(clim=(1e17,1e23)),
+        movni=dict(clim=(1e17,1e23)),
         movdq=dict(clim=(-1e18,1e18),
                    linthresh=1e15,),
         movrho=dict(clim=(-1e18,1e18),
