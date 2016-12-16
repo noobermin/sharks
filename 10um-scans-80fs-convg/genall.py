@@ -128,9 +128,9 @@ for E in Es:
                     linthresh=1e15,),
         #test!
         splittime=[
-            (210e-15, None),
-            (450e-15, dict(
-                timestep=0.75e-16)),
+            (266e-15, None),
+            (900e-15, dict(
+                timestep=0.5e-16)),
             (d['T']*3.75, None),
         ],
 

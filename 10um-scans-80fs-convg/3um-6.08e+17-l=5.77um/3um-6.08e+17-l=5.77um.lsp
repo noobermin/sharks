@@ -3,7 +3,7 @@ simulation_title "3um w/ 5.77um scale plasma, I = 6.079748e+17 W/cm^2"
 ;
 [Control]
 ;Time-advance
- time_limit   2.1000e-04
+ time_limit   2.6600e-04
  time_step_ns 1.0000e-07
 
 ;;Restarts
