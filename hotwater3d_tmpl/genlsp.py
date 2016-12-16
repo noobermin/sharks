@@ -310,7 +310,8 @@ def mkregion_str(regions,split_cells=None):
         else:
             region['cells'] = "cells = {}".format(region['cells'])
         if float(split_cells)/float(region['domains']) < 4:
-            print("warning: {} limits less than 4 cells thick".format(getkw('region_dom_split')));
+            print("warning: {} limits less than 4 cells thick".format(
+                region['split'][0]));
         return region_tmpl.format(**region);
     
     return ''.join([format_region(region)
@@ -341,7 +342,8 @@ def genregions(**kw):
     mn,mx = lims[lmn],lims[lmx]
     edges = [mn+i*(mx-mn)/subdivs
              for i in range(subdivs)] + [mx];
-    split_cells = getkw(regsplit_dir+"cells");
+    split_cells = getkw(getkw("region_dom_split")+"cells");
+    
     mins = edges[:-1];
     maxs = edges[1:];
     if test(kw,"xcells") and test(kw,"ycells") and test(kw,"zcells"):
