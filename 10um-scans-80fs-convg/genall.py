@@ -100,8 +100,8 @@ for E in Es:
         #test!
         splittime=[
             (210e-15, None),
-            (450e-15, dict(
-                timestep=0.75e-16)),
+            (400e-15, dict(
+                timestep=0.5e-16)),
             (d['T']*3.75, None),
         ],
 
