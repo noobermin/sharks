@@ -54,6 +54,19 @@ for I in Is:
         region_split=('z',16),
     )
     gensim(dir=True,**d);
+    
+for I in Is:
+    pbsbase="H2Omd-3d-{}".format(I);
+    print(pbsbase);
+    d = sd(
+        lsp_d,
+        I=I,
+        pbsbase=pbsbase,
+        pbses='defaults',
+        domains=24,
+        region_split=('z',16),
+    )
+    gensim(dir=True,**d);
 
 #more domains
 #mksim(
