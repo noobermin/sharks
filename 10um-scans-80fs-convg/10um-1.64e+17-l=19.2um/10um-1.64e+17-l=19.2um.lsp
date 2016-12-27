@@ -34,6 +34,7 @@ load_balance_flag OFF
 plasma_frequency_limit 2.0
 
 ;;Diagnostic Dumps
+dump_collision_energies_flag ON
 dump_number_densities_flag ON
 dump_plasma_quantities_flag ON
 probe_interval 1
