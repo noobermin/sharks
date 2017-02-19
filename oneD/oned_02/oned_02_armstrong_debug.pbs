@@ -1,6 +1,6 @@
 #PBS -l walltime=0:30:00
 #PBS -l select=2:ncpus=24:mpiprocs=24
-#PBS -N oned_tmpl
+#PBS -N oned_02
 #PBS -S /bin/bash
 #PBS -j oe
 #PBS -m ae
@@ -9,7 +9,7 @@
 #PBS -q debug
 
 
-PBSBASE=oned_tmpl
+PBSBASE=oned_02
 #source $HOME/.bashrc
 
 #This outputs the name of the root node
