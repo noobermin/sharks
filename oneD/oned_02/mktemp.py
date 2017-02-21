@@ -12,4 +12,4 @@ def f(x):
         return solidtemp;
 
 T=f(x);
-np.savetxt('temp.dat',np.array([[x,T]]).T);
+np.savetxt('temp.dat',np.array([[x,T]]).T,fmt='%.8e');
