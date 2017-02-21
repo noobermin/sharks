@@ -606,10 +606,10 @@ independent_variable_multiplier 8.000000e-05
 dependent_variable_multiplier   2.796235e+07
 
 function2 ;temperature
-type 30   ; f-number: ~4.319689898685965
+type 30  
 data_file temp.dat
 independent_variable_multiplier 1.0
-dependent_variable_multiplier   1e-2
+dependent_variable_multiplier   1.0
 
 
 ;;
