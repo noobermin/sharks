@@ -4,6 +4,7 @@ simulation_title "1D expansion"
 [Control]
 ;Time-advance
  time_limit   2.0000e-03
+; time_limit   2.0000e-06
  time_step_ns 1.0000e-07
 
 ;;Restarts
@@ -297,6 +298,7 @@ density_flags 1 0 0
 momentum_flags 0 0 0
 thermal_energy 1
 spatial_function 2
+movie_tag 3
 movie_fraction 0.050
 ;
 plasma ; p+
