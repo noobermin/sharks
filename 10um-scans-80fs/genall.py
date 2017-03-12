@@ -78,7 +78,7 @@ longs = [sd(
                 linthresh=1e15),)
          for d in defds];
 #hack to make the first longer.
-longs[0]['totaltime']  = longs[0]['T']*4.75
+longs[-1]['totaltime']  = longs[-1]['T']*4.75
 for d in longs:
     mkpbsbase(d);
     gensim(**d);
