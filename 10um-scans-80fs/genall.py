@@ -8,7 +8,7 @@ Es = [10,1,0.1,0.01,0.001,1e-4];
 defd = dict(
     dumpinterval=1e-15,
     singlescale=True,
-    no_pmovies=True,
+    no_pmovies=False,
     lspexec='lsp-10-xy',
     fp='nc',
     #target
