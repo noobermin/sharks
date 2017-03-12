@@ -77,6 +77,8 @@ longs = [sd(
     movrho=dict(clim=(-1e18,1e18),
                 linthresh=1e15),)
          for d in defds];
+#hack to make the first longer.
+longs[0]['totaltime']  = longs[0]['T']*4.75
 for d in longs:
     mkpbsbase(d);
     gensim(**d);
