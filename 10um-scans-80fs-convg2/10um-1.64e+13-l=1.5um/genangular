@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+NAME="$(ls | grep '\.lsp' | sed 's/\(.*\)\.lsp/\1/')"
+[ -e ~/conda ] && source ~/conda
+simple-pext.py
+if [ -e $NAME-pext.npy ]; then
+    rcp $NAME-pext.npy $PBS_O_WORKDIR
+    angular.py $NAME-pext.npy -nlLA --efficiency=wilks -e auto $NAME-angular.png
+    [ -e $NAME-angular.png ] && rcp $NAME-angular.png $PBS_O_WORKDIR
+fi
