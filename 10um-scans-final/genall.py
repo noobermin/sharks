@@ -15,13 +15,13 @@ tstep  = 26; # 0.78e-6/c  / 1e-16
 Es = [10, 1.0, 0.1, 0.01, 0.001, 1e-4];
 ls = [ 0.78, 3.0, 10.0 ];
 fns= [ 0.50, 1.0, 2.0 ];
-cs = [ 1.0, 2.0];
+cs = [ 0.5,  1.0];
 domains = 64;
 defd = dict(
     no_pmovies=True,
 );
     
-pbsfmt='{l}um-{I:0.0e}-L={scale:0.1f}-fn={fn:0.1f}-cs={cs}'
+pbsfmt='{l}um-{I:0.0e}-L={scale:0.1f}-f={fn:0.1f}-cs={cs:0.1f}'
 def mksim(E,l,fn,cy):
     scale = 1.5;
     d = fromenergy(
@@ -42,7 +42,7 @@ def mksim(E,l,fn,cy):
         I = d['I'],
         scale = scale,
         fn= np.pi*d['w']/2/d['l'],
-        cs= int(cy));
+        cs=cy,);
     pbses = mk_hpcmp_pbses(
         pbsbase=pbsbase,
         domains=domains, lspexec='lsp-10-xy');
@@ -87,7 +87,7 @@ def mksim(E,l,fn,cy):
         I = d['I'],
         scale = scale,
         fn= np.pi*d['w']/2/d['l'],
-        cs= int(cy));
+        cs= cy);
     d['pbsbase'] = pbsbase;
     print("processing {}".format(pbsbase));
     d['pbses'] = mk_hpcmp_pbses(
