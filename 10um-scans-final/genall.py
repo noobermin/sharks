@@ -22,7 +22,7 @@ defd = dict(
 );
     
 pbsfmt='{l}um-{I:0.0e}-L={scale:0.1f}-f={fn:0.1f}-cs={cs:0.1f}'
-def mksim(E,l,fn,cy):
+def mksim(E,l,fn,cy,yres=20):
     scale = 1.5;
     d = fromenergy(
         E,
@@ -36,7 +36,7 @@ def mksim(E,l,fn,cy):
     mymargin= np.ceil(margin);
     myedges = np.ceil(margin)+mywidth;
     timestep = l*1e-6/c/tstep;
-    yres = int(np.ceil((2*myedges) / (l / 20)));
+    yres = int(np.ceil((2*myedges) / (l / yres)));
     pbsbase = pbsfmt.format(
         l = '0.8' if l==0.78 else int(l),
         I = d['I'],
