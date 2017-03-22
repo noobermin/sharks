@@ -21,7 +21,8 @@ defd = dict(
 );
     
 pbsfmt='{l}um-{I:0.0e}-L={scale:0.1f}-f={fn:0.1f}-cs={cs:0.1f}'
-def mksim(E,l,fn,cy,yres=20):
+def mksim(E,l,fn,cy,
+          yresd=24,long_resd=24):
     scale = 1.5;
     d = fromenergy(
         E,
@@ -35,7 +36,7 @@ def mksim(E,l,fn,cy,yres=20):
     mymargin= np.ceil(margin);
     myedges = np.ceil(margin)+mywidth;
     timestep = l*1e-6/c/tstep;
-    yres = int(np.ceil((2*myedges) / (l / yres)));
+    yresd = int(np.round((2*myedges) / (l / yresd)));
     pbsbase = pbsfmt.format(
         l = '0.8' if l==0.78 else int(l),
         I = d['I'],
@@ -55,14 +56,14 @@ def mksim(E,l,fn,cy,yres=20):
         solid_len=10,
         expf=scale,
         scale_with_min=True,
-        long_resd = 20,
+        long_resd = long_resd,
         long_margin = (mymargin,mymargin),
         n_min = 1e16,
         roundup_pp = True,
         # others
         lim =( 0, 0, -myedges, myedges, 0, 0),
         tlim=( 0, 0, -mywidth, mywidth, 0, 0),
-        res = (0,yres,0),
+        res = (0,yresd,0),
         timestep = timestep,
         dumpinterval = timestep*2,
         totaltime= d['T']*3.5,

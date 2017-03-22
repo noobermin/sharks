@@ -57,12 +57,12 @@ particle_movie_components Q X Y Z VX VY VZ XI YI ZI
 grid1
 xmin             -4.000000e-03
 xmax             2.500000e-03
-x-cells          434
+x-cells          520
                                         ;
 ;
 ymin             -5.400000e-03
 ymax             5.400000e-03
-y-cells          720
+y-cells          864
 
 
 

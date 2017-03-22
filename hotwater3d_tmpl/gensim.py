@@ -107,7 +107,7 @@ def gensim(**kw):
         if test(kw, 'long_res'):
             kw['res'][0]  = xlen * kw['long_res']
         elif test(kw, 'long_resd'):
-            kw['res'][0]  = int(np.ceil(xlen / (getkw('l')*1e6 / kw['long_resd'])));
+            kw['res'][0]  = int(np.round(xlen / (getkw('l')*1e6 / kw['long_resd'])));
         kw['timestep'] = getkw('timestep');
         if xlen*1e-6/kw['res'][0] < c*kw['timestep']:
             print("adapting timestep...");
