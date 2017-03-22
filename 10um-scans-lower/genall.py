@@ -18,7 +18,6 @@ fns= [ 0.5,  1.0];
 cs = [ 0.5,  1.0];
 domains = 64;
 defd = dict(
-    no_pmovies=True,
 );
     
 pbsfmt='{l}um-{I:0.0e}-L={scale:0.1f}-f={fn:0.1f}-cs={cs:0.1f}'
