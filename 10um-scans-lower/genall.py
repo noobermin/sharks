@@ -16,7 +16,7 @@ Es = [1.0, 0.1, 0.01, 0.001, 1e-4];
 ls = [ 0.78, 3.0, 10.0 ];
 fns= [ 0.5,  1.0];
 cs = [ 0.5,  1.0];
-domains = 64;
+domains = 96;
 defd = dict(
 );
     
@@ -92,7 +92,7 @@ def mksim(E,l,fn,cy,
     print("processing {}".format(pbsbase));
     d['pbses'] = mk_hpcmp_pbses(
         pbsbase=pbsbase,
-        domains=96, lspexec='lsp-10-xy');
+        domains=domains, lspexec='lsp-10-xy');
     if np.isclose(l,10.0): d['n_min']=5e16;
     #note I DO NOT remake movnes, because 1e17 is close enough.
     gensim(**d);
