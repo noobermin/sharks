@@ -7,7 +7,7 @@ simulation_title "3um, I = 6.079748e+16 W/cm^2"
  time_step_ns 1.0000e-07
 
 ;;Restarts
-dump_restart_flag OFF
+dump_restart_flag ON
 rename_restart_flag ON
 
 ;;Load Balancing
@@ -34,6 +34,7 @@ load_balance_flag OFF
 plasma_frequency_limit 2.0
 
 ;;Diagnostic Dumps
+dump_collision_energies_flag ON
 dump_number_densities_flag ON
 dump_plasma_quantities_flag ON
 probe_interval 1
@@ -47,6 +48,9 @@ dump_scalars_flag ON
 scalar_dump_interval_ns 1.0000000000000002e-06
 
 ;;pmovies
+
+particle_movie_interval_ns 1.0000000000000002e-06
+particle_movie_components Q X Y Z VX VY VZ XI YI ZI
 
 ;
 [Grid]

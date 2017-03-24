@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+CONDAFILE=~/conda
+[ -n "$CONDAFILE" ] && source $CONDAFILE
+WAITDELAY=${WAITDELAY:-1}
+DIR=${1:-"."}
+if [ ! -n "$OUTDIR" ]; then
+    OUTDIR=${2:-"movdq-laser"}
+fi
+mkdir -p "$OUTDIR"
+INTENSITY=${INTENSITY:-"6.241925e+13"}
+LIMS=${LIMS:-"(-1e+19, 1e+19)"}
+HIGHLIGHT=${HIGHLIGHT:-"1.114855e+19"}
+QUANTITY=${QUANTITY:-"(RhoN9,RhoN8,RhoN7,RhoN6,RhoN5,RhoN4,RhoN3,RhoN2,RhoN11,RhoN10)"}
+WEIGHTS=${WEIGHTS:-"(8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0, 1.0, -1.0)"}
+NPROCS=${NPROCS:-1}
+LINTHRESH=${LINTHRESH:-"1.000000e+15"}
+AVG=${AVG:-"(0, 0)"}
+CMAP=${CMAP:-"PRGn"}
+TITLE=${TITLE:-"Charge Density"}
+source ~/.bashrc
+
+for i in $(ls "$DIR" | grep 'sclr[0-9]\+\.p4' | sort -V); do
+    n=$(echo ${i#sclr*} | sed 's/\.p4.*$//')
+    I=$(printf '%05d' "$n" )
+    [ -e "$OUTDIR"/$I.png ] && [ ! -n "$DONTSKIP" ] && echo skipping...$i &&  continue;
+    while [ $(pgrep -f 'python[23]* *.*ion.py' | wc -l ) -ge $NPROCS ]; do sleep $WAITDELAY; done;
+    sleep 0.25;
+    echo $i...
+    ion.py -D "$DIR" $n "$OUTDIR"/$I.png --intensity="$INTENSITY" $EXTRA_ION_ARGS \
+           -l --lims="$LIMS" --laser -Q "$QUANTITY" -q "$WEIGHTS" --linthresh="$LINTHRESH" \
+           -A "$AVG" --cmap="$CMAP" --title="$TITLE" &
+done
+while [ $(pgrep -f 'python[23]* *.*ion.py' | wc -l ) -gt 0 ]; do
+    echo waiting...
+    sleep 5; done;
+OUTMOV=${OUTMOV:-"10um-6e+14-L=1.5-f=2.2-cs=1.0-dq-laser.mp4"}
+ffmpeg -pattern_type glob -i "$OUTDIR/*.png" -c:v libx264 -pix_fmt yuv420p -y $OUTMOV
+[ -e $OUTMOV ] && rcp $OUTMOV $PBS_O_WORKDIR

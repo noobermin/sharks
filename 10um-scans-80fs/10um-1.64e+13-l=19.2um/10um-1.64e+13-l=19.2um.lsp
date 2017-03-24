@@ -3,7 +3,7 @@ simulation_title "10um, I = 1.641532e+13 W/cm^2"
 ;
 [Control]
 ;Time-advance
- time_limit   3.8462e-03
+ time_limit   4.8718e-03
  time_step_ns 5.0000e-07
 
 ;;Restarts
@@ -47,6 +47,9 @@ dump_scalars_flag ON
 scalar_dump_interval_ns 1.0000000000000002e-06
 
 ;;pmovies
+
+particle_movie_interval_ns 1.0000000000000002e-06
+particle_movie_components Q X Y Z VX VY VZ XI YI ZI
 
 ;
 [Grid]

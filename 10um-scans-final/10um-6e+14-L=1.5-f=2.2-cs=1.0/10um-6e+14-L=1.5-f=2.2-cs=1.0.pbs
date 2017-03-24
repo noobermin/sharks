@@ -1,0 +1,45 @@
+#PBS -l walltime=9999:0:00
+#PBS -l nodes=2:ppn=48
+#PBS -N 10um-6e+14-L=1.5-f=2.2-cs=1.0
+#PBS -S /bin/bash
+#PBS -j oe
+#PBS -m ae
+#PBS -M ngirmang.1@osu.edu
+
+
+PBSBASE=10um-6e+14-L=1.5-f=2.2-cs=1.0
+#source $HOME/.bashrc
+
+#This outputs the name of the root node
+#to the directory where you submitted this PBS job
+echo $HOSTNAME > $PBS_O_WORKDIR/hostname.txt   
+cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/nodesfile.txt
+
+module load openmpi-1.4.3-gnu-rpm
+
+
+cd "$PBS_O_WORKDIR"
+#movdq
+./loopscript movdq &> $PBS_O_WORKDIR/movdq.log&
+movdq_PID=$!
+#movne
+./loopscript movne &> $PBS_O_WORKDIR/movne.log&
+movne_PID=$!
+#movni
+./loopscript movni &> $PBS_O_WORKDIR/movni.log&
+movni_PID=$!
+#movrho
+./loopscript movrho &> $PBS_O_WORKDIR/movrho.log&
+movrho_PID=$!
+
+
+mpirun -np 64 -hostfile $PBS_NODEFILE ./lsp-10-3d $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+
+kill $movdq_PID
+./movdq
+kill $movne_PID
+./movne
+kill $movni_PID
+./movni
+kill $movrho_PID
+./movrho
