@@ -3,7 +3,7 @@ simulation_title "3um-5e+17-L=1.5-f=2.2-cs=0.5, I = 4.623648e+17 W/cm^2"
 ;
 [Control]
 ;Time-advance
- time_limit   6.1538e-04
+ time_limit   7.6923e-04
  time_step_ns 3.8488e-07
 
 ;;Restarts
