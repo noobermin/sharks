@@ -103,5 +103,9 @@ _ = [mksim(E,l,fn,cy)
      for l  in ls
      for fn in fns
      for cy in cs]
+#half energies
+Ehalf = [0.5, 0.05, 0.005, 5e-4];
+_ = [mksim(E, l, 1.0, 0.5)
+     for E in Ehalf
+     for l in ls]
 
-quit();
