@@ -5,64 +5,7 @@ from gensim import gensim, fromenergy;
 import numpy as np;
 
 pbsbase="glycol_tnsa";
-defpbs = dict(
-    pbsbase=pbsbase,
-    pbsname=pbsbase+"_oakley",
-    cluster='oakley',
-    autozipper=False,
-    queue=None,
-    ppn=None,    
-);
-pbses=[
-    defpbs,
-    sd(
-        defpbs,
-        pbsname=pbsbase+"_garnet_debug",
-        cluster='garnet',
-        queue='debug'),
-    sd(
-        defpbs,
-        pbsname=pbsbase+"_garnet",
-        cluster='garnet',
-        queue='standard_lw'),
-    sd(
-        defpbs,
-        pbsname=pbsbase+"_garnet_24",
-        cluster='garnet',
-        queue='standard_sm',
-        walltime=24),
-    sd(
-        defpbs,
-        pbsname=pbsbase+"_garnet_48",
-        cluster='garnet',
-        queue='standard_lw',
-        walltime=48),
-    sd(
-        defpbs,
-        pbsname=pbsbase+"_armstrong_debug",
-        cluster='armstrong',
-        queue='debug'),
-    sd(
-        defpbs,
-        pbsname=pbsbase+"_armstrong_mem2_debug",
-        cluster='armstrong',
-        mpiprocs=12,
-        queue='debug'),
-    sd(
-        defpbs,
-        pbsname=pbsbase+"_armstrong",
-        cluster='armstrong',
-        queue='standard'),
-    sd(
-        defpbs,
-        pbsname=pbsbase+"_armstrong_48",
-        cluster='armstrong',
-        queue='standard',
-        walltime=48),
-
-];
 E = 0.5e-3; # 5mJ
-
 w = 1.7e-6;
 I = 5e18;
 T = 2.0 * 5e-3/(w**2*np.pi/2.0 * I*1e4)
@@ -109,7 +52,7 @@ gensim(
     domains=48*8,
     pext_species=(17,18),
     region_split=('y',8),
-    pbses=pbses,
+    pbses='defaults',
     #target information
     lsptemplate="hotglycol.lsp",
     speciesl=[ 'e', 'O', 'C', 'p'],
