@@ -22,7 +22,9 @@ defd = dict(
     
 pbsfmt='{l}um-{I:0.0e}-L={scale:0.1f}-f={fn:0.1f}-cs={cs:0.1f}'
 def mksim(E,l,fn,cy,
-          yresd=24,long_resd=24):
+          yresd=24,
+          long_resd=24,
+          timemul=4.0):
     scale = 1.5;
     d = fromenergy(
         E,
@@ -66,7 +68,7 @@ def mksim(E,l,fn,cy,
         res = (0,yresd,0),
         timestep = timestep,
         dumpinterval = timestep*2,
-        totaltime= d['T']*4.0,
+        totaltime= d['T']*timemul,
         description=pbsbase,
         pbses=pbses,
         domains=domains,
@@ -105,7 +107,7 @@ _ = [mksim(E,l,fn,cy)
      for cy in cs]
 #half energies
 Ehalf = [0.5, 0.05, 0.005, 5e-4];
-_ = [mksim(E, l, 1.0, 0.5)
+_ = [mksim(E, l, 1.0, 0.5, timemul=8.0)
      for E in Ehalf
      for l in ls]
 
