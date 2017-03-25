@@ -10,7 +10,7 @@ l2w    = 2.20 / 0.78
 width  = 10.0 / 0.78
 l2L    = 1.50 / 0.78
 #margin =  4.0 / 0.78
-tstep  = 26; # 0.78e-6/c  / 1e-16
+tstep  = 32; # 0.78e-6/c  / 1e-16
 
 Es = [1.0, 0.1, 0.01, 0.001, 1e-4];
 ls = [ 0.78, 3.0, 10.0 ];
@@ -22,8 +22,8 @@ defd = dict(
     
 pbsfmt='{l}um-{I:0.0e}-L={scale:0.1f}-f={fn:0.1f}-cs={cs:0.1f}'
 def mksim(E,l,fn,cy,
-          yresd=24,
-          long_resd=24,
+          yresd=30,
+          long_resd=30,
           timemul='default'):
     scale = 1.5;
     d = fromenergy(
@@ -96,7 +96,7 @@ def mksim(E,l,fn,cy,
     d['pbses'] = mk_hpcmp_pbses(
         pbsbase=pbsbase,
         domains=domains, lspexec='lsp-10-xy');
-    if np.isclose(l,10.0): d['n_min']=5e16;
+    #if np.isclose(l,10.0): d['n_min']=1e16;
     #note I DO NOT remake movnes, because 1e17 is close enough.
     gensim(**d);
     

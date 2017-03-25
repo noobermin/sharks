@@ -4,7 +4,7 @@ simulation_title "10um-6e+16-L=1.5-f=2.2-cs=1.0, I = 6.241925e+16 W/cm^2"
 [Control]
 ;Time-advance
  time_limit   4.1026e-03
- time_step_ns 1.2829e-06
+ time_step_ns 1.0424e-06
 
 ;;Restarts
 dump_restart_flag OFF
@@ -42,13 +42,13 @@ spatial_skip_y 1
 spatial_skip_z 1
 
 dump_fields_flag ON
-field_dump_interval_ns 2.5658776553704005e-06
+field_dump_interval_ns 2.0847755949884503e-06
 dump_scalars_flag ON
-scalar_dump_interval_ns 2.5658776553704005e-06
+scalar_dump_interval_ns 2.0847755949884503e-06
 
 ;;pmovies
 
-particle_movie_interval_ns 2.5658776553704005e-06
+particle_movie_interval_ns 2.0847755949884503e-06
 particle_movie_components Q X Y Z VX VY VZ XI YI ZI
 
 ;
@@ -57,12 +57,12 @@ particle_movie_components Q X Y Z VX VY VZ XI YI ZI
 grid1
 xmin             -4.000000e-03
 xmax             2.500000e-03
-x-cells          156
+x-cells          195
                                         ;
 ;
 ymin             -1.440000e-02
 ymax             1.440000e-02
-y-cells          691
+y-cells          864
 
 
 
