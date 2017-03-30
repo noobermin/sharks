@@ -132,6 +132,11 @@ def gensim(**kw):
         if not test(kw, 'dens_dat'):
             kw['dens_dat'] = "watercolumn.dat";
         files.append((kw['dens_dat'], dens));
+    elif test(kw,'f_2D') or test(kw,'data2D'):
+        dens = gentargetdat(**kw);
+        if not test(kw, 'dens_dat'):
+            kw['dens_dat'] = "watercolumn.dat";
+        files.append((kw['dens_dat'], dens));
     #
     # movies
     #

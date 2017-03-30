@@ -1,4 +1,13 @@
 #!/usr/bin/env python3
+'''
+Usage: 
+    ./genall.py [options]
+
+Options:
+     --make-targets
+'''
+from docopt import docopt
+opts=docopt(__doc__,help=True);
 from pys import sd;
 from genpbs import genpbs;
 from gensim import gensim, fromenergy;
@@ -66,3 +75,57 @@ gensim(
     lspexec='lsp-10-xy',
     dir=True,
 );
+
+#realistic attempt
+w0=2.2e-6 / np.sqrt(2*np.log(2))
+T0=42e-15
+
+from genangletarg import mk45;
+d=dict(
+    l=l,
+    w=w0,
+    T=T0*2,
+    I=5e18,
+    dens_flags=(True,True,False),
+    discrete=(4,4,1),
+    lim =(-7,7,
+          -7,7,
+           0,0),
+    tlim=(-5,5,
+          -5,5,
+           0,0),
+    res =(7000,
+          7000,
+          0),
+    timestep = 3e-18,
+    totaltime= 140e-15,
+    pbsbase='glycol45',
+    description="hotglycol TNSA absorption",
+    dumpinterval=3e-17,
+    #PIC/grid details
+    domains=24*7,
+    pext_species=(17,18),
+    region_split=('y',7),
+    pbses='defaults',
+    #target information
+    lsptemplate="hotglycol.lsp",
+    speciesl=[ 'e', 'O', 'C', 'p'],
+    fracs   =[10.0, 2.0, 2.0, 6.0],
+    #density
+    singlescale=None,
+    dens_dat="target45.dat",
+    #misc
+    lspexec='lsp-10-xy',
+    dir=True,
+);
+if not opts['--make-targets']:
+    print("be sure to make the target dats seperately");
+else:
+    d['f_2D'] = mk45(
+        dim   = (-5,5,-5,5),
+        N0    = 1.0804e22,
+        width = 0.5e-4,
+        dropcorners=False);
+    d['dat_xres'] = 5000;
+    print("making targets...sit tight.");
+gensim(**d);

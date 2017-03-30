@@ -52,7 +52,7 @@ def gentargetdat(**kw):
     elif dim == 2:
         if test(kw,'f_2D'):
             x = np.linspace(tlim[0],tlim[1],res);
-            if np.isclose(tlim[2]-tlim[3],0):
+            if np.isclose(tlim[2],tlim[3]):
                 y = np.linspace(tlim[4],tlim[5],res);
             else:
                 y = np.linspace(tlim[2],tlim[3],res);
@@ -61,9 +61,9 @@ def gentargetdat(**kw):
         elif test(kw,'data2D'):
             x,y,d = getkw('data2D');
         s = StringIO();
-        s.write("{} {}\n".format(d.shape[0],d.shape[1]));
-        np.savetxt(s,np.array([x]).T,fmt='%.8e')
-        np.savetxt(s,np.array([y]).T,fmt='%.8e')
+        np.savetxt(s,np.array(list(d.shape)).reshape(1,-1), fmt='%i');
+        np.savetxt(s,np.array(x).reshape(1,-1), fmt='%.8e');
+        np.savetxt(s,np.array(y).reshape(1,-1), fmt='%.8e');
         np.savetxt(s,np.array(d).T,fmt='%.8e',);
         return s.getvalue();
     else:
@@ -78,13 +78,9 @@ def gentargetdat(**kw):
         s = StringIO();
         s.write("{} {} {}\n".format(
             d.shape[0],d.shape[1],d.shape[2]));
-        s.write("# x\n")
         np.savetxt(s,np.array(x).reshape(1,-1),fmt='%.8e');
-        s.write("# y\n")
         np.savetxt(s,np.array(y).reshape(1,-1),fmt='%.8e');
-        s.write("# z\n")
         np.savetxt(s,np.array(z).reshape(1,-1),fmt='%.8e');
-        s.write("# data\n")
         for sub in np.rollaxis(d,1):
             np.savetxt(s,np.array(sub).T,fmt='%.8e',);
         return s.getvalue();
