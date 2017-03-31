@@ -1,6 +1,5 @@
 #!/usr/bin/env python2
 import numpy as np;
-import matplotlib.pyplot as plt;
 
 def mk45(dim=[-5e-4,5e-4,-5e-4,5e-4,],
          N0=1.08e22,
@@ -35,5 +34,6 @@ if __name__ == "__main__":
     X,Y=np.mgrid[
         mn:mx + dx:dx,
         mn:mx + dx:dx];
+    import matplotlib.pyplot as plt;
     plt.pcolormesh(X,Y,F(X,Y));
     plt.show();
