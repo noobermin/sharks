@@ -22,7 +22,7 @@ cd "$PBS_O_WORKDIR"
 zipper_PID=$!
 
 
-mpiexec -n 168 ./lsp-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+mpiexec -n 168 ./lsp-explicit-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
 
 kill $zipper_PID
 ./zipper -a >$PBS_O_WORKDIR

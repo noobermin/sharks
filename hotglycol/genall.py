@@ -115,7 +115,7 @@ d=dict(
     singlescale=None,
     dens_dat="target45.dat",
     #misc
-    lspexec='lsp-10-xy',
+    lspexec='lsp-explicit-10-xy',
     dir=True,
 );
 if not opts['--make-targets']:

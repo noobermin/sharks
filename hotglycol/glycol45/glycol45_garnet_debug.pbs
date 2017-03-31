@@ -21,5 +21,5 @@ cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/nodesfile.txt
 cd "$PBS_O_WORKDIR"
 
 
-aprun -n 168 ./lsp-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+aprun -n 168 ./lsp-explicit-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
 
