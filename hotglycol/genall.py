@@ -103,9 +103,9 @@ d=dict(
     description="hotglycol TNSA absorption",
     dumpinterval=3e-17,
     #PIC/grid details
-    domains=24*7,
+    domains=24*21,
     pext_species=(17,18),
-    region_split=('y',7),
+    region_split=('y',21),
     pbses='defaults',
     #target information
     lsptemplate="hotglycol.lsp",

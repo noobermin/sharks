@@ -1,5 +1,5 @@
 #PBS -l walltime=9999:0:00
-#PBS -l nodes=4:ppn=48
+#PBS -l nodes=11:ppn=48
 #PBS -N glycol45
 #PBS -S /bin/bash
 #PBS -j oe
@@ -24,7 +24,7 @@ cd "$PBS_O_WORKDIR"
 zipper_PID=$!
 
 
-mpirun -np 168 -hostfile $PBS_NODEFILE ./lsp-explicit-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+mpirun -np 504 -hostfile $PBS_NODEFILE ./lsp-explicit-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
 
 kill $zipper_PID
 ./zipper -a >$PBS_O_WORKDIR
