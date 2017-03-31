@@ -87,7 +87,7 @@ d=dict(
     T=T0*2,
     I=5e18,
     dens_flags=(True,True,False),
-    discrete=(4,4,1),
+    discrete=(3,3,1),
     lim =(-7,7,
           -7,7,
            0,0),
