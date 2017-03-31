@@ -99,13 +99,14 @@ d=dict(
           0),
     timestep = 3e-18,
     totaltime= 140e-15,
+    fp=(-5.0,0.0,0.0),
     pbsbase='glycol45',
     description="hotglycol TNSA absorption",
     dumpinterval=3e-17,
     #PIC/grid details
     domains=24*21,
     pext_species=(17,18),
-    region_split=('y',21),
+    region_split=('y',7),
     pbses='defaults',
     #target information
     lsptemplate="hotglycol.lsp",
@@ -117,6 +118,12 @@ d=dict(
     #misc
     lspexec='lsp-explicit-10-xy',
     dir=True,
+    restart=23.95,
+    dump_restart_flag=True,
+    #movs
+    movne=dict(clim=(1e17,1e23)),
+    movrho=dict(clim=(-1e19,1e19),
+                linthresh=1e15,),
 );
 if not opts['--make-targets']:
     print("be sure to make the target dats seperately");
