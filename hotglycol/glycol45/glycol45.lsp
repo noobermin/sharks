@@ -695,7 +695,7 @@ to   5.000000e-04  5.000000e-04  0.000000e+00
 species 2
 movie_tag 3
 unbound off
-discrete_numbers 4 4 1
+discrete_numbers 3 3 1
 density_function 4
 reference_point -5.000000e-04 -5.000000e-04 0.000000e+00
 density_flags 1 1 0
@@ -709,7 +709,7 @@ to   5.000000e-04  5.000000e-04  0.000000e+00
 species 11
 movie_tag 3
 unbound off
-discrete_numbers 4 4 1
+discrete_numbers 3 3 1
 density_function 5
 reference_point -5.000000e-04 -5.000000e-04 0.000000e+00
 density_flags 1 1 0
@@ -724,7 +724,7 @@ to   5.000000e-04 5.000000e-04  0.000000e+00
 species 17
 movie_tag 3
 unbound off
-discrete_numbers 4 4 1
+discrete_numbers 3 3 1
 density_function 3
 reference_point -5.000000e-04 -5.000000e-04 0.000000e+00
 density_flags 1 1 0
@@ -738,7 +738,7 @@ to   5.000000e-04 5.000000e-04  0.000000e+00
 species 18
 movie_tag 3
 unbound off
-discrete_numbers 4 4 1
+discrete_numbers 3 3 1
 density_function 6
 reference_point -5.000000e-04 -5.000000e-04 0.000000e+00
 density_flags 1 1 0
