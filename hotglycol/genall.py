@@ -126,6 +126,10 @@ d=dict(
                 linthresh=1e15,),
     #pmovies
     no_pmovies=False,
+    #particle dumps
+    dump_particle=True,
+    particle_dump_interval_ns=0.0,
+    particle_dump_times_ns=(1.1e-4,1.4e-4),
 );
 if not opts['--make-targets']:
     print("be sure to make the target dats seperately");
