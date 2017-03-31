@@ -124,6 +124,8 @@ d=dict(
     movne=dict(clim=(1e17,1e23)),
     movrho=dict(clim=(-1e19,1e19),
                 linthresh=1e15,),
+    #pmovies
+    no_pmovies=False,
 );
 if not opts['--make-targets']:
     print("be sure to make the target dats seperately");
