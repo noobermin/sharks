@@ -91,6 +91,7 @@ mov_defaults = sd(
     
     dq_cmap='PRGn',
     ne_species='RhoN10',
+    rho_species="Rho",
     ni_species=[
         ("RhoN9",8.0),
         ("RhoN8",7.0),
@@ -143,7 +144,7 @@ def gen_mov(**kw):
     elif getkw('type') == 'ne':
         spec['quantity'] = getkw('ne_species');
     elif getkw('type') == 'rho':
-        spec['quantity'] = getkw('ne_species');
+        spec['quantity'] = getkw('rho_species');
         spec['cmap']  = getkw('dq_cmap');
         spec['linthresh'] = getkw('linthresh');
     if test(kw, 'movtmpl'):

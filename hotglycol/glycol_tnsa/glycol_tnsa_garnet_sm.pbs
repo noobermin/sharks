@@ -1,10 +1,12 @@
-#PBS -l walltime=96:0:00
-#PBS -l nodes=32:ppn=12
+#PBS -l walltime=24:0:00
+#PBS -l select=12:ncpus=32:mpiprocs=32
 #PBS -N glycol_tnsa
 #PBS -S /bin/bash
 #PBS -j oe
 #PBS -m ae
 #PBS -M ngirmang.1@osu.edu
+#PBS -A __projectid__
+#PBS -q standard_sm
 
 
 PBSBASE=glycol_tnsa
@@ -17,12 +19,7 @@ cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/nodesfile.txt
 
 
 cd "$PBS_O_WORKDIR"
-#zipper
-./loopscript zipper &> $PBS_O_WORKDIR/zipper.log&
-zipper_PID=$!
 
 
-mpiexec -n 384 ./lsp-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+aprun -n 384 ./lsp-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
 
-kill $zipper_PID
-./zipper -a >$PBS_O_WORKDIR

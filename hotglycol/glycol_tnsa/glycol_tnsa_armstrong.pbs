@@ -5,7 +5,6 @@
 #PBS -j oe
 #PBS -m ae
 #PBS -M ngirmang.1@osu.edu
-
 #PBS -A __projectid__
 #PBS -q standard
 
@@ -19,7 +18,7 @@ echo $HOSTNAME > $PBS_O_WORKDIR/hostname.txt
 cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/nodesfile.txt
 
 
-cd $PBS_O_WORKDIR
+cd "$PBS_O_WORKDIR"
 
 
 aprun -n 384 ./lsp-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt

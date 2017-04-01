@@ -1,68 +1,20 @@
 #!/usr/bin/env python3
+'''
+Usage: 
+    ./genall.py [options]
+
+Options:
+     --make-targets
+'''
+from docopt import docopt
+opts=docopt(__doc__,help=True);
 from pys import sd;
 from genpbs import genpbs;
 from gensim import gensim, fromenergy;
 import numpy as np;
 
 pbsbase="glycol_tnsa";
-defpbs = dict(
-    pbsbase=pbsbase,
-    pbsname=pbsbase+"_oakley",
-    cluster='oakley',
-    autozipper=False,
-    queue=None,
-    ppn=None,    
-);
-pbses=[
-    defpbs,
-    sd(
-        defpbs,
-        pbsname=pbsbase+"_garnet_debug",
-        cluster='garnet',
-        queue='debug'),
-    sd(
-        defpbs,
-        pbsname=pbsbase+"_garnet",
-        cluster='garnet',
-        queue='standard_lw'),
-    sd(
-        defpbs,
-        pbsname=pbsbase+"_garnet_24",
-        cluster='garnet',
-        queue='standard_sm',
-        walltime=24),
-    sd(
-        defpbs,
-        pbsname=pbsbase+"_garnet_48",
-        cluster='garnet',
-        queue='standard_lw',
-        walltime=48),
-    sd(
-        defpbs,
-        pbsname=pbsbase+"_armstrong_debug",
-        cluster='armstrong',
-        queue='debug'),
-    sd(
-        defpbs,
-        pbsname=pbsbase+"_armstrong_mem2_debug",
-        cluster='armstrong',
-        mpiprocs=12,
-        queue='debug'),
-    sd(
-        defpbs,
-        pbsname=pbsbase+"_armstrong",
-        cluster='armstrong',
-        queue='standard'),
-    sd(
-        defpbs,
-        pbsname=pbsbase+"_armstrong_48",
-        cluster='armstrong',
-        queue='standard',
-        walltime=48),
-
-];
 E = 0.5e-3; # 5mJ
-
 w = 1.7e-6;
 I = 5e18;
 T = 2.0 * 5e-3/(w**2*np.pi/2.0 * I*1e4)
@@ -109,7 +61,7 @@ gensim(
     domains=48*8,
     pext_species=(17,18),
     region_split=('y',8),
-    pbses=pbses,
+    pbses='defaults',
     #target information
     lsptemplate="hotglycol.lsp",
     speciesl=[ 'e', 'O', 'C', 'p'],
@@ -123,3 +75,70 @@ gensim(
     lspexec='lsp-10-xy',
     dir=True,
 );
+
+#realistic attempt
+w0=2.2e-6 / np.sqrt(2*np.log(2))
+T0=42e-15
+
+from genangletarg import mk45;
+d=dict(
+    l=l,
+    w=w0,
+    T=T0*2,
+    I=5e18,
+    dens_flags=(True,True,False),
+    discrete=(3,3,1),
+    lim =(-7,7,
+          -7,7,
+           0,0),
+    tlim=(-5,5,
+          -5,5,
+           0,0),
+    res =(7000,
+          7000,
+          0),
+    timestep = 3e-18,
+    totaltime= 140e-15,
+    fp=(-5.0,0.0,0.0),
+    pbsbase='glycol45',
+    description="hotglycol TNSA absorption",
+    dumpinterval=3e-17,
+    #PIC/grid details
+    domains=24*21,
+    pext_species=(17,18),
+    region_split=('y',7),
+    pbses='defaults',
+    #target information
+    lsptemplate="hotglycol.lsp",
+    speciesl=[ 'e', 'O', 'C', 'p'],
+    fracs   =[10.0, 2.0, 2.0, 6.0],
+    #density
+    singlescale=None,
+    dens_dat="target45.dat",
+    #misc
+    lspexec='lsp-explicit-10-xy',
+    dir=True,
+    restart=23.95,
+    dump_restart_flag=True,
+    #movs
+    movne=dict(clim=(1e17,1e23)),
+    movrho=dict(clim=(-1e19,1e19),
+                linthresh=1e15,),
+    #pmovies
+    no_pmovies=False,
+    #particle dumps
+    dump_particle=True,
+    particle_dump_interval_ns=0.0,
+    particle_dump_times_ns=(1.1e-4,1.4e-4),
+);
+if not opts['--make-targets']:
+    print("be sure to make the target dats seperately");
+else:
+    d['f_2D'] = mk45(
+        dim   = (-5,5,-5,5),
+        N0    = 1.0804e22,
+        width = 0.5e-4,
+        dropcorners=False);
+    d['dat_xres'] = 5000;
+    print("making targets...sit tight.");
+gensim(**d);

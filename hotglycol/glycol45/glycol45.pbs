@@ -1,13 +1,13 @@
-#PBS -l walltime=96:0:00
-#PBS -l nodes=32:ppn=12
-#PBS -N glycol_tnsa
+#PBS -l walltime=9999:0:00
+#PBS -l nodes=11:ppn=48
+#PBS -N glycol45
 #PBS -S /bin/bash
 #PBS -j oe
 #PBS -m ae
 #PBS -M ngirmang.1@osu.edu
 
 
-PBSBASE=glycol_tnsa
+PBSBASE=glycol45
 #source $HOME/.bashrc
 
 #This outputs the name of the root node
@@ -15,14 +15,26 @@ PBSBASE=glycol_tnsa
 echo $HOSTNAME > $PBS_O_WORKDIR/hostname.txt   
 cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/nodesfile.txt
 
+module load openmpi-1.4.3-gnu-rpm
+
 
 cd "$PBS_O_WORKDIR"
 #zipper
 ./loopscript zipper &> $PBS_O_WORKDIR/zipper.log&
 zipper_PID=$!
+#movne
+./loopscript movne &> $PBS_O_WORKDIR/movne.log&
+movne_PID=$!
+#movrho
+./loopscript movrho &> $PBS_O_WORKDIR/movrho.log&
+movrho_PID=$!
 
 
-mpiexec -n 384 ./lsp-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+mpirun -np 504 -hostfile $PBS_NODEFILE ./lsp-explicit-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
 
 kill $zipper_PID
 ./zipper -a >$PBS_O_WORKDIR
+kill $movne_PID
+./movne
+kill $movrho_PID
+./movrho

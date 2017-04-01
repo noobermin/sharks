@@ -1,16 +1,15 @@
-#PBS -l walltime=24:0:00
-#PBS -l select=12:ncpus=32:mpiprocs=32
-#PBS -N glycol_tnsa
+#PBS -l walltime=14:0:00
+#PBS -l select=21:ncpus=24:mpiprocs=24
+#PBS -N glycol45
 #PBS -S /bin/bash
 #PBS -j oe
 #PBS -m ae
 #PBS -M ngirmang.1@osu.edu
-
 #PBS -A __projectid__
-#PBS -q standard_sm
+#PBS -q standard
 
 
-PBSBASE=glycol_tnsa
+PBSBASE=glycol45
 #source $HOME/.bashrc
 
 #This outputs the name of the root node
@@ -19,8 +18,8 @@ echo $HOSTNAME > $PBS_O_WORKDIR/hostname.txt
 cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/nodesfile.txt
 
 
-cd $PBS_O_WORKDIR
+cd "$PBS_O_WORKDIR"
 
 
-aprun -n 384 ./lsp-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+aprun -n 504 ./lsp-explicit-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
 
