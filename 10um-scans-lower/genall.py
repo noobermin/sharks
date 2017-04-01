@@ -50,7 +50,7 @@ def mksim(E,l,fn,cy,
         domains=domains, lspexec='lsp-10-xy');
     print("processing {}".format(pbsbase));  
     #original targets
-    if timemul == 'default': timemul=4.0/cy;
+    if timemul == 'default': timemul=5.0/cy;
     d.update(
         pbsbase=pbsbase,
         #target
