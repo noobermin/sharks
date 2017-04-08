@@ -12,6 +12,7 @@ from pys import sd;
 from genpbs import genpbs;
 from gensim import gensim, fromenergy;
 import numpy as np;
+import shutil as sh;
 
 pbsbase="glycol_tnsa";
 E = 0.5e-3; # 5mJ
@@ -142,3 +143,12 @@ else:
     d['dat_xres'] = 5000;
     print("making targets...sit tight.");
 gensim(**d);
+lowres = sd(d,
+        pbsbase='glycol45low',
+        discrete=(2,2,1))
+if 'f_2D' in d:
+    del d['f_2D'];
+    del d['dat_xres'];
+    sh.copy('glycol45/target45.dat','glycol45low');
+gensim(**d);
+
