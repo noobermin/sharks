@@ -146,9 +146,9 @@ gensim(**d);
 lowres = sd(d,
         pbsbase='glycol45low',
         discrete=(2,2,1))
-if 'f_2D' in d:
-    del d['f_2D'];
-    del d['dat_xres'];
+if 'f_2D' in lowres:
+    del lowres['f_2D'];
+    del lowres['dat_xres'];
     sh.copy('glycol45/target45.dat','glycol45low');
-gensim(**d);
+gensim(**lowres);
 
