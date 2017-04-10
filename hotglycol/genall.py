@@ -143,13 +143,15 @@ else:
     d['dat_xres'] = 5000;
     print("making targets...sit tight.");
 gensim(**d);
-nodes_per_region = [1, 2, 3, 4, 5, 8];
+nodes_per_region = [1, 2, 3, 4, 5, 6, 8];
+rsplits          = [7, 7, 7,14,14,14,14];
 lowreses = [
     sd(d,
-       pbsbase='glycol45low{i}'.format(i=i),
+       pbsbase='gly_{:02d}_{:02d}'.format(i,r),
+       region_split=('y',r),
        discrete=(2,2,1),
        domains=32*7*i,)
-    for i in nodes_per_region ];
+    for i,r in zip(nodes_per_region,rsplits) ];
 
 if 'f_2D' in lowreses[0]:
     for lowres in lowreses:
