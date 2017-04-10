@@ -143,15 +143,19 @@ else:
     d['dat_xres'] = 5000;
     print("making targets...sit tight.");
 gensim(**d);
-lowres = sd(
-    d,
-    pbsbase='glycol45low',
-    discrete=(2,2,1),
-    domains=32*7*3,        
-)
-if 'f_2D' in lowres:
-    del lowres['f_2D'];
-    del lowres['dat_xres'];
-    sh.copy('glycol45/target45.dat','glycol45low');
-gensim(**lowres);
+nodes_per_region = [1, 2, 3, 4, 5, 8];
+lowreses = [
+    sd(d,
+       pbsbase='glycol45low{i}'.format(i=i),
+       discrete=(2,2,1),
+       domains=32*7*i,)
+    for i in nodes_per_region ];
+
+if 'f_2D' in lowreses[0]:
+    for lowres in lowreses:
+        del lowres['f_2D'];
+        del lowres['dat_xres'];
+        sh.copy('glycol45/target45.dat',d['pbsbase']);
+for lowres in lowreses:
+    gensim(**lowres);
 
