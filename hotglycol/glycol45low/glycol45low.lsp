@@ -74,7 +74,7 @@ y-cells          7000
 [Regions]
 ;
 
-;total number of domains: 504
+;total number of domains: 672
 
 ;
 region1
@@ -87,7 +87,7 @@ ymax             -5.000000e-04
 zmin             0.000000e+00
 zmax             0.000000e+00
 ;
-number_of_domains 72
+number_of_domains 96
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 0
 ;
@@ -102,7 +102,7 @@ ymax             -3.000000e-04
 zmin             0.000000e+00
 zmax             0.000000e+00
 ;
-number_of_domains 72
+number_of_domains 96
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 0
 ;
@@ -117,7 +117,7 @@ ymax             -1.000000e-04
 zmin             0.000000e+00
 zmax             0.000000e+00
 ;
-number_of_domains 72
+number_of_domains 96
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 0
 ;
@@ -132,7 +132,7 @@ ymax             1.000000e-04
 zmin             0.000000e+00
 zmax             0.000000e+00
 ;
-number_of_domains 72
+number_of_domains 96
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 0
 ;
@@ -147,7 +147,7 @@ ymax             3.000000e-04
 zmin             0.000000e+00
 zmax             0.000000e+00
 ;
-number_of_domains 72
+number_of_domains 96
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 0
 ;
@@ -162,7 +162,7 @@ ymax             5.000000e-04
 zmin             0.000000e+00
 zmax             0.000000e+00
 ;
-number_of_domains 72
+number_of_domains 96
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 0
 ;
@@ -177,7 +177,7 @@ ymax             7.000000e-04
 zmin             0.000000e+00
 zmax             0.000000e+00
 ;
-number_of_domains 72
+number_of_domains 96
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 0
 ;
@@ -192,7 +192,7 @@ from -7.000000e-04 -7.000000e-04 0.000000e+00
 to   -7.000000e-04 7.000000e-04 0.000000e+00
 phase_velocity 1.0
 drive_model LASER
-reference_point -0.0005 0.0 0.0 ; focal point position
+reference_point -0.001 0.0 0.0 ; focal point position
 components 0 1 0
 phases 0 0 0 ; polarization 1.1781
 temporal_function 1

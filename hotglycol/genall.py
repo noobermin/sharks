@@ -100,13 +100,12 @@ d=dict(
           0),
     timestep = 3e-18,
     totaltime= 140e-15,
-    fp=(-5.0,0.0,0.0),
+    fp=(-10.0,0.0,0.0),
     pbsbase='glycol45',
     description="hotglycol TNSA absorption",
     dumpinterval=3e-17,
     #PIC/grid details
     domains=24*21,
-    pext_species=(17,18),
     region_split=('y',7),
     pbses='defaults',
     #target information
@@ -131,6 +130,7 @@ d=dict(
     dump_particle=True,
     particle_dump_interval_ns=0.0,
     particle_dump_times_ns=(1.1e-4,1.4e-4),
+    pext_species=(17,18),
 );
 if not opts['--make-targets']:
     print("be sure to make the target dats seperately");
@@ -143,9 +143,12 @@ else:
     d['dat_xres'] = 5000;
     print("making targets...sit tight.");
 gensim(**d);
-lowres = sd(d,
-        pbsbase='glycol45low',
-        discrete=(2,2,1))
+lowres = sd(
+    d,
+    pbsbase='glycol45low',
+    discrete=(2,2,1),
+    domains=32*7*3,        
+)
 if 'f_2D' in lowres:
     del lowres['f_2D'];
     del lowres['dat_xres'];
