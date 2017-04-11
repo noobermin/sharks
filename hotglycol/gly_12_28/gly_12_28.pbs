@@ -1,13 +1,13 @@
 #PBS -l walltime=9999:0:00
-#PBS -l nodes=38:ppn=48
-#PBS -N gly_08_14
+#PBS -l nodes=56:ppn=48
+#PBS -N gly_12_28
 #PBS -S /bin/bash
 #PBS -j oe
 #PBS -m ae
 #PBS -M ngirmang.1@osu.edu
 
 
-PBSBASE=gly_08_14
+PBSBASE=gly_12_28
 #source $HOME/.bashrc
 
 #This outputs the name of the root node
@@ -30,7 +30,7 @@ movne_PID=$!
 movrho_PID=$!
 
 
-mpirun -np 1792 -hostfile $PBS_NODEFILE ./lsp-explicit-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+mpirun -np 2688 -hostfile $PBS_NODEFILE ./lsp-explicit-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
 
 kill $zipper_PID
 ./zipper -a >$PBS_O_WORKDIR

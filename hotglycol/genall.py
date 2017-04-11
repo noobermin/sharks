@@ -143,8 +143,8 @@ else:
     d['dat_xres'] = 5000;
     print("making targets...sit tight.");
 gensim(**d);
-nodes_per_region = [1, 2, 3, 4, 5, 6, 8];
-rsplits          = [7, 7, 7,14,14,14,14];
+nodes_per_region = [1, 2, 3, 4, 5, 6, 8,10,12];
+rsplits          = [7, 7, 7,14,14,14,28,28,28];
 lowreses = [
     sd(d,
        pbsbase='gly_{:02d}_{:02d}'.format(i,r),

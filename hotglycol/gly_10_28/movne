@@ -27,6 +27,6 @@ done
 while [ $(pgrep -f 'python[23]* *.*sclrq.py' | wc -l ) -gt 0 ]; do
     echo waiting...
     sleep 5; done;
-OUTMOV=${OUTMOV:-"gly_08_14-ne-laser.mp4"}
+OUTMOV=${OUTMOV:-"gly_10_28-ne-laser.mp4"}
 ffmpeg -pattern_type glob -i "$OUTDIR/*.png" -c:v libx264 -pix_fmt yuv420p -y $OUTMOV
 [ -e $OUTMOV ] && rcp $OUTMOV $PBS_O_WORKDIR

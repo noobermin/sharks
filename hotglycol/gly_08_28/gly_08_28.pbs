@@ -1,19 +1,21 @@
-#PBS -l walltime=96:0:00
-#PBS -l nodes=150:ppn=12
-#PBS -N gly_08_14
+#PBS -l walltime=9999:0:00
+#PBS -l nodes=38:ppn=48
+#PBS -N gly_08_28
 #PBS -S /bin/bash
 #PBS -j oe
 #PBS -m ae
 #PBS -M ngirmang.1@osu.edu
 
 
-PBSBASE=gly_08_14
+PBSBASE=gly_08_28
 #source $HOME/.bashrc
 
 #This outputs the name of the root node
 #to the directory where you submitted this PBS job
 echo $HOSTNAME > $PBS_O_WORKDIR/hostname.txt   
 cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/nodesfile.txt
+
+module load openmpi-1.4.3-gnu-rpm
 
 
 cd "$PBS_O_WORKDIR"
@@ -28,7 +30,7 @@ movne_PID=$!
 movrho_PID=$!
 
 
-mpiexec -n 1792 ./lsp-explicit-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+mpirun -np 1792 -hostfile $PBS_NODEFILE ./lsp-explicit-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
 
 kill $zipper_PID
 ./zipper -a >$PBS_O_WORKDIR
