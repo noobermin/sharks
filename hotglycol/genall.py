@@ -165,7 +165,7 @@ finaltry = sd(
     pbsbase='gly_finaltry',
     region_split=('y',7*8),
     discrete=(2,2,1),
-    domains=64*7*7,)
+    domains=32*7*7,)
 if 'f_2D' in finaltry:
     del finaltry['f_2D'];
     del finaltry['dat_xres'];
