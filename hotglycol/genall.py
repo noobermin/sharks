@@ -103,7 +103,7 @@ d=dict(
     fp=(-10.0,0.0,0.0),
     pbsbase='glycol45',
     description="hotglycol TNSA absorption",
-    dumpinterval=3e-17,
+    dumpinterval=15e-17,
     #PIC/grid details
     domains=24*21,
     region_split=('y',7),
