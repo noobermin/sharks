@@ -43,16 +43,16 @@ spatial_skip_y 1
 spatial_skip_z 1
 
 dump_fields_flag ON
-field_dump_interval_ns 3e-08
+field_dump_interval_ns 1.5e-07
 dump_scalars_flag ON
-scalar_dump_interval_ns 3e-08
+scalar_dump_interval_ns 1.5e-07
 dump_particles_flag ON
 particle_dump_interval_ns 0.0
 particle_dump_times_ns 0.00011 0.00014 end
 
 ;;pmovies
 
-particle_movie_interval_ns 3e-08
+particle_movie_interval_ns 1.5e-07
 particle_movie_components Q X Y Z VX VY VZ XI YI ZI
 
 
