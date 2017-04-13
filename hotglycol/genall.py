@@ -153,6 +153,21 @@ lowreses = [
        domains=32*7*i,)
     for i,r in zip(nodes_per_region,rsplits) ];
 
+finaltry = sd(
+    d,
+    pbsbase='gly_finaltry',
+    region_split=('y',7*8),
+    discrete=(2,2,1),
+    dumpinterval=3e-16,
+    domains=32*7*7,);
+finaltry2 = sd(
+    d,
+    pbsbase='gly_finaltry2',
+    region_split=('y',7*4),
+    discrete=(2,2,1),
+    dumpinterval=3e-16,
+    domains=32*7*7,);
+lowreses += [ finaltry, finaltry2]
 if 'f_2D' in lowreses[0]:
     for lowres in lowreses:
         del lowres['f_2D'];
@@ -160,14 +175,4 @@ if 'f_2D' in lowreses[0]:
         sh.copy('glycol45/target45.dat',d['pbsbase']);
 for lowres in lowreses:
     gensim(**lowres);
-finaltry = sd(
-    d,
-    pbsbase='gly_finaltry',
-    region_split=('y',7*8),
-    discrete=(2,2,1),
-    domains=32*7*7,)
-if 'f_2D' in finaltry:
-    del finaltry['f_2D'];
-    del finaltry['dat_xres'];
-    sh.copy('glycol45/target45.dat',d['pbsbase']);
-gensim(**finaltry);
+    
