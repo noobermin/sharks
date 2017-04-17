@@ -140,7 +140,7 @@ else:
         N0    = 1.0804e22,
         width = 0.46e-4,
         dropcorners=False);
-    d['dat_xres'] = 5000;
+    d['dat_xres'] = 10000;
     print("making targets...sit tight.");
 gensim(**d);
 splits = [
@@ -178,6 +178,18 @@ sml = sd(
               0,   0),
     res = (5500,5500,0),
 );
+if not opts['--make-targets']:
+    print("be sure to make the target dats seperately");
+else:
+    sml['f_2D'] = mk45(
+        dim   = (-3.5, 3.5,
+                 -3.5, 3.5),
+        N0    = 1.0804e22,
+        width = 0.46e-4,
+        dropcorners=False);
+    sml['dat_xres'] = 7000;
+    print("making targets...sit tight.");
+
 splits = [
     #dom/reg regions
     (32,     11),
