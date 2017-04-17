@@ -22,7 +22,7 @@ T = 2.0 * 5e-3/(w**2*np.pi/2.0 * I*1e4)
 l = 0.78e-6
 def mkslab(
         dim=2,
-        n=1.0800215e+22,# 1.1132[g/cc] / 62.07[g/mol] * 6.022e23[N/mol] 
+        n=1.0800215e+22,# 1.1132[g/cc] / 62.07[g/mol] * 6.022e23[N/mol]
         lower_edge=0,
         unit=1e-4,):
     dim*=unit;
@@ -103,7 +103,7 @@ d=dict(
     fp=(-10.0,0.0,0.0),
     pbsbase='glycol45',
     description="hotglycol TNSA absorption",
-    dumpinterval=15e-17,
+    dumpinterval=3e-16,
     #PIC/grid details
     domains=24*21,
     region_split=('y',7),
@@ -138,41 +138,59 @@ else:
     d['f_2D'] = mk45(
         dim   = (-5,5,-5,5),
         N0    = 1.0804e22,
-        width = 0.5e-4,
+        width = 0.46e-4,
         dropcorners=False);
     d['dat_xres'] = 5000;
     print("making targets...sit tight.");
 gensim(**d);
-nodes_per_region = [1, 2, 3, 4, 5, 6, 8,10,12];
-rsplits          = [7, 7, 7,14,14,14,28,28,28];
-lowreses = [
+splits = [
+    #dom/reg regions
+    (32,     7),
+    (7*8,    7*4),
+    (7*4,    7*8),
+    (7*4,    7*4),
+    (7*8,    7*8)];
+glyscans = [
     sd(d,
        pbsbase='gly_{:02d}_{:02d}'.format(i,r),
        region_split=('y',r),
        discrete=(2,2,1),
-       domains=32*7*i,)
-    for i,r in zip(nodes_per_region,rsplits) ];
+       domains=i*r,)
+    for i,r in splits];
+def rm_targ(i):
+    if 'f_2D' in i:
+        del i['f_2D'];
+        del i['dat_xres'];
+        sh.copy('glycol45/target45.dat',i['pbsbase']);
+    return i;
+glyscans[:] = [rm_targ(i) for i in glyscans];
+for i in glyscans:
+    gensim(**i);
+#smaller target
+sml = sd(
+    d,
+    discrete=(2,2,1),
+    lim = (-5.5, 5.5,
+           -5.5, 5.5,
+              0,   0),
+    tlim= (-3.5, 3.5,
+           -3.5, 3.5,
+              0,   0),
+    res = (5500,5500,0),
+);
+splits = [
+    #dom/reg regions
+    (32,     11),
+    (11*8,   11*4),
+    (11*4,   11*8)];
+smlscans = [
+    sd(d,
+       pbsbase='sml_{:02d}_{:02d}'.format(i,r),
+       region_split=('y',r),
+       discrete=(2,2,1),
+       domains=i*r,)
+    for i,r in splits];
+smlscans[:] = [rm_targ(i) for i in smlscans];
+for i in smlscans:
+    gensim(**i);
 
-finaltry = sd(
-    d,
-    pbsbase='gly_finaltry',
-    region_split=('y',7*8),
-    discrete=(2,2,1),
-    dumpinterval=3e-16,
-    domains=32*7*7,);
-finaltry2 = sd(
-    d,
-    pbsbase='gly_finaltry2',
-    region_split=('y',7*4),
-    discrete=(2,2,1),
-    dumpinterval=3e-16,
-    domains=32*7*7,);
-lowreses += [ finaltry, finaltry2]
-if 'f_2D' in lowreses[0]:
-    for lowres in lowreses:
-        del lowres['f_2D'];
-        del lowres['dat_xres'];
-        sh.copy('glycol45/target45.dat',d['pbsbase']);
-for lowres in lowreses:
-    gensim(**lowres);
-    

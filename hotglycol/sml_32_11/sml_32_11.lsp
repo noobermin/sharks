@@ -74,7 +74,7 @@ y-cells          7000
 [Regions]
 ;
 
-;total number of domains: 504
+;total number of domains: 352
 
 ;
 region1
@@ -82,12 +82,12 @@ xmin             -7.000000e-04
 xmax             7.000000e-04
 
 ymin             -7.000000e-04
-ymax             -5.000000e-04
+ymax             -5.727273e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
 ;
-number_of_domains 72
+number_of_domains 32
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 0
 ;
@@ -96,13 +96,13 @@ region2
 xmin             -7.000000e-04
 xmax             7.000000e-04
 
-ymin             -5.000000e-04
-ymax             -3.000000e-04
+ymin             -5.727273e-04
+ymax             -4.454545e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
 ;
-number_of_domains 72
+number_of_domains 32
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 0
 ;
@@ -111,13 +111,13 @@ region3
 xmin             -7.000000e-04
 xmax             7.000000e-04
 
-ymin             -3.000000e-04
-ymax             -1.000000e-04
+ymin             -4.454545e-04
+ymax             -3.181818e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
 ;
-number_of_domains 72
+number_of_domains 32
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 0
 ;
@@ -126,13 +126,13 @@ region4
 xmin             -7.000000e-04
 xmax             7.000000e-04
 
-ymin             -1.000000e-04
-ymax             1.000000e-04
+ymin             -3.181818e-04
+ymax             -1.909091e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
 ;
-number_of_domains 72
+number_of_domains 32
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 0
 ;
@@ -141,13 +141,13 @@ region5
 xmin             -7.000000e-04
 xmax             7.000000e-04
 
-ymin             1.000000e-04
-ymax             3.000000e-04
+ymin             -1.909091e-04
+ymax             -6.363636e-05
 
 zmin             0.000000e+00
 zmax             0.000000e+00
 ;
-number_of_domains 72
+number_of_domains 32
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 0
 ;
@@ -156,13 +156,13 @@ region6
 xmin             -7.000000e-04
 xmax             7.000000e-04
 
-ymin             3.000000e-04
-ymax             5.000000e-04
+ymin             -6.363636e-05
+ymax             6.363636e-05
 
 zmin             0.000000e+00
 zmax             0.000000e+00
 ;
-number_of_domains 72
+number_of_domains 32
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 0
 ;
@@ -171,13 +171,73 @@ region7
 xmin             -7.000000e-04
 xmax             7.000000e-04
 
-ymin             5.000000e-04
+ymin             6.363636e-05
+ymax             1.909091e-04
+
+zmin             0.000000e+00
+zmax             0.000000e+00
+;
+number_of_domains 32
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 0
+;
+;
+region8
+xmin             -7.000000e-04
+xmax             7.000000e-04
+
+ymin             1.909091e-04
+ymax             3.181818e-04
+
+zmin             0.000000e+00
+zmax             0.000000e+00
+;
+number_of_domains 32
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 0
+;
+;
+region9
+xmin             -7.000000e-04
+xmax             7.000000e-04
+
+ymin             3.181818e-04
+ymax             4.454545e-04
+
+zmin             0.000000e+00
+zmax             0.000000e+00
+;
+number_of_domains 32
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 0
+;
+;
+region10
+xmin             -7.000000e-04
+xmax             7.000000e-04
+
+ymin             4.454545e-04
+ymax             5.727273e-04
+
+zmin             0.000000e+00
+zmax             0.000000e+00
+;
+number_of_domains 32
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 0
+;
+;
+region11
+xmin             -7.000000e-04
+xmax             7.000000e-04
+
+ymin             5.727273e-04
 ymax             7.000000e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
 ;
-number_of_domains 72
+number_of_domains 32
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 0
 ;
@@ -489,7 +549,7 @@ to   5.000000e-04  5.000000e-04  0.000000e+00
 species 2
 movie_tag 3
 unbound off
-discrete_numbers 3 3 1
+discrete_numbers 2 2 1
 density_function 4
 reference_point -5.000000e-04 -5.000000e-04 0.000000e+00
 density_flags 1 1 0
@@ -503,7 +563,7 @@ to   5.000000e-04  5.000000e-04  0.000000e+00
 species 11
 movie_tag 3
 unbound off
-discrete_numbers 3 3 1
+discrete_numbers 2 2 1
 density_function 5
 reference_point -5.000000e-04 -5.000000e-04 0.000000e+00
 density_flags 1 1 0
@@ -518,7 +578,7 @@ to   5.000000e-04 5.000000e-04  0.000000e+00
 species 17
 movie_tag 3
 unbound off
-discrete_numbers 3 3 1
+discrete_numbers 2 2 1
 density_function 3
 reference_point -5.000000e-04 -5.000000e-04 0.000000e+00
 density_flags 1 1 0
@@ -532,7 +592,7 @@ to   5.000000e-04 5.000000e-04  0.000000e+00
 species 18
 movie_tag 3
 unbound off
-discrete_numbers 3 3 1
+discrete_numbers 2 2 1
 density_function 6
 reference_point -5.000000e-04 -5.000000e-04 0.000000e+00
 density_flags 1 1 0
