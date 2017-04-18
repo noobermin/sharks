@@ -140,6 +140,7 @@ dump_opts = dict(
     montecarlo_diagnostics=None,
     number_densities=True,
     plasma_quantities=True,
+    temperatures=None,
     potential=None,
     velocities=None,
 );
@@ -174,7 +175,7 @@ def genoptions(**kw):
     if test(kw,"options"):
         kw = sd(kw,kw['options']);
     #quirks
-    getkw_outer = mk_getkw(kw,lspdefaults);
+    getkw_outer = mk_getkw(kw,lspdefaults,prefer_passed=True);
     kw['maximum_restart_dump_time'] = getkw_outer('restart')
     def genopt(k,getkw=getkw_outer,flag=False):
         if not flag: flag = k;
@@ -184,7 +185,6 @@ def genoptions(**kw):
                 i*=1e9;
             else:
                 scaletuple(i,1e9);
-            
         if i is None or i is ():
             return "";
         elif i is True:
@@ -197,7 +197,7 @@ def genoptions(**kw):
             return "{} {} end\n".format(flag,joinspace(i));
     def genopts(opts):
         title,opts = opts;
-        getkw = mk_getkw(kw,opts);
+        getkw = mk_getkw(kw,opts,prefer_passed=True);
         tmpl=";;{}\n{}\n"
         all_opts = "".join([
             genopt(k,getkw) for k in sorted(opts.keys()) ]);

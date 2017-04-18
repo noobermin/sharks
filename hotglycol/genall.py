@@ -127,6 +127,8 @@ d=dict(
     #pmovies
     no_pmovies=False,
     #particle dumps
+    dump_plasma_quantities_flag=False,
+    dump_temperatures_flag=True,
     dump_particle=True,
     particle_dump_interval_ns=0.0,
     particle_dump_times_ns=(1.1e-4,1.4e-4),
