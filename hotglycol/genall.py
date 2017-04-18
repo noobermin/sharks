@@ -4,11 +4,12 @@ Usage:
     ./genall.py [options]
 
 Options:
-     --make-targets
+     --make-targets          Make all targets.
+     --make-target=T         Make the Tth target.
 '''
 from docopt import docopt
 opts=docopt(__doc__,help=True);
-from pys import sd;
+from pys import sd, parse_ituple;
 from genpbs import genpbs;
 from gensim import gensim, fromenergy;
 import numpy as np;
@@ -134,8 +135,18 @@ d=dict(
     particle_dump_times_ns=(1.1e-4,1.4e-4),
     pext_species=(17,18),
 );
-if not opts['--make-targets']:
-    print("be sure to make the target dats seperately");
+if opts['--make-target']:
+    try:
+        targi = [int(opts['--make-target'])]
+    except ValueError:
+        targi = parse_ituple(opts['--make-target'], length=3);
+elif opts['--make-targets']:
+    targi = [0, 1, 2];
+else:
+    targi = [];
+    
+if 0 not in targi:
+    print("be sure to make this dat {} seperately".format(0));
 else:
     d['f_2D'] = mk45(
         dim   = (-5,5,-5,5),
@@ -180,8 +191,8 @@ sml = sd(
               0,   0),
     res = (5500,5500,0),
 );
-if not opts['--make-targets']:
-    print("be sure to make the target dats seperately");
+if 1 not in targi:
+    print("be sure to make this dat {} seperately".format(1));
 else:
     sml['f_2D'] = mk45(
         dim   = (-3.5, 3.5,
@@ -198,13 +209,47 @@ splits = [
     (11*8,   11*4),
     (11*4,   11*8)];
 smlscans = [
-    sd(d,
+    sd(sml,
        pbsbase='sml_{:02d}_{:02d}'.format(i,r),
        region_split=('y',r),
        discrete=(2,2,1),
        domains=i*r,)
     for i,r in splits];
-smlscans[:] = [rm_targ(i) for i in smlscans];
 for i in smlscans:
     gensim(**i);
 
+#I give
+
+coarse = sd(
+    d,
+    discrete=(2,2,1),
+    res = (3500,3500,0),
+);
+splits = [
+    #dom/reg regions
+    (32,     7),
+    (7*8,    7*4),
+    (7*4,    7*8),
+    (7*4,    7*4),
+    (7*8,    7*8)];
+
+if 2 not in targi:
+    print("be sure to make this dat {} seperately".format(2));
+else:
+    coarse['f_2D'] = mk45(
+        dim   = (-5,5,-5,5),
+        N0    = 1.0804e22,
+        width = 0.46e-4,
+        dropcorners=False);
+    coarse['dat_xres'] = 2500;
+    print("making targets...sit tight.");
+
+crsscans = [
+    sd(coarse,
+       pbsbase='crs_{:02d}_{:02d}'.format(i,r),
+       region_split=('y',r),
+       domains=i*r,)
+    for i,r in splits];
+
+for i in crsscans:
+    gensim(**i);

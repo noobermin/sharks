@@ -61,14 +61,14 @@ particle_movie_components Q X Y Z VX VY VZ XI YI ZI
 [Grid]
 ;
 grid1
-xmin             -7.000000e-04
-xmax             7.000000e-04
-x-cells          7000
+xmin             -5.500000e-04
+xmax             5.500000e-04
+x-cells          5500
                                         ;
 ;
-ymin             -7.000000e-04
-ymax             7.000000e-04
-y-cells          7000
+ymin             -5.500000e-04
+ymax             5.500000e-04
+y-cells          5500
 
 
 
@@ -79,11 +79,11 @@ y-cells          7000
 
 ;
 region1
-xmin             -7.000000e-04
-xmax             7.000000e-04
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
-ymin             -7.000000e-04
-ymax             -6.681818e-04
+ymin             -5.500000e-04
+ymax             -5.250000e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -94,11 +94,11 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 region2
-xmin             -7.000000e-04
-xmax             7.000000e-04
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
-ymin             -6.681818e-04
-ymax             -6.363636e-04
+ymin             -5.250000e-04
+ymax             -5.000000e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -109,11 +109,11 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 region3
-xmin             -7.000000e-04
-xmax             7.000000e-04
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
-ymin             -6.363636e-04
-ymax             -6.045455e-04
+ymin             -5.000000e-04
+ymax             -4.750000e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -124,11 +124,11 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 region4
-xmin             -7.000000e-04
-xmax             7.000000e-04
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
-ymin             -6.045455e-04
-ymax             -5.727273e-04
+ymin             -4.750000e-04
+ymax             -4.500000e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -139,11 +139,11 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 region5
-xmin             -7.000000e-04
-xmax             7.000000e-04
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
-ymin             -5.727273e-04
-ymax             -5.409091e-04
+ymin             -4.500000e-04
+ymax             -4.250000e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -154,11 +154,11 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 region6
-xmin             -7.000000e-04
-xmax             7.000000e-04
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
-ymin             -5.409091e-04
-ymax             -5.090909e-04
+ymin             -4.250000e-04
+ymax             -4.000000e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -169,11 +169,11 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 region7
-xmin             -7.000000e-04
-xmax             7.000000e-04
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
-ymin             -5.090909e-04
-ymax             -4.772727e-04
+ymin             -4.000000e-04
+ymax             -3.750000e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -184,55 +184,10 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 region8
-xmin             -7.000000e-04
-xmax             7.000000e-04
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
-ymin             -4.772727e-04
-ymax             -4.454545e-04
-
-zmin             0.000000e+00
-zmax             0.000000e+00
-;
-number_of_domains 88
-split_direction XSPLIT
-number_of_cells AUTO ; cells = 0
-;
-;
-region9
-xmin             -7.000000e-04
-xmax             7.000000e-04
-
-ymin             -4.454545e-04
-ymax             -4.136364e-04
-
-zmin             0.000000e+00
-zmax             0.000000e+00
-;
-number_of_domains 88
-split_direction XSPLIT
-number_of_cells AUTO ; cells = 0
-;
-;
-region10
-xmin             -7.000000e-04
-xmax             7.000000e-04
-
-ymin             -4.136364e-04
-ymax             -3.818182e-04
-
-zmin             0.000000e+00
-zmax             0.000000e+00
-;
-number_of_domains 88
-split_direction XSPLIT
-number_of_cells AUTO ; cells = 0
-;
-;
-region11
-xmin             -7.000000e-04
-xmax             7.000000e-04
-
-ymin             -3.818182e-04
+ymin             -3.750000e-04
 ymax             -3.500000e-04
 
 zmin             0.000000e+00
@@ -243,12 +198,57 @@ split_direction XSPLIT
 number_of_cells AUTO ; cells = 0
 ;
 ;
-region12
-xmin             -7.000000e-04
-xmax             7.000000e-04
+region9
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
 ymin             -3.500000e-04
-ymax             -3.181818e-04
+ymax             -3.250000e-04
+
+zmin             0.000000e+00
+zmax             0.000000e+00
+;
+number_of_domains 88
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 0
+;
+;
+region10
+xmin             -5.500000e-04
+xmax             5.500000e-04
+
+ymin             -3.250000e-04
+ymax             -3.000000e-04
+
+zmin             0.000000e+00
+zmax             0.000000e+00
+;
+number_of_domains 88
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 0
+;
+;
+region11
+xmin             -5.500000e-04
+xmax             5.500000e-04
+
+ymin             -3.000000e-04
+ymax             -2.750000e-04
+
+zmin             0.000000e+00
+zmax             0.000000e+00
+;
+number_of_domains 88
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 0
+;
+;
+region12
+xmin             -5.500000e-04
+xmax             5.500000e-04
+
+ymin             -2.750000e-04
+ymax             -2.500000e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -259,11 +259,11 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 region13
-xmin             -7.000000e-04
-xmax             7.000000e-04
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
-ymin             -3.181818e-04
-ymax             -2.863636e-04
+ymin             -2.500000e-04
+ymax             -2.250000e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -274,11 +274,11 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 region14
-xmin             -7.000000e-04
-xmax             7.000000e-04
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
-ymin             -2.863636e-04
-ymax             -2.545455e-04
+ymin             -2.250000e-04
+ymax             -2.000000e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -289,11 +289,11 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 region15
-xmin             -7.000000e-04
-xmax             7.000000e-04
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
-ymin             -2.545455e-04
-ymax             -2.227273e-04
+ymin             -2.000000e-04
+ymax             -1.750000e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -304,11 +304,11 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 region16
-xmin             -7.000000e-04
-xmax             7.000000e-04
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
-ymin             -2.227273e-04
-ymax             -1.909091e-04
+ymin             -1.750000e-04
+ymax             -1.500000e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -319,11 +319,11 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 region17
-xmin             -7.000000e-04
-xmax             7.000000e-04
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
-ymin             -1.909091e-04
-ymax             -1.590909e-04
+ymin             -1.500000e-04
+ymax             -1.250000e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -334,11 +334,11 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 region18
-xmin             -7.000000e-04
-xmax             7.000000e-04
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
-ymin             -1.590909e-04
-ymax             -1.272727e-04
+ymin             -1.250000e-04
+ymax             -1.000000e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -349,11 +349,11 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 region19
-xmin             -7.000000e-04
-xmax             7.000000e-04
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
-ymin             -1.272727e-04
-ymax             -9.545455e-05
+ymin             -1.000000e-04
+ymax             -7.500000e-05
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -364,11 +364,11 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 region20
-xmin             -7.000000e-04
-xmax             7.000000e-04
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
-ymin             -9.545455e-05
-ymax             -6.363636e-05
+ymin             -7.500000e-05
+ymax             -5.000000e-05
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -379,11 +379,11 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 region21
-xmin             -7.000000e-04
-xmax             7.000000e-04
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
-ymin             -6.363636e-05
-ymax             -3.181818e-05
+ymin             -5.000000e-05
+ymax             -2.500000e-05
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -394,10 +394,10 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 region22
-xmin             -7.000000e-04
-xmax             7.000000e-04
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
-ymin             -3.181818e-05
+ymin             -2.500000e-05
 ymax             0.000000e+00
 
 zmin             0.000000e+00
@@ -409,11 +409,11 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 region23
-xmin             -7.000000e-04
-xmax             7.000000e-04
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
 ymin             0.000000e+00
-ymax             3.181818e-05
+ymax             2.500000e-05
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -424,11 +424,11 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 region24
-xmin             -7.000000e-04
-xmax             7.000000e-04
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
-ymin             3.181818e-05
-ymax             6.363636e-05
+ymin             2.500000e-05
+ymax             5.000000e-05
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -439,11 +439,11 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 region25
-xmin             -7.000000e-04
-xmax             7.000000e-04
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
-ymin             6.363636e-05
-ymax             9.545455e-05
+ymin             5.000000e-05
+ymax             7.500000e-05
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -454,11 +454,11 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 region26
-xmin             -7.000000e-04
-xmax             7.000000e-04
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
-ymin             9.545455e-05
-ymax             1.272727e-04
+ymin             7.500000e-05
+ymax             1.000000e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -469,11 +469,11 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 region27
-xmin             -7.000000e-04
-xmax             7.000000e-04
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
-ymin             1.272727e-04
-ymax             1.590909e-04
+ymin             1.000000e-04
+ymax             1.250000e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -484,11 +484,11 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 region28
-xmin             -7.000000e-04
-xmax             7.000000e-04
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
-ymin             1.590909e-04
-ymax             1.909091e-04
+ymin             1.250000e-04
+ymax             1.500000e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -499,11 +499,11 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 region29
-xmin             -7.000000e-04
-xmax             7.000000e-04
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
-ymin             1.909091e-04
-ymax             2.227273e-04
+ymin             1.500000e-04
+ymax             1.750000e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -514,11 +514,11 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 region30
-xmin             -7.000000e-04
-xmax             7.000000e-04
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
-ymin             2.227273e-04
-ymax             2.545455e-04
+ymin             1.750000e-04
+ymax             2.000000e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -529,11 +529,11 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 region31
-xmin             -7.000000e-04
-xmax             7.000000e-04
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
-ymin             2.545455e-04
-ymax             2.863636e-04
+ymin             2.000000e-04
+ymax             2.250000e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -544,11 +544,11 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 region32
-xmin             -7.000000e-04
-xmax             7.000000e-04
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
-ymin             2.863636e-04
-ymax             3.181818e-04
+ymin             2.250000e-04
+ymax             2.500000e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -559,11 +559,11 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 region33
-xmin             -7.000000e-04
-xmax             7.000000e-04
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
-ymin             3.181818e-04
-ymax             3.500000e-04
+ymin             2.500000e-04
+ymax             2.750000e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -574,11 +574,11 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 region34
-xmin             -7.000000e-04
-xmax             7.000000e-04
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
-ymin             3.500000e-04
-ymax             3.818182e-04
+ymin             2.750000e-04
+ymax             3.000000e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -589,11 +589,11 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 region35
-xmin             -7.000000e-04
-xmax             7.000000e-04
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
-ymin             3.818182e-04
-ymax             4.136364e-04
+ymin             3.000000e-04
+ymax             3.250000e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -604,11 +604,11 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 region36
-xmin             -7.000000e-04
-xmax             7.000000e-04
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
-ymin             4.136364e-04
-ymax             4.454545e-04
+ymin             3.250000e-04
+ymax             3.500000e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -619,11 +619,11 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 region37
-xmin             -7.000000e-04
-xmax             7.000000e-04
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
-ymin             4.454545e-04
-ymax             4.772727e-04
+ymin             3.500000e-04
+ymax             3.750000e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -634,11 +634,11 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 region38
-xmin             -7.000000e-04
-xmax             7.000000e-04
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
-ymin             4.772727e-04
-ymax             5.090909e-04
+ymin             3.750000e-04
+ymax             4.000000e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -649,11 +649,11 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 region39
-xmin             -7.000000e-04
-xmax             7.000000e-04
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
-ymin             5.090909e-04
-ymax             5.409091e-04
+ymin             4.000000e-04
+ymax             4.250000e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -664,11 +664,11 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 region40
-xmin             -7.000000e-04
-xmax             7.000000e-04
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
-ymin             5.409091e-04
-ymax             5.727273e-04
+ymin             4.250000e-04
+ymax             4.500000e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -679,11 +679,11 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 region41
-xmin             -7.000000e-04
-xmax             7.000000e-04
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
-ymin             5.727273e-04
-ymax             6.045455e-04
+ymin             4.500000e-04
+ymax             4.750000e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -694,11 +694,11 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 region42
-xmin             -7.000000e-04
-xmax             7.000000e-04
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
-ymin             6.045455e-04
-ymax             6.363636e-04
+ymin             4.750000e-04
+ymax             5.000000e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -709,11 +709,11 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 region43
-xmin             -7.000000e-04
-xmax             7.000000e-04
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
-ymin             6.363636e-04
-ymax             6.681818e-04
+ymin             5.000000e-04
+ymax             5.250000e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -724,11 +724,11 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 region44
-xmin             -7.000000e-04
-xmax             7.000000e-04
+xmin             -5.500000e-04
+xmax             5.500000e-04
 
-ymin             6.681818e-04
-ymax             7.000000e-04
+ymin             5.250000e-04
+ymax             5.500000e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -744,8 +744,8 @@ number_of_cells AUTO ; cells = 0
 [Boundaries]
 ;back this is the laser
 outlet
-from -7.000000e-04 -7.000000e-04 0.000000e+00
-to   -7.000000e-04 7.000000e-04 0.000000e+00
+from -5.500000e-04 -5.500000e-04 0.000000e+00
+to   -5.500000e-04 5.500000e-04 0.000000e+00
 phase_velocity 1.0
 drive_model LASER
 reference_point -0.001 0.0 0.0 ; focal point position
@@ -756,21 +756,21 @@ analytic_function 2
 time_delay 0.0
 ;front (back of the target)
 outlet
-from  7.000000e-04 -7.000000e-04 0.000000e+00
-to    7.000000e-04 7.000000e-04 0.000000e+00
+from  5.500000e-04 -5.500000e-04 0.000000e+00
+to    5.500000e-04 5.500000e-04 0.000000e+00
 phase_velocity 1.0
 drive_model NONE
 
 ;right
 outlet
-from -7.000000e-04  7.000000e-04 0.000000e+00
-to   7.000000e-04  7.000000e-04 0.000000e+00
+from -5.500000e-04  5.500000e-04 0.000000e+00
+to   5.500000e-04  5.500000e-04 0.000000e+00
 phase_velocity 1.0
 drive_model NONE
 ;left
 outlet
-from -7.000000e-04  -7.000000e-04 0.000000e+00
-to   7.000000e-04  -7.000000e-04 0.000000e+00
+from -5.500000e-04  -5.500000e-04 0.000000e+00
+to   5.500000e-04  -5.500000e-04 0.000000e+00
 phase_velocity 1.0
 drive_model NONE
 
@@ -1040,28 +1040,28 @@ selection_ratio 0.01
 ;; initial states ;;
 
 plasma ; O+
-from -5.000000e-04  -5.000000e-04  0.000000e+00
-to   5.000000e-04  5.000000e-04  0.000000e+00
+from -3.500000e-04  -3.500000e-04  0.000000e+00
+to   3.500000e-04  3.500000e-04  0.000000e+00
 species 2
 movie_tag 3
 unbound off
 discrete_numbers 2 2 1
 density_function 4
-reference_point -5.000000e-04 -5.000000e-04 0.000000e+00
+reference_point -3.500000e-04 -3.500000e-04 0.000000e+00
 density_flags 1 1 0
 momentum_flags 0 0 0
 thermal_energy 1
 movie_fraction 0.000
 ;
 plasma ; C+
-from -5.000000e-04  -5.000000e-04  0.000000e+00
-to   5.000000e-04  5.000000e-04  0.000000e+00
+from -3.500000e-04  -3.500000e-04  0.000000e+00
+to   3.500000e-04  3.500000e-04  0.000000e+00
 species 11
 movie_tag 3
 unbound off
 discrete_numbers 2 2 1
 density_function 5
-reference_point -5.000000e-04 -5.000000e-04 0.000000e+00
+reference_point -3.500000e-04 -3.500000e-04 0.000000e+00
 density_flags 1 1 0
 momentum_flags 0 0 0
 thermal_energy 1
@@ -1069,28 +1069,28 @@ movie_fraction 0.000
 ;
 
 plasma ; e-
-from -5.000000e-04 -5.000000e-04  0.000000e+00
-to   5.000000e-04 5.000000e-04  0.000000e+00
+from -3.500000e-04 -3.500000e-04  0.000000e+00
+to   3.500000e-04 3.500000e-04  0.000000e+00
 species 17
 movie_tag 3
 unbound off
 discrete_numbers 2 2 1
 density_function 3
-reference_point -5.000000e-04 -5.000000e-04 0.000000e+00
+reference_point -3.500000e-04 -3.500000e-04 0.000000e+00
 density_flags 1 1 0
 momentum_flags 0 0 0
 thermal_energy 1
 movie_fraction 0.050
 ;
 plasma ; p+
-from -5.000000e-04 -5.000000e-04  0.000000e+00
-to   5.000000e-04 5.000000e-04  0.000000e+00
+from -3.500000e-04 -3.500000e-04  0.000000e+00
+to   3.500000e-04 3.500000e-04  0.000000e+00
 species 18
 movie_tag 3
 unbound off
 discrete_numbers 2 2 1
 density_function 6
-reference_point -5.000000e-04 -5.000000e-04 0.000000e+00
+reference_point -3.500000e-04 -3.500000e-04 0.000000e+00
 density_flags 1 1 0
 momentum_flags 0 0 0
 thermal_energy 1
@@ -1099,8 +1099,8 @@ movie_fraction 0.000
 ;; ionization states ;;
 ;; Oxygen
 higherstate              ; O -> O+
-from -7.000000e-04 -7.000000e-04  0.000000e+00
-to   7.000000e-04 7.000000e-04  0.000000e+00
+from -5.500000e-04 -5.500000e-04  0.000000e+00
+to   5.500000e-04 5.500000e-04  0.000000e+00
 interval 1
 species 1
 ion_species 2
@@ -1124,8 +1124,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O+ -> O++
-from -7.000000e-04 -7.000000e-04  0.000000e+00
-to   7.000000e-04 7.000000e-04  0.000000e+00
+from -5.500000e-04 -5.500000e-04  0.000000e+00
+to   5.500000e-04 5.500000e-04  0.000000e+00
 interval 1
 species 2
 ion_species 3
@@ -1149,8 +1149,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O++ -> O 3+
-from -7.000000e-04 -7.000000e-04  0.000000e+00
-to   7.000000e-04 7.000000e-04  0.000000e+00
+from -5.500000e-04 -5.500000e-04  0.000000e+00
+to   5.500000e-04 5.500000e-04  0.000000e+00
 interval 1
 species 3
 ion_species 4
@@ -1174,8 +1174,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O 3+ -> O 4+
-from -7.000000e-04 -7.000000e-04  0.000000e+00
-to   7.000000e-04 7.000000e-04  0.000000e+00
+from -5.500000e-04 -5.500000e-04  0.000000e+00
+to   5.500000e-04 5.500000e-04  0.000000e+00
 interval 1
 species 4
 ion_species 5
@@ -1199,8 +1199,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O 4+ -> O 5+
-from -7.000000e-04 -7.000000e-04  0.000000e+00
-to   7.000000e-04 7.000000e-04  0.000000e+00
+from -5.500000e-04 -5.500000e-04  0.000000e+00
+to   5.500000e-04 5.500000e-04  0.000000e+00
 interval 1
 species 5
 ion_species 6
@@ -1225,8 +1225,8 @@ movie_fraction 0.0
 ;
 ;
 higherstate              ; O 5+ -> O 6+
-from -7.000000e-04 -7.000000e-04  0.000000e+00
-to   7.000000e-04 7.000000e-04  0.000000e+00
+from -5.500000e-04 -5.500000e-04  0.000000e+00
+to   5.500000e-04 5.500000e-04  0.000000e+00
 interval 1
 species 6
 ion_species 7
@@ -1250,8 +1250,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O 6+ -> O 7+
-from -7.000000e-04 -7.000000e-04  0.000000e+00
-to   7.000000e-04 7.000000e-04  0.000000e+00
+from -5.500000e-04 -5.500000e-04  0.000000e+00
+to   5.500000e-04 5.500000e-04  0.000000e+00
 interval 1
 species 7
 ion_species 8
@@ -1275,8 +1275,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O 7+ -> O 8+
-from -7.000000e-04 -7.000000e-04  0.000000e+00
-to   7.000000e-04 7.000000e-04  0.000000e+00
+from -5.500000e-04 -5.500000e-04  0.000000e+00
+to   5.500000e-04 5.500000e-04  0.000000e+00
 interval 1
 species 8
 ion_species 9
@@ -1301,8 +1301,8 @@ movie_fraction 0.0
 ;
 ;; carbon
 higherstate              ; C -> C+
-from -7.000000e-04 -7.000000e-04  0.000000e+00
-to   7.000000e-04 7.000000e-04  0.000000e+00
+from -5.500000e-04 -5.500000e-04  0.000000e+00
+to   5.500000e-04 5.500000e-04  0.000000e+00
 interval 1
 species 10
 ion_species 11
@@ -1326,8 +1326,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; C+ -> C++
-from -7.000000e-04 -7.000000e-04  0.000000e+00
-to   7.000000e-04 7.000000e-04  0.000000e+00
+from -5.500000e-04 -5.500000e-04  0.000000e+00
+to   5.500000e-04 5.500000e-04  0.000000e+00
 interval 1
 species 11
 ion_species 12
@@ -1351,8 +1351,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; C++ -> C 3+
-from -7.000000e-04 -7.000000e-04  0.000000e+00
-to   7.000000e-04 7.000000e-04  0.000000e+00
+from -5.500000e-04 -5.500000e-04  0.000000e+00
+to   5.500000e-04 5.500000e-04  0.000000e+00
 interval 1
 species 12
 ion_species 13
@@ -1376,8 +1376,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; C 3+ -> C 4+
-from -7.000000e-04 -7.000000e-04  0.000000e+00
-to   7.000000e-04 7.000000e-04  0.000000e+00
+from -5.500000e-04 -5.500000e-04  0.000000e+00
+to   5.500000e-04 5.500000e-04  0.000000e+00
 interval 1
 species 13
 ion_species 14
@@ -1401,8 +1401,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; C 4+ -> C 5+
-from -7.000000e-04 -7.000000e-04  0.000000e+00
-to   7.000000e-04 7.000000e-04  0.000000e+00
+from -5.500000e-04 -5.500000e-04  0.000000e+00
+to   5.500000e-04 5.500000e-04  0.000000e+00
 interval 1
 species 14
 ion_species 15
@@ -1426,8 +1426,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; C 5+ -> C 6+
-from -7.000000e-04 -7.000000e-04  0.000000e+00
-to   7.000000e-04 7.000000e-04  0.000000e+00
+from -5.500000e-04 -5.500000e-04  0.000000e+00
+to   5.500000e-04 5.500000e-04  0.000000e+00
 interval 1
 species 15
 ion_species 16
@@ -1465,7 +1465,7 @@ direction X
 maximum_number  1000000000
 start_time 0
 stop_time  1
-at -0.0007 0 0
+at -0.00055 0 0
  
 ;
 extract2
@@ -1474,7 +1474,7 @@ direction X
 maximum_number  1000000000
 start_time 0
 stop_time  1
-at 0.0007 0 0
+at 0.00055 0 0
  
 ;
 extract3
@@ -1483,7 +1483,7 @@ direction Y
 maximum_number  1000000000
 start_time 0
 stop_time  1
-at 0 -0.0007 0
+at 0 -0.00055 0
  
 ;
 extract4
@@ -1492,7 +1492,7 @@ direction Y
 maximum_number  1000000000
 start_time 0
 stop_time  1
-at 0 0.0007 0
+at 0 0.00055 0
  
 ;
 extract5
@@ -1501,7 +1501,7 @@ direction X
 maximum_number  1000000000
 start_time 0
 stop_time  1
-at -0.0007 0 0
+at -0.00055 0 0
  
 ;
 extract6
@@ -1510,7 +1510,7 @@ direction X
 maximum_number  1000000000
 start_time 0
 stop_time  1
-at 0.0007 0 0
+at 0.00055 0 0
  
 ;
 extract7
@@ -1519,7 +1519,7 @@ direction Y
 maximum_number  1000000000
 start_time 0
 stop_time  1
-at 0 -0.0007 0
+at 0 -0.00055 0
  
 ;
 extract8
@@ -1528,7 +1528,7 @@ direction Y
 maximum_number  1000000000
 start_time 0
 stop_time  1
-at 0 0.0007 0
+at 0 0.00055 0
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
