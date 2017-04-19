@@ -104,7 +104,7 @@ d=dict(
     fp=(-10.0,0.0,0.0),
     pbsbase='glycol45',
     description="hotglycol TNSA absorption",
-    dumpinterval=3e-16,
+    dumpinterval=6e-16,
     #PIC/grid details
     domains=24*21,
     region_split=('y',7),
@@ -128,8 +128,6 @@ d=dict(
     #pmovies
     no_pmovies=False,
     #particle dumps
-    dump_plasma_quantities_flag=False,
-    dump_temperatures_flag=True,
     dump_particle=True,
     particle_dump_interval_ns=0.0,
     particle_dump_times_ns=(1.1e-4,1.4e-4),
