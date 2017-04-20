@@ -107,7 +107,7 @@ def gensim(**kw):
         if test(kw, 'long_res'):
             kw['res'][0]  = xlen * kw['long_res']
         elif test(kw, 'long_resd'):
-            kw['res'][0]  = int(np.ceil(xlen / (getkw('l')*1e6 / kw['long_resd'])));
+            kw['res'][0]  = int(np.round(xlen / (getkw('l')*1e6 / kw['long_resd'])));
         kw['timestep'] = getkw('timestep');
         if xlen*1e-6/kw['res'][0] < c*kw['timestep']:
             print("adapting timestep...");
@@ -129,6 +129,11 @@ def gensim(**kw):
         tlim = getkw('tlim');
         kwp = sd(kw, tlim=(0, tlim[1]-tlim[0], 0,0, 0,0))
         dens = gentargetdat(**kwp);
+        if not test(kw, 'dens_dat'):
+            kw['dens_dat'] = "watercolumn.dat";
+        files.append((kw['dens_dat'], dens));
+    elif test(kw,'f_2D') or test(kw,'data2D'):
+        dens = gentargetdat(**kw);
         if not test(kw, 'dens_dat'):
             kw['dens_dat'] = "watercolumn.dat";
         files.append((kw['dens_dat'], dens));

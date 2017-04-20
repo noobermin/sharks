@@ -49,6 +49,9 @@ scalar_dump_interval_ns 2e-07
 
 ;;pmovies
 
+particle_movie_interval_ns 2e-07
+particle_movie_components Q X Y Z VX VY VZ XI YI ZI
+
 ;
 [Grid]
 ;

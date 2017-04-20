@@ -8,7 +8,7 @@ Es = [10,1,0.1,0.01,0.001,1e-4];
 defd = dict(
     dumpinterval=1e-15,
     singlescale=True,
-    no_pmovies=True,
+    no_pmovies=False,
     lspexec='lsp-10-xy',
     fp='nc',
     #target
@@ -25,7 +25,9 @@ defd = dict(
     movdq=dict(clim=(-1e19,1e19),
                linthresh=1e15),
     movrho=dict(clim=(-1e19,1e19),
-                linthresh=1e15),    
+                linthresh=1e15),
+    dump_restart_flag=True,
+    dump_collision_energies_flag=True,
 );
 pbsfmt='{l}um-{I:0.2e}-l={scale:0.3}um'
 def mkpbsbase(d):
@@ -80,7 +82,6 @@ longs = [sd(
 for d in longs:
     mkpbsbase(d);
     gensim(**d);
-    
 ####################################
 # 3um scans
 ####################################
@@ -98,9 +99,9 @@ for E in Es:
         description="3um",
         #test!
         splittime=[
-            (375e-15, None),
-            (575e-15, dict(
-                timestep=0.75e-16)),
+            (210e-15, None),
+            (400e-15, dict(
+                timestep=0.5e-16)),
             (d['T']*3.75, None),
         ],
 
@@ -127,9 +128,9 @@ for E in Es:
                     linthresh=1e15,),
         #test!
         splittime=[
-            (375e-15, None),
-            (575e-15, dict(
-                timestep=0.75e-16)),
+            (266e-15, None),
+            (900e-15, dict(
+                timestep=0.5e-16)),
             (d['T']*3.75, None),
         ],
 
