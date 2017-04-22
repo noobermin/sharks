@@ -31,24 +31,6 @@ x-cells          {xcells}
 ;
 ;
 [Boundaries]
-;back this is the laser
-outlet
-from {xmin:e} {ymin:e} {zmin:e}
-to   {xmin:e} {ymax:e} {zmax:e}
-phase_velocity 1.0
-drive_model LASER
-reference_point {fp} ; focal point position
-components {components}
-phases {phases} ; polarization 1.1781
-temporal_function 1
-analytic_function 2
-time_delay 0.0
-;front (back of the target)
-outlet
-from  {xmax:e} {ymin:e} {zmin:e}
-to    {xmax:e} {ymax:e} {zmax:e}
-phase_velocity 1.0
-drive_model NONE
 {other_outlets}
 
 ;;;;;;;;;;;;;;;;

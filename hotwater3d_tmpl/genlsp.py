@@ -424,6 +424,13 @@ end
         pass;
     return kw;
 
+
+outletdefaults = sd(
+    lspdefaults,
+    lasertfunc=1,
+    laserafunc=2,
+    laser_time_delay=0.0,);
+
 def genoutlets(**kw):
     outlet_tmpl='''
 ;{side}
@@ -432,29 +439,70 @@ from {xf:e}  {yf:e} {zf:e}
 to   {xt:e}  {yt:e} {zt:e}
 phase_velocity 1.0
 drive_model NONE''';
+    laser10_tmpl='''
+;laser
+outlet
+from {xf:e}  {yf:e} {zf:e}
+to   {xt:e}  {yt:e} {zt:e}
+phase_velocity 1.0
+drive_model LASER
+reference_point {fp}
+components {components}
+phases {phases}
+temporal_function {lasertfunc}
+analytic_function {laserafunc}
+time_delay {time_delay}
+'''
     retoutlets = ''
-    if kw['ycells'] > 0:
+    laserkw =  kw['laseroutlet'] if test(kw, 'laseroutlet') else dict();
+    laserkw = sd(kw, **laserkw);
+    getkw = mk_getkw(laserkw,outletdefaults,prefer_passed = True);
+    if not test(laserkw,'nolaser'):
+        retoutlets += laser10_tmpl.format(
+            xf = kw['xmin'], xt = kw['xmin'],
+            yf = kw['ymin'], yt = kw['ymax'],
+            zf = kw['zmin'], zt = kw['zmax'],
+            
+            fp = joinspace(scaletuple(getkw("fp"))),
+            components = joinspace(getkw("components")),
+            phases =  joinspace(getkw("phases")),
+            lasertfunc = getkw('lasertfunc'),
+            laserafunc = getkw('laserafunc'),
+            time_delay = getkw('laser_time_delay'),);
+    else:
         retoutlets += outlet_tmpl.format(
-            side='right',
-            xf = kw['xmin'], xt = kw['xmax'],
-            yf = kw['ymax'], yt = kw['ymax'],
-            zf = kw['zmin'], zt = kw['zmax'],)
+            side='front',
+            xf = kw['xmin'], xt = kw['xmin'],
+            yf = kw['ymin'], yt = kw['ymax'],
+            zf = kw['zmin'], zt = kw['zmax'],);
+    retoutlets += outlet_tmpl.format(
+        side='back',
+        xf = kw['xmax'], xt = kw['xmax'],
+        yf = kw['ymin'], yt = kw['ymax'],
+        zf = kw['zmin'], zt = kw['zmax'],);
+    
+    if kw['ycells'] > 0:
         retoutlets += outlet_tmpl.format(
             side='left',
             xf = kw['xmin'], xt = kw['xmax'],
             yf = kw['ymin'], yt = kw['ymin'],
             zf = kw['zmin'], zt = kw['zmax'],)
-    if kw['zcells'] > 0:
         retoutlets += outlet_tmpl.format(
-            side='top',
+            side='right',
             xf = kw['xmin'], xt = kw['xmax'],
-            yf = kw['ymin'], yt = kw['ymax'],
-            zf = kw['zmax'], zt = kw['zmax'],)
+            yf = kw['ymax'], yt = kw['ymax'],
+            zf = kw['zmin'], zt = kw['zmax'],)
+    if kw['zcells'] > 0:
         retoutlets += outlet_tmpl.format(
             side='bottom',
             xf = kw['xmin'], xt = kw['xmax'],
             yf = kw['ymin'], yt = kw['ymax'],
             zf = kw['zmin'], zt = kw['zmin'],)
+        retoutlets += outlet_tmpl.format(
+            side='top',
+            xf = kw['xmin'], xt = kw['xmax'],
+            yf = kw['ymin'], yt = kw['ymax'],
+            zf = kw['zmax'], zt = kw['zmax'],)
     return retoutlets;
 
 def genlsp(**kw):
@@ -481,9 +529,6 @@ def genlsp(**kw):
     kw['tymin'],kw['tymax']=tymin,tymax
     kw['tzmin'],kw['tzmax']=tzmin,tzmax 
 
-    fmtd['fp'] = joinspace(getkw("fp",scale=1e-4));
-    fmtd['components'] = joinspace(getkw("components"));
-    fmtd['phases'] = joinspace(getkw("phases"));
     l=fmtd['l'] = getkw('l')*100.0
     if test(kw,'resd'):
         xres,yres,zres = getkw("resd");

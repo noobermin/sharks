@@ -91,28 +91,23 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 [Boundaries]
-;back this is the laser
+
+;laser
 outlet
-from -9.000000e-03 -6.000000e-03 0.000000e+00
-to   -9.000000e-03 6.000000e-03 0.000000e+00
+from -9.000000e-03  -6.000000e-03 0.000000e+00
+to   -9.000000e-03  6.000000e-03 0.000000e+00
 phase_velocity 1.0
 drive_model LASER
-reference_point -0.00486224793505 0.0 0.0 ; focal point position
+reference_point -0.00486224793505 0.0 0.0
 components 0 1 0
-phases 0 0 0 ; polarization 1.1781
+phases 0 0 0
 temporal_function 1
 analytic_function 2
 time_delay 0.0
-;front (back of the target)
-outlet
-from  1.000000e-03 -6.000000e-03 0.000000e+00
-to    1.000000e-03 6.000000e-03 0.000000e+00
-phase_velocity 1.0
-drive_model NONE
 
-;right
+;back
 outlet
-from -9.000000e-03  6.000000e-03 0.000000e+00
+from 1.000000e-03  -6.000000e-03 0.000000e+00
 to   1.000000e-03  6.000000e-03 0.000000e+00
 phase_velocity 1.0
 drive_model NONE
@@ -120,6 +115,12 @@ drive_model NONE
 outlet
 from -9.000000e-03  -6.000000e-03 0.000000e+00
 to   1.000000e-03  -6.000000e-03 0.000000e+00
+phase_velocity 1.0
+drive_model NONE
+;right
+outlet
+from -9.000000e-03  6.000000e-03 0.000000e+00
+to   1.000000e-03  6.000000e-03 0.000000e+00
 phase_velocity 1.0
 drive_model NONE
 
