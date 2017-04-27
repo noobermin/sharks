@@ -38,6 +38,7 @@ def mktarget(
 
 d = fromenergy(3e-3,cycles=cycles,l=780e-9);
 d.update(
+    nolaser=True,
     pbsbase='oned_tmpl',
     lim =( -550, 550,   0,0,0,0),
     tlim=( -500, 500,   0,0,0,0),

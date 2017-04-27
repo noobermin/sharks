@@ -209,7 +209,7 @@ density_function 4
 reference_point {targrefx:e} {targrefy:e} {targrefz:e}
 density_flags {dens_flags}
 momentum_flags 0 0 0
-thermal_energy 1
+{O_thermalopts}
 movie_fraction 0.000
 ;
 plasma ; e-
@@ -223,7 +223,7 @@ density_function 3
 reference_point {targrefx:e} {targrefy:e} {targrefz:e}
 density_flags {dens_flags}
 momentum_flags 0 0 0
-thermal_energy 1
+{e_thermalopts}
 movie_fraction 0.050
 ;
 plasma ; p+
@@ -237,7 +237,7 @@ density_function 5
 reference_point {targrefx:e} {targrefy:e} {targrefz:e}
 density_flags {dens_flags}
 momentum_flags 0 0 0
-thermal_energy 1
+{p_thermalopts}
 movie_fraction 0.000
 
 ;; ionization states ;;
@@ -511,6 +511,8 @@ function4 ; Oxygen
 function5 ; Protons
 {n_p}
 ;;
+
+{other_funcs}
 
 [Probes]
 ;

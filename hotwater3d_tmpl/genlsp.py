@@ -75,6 +75,7 @@ lspdefaults = dict(
     dens_type= '30',
     dens_imul= 1.0,
     dens_flags= (True, False, False),
+    energy_flags= (True, False, False),
     speciesl = ['e', 'O', 'p'],
     discrete=(3,3,3),
     description='Hotwater in 2d',
@@ -89,6 +90,9 @@ lspdefaults = dict(
     dump_field=True,
     dump_scalar=True,
     dump_particle=False,
+    #this is bad now...
+    funcnum = 10,#a "global" which holds the number count"
+    other_funcs = '',
 );
 
 ###############
@@ -364,46 +368,98 @@ densdefaults = sd(
     lspdefaults,
     fracs = [1.0, 0.33, 0.67],
 );
-def gendens(**kw):
-    densityfile_tmpl = '''
+densityfile_tmpl = '''
 type {type}
 data_file {targetdat}
 independent_variable_multiplier {imul}
 dependent_variable_multiplier {dmul}
 '''
-    densitypairs_tmpl = '''
+densitypairs_tmpl = '''
 type 0
 data_pairs
 {data}
 end
 '''
+tempdefaults = sd(
+    lspdefaults,
+    thermal_energy = (1.0, 1.0, 1.0),
+    target_temps  = (None, None, None));
+
+thermalopts_tmpl = '''
+thermal_energy {thermal_energy}
+'''
+def gentemp(**kw):
+    getkw = mk_getkw(kw, tempdefaults);
+    speciesl = getkw('speciesl');
+    otherfuncs = '';
+    funcnum = getkw('funcnum');
+    if test(kw,'target_temps'):
+        Q = kw['target_temps'];
+        def process_temp(iq):
+            if not iq: return None;
+            if hasattr(iq, '__call__'):
+                xres = getkw('dat_xres')
+                x = np.linspace(kw['txmin'][0],kw['txmax'][1],xres);
+                iq = iq(x);
+                raise ValueError("Not implemented yet!");
+            elif type(iq) is dict:
+                ret = densityfile_tmpl.format(
+                    targetdat = iq['dat'],
+                    type = iq['type'],
+                    imul = iq['dens_imul'],
+                    dmul = iq['fracs']);
+            return ret;                
+        ss = [ process_temp(iq) for iq in Q ];
+    else:
+        Q = [dict()]*len(speciesl);
+        ss= [None]  *len(speciesl);
+    for iq,species,s,e in zip(Q,speciesl,ss,getkw('thermal_energy')):
+        cur = 'thermal_energy {}\n'.format(e);
+        if s:
+            otherfuncs += "function{}\n".format(funcnum);
+            otherfuncs += s;
+            if 'energy_flags' in iq:
+                energyflags = iq['energy_flags'];
+            else:
+                energyflags = getkw('energy_flags');
+            cur += 'energy_flags {}'.format(
+                joinspace([
+                    1 if i else 0
+                    for i in getkw("dens_flags")]));
+            cur += 'spatial_function {}'.format(funcnum);
+            funcnum += 1;
+        kw['{}_thermalopts'.format(species)] = cur;
+    if otherfuncs != '':
+        if not test(kw, 'other_funcs'):
+            kw['other_funcs'] = ''
+        kw['other_funcs'] += otherfuncs;
+    return kw;
+
+def gendens(**kw):
     getkw = mk_getkw(kw, densdefaults);
     speciesl =  getkw('speciesl');
     if test(kw,'target_density'):
-        dens=kw['target_density'];
-        if type(dens) == tuple:
-            #the reason for tuple and not a general iterable
-            #is when we pass a single scale, for example, which
-            #we scale by fracs
+        Q = kw['target_density'];
+        if type(Q) == tuple:
+        #the reason for tuple and not a general iterable
+        #is when we pass a single scale, for example, which
+        #we scale by fracs
             pass;
         else:
-            if hasattr(dens, '__call__'):
-                dens[:] = [
-                    lambda x: frac*idensf(x)
-                    for frac,idensf in zip(fracs,dens)
-                ];
+            if hasattr(Q[0], '__call__'):
+                Q = [  lambda x: frac*iQf(x)
+                       for frac,iQf in zip(fracs,Q) ];
             else:
-                dens[:] = [
-                    frac*idens
-                    for frac,idens in zip(fracs,dens)
-                ];
-        if hasattr(n_e[0],'__call__'):
+                Q = [ frac*iQ
+                      for frac,iQ in zip(fracs,Q) ];
+        if hasattr(Q[0],'__call__'):
             #invariant: txmin,txmax are in cm.
             x = np.linspace(kw['txmin'][0],kw['txmax'][1],20);
-            dens[:] = [idens(x) for idens in dens];
-        for species,idens in zip(speciesl,dens):
-            kw['n_' + species] = densitypairs_tmpl.format(
-                data = idens)
+            Q[:] = [iQ(x) for iQ in Q];
+        ret = {
+            outputfmt.format(species) : densitypairs_tmpl.format(data = iQ)
+            for species,iQ in zip(speciesl,Q) };
+        kw.update(ret)
     else:
         kw['dens_dat'] = getkw('dens_dat');
         kw['dens_imul'] = getkw('dens_imul');
@@ -569,8 +625,11 @@ z-cells          {zcells}'''.format(zmin=zmin,zmax=zmax,zcells=zcells);
         print("warning: timestep exceeds couraunt limit\n");
     #target
     kw = gendens(**kw);
+    kw = gentemp(**kw);
     for species in getkw('speciesl'):
-        l = 'n_'+species;
+        l = 'n_'+species;        
+        fmtd[l] = kw[l];
+        l = '{}_thermalopts'.format(species);
         fmtd[l] = kw[l];
     fmtd['discrete']  = joinspace(getkw("discrete"));
     fmtd['dens_flags']= joinspace([
@@ -594,6 +653,7 @@ particle_movie_components Q X Y Z VX VY VZ XI YI ZI
 '''.format(dumpinterval=fmtd['dumpinterval']);
     else:
         pmovies = '';
+    fmtd['other_funcs'] = getkw('other_funcs');
     lsptemplate=getkw("lsptemplate");
     with open(lsptemplate) as f:
         s=f.read();
