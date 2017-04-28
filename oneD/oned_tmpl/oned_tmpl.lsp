@@ -278,7 +278,8 @@ density_function 4
 reference_point -5.000000e-02 0.000000e+00 0.000000e+00
 density_flags 1 0 0
 momentum_flags 0 0 0
-thermal_energy 1
+thermal_energy 1.0
+
 movie_fraction 0.000
 ;
 plasma ; e-
@@ -292,7 +293,10 @@ density_function 3
 reference_point -5.000000e-02 0.000000e+00 0.000000e+00
 density_flags 1 0 0
 momentum_flags 0 0 0
-thermal_energy 1
+thermal_energy 1.0
+energy_flags 1 0 0
+spatial_function 10
+
 movie_fraction 0.050
 ;
 plasma ; p+
@@ -306,7 +310,8 @@ density_function 5
 reference_point -5.000000e-02 0.000000e+00 0.000000e+00
 density_flags 1 0 0
 momentum_flags 0 0 0
-thermal_energy 1
+thermal_energy 1.0
+
 movie_fraction 0.000
 
 ;; ionization states ;;
@@ -631,6 +636,14 @@ independent_variable_multiplier 1.0
 dependent_variable_multiplier 0.67
 
 ;;
+
+function10
+
+type 30
+data_file temp.dat
+independent_variable_multiplier 1.0
+dependent_variable_multiplier 1.0
+
 
 [Probes]
 ;

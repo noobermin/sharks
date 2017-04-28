@@ -384,10 +384,14 @@ tempdefaults = sd(
     lspdefaults,
     thermal_energy = (1.0, 1.0, 1.0),
     target_temps  = (None, None, None));
+species_tempdefault = dict(
+    dat  = 'temp.dat',
+    type = '30',
+    imul = 1.0,
+    frac = 1.0,
+    energy_flags = (True, False, False),
+);
 
-thermalopts_tmpl = '''
-thermal_energy {thermal_energy}
-'''
 def gentemp(**kw):
     getkw = mk_getkw(kw, tempdefaults);
     speciesl = getkw('speciesl');
@@ -403,11 +407,12 @@ def gentemp(**kw):
                 iq = iq(x);
                 raise ValueError("Not implemented yet!");
             elif type(iq) is dict:
+                _getkw = mk_getkw(iq, species_tempdefault);
                 ret = densityfile_tmpl.format(
-                    targetdat = iq['dat'],
-                    type = iq['type'],
-                    imul = iq['dens_imul'],
-                    dmul = iq['fracs']);
+                    targetdat = _getkw('dat'),
+                    type = _getkw('type'),
+                    imul = _getkw('imul'),
+                    dmul = _getkw('frac'));
             return ret;                
         ss = [ process_temp(iq) for iq in Q ];
     else:
@@ -422,11 +427,11 @@ def gentemp(**kw):
                 energyflags = iq['energy_flags'];
             else:
                 energyflags = getkw('energy_flags');
-            cur += 'energy_flags {}'.format(
+            cur += 'energy_flags {}\n'.format(
                 joinspace([
                     1 if i else 0
                     for i in getkw("dens_flags")]));
-            cur += 'spatial_function {}'.format(funcnum);
+            cur += 'spatial_function {}\n'.format(funcnum);
             funcnum += 1;
         kw['{}_thermalopts'.format(species)] = cur;
     if otherfuncs != '':

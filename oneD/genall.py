@@ -63,7 +63,9 @@ d.update(
     movdq=dict(clim=(-1e19,1e19),
                linthresh=1e15),
     movrho=dict(clim=(-1e19,1e19),
-                linthresh=1e15),    
+                linthresh=1e15),
+    target_temps = (
+        dict(dat="temp.dat"), None, None),
 
 );
 gensim(**d);

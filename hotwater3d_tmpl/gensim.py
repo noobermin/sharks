@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from genlsp import genlsp,lspdefaults,scaletuple;
 from genpbs import genpbs,gen_mov,pbsdefaults,mov_defaults,mk_hpcmp_pbses;
-from gendat import gentargetdat,genonescale,datdefaults;
+from gendat import gendats,gendat,genonescale,datdefaults;
 import re;
 import os,stat;
 from pys import sd,test,mk_getkw,take,takef
@@ -125,18 +125,20 @@ def gensim(**kw):
             # if getkw('fp') != 'nc':
             #     fpx += getkw('fp');
             # kw['fp'] = (fpx,0.0,0.0);
-    elif test(kw,'externalf_1D'):
+    elif (test(kw,'externalf_1D') and test(kw, 'f_1D')) or (test(kw,'externalf_2D') and test(kw, 'f_2D')):
+        if not test(kw, 'dats'): kw['dats']=[];
         tlim = getkw('tlim');
-        kwp = sd(kw, tlim=(0, tlim[1]-tlim[0], 0,0, 0,0))
-        dens = gentargetdat(**kwp);
+        kwp = sd(kw,
+                 tlim=(0, tlim[1]-tlim[0], 0,0, 0,0),);
         if not test(kw, 'dens_dat'):
             kw['dens_dat'] = "watercolumn.dat";
-        files.append((kw['dens_dat'], dens));
-    elif test(kw,'f_2D') or test(kw,'data2D'):
-        dens = gentargetdat(**kw);
-        if not test(kw, 'dens_dat'):
-            kw['dens_dat'] = "watercolumn.dat";
-        files.append((kw['dens_dat'], dens));
+        kw['dats'] += [(kw['dens_dat'], kwp)]
+    if test(kw, 'dats'):
+        files.extend([
+            (fname, gendat(**sd(kw,**dat)))
+            for fname,dat in kw['dats']
+        ]);
+
     #
     # movies
     #
