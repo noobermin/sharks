@@ -43,16 +43,16 @@ spatial_skip_y 1
 spatial_skip_z 1
 
 dump_fields_flag ON
-field_dump_interval_ns 3e-08
+field_dump_interval_ns 6e-07
 dump_scalars_flag ON
-scalar_dump_interval_ns 3e-08
+scalar_dump_interval_ns 6e-07
 dump_particles_flag ON
 particle_dump_interval_ns 0.0
 particle_dump_times_ns 0.00011 0.00014 end
 
 ;;pmovies
 
-particle_movie_interval_ns 3e-08
+particle_movie_interval_ns 6e-07
 particle_movie_components Q X Y Z VX VY VZ XI YI ZI
 
 
@@ -187,27 +187,23 @@ number_of_cells AUTO ; cells = 0
 ;
 [Boundaries]
 ;back this is the laser
+
+;laser
 outlet
-from -7.000000e-04 -7.000000e-04 0.000000e+00
-to   -7.000000e-04 7.000000e-04 0.000000e+00
+from -7.000000e-04  -7.000000e-04 0.000000e+00
+to   -7.000000e-04  7.000000e-04 0.000000e+00
 phase_velocity 1.0
 drive_model LASER
-reference_point -0.0005 0.0 0.0 ; focal point position
+reference_point -0.001 0.0 0.0
 components 0 1 0
-phases 0 0 0 ; polarization 1.1781
+phases 0 0 0
 temporal_function 1
 analytic_function 2
 time_delay 0.0
-;front (back of the target)
-outlet
-from  7.000000e-04 -7.000000e-04 0.000000e+00
-to    7.000000e-04 7.000000e-04 0.000000e+00
-phase_velocity 1.0
-drive_model NONE
 
-;right
+;back
 outlet
-from -7.000000e-04  7.000000e-04 0.000000e+00
+from 7.000000e-04  -7.000000e-04 0.000000e+00
 to   7.000000e-04  7.000000e-04 0.000000e+00
 phase_velocity 1.0
 drive_model NONE
@@ -215,6 +211,12 @@ drive_model NONE
 outlet
 from -7.000000e-04  -7.000000e-04 0.000000e+00
 to   7.000000e-04  -7.000000e-04 0.000000e+00
+phase_velocity 1.0
+drive_model NONE
+;right
+outlet
+from -7.000000e-04  7.000000e-04 0.000000e+00
+to   7.000000e-04  7.000000e-04 0.000000e+00
 phase_velocity 1.0
 drive_model NONE
 
@@ -494,7 +496,8 @@ density_function 4
 reference_point -5.000000e-04 -5.000000e-04 0.000000e+00
 density_flags 1 1 0
 momentum_flags 0 0 0
-thermal_energy 1
+thermal_energy 1.0
+
 movie_fraction 0.000
 ;
 plasma ; C+
@@ -508,7 +511,8 @@ density_function 5
 reference_point -5.000000e-04 -5.000000e-04 0.000000e+00
 density_flags 1 1 0
 momentum_flags 0 0 0
-thermal_energy 1
+thermal_energy 1.0
+
 movie_fraction 0.000
 ;
 
@@ -523,7 +527,8 @@ density_function 3
 reference_point -5.000000e-04 -5.000000e-04 0.000000e+00
 density_flags 1 1 0
 momentum_flags 0 0 0
-thermal_energy 1
+thermal_energy 1.0
+
 movie_fraction 0.050
 ;
 plasma ; p+
@@ -537,7 +542,8 @@ density_function 6
 reference_point -5.000000e-04 -5.000000e-04 0.000000e+00
 density_flags 1 1 0
 momentum_flags 0 0 0
-thermal_energy 1
+thermal_energy 1.0
+
 movie_fraction 0.000
 
 ;; ionization states ;;

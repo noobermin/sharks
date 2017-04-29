@@ -31,24 +31,6 @@ x-cells          {xcells}
 ;
 ;
 [Boundaries]
-;back this is the laser
-outlet
-from {xmin:e} {ymin:e} {zmin:e}
-to   {xmin:e} {ymax:e} {zmax:e}
-phase_velocity 1.0
-drive_model LASER
-reference_point {fp} ; focal point position
-components {components}
-phases {phases} ; polarization 1.1781
-temporal_function 1
-analytic_function 2
-time_delay 0.0
-;front (back of the target)
-outlet
-from  {xmax:e} {ymin:e} {zmin:e}
-to    {xmax:e} {ymax:e} {zmax:e}
-phase_velocity 1.0
-drive_model NONE
 {other_outlets}
 
 ;;;;;;;;;;;;;;;;
@@ -227,7 +209,7 @@ density_function 4
 reference_point {targrefx:e} {targrefy:e} {targrefz:e}
 density_flags {dens_flags}
 momentum_flags 0 0 0
-thermal_energy 1
+{O_thermalopts}
 movie_fraction 0.000
 ;
 plasma ; e-
@@ -241,7 +223,7 @@ density_function 3
 reference_point {targrefx:e} {targrefy:e} {targrefz:e}
 density_flags {dens_flags}
 momentum_flags 0 0 0
-thermal_energy 1
+{e_thermalopts}
 movie_fraction 0.050
 ;
 plasma ; p+
@@ -255,7 +237,7 @@ density_function 5
 reference_point {targrefx:e} {targrefy:e} {targrefz:e}
 density_flags {dens_flags}
 momentum_flags 0 0 0
-thermal_energy 1
+{p_thermalopts}
 movie_fraction 0.000
 
 ;; ionization states ;;
@@ -529,6 +511,8 @@ function4 ; Oxygen
 function5 ; Protons
 {n_p}
 ;;
+
+{other_funcs}
 
 [Probes]
 ;

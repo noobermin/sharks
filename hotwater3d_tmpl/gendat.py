@@ -27,7 +27,10 @@ datdefaults = {
     'unit' : 1e-4,
     'dat_xres'  : 100,
 };
-def gentargetdat(**kw):
+def gendats(ds,**kw):
+    return [ gendat(**sd(kw, d))
+             for d in ds ];
+def gendat(**kw):
     getkw=mk_getkw(kw,datdefaults);
     res = getkw('dat_xres');
     unit=getkw('unit');
@@ -127,4 +130,4 @@ def genonescale(**kw):
         tlim=(0.0, xlen) + (0.0,0.0,0.0,0.0),
         sdim= (xlen-slen, xlen) + (0.0,0.0,0.0,0.0));
     kw1['f_1D']= genf(**kw1)
-    return gentargetdat(**kw1);
+    return gendat(**kw1);

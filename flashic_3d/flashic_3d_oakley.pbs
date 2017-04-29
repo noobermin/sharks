@@ -16,7 +16,7 @@ echo $HOSTNAME > $PBS_O_WORKDIR/hostname.txt
 cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/nodesfile.txt
 
 
-cd $PBS_O_WORKDIR
+cd "$PBS_O_WORKDIR"
 
 
 mpiexec -n 1000 ./lsp-10-3d $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt

@@ -75,6 +75,7 @@ lspdefaults = dict(
     dens_type= '30',
     dens_imul= 1.0,
     dens_flags= (True, False, False),
+    energy_flags= (True, False, False),
     speciesl = ['e', 'O', 'p'],
     discrete=(3,3,3),
     description='Hotwater in 2d',
@@ -89,6 +90,9 @@ lspdefaults = dict(
     dump_field=True,
     dump_scalar=True,
     dump_particle=False,
+    #this is bad now...
+    funcnum = 10,#a "global" which holds the number count"
+    other_funcs = '',
 );
 
 ###############
@@ -140,6 +144,7 @@ dump_opts = dict(
     montecarlo_diagnostics=None,
     number_densities=True,
     plasma_quantities=True,
+    temperatures=None,
     potential=None,
     velocities=None,
 );
@@ -174,7 +179,7 @@ def genoptions(**kw):
     if test(kw,"options"):
         kw = sd(kw,kw['options']);
     #quirks
-    getkw_outer = mk_getkw(kw,lspdefaults);
+    getkw_outer = mk_getkw(kw,lspdefaults,prefer_passed=True);
     kw['maximum_restart_dump_time'] = getkw_outer('restart')
     def genopt(k,getkw=getkw_outer,flag=False):
         if not flag: flag = k;
@@ -184,7 +189,6 @@ def genoptions(**kw):
                 i*=1e9;
             else:
                 scaletuple(i,1e9);
-            
         if i is None or i is ():
             return "";
         elif i is True:
@@ -197,7 +201,7 @@ def genoptions(**kw):
             return "{} {} end\n".format(flag,joinspace(i));
     def genopts(opts):
         title,opts = opts;
-        getkw = mk_getkw(kw,opts);
+        getkw = mk_getkw(kw,opts,prefer_passed=True);
         tmpl=";;{}\n{}\n"
         all_opts = "".join([
             genopt(k,getkw) for k in sorted(opts.keys()) ]);
@@ -364,46 +368,103 @@ densdefaults = sd(
     lspdefaults,
     fracs = [1.0, 0.33, 0.67],
 );
-def gendens(**kw):
-    densityfile_tmpl = '''
+densityfile_tmpl = '''
 type {type}
 data_file {targetdat}
 independent_variable_multiplier {imul}
 dependent_variable_multiplier {dmul}
 '''
-    densitypairs_tmpl = '''
+densitypairs_tmpl = '''
 type 0
 data_pairs
 {data}
 end
 '''
+tempdefaults = sd(
+    lspdefaults,
+    thermal_energy = (1.0, 1.0, 1.0),
+    target_temps  = (None, None, None));
+species_tempdefault = dict(
+    dat  = 'temp.dat',
+    type = '30',
+    imul = 1.0,
+    frac = 1.0,
+    energy_flags = (True, False, False),
+);
+
+def gentemp(**kw):
+    getkw = mk_getkw(kw, tempdefaults);
+    speciesl = getkw('speciesl');
+    otherfuncs = '';
+    funcnum = getkw('funcnum');
+    if test(kw,'target_temps'):
+        Q = kw['target_temps'];
+        def process_temp(iq):
+            if not iq: return None;
+            if hasattr(iq, '__call__'):
+                xres = getkw('dat_xres')
+                x = np.linspace(kw['txmin'][0],kw['txmax'][1],xres);
+                iq = iq(x);
+                raise ValueError("Not implemented yet!");
+            elif type(iq) is dict:
+                _getkw = mk_getkw(iq, species_tempdefault);
+                ret = densityfile_tmpl.format(
+                    targetdat = _getkw('dat'),
+                    type = _getkw('type'),
+                    imul = _getkw('imul'),
+                    dmul = _getkw('frac'));
+            return ret;                
+        ss = [ process_temp(iq) for iq in Q ];
+    else:
+        Q = [dict()]*len(speciesl);
+        ss= [None]  *len(speciesl);
+    for iq,species,s,e in zip(Q,speciesl,ss,getkw('thermal_energy')):
+        cur = 'thermal_energy {}\n'.format(e);
+        if s:
+            otherfuncs += "function{}\n".format(funcnum);
+            otherfuncs += s;
+            # if 'energy_flags' in iq:
+            #     energyflags = iq['energy_flags'];
+            # else:
+            #     energyflags = getkw('energy_flags');
+            cur += 'spatial_function {}\n'.format(funcnum);
+            # cur += 'energy_flags {}\n'.format(
+            #     joinspace([
+            #         1 if i else 0
+            #         for i in getkw("dens_flags")]));
+            funcnum += 1;
+        kw['{}_thermalopts'.format(species)] = cur;
+    if otherfuncs != '':
+        if not test(kw, 'other_funcs'):
+            kw['other_funcs'] = ''
+        kw['other_funcs'] += otherfuncs;
+    return kw;
+
+def gendens(**kw):
     getkw = mk_getkw(kw, densdefaults);
     speciesl =  getkw('speciesl');
     if test(kw,'target_density'):
-        dens=kw['target_density'];
-        if type(dens) == tuple:
-            #the reason for tuple and not a general iterable
-            #is when we pass a single scale, for example, which
-            #we scale by fracs
+        Q = kw['target_density'];
+        if type(Q) == tuple:
+        #the reason for tuple and not a general iterable
+        #is when we pass a single scale, for example, which
+        #we scale by fracs
             pass;
         else:
-            if hasattr(dens, '__call__'):
-                dens[:] = [
-                    lambda x: frac*idensf(x)
-                    for frac,idensf in zip(fracs,dens)
-                ];
+            if hasattr(Q[0], '__call__'):
+                Q = [  lambda x: frac*iQf(x)
+                       for frac,iQf in zip(fracs,Q) ];
             else:
-                dens[:] = [
-                    frac*idens
-                    for frac,idens in zip(fracs,dens)
-                ];
-        if hasattr(n_e[0],'__call__'):
+                Q = [ frac*iQ
+                      for frac,iQ in zip(fracs,Q) ];
+        if hasattr(Q[0],'__call__'):
             #invariant: txmin,txmax are in cm.
             x = np.linspace(kw['txmin'][0],kw['txmax'][1],20);
-            dens[:] = [idens(x) for idens in dens];
-        for species,idens in zip(speciesl,dens):
-            kw['n_' + species] = densitypairs_tmpl.format(
-                data = idens)
+            Q[:] = [iQ(x) for iQ in Q];
+        ret = {
+            outputfmt.format(species) : densitypairs_tmpl.format(data = iQ)
+            for species,iQ in zip(speciesl,Q) };
+        kw.update(ret)
     else:
         kw['dens_dat'] = getkw('dens_dat');
         kw['dens_imul'] = getkw('dens_imul');
@@ -424,6 +485,13 @@ end
         pass;
     return kw;
 
+
+outletdefaults = sd(
+    lspdefaults,
+    lasertfunc=1,
+    laserafunc=2,
+    laser_time_delay=0.0,);
+
 def genoutlets(**kw):
     outlet_tmpl='''
 ;{side}
@@ -432,29 +500,70 @@ from {xf:e}  {yf:e} {zf:e}
 to   {xt:e}  {yt:e} {zt:e}
 phase_velocity 1.0
 drive_model NONE''';
+    laser10_tmpl='''
+;laser
+outlet
+from {xf:e}  {yf:e} {zf:e}
+to   {xt:e}  {yt:e} {zt:e}
+phase_velocity 1.0
+drive_model LASER
+reference_point {fp}
+components {components}
+phases {phases}
+temporal_function {lasertfunc}
+analytic_function {laserafunc}
+time_delay {time_delay}
+'''
     retoutlets = ''
-    if kw['ycells'] > 0:
+    laserkw =  kw['laseroutlet'] if test(kw, 'laseroutlet') else dict();
+    laserkw = sd(kw, **laserkw);
+    getkw = mk_getkw(laserkw,outletdefaults,prefer_passed = True);
+    if not test(laserkw,'nolaser'):
+        retoutlets += laser10_tmpl.format(
+            xf = kw['xmin'], xt = kw['xmin'],
+            yf = kw['ymin'], yt = kw['ymax'],
+            zf = kw['zmin'], zt = kw['zmax'],
+            
+            fp = joinspace(scaletuple(getkw("fp"))),
+            components = joinspace(getkw("components")),
+            phases =  joinspace(getkw("phases")),
+            lasertfunc = getkw('lasertfunc'),
+            laserafunc = getkw('laserafunc'),
+            time_delay = getkw('laser_time_delay'),);
+    else:
         retoutlets += outlet_tmpl.format(
-            side='right',
-            xf = kw['xmin'], xt = kw['xmax'],
-            yf = kw['ymax'], yt = kw['ymax'],
-            zf = kw['zmin'], zt = kw['zmax'],)
+            side='front',
+            xf = kw['xmin'], xt = kw['xmin'],
+            yf = kw['ymin'], yt = kw['ymax'],
+            zf = kw['zmin'], zt = kw['zmax'],);
+    retoutlets += outlet_tmpl.format(
+        side='back',
+        xf = kw['xmax'], xt = kw['xmax'],
+        yf = kw['ymin'], yt = kw['ymax'],
+        zf = kw['zmin'], zt = kw['zmax'],);
+    
+    if kw['ycells'] > 0:
         retoutlets += outlet_tmpl.format(
             side='left',
             xf = kw['xmin'], xt = kw['xmax'],
             yf = kw['ymin'], yt = kw['ymin'],
             zf = kw['zmin'], zt = kw['zmax'],)
-    if kw['zcells'] > 0:
         retoutlets += outlet_tmpl.format(
-            side='top',
+            side='right',
             xf = kw['xmin'], xt = kw['xmax'],
-            yf = kw['ymin'], yt = kw['ymax'],
-            zf = kw['zmax'], zt = kw['zmax'],)
+            yf = kw['ymax'], yt = kw['ymax'],
+            zf = kw['zmin'], zt = kw['zmax'],)
+    if kw['zcells'] > 0:
         retoutlets += outlet_tmpl.format(
             side='bottom',
             xf = kw['xmin'], xt = kw['xmax'],
             yf = kw['ymin'], yt = kw['ymax'],
             zf = kw['zmin'], zt = kw['zmin'],)
+        retoutlets += outlet_tmpl.format(
+            side='top',
+            xf = kw['xmin'], xt = kw['xmax'],
+            yf = kw['ymin'], yt = kw['ymax'],
+            zf = kw['zmax'], zt = kw['zmax'],)
     return retoutlets;
 
 def genlsp(**kw):
@@ -481,9 +590,6 @@ def genlsp(**kw):
     kw['tymin'],kw['tymax']=tymin,tymax
     kw['tzmin'],kw['tzmax']=tzmin,tzmax 
 
-    fmtd['fp'] = joinspace(getkw("fp",scale=1e-4));
-    fmtd['components'] = joinspace(getkw("components"));
-    fmtd['phases'] = joinspace(getkw("phases"));
     l=fmtd['l'] = getkw('l')*100.0
     if test(kw,'resd'):
         xres,yres,zres = getkw("resd");
@@ -524,8 +630,11 @@ z-cells          {zcells}'''.format(zmin=zmin,zmax=zmax,zcells=zcells);
         print("warning: timestep exceeds couraunt limit\n");
     #target
     kw = gendens(**kw);
+    kw = gentemp(**kw);
     for species in getkw('speciesl'):
-        l = 'n_'+species;
+        l = 'n_'+species;        
+        fmtd[l] = kw[l];
+        l = '{}_thermalopts'.format(species);
         fmtd[l] = kw[l];
     fmtd['discrete']  = joinspace(getkw("discrete"));
     fmtd['dens_flags']= joinspace([
@@ -549,6 +658,7 @@ particle_movie_components Q X Y Z VX VY VZ XI YI ZI
 '''.format(dumpinterval=fmtd['dumpinterval']);
     else:
         pmovies = '';
+    fmtd['other_funcs'] = getkw('other_funcs');
     lsptemplate=getkw("lsptemplate");
     with open(lsptemplate) as f:
         s=f.read();

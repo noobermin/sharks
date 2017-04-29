@@ -91,28 +91,23 @@ number_of_cells AUTO ; cells = 0
 ;
 ;
 [Boundaries]
-;back this is the laser
+
+;laser
 outlet
-from -5.000000e-03 -1.200000e-02 0.000000e+00
-to   -5.000000e-03 1.200000e-02 0.000000e+00
+from -5.000000e-03  -1.200000e-02 0.000000e+00
+to   -5.000000e-03  1.200000e-02 0.000000e+00
 phase_velocity 1.0
 drive_model LASER
-reference_point -0.002365242431 0.0 0.0 ; focal point position
+reference_point -0.002365242431 0.0 0.0
 components 0 1 0
-phases 0 0 0 ; polarization 1.1781
+phases 0 0 0
 temporal_function 1
 analytic_function 2
 time_delay 0.0
-;front (back of the target)
-outlet
-from  1.000000e-03 -1.200000e-02 0.000000e+00
-to    1.000000e-03 1.200000e-02 0.000000e+00
-phase_velocity 1.0
-drive_model NONE
 
-;right
+;back
 outlet
-from -5.000000e-03  1.200000e-02 0.000000e+00
+from 1.000000e-03  -1.200000e-02 0.000000e+00
 to   1.000000e-03  1.200000e-02 0.000000e+00
 phase_velocity 1.0
 drive_model NONE
@@ -120,6 +115,12 @@ drive_model NONE
 outlet
 from -5.000000e-03  -1.200000e-02 0.000000e+00
 to   1.000000e-03  -1.200000e-02 0.000000e+00
+phase_velocity 1.0
+drive_model NONE
+;right
+outlet
+from -5.000000e-03  1.200000e-02 0.000000e+00
+to   1.000000e-03  1.200000e-02 0.000000e+00
 phase_velocity 1.0
 drive_model NONE
 
@@ -299,7 +300,8 @@ density_function 4
 reference_point -4.000000e-03 -1.100000e-02 0.000000e+00
 density_flags 1 0 0
 momentum_flags 0 0 0
-thermal_energy 1
+thermal_energy 1.0
+
 movie_fraction 0.000
 ;
 plasma ; e-
@@ -313,7 +315,8 @@ density_function 3
 reference_point -4.000000e-03 -1.100000e-02 0.000000e+00
 density_flags 1 0 0
 momentum_flags 0 0 0
-thermal_energy 1
+thermal_energy 1.0
+
 movie_fraction 0.050
 ;
 plasma ; p+
@@ -327,7 +330,8 @@ density_function 5
 reference_point -4.000000e-03 -1.100000e-02 0.000000e+00
 density_flags 1 0 0
 momentum_flags 0 0 0
-thermal_energy 1
+thermal_energy 1.0
+
 movie_fraction 0.000
 
 ;; ionization states ;;
@@ -652,6 +656,8 @@ independent_variable_multiplier 1.0
 dependent_variable_multiplier 0.67
 
 ;;
+
+
 
 [Probes]
 ;
