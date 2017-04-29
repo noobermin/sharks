@@ -5,11 +5,17 @@ simulation_title "Flash to LSP as IC in 3D, I = 3.000000e+18 W/cm^2"
 ;Time-advance
  time_limit   3.5000e-04
  time_step_ns 1.0000e-07
-;Restart
+
+;;Restarts
+dump_restart_flag OFF
 maximum_restart_dump_time 23.5
-;Parallel Processing
- balance_interval_ns 0
- load_balance_flag OFF
+rename_restart_flag ON
+
+;;Load Balancing
+balance_interval 0.0
+balance_interval_ns 0.0
+load_balance_flag OFF
+
 ;Field Solution and Modification
  time_bias_coefficient 0
  time_bias_iterations 1
@@ -24,42 +30,28 @@ maximum_restart_dump_time 23.5
  fluid_electron_streaming_factor 0.1
  fluid_ion_streaming_factor 0.01 ;Tony insists this is 0.01 instead of 0.005
  flux_limit_fraction 0.2
-;(Diagnostic Output) Flags
- dump_current_density_flag OFF
- dump_fields_flag ON
- dump_scalars_flag ON
- dump_plasma_quantities_flag ON
- dump_velocities_flag OFF
- dump_particles_flag OFF
- dump_number_densities_flag ON
- ;dump_time_zero_flag ON ; dump the results of the 'zeroth' time step...does it actually start?
- extract_photons_flag OFF
- dump_particles_flag OFF
-;(Diagnostic Output) Dump Intervals
- dump_interval_ns 5.000000000000001e-07
- dump_steps
-1 
-end
- spatial_skip_x 1
- spatial_skip_y 1
- spatial_skip_z 1
- probe_interval 1
-;(Diagnostic Output) Formats
- photon_output_format ASCII
- target_output_format ASCII
- use_its_format_flag OFF
- print_region_flag OFF
-;(Diagnostic Output) Movie Controls
-;particle_movie_interval_ns 5.000000000000001e-07
-;particle_movie_components Q X Y Z VX VY VZ XI YI ZI
+
+;;Kinematics
+plasma_frequency_limit 2.0
+
+;;Diagnostic Dumps
+dump_number_densities_flag ON
+dump_plasma_quantities_flag ON
+probe_interval 1
+spatial_skip_x 1
+spatial_skip_y 1
+spatial_skip_z 1
+
+dump_fields_flag ON
+field_dump_interval_ns 5.000000000000001e-07
+dump_scalars_flag ON
+scalar_dump_interval_ns 5.000000000000001e-07
+
+;;pmovies
 
 particle_movie_interval_ns 5.000000000000001e-07
 particle_movie_components Q X Y Z VX VY VZ XI YI ZI
 
-;Numerical Checks and Reports
- domain_boundary_check ON
- report_timing_flag ON
- dump_timing_flag ON
 ;
 [Grid]
 ;
@@ -1108,28 +1100,23 @@ number_of_cells AUTO ; cells = 850000
 ;
 ;
 [Boundaries]
-;back this is the laser
+
+;laser
 outlet
-from -4.100000e-03 -1.700000e-03 -1.700000e-03
-to   -4.100000e-03 1.700000e-03 1.700000e-03
+from -4.100000e-03  -1.700000e-03 -1.700000e-03
+to   -4.100000e-03  1.700000e-03 1.700000e-03
 phase_velocity 1.0
 drive_model LASER
-reference_point 0.0 0.0 0.0 ; focal point position
+reference_point 0.0 0.0 0.0
 components 0 1 0
-phases 0 0 0 ; polarization 1.1781
+phases 0 0 0
 temporal_function 1
 analytic_function 2
 time_delay 0.0
-;front (back of the target)
-outlet
-from  9.000000e-04 -1.700000e-03 -1.700000e-03
-to    9.000000e-04 1.700000e-03 1.700000e-03
-phase_velocity 1.0
-drive_model NONE
 
-;right
+;back
 outlet
-from -4.100000e-03  1.700000e-03 -1.700000e-03
+from 9.000000e-04  -1.700000e-03 -1.700000e-03
 to   9.000000e-04  1.700000e-03 1.700000e-03
 phase_velocity 1.0
 drive_model NONE
@@ -1139,9 +1126,9 @@ from -4.100000e-03  -1.700000e-03 -1.700000e-03
 to   9.000000e-04  -1.700000e-03 1.700000e-03
 phase_velocity 1.0
 drive_model NONE
-;top
+;right
 outlet
-from -4.100000e-03  -1.700000e-03 1.700000e-03
+from -4.100000e-03  1.700000e-03 -1.700000e-03
 to   9.000000e-04  1.700000e-03 1.700000e-03
 phase_velocity 1.0
 drive_model NONE
@@ -1149,6 +1136,12 @@ drive_model NONE
 outlet
 from -4.100000e-03  -1.700000e-03 -1.700000e-03
 to   9.000000e-04  1.700000e-03 -1.700000e-03
+phase_velocity 1.0
+drive_model NONE
+;top
+outlet
+from -4.100000e-03  -1.700000e-03 1.700000e-03
+to   9.000000e-04  1.700000e-03 1.700000e-03
 phase_velocity 1.0
 drive_model NONE
 
@@ -1328,7 +1321,8 @@ density_function 4
 reference_point 0.000000e+00 0.000000e+00 0.000000e+00
 density_flags 1 1 1
 momentum_flags 0 0 0
-thermal_energy 1
+thermal_energy 1.0
+
 movie_fraction 0.000
 ;
 plasma ; e-
@@ -1342,7 +1336,8 @@ density_function 3
 reference_point 0.000000e+00 0.000000e+00 0.000000e+00
 density_flags 1 1 1
 momentum_flags 0 0 0
-thermal_energy 1
+thermal_energy 1.0
+
 movie_fraction 0.050
 ;
 plasma ; p+
@@ -1356,7 +1351,8 @@ density_function 5
 reference_point 0.000000e+00 0.000000e+00 0.000000e+00
 density_flags 1 1 1
 momentum_flags 0 0 0
-thermal_energy 1
+thermal_energy 1.0
+
 movie_fraction 0.000
 
 ;; ionization states ;;
@@ -1699,6 +1695,8 @@ independent_variable_multiplier 1.0
 dependent_variable_multiplier 0.67
 
 ;;
+
+
 
 [Probes]
 ;
