@@ -18,7 +18,7 @@ def mksim(E,l,fn,cy,
           yresd=30,
           long_resd=30,
           margin=15.0,
-          timemul='default'
+          timemul='default',
           fmtadd='',):
     scale = 1.5;
     d = fromenergy(
