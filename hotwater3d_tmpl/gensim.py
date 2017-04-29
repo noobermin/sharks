@@ -128,17 +128,17 @@ def gensim(**kw):
     elif (test(kw,'externalf_1D') and test(kw, 'f_1D')) or (test(kw,'externalf_2D') and test(kw, 'f_2D')):
         if not test(kw, 'dats'): kw['dats']=[];
         tlim = getkw('tlim');
-        kwp = sd(kw,
-                 tlim=(0, tlim[1]-tlim[0], 0,0, 0,0),);
+        if not test(kw, 'new_exteralf'):
+            kwp = sd(kw,
+                     tlim=(0, tlim[1]-tlim[0], 0,0, 0,0),);
         if not test(kw, 'dens_dat'):
             kw['dens_dat'] = "watercolumn.dat";
-        kw['dats'] += [(kw['dens_dat'], kwp)]
+        kw['dats'] += [(kw['dens_dat'], kwp)];
     if test(kw, 'dats'):
         files.extend([
             (fname, gendat(**sd(kw,**dat)))
             for fname,dat in kw['dats']
         ]);
-
     #
     # movies
     #

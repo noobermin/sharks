@@ -22,8 +22,8 @@ def mkpbsbase(d):
         l=l,I=d['I'],scale=d['expf']);
 
 def mktarget(
-        xdim=(0.0,0.1),
-        sdim=(0.0485,0.0515),
+        xdim=(-0.05,   0.05),
+        sdim=(-0.0015, 0.0015),
         solid=3e22,
         sh = 7e17):
     @np.vectorize
@@ -39,16 +39,20 @@ def mktarget(
 d = fromenergy(3e-3,cycles=cycles,l=780e-9);
 d.update(
     nolaser=True,
-    pbsbase='oned_tmpl',
+    pbsbase='oned_test',
     lim =( -550, 550,   0,0,0,0),
     tlim=( -500, 500,   0,0,0,0),
     res =( 1100*100, 0, 0),
     lspexec='lsp-10-x',
     fp=(0,0,0),
+    tref=(0.0,0.0,0.0),
     #target
     dens_dat='target.dat',
     externalf_1D=True,
+    new_externalf=True,
     f_1D=mktarget(),
+    dats=[
+        ('temp.dat', dict(f_1D=mktarget(sh=1, solid=500)))],
     dat_xres=1000,
     timestep = 1e-16,
     dumpinterval=5e-15,
@@ -66,7 +70,6 @@ d.update(
                 linthresh=1e15),
     target_temps = (
         dict(dat="temp.dat"), None, None),
-
 );
 gensim(**d);
 # 2D sim for absorption
