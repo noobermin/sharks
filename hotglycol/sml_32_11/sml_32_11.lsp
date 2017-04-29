@@ -247,27 +247,23 @@ number_of_cells AUTO ; cells = 0
 ;
 [Boundaries]
 ;back this is the laser
+
+;laser
 outlet
-from -5.500000e-04 -5.500000e-04 0.000000e+00
-to   -5.500000e-04 5.500000e-04 0.000000e+00
+from -5.500000e-04  -5.500000e-04 0.000000e+00
+to   -5.500000e-04  5.500000e-04 0.000000e+00
 phase_velocity 1.0
 drive_model LASER
-reference_point -0.001 0.0 0.0 ; focal point position
+reference_point -0.001 0.0 0.0
 components 0 1 0
-phases 0 0 0 ; polarization 1.1781
+phases 0 0 0
 temporal_function 1
 analytic_function 2
 time_delay 0.0
-;front (back of the target)
-outlet
-from  5.500000e-04 -5.500000e-04 0.000000e+00
-to    5.500000e-04 5.500000e-04 0.000000e+00
-phase_velocity 1.0
-drive_model NONE
 
-;right
+;back
 outlet
-from -5.500000e-04  5.500000e-04 0.000000e+00
+from 5.500000e-04  -5.500000e-04 0.000000e+00
 to   5.500000e-04  5.500000e-04 0.000000e+00
 phase_velocity 1.0
 drive_model NONE
@@ -275,6 +271,12 @@ drive_model NONE
 outlet
 from -5.500000e-04  -5.500000e-04 0.000000e+00
 to   5.500000e-04  -5.500000e-04 0.000000e+00
+phase_velocity 1.0
+drive_model NONE
+;right
+outlet
+from -5.500000e-04  5.500000e-04 0.000000e+00
+to   5.500000e-04  5.500000e-04 0.000000e+00
 phase_velocity 1.0
 drive_model NONE
 
@@ -554,7 +556,8 @@ density_function 4
 reference_point -3.500000e-04 -3.500000e-04 0.000000e+00
 density_flags 1 1 0
 momentum_flags 0 0 0
-thermal_energy 1
+thermal_energy 1.0
+
 movie_fraction 0.000
 ;
 plasma ; C+
@@ -568,7 +571,8 @@ density_function 5
 reference_point -3.500000e-04 -3.500000e-04 0.000000e+00
 density_flags 1 1 0
 momentum_flags 0 0 0
-thermal_energy 1
+thermal_energy 1.0
+
 movie_fraction 0.000
 ;
 
@@ -583,7 +587,8 @@ density_function 3
 reference_point -3.500000e-04 -3.500000e-04 0.000000e+00
 density_flags 1 1 0
 momentum_flags 0 0 0
-thermal_energy 1
+thermal_energy 1.0
+
 movie_fraction 0.050
 ;
 plasma ; p+
@@ -597,7 +602,8 @@ density_function 6
 reference_point -3.500000e-04 -3.500000e-04 0.000000e+00
 density_flags 1 1 0
 momentum_flags 0 0 0
-thermal_energy 1
+thermal_energy 1.0
+
 movie_fraction 0.000
 
 ;; ionization states ;;

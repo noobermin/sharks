@@ -68,6 +68,8 @@ gensim(
     lsptemplate="hotglycol.lsp",
     speciesl=[ 'e', 'O', 'C', 'p'],
     fracs   =[10.0, 2.0, 2.0, 6.0],
+    thermal_energy=(1.0,1.0,1.0,1.0),
+    target_temps=(None,None,None,None),
     #density
     singlescale=None,
     dens_dat="target.dat",
@@ -113,6 +115,8 @@ d=dict(
     lsptemplate="hotglycol.lsp",
     speciesl=[ 'e', 'O', 'C', 'p'],
     fracs   =[10.0, 2.0, 2.0, 6.0],
+    thermal_energy=(1.0,1.0,1.0,1.0),
+    target_temps=(None,None,None,None),
     #density
     singlescale=None,
     dens_dat="target45.dat",
