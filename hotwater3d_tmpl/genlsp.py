@@ -427,11 +427,12 @@ def gentemp(**kw):
                 energyflags = iq['energy_flags'];
             else:
                 energyflags = getkw('energy_flags');
+            cur += 'spatial_function {}\n'.format(funcnum);
             cur += 'energy_flags {}\n'.format(
                 joinspace([
                     1 if i else 0
                     for i in getkw("dens_flags")]));
-            cur += 'spatial_function {}\n'.format(funcnum);
+          
             funcnum += 1;
         kw['{}_thermalopts'.format(species)] = cur;
     if otherfuncs != '':

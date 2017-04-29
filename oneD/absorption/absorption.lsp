@@ -339,8 +339,8 @@ reference_point 0.000000e+00 0.000000e+00 0.000000e+00
 density_flags 1 0 0
 momentum_flags 0 0 0
 thermal_energy 1.0
-energy_flags 1 0 0
 spatial_function 10
+energy_flags 1 0 0
 
 movie_fraction 0.050
 ;
