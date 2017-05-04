@@ -4,7 +4,7 @@ simulation_title "hotglycol TNSA absorption, I = 5.000000e+18 W/cm^2"
 [Control]
 ;Time-advance
  time_limit   1.4000e-04
- time_step_ns 3.0000e-09
+ time_step_ns 2.0000e-08
 
 ;;Restarts
 dump_restart_flag ON

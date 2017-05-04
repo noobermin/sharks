@@ -11,7 +11,7 @@ from docopt import docopt
 opts=docopt(__doc__,help=True);
 from pys import sd, parse_ituple;
 from genpbs import genpbs;
-from gensim import gensim, fromenergy;
+from gensim import gensim, fromenergy,c;
 import numpy as np;
 import shutil as sh;
 
@@ -256,7 +256,6 @@ crsscans = [
 for i in crsscans:
     gensim(**i);
 
-
 #I give
 
 coarser = sd(
@@ -264,6 +263,7 @@ coarser = sd(
     discrete=(3,3,1),
     res = (1400,1400,0),
     lspexec='lsp-10-xy',
+    timestep=2e-17,
 );
 splits = [
     #dom/reg regions
