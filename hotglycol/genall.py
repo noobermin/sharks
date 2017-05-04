@@ -255,3 +255,41 @@ crsscans = [
 
 for i in crsscans:
     gensim(**i);
+
+
+#I give
+
+coarser = sd(
+    d,
+    discrete=(3,3,1),
+    res = (1400,1400,0),
+    lspexec='lsp-10-xy',
+);
+splits = [
+    #dom/reg regions
+    (32,     7),
+    (7*8,    7*4),
+    (7*4,    7*8),
+    (7*4,    7*4),
+    (7*8,    7*8)];
+
+if 3 not in targi:
+    print("be sure to make this dat {} seperately".format(2));
+else:
+    coarser['f_2D'] = mk45(
+        dim   = (-5,5,-5,5),
+        N0    = 1.0804e22,
+        width = 0.46e-4,
+        dropcorners=False);
+    coarser['dat_xres'] = 1000;
+    print("making targets...sit tight.");
+
+crsscans = [
+    sd(coarser,
+       pbsbase='cr2_{:02d}_{:02d}'.format(i,r),
+       region_split=('y',r),
+       domains=i*r,)
+    for i,r in splits];
+
+for i in crsscans:
+    gensim(**i);
