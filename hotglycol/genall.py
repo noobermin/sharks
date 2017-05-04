@@ -256,7 +256,7 @@ crsscans = [
 for i in crsscans:
     gensim(**i);
 
-#I give
+#I give more
 
 coarser = sd(
     d,
@@ -274,8 +274,9 @@ splits = [
     (7*8,    7*8)];
 
 if 3 not in targi:
-    print("be sure to make this dat {} seperately".format(2));
+    print("be sure to make this dat {} seperately".format(3));
 else:
+    coarser['externalf_2D']=True;
     coarser['f_2D'] = mk45(
         dim   = (-5,5,-5,5),
         N0    = 1.0804e22,
