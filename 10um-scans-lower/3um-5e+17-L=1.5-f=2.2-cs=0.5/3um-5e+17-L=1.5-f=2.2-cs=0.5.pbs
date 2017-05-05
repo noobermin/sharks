@@ -33,7 +33,7 @@ movni_PID=$!
 movrho_PID=$!
 
 
-mpirun -np 96 -hostfile $PBS_NODEFILE ./lsp-10-3d $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+mpirun -np 64 -hostfile $PBS_NODEFILE ./lsp-10-3d $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
 
 kill $movdq_PID
 ./movdq

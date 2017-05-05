@@ -1,5 +1,5 @@
 #PBS -l walltime=96:0:00
-#PBS -l nodes=8:ppn=12
+#PBS -l nodes=6:ppn=12
 #PBS -N 3um-6e+15-L=5.8-f=4.4-cs=1.0
 #PBS -S /bin/bash
 #PBS -j oe
@@ -19,5 +19,5 @@ cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/nodesfile.txt
 cd "$PBS_O_WORKDIR"
 
 
-mpiexec -n 96 ./lsp-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+mpiexec -n 64 ./lsp-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
 

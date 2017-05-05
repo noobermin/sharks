@@ -3,8 +3,8 @@ simulation_title "0.8um-7e+19-L=1.5-f=4.4-cs=0.5, I = 6.576651e+19 W/cm^2"
 ;
 [Control]
 ;Time-advance
- time_limit   4.0000e-04
- time_step_ns 8.1306e-08
+ time_limit   1.4000e-04
+ time_step_ns 1.0007e-07
 
 ;;Restarts
 dump_restart_flag OFF
@@ -42,13 +42,13 @@ spatial_skip_y 1
 spatial_skip_z 1
 
 dump_fields_flag ON
-field_dump_interval_ns 1.626124964090991e-07
+field_dump_interval_ns 2.0013845711889122e-07
 dump_scalars_flag ON
-scalar_dump_interval_ns 1.626124964090991e-07
+scalar_dump_interval_ns 2.0013845711889122e-07
 
 ;;pmovies
 
-particle_movie_interval_ns 1.626124964090991e-07
+particle_movie_interval_ns 2.0013845711889122e-07
 particle_movie_components Q X Y Z VX VY VZ XI YI ZI
 
 ;
@@ -57,19 +57,19 @@ particle_movie_components Q X Y Z VX VY VZ XI YI ZI
 grid1
 xmin             -4.000000e-03
 xmax             2.500000e-03
-x-cells          2500
+x-cells          2000
                                         ;
 ;
 ymin             -2.500000e-03
 ymax             2.500000e-03
-y-cells          1923
+y-cells          1538
 
 
 
 [Regions]
 ;
 
-;total number of domains: 96
+;total number of domains: 64
 
 ;
 region1
@@ -82,7 +82,7 @@ ymax             2.500000e-03
 zmin             0.000000e+00
 zmax             0.000000e+00
 ;
-number_of_domains 96
+number_of_domains 64
 split_direction YSPLIT
 number_of_cells AUTO ; cells = 0
 ;

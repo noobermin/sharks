@@ -31,7 +31,7 @@ movni_PID=$!
 movrho_PID=$!
 
 
-mpiexec -n 96 ./lsp-10-3d $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+mpiexec -n 64 ./lsp-10-3d $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
 
 kill $movdq_PID
 ./movdq
