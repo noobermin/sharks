@@ -285,12 +285,34 @@ else:
     coarser['dat_xres'] = 1000;
     print("making targets...sit tight.");
 
-crsscans = [
+cr2scans = [
     sd(coarser,
        pbsbase='cr2_{:02d}_{:02d}'.format(i,r),
        region_split=('y',r),
        domains=i*r,)
     for i,r in splits];
 
-for i in crsscans:
+for i in cr2scans:
     gensim(**i);
+
+#ns picket sim.
+# will clean this up later.
+picket = sd(cr2scans[3],
+            I=1e14,
+            region_split=('y', 28),
+            domains = 28*28,
+            pbsbase = 'glycol_picket');
+
+if 4 not in targi:
+    print("be sure to make this dat {} seperately".format(4));
+else:
+    picket['externalf_2D']=True;
+    picket['f_2D'] = mk45(
+        dim   = (-5,5,-5,5),
+        N0    = 1.0804e22,
+        width = 0.46e-4,
+        dropcorners=False);
+    picket['dat_xres'] = 1000;
+    print("making targets...sit tight.");
+gensim(**picket);
+
