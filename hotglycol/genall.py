@@ -302,7 +302,6 @@ picket = sd(cr2scans[3],
             region_split=('y', 28),
             domains = 28*28,
             pbsbase = 'glycol_picket');
-
 if 4 not in targi:
     print("be sure to make this dat {} seperately".format(4));
 else:
@@ -314,5 +313,17 @@ else:
         dropcorners=False);
     picket['dat_xres'] = 1000;
     print("making targets...sit tight.");
-gensim(**picket);
+
+splits = [
+    (4*7, 4*7, ''),
+    (2*7, 2*7, '_sm'),
+    (7,     7, '_xs'),];
+pickets = [
+    sd(picket,
+       pbsbase='glycol_picket{}'.format(s),
+       region_split=('y',r),
+       domains=i*r,)
+    for i,r,s, in splits];
+for di in pickets:
+    gensim(**di);
 
