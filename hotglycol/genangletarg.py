@@ -22,7 +22,7 @@ def mk45(dim=[-5e-4,5e-4,-5e-4,5e-4,],
         good&=corner(x,y);
         good&=np.abs(y - x)*np.sqrt(2) < width
         if good:
-            return 1.0
+            return N0;
         else:
             return 0.0;
     return f;
