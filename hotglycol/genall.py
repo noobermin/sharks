@@ -11,7 +11,7 @@ from docopt import docopt
 opts=docopt(__doc__,help=True);
 from pys import sd, parse_ituple;
 from genpbs import genpbs;
-from gensim import gensim, fromenergy;
+from gensim import gensim, fromenergy,c;
 import numpy as np;
 import shutil as sh;
 
@@ -120,6 +120,7 @@ d=dict(
     #density
     singlescale=None,
     dens_dat="target45.dat",
+    dens_type=40,
     #misc
     lspexec='lsp-explicit-10-xy',
     dir=True,
@@ -255,3 +256,81 @@ crsscans = [
 
 for i in crsscans:
     gensim(**i);
+
+#I give more
+
+coarser = sd(
+    d,
+    discrete=(3,3,1),
+    res = (1400,1400,0),
+    lspexec='lsp-10-xy',
+    timestep=2e-17,
+);
+splits = [
+    #dom/reg regions
+    (32,     7),
+    (7*8,    7*4),
+    (7*4,    7*8),
+    (7*4,    7*4),
+    (7*8,    7*8)];
+
+if 3 not in targi:
+    print("be sure to make this dat {} seperately".format(3));
+else:
+    coarser['externalf_2D']=True;
+    coarser['f_2D'] = mk45(
+        dim   = (-5,5,-5,5),
+        N0    = 1.0804e22,
+        width = 0.46e-4,
+        dropcorners=False);
+    coarser['dat_xres'] = 1000;
+    print("making targets...sit tight.");
+
+cr2scans = [
+    sd(coarser,
+       pbsbase='cr2_{:02d}_{:02d}'.format(i,r),
+       region_split=('y',r),
+       domains=i*r,)
+    for i,r in splits];
+
+if 3 in targi:
+    del coarser['externalf_2D'];
+    del coarser['f_2D'];
+    del coarser['dat_xres'];
+
+for i in cr2scans:
+    gensim(**i);
+
+#ns picket sim.
+# will clean this up later.
+picket = sd(coarser,
+            I=1e14,
+            region_split=('y', 28),
+            domains = 28*28,
+            pbsbase = 'glycol_picket',
+);
+if 4 not in targi:
+    print("be sure to make this dat {} seperately".format(4));
+else:
+    picket['externalf_2D']=True;
+    picket['f_2D'] = mk45(
+        dim   = (-5,5,-5,5),
+        N0    = 1.0804e22,
+        width = 0.46e-4,
+        dropcorners=False);
+    picket['dat_xres'] = 1000;
+    print("making targets...sit tight.");
+
+splits = [
+    (4*7, 4*7, ''),
+    (2*7, 2*7, '_sm'),
+    (7,     7, '_xs'),];
+pickets = [
+    sd(picket,
+       pbsbase='glycol_picket{}'.format(s),
+       region_split=('y',r),
+       domains=i*r,)
+    for i,r,s, in splits];
+for di in pickets:
+    gensim(**di);
+

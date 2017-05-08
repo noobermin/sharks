@@ -2217,7 +2217,7 @@ coefficients 7.800000e-05 1.868508e-04 end
 ;;
 function3 ; electrons
 
-type 30
+type 40
 data_file target45.dat
 independent_variable_multiplier 1.0
 dependent_variable_multiplier 10.0
@@ -2225,7 +2225,7 @@ dependent_variable_multiplier 10.0
 ;;
 function4 ; Oxygen
 
-type 30
+type 40
 data_file target45.dat
 independent_variable_multiplier 1.0
 dependent_variable_multiplier 2.0
@@ -2233,7 +2233,7 @@ dependent_variable_multiplier 2.0
 ;;
 function5 ; Carbon
 
-type 30
+type 40
 data_file target45.dat
 independent_variable_multiplier 1.0
 dependent_variable_multiplier 2.0
@@ -2241,7 +2241,7 @@ dependent_variable_multiplier 2.0
 ;;
 function6 ; Protons
 
-type 30
+type 40
 data_file target45.dat
 independent_variable_multiplier 1.0
 dependent_variable_multiplier 6.0

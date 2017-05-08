@@ -130,7 +130,9 @@ def gensim(**kw):
         tlim = getkw('tlim');
         if not test(kw, 'new_exteralf'):
             kwp = sd(kw,
-                     tlim=(0, tlim[1]-tlim[0], 0,0, 0,0),);
+                     tlim=(0, tlim[1]-tlim[0],
+                           0, tlim[3]-tlim[2],
+                           0, 0),);
         if not test(kw, 'dens_dat'):
             kw['dens_dat'] = "watercolumn.dat";
         kw['dats'] += [(kw['dens_dat'], kwp)];
