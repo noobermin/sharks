@@ -293,16 +293,22 @@ cr2scans = [
        domains=i*r,)
     for i,r in splits];
 
+if 3 in targi:
+    del coarser['externalf_2D'];
+    del coarser['f_2D'];
+    del coarser['dat_xres'];
+
 for i in cr2scans:
     gensim(**i);
 
 #ns picket sim.
 # will clean this up later.
-picket = sd(cr2scans[3],
+picket = sd(coarser,
             I=1e14,
             region_split=('y', 28),
             domains = 28*28,
-            pbsbase = 'glycol_picket');
+            pbsbase = 'glycol_picket',
+);
 if 4 not in targi:
     print("be sure to make this dat {} seperately".format(4));
 else:
