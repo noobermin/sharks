@@ -120,6 +120,7 @@ d=dict(
     #density
     singlescale=None,
     dens_dat="target45.dat",
+    dens_type=40,
     #misc
     lspexec='lsp-explicit-10-xy',
     dir=True,
