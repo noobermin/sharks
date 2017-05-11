@@ -95,6 +95,7 @@ for d in peak:
 picket = [
     sd(d,
        I=1e14,
+       thermal_energy=(0.01,0.01,0.01,0.01),
        pbsbase='glypicket_fp={:0=+5.1f}'.format(fp),
        fp=(fp, 0.0, 0.0))
     for fp in fps

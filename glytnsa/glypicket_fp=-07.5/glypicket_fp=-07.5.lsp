@@ -601,7 +601,7 @@ density_function 4
 reference_point 0.000000e+00 0.000000e+00 0.000000e+00
 density_flags 1 1 0
 momentum_flags 0 0 0
-thermal_energy 1.0
+thermal_energy 0.01
 
 movie_fraction 0.000
 ;
@@ -616,7 +616,7 @@ density_function 5
 reference_point 0.000000e+00 0.000000e+00 0.000000e+00
 density_flags 1 1 0
 momentum_flags 0 0 0
-thermal_energy 1.0
+thermal_energy 0.01
 
 movie_fraction 0.000
 ;
@@ -632,7 +632,7 @@ density_function 3
 reference_point 0.000000e+00 0.000000e+00 0.000000e+00
 density_flags 1 1 0
 momentum_flags 0 0 0
-thermal_energy 1.0
+thermal_energy 0.01
 
 movie_fraction 0.050
 ;
@@ -647,7 +647,7 @@ density_function 6
 reference_point 0.000000e+00 0.000000e+00 0.000000e+00
 density_flags 1 1 0
 momentum_flags 0 0 0
-thermal_energy 1.0
+thermal_energy 0.01
 
 movie_fraction 0.000
 
