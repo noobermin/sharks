@@ -80,23 +80,23 @@ d=dict(
     pext_species=(17,18),
 );
 #generating scans
-fps = [10.0, 7.5, 5.0, 2.5, 1.0, 0.0];
+hf = np.arange(2.5,20.0, 2.5);
+fps = [-1.0, 0.0, 1.0] + list(-hf) + list(hf)
 peak = [
     sd(d,
-       pbsbase='glypeak_fp={:04.1f}'.format(fp),
-       fp=(-fp, 0.0, 0.0))
+       pbsbase='glypeak_fp={:0=+5.1f}'.format(fp),
+       fp=(fp, 0.0, 0.0))
     for fp in fps
 ];
 
 for d in peak:
     gensim(**d);
 
-fps = [10.0, 7.5, 5.0, 2.5, 1.0, 0.0];
 picket = [
     sd(d,
        I=1e14,
-       pbsbase='glypicket_fp={:04.1f}'.format(fp),
-       fp=(-fp, 0.0, 0.0))
+       pbsbase='glypicket_fp={:0=+5.1f}'.format(fp),
+       fp=(fp, 0.0, 0.0))
     for fp in fps
 ];
 for d in picket:
