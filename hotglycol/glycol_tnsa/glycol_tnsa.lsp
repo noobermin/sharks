@@ -248,7 +248,7 @@ transverse_weighting_flag on
 particle_kinematics_option STANDARD
 scattering_flag off
 implicit_filtering_parameter 0.1
-selection_ratio 0.05
+selection_ratio 1.0
 ;
 species2 ; O+
 charge +1
@@ -262,7 +262,7 @@ transverse_weighting_flag on
 particle_kinematics_option STANDARD
 scattering_flag off
 implicit_filtering_parameter 0.1
-selection_ratio 0.01
+selection_ratio 1.0
 ;
 species3 ; O++
 charge +2
@@ -276,7 +276,7 @@ transverse_weighting_flag on
 particle_kinematics_option STANDARD
 scattering_flag off
 implicit_filtering_parameter 0.1
-selection_ratio 0.01
+selection_ratio 1.0
 ;
 species4 ; O 3+
 charge +3
@@ -290,7 +290,7 @@ transverse_weighting_flag on
 particle_kinematics_option STANDARD
 scattering_flag off
 implicit_filtering_parameter 0.1
-selection_ratio 0.01
+selection_ratio 1.0
 ;
 species5 ; O 4+
 charge +4
@@ -304,7 +304,7 @@ transverse_weighting_flag on
 particle_kinematics_option STANDARD
 scattering_flag off
 implicit_filtering_parameter 0.1
-selection_ratio 0.01
+selection_ratio 1.0
 ;
 species6 ; O 5+
 charge +5
@@ -318,7 +318,7 @@ transverse_weighting_flag on
 particle_kinematics_option STANDARD
 scattering_flag off
 implicit_filtering_parameter 0.1
-selection_ratio 0.01
+selection_ratio 1.0
 ;
 species7 ; O 6+
 charge +6
@@ -332,7 +332,7 @@ transverse_weighting_flag on
 particle_kinematics_option STANDARD
 scattering_flag off
 implicit_filtering_parameter 0.1
-selection_ratio 0.01
+selection_ratio 1.0
 ;
 species8 ; O 7+
 charge +7
@@ -346,7 +346,7 @@ transverse_weighting_flag on
 particle_kinematics_option STANDARD
 scattering_flag off
 implicit_filtering_parameter 0.1
-selection_ratio 0.01
+selection_ratio 1.0
 ;
 species9 ; O 8+
 charge +8
@@ -360,7 +360,7 @@ transverse_weighting_flag on
 particle_kinematics_option STANDARD
 scattering_flag off
 implicit_filtering_parameter 0.1
-selection_ratio 0.01
+selection_ratio 1.0
 ;
 ;; C
 species10 ; neutral C
@@ -375,7 +375,7 @@ transverse_weighting_flag on
 particle_kinematics_option STANDARD
 scattering_flag off
 implicit_filtering_parameter 0.1
-selection_ratio 0.05
+selection_ratio 1.0
 ;
 species11 ; C+
 charge +1
@@ -389,7 +389,7 @@ transverse_weighting_flag on
 particle_kinematics_option STANDARD
 scattering_flag off
 implicit_filtering_parameter 0.1
-selection_ratio 0.01
+selection_ratio 1.0
 ;
 species12 ; C++
 charge +2
@@ -403,7 +403,7 @@ transverse_weighting_flag on
 particle_kinematics_option STANDARD
 scattering_flag off
 implicit_filtering_parameter 0.1
-selection_ratio 0.01
+selection_ratio 1.0
 ;
 species13 ; C 3+
 charge +3
@@ -417,7 +417,7 @@ transverse_weighting_flag on
 particle_kinematics_option STANDARD
 scattering_flag off
 implicit_filtering_parameter 0.1
-selection_ratio 0.01
+selection_ratio 1.0
 ;
 species14 ; C 4+
 charge +4
@@ -431,7 +431,7 @@ transverse_weighting_flag on
 particle_kinematics_option STANDARD
 scattering_flag off
 implicit_filtering_parameter 0.1
-selection_ratio 0.01
+selection_ratio 1.0
 ;
 species15 ; C 5+
 charge +5
@@ -445,7 +445,7 @@ transverse_weighting_flag on
 particle_kinematics_option STANDARD
 scattering_flag off
 implicit_filtering_parameter 0.1
-selection_ratio 0.01
+selection_ratio 1.0
 ;
 species16 ; C 6+
 charge +6
@@ -459,7 +459,7 @@ transverse_weighting_flag on
 particle_kinematics_option STANDARD
 scattering_flag off
 implicit_filtering_parameter 0.1
-selection_ratio 0.01
+selection_ratio 1.0
 
 species17 ; kinetic electrons
 charge -1
@@ -472,7 +472,7 @@ transverse_weighting_flag on
 particle_kinematics_option STANDARD
 scattering_flag on
 implicit_filtering_parameter 0.1
-selection_ratio 0.01
+selection_ratio 1.0
 ;
 species18 ; protons
 charge +1
@@ -486,7 +486,7 @@ transverse_weighting_flag on
 particle_kinematics_option STANDARD
 scattering_flag off
 implicit_filtering_parameter 0.1
-selection_ratio 0.01
+selection_ratio 1.0
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
