@@ -91,7 +91,27 @@ peak = [
 
 for d in peak:
     gensim(**d);
+#other intensities
+I3e18 = [
+    sd(d,
+       pbsbase='gly3e+18_fp={:0=+5.1f}'.format(fp),
+       I=3e18,
+       fp=(fp, 0.0, 0.0))
+    for fp in fps
+];
+I1e18 = [
+    sd(d,
+       pbsbase='gly1e+18_fp={:0=+5.1f}'.format(fp),
+       I=1e18,
+       fp=(fp, 0.0, 0.0))
+    for fp in fps
+];
 
+
+for d in (I3e18 + I1e18):
+    gensim(**d);
+
+#pickets
 picket = [
     sd(d,
        I=1e14,
@@ -102,7 +122,7 @@ picket = [
 ];
 for d in picket:
     gensim(**d);
-dirs = [ d['pbsbase'] for d in (peak + picket) ];
+dirs = [ d['pbsbase'] for d in (peak + I3e18 + I1e18 + picket) ];
     
 if opts['--make-target']:
     targd = sd(
