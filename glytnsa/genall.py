@@ -141,3 +141,90 @@ if opts['--make-target']:
             "{}/target45.dat".format(path), dat);
 
 
+longa=sd(
+    d,
+    discrete=(3,3,1),
+    lim =(-7,14,
+          -7,14,
+           0,0),
+    tlim=(-5,12,
+          -5,12,
+           0,0),
+    res =(2100,
+          2100,
+          0),
+    timestep = 2e-17,
+    fp=(0.0,0.0,0.0),
+    pbsbase='glylonga',
+    description="hotglycol TNSA absorption",
+    dumpinterval=5e-16,
+    #PIC/grid details
+    domains=49*9,
+    region_split=('y',7*3),
+    pbses='defaults',
+    #target information
+    lsptemplate="hotglycol.lsp",
+    speciesl=[ 'e', 'O', 'C', 'p'],
+    fracs   =[10.0, 2.0, 2.0, 6.0],
+    thermal_energy=(1.0,1.0,1.0,1.0),
+    target_temps=(None,None,None,None),
+    #density
+    tref = (0.0, 0.0, 0.0),
+    singlescale=None,
+    dens_dat="target_la45.dat",
+    dens_type=40,
+    #particle dumps
+    totaltime= 110e-15 + 400e-15,
+    dump_particle=True,
+    particle_dump_interval_ns=0.0,
+    particle_dump_times_ns=(1e-4, 1.1e-4, 1.5e-4, 2.0e-4, 2.5e-4, 3e-4, 3.5e-4, 4e-4, 4.5e-4, 5e-4, 5.1e-4),
+    pext_species=(17,18));
+longb = sd(
+    longa,
+    lim = (-7, 21,
+           -7, 21,
+           0,0),
+    tlim=(-5,19,
+          -5,19,
+           0,0),
+    res = (2800,
+           2800,
+           0),
+    pbsbase='glylongb',
+    domains = 49*16,
+    region_split=('y', 7*4),
+    dens_dat="target_lb45.dat")
+longc = sd(
+    longb,
+    lim = (-14, 14,
+           -14, 14,
+           0,0),
+    tlim=(-12,12,
+          -12,12,
+          0,0),
+    res = (2800,
+           2800,
+           0),
+    pbsbase='glylongc',
+    dens_dat="target_lc45.dat")
+
+for d in [longa,longb,longc]:
+    gensim(**d);
+
+
+if opts['--make-target']:
+    print("making targets");
+    def mktarg(d):
+        dd = sd(
+            d,
+            f_2D = mk45(
+                dim = d['tlim'],
+                N0    = 1.0804e22,
+                width = 0.46e-4,
+                dropcorners='round'));
+        dat = gendat(**targd);
+        savetxt(
+            "{}/target45.dat".format(d['pbsbase']),
+            dat);
+    for d in [longa,longb,longc]:
+        mktarg(d);
