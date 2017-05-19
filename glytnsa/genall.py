@@ -234,7 +234,7 @@ if opts['--make-target']:
         dd = sd(
             di,
             f_2D = mk45(
-                dim = di['tlim'],
+                dim = [i*1e-4 for i in di['tlim']],
                 N0    = 1.0804e22,
                 width = 0.46e-4,
                 dropcorners='round'),
