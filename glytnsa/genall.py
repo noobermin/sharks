@@ -224,7 +224,7 @@ if opts['--make-target']:
                 dropcorners='round'));
         dat = gendat(**targd);
         savetxt(
-            "{}/target45.dat".format(d['pbsbase']),
+            "{}/{}".format(d['pbsbase'],d['dens_dat']),
             dat);
     for d in [longa,longb,longc]:
         mktarg(d);
