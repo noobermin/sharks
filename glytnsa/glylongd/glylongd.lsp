@@ -711,8 +711,8 @@ selection_ratio 1.0
 ;; initial states ;;
 
 plasma ; O+
-from -1.000000e-03  -1.000000e-03  0.000000e+00
-to   1.000000e-03  1.000000e-03  0.000000e+00
+from -9.000000e-04  -9.000000e-04  0.000000e+00
+to   9.000000e-04  9.000000e-04  0.000000e+00
 species 2
 movie_tag 3
 unbound off
@@ -726,8 +726,8 @@ thermal_energy 1.0
 movie_fraction 0.000
 ;
 plasma ; C+
-from -1.000000e-03  -1.000000e-03  0.000000e+00
-to   1.000000e-03  1.000000e-03  0.000000e+00
+from -9.000000e-04  -9.000000e-04  0.000000e+00
+to   9.000000e-04  9.000000e-04  0.000000e+00
 species 11
 movie_tag 3
 unbound off
@@ -742,8 +742,8 @@ movie_fraction 0.000
 ;
 
 plasma ; e-
-from -1.000000e-03 -1.000000e-03  0.000000e+00
-to   1.000000e-03 1.000000e-03  0.000000e+00
+from -9.000000e-04 -9.000000e-04  0.000000e+00
+to   9.000000e-04 9.000000e-04  0.000000e+00
 species 17
 movie_tag 3
 unbound off
@@ -757,8 +757,8 @@ thermal_energy 1.0
 movie_fraction 0.050
 ;
 plasma ; p+
-from -1.000000e-03 -1.000000e-03  0.000000e+00
-to   1.000000e-03 1.000000e-03  0.000000e+00
+from -9.000000e-04 -9.000000e-04  0.000000e+00
+to   9.000000e-04 9.000000e-04  0.000000e+00
 species 18
 movie_tag 3
 unbound off
