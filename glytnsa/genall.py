@@ -89,8 +89,8 @@ peak = [
     for fp in fps
 ];
 
-for d in peak:
-    gensim(**d);
+for di in peak:
+    gensim(**di);
 #other intensities
 I3e18 = [
     sd(d,
@@ -108,8 +108,8 @@ I1e18 = [
 ];
 
 
-for d in (I3e18 + I1e18):
-    gensim(**d);
+for di in (I3e18 + I1e18):
+    gensim(**di);
 
 #pickets
 picket = [
@@ -120,9 +120,9 @@ picket = [
        fp=(fp, 0.0, 0.0))
     for fp in fps
 ];
-for d in picket:
-    gensim(**d);
-dirs = [ d['pbsbase'] for d in (peak + I3e18 + I1e18 + picket) ];
+for di in picket:
+    gensim(**di);
+dirs = [ di['pbsbase'] for di in (peak + I3e18 + I1e18 + picket) ];
     
 if opts['--make-target']:
     targd = sd(
@@ -153,6 +153,7 @@ longa=sd(
     res =(2100,
           2100,
           0),
+    I=5e18,
     timestep = 2e-17,
     fp=(0.0,0.0,0.0),
     pbsbase='glylonga',
@@ -160,7 +161,7 @@ longa=sd(
     dumpinterval=5e-16,
     #PIC/grid details
     domains=49*9,
-    region_split=('y',7*3),
+    region_split=('y',3*7),
     pbses='defaults',
     #target information
     lsptemplate="hotglycol.lsp",
@@ -214,17 +215,17 @@ for d in [longa,longb,longc]:
 
 if opts['--make-target']:
     print("making targets");
-    def mktarg(d):
+    def mktarg(di):
         dd = sd(
-            d,
+            di,
             f_2D = mk45(
-                dim = d['tlim'],
+                dim = di['tlim'],
                 N0    = 1.0804e22,
                 width = 0.46e-4,
                 dropcorners='round'));
-        dat = gendat(**targd);
+        dat = gendat(**dd);
         savetxt(
-            "{}/{}".format(d['pbsbase'],d['dens_dat']),
+            "{}/{}".format(di['pbsbase'],di['dens_dat']),
             dat);
-    for d in [longa,longb,longc]:
-        mktarg(d);
+    for di in [longa,longb,longc]:
+        mktarg(di);
