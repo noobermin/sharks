@@ -38,9 +38,9 @@ def mk45(dim=[-5e-4,5e-4,-5e-4,5e-4,],
             return 0.0;
     return f;
 if __name__ == "__main__":
-    dx = 0.02
-    mn,mx = -6,6,
-    lmn, lmx = -6,6
+    dx = 0.01
+    mn,mx = -10.5,10.5,
+    lmn, lmx = -11.5,11.5
     width =  2;
     F=mk45(dim=[mn,mx,mn,mx],width=width,dropcorners='round');
     X,Y=np.mgrid[

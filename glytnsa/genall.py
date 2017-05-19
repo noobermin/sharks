@@ -209,7 +209,22 @@ longc = sd(
     pbsbase='glylongc',
     dens_dat="target_lc45.dat")
 
-for d in [longa,longb,longc]:
+longd=sd(
+    longa,
+    lim = (-11, 11,
+           -11, 11,
+             0,  0),
+    tlim = (-10, 10,
+            -10, 10,
+            0,0),
+    res  = (2200, 2200, 0),
+    domains = 121*4,
+    region_split=('y', 11*2),
+    pbsbase='glylongd',
+    dens_dat="target_ld45.dat");
+
+
+for d in [longa,longb,longc,longd]:
     gensim(**d);
 
 
@@ -228,5 +243,5 @@ if opts['--make-target']:
         savetxt(
             "{}/{}".format(di['pbsbase'],di['dens_dat']),
             dat);
-    for di in [longa,longb,longc]:
+    for di in [longa,longb,longc,longd]:
         mktarg(di);
