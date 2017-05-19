@@ -222,7 +222,8 @@ if opts['--make-target']:
                 dim = di['tlim'],
                 N0    = 1.0804e22,
                 width = 0.46e-4,
-                dropcorners='round'));
+                dropcorners='round'),
+            dat_xres=di['tlim'][0]);
         dat = gendat(**dd);
         savetxt(
             "{}/{}".format(di['pbsbase'],di['dens_dat']),
