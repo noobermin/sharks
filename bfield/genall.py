@@ -16,7 +16,7 @@ import numpy as np;
 import shutil as sh;
 
 #E = 0.5e-3; # 5mJ
-I = 5e18;
+I = 2.5e18;
 l = 0.78e-6
 w0=2.2e-6 / np.sqrt(2*np.log(2))
 T0=42e-15
@@ -26,7 +26,7 @@ d=dict(
     l=l,
     w=w0,
     T=T0*2,
-    I=5e18,
+    I=I,
     dens_flags=(True,True,False),
     discrete=(3,3,1),
     lim =(-12,12,
@@ -40,7 +40,7 @@ d=dict(
           0),
     timestep = 2e-17,
     totaltime= 140e-15,
-    fp=(0.0, 7.0,0.0),
+    fp=(0.0, 5.0,0.0),
     pbsbase='circle',
     description="circle play",
     dumpinterval=5e-16,

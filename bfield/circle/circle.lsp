@@ -1,5 +1,5 @@
 [Title]
-simulation_title "circle play, I = 5.000000e+18 W/cm^2"
+simulation_title "circle play, I = 2.500000e+18 W/cm^2"
 ;
 [Control]
 ;Time-advance
@@ -206,7 +206,7 @@ from -1.200000e-03  -8.000000e-04 0.000000e+00
 to   -1.200000e-03  8.000000e-04 0.000000e+00
 phase_velocity 1.0
 drive_model LASER
-reference_point 0.0 0.0007 0.0
+reference_point 0.0 0.0005 0.0
 components 0 1 0
 phases 0 0 0
 temporal_function 1
@@ -731,8 +731,8 @@ type 30
 data_file sine700points.dat
 ;; pulse duration length, 2xFWHM
 independent_variable_multiplier 8.400000e-05
-;; Emax, intensity=5.000000e+18 W/cm^2
-dependent_variable_multiplier   6.137836e+07
+;; Emax, intensity=2.500000e+18 W/cm^2
+dependent_variable_multiplier   4.340105e+07
 
 function2 ;laser analytic function for lsp v10
 type 19   ; f-number: ~3.762878770705575
