@@ -39,7 +39,7 @@ d=dict(
           1600,
           0),
     timestep = 2e-17,
-    totaltime= 140e-15,
+    totaltime= 200e-15,
     fp=(0.0, 5.0,0.0),
     pbsbase='circle',
     description="circle play",
@@ -61,7 +61,7 @@ d=dict(
     #misc
     lspexec='lsp-10-xy',
     dir=True,
-    restart=23.95,
+    restart=11.9,
     dump_restart_flag=True,
     #movs
     movne=dict(
