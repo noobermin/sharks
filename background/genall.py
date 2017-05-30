@@ -63,6 +63,7 @@ d=dict(
     dir=True,
     restart=23.95,
     dump_restart_flag=True,
+    new_externalf=True,
     #movs
     movne=dict(
         ne_species = 'RhoN17',
@@ -86,10 +87,8 @@ ds = [
        pbsbase="bg_{:3.1e}".format(density),
        externalf_2D=True,
        f_2D = mkbgtarg(
-            N_bg = density,
-            dim=d['tlim'],
-            slen=10.0,
-            twidth=30.0),
+           N_bg = density,
+           dim=[i*1e-4 for i in d['tlim']]),
        dat_xres = 500)
     for density in denses]
 
