@@ -76,8 +76,10 @@ d=dict(
     pext_species=(17,),
 );
 
-
-denses = np.logspace(8.6e17/3.33*1e-3, 8.6e17/3.33, 5);
+dlim = np.array([8.6e17/3.33*1e-3, 8.6e17/3.33])
+dlim = np.log10(dlim);
+print("creating range between {} and {}".format(dlim[0],dlim[1]));
+denses = np.logspace(dlim[0], dlim[1], 5);
 
 ds = [
     sd(d,
