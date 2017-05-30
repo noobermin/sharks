@@ -1,14 +1,11 @@
 #!/usr/bin/env bash
 
 getallsorted(){
-   ls | grep $1'.*.p4$' |\
-         sed s/^$1'\([0-9]\+\)\.p4$/\1/' |\
-         sort -n |\
-         sed 's/\(^.*$\)/'$1'\1.p4/'
+   ls | grep $1'.*.p4$' | sort -V
 }
 
 getsorted(){
-    getallsorted | head -n -1
+    getallsorted $1 | head -n -1
 }
 
 if [ "$1" == "-a" ]; then
@@ -16,9 +13,9 @@ if [ "$1" == "-a" ]; then
     export SCLR=$(getallsorted sclr);
     export PMOV=$(getallsorted pmovie);
 else
-    export FLDS=$(getallsorted flds);
-    export SCLR=$(getallsorted sclr);
-    export PMOV=$(getallsorted pmovie);
+    export FLDS=$(getsorted flds);
+    export SCLR=$(getsorted sclr);
+    export PMOV=$(getsorted pmovie);
 fi
 [ -n "$FLDS" ] && gzip -v $FLDS || echo "no new flds"
 [ -n "$SCLR" ] && gzip -v $SCLR || echo "no new sclr"
