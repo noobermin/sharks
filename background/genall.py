@@ -85,7 +85,11 @@ ds = [
     sd(d,
        pbsbase="bg_{:3.1e}".format(density),
        externalf_2D=True,
-       f_2D = mkbgtarg(N_bg = density),
+       f_2D = mkbgtarg(
+            N_bg = density,
+            dim=d['tlim'],
+            slen=10.0,
+            twidth=30.0),
        dat_xres = 500)
     for density in denses]
 
