@@ -177,7 +177,7 @@ longa=sd(
     dens_type=40,
     #particle dumps
     dump_particle=True,
-    particle_dump_interval_ns=0.5e-4,
+    particle_dump_interval_ns=50e-15,
     particle_dump_times_ns=(1.1e-4,),
     pext_species=(17,18));
 longb = sd(

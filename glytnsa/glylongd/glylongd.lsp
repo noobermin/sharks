@@ -47,7 +47,7 @@ field_dump_interval_ns 5.000000000000001e-07
 dump_scalars_flag ON
 scalar_dump_interval_ns 5.000000000000001e-07
 dump_particles_flag ON
-particle_dump_interval_ns 50000.0
+particle_dump_interval_ns 5e-05
 particle_dump_times_ns 0.00011 end
 
 ;;pmovies
