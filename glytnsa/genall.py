@@ -155,6 +155,7 @@ longa=sd(
           0),
     I=5e18,
     timestep = 2e-17,
+    totaltime= 1e-12,
     fp=(0.0,0.0,0.0),
     pbsbase='glylonga',
     description="hotglycol TNSA absorption",
@@ -175,10 +176,9 @@ longa=sd(
     dens_dat="target_la45.dat",
     dens_type=40,
     #particle dumps
-    totaltime= 110e-15 + 400e-15,
     dump_particle=True,
-    particle_dump_interval_ns=0.0,
-    particle_dump_times_ns=(1e-4, 1.1e-4, 1.5e-4, 2.0e-4, 2.5e-4, 3e-4, 3.5e-4, 4e-4, 4.5e-4, 5e-4, 5.1e-4),
+    particle_dump_interval_ns=0.5e-4,
+    particle_dump_times_ns=(1.1e-4,),
     pext_species=(17,18));
 longb = sd(
     longa,
@@ -239,11 +239,13 @@ longe=sd(
     region_split=('y', 14),
     pbsbase='glylonge',
     dens_dat="target_le45.dat",
-    dat_xres=1800,);
+    dat_xres=1800,
+    pext_species=(7,14,15,16,17,18),
+);
 
 
 
-for d in [longa,longb,longc,longd]:
+for d in [longa,longb,longc,longd,longe]:
     gensim(**d);
 
 
