@@ -128,7 +128,7 @@ if opts['--make-target']:
     targd = sd(
         d,
         f_2D = mk45(
-            dim   = (-5,5,-5,5),
+            dim   = [i*1e-4 for i in [-5,5,-5,5]],
             N0    = 1.0804e22,
             width = 0.46e-4,
             dropcorners=False),
@@ -194,7 +194,8 @@ longb = sd(
     pbsbase='glylongb',
     domains = 49*16,
     region_split=('y', 7*4),
-    dens_dat="target_lb45.dat")
+    dens_dat="target_lb45.dat",
+    dat_xres=2400,)
 longc = sd(
     longb,
     lim = (-14, 14,
@@ -207,7 +208,8 @@ longc = sd(
            2800,
            0),
     pbsbase='glylongc',
-    dens_dat="target_lc45.dat")
+    dens_dat="target_lc45.dat",
+    dat_xres=2400,);
 
 longd=sd(
     longa,
@@ -221,7 +223,24 @@ longd=sd(
     domains = 121*4,
     region_split=('y', 11*2),
     pbsbase='glylongd',
-    dens_dat="target_ld45.dat");
+    dens_dat="target_ld45.dat",
+    dat_xres=1800,)
+
+longe=sd(
+    longa,
+    lim = (-14, 14,
+           -14, 14,
+             0,  0),
+    tlim = (-9, 9,
+            -9, 9,
+            0,0),
+    res  = (2800, 2800, 0),
+    domains = 49*4,
+    region_split=('y', 14),
+    pbsbase='glylonge',
+    dens_dat="target_le45.dat",
+    dat_xres=1800,);
+
 
 
 for d in [longa,longb,longc,longd]:
@@ -237,11 +256,10 @@ if opts['--make-target']:
                 dim = [i*1e-4 for i in di['tlim']],
                 N0    = 1.0804e22,
                 width = 0.46e-4,
-                dropcorners='round'),
-            dat_xres=di['res'][0]);
+                dropcorners='round'));
         dat = gendat(**dd);
         savetxt(
             "{}/{}".format(di['pbsbase'],di['dens_dat']),
             dat);
-    for di in [longa,longb,longc,longd]:
+    for di in [longa,longb,longc,longd,longe]:
         mktarg(di);
