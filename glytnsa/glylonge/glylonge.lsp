@@ -8,7 +8,7 @@ simulation_title "hotglycol TNSA absorption, I = 5.000000e+18 W/cm^2"
 
 ;;Restarts
 dump_restart_flag ON
-maximum_restart_dump_time 23.95
+maximum_restart_dump_time 11.95
 rename_restart_flag ON
 
 ;;Load Balancing
@@ -47,8 +47,8 @@ field_dump_interval_ns 5.000000000000001e-07
 dump_scalars_flag ON
 scalar_dump_interval_ns 5.000000000000001e-07
 dump_particles_flag ON
-particle_dump_interval_ns 0.0
-particle_dump_times_ns 0.0001 0.00011 end
+particle_dump_interval_ns 50000.0
+particle_dump_times_ns 0.00011 end
 
 ;;pmovies
 
@@ -1015,7 +1015,7 @@ movie_fraction 0.0
 
 ;
 extract1
-species 17
+species 7
 direction X
 maximum_number  1000000000
 start_time 0
@@ -1024,7 +1024,7 @@ at -0.0014 0 0
  
 ;
 extract2
-species 17
+species 7
 direction X
 maximum_number  1000000000
 start_time 0
@@ -1033,7 +1033,7 @@ at 0.0014 0 0
  
 ;
 extract3
-species 17
+species 7
 direction Y
 maximum_number  1000000000
 start_time 0
@@ -1042,7 +1042,7 @@ at 0 -0.0014 0
  
 ;
 extract4
-species 17
+species 7
 direction Y
 maximum_number  1000000000
 start_time 0
@@ -1051,7 +1051,7 @@ at 0 0.0014 0
  
 ;
 extract5
-species 18
+species 14
 direction X
 maximum_number  1000000000
 start_time 0
@@ -1060,7 +1060,7 @@ at -0.0014 0 0
  
 ;
 extract6
-species 18
+species 14
 direction X
 maximum_number  1000000000
 start_time 0
@@ -1069,7 +1069,7 @@ at 0.0014 0 0
  
 ;
 extract7
-species 18
+species 14
 direction Y
 maximum_number  1000000000
 start_time 0
@@ -1078,6 +1078,150 @@ at 0 -0.0014 0
  
 ;
 extract8
+species 14
+direction Y
+maximum_number  1000000000
+start_time 0
+stop_time  1
+at 0 0.0014 0
+ 
+;
+extract9
+species 15
+direction X
+maximum_number  1000000000
+start_time 0
+stop_time  1
+at -0.0014 0 0
+ 
+;
+extract10
+species 15
+direction X
+maximum_number  1000000000
+start_time 0
+stop_time  1
+at 0.0014 0 0
+ 
+;
+extract11
+species 15
+direction Y
+maximum_number  1000000000
+start_time 0
+stop_time  1
+at 0 -0.0014 0
+ 
+;
+extract12
+species 15
+direction Y
+maximum_number  1000000000
+start_time 0
+stop_time  1
+at 0 0.0014 0
+ 
+;
+extract13
+species 16
+direction X
+maximum_number  1000000000
+start_time 0
+stop_time  1
+at -0.0014 0 0
+ 
+;
+extract14
+species 16
+direction X
+maximum_number  1000000000
+start_time 0
+stop_time  1
+at 0.0014 0 0
+ 
+;
+extract15
+species 16
+direction Y
+maximum_number  1000000000
+start_time 0
+stop_time  1
+at 0 -0.0014 0
+ 
+;
+extract16
+species 16
+direction Y
+maximum_number  1000000000
+start_time 0
+stop_time  1
+at 0 0.0014 0
+ 
+;
+extract17
+species 17
+direction X
+maximum_number  1000000000
+start_time 0
+stop_time  1
+at -0.0014 0 0
+ 
+;
+extract18
+species 17
+direction X
+maximum_number  1000000000
+start_time 0
+stop_time  1
+at 0.0014 0 0
+ 
+;
+extract19
+species 17
+direction Y
+maximum_number  1000000000
+start_time 0
+stop_time  1
+at 0 -0.0014 0
+ 
+;
+extract20
+species 17
+direction Y
+maximum_number  1000000000
+start_time 0
+stop_time  1
+at 0 0.0014 0
+ 
+;
+extract21
+species 18
+direction X
+maximum_number  1000000000
+start_time 0
+stop_time  1
+at -0.0014 0 0
+ 
+;
+extract22
+species 18
+direction X
+maximum_number  1000000000
+start_time 0
+stop_time  1
+at 0.0014 0 0
+ 
+;
+extract23
+species 18
+direction Y
+maximum_number  1000000000
+start_time 0
+stop_time  1
+at 0 -0.0014 0
+ 
+;
+extract24
 species 18
 direction Y
 maximum_number  1000000000

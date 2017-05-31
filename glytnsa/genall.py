@@ -62,7 +62,7 @@ d=dict(
     #misc
     lspexec='lsp-10-xy',
     dir=True,
-    restart=23.95,
+    restart=11.95,
     dump_restart_flag=True,
     #movs
     movne=dict(
