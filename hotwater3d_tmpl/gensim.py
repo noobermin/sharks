@@ -128,11 +128,14 @@ def gensim(**kw):
     elif (test(kw,'externalf_1D') and test(kw, 'f_1D')) or (test(kw,'externalf_2D') and test(kw, 'f_2D')):
         if not test(kw, 'dats'): kw['dats']=[];
         tlim = getkw('tlim');
-        if not test(kw, 'new_exteralf'):
+        if not test(kw, 'new_externalf'):
             kwp = sd(kw,
                      tlim=(0, tlim[1]-tlim[0],
                            0, tlim[3]-tlim[2],
-                           0, 0),);
+                           0, 0),
+                     unit=1e-4,
+        else:
+            kwp = sd(kw, unit=1e-4);
         if not test(kw, 'dens_dat'):
             kw['dens_dat'] = "watercolumn.dat";
         kw['dats'] += [(kw['dens_dat'], kwp)];
