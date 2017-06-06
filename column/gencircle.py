@@ -39,7 +39,8 @@ def fuzzcircle(
         (xlim[1] + xlim[0]) / 2.0,
         (ylim[1] + ylim[0]) / 2.0];
     if prexp:
-        No = No/(1 + (1 + ro/L)**2);
+        No = No/(L**2/ro**2 + (L/ro + 1)**2);
+        print(No);
     def f(x,y):
         out = np.zeros(x.shape);
         rsq = (orig[0] - x)**2 + (orig[1] - y)**2
@@ -79,7 +80,7 @@ if __name__ == "__main__":
         X,Y,S,
         cmap='magma',
         norm=LogNorm(),
-        vmin=1e17,
+        vmin=1e18,
         vmax=1e23,
     );
     plt.colorbar();
