@@ -40,7 +40,7 @@ d=dict(
           0),
     timestep = 5e-17,
     totaltime= 200e-15,
-    fp=(0.0,0.0,0.0),
+    fp=(-5.0,0.0,0.0),
     pbsbase='prexp',
     dumpinterval=5e-16,
     #PIC/grid details

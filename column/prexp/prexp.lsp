@@ -113,7 +113,7 @@ from -2.000000e-03  -2.000000e-03 0.000000e+00
 to   -2.000000e-03  2.000000e-03 0.000000e+00
 phase_velocity 1.0
 drive_model LASER
-reference_point 0.0 0.0 0.0
+reference_point -0.0005 0.0 0.0
 components 0 1 0
 phases 0 0 0
 temporal_function 1
