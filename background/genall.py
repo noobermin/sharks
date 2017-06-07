@@ -99,6 +99,9 @@ for di in ds:
 d2s = [sd(d,
           pbsbase="bh_{:3.1e}".format(density),
           externalf_2D=True,
+          movne=dict(
+              ne_species = 'RhoN17',
+              clim=(1e14,1e22)),
           f_2D = mkbgtarg(
               N_bg = density,
               sdim = [-7.5e-4,2.5e-4],
