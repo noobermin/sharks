@@ -85,12 +85,25 @@ denses = np.logspace(dlim[0], dlim[1], 5);
 ds = [
     sd(d,
        pbsbase="bg_{:3.1e}".format(density),
-       externalf_2D=True,
+        externalf_2D=True,
        f_2D = mkbgtarg(
            N_bg = density,
+           sdim = [-1e-4,9e-4],
            dim=[i*1e-4 for i in d['tlim']]),
        dat_xres = 500)
     for density in denses]
 
 for di in ds:
+    gensim(**di);
+
+d2s = [sd(d,
+          pbsbase="bh_{:3.1e}".format(density),
+          externalf_2D=True,
+          f_2D = mkbgtarg(
+              N_bg = density,
+              sdim = [-7.5e-4,2.5e-4],
+              dim=[i*1e-4 for i in d['tlim']]),
+          dat_xres = 500)
+       for density in denses]
+for di in d2s:
     gensim(**di);
