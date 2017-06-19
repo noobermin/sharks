@@ -243,10 +243,25 @@ longe=sd(
     pext_species=(7,14,15,16,17,18),
 );
 
+longf=sd(
+    longe,
+    lim = (-21, 14,
+           -14, 21,
+             0,  0),
+    tlim = (-9, 9,
+            -9, 9,
+            0,0),
+    res  = (3500, 3500, 0),
+    domains = 49*4,
+    region_split=('y', 35),
+    pbsbase='glylongf',
+    dens_dat="target_lf45.dat",
+);
 
 
-for d in [longa,longb,longc,longd,longe]:
-    gensim(**d);
+longs = [longa,longb,longc,longd,longe,longf];
+for di in longs: 
+    gensim(**di);
 
 
 if opts['--make-target']:
@@ -263,5 +278,5 @@ if opts['--make-target']:
         savetxt(
             "{}/{}".format(di['pbsbase'],di['dens_dat']),
             dat);
-    for di in [longa,longb,longc,longd,longe]:
+    for di in longs:
         mktarg(di);
