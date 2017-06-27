@@ -72,7 +72,7 @@ d=dict(
         clim=(-1e19,1e19),
         linthresh=1e15,),
     #pmovies
-    no_pmovies=True,
+    no_pmovies=False,
     #particle dumps
     pext_species=(17,),
 );

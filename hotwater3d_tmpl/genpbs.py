@@ -203,7 +203,7 @@ cd "$PBS_O_WORKDIR"
     if cluster == "ramses":
         if nodes == 1:
             pre += '''
-D=/tmp/ngirmang.1-`mkdate`-$PBSBASE
+D=/data/le.283-`mkdate`-$PBSBASE
 mkdir -p $D
 cd "$PBS_O_WORKDIR"
 cp {lspexec} {pbsbase}.lsp *.dat $D/
