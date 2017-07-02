@@ -59,7 +59,7 @@ d=dict(
     dens_type=40,
     #misc
     lspexec='lsp-10-xy',
-    lsptemplate='rightwater3d_tmpl.lsp',
+    lsptemplate='hotwater3d_2_tmpl.lsp',
     dir=True,
     restart=11.9,
     dump_restart_flag=True,
@@ -76,7 +76,20 @@ d=dict(
     dump_particle=True,
     particle_dump_interval_ns=1e-15,
 );
+d2 = sd(d,
+        lim = (-25,25,
+               -25,25,
+               0,0),
+        tlim = (-20,20,
+                20,20,
+                0,0),
+        pbsbase='prexp2',
+        region_split=('y',3),
+        domains=96,
+        totaltime=400e-15,
+        particle_dump_interval_ns=1e-15,);
 gensim(**d);
+gensim(**d2);
 if opts['--make-target']:
     print("making targets");
     def mktarg(di):
@@ -97,3 +110,4 @@ if opts['--make-target']:
             "{}/{}".format(di['pbsbase'],di['dens_dat']),
             dat);
     mktarg(d);
+    mktarg(d2);

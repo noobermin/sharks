@@ -1,1 +1,0 @@
-../hotwater3d_tmpl/hotwater3d_tmpl.lsp
