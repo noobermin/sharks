@@ -8,7 +8,7 @@ simulation_title "hotglycol TNSA absorption, I = 5.000000e+18 W/cm^2"
 
 ;;Restarts
 dump_restart_flag ON
-maximum_restart_dump_time 23.95
+maximum_restart_dump_time 11.95
 rename_restart_flag ON
 
 ;;Load Balancing
