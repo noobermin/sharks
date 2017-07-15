@@ -83,6 +83,9 @@ d2 = sd(d,
         tlim = (-20,20,
                 -20,20,
                 0,0),
+        res =(1600,
+              1600,
+              0),
         pbsbase='prexp2',
         region_split=('y',3),
         domains=96,
@@ -113,7 +116,10 @@ if opts['--make-target']:
     mktarg(d2);
 F = lambda x: 1.0 / ( 6.0*x**3 + 6.0*x**2 + 3*x + 1) 
 c = sd(d2,
-       pbsbase = 'prexp3');
+       pbsbase = 'prexp3',
+       res =(2000,2000,0),
+       fp=(-100.0,0.0,0.0),
+);
 gensim(**c);
 if opts['--make-target']:
     print("making targets");

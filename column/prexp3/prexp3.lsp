@@ -60,12 +60,12 @@ particle_dump_interval_ns 1.0000000000000002e-06
 grid1
 xmin             -2.500000e-03
 xmax             2.500000e-03
-x-cells          1600
+x-cells          2000
                                         ;
 ;
 ymin             -2.500000e-03
 ymax             2.500000e-03
-y-cells          1600
+y-cells          2000
 
 
 
@@ -131,7 +131,7 @@ from -2.500000e-03  -2.500000e-03 0.000000e+00
 to   -2.500000e-03  2.500000e-03 0.000000e+00
 phase_velocity 1.0
 drive_model LASER
-reference_point -0.0005 0.0 0.0
+reference_point -0.01 0.0 0.0
 components 0 1 0
 phases 0 0 0
 temporal_function 1
