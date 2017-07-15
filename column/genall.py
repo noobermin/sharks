@@ -93,25 +93,27 @@ d2 = sd(d,
         particle_dump_interval_ns=1e-15,);
 gensim(**d);
 gensim(**d2);
+
+def mktarg(di, No = 3.34e22, ro = 5e-4, L = 1e-4):
+    tw = di['tlim'][1] - di['tlim'][0]
+    dat_xres= int(tw/(di['lim'][1]-di['lim'][0])*di['res'][0]);
+    dd = sd(
+        di,
+        f_2D = fuzzcircle(
+            dim = [i*1e-4 for i in di['tlim']],
+            No  = No,
+            ro  = ro,
+            L   = L,
+            prexp=True),
+        dat_xres= dat_xres,
+    );
+    dat = gendat(**dd);
+    savetxt(
+        "{}/{}".format(di['pbsbase'],di['dens_dat']),
+        dat);
+
 if opts['--make-target']:
     print("making targets");
-    def mktarg(di):
-        tw = di['tlim'][1] - di['tlim'][0]
-        dat_xres= int(tw/(di['lim'][1]-di['lim'][0])*di['res'][0]);
-        dd = sd(
-            di,
-            f_2D = fuzzcircle(
-                dim = [i*1e-4 for i in di['tlim']],
-                No  = 3.34e22,
-                ro  = 5e-4,
-                L   = 1e-4,
-                prexp=True),
-            dat_xres= dat_xres,
-        );
-        dat = gendat(**dd);
-        savetxt(
-            "{}/{}".format(di['pbsbase'],di['dens_dat']),
-            dat);
     mktarg(d);
     mktarg(d2);
 F = lambda x: 1.0 / ( 6.0*x**3 + 6.0*x**2 + 3*x + 1) 
@@ -123,18 +125,9 @@ c = sd(d2,
 gensim(**c);
 if opts['--make-target']:
     print("making targets");
-    tw = di['tlim'][1] - c['tlim'][0]
-    dat_xres= int(tw/(c['lim'][1]-c['lim'][0])*c['res'][0]);
-    cd = sd(c,
-            f_2D = fuzzcircle(
-                dim = [i*1e-4 for i in di['tlim']],
-                No  = 1e23 * F(0.3/15.0),
-                ro  = 15e-4,
-                L   = 0.3e-4,
-                prexp=True),
-            dat_xres= dat_xres);
-    dat = gendat(**cd);
-    savetxt(
-        "{}/{}".format(cd['pbsbase'],cd['dens_dat']),
-        dat);
+    mktarg(
+        c,
+        No = 1e23 * F(0.3/15.0),
+        ro = 15e-4,
+        L  = 0.3e-4);
 
