@@ -111,3 +111,24 @@ if opts['--make-target']:
             dat);
     mktarg(d);
     mktarg(d2);
+F = lambda x: 1.0 / ( 6.0*x**3 + 6.0*x**2 + 3*x + 1) 
+c = sd(d2,
+       pbsbase = 'prexp3');
+gensim(**c);
+if opts['--make-target']:
+    print("making targets");
+    tw = di['tlim'][1] - di['tlim'][0]
+    dat_xres= int(tw/(di['lim'][1]-di['lim'][0])*di['res'][0]);
+    cd = sd(c,
+            f_2D = fuzzcircle(
+                dim = [i*1e-4 for i in di['tlim']],
+                No  = 1e23 * F(0.3/15.0),
+                ro  = 15e-4,
+                L   = 0.3e-4,
+                prexp=True),
+            dat_xres= dat_xres);
+    dat = gendat(**cd);
+    savetxt(
+        "{}/{}".format(cd['pbsbase'],cd['dens_dat']),
+        dat);
+
