@@ -123,8 +123,8 @@ c = sd(d2,
 gensim(**c);
 if opts['--make-target']:
     print("making targets");
-    tw = di['tlim'][1] - di['tlim'][0]
-    dat_xres= int(tw/(di['lim'][1]-di['lim'][0])*di['res'][0]);
+    tw = di['tlim'][1] - c['tlim'][0]
+    dat_xres= int(tw/(c['lim'][1]-c['lim'][0])*c['res'][0]);
     cd = sd(c,
             f_2D = fuzzcircle(
                 dim = [i*1e-4 for i in di['tlim']],
