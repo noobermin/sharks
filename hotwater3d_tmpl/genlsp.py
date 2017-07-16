@@ -491,20 +491,24 @@ outletdefaults = sd(
     lasertfunc=1,
     laserafunc=2,
     laser_time_delay=0.0,);
-
+laserdefaults = sd(
+    outletdefaults,
+    outlet = 'xmin',
+    label = None,
+);
 def genoutlets(**kw):
     outlet_tmpl='''
-;{side}
+;{label}
 outlet
-from {xf:e}  {yf:e} {zf:e}
-to   {xt:e}  {yt:e} {zt:e}
+from {xmin:e}  {ymin:e} {zmin:e}
+to   {xmax:e}  {ymax:e} {zmax:e}
 phase_velocity 1.0
 drive_model NONE''';
     laser10_tmpl='''
 ;laser
 outlet
-from {xf:e}  {yf:e} {zf:e}
-to   {xt:e}  {yt:e} {zt:e}
+from {xmin:e}  {ymin:e} {zmin:e}
+to   {xmax:e}  {ymax:e} {zmax:e}
 phase_velocity 1.0
 drive_model LASER
 reference_point {fp}
@@ -518,52 +522,54 @@ time_delay {time_delay}
     laserkw =  kw['laseroutlet'] if test(kw, 'laseroutlet') else dict();
     laserkw = sd(kw, **laserkw);
     getkw = mk_getkw(laserkw,outletdefaults,prefer_passed = True);
-    if not test(laserkw,'nolaser'):
+    lset = set();
+    alll = [
+        '{}{}'.format(i,j)
+        for i in ['x','y','z']
+        for j in ['min', 'max']
+    ];
+    side_label = dict(
+        xmin='front',
+        xmax='back',
+        ymin='left',
+        ymax='right',
+        zmin='bottom',
+        zmax='top');
+    otherside = lambda s: s[:-2] + ('ax' if s[-2:] == 'in' else 'in')
+    def coords(iside,d):
+        out = {k:d[k] for k in alll };
+        out[otherside(iside)] = out[iside];
+        return out;
+    ls = [];
+    if not test(laserkw, 'multilaser') and not test(laserkw,'nolaser'):
+        ls = [ sd(laserkw, outlet='xmin') ];
+    elif test(laserkw,'multilaser'):
+        ls = kw['multilaser'];
+        print("experimental multi-lasers");
+        print("if you put more than one laser on a single outlet,");
+        print("be sure to be using my modifications to lsp for it.");
+        ls = kw['multilaser'];
+    #lasers
+    for l in ls:
+        l = sd(laserkw, **l);
+        lgetkw = mk_getkw(l, laserdefaults, prefer_passed = True);
+        outlet = lgetkw('outlet');
+        lset.add(outlet);
         retoutlets += laser10_tmpl.format(
-            xf = kw['xmin'], xt = kw['xmin'],
-            yf = kw['ymin'], yt = kw['ymax'],
-            zf = kw['zmin'], zt = kw['zmax'],
-            
-            fp = joinspace(scaletuple(getkw("fp"))),
-            components = joinspace(getkw("components")),
-            phases =  joinspace(getkw("phases")),
-            lasertfunc = getkw('lasertfunc'),
-            laserafunc = getkw('laserafunc'),
-            time_delay = getkw('laser_time_delay'),);
-    else:
-        retoutlets += outlet_tmpl.format(
-            side='front',
-            xf = kw['xmin'], xt = kw['xmin'],
-            yf = kw['ymin'], yt = kw['ymax'],
-            zf = kw['zmin'], zt = kw['zmax'],);
-    retoutlets += outlet_tmpl.format(
-        side='back',
-        xf = kw['xmax'], xt = kw['xmax'],
-        yf = kw['ymin'], yt = kw['ymax'],
-        zf = kw['zmin'], zt = kw['zmax'],);
-    
-    if kw['ycells'] > 0:
-        retoutlets += outlet_tmpl.format(
-            side='left',
-            xf = kw['xmin'], xt = kw['xmax'],
-            yf = kw['ymin'], yt = kw['ymin'],
-            zf = kw['zmin'], zt = kw['zmax'],)
-        retoutlets += outlet_tmpl.format(
-            side='right',
-            xf = kw['xmin'], xt = kw['xmax'],
-            yf = kw['ymax'], yt = kw['ymax'],
-            zf = kw['zmin'], zt = kw['zmax'],)
-    if kw['zcells'] > 0:
-        retoutlets += outlet_tmpl.format(
-            side='bottom',
-            xf = kw['xmin'], xt = kw['xmax'],
-            yf = kw['ymin'], yt = kw['ymax'],
-            zf = kw['zmin'], zt = kw['zmin'],)
-        retoutlets += outlet_tmpl.format(
-            side='top',
-            xf = kw['xmin'], xt = kw['xmax'],
-            yf = kw['ymin'], yt = kw['ymax'],
-            zf = kw['zmax'], zt = kw['zmax'],)
+            fp = joinspace(scaletuple(lgetkw("fp"))),
+            components = joinspace(lgetkw("components")),
+            phases =  joinspace(lgetkw("phases")),
+            lasertfunc = lgetkw('lasertfunc'),
+            laserafunc = lgetkw('laserafunc'),
+            time_delay = lgetkw('laser_time_delay'),
+            **coords(outlet, l)
+        );
+    #outlet boundaries
+    for side in [i for i in alll if i not in lset] :
+        if laserkw[side[0]+'cells'] > 0:
+            retoutlets += outlet_tmpl.format(
+                label = side_label[side],
+                **coords(side, laserkw));
     return retoutlets;
 
 def genlsp(**kw):
