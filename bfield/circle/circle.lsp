@@ -1,3 +1,6 @@
+;;;
+;; this includes most correct masses for water
+;; and better selection ratios
 [Title]
 simulation_title "circle play, I = 2.500000e+18 W/cm^2"
 ;
@@ -238,7 +241,7 @@ drive_model NONE
 [Particle Species]
 species1 ; neutral O
 charge 0
-mass 29392
+mass 29164.4
 atomic_number 8
 migrant_species_flag off
 implicit_species_flag on
@@ -248,11 +251,11 @@ transverse_weighting_flag on
 particle_kinematics_option STANDARD
 scattering_flag off
 implicit_filtering_parameter 0.1
-selection_ratio 0.05
+selection_ratio 1.0
 ;
 species2 ; O+
 charge +1
-mass 29391
+mass 29163.4
 atomic_number 8
 migrant_species_flag off
 implicit_species_flag on
@@ -262,11 +265,11 @@ transverse_weighting_flag on
 particle_kinematics_option STANDARD
 scattering_flag off
 implicit_filtering_parameter 0.1
-selection_ratio 0.01
+selection_ratio 1.0
 ;
 species3 ; O++
 charge +2
-mass 29390
+mass 29162.4
 atomic_number 8
 migrant_species_flag off
 implicit_species_flag on
@@ -276,11 +279,11 @@ transverse_weighting_flag on
 particle_kinematics_option STANDARD
 scattering_flag off
 implicit_filtering_parameter 0.1
-selection_ratio 0.01
+selection_ratio 1.0
 ;
 species4 ; O 3+
 charge +3
-mass 29389
+mass 29161.4
 atomic_number 8
 migrant_species_flag off
 implicit_species_flag on
@@ -290,11 +293,11 @@ transverse_weighting_flag on
 particle_kinematics_option STANDARD
 scattering_flag off
 implicit_filtering_parameter 0.1
-selection_ratio 0.01
+selection_ratio 1.0
 ;
 species5 ; O 4+
 charge +4
-mass 29388
+mass 29160.4
 atomic_number 8
 migrant_species_flag off
 implicit_species_flag on
@@ -304,11 +307,11 @@ transverse_weighting_flag on
 particle_kinematics_option STANDARD
 scattering_flag off
 implicit_filtering_parameter 0.1
-selection_ratio 0.01
+selection_ratio 1.0
 ;
 species6 ; O 5+
 charge +5
-mass 29387
+mass 29159.4
 atomic_number 8
 migrant_species_flag off
 implicit_species_flag on
@@ -318,11 +321,11 @@ transverse_weighting_flag on
 particle_kinematics_option STANDARD
 scattering_flag off
 implicit_filtering_parameter 0.1
-selection_ratio 0.01
+selection_ratio 1.0
 ;
 species7 ; O 6+
 charge +6
-mass 29386
+mass 29158.4
 atomic_number 8
 migrant_species_flag off
 implicit_species_flag on
@@ -332,11 +335,11 @@ transverse_weighting_flag on
 particle_kinematics_option STANDARD
 scattering_flag off
 implicit_filtering_parameter 0.1
-selection_ratio 0.01
+selection_ratio 1.0
 ;
 species8 ; O 7+
 charge +7
-mass 29385
+mass 29157.4
 atomic_number 8
 migrant_species_flag off
 implicit_species_flag on
@@ -346,11 +349,11 @@ transverse_weighting_flag on
 particle_kinematics_option STANDARD
 scattering_flag off
 implicit_filtering_parameter 0.1
-selection_ratio 0.01
+selection_ratio 1.0
 ;
 species9 ; O 8+
 charge +8
-mass 29384
+mass 29156.4
 atomic_number 8
 migrant_species_flag off
 implicit_species_flag on
@@ -360,7 +363,7 @@ transverse_weighting_flag on
 particle_kinematics_option STANDARD
 scattering_flag off
 implicit_filtering_parameter 0.1
-selection_ratio 0.01
+selection_ratio 1.0
 ;
 species10 ; kinetic electrons
 charge -1
@@ -373,11 +376,11 @@ transverse_weighting_flag on
 particle_kinematics_option STANDARD
 scattering_flag on
 implicit_filtering_parameter 0.1
-selection_ratio 0.01
+selection_ratio 1.0
 ;
 species11 ; protons
 charge +1
-mass 1836
+mass 1836.2
 atomic_number 1
 migrant_species_flag off
 implicit_species_flag on
@@ -387,7 +390,22 @@ transverse_weighting_flag on
 particle_kinematics_option STANDARD
 scattering_flag off
 implicit_filtering_parameter 0.1
-selection_ratio 0.01
+selection_ratio 1.0
+;
+species12 ; H atom
+charge 0
+mass 1837.4
+atomic_number 1
+migrant_species_flag off
+implicit_species_flag on
+particle_motion_flag on
+particle_forces_option PRIMARY
+transverse_weighting_flag on
+particle_kinematics_option STANDARD
+scattering_flag off
+implicit_filtering_parameter 0.1
+selection_ratio 1.0
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -443,6 +461,30 @@ thermal_energy 1.0
 movie_fraction 0.000
 
 ;; ionization states ;;
+higherstate              ; H -> p+
+from -1.200000e-03 -8.000000e-04  0.000000e+00
+to   1.200000e-03 8.000000e-04  0.000000e+00
+interval 1
+species 12
+ion_species 11
+movie_tag 5
+electron_species 10
+movie_tag 3
+ionization_potential 13.6
+cross_sections
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+end
+movie_fraction 0.0
 ;
 higherstate              ; O -> O+
 from -1.200000e-03 -8.000000e-04  0.000000e+00

@@ -49,6 +49,7 @@ d=dict(
     region_split=('y',8),
     pbses='defaults',
     #target information
+    lsptemplate="hotwater3d_2_tmpl.lsp",
     speciesl=[ 'e', 'O', 'p'],
     fracs   =[ 3.0, 1.0, 2.0],
     thermal_energy=(1.0,1.0,1.0),
@@ -77,6 +78,15 @@ d=dict(
     particle_dump_interval_ns=2e-15,
 );
 gensim(**d);
+d2 = sd(
+    d,
+    pbsbase='circle2',
+    multilaser=[
+        dict(outlet='xmin',
+             fp=(0.0, 5.0, 0.0)),
+        dict(outlet='xmax',
+             fp=(0.0,-5.0, 0.0))],);
+gensim(**d2);
 if opts['--make-target']:
     print("making targets");
     def mktarg(di):
@@ -97,3 +107,4 @@ if opts['--make-target']:
             "{}/{}".format(di['pbsbase'],di['dens_dat']),
             dat);
     mktarg(d);
+    mktarg(d2);
