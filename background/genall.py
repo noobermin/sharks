@@ -61,9 +61,11 @@ d=dict(
     #misc
     lspexec='lsp',
     dir=True,
+    ramses_rundir = "/data/le.283/le.283-`date +%y-%m-%d`-$PBSBASE",
     restart=23.95,
     dump_restart_flag=True,
     new_externalf=True,
+    email='le.283@osu.edu',
     #movs
     movne=dict(
         ne_species = 'RhoN17',

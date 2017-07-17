@@ -4,7 +4,7 @@
 #PBS -S /bin/bash
 #PBS -j oe
 #PBS -m ae
-#PBS -M le.283@osu.edu
+#PBS -M {email}
 {extra_headers}
 
 PBSBASE={pbsbase}
