@@ -18,6 +18,10 @@ from docopt import docopt;
 from pys import mk_getkw, sd, test;
 
 inf = float('inf');
+def stringify_stuple(s):
+    if type(s) is not tuple:
+        raise ValueError("Only for tuple!");
+    return "({})".format(",".join(s));
 pbsdefaults = dict(
     pbsbase="hotwater3d_test",
     domains=48,
@@ -88,7 +92,8 @@ mov_defaults = sd(
     linthresh=1e15,
     averaging=(0,0),
     cmap='viridis',
-    
+    contour_lines = 1e19,
+    contour_quantities = 'RhoN10',#this should be a tuple to distinguish from strings.
     dq_cmap='PRGn',
     ne_species='RhoN10',
     rho_species="Rho",
@@ -126,6 +131,7 @@ def gen_mov(**kw):
         pbsbase=getkw('pbsbase'),
         lims=kw['clim'],
         n_c=getkw('n_c')));
+    EMqs = ['B','E','S','B_energy', 'E_energy'];
     if getkw('type')=='ni' or getkw('type')=='dq':
         Q,q = zip(*getkw(getkw('type')+'_species'));
         Q = ",".join(str(i) for i in Q);
@@ -147,6 +153,19 @@ def gen_mov(**kw):
         spec['quantity'] = getkw('rho_species');
         spec['cmap']  = getkw('dq_cmap');
         spec['linthresh'] = getkw('linthresh');
+    elif getkw('type') in EMqs:
+        if getkw('type') == 'B':
+            spec['quantity'] = 'B_norm';
+        elif getkw('type') == 'E':
+            spec['quantity'] = 'E_norm';
+        else:
+            spec['quantity'] = getkw('type');
+        spec['contour_lines']=getkw('contour_lines')
+        spec['contour_quantities']=getkw('contour_quantities');
+        #since default highlight is usually shit
+        if type(spec['contour_quantities']) is tuple:
+            spec['contour_quantities'] = stringify_stuple(spec['contour_quantities']);
+        kw['movtmpl'] = 'movEM_tmpl';
     if test(kw, 'movtmpl'):
         fname = kw['movtmpl'];
     else:

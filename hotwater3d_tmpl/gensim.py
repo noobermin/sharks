@@ -47,6 +47,9 @@ defaults.update(dict(
     movni=None,
     movdq=None,
     movrho=None,
+    movB=None,
+    movE=None,
+    movS=None,
     angular=None,
     pbses=None,
     dir=None,
@@ -147,7 +150,7 @@ def gensim(**kw):
     #
     # movies
     #
-    movs = takef(kw,['movne','movni','movdq','movrho']);
+    movs = takef(kw,['movne','movni','movdq','movrho','movE','movB','movS']);
     #yes really.
     tyf = lambda s: re.search(r"mov(\w+)",s).group(1);
     movs = { tyf(k) : movs[k]
