@@ -71,6 +71,10 @@ d=dict(
     movrho=dict(
         clim=(-1e19,1e19),
         linthresh=1e15,),
+    movB=dict(
+        clim=(1e2,1e8),
+        contour_lines=(1e19,1e21),
+        contour_quantities=('RhoN10', 'RhoN10'),),
     #pmovies
     no_pmovies=False,
     #particle dumps
@@ -87,6 +91,12 @@ d2 = sd(
         dict(outlet='xmax',
              fp=(0.0,-5.0, 0.0))],);
 gensim(**d2);
+Is = 5*(10.0**np.arange(16,23));
+Iscan = [ sd(d2,I = i,pbsbase="circ_{:.0e}".format(i))
+          for i in Is ];
+for di in Iscan:
+    gensim(**di);
+
 if opts['--make-target']:
     print("making targets");
     def mktarg(di):
@@ -102,9 +112,13 @@ if opts['--make-target']:
                 ri  = 3e-4),
             dat_xres= dat_xres,
         );
-        dat = gendat(**dd);
+        return gendat(**dd);
+    def saveto(dat,di):
         savetxt(
-            "{}/{}".format(di['pbsbase'],di['dens_dat']),
-            dat);
-    mktarg(d);
-    mktarg(d2);
+            "{}/{}".format(di['pbsbase'],di['dens_dat']),dat);
+    cdat = mktarg(d);
+    saveto(cdat, d);
+    mktarg(cdat, d2);
+    for di in Is:
+        saveto(cdat, **di);
+

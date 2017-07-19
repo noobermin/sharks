@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
-CONDAFILE=${{CONDAFILE:-"{conda}"}}
+CONDAFILE=${CONDAFILE:-"~/conda"}
 [ -e "$CONDAFILE" ] && source $CONDAFILE
-WAITDELAY=${{WAITDELAY:-1}}
-DIR=${{1:-"."}}
-[ ! -n "$OUTDIR" ] && OUTDIR=${{2:-"mov{quantity}"}}
+WAITDELAY=${WAITDELAY:-1}
+DIR=${1:-"."}
+[ ! -n "$OUTDIR" ] && OUTDIR=${2:-"movB_norm"}
 mkdir -p "$OUTDIR"
-LIMS=${{LIMS:-"{lims}"}}
-QUANTITY=${{QUANTITY:-"{quantity}"}}
-NPROCS=${{NPROCS:-1}}
-CONTOURS=${{COUNTOURS:-"{contour_lines}"}}
-CONTOURQS=${{CONTOURQS:-"{contour_quantities}"}}
-SCRIPT=${{SCRIPT:-"EM.py"}}
+LIMS=${LIMS:-"(100.0, 100000000.0)"}
+QUANTITY=${QUANTITY:-"B_norm"}
+NPROCS=${NPROCS:-1}
+CONTOURS=${COUNTOURS:-"(1e+19, 1e+21)"}
+CONTOURQS=${CONTOURQS:-"(RhoN10,RhoN10)"}
+SCRIPT=${SCRIPT:-"EM.py"}
 for i in $(ls "$DIR" | grep 'flds[0-9]\+\.p4' | sort -V); do
-    n=$(echo ${{i#flds*}} | sed 's/\.p4.*$//')
+    n=$(echo ${i#flds*} | sed 's/\.p4.*$//')
     I=$(printf '%05d' "$n" )
     [ -e "$OUTDIR"/$I.png ] && [ ! -n "$DONTSKIP" ] && echo skipping...$i &&  continue;
     while [ $(pgrep -f 'python[23]* *.*'"$SCRIPT" | wc -l ) -ge $NPROCS ]; do sleep $WAITDELAY; done;
@@ -25,6 +25,6 @@ done
 while [ $(pgrep -f 'python[23]* *.*'"$SCRIPT" | wc -l ) -gt 0 ]; do
     echo waiting...
     sleep 5; done;
-OUTMOV=${{OUTMOV:-"{pbsbase}-$QUANTITY.mp4"}}
+OUTMOV=${OUTMOV:-"circ_5e+21-$QUANTITY.mp4"}
 ffmpeg -pattern_type glob -i "$OUTDIR/*.png" -c:v libx264 -pix_fmt yuv420p -y $OUTMOV
 [ -e $OUTMOV ] && [ -n "$PBS_O_WORKDIR" ] && rcp $OUTMOV $PBS_O_WORKDIR
