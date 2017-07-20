@@ -70,6 +70,11 @@ d=dict(
     movrho=dict(
         clim=(-1e19,1e19),
         linthresh=1e15,),
+    movE=dict(
+        clim=(1e9,1e13),
+        contour_lines=(1e18, 1e21),
+        contour_quantities=('RhoN10', 'RhoN10'),
+    ),
     #pmovies
     no_pmovies=True,
     #particle dumps
