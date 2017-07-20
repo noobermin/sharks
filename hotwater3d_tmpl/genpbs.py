@@ -28,6 +28,8 @@ pbsdefaults = dict(
     concurrents=None,
     label=None,
     mkrundir=False,
+    ramses_rundir="/tmp/ngirmang.1-`mkdate`-$PBSBASE",
+    email='ngirmang.1@osu.edu',
 )
 cluster =  dict(
     ppn=48,max_walltime=9999,mpi='mpirun -np {}',max_ppn=48,condafile="~/conda"
@@ -161,6 +163,7 @@ def genpbs(**kw):
     lspexec=getkw('lspexec');
     pbsbase=getkw('pbsbase');
     label = getkw('label');
+    email = getkw('email');
     if not label:
         label = pbsbase;
     cluster = getkw("cluster");
@@ -203,11 +206,13 @@ cd "$PBS_O_WORKDIR"
     if cluster == "ramses":
         if nodes == 1:
             pre += '''
-D=/tmp/ngirmang.1-`mkdate`-$PBSBASE
+D={ramses_rundir}
 mkdir -p $D
 cd "$PBS_O_WORKDIR"
 cp {lspexec} {pbsbase}.lsp *.dat $D/
-'''.format(lspexec=lspexec,pbsbase=pbsbase);
+'''.format(lspexec=lspexec,
+           ramses_rundir=getkw('ramses_rundir'),
+           pbsbase=pbsbase);
             for concurrent in concurrents:
                 pre+='cp {} $D/\n'.format(concurrent[0]);
             if len(concurrents) > 0:
@@ -264,6 +269,7 @@ cp {lspexec} {pbsbase}.lsp *.dat $D/
         post=post,
         ppn=ppn,
         portions=portions,
+        email=email,
         pbsbase=getkw('pbsbase'),
         walltime=walltime,
         mpirun=mpirun,
