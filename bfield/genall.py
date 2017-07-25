@@ -127,6 +127,6 @@ if opts['--make-target']:
     cdat = mktarg(d);
     saveto(cdat, d);
     saveto(cdat, d2);
-    for di in Is:
+    for di in Iscan:
         saveto(cdat, di);
 
