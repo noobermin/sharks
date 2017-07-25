@@ -126,7 +126,7 @@ if opts['--make-target']:
             "{}/{}".format(di['pbsbase'],di['dens_dat']),dat);
     cdat = mktarg(d);
     saveto(cdat, d);
-    mktarg(cdat, d2);
+    saveto(cdat, d2);
     for di in Is:
         saveto(cdat, **di);
 
