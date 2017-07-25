@@ -128,5 +128,5 @@ if opts['--make-target']:
     saveto(cdat, d);
     saveto(cdat, d2);
     for di in Is:
-        saveto(cdat, **di);
+        saveto(cdat, di);
 
