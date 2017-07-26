@@ -11,7 +11,7 @@ simulation_title "circle play, I = 2.500000e+18 W/cm^2"
 
 ;;Restarts
 dump_restart_flag ON
-maximum_restart_dump_time 11.9
+maximum_restart_dump_time 5.9
 rename_restart_flag ON
 
 ;;Load Balancing
