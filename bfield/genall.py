@@ -15,6 +15,7 @@ from gendat import gendat;
 import numpy as np;
 import shutil as sh;
 from lspplot.physics import e0,c,mu0
+import re;
 #E = 0.5e-3; # 5mJ
 I = 2.5e18;
 l = 0.78e-6
@@ -105,6 +106,14 @@ Iscan = [
 for di in Iscan:
     gensim(**di);
 
+Mscan = [
+    sd(di, domains=48, region_split=('y',2),
+       pbsbase=re.sub('circ','cirm',di['pbsbase']))
+    for di in Iscan ];
+
+for di in Mscan:
+    gensim(**di);
+
 if opts['--make-target']:
     print("making targets");
     def mktarg(di):
@@ -127,6 +136,6 @@ if opts['--make-target']:
     cdat = mktarg(d);
     saveto(cdat, d);
     saveto(cdat, d2);
-    for di in Iscan:
+    for di in (Iscan + Mscan):
         saveto(cdat, di);
 

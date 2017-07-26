@@ -67,6 +67,11 @@ clusters= {
         max_ppn=24,
         max_walltime=168,
         mpi='aprun -n {}'),
+    'armstrong_bigmem':sd(
+        cluster,
+        max_ppn=24,
+        max_walltime=24,
+        mpi='aprun -n {}'),
     'armstrong_debug':sd(
         cluster,
         max_ppn=24,
@@ -342,6 +347,11 @@ def mk_hpcmp_pbses(pbsbase='hotwater3d_tmpl',**kw):
             pbsname=pbsbase+"_armstrong_debug",
             cluster='armstrong',
             queue='debug'),
+        sd(
+            hpcmp_defpbs,
+            pbsname=pbsbase+"_armstrong_bigmem",
+            cluster='armstrong',
+            queue='bigmem'),
         sd(
             hpcmp_defpbs,
             pbsname=pbsbase+"_armstrong_48",
