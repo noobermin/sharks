@@ -9,9 +9,12 @@ fi
 
 mkdir -p "$1"
 ln -s ../hotwater3d_tmpl/hotwater3d_tmpl.lsp $1/
+ln -s ../hotwater3d_tmpl/hotwater3d_2_tmpl.lsp $1/
 ln -s ../hotwater3d_tmpl/hotwater3d_tmpl.pbs $1/
 ln -s ../hotwater3d_tmpl/movne_tmpl $1/
 ln -s ../hotwater3d_tmpl/movni_tmpl $1/
+ln -s ../hotwater3d_tmpl/movrho_tmpl $1/
+ln -s ../hotwater3d_tmpl/movEM_tmpl $1/
 ln -s ../hotwater3d_tmpl/genpbs.py $1/
 ln -s ../hotwater3d_tmpl/genlsp.py $1/
 ln -s ../hotwater3d_tmpl/gendat.py $1/
