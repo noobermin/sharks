@@ -100,7 +100,9 @@ print("creating range between {} and {}".format(dlim[0],dlim[1]));
 denses = np.logspace(dlim[0], dlim[1], 5);
 denses = np.append(denses, [2e16, 7e16, 1e17, 1.8e17, 8.6e17])
 
-fromd = lambda d,density,l='movE': sd(d[l],contour_lines=(density*0.1,1e21))
+fromd = lambda d,density,l='movE': sd(d[l],contour_lines=(
+    "{:0.2e}".format(density*0.5),
+    1e21))
 mkmovE = lambda d, density: fromd(d,density)
 mkmovB = lambda d, density: fromd(d,density,'movB')
 
