@@ -23,7 +23,7 @@ cd "$PBS_O_WORKDIR"
 D=/data/ngirmang.1/ngirmang.1-`date +%y-%m-%d`-$PBSBASE
 mkdir -p $D
 cd "$PBS_O_WORKDIR"
-cp lsp hps_5.0e+18.lsp *.dat $D/
+cp lsp-10-xy hps_5.0e+18.lsp *.dat $D/
 cp zipper $D/
 cp movB $D/
 cp movE $D/
@@ -48,7 +48,7 @@ movne_PID=$!
 movrho_PID=$!
 
 
-mpirun -np 48 -hostfile $PBS_NODEFILE ./lsp $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+mpirun -np 48 -hostfile $PBS_NODEFILE ./lsp-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
 
 kill $zipper_PID
 ./zipper -a >$PBS_O_WORKDIR

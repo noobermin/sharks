@@ -63,7 +63,7 @@ d=dict(
     dens_dat="target.dat",
     dens_type=40,
     #misc
-    lspexec='lsp',
+    lspexec='lsp-10-xy',
     dir=True,
     ramses_rundir = "/data/ngirmang.1/ngirmang.1-`date +%y-%m-%d`-$PBSBASE",
     restart=23.95,
