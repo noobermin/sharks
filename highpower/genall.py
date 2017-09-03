@@ -74,8 +74,8 @@ d=dict(
     email='ngirmang.1@osu.edu',
     #movs
     movne=dict(
-        ne_species = 'RhoN11',
-        clim=(1e19,1e23)),
+        ne_species = 'RhoN10',
+        clim=(1e16,1e22)),
     movrho=dict(
         clim=(-1e19,1e19),
         linthresh=1e15,),
@@ -116,9 +116,6 @@ d0 = [
     for density in denses]
 dw = [sd(d,
          pbsbase="hpw_{:3.1e}".format(density),
-         movne=dict(
-             ne_species = 'RhoN11',
-             clim=(1e14,1e22)),
          f_2D = mkbgtarg(
              N_bg = density,
              sdim = [-7.5e-4, 2.5e-4],

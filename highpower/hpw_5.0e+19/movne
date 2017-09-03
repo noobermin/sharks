@@ -8,9 +8,9 @@ if [ ! -n "$OUTDIR" ]; then
 fi
 mkdir -p "$OUTDIR"
 INTENSITY=${INTENSITY:-"1.000000e+19"}
-LIMS=${LIMS:-"(100000000000000.0, 1e+22)"}
+LIMS=${LIMS:-"(1e+16, 1e+22)"}
 HIGHLIGHT=${HIGHLIGHT:-"1.832437e+21"}
-QUANTITY=${QUANTITY:-"RhoN11"}
+QUANTITY=${QUANTITY:-"RhoN10"}
 NPROCS=${NPROCS:-1}
 source ~/.bashrc
 
