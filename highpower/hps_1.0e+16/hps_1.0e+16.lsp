@@ -621,7 +621,7 @@ movie_fraction 0.0
 
 ;
 extract1
-species 11
+species 10
 direction X
 maximum_number  1000000000
 start_time 0
@@ -630,7 +630,7 @@ at -0.0045000000000000005 0 0
  
 ;
 extract2
-species 11
+species 10
 direction X
 maximum_number  1000000000
 start_time 0
@@ -639,7 +639,7 @@ at 0.001 0 0
  
 ;
 extract3
-species 11
+species 10
 direction Y
 maximum_number  1000000000
 start_time 0
@@ -648,7 +648,7 @@ at 0 -0.0045000000000000005 0
  
 ;
 extract4
-species 11
+species 10
 direction Y
 maximum_number  1000000000
 start_time 0

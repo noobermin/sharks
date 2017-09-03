@@ -92,7 +92,7 @@ d=dict(
     #pmovies
     no_pmovies=False,
     #particle dumps
-    pext_species=(11,),
+    pext_species=(10,),
 );
 tens = np.arange(16,21);
 denses = [ m*10.0**p for p in tens for m in [1, 5] ];
