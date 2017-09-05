@@ -8,7 +8,7 @@ mkdir -p "$OUTDIR"
 LIMS=${LIMS:-"(3881900706.7440405, 3881900706744.0405)"}
 QUANTITY=${QUANTITY:-"E_norm"}
 NPROCS=${NPROCS:-1}
-CONTOURS=${COUNTOURS:-"('9.00e+16', 1e+21)"}
+CONTOURS=${COUNTOURS:-"(9e+16, 1e+21)"}
 CONTOURQS=${CONTOURQS:-"(RhoN10,RhoN10)"}
 SCRIPT=${SCRIPT:-"EM.py"}
 for i in $(ls "$DIR" | grep 'flds[0-9]\+\.p4' | sort -V); do
