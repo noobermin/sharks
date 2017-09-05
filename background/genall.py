@@ -22,6 +22,11 @@ w0=2.2e-6 / np.sqrt(2*np.log(2))
 T0=42e-15
 
 from gentarg import mkbgtarg;
+
+c=2.998e8
+e0=8.854e-12
+EfromI = lambda i: np.sqrt(i*1e4 * 2 / c / e0);
+BfromI = lambda i: EfromI(i)/c*1e4;
 d=dict(
     l=l,
     w=w0,
@@ -73,6 +78,16 @@ d=dict(
     movrho=dict(
         clim=(-1e19,1e19),
         linthresh=1e15,),
+    movE=dict(
+        clim=(EfromI(2e12),EfromI(2e18)),
+        contour_lines=(1e18, 1e21),
+        contour_quantities=('RhoN10', 'RhoN10'),
+    ),
+    movB=dict(
+        clim=(BfromI(2e12),BfromI(2e18)),
+        contour_lines=(1e18, 1e21),
+        contour_quantities=('RhoN10', 'RhoN10'),
+    ),
     #pmovies
     no_pmovies=False,
     #particle dumps
@@ -84,20 +99,26 @@ dlim = np.log10(dlim);
 print("creating range between {} and {}".format(dlim[0],dlim[1]));
 denses = np.logspace(dlim[0], dlim[1], 5);
 denses = np.append(denses, [2e16, 7e16, 1e17, 1.8e17, 8.6e17])
-ds = [
+
+fromd = lambda d,density,l='movE': sd(d[l],contour_lines=(
+    float("{:0.2e}".format(density*0.5)),
+    1e21))
+mkmovE = lambda d, density: fromd(d,density)
+mkmovB = lambda d, density: fromd(d,density,'movB')
+
+d1s = [
     sd(d,
        pbsbase="b0_{:3.1e}".format(density),
-        externalf_2D=True,
+       externalf_2D=True,
        f_2D = mkbgtarg(
            N_bg = density,
            sdim = [-1e-4,9e-4],
            twidth = 30e-4, 
            dim=[i*1e-4 for i in d['tlim']]),
-       dat_xres = 500)
+       dat_xres = 500,
+       movE=mkmovE(d,density),
+       movB=mkmovB(d,density),)
     for density in denses]
-
-for di in ds:
-    gensim(**di);
 
 d2s = [sd(d,
           pbsbase="bw_{:3.1e}".format(density),
@@ -109,7 +130,12 @@ d2s = [sd(d,
               N_bg = density,
               sdim = [-7.5e-4,2.5e-4],
               dim=[i*1e-4 for i in d['tlim']]),
-          dat_xres = 500)
+          dat_xres = 500,
+          movE=mkmovE(d,density),
+          movB=mkmovB(d,density),)
        for density in denses]
-for di in d2s:
+
+ds = d1s+d2s;
+
+for di in ds:
     gensim(**di);
