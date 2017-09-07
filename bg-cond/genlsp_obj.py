@@ -589,9 +589,7 @@ condb_defaults = sd(
     conductors=[]);
 condb_tmpl='''
 object{i} {type}
-conductor on
-potential {potential}
-medium {medium}
+conductor on medium {medium} potential {potential}
 from {xmin:e}  {ymin:e} {zmin:e}
 to   {xmax:e}  {ymax:e} {zmax:e}
 '''
