@@ -1,13 +1,13 @@
 #PBS -l walltime=96:0:00
 #PBS -l nodes=2:ppn=12
-#PBS -N refl
+#PBS -N norefl
 #PBS -S /bin/bash
 #PBS -j oe
 #PBS -m ae
 #PBS -M ngirmang.1@osu.edu
 
 
-PBSBASE=refl
+PBSBASE=norefl
 #source $HOME/.bashrc
 
 #This outputs the name of the root node

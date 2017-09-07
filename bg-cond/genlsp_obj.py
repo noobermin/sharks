@@ -502,8 +502,8 @@ all_lims = [
     for j in ['min', 'max']
 ];
 
+otherside = lambda s: s[:-2] + ('ax' if s[-2:] == 'in' else 'in');
 def outlet_coords(iside,d):
-    otherside = lambda s: s[:-2] + ('ax' if s[-2:] == 'in' else 'in');
     out = {k:d[k] for k in all_lims };
     out[otherside(iside)] = out[iside];
     return out;
@@ -578,11 +578,12 @@ time_delay {time_delay}
 
 condb_objdef=sd(
     lspdefaults,
-    width=10e-4,
+    width=10.0,
     potential=0, #should usually be zero
     medium=0,    #and this too.
     outlet='xmax',
     type="BLOCK",
+    start=0,
 );
 condb_defaults = sd(
     lspdefaults,
@@ -602,8 +603,11 @@ def genconductor_boundaries(**kw):
         if outlet not in all_lims:
             raise ValueError('Unknown outlet "{}"'.format(outlet));
         coords = outlet_coords(outlet,kw);
+        cd['width']*=1e-4;
+        cd['start']*=1e-4;
         sign = lambda outlet: 1.0 if outlet[-2:] == 'ax' else -1.0
-        coords[outlet] += sign(outlet)*cd['width'];
+        coords[outlet] += sign(outlet)*(cd['width'] + cd['start']);
+        coords[otherside(outlet)] += sign(outlet)*cd['start'];
         conductorss += condb_tmpl.format(
             i=I+1,
             **sd(cd,**coords));

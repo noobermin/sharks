@@ -35,25 +35,25 @@ d=dict(
     I=I,
     dens_flags=(True,True,False),
     discrete=(3,3,1),
-    lim =(-20,20,
-          -20,20,
+    lim =(-15,15,
+          -15,15,
            0,0),
-    tlim=(-19,19,
-          -19,10,
+    tlim=(-14,14,
+          -14,14,
            0,0),
-    res =(40*20,
-          40*20,
+    res =(30*20,
+          30*20,
           0),
     conductors=[
-        dict(outlet='xmax', width=10e-4)],
+        dict(outlet='xmax', width=10.0, start=-1.5)],
     timestep = 1e-16,
-    totaltime= 275e-15,
+    totaltime= 250e-15,
     fp=(0.0, 0.0, 0.0),
     pbsbase='refl',
     description="reflection test",
     dumpinterval=2e-16,
     #PIC/grid details
-    domains=48,
+    domains=24,
     pbses='defaults',
     #target information
     lsptemplate='hotwater3d_cond_tmpl.lsp',
@@ -73,7 +73,7 @@ d=dict(
     #misc
     lspexec='lsp-10-xy',
     dir=True,
-    restart=23.95,
+    restart=11.9,
     dump_restart_flag=True,
     email='ngirmang.1@osu.edu',
     #movs
@@ -99,6 +99,9 @@ d=dict(
 );
 
 gensim(**d);
+noobjd = sd(d,pbsbase='norefl');
+del d['conductors']
+gensim(**noobjd);
 quit();
 d=dict(
     l=l,

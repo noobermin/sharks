@@ -1,6 +1,6 @@
 #PBS -l walltime=14:0:00
 #PBS -l select=1:ncpus=24:mpiprocs=24
-#PBS -N refl
+#PBS -N norefl
 #PBS -S /bin/bash
 #PBS -j oe
 #PBS -m ae
@@ -9,7 +9,7 @@
 #PBS -q standard
 
 
-PBSBASE=refl
+PBSBASE=norefl
 #source $HOME/.bashrc
 
 #This outputs the name of the root node
