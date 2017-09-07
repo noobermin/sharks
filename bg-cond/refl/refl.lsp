@@ -97,7 +97,7 @@ number_of_cells AUTO ; cells = 0
 ;
 [Objects]
 
-object1
+object1 BLOCK
 conductor on
 potential 0
 medium 0
