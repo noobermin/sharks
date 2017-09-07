@@ -582,13 +582,13 @@ condb_objdef=sd(
     potential=0, #should usually be zero
     medium=0,    #and this too.
     outlet='xmax',
-    
+    type="BLOCK",
 );
 condb_defaults = sd(
     lspdefaults,
     conductors=[]);
 condb_tmpl='''
-object{i}
+object{i} {type}
 conductor on
 potential {potential}
 medium {medium}
