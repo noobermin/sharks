@@ -93,6 +93,7 @@ d=dict(
         contour_lines=(1e18, 1e21),
         contour_quantities=('RhoN10', 'RhoN10'),
     ),
+    no_pmovies=True,
     #pext dumps
     pext_species=(10,),
 );
