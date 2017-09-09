@@ -94,11 +94,6 @@ number_of_cells AUTO ; cells = 0
 ;
 [Objects]
 
-object1 BLOCK
-conductor on medium 0 potential 0
-from 1.350000e-03  -1.500000e-03 0.000000e+00
-to   2.350000e-03  1.500000e-03 0.000000e+00
-
 
 [Boundaries]
 

@@ -100,7 +100,7 @@ d=dict(
 
 gensim(**d);
 noobjd = sd(d,pbsbase='norefl');
-del d['conductors']
+del noobjd['conductors']
 gensim(**noobjd);
 quit();
 d=dict(
