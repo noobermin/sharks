@@ -1,0 +1,62 @@
+#PBS -l walltime=9999:0:00
+#PBS -l nodes=1:ppn=48
+#PBS -N bl_7.0e+16
+#PBS -S /bin/bash
+#PBS -j oe
+#PBS -m ae
+#PBS -M le.283@osu.edu
+
+
+PBSBASE=bl_7.0e+16
+#source $HOME/.bashrc
+
+#This outputs the name of the root node
+#to the directory where you submitted this PBS job
+echo $HOSTNAME > $PBS_O_WORKDIR/hostname.txt   
+cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/nodesfile.txt
+
+module load openmpi-1.4.3-gnu-rpm
+
+
+cd "$PBS_O_WORKDIR"
+
+D=/data/le.283/le.283-`date +%y-%m-%d`-$PBSBASE
+mkdir -p $D
+cd "$PBS_O_WORKDIR"
+cp lsp bl_7.0e+16.lsp *.dat $D/
+cp zipper $D/
+cp movB $D/
+cp movE $D/
+cp movne $D/
+cp movrho $D/
+cp loopscript $D/
+cd $D
+#zipper
+./loopscript zipper &> $PBS_O_WORKDIR/zipper.log&
+zipper_PID=$!
+#movB
+./loopscript movB &> $PBS_O_WORKDIR/movB.log&
+movB_PID=$!
+#movE
+./loopscript movE &> $PBS_O_WORKDIR/movE.log&
+movE_PID=$!
+#movne
+./loopscript movne &> $PBS_O_WORKDIR/movne.log&
+movne_PID=$!
+#movrho
+./loopscript movrho &> $PBS_O_WORKDIR/movrho.log&
+movrho_PID=$!
+
+
+mpirun -np 48 -hostfile $PBS_NODEFILE ./lsp $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+
+kill $zipper_PID
+./zipper -a >$PBS_O_WORKDIR
+kill $movB_PID
+./movB
+kill $movE_PID
+./movE
+kill $movne_PID
+./movne
+kill $movrho_PID
+./movrho

@@ -35,13 +35,13 @@ d=dict(
     dens_flags=(True,True,False),
     discrete=(3,3,1),
     lim =(-45,10,
-          -45,45,
+          -30,30,
            0,0),
     tlim=(-44,9,
-          -44,44,
+          -29,29,
            0,0),
-    res =(1100,
-          1800,
+    res =(1300,
+          1200,
           0),
     timestep = 1e-16,
     totaltime= 350e-15,
@@ -135,7 +135,28 @@ d2s = [sd(d,
           movB=mkmovB(d,density),)
        for density in denses]
 
-ds = d1s+d2s;
+d3s = [sd(d,
+          pbsbase="bl_{:3.1e}".format(density),
+          externalf_2D=True,
+          lim=(-45, 20,
+               -30, 30,
+               0, 0),
+          tlim=(-44, 20,
+                -29, 29,
+                0, 0),
+          movne=dict(
+            ne_species = 'RhoN17',
+            clim=(1e14,1e22)),
+          f_2D = mkbgtarg(
+            N_bg = density,
+            sdim = [-7.5e-4,2.5e-4],
+            dim=[i*1e-4 for i in d['tlim']]),
+          dat_xres = 500,
+          movE=mkmovE(d,density),
+          movB=mkmovB(d,density),)
+       for density in denses]
+
+ds = d1s+d2s+d3s;
 
 for di in ds:
     gensim(**di);
