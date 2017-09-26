@@ -599,15 +599,20 @@ def genconductor_boundaries(**kw):
     conductorss='';
     for I,conductor in enumerate(getkw('conductors')):
         cd = sd(condb_objdef, **conductor);
-        outlet = cd['outlet'];
-        if outlet not in all_lims:
-            raise ValueError('Unknown outlet "{}"'.format(outlet));
-        coords = outlet_coords(outlet,kw);
-        cd['width']*=1e-4;
-        cd['start']*=1e-4;
-        sign = lambda outlet: 1.0 if outlet[-2:] == 'ax' else -1.0
-        coords[outlet] += sign(outlet)*(cd['width'] + cd['start']);
-        coords[otherside(outlet)] += sign(outlet)*cd['start'];
+        if test(cd,'from') and test(cd,'to'):
+            cd['xmin'],cd['ymin'],cd['zmin'] = cd['from']
+            cd['xmax'],cd['ymax'],cd['zmax'] = cd['to']
+            pass;
+        else:
+            outlet = cd['outlet'];
+            if outlet not in all_lims:
+                raise ValueError('Unknown outlet "{}"'.format(outlet));
+            coords = outlet_coords(outlet,kw);
+            cd['width']*=1e-4;
+            cd['start']*=1e-4;
+            sign = lambda outlet: 1.0 if outlet[-2:] == 'ax' else -1.0
+            coords[outlet] += sign(outlet)*(cd['width'] + cd['start']);
+            coords[otherside(outlet)] += sign(outlet)*cd['start'];
         conductorss += condb_tmpl.format(
             i=I+1,
             **sd(cd,**coords));
