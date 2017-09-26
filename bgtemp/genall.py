@@ -64,11 +64,12 @@ d=dict(
     dens_dat="target.dat",
     dens_type=40,
     #misc
-    lspexec='lsp',
+    lspexec='lsp-10-xy',
     dir=True,
     restart=23.95,
     ramses_rundir = "/data/ngirmang.1/ngirmang.1-`date +%y-%m-%d`-$PBSBASE",
     dump_restart_flag=True,
+    externalf_2D=True,
     new_externalf=True,
     email='ngirmang.1@osu.edu',
     #movs
@@ -105,6 +106,7 @@ mkmovB = lambda d, density: fromd(d,density,'movB')
 
 dw = [sd(d,
          pbsbase="bg={:1.0e}_T={:1.0}".format(density,T),
+
          f_2D = mkbgtarg(
              N_bg = density,
              sdim = [-7.5e-4, 2.5e-4],
