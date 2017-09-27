@@ -99,8 +99,7 @@ denses = [ 10.0**p for p in np.arange(16,21)];
 Ts  = [ 10.0**T for T in np.arange(0.0,5.0)]
 
 fromd = lambda d,density,l='movE': sd(d[l],contour_lines=(
-    "{:0.2e}".format(density*0.5),
-    1e21))
+    float("{:0.2e}".format(density*0.5)),1e21))
 mkmovE = lambda d, density: fromd(d,density)
 mkmovB = lambda d, density: fromd(d,density,'movB')
 
