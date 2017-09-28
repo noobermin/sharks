@@ -14,6 +14,7 @@ from gensim_obj import gensim, fromenergy,c;
 from gendat import gendat;
 import numpy as np;
 import shutil as sh;
+import re;
 
 #E = 0.5e-3; # 5mJ
 I = 1e18;
@@ -133,7 +134,11 @@ dc = [sd(d,
          movE=mkmovE(d,density),
          movB=mkmovB(d,density),)
       for density in denses for T in Ts ];
-
-
-for di in dw+dc:
+dC = [sd(di,
+         pbsbase=re.sub('cg','Cg',di['pbsbase']),
+         conductors = [
+             { 'from':[2.4e-4, -11e-4, 0],
+               'to':  [3.4e-4,  11e-4, 0],},],)
+      for di in dc ];
+for di in dw+dc+dC:
     gensim(**di);
