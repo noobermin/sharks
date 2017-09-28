@@ -93,7 +93,11 @@ number_of_cells AUTO ; cells = 0
 
 
 ;
+
 ;
+[Objects]
+
+
 [Boundaries]
 
 ;laser

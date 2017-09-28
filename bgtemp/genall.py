@@ -53,7 +53,7 @@ d=dict(
     domains=48,
     pbses='defaults',
     #target information
-    lsptemplate='hotwater3d_2_tmpl.lsp',
+    lsptemplate='hotwater3d_cond_tmpl.lsp',
     speciesl=[ 'e', 'O', 'p'],
     fracs   =[3.0, 1.0, 2.0],
     thermal_energy=(1.0,1.0,1.0),
@@ -115,5 +115,25 @@ dw = [sd(d,
          movB=mkmovB(d,density),)
       for density in denses for T in Ts ];
 
-for di in dw:
+dc = [sd(d,
+         pbsbase="cg={:1.0e}_T={:1.0}".format(density,T),
+         conductors = [
+             {
+                 'from':[0e-4, -12e-4, 0],
+                 'to':  [1e-4, -11e-4, 0],},
+             {
+                 'from':[0e-4,  11e-4, 0],
+                 'to':  [1e-4,  12e-4, 0],},
+         ],
+         f_2D = mkbgtarg(
+             N_bg = density,
+             sdim = [-7.5e-4, 2.5e-4],
+             dim=[i*1e-4 for i in d['tlim']]),
+         thermal_energy=(T,T,T),
+         movE=mkmovE(d,density),
+         movB=mkmovB(d,density),)
+      for density in denses for T in Ts ];
+
+
+for di in dw+dc:
     gensim(**di);

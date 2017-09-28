@@ -599,9 +599,10 @@ def genconductor_boundaries(**kw):
     conductorss='';
     for I,conductor in enumerate(getkw('conductors')):
         cd = sd(condb_objdef, **conductor);
+        coords=dict();
         if test(cd,'from') and test(cd,'to'):
-            cd['xmin'],cd['ymin'],cd['zmin'] = cd['from']
-            cd['xmax'],cd['ymax'],cd['zmax'] = cd['to']
+            cd['xmin'],cd['ymin'],cd['zmin'] = cd['from'];
+            cd['xmax'],cd['ymax'],cd['zmax'] = cd['to'];
             pass;
         else:
             outlet = cd['outlet'];
