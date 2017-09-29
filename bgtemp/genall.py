@@ -140,5 +140,14 @@ dC = [sd(di,
              { 'from':[2.4e-4, -11e-4, 0],
                'to':  [3.4e-4,  11e-4, 0],},],)
       for di in dc ];
+
+dC = [sd(di,
+         pbsbase=re.sub('cg','Cg',di['pbsbase']),
+         conductors = [
+             { 'from':[ 2.4e-4, -11e-4, 0],
+               'to':  [11.0e-4,  11e-4, 0],},],)
+      for di in dc ];
+
+
 for di in dw+dc+dC:
     gensim(**di);
