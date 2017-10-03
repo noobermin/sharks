@@ -77,6 +77,21 @@ clusters= {
         max_ppn=24,
         max_walltime=0.5,
         mpi='aprun -n {}'),
+    'onyx_standard_lw':sd(
+        cluster,
+        max_ppn=44,
+        max_walltime=168,
+        mpi='aprun -n {}'),
+    'onyx_standard_sm':sd(
+        cluster,
+        max_ppn=44,
+        max_walltime=24,
+        mpi='aprun -n {}'),
+    'onyx_debug':sd(
+        cluster,
+        max_ppn=44,
+        max_walltime=1,
+        mpi='aprun -n {}'),
 };
 
 normal_portion_tmpl="nodes={nodes}:ppn={ppn}"
@@ -337,6 +352,28 @@ def mk_hpcmp_pbses(pbsbase='hotwater3d_tmpl',**kw):
             pbsname=pbsbase+"_garnet_debug",
             cluster='garnet',
             queue='debug',),
+        sd(
+            hpcmp_defpbs,
+            pbsname=pbsbase+"_onyx",
+            cluster='onyx',
+            queue='standard_lw'),
+        sd(
+            hpcmp_defpbs,
+            pbsname=pbsbase+"_onyx_sm",
+            cluster='onyx',
+            queue='standard_sm',
+            walltime=24),
+        sd(
+            hpcmp_defpbs,
+            pbsname=pbsbase+"_onyx_48",
+            cluster="onyx",
+            queue="standard_lw",
+            walltime=48),
+        sd(
+            hpcmp_defpbs,
+            pbsname=pbsbase+"_onyx_debug",
+            cluster="onyx",
+            queue="debug"),
         sd(
             hpcmp_defpbs,
             pbsname=pbsbase+"_armstrong",
