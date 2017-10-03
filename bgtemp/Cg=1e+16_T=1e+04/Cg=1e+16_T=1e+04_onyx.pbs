@@ -1,10 +1,12 @@
 #PBS -l walltime=168:0:00
-#PBS -l nodes=2:ppn=44
+#PBS -l select=2:ncpus=44:mpiprocs=44
 #PBS -N Cg=1e+16_T=1e+04
 #PBS -S /bin/bash
 #PBS -j oe
 #PBS -m ae
 #PBS -M ngirmang.1@osu.edu
+#PBS -A __projectid__
+#PBS -q standard_lw
 
 
 PBSBASE=Cg=1e+16_T=1e+04
@@ -17,12 +19,7 @@ cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/nodesfile.txt
 
 
 cd "$PBS_O_WORKDIR"
-#zipper
-./loopscript zipper &> $PBS_O_WORKDIR/zipper.log&
-zipper_PID=$!
 
 
 aprun -n 48 ./lsp-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
 
-kill $zipper_PID
-./zipper -a >$PBS_O_WORKDIR

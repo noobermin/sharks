@@ -104,7 +104,8 @@ def hours_to_walltime(walltime):
         hr,intflr((walltime-hr)*60));
 
 def dodcluster(cluster):
-    return cluster == "garnet" or cluster == "armstrong" or cluster == "shepard";
+    dods = ['garnet', 'armstrong', 'shepard', 'onyx']
+    return cluster in dods;
 mov_defaults = sd(
     pbsdefaults,
     I=3e18,
