@@ -50,7 +50,7 @@ d=dict(
     dumpinterval=1.5e-16,
     #PIC/grid details
     #specifically for onyx
-    domains=66,
+    domains=88,
     pbses='defaults',
     #target information
     lsptemplate='hotwater3d_cond_tmpl.lsp',
@@ -104,6 +104,7 @@ dw = [sd(d,
          pbsbase="bg={:1.0e}_I={:1.0e}_T={:1.0e}".format(density,I,T0),
          I=I,
          T=T0,
+         totaltime = 425e-15 if np.isclose(T0,84e-15) else 300e-15,
          f_2D = mkbgtarg(
              N_bg = density,
              sdim = [-7.5e-4, 2.5e-4],
