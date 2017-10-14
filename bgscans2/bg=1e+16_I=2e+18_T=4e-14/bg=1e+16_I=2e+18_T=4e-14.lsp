@@ -6,7 +6,7 @@ simulation_title "intensity background pressure scans, I = 2.137800e+18 W/cm^2"
 ;
 [Control]
 ;Time-advance
- time_limit   4.2500e-04
+ time_limit   3.0000e-04
  time_step_ns 7.5000e-08
 
 ;;Restarts
@@ -669,7 +669,7 @@ function1 ; laser temporal function
 type 30
 data_file sine700points.dat
 ;; pulse duration length, 2xFWHM
-independent_variable_multiplier 4.200000e-05
+independent_variable_multiplier 8.400000e-05
 ;; Emax, intensity=2.137800e+18 W/cm^2
 dependent_variable_multiplier   4.013413e+07
 

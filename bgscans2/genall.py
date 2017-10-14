@@ -103,8 +103,8 @@ mkmovB = lambda d, density: fromd(d,density,'movB')
 dw = [sd(d,
          pbsbase="bg={:1.0e}_I={:1.0e}_T={:1.0e}".format(density,I,T0),
          I=I,
-         T=T0,
-         totaltime = 425e-15 if np.isclose(T0,84e-15) else 300e-15,
+         T=T0*2,
+         totaltime = 425e-15 if np.isclose(T0*1e15,84e-15*1e15) else 300e-15,
          f_2D = mkbgtarg(
              N_bg = density,
              sdim = [-7.5e-4, 2.5e-4],
@@ -115,13 +115,5 @@ dw = [sd(d,
       for I in Is
       for T0 in T0s ];
 
-dC = [sd(di,
-         pbsbase=re.sub('bg','Cg',di['pbsbase']),
-         conductors = [
-             { 'from':[ 2.4e-4, -11e-4, 0],
-               'to':  [11.0e-4,  11e-4, 0],},],)
-      for di in dw ];
-
-
-for di in dw+dC:
+for di in dw:
     gensim(**di);
