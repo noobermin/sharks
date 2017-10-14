@@ -104,7 +104,7 @@ dw = [sd(d,
          pbsbase="bg={:1.0e}_I={:1.0e}_T={:1.0e}".format(density,I,T0),
          I=I,
          T=T0*2,
-         totaltime = 425e-15 if np.isclose(T0*1e15,84e-15*1e15) else 300e-15,
+         totaltime = 425e-15 if np.isclose(T0*1e15,84e-15*1e15) else 350e-15,
          f_2D = mkbgtarg(
              N_bg = density,
              sdim = [-7.5e-4, 2.5e-4],

@@ -6,7 +6,7 @@ simulation_title "intensity background pressure scans, I = 1.000000e+20 W/cm^2"
 ;
 [Control]
 ;Time-advance
- time_limit   3.0000e-04
+ time_limit   3.5000e-04
  time_step_ns 7.5000e-08
 
 ;;Restarts
