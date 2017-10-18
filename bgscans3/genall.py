@@ -43,7 +43,7 @@ d=dict(
           1600,
           0),
     timestep =  75e-18,
-    totaltime= 300e-15,
+    totaltime= 345e-15,
     fp=(-10.0,0.0,0.0),
     pbsbase='bg',
     description="intensity background pressure scans 3",
@@ -91,7 +91,8 @@ d=dict(
     ),
     #no pmovies
     no_pmovies=True,
-    particle_dump_interval_ns=12e-6,
+    dump_particle=True,
+    particle_dump_interval_ns=15e-15,
     #particle dumps
     pext_species=(10,),
 );

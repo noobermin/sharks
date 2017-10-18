@@ -6,7 +6,7 @@ simulation_title "intensity background pressure scans 3, I = 1.000000e+19 W/cm^2
 ;
 [Control]
 ;Time-advance
- time_limit   3.0000e-04
+ time_limit   3.4500e-04
  time_step_ns 7.5000e-08
 
 ;;Restarts
@@ -49,6 +49,8 @@ dump_fields_flag ON
 field_dump_interval_ns 3e-07
 dump_scalars_flag ON
 scalar_dump_interval_ns 3e-07
+dump_particles_flag ON
+particle_dump_interval_ns 1.4999999999999999e-05
 
 ;;pmovies
 
