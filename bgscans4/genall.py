@@ -102,9 +102,12 @@ denses = [ m*10.0**p for p in np.arange(16,21) for m in [1.0]];
 fromd = lambda d,density,l='movE': sd(d[l],contour_lines=(density*0.5,1e21))
 mkmovE = lambda d, density: fromd(d,density)
 mkmovB = lambda d, density: fromd(d,density,'movB')
+#adding this to select special times for different intensities
+mktotaltime = lambda I: 420e-15 if np.isclose(I,1e16) else 405e-13 if np.isclose(I,1e17) else 345e-15;
 dw = [sd(d,
          pbsbase="bg={:1.0e}_I={:1.0e}".format(density,I),
          I=I,
+         totaltime=mktotaltime(I),
          f_2D = mkbgtarg(
              N_bg = density,
              N0 = 3.34e22,
