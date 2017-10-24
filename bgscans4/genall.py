@@ -103,7 +103,7 @@ fromd = lambda d,density,l='movE': sd(d[l],contour_lines=(density*0.5,1e21))
 mkmovE = lambda d, density: fromd(d,density)
 mkmovB = lambda d, density: fromd(d,density,'movB')
 #adding this to select special times for different intensities
-mktotaltime = lambda I: 600e-15 if np.isclose(I,1e16) else 405e-15 if np.isclose(I,1e17) else 345e-15;
+mktotaltime = lambda I: 800e-15 if np.isclose(I,1e16) else 405e-15 if np.isclose(I,1e17) else 345e-15;
 dw = [sd(d,
          pbsbase="bg={:1.0e}_I={:1.0e}".format(density,I),
          I=I,
