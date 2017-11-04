@@ -134,23 +134,23 @@ d2s = [sd(d,
           movE=mkmovE(d,density),
           movB=mkmovB(d,density),)
        for density in denses]
-
+d3tlims = (-44, 20,
+           -29, 29,
+           0, 0);
 d3s = [sd(d,
           pbsbase="bl_{:3.1e}".format(density),
           externalf_2D=True,
           lim=(-45, 20,
                -30, 30,
                0, 0),
-          tlim=(-44, 20,
-                -29, 29,
-                0, 0),
+          tlim=d3tlims,
           movne=dict(
             ne_species = 'RhoN17',
             clim=(1e14,1e22)),
           f_2D = mkbgtarg(
             N_bg = density,
             sdim = [-7.5e-4,2.5e-4],
-            dim=[i*1e-4 for i in d['tlim']]),
+            dim=[i*1e-4 for i in d3tlims]),
           dat_xres = 500,
           movE=mkmovE(d,density),
           movB=mkmovB(d,density),)
