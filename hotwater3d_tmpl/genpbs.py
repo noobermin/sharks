@@ -36,7 +36,7 @@ pbsdefaults = dict(
     email='ngirmang.1@osu.edu',
 )
 cluster =  dict(
-    ppn=48,max_walltime=9999,mpi='mpirun -np {}',max_ppn=48,condafile="~/conda"
+    ppn=48,max_walltime=9999,mpi='mpirun -np {}',max_ppn=48,condafile="$HOME/conda"
 )
 clusters= {
     'ramses':sd(
