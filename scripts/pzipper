@@ -1,25 +1,49 @@
 #!/usr/bin/env bash
+ALL=
+RESTARTS=
+while getopts ':har' opt; do
+    case $opt in
+        h) 
+            echo "$USAGE"
+            exit 0;;
+        a)  ALL=1;;
+        r)  RESTARTS=1;;
+    esac
+done
+
 
 getallsorted(){
-   ls | grep $1'.*.p4$' | sort -V
+    ls | grep $1'.*.p4$' | sort -V
+}
+
+getallrestarts(){
+    ls | grep 'restart.*\.\(dat\|alt\)$'
 }
 
 getsorted(){
     getallsorted $1 | head -n -1
 }
 
-if [ "$1" == "-a" ]; then
+if [ -n "$ALL" ]; then
     export FLDS=$(getallsorted flds);
     export SCLR=$(getallsorted sclr);
     export PMOV=$(getallsorted pmovie);
+    export PART=$(getallsorted part);
 else
     export FLDS=$(getsorted flds);
     export SCLR=$(getsorted sclr);
     export PMOV=$(getsorted pmovie);
+    export PART=$(getsorted part);
 fi
 JOBS=${JOBS:-4}
-[ -n "$FLDS" ] && parallel -j $JOBS gzip -v ::: $FLDS || echo "no new flds"
-[ -n "$SCLR" ] && parallel -j $JOBS gzip -v ::: $SCLR || echo "no new sclr"
-[ -n "$PMOV" ] && parallel -j $JOBS gzip -v ::: $PMOV || echo "no new pmovie"
-
+zipem(){
+    [ -n "$1" ] && parallel -j $JOBS gzip -v ::: "$1" || echo "no new $2"
+}
+zipem "$FLDS" flds
+zipem "$SCLR" sclr
+zipem "$PMOV" pmovie
+zipem "$PART" part
+if [ -n "$RESTARTS" ]; then
+    zipem "$(getallrestarts)" restarts
+fi
 
