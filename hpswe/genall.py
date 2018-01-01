@@ -101,8 +101,8 @@ d=dict(
 );
 
 
-mkmovE = lambda d, I: sd(d['movE'],clim=(EfromI(I*1e-6),EfromI(I*2)))
-mkmovB = lambda d, I: sd(d['movB'],clim=(BfromI(I*1e-6),BfromI(I*2)))
+mkmovE = lambda d, I: sd(d['movE'],clim=(EfromI(I*1e-4),EfromI(I*2)))
+mkmovB = lambda d, I: sd(d['movB'],clim=(BfromI(I*1e-4),BfromI(I*2)))
 #adding this to select special times for different intensities
 #first, smaller scale-lengths
 dw = [sd(d,
