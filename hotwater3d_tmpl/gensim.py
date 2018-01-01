@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from genlsp import genlsp,lspdefaults,scaletuple;
+from genlsp_obj import genlsp,lspdefaults,scaletuple;
 from genpbs import genpbs,gen_mov,pbsdefaults,mov_defaults,mk_hpcmp_pbses;
 from gendat import gendats,gendat,genonescale,datdefaults;
 import re;
