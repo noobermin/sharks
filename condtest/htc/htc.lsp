@@ -6,7 +6,7 @@ simulation_title "nothing but your hot thing, I = 1.000000e+19 W/cm^2"
 ;
 [Control]
 ;Time-advance
- time_limit   3.4500e-04
+ time_limit   2.2500e-04
  time_step_ns 7.5000e-08
 
 ;;Restarts
@@ -95,6 +95,26 @@ number_of_cells AUTO ; cells = 0
 
 ;
 [Objects]
+
+object1 BLOCK
+conductor on medium 0 potential 0
+from -4.000000e-03  -1.500000e-03 0.000000e+00
+to   -3.000000e-03  1.500000e-03 0.000000e+00
+
+object2 BLOCK
+conductor on medium 0 potential 0
+from 1.500000e-03  -1.500000e-03 0.000000e+00
+to   2.500000e-03  1.500000e-03 0.000000e+00
+
+object3 BLOCK
+conductor on medium 0 potential 0
+from -3.000000e-03  -2.500000e-03 0.000000e+00
+to   1.500000e-03  -1.500000e-03 0.000000e+00
+
+object4 BLOCK
+conductor on medium 0 potential 0
+from -3.000000e-03  1.500000e-03 0.000000e+00
+to   1.500000e-03  2.500000e-03 0.000000e+00
 
 
 [Boundaries]
@@ -322,7 +342,7 @@ density_function 4
 reference_point 0.000000e+00 0.000000e+00 0.000000e+00
 density_flags 1 1 0
 momentum_flags 0 0 0
-thermal_energy 1.0
+thermal_energy 1000.0
 
 movie_fraction 0.000
 ;
@@ -337,7 +357,7 @@ density_function 3
 reference_point 0.000000e+00 0.000000e+00 0.000000e+00
 density_flags 1 1 0
 momentum_flags 0 0 0
-thermal_energy 1.0
+thermal_energy 1000.0
 
 movie_fraction 0.050
 ;
@@ -352,7 +372,7 @@ density_function 5
 reference_point 0.000000e+00 0.000000e+00 0.000000e+00
 density_flags 1 1 0
 momentum_flags 0 0 0
-thermal_energy 1.0
+thermal_energy 1000.0
 
 movie_fraction 0.000
 ;; emission from conductors
@@ -666,15 +686,6 @@ maximum_number  1000000000
 start_time 0
 stop_time  1
 at 0 0.0015 0
-
-;
-extract5
-species 10
-direction X
-maximum_number  1000000000
-start_time 0
-stop_time  1
-at -0.00316660978863 0 0
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
