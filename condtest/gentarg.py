@@ -19,9 +19,9 @@ def mkbgtarg(dim=[-44e-4,9e-4,-29e-4,29e-4,],
         if not good:
             return 0.0;
         if tylim[0] < y < tylim[1]:
-            if sdim[0] < x < sdim[1]:
+            if sdim[0] <= x < sdim[1]:
                 return N0;
-            elif flim[0] < x < flim[1]:
+            elif flim[0] < x <= flim[1]:
                 return np.exp(-np.abs(x-sdim[0])/L)*N0;
         return N_bg;
     return f;
