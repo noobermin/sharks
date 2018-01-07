@@ -98,20 +98,15 @@ number_of_cells AUTO ; cells = 0
 
 object1 BLOCK
 conductor on medium 0 potential 0
-from -4.000000e-03  -1.500000e-03 0.000000e+00
-to   -3.000000e-03  1.500000e-03 0.000000e+00
-
-object2 BLOCK
-conductor on medium 0 potential 0
 from 1.500000e-03  -1.500000e-03 0.000000e+00
 to   2.500000e-03  1.500000e-03 0.000000e+00
 
-object3 BLOCK
+object2 BLOCK
 conductor on medium 0 potential 0
 from -3.000000e-03  -2.500000e-03 0.000000e+00
 to   1.500000e-03  -1.500000e-03 0.000000e+00
 
-object4 BLOCK
+object3 BLOCK
 conductor on medium 0 potential 0
 from -3.000000e-03  1.500000e-03 0.000000e+00
 to   1.500000e-03  2.500000e-03 0.000000e+00
@@ -383,7 +378,7 @@ interval 1
 species 10
 discrete_numbers 3 3 1
 inclusion SOLID
-thermal_energy 1.0
+thermal_energy 1000.0
 movie_fraction 0.0
 ;; ionization states ;;
 higherstate              ; H -> p+

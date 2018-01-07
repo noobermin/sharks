@@ -208,8 +208,8 @@ gensim(**noc);
 nonoc = sd(noc,
            pbsbase='htc',
            conductors=[
-               dict(outlet='xmin'),
                dict(outlet='xmax'),
                dict(outlet='ymin'),
-               dict(outlet='ymax'),]);
+               dict(outlet='ymax'),],
+           cond_temp=1e3,);
 gensim(**nonoc);
