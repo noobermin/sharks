@@ -32,7 +32,11 @@ x-cells          {xcells}
 {regions}
 
 ;
+
 ;
+[Objects]
+{objects}
+
 [Boundaries]
 {other_outlets}
 
@@ -257,7 +261,16 @@ density_flags {dens_flags}
 momentum_flags 0 0 0
 {p_thermalopts}
 movie_fraction 0.000
-
+;; emission from conductors
+emission child-langmuir field-stress
+from {xmin:e} {ymin:e} {zmin:e}
+to   {xmax:e} {ymax:e} {zmax:e}
+interval 1
+species 10
+discrete_numbers {discrete}
+inclusion SOLID
+thermal_energy {cond_temp}
+movie_fraction {cond_fraction}
 ;; ionization states ;;
 higherstate              ; H -> p+
 from {xmin:e} {ymin:e}  {zmin:e}
