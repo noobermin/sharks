@@ -689,6 +689,7 @@ def genlsp(**kw):
     #dealing with conductors
     fmtd['cond_temp'] = getkw('cond_temp');
     fmtd['cond_fraction'] = getkw('cond_fraction');
+    #others
     w0=fmtd['w0'] = getkw('w')*100.0;
     fmtd['pulse']  = getkw('T')*1e9;
     #generating grid

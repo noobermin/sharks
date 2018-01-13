@@ -93,6 +93,9 @@ lspdefaults = dict(
     #this is bad now...
     funcnum = 10,#a "global" which holds the number count"
     other_funcs = '',
+    #conductor
+    cond_temp = 1.0,
+    cond_fraction = 0.0,
 );
 
 ###############
@@ -680,9 +683,13 @@ def genlsp(**kw):
     else:
         kw['xcells'], kw['ycells'], kw['zcells'] = getkw("res");
     xcells, ycells, zcells = kw['xcells'], kw['ycells'], kw['zcells'];
-    #generating non outlets
+    #generating outlets
     other_outlets=genoutlets(**kw);
     conductors=genconductor_boundaries(**kw);
+    #dealing with conductors
+    fmtd['cond_temp'] = getkw('cond_temp');
+    fmtd['cond_fraction'] = getkw('cond_fraction');
+    #others
     w0=fmtd['w0'] = getkw('w')*100.0;
     fmtd['pulse']  = getkw('T')*1e9;
     #generating grid

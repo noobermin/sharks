@@ -10,7 +10,7 @@ from docopt import docopt
 opts=docopt(__doc__,help=True);
 from pys import sd, parse_ituple, savetxt;
 from genpbs import genpbs;
-from gensim_obj import gensim, fromenergy,c;
+from gensim import gensim, fromenergy,c;
 from gendat import gendat;
 import numpy as np;
 import shutil as sh;
