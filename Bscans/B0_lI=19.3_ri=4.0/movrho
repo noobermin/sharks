@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+CONDAFILE=$HOME/conda
+[ -n "$CONDAFILE" ] && source $CONDAFILE
+WAITDELAY=${WAITDELAY:-1}
+DIR=${1:-"."}
+if [ ! -n "$OUTDIR" ]; then
+    OUTDIR=${2:-"movrho-laser"}
+fi
+mkdir -p "$OUTDIR"
+INTENSITY=${INTENSITY:-"2.000000e+18"}
+LIMS=${LIMS:-"(-1e+19, 1e+19)"}
+HIGHLIGHT=${HIGHLIGHT:-"1.832437e+21"}
+QUANTITY=${QUANTITY:-"Rho"}
+NPROCS=${NPROCS:-1}
+CMAP=${CMAP:-"PRGn"}
+LINTHRESH=${LINTHRESH:-"1.000000e+15"}
+source ~/.bashrc
+
+for i in $(ls "$DIR" | grep 'flds[0-9]\+\.p4' | sort -V); do
+    n=$(echo ${i#flds*} | sed 's/\.p4.*$//')
+    I=$(printf '%05d' "$n" )
+    [ -e "$OUTDIR"/$I.png ] && [ ! -n "$DONTSKIP" ] && echo skipping...$i &&  continue;
+    while [ $(pgrep -f 'python[23]* *.*rho.py' | wc -l ) -ge $NPROCS ]; do sleep $WAITDELAY; done;
+    sleep 0.25;
+    echo $i...
+    rho.py -D "$DIR" $n "$OUTDIR"/$I.png --intensity="$INTENSITY" $EXTRA_MOVRHO_ARGS \
+           -l --lims="$LIMS" --highlight="$HIGHLIGHT" --laser -Q "$QUANTITY"  \
+           --linthresh="$LINTHRESH" --cmap="$CMAP" &
+done
+while [ $(pgrep -f 'python[23]* *.*rho.py' | wc -l ) -gt 0 ]; do
+    echo waiting...
+    sleep 5; done;
+OUTMOV=${OUTMOV:-"B0_lI=19.3_ri=4.0-rho-laser.mp4"}
+ffmpeg -pattern_type glob -i "$OUTDIR/*.png" -c:v libx264 -pix_fmt yuv420p -y $OUTMOV
+[ -e $OUTMOV ] && rcp $OUTMOV $PBS_O_WORKDIR
