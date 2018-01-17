@@ -98,18 +98,18 @@ number_of_cells AUTO ; cells = 0
 
 object1 BLOCK
 conductor on medium 0 potential 0
-from 1.400000e-03  -1.500000e-03 0.000000e+00
-to   2.400000e-03  1.500000e-03 0.000000e+00
+from 1.400000e-03 -1.500000e-03 0.000000e+00
+to   2.400000e-03 1.500000e-03 0.000000e+00
 
 object2 BLOCK
 conductor on medium 0 potential 0
-from -1.500000e-03  -2.400000e-03 0.000000e+00
-to   1.500000e-03  -1.400000e-03 0.000000e+00
+from -1.500000e-03 -2.400000e-03 0.000000e+00
+to   1.500000e-03 -1.400000e-03 0.000000e+00
 
 object3 BLOCK
 conductor on medium 0 potential 0
-from -1.500000e-03  1.400000e-03 0.000000e+00
-to   1.500000e-03  2.400000e-03 0.000000e+00
+from -1.500000e-03 1.400000e-03 0.000000e+00
+to   1.500000e-03 2.400000e-03 0.000000e+00
 
 
 [Boundaries]

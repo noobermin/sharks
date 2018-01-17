@@ -22,31 +22,30 @@ w0=2.2e-6 / np.sqrt(2*np.log(2))
 T0=42e-15
 
 from genangletarg import mk45;
+xmin=ymin=-35;
+xmax=ymax= 35;
+xres=yres= 35*2 * 100; #7000
+
 d=dict(
-    res  = (3500, 3500, 0),
-    domains = 49*4,
-    region_split=('y', 35),
-    pbsbase='glysh2_aem',
-    dens_dat="target_lf45.dat",
     l=l,
     w=w0,
     T=T0*2,
     I=5e18,
     dens_flags=(True,True,False),
     discrete=(3,3,1),
-    lim =(-35,35,
-          -35,35,
-           0,0),
-    tlim=(-35,35,
-          -35,35,
-           0,0),
-    res =(7000,
-          7000,
+    lim =(xmin,xmax,
+          ymin,ymax,
+          0,0),
+    tlim=(xmin,xmax,
+          xmax,ymax,
+          0,0),
+    res =(xres,
+          yres,
           0),
     timestep = 2e-17,
     totaltime= 3e-12,
     fp=(-10.0,0.0,0.0),
-    pbsbase='glycol',
+    pbsbase='glysh0',
     description="After TNSA expansion",
     dumpinterval=5e-16,
     #PIC/grid details
@@ -54,7 +53,7 @@ d=dict(
     region_split=('y',7*2),
     pbses='defaults',
     #target information
-    lsptemplate="hotglycol.lsp",
+    lsptemplate="hotglycol2_allemitters.lsp",
     speciesl=[ 'e', 'O', 'C', 'p'],
     fracs   =[10.0, 2.0, 2.0, 6.0],
     #this is assuming the shoulder is 1e14 W/cm^2 at 12 picoseconds
@@ -86,8 +85,36 @@ d=dict(
     particle_dump_times_ns=(1e-4, 1.1e-4, 1.4e-4),
     pext_species=(17,18),
 );
-for di in longs: 
-    gensim(**di);
+
+
+
+backout=1e-4
+backin =5e-4
+w = 0.460e-4;
+offset = backin+np.sqrt(2)*1e-4
+#lower left corner
+lca=np.array([xmin,ymin])*1e-4 - backout;
+lcb=lca + np.array([1,0])*offset;
+lcc=lca + np.array([0,1])*offset;
+
+#upper right corner
+uca=np.array([xmax,ymax])*1e-4 + backout;
+ucb=uca - np.array([1,0])*offset;
+ucc=uca - np.array([0,1])*offset;
+
+d['conductors'] = [
+    {'type':'TRILATERAL',
+     'from':(lca[0],lca[1],0.0),
+     'to'  :[
+         (lcb[0],lcb[1],0.0),
+         (lcc[0],lcc[1],0.0)]},
+    {'type':'TRILATERAL',
+     'from':(uca[0],uca[1],0.0),
+     'to'  :[
+         (ucb[0],ucb[1],0.0),
+         (ucc[0],ucc[1],0.0)]}
+];
+gensim(**d);
 if opts['--make-target']:
     print("making targets");
     def mktarg(di):
@@ -98,7 +125,7 @@ if opts['--make-target']:
                 N0    = 1.0804e22,
                 width = 0.46e-4,
                 # wilks*12e-12, just for a round 40 nm n_n
-                L=40e-4);
+                L=40e-4));
         dat = gendat(**dd);
         savetxt(
             "{}/{}".format(di['pbsbase'],di['dens_dat']),

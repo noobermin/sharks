@@ -533,6 +533,12 @@ all_lims = [
     for j in ['min', 'max']
 ];
 
+all_limsft = [
+    '{}{}'.format(i,j)
+    for i in ['x','y','z']
+    for j in ['f', 't']
+]
+
 otherside = lambda s: s[:-2] + ('ax' if s[-2:] == 'in' else 'in');
 def outlet_coords(iside,d):
     out = {k:d[k] for k in all_lims };
@@ -612,9 +618,10 @@ condb_objdef=sd(
     width=10.0,
     potential=0, #should usually be zero
     medium=0,    #and this too.
-    outlet='xmax',
+    outlet=None,
     type="BLOCK",
     start=0,
+    sweep_direction='Z',
 );
 condb_defaults = sd(
     lspdefaults,
@@ -625,29 +632,60 @@ conductor on medium {medium} potential {potential}
 from {xmin:e}  {ymin:e} {zmin:e}
 to   {xmax:e}  {ymax:e} {zmax:e}
 '''
-def genconductor_boundaries(**kw):
+condf_tmpl='''
+object{i} {type}
+conductor on medium {medium} potential {potential}
+from {xf:e} {yf:e} {zf:e}
+'''
+#shape of cd['to'] should either be list of tuples or tuple
+#each tuple is a triple of coordinates.
+condt_tmpl="to   {xt:e} {yt:e} {zt:e}\n"
+
+def genconductors(**kw):
     getkw=mk_getkw(kw, condb_defaults);
     conductorss='';
     for I,conductor in enumerate(getkw('conductors')):
         cd = sd(condb_objdef, **conductor);
         coords=dict();
-        if test(cd,'from') and test(cd,'to'):
-            cd['xmin'],cd['ymin'],cd['zmin'] = cd['from'];
-            cd['xmax'],cd['ymax'],cd['zmax'] = cd['to'];
-            pass;
-        else:
+        if test(cd,'outlet'):
             outlet = cd['outlet'];
             if outlet not in all_lims:
                 raise ValueError('Unknown outlet "{}"'.format(outlet));
             coords = outlet_coords(outlet,kw);
             cd['width']*=1e-4;
             cd['start']*=1e-4;
-            sign = lambda outlet: 1.0 if outlet[-2:] == 'ax' else -1.0
-            coords[outlet] += sign(outlet)*(cd['width'] + cd['start']);
-            coords[otherside(outlet)] += sign(outlet)*cd['start'];
-        conductorss += condb_tmpl.format(
+            if outlet[-2:] == 'ax':
+                sign = 1.0;
+            else:
+                sign =-1.0
+            cd['type']= 'BLOCK';
+            coords[outlet] += sign*(cd['width'] + cd['start']);
+            coords[otherside(outlet)] += sign*cd['start'];
+            cd['from'] = (coords['xmin'],coords['ymin'],coords['zmin']);
+            cd['to']   = (coords['xmax'],coords['ymax'],coords['zmax']);
+        conductorss += condf_tmpl.format(
             i=I+1,
-            **sd(cd,**coords));
+            xf=cd['from'][0],yf=cd['from'][1],zf=cd['from'][2],
+            **cd);
+        def mk_to(cd):
+            '''generate the to's'''
+            return ''.join([
+                condt_tmpl.format(xt=xt,yt=yt,zt=zt)
+                for xt,yt,zt in cd['to'] ]);
+        
+        if cd['type'] == 'BLOCK':
+            if type(cd['to']) == list: cd['to'] = cd['to'][0]
+            conductorss += condt_tmpl.format(
+                xt=cd['to'][0],yt=cd['to'][1],zt=cd['to'][2]);
+        elif cd['type'] == 'PARALLELPIPED':
+            conductorss += mk_to(cd);
+        elif cd['type'] == 'TRILATERAL':
+            conductorss += mk_to(cd);
+            conductorss += 'sweep_direction {sweep_direction}\n'.format(
+                **cd);
+        else:
+            raise ValueError(
+                "Unknown conductor type '{}'".format(cd['type']));
     return conductorss;
     
 def genlsp(**kw):
@@ -685,7 +723,7 @@ def genlsp(**kw):
     xcells, ycells, zcells = kw['xcells'], kw['ycells'], kw['zcells'];
     #generating outlets
     other_outlets=genoutlets(**kw);
-    conductors=genconductor_boundaries(**kw);
+    conductors=genconductors(**kw);
     #dealing with conductors
     fmtd['cond_temp'] = getkw('cond_temp');
     fmtd['cond_fraction'] = getkw('cond_fraction');
