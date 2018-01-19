@@ -537,7 +537,7 @@ selection_ratio 1.0
 ;; initial states ;;
 
 plasma ; H
-from -3.500000e-03 3.500000e-03  0.000000e+00
+from -3.500000e-03 -3.500000e-03  0.000000e+00
 to   3.500000e-03 3.500000e-03  0.000000e+00
 species 18
 movie_tag 3
@@ -553,7 +553,7 @@ movie_fraction 0.000
 
 
 plasma ; O
-from -3.500000e-03  3.500000e-03  0.000000e+00
+from -3.500000e-03  -3.500000e-03  0.000000e+00
 to   3.500000e-03  3.500000e-03  0.000000e+00
 species 2
 movie_tag 3
@@ -569,7 +569,7 @@ movie_fraction 0.000
 ;
 
 plasma ; C
-from -3.500000e-03  3.500000e-03  0.000000e+00
+from -3.500000e-03  -3.500000e-03  0.000000e+00
 to   3.500000e-03  3.500000e-03  0.000000e+00
 species 11
 movie_tag 3
@@ -587,7 +587,7 @@ movie_fraction 0.000
 
 
 plasma ; O+
-from -3.500000e-03  3.500000e-03  0.000000e+00
+from -3.500000e-03  -3.500000e-03  0.000000e+00
 to   3.500000e-03  3.500000e-03  0.000000e+00
 species 2
 movie_tag 3
@@ -603,7 +603,7 @@ movie_fraction 0.000
 ;
 
 plasma ; C+
-from -3.500000e-03  3.500000e-03  0.000000e+00
+from -3.500000e-03  -3.500000e-03  0.000000e+00
 to   3.500000e-03  3.500000e-03  0.000000e+00
 species 11
 movie_tag 3
@@ -619,7 +619,7 @@ movie_fraction 0.000
 ;
 
 plasma ; e-
-from -3.500000e-03 3.500000e-03  0.000000e+00
+from -3.500000e-03 -3.500000e-03  0.000000e+00
 to   3.500000e-03 3.500000e-03  0.000000e+00
 species 17
 movie_tag 3
@@ -634,7 +634,7 @@ thermal_energy 6.0
 movie_fraction 0.050
 ;
 plasma ; p+
-from -3.500000e-03 3.500000e-03  0.000000e+00
+from -3.500000e-03 -3.500000e-03  0.000000e+00
 to   3.500000e-03 3.500000e-03  0.000000e+00
 species 18
 movie_tag 3

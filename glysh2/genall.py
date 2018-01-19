@@ -38,7 +38,7 @@ d=dict(
           ymin,ymax,
           0,0),
     tlim=(xmin,xmax,
-          xmax,ymax,
+          ymin,ymax,
           0,0),
     res =(xres,
           yres,
