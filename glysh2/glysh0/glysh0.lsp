@@ -85,12 +85,12 @@ xmin             -3.500000e-03
 xmax             3.500000e-03
 
 ymin             -3.500000e-03
-ymax             -2.625000e-03
+ymax             -2.100000e-03
 
 zmin             0.000000e+00
 zmax             0.000000e+00
 ;
-number_of_domains 27
+number_of_domains 44
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 0
 ;
@@ -99,13 +99,13 @@ region2
 xmin             -3.500000e-03
 xmax             3.500000e-03
 
-ymin             -2.625000e-03
-ymax             -1.750000e-03
+ymin             -2.100000e-03
+ymax             -7.000000e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
 ;
-number_of_domains 27
+number_of_domains 44
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 0
 ;
@@ -114,13 +114,13 @@ region3
 xmin             -3.500000e-03
 xmax             3.500000e-03
 
-ymin             -1.750000e-03
-ymax             -8.750000e-04
+ymin             -7.000000e-04
+ymax             7.000000e-04
 
 zmin             0.000000e+00
 zmax             0.000000e+00
 ;
-number_of_domains 27
+number_of_domains 44
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 0
 ;
@@ -129,13 +129,13 @@ region4
 xmin             -3.500000e-03
 xmax             3.500000e-03
 
-ymin             -8.750000e-04
-ymax             0.000000e+00
+ymin             7.000000e-04
+ymax             2.100000e-03
 
 zmin             0.000000e+00
 zmax             0.000000e+00
 ;
-number_of_domains 27
+number_of_domains 44
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 0
 ;
@@ -144,58 +144,13 @@ region5
 xmin             -3.500000e-03
 xmax             3.500000e-03
 
-ymin             0.000000e+00
-ymax             8.750000e-04
-
-zmin             0.000000e+00
-zmax             0.000000e+00
-;
-number_of_domains 27
-split_direction XSPLIT
-number_of_cells AUTO ; cells = 0
-;
-;
-region6
-xmin             -3.500000e-03
-xmax             3.500000e-03
-
-ymin             8.750000e-04
-ymax             1.750000e-03
-
-zmin             0.000000e+00
-zmax             0.000000e+00
-;
-number_of_domains 27
-split_direction XSPLIT
-number_of_cells AUTO ; cells = 0
-;
-;
-region7
-xmin             -3.500000e-03
-xmax             3.500000e-03
-
-ymin             1.750000e-03
-ymax             2.625000e-03
-
-zmin             0.000000e+00
-zmax             0.000000e+00
-;
-number_of_domains 27
-split_direction XSPLIT
-number_of_cells AUTO ; cells = 0
-;
-;
-region8
-xmin             -3.500000e-03
-xmax             3.500000e-03
-
-ymin             2.625000e-03
+ymin             2.100000e-03
 ymax             3.500000e-03
 
 zmin             0.000000e+00
 zmax             0.000000e+00
 ;
-number_of_domains 31
+number_of_domains 44
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 0
 ;

@@ -51,7 +51,7 @@ d=dict(
     dumpinterval=5e-16,
     #PIC/grid details
     domains=44*5,
-    region_split=('y',8),
+    region_split=('y',5),
     pbses='defaults',
     #density
     tref = (0.0, 0.0, 0.0),
