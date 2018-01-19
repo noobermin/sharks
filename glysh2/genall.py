@@ -45,12 +45,12 @@ d=dict(
           0),
     timestep = 2e-17,
     totaltime= 3e-12,
-    fp=(-10.0,0.0,0.0),
+    fp=(0.0,0.0,0.0),
     pbsbase='glysh0',
     description="After TNSA expansion",
     dumpinterval=5e-16,
     #PIC/grid details
-    domains=88*2,
+    domains=44*5,
     region_split=('y',8),
     pbses='defaults',
     #density

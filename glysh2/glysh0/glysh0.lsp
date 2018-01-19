@@ -77,7 +77,7 @@ y-cells          7000
 [Regions]
 ;
 
-;total number of domains: 176
+;total number of domains: 220
 
 ;
 region1
@@ -90,7 +90,7 @@ ymax             -2.625000e-03
 zmin             0.000000e+00
 zmax             0.000000e+00
 ;
-number_of_domains 22
+number_of_domains 27
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 0
 ;
@@ -105,7 +105,7 @@ ymax             -1.750000e-03
 zmin             0.000000e+00
 zmax             0.000000e+00
 ;
-number_of_domains 22
+number_of_domains 27
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 0
 ;
@@ -120,7 +120,7 @@ ymax             -8.750000e-04
 zmin             0.000000e+00
 zmax             0.000000e+00
 ;
-number_of_domains 22
+number_of_domains 27
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 0
 ;
@@ -135,7 +135,7 @@ ymax             0.000000e+00
 zmin             0.000000e+00
 zmax             0.000000e+00
 ;
-number_of_domains 22
+number_of_domains 27
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 0
 ;
@@ -150,7 +150,7 @@ ymax             8.750000e-04
 zmin             0.000000e+00
 zmax             0.000000e+00
 ;
-number_of_domains 22
+number_of_domains 27
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 0
 ;
@@ -165,7 +165,7 @@ ymax             1.750000e-03
 zmin             0.000000e+00
 zmax             0.000000e+00
 ;
-number_of_domains 22
+number_of_domains 27
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 0
 ;
@@ -180,7 +180,7 @@ ymax             2.625000e-03
 zmin             0.000000e+00
 zmax             0.000000e+00
 ;
-number_of_domains 22
+number_of_domains 27
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 0
 ;
@@ -195,7 +195,7 @@ ymax             3.500000e-03
 zmin             0.000000e+00
 zmax             0.000000e+00
 ;
-number_of_domains 22
+number_of_domains 31
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 0
 ;
@@ -230,7 +230,7 @@ from -3.500000e-03  -3.500000e-03 0.000000e+00
 to   -3.500000e-03  3.500000e-03 0.000000e+00
 phase_velocity 1.0
 drive_model LASER
-reference_point -0.001 0.0 0.0
+reference_point 0.0 0.0 0.0
 components 0 1 0
 phases 0 0 0
 temporal_function 1
