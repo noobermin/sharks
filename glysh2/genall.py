@@ -50,8 +50,8 @@ d=dict(
     description="After TNSA expansion",
     dumpinterval=5e-16,
     #PIC/grid details
-    domains=88*3,
-    region_split=('y',7*2),
+    domains=88*2,
+    region_split=('y',8),
     pbses='defaults',
     #density
     tref = (0.0, 0.0, 0.0),

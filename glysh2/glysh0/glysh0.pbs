@@ -1,5 +1,5 @@
 #PBS -l walltime=9999:0:00
-#PBS -l nodes=6:ppn=48
+#PBS -l nodes=4:ppn=48
 #PBS -N glysh0
 #PBS -S /bin/bash
 #PBS -j oe
@@ -30,7 +30,7 @@ movne_PID=$!
 movrho_PID=$!
 
 
-mpirun -np 264 -hostfile $PBS_NODEFILE ./lsp-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+mpirun -np 176 -hostfile $PBS_NODEFILE ./lsp-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
 
 kill $zipper_PID
 ./zipper -a >$PBS_O_WORKDIR
