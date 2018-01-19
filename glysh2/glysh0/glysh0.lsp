@@ -77,7 +77,7 @@ y-cells          7000
 [Regions]
 ;
 
-;total number of domains: 220
+;total number of domains: 264
 
 ;
 region1
@@ -85,7 +85,7 @@ xmin             -3.500000e-03
 xmax             3.500000e-03
 
 ymin             -3.500000e-03
-ymax             -2.100000e-03
+ymax             -2.333333e-03
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -99,8 +99,8 @@ region2
 xmin             -3.500000e-03
 xmax             3.500000e-03
 
-ymin             -2.100000e-03
-ymax             -7.000000e-04
+ymin             -2.333333e-03
+ymax             -1.166667e-03
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -114,8 +114,8 @@ region3
 xmin             -3.500000e-03
 xmax             3.500000e-03
 
-ymin             -7.000000e-04
-ymax             7.000000e-04
+ymin             -1.166667e-03
+ymax             0.000000e+00
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -129,8 +129,8 @@ region4
 xmin             -3.500000e-03
 xmax             3.500000e-03
 
-ymin             7.000000e-04
-ymax             2.100000e-03
+ymin             0.000000e+00
+ymax             1.166667e-03
 
 zmin             0.000000e+00
 zmax             0.000000e+00
@@ -144,7 +144,22 @@ region5
 xmin             -3.500000e-03
 xmax             3.500000e-03
 
-ymin             2.100000e-03
+ymin             1.166667e-03
+ymax             2.333333e-03
+
+zmin             0.000000e+00
+zmax             0.000000e+00
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 0
+;
+;
+region6
+xmin             -3.500000e-03
+xmax             3.500000e-03
+
+ymin             2.333333e-03
 ymax             3.500000e-03
 
 zmin             0.000000e+00
@@ -498,11 +513,11 @@ species 18
 movie_tag 3
 unbound off
 discrete_numbers 3 3 1
-density_function 6
+density_function 9
 reference_point 0.000000e+00 0.000000e+00 0.000000e+00
 density_flags 1 1 0
 momentum_flags 0 0 0
-thermal_energy 0.5
+thermal_energy 0.1
 
 movie_fraction 0.000
 
@@ -514,11 +529,11 @@ species 2
 movie_tag 3
 unbound off
 discrete_numbers 3 3 1
-density_function 4
+density_function 7
 reference_point 0.000000e+00 0.000000e+00 0.000000e+00
 density_flags 1 1 0
 momentum_flags 0 0 0
-thermal_energy 0.5
+thermal_energy 0.1
 
 movie_fraction 0.000
 ;
@@ -530,11 +545,11 @@ species 11
 movie_tag 3
 unbound off
 discrete_numbers 3 3 1
-density_function 5
+density_function 8
 reference_point 0.000000e+00 0.000000e+00 0.000000e+00
 density_flags 1 1 0
 momentum_flags 0 0 0
-thermal_energy 0.5
+thermal_energy 0.1
 
 movie_fraction 0.000
 ;
@@ -552,7 +567,7 @@ density_function 4
 reference_point 0.000000e+00 0.000000e+00 0.000000e+00
 density_flags 1 1 0
 momentum_flags 0 0 0
-thermal_energy 6.0
+thermal_energy 0.1
 
 movie_fraction 0.000
 ;
@@ -568,7 +583,7 @@ density_function 5
 reference_point 0.000000e+00 0.000000e+00 0.000000e+00
 density_flags 1 1 0
 momentum_flags 0 0 0
-thermal_energy 6.0
+thermal_energy 0.1
 
 movie_fraction 0.000
 ;
@@ -599,7 +614,7 @@ density_function 6
 reference_point 0.000000e+00 0.000000e+00 0.000000e+00
 density_flags 1 1 0
 momentum_flags 0 0 0
-thermal_energy 6.0
+thermal_energy 0.1
 
 movie_fraction 0.000
 

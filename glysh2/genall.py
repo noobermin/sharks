@@ -50,8 +50,8 @@ d=dict(
     description="After TNSA expansion",
     dumpinterval=5e-16,
     #PIC/grid details
-    domains=44*5,
-    region_split=('y',5),
+    domains=44*6,
+    region_split=('y',6),
     pbses='defaults',
     #density
     tref = (0.0, 0.0, 0.0),
@@ -122,9 +122,9 @@ d.update(**dict(
     #using wilks scaling.
     thermal_energy=(
         #plasma is 6 eV
-        6.0,6.0,6.0,6.0,
+        6.0,0.1,0.1,0.1,
         #and (god help me) neutrals are...not
-        0.5, 0.5, 0.5),
+        0.1, 0.1, 0.1),
     target_temps=(
         None,None,None,None,
         None,None,None),

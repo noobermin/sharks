@@ -329,7 +329,7 @@ species 18
 movie_tag 3
 unbound off
 discrete_numbers {discrete}
-density_function 6
+density_function 9
 reference_point {targrefx:e} {targrefy:e} {targrefz:e}
 density_flags {dens_flags}
 momentum_flags 0 0 0
@@ -344,7 +344,7 @@ species 2
 movie_tag 3
 unbound off
 discrete_numbers {discrete}
-density_function 4
+density_function 7
 reference_point {targrefx:e} {targrefy:e} {targrefz:e}
 density_flags {dens_flags}
 momentum_flags 0 0 0
@@ -359,7 +359,7 @@ species 11
 movie_tag 3
 unbound off
 discrete_numbers {discrete}
-density_function 5
+density_function 8
 reference_point {targrefx:e} {targrefy:e} {targrefz:e}
 density_flags {dens_flags}
 momentum_flags 0 0 0
