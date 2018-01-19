@@ -21,7 +21,8 @@ l = 0.78e-6
 w0=2.2e-6 / np.sqrt(2*np.log(2))
 T0=42e-15
 
-from genangletarg import mk45;
+from gen45  import mk45_pinprick_plasma;
+
 xmin=ymin=-35;
 xmax=ymax= 35;
 xres=yres= 35*2 * 100; #7000
@@ -52,18 +53,9 @@ d=dict(
     domains=88*3,
     region_split=('y',7*2),
     pbses='defaults',
-    #target information
-    lsptemplate="hotglycol2_allemitters.lsp",
-    speciesl=[ 'e', 'O', 'C', 'p'],
-    fracs   =[10.0, 2.0, 2.0, 6.0],
-    #this is assuming the shoulder is 1e14 W/cm^2 at 12 picoseconds
-    #using wilks scaling.
-    thermal_energy=(6.0,6.0,6.0,6.0),
-    target_temps=(None,None,None,None),
     #density
     tref = (0.0, 0.0, 0.0),
     singlescale=None,
-    dens_dat="target45.dat",
     dens_type=40,
     #misc
     lspexec='lsp-10-xy',
@@ -85,9 +77,7 @@ d=dict(
     particle_dump_times_ns=(1e-4, 1.1e-4, 1.4e-4),
     pext_species=(17,18),
 );
-
-
-
+#conductors
 backout=1e-4
 backin =5e-4
 w = 0.460e-4;
@@ -114,23 +104,53 @@ d['conductors'] = [
          (ucb[0],ucb[1],0.0),
          (ucc[0],ucc[1],0.0)]}
 ];
+
+
+
+
+#species and target.
+d.update(**dict(
+    lsptemplate="hotglycol2_allemitters_neutrals.lsp",
+    speciesl=[ 'e','O1','C1','p',
+               'O0','C0','H'],
+    fracs   =[10.0, 2.0, 2.0,6.0,
+              2.0, 2.0,6.0],
+    #there are two densities, one for plasma and one for neutrals.
+    dens_type=40,
+    dens_dat=('target_plasma.dat',)*4 + ('target_neutral.dat',)*3,
+    #this is assuming the shoulder is 1e14 W/cm^2 at 12 picoseconds
+    #using wilks scaling.
+    thermal_energy=(
+        #plasma is 6 eV
+        6.0,6.0,6.0,6.0,
+        #and (god help me) neutrals are...not
+        0.5, 0.5, 0.5),
+    target_temps=(
+        None,None,None,None,
+        None,None,None),
+));
+
+targ_plasma, targ_neutral = mk45_pinprick_plasma(
+    dim = [i*1e-4 for i in d['tlim']],
+    N0  = 1.08e22,
+    laser_radius = w0*1e2,
+    width = 0.46e-4,
+    L = 0.043e-4,# 43nm
+    depth = 0.086e-4, #chosen arbitrarily
+    mindensity=1e18);
 gensim(**d);
 if opts['--make-target']:
     print("making targets");
-    def mktarg(di):
-        dd = sd(
-            di,
-            f_2D = mk45(
-                dim = [i*1e-4 for i in di['tlim']],
-                N0    = 1.0804e22,
-                width = 0.46e-4,
-                # wilks*12e-12, just for a round 40 nm n_n
-                L=40e-4));
-        dat = gendat(**dd);
-        savetxt(
-            "{}/{}".format(di['pbsbase'],di['dens_dat']),
-            dat);
-    for di in longs:
-        mktarg(di);
+    dd = sd(d, f_2D = targ_plasma, dat_xres = 7001);
+    dat = gendat(**dd);
+    savetxt(
+        "{}/{}".format(d['pbsbase'],'target_plasma.dat'),
+        dat);
+    dd = sd(d, f_2D = targ_neutral, dat_xres = 7001);
+    dat = gendat(**dd);
+    savetxt(
+        "{}/{}".format(d['pbsbase'],'target_neutral.dat'),
+        dat);
+
 
 

@@ -602,6 +602,21 @@ particle_kinematics_option STANDARD
 scattering_flag off
 implicit_filtering_parameter 0.1
 selection_ratio 1.0
+                                        ;
+species19 ; H atom
+charge 0
+mass 1837
+atomic_number 1
+migrant_species_flag off
+implicit_species_flag on
+particle_motion_flag on
+particle_forces_option PRIMARY
+transverse_weighting_flag on
+particle_kinematics_option STANDARD
+scattering_flag off
+implicit_filtering_parameter 0.1
+selection_ratio 1.0
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -610,6 +625,56 @@ selection_ratio 1.0
 [Particle Creation]
 
 ;; initial states ;;
+
+plasma ; H
+from -3.500000e-03 3.500000e-03  0.000000e+00
+to   3.500000e-03 3.500000e-03  0.000000e+00
+species 18
+movie_tag 3
+unbound off
+discrete_numbers 3 3 1
+density_function 6
+reference_point 0.000000e+00 0.000000e+00 0.000000e+00
+density_flags 1 1 0
+momentum_flags 0 0 0
+thermal_energy 0.5
+
+movie_fraction 0.000
+
+
+plasma ; O
+from -3.500000e-03  3.500000e-03  0.000000e+00
+to   3.500000e-03  3.500000e-03  0.000000e+00
+species 2
+movie_tag 3
+unbound off
+discrete_numbers 3 3 1
+density_function 4
+reference_point 0.000000e+00 0.000000e+00 0.000000e+00
+density_flags 1 1 0
+momentum_flags 0 0 0
+thermal_energy 0.5
+
+movie_fraction 0.000
+;
+
+plasma ; C
+from -3.500000e-03  3.500000e-03  0.000000e+00
+to   3.500000e-03  3.500000e-03  0.000000e+00
+species 11
+movie_tag 3
+unbound off
+discrete_numbers 3 3 1
+density_function 5
+reference_point 0.000000e+00 0.000000e+00 0.000000e+00
+density_flags 1 1 0
+momentum_flags 0 0 0
+thermal_energy 0.5
+
+movie_fraction 0.000
+;
+
+
 
 plasma ; O+
 from -3.500000e-03  3.500000e-03  0.000000e+00
@@ -626,6 +691,7 @@ thermal_energy 6.0
 
 movie_fraction 0.000
 ;
+
 plasma ; C+
 from -3.500000e-03  3.500000e-03  0.000000e+00
 to   3.500000e-03  3.500000e-03  0.000000e+00
@@ -715,6 +781,31 @@ thermal_energy 1.0
 movie_fraction 0.0
 
 ;; ionization states ;;
+;; Hydrogen
+higherstate              ; H -> p+
+from -3.500000e-03 -3.500000e-03  0.000000e+00
+to   3.500000e-03 3.500000e-03  0.000000e+00
+interval 1
+species 19
+ion_species 18
+movie_tag 5
+electron_species 17
+ionization_potential 13.6
+cross_sections
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+  0.0
+end
+movie_fraction 0.0
+
 ;; Oxygen
 higherstate              ; O -> O+
 from -3.500000e-03 -3.500000e-03  0.000000e+00
@@ -724,7 +815,6 @@ species 1
 ion_species 2
 movie_tag 5
 electron_species 17
-movie_tag 3
 ionization_potential 13.6
 cross_sections
   0.0
@@ -749,7 +839,6 @@ species 2
 ion_species 3
 movie_tag 5
 electron_species 17
-movie_tag 3
 ionization_potential 35.1
 cross_sections
   0.0
@@ -774,7 +863,6 @@ species 3
 ion_species 4
 movie_tag 5
 electron_species 17
-movie_tag 3
 ionization_potential 54.9
 cross_sections
   0.0
@@ -799,7 +887,6 @@ species 4
 ion_species 5
 movie_tag 5
 electron_species 17
-movie_tag 3
 ionization_potential 77.4
 cross_sections
   0.0
@@ -824,7 +911,6 @@ species 5
 ion_species 6
 movie_tag 5
 electron_species 17
-movie_tag 3
 ionization_potential 113.9
 cross_sections
   0.0
@@ -850,7 +936,6 @@ species 6
 ion_species 7
 movie_tag 5
 electron_species 17
-movie_tag 3
 ionization_potential 138.1
 cross_sections
   0.0
@@ -875,7 +960,6 @@ species 7
 ion_species 8
 movie_tag 5
 electron_species 17
-movie_tag 3
 ionization_potential 739.3
 cross_sections
   0.0
@@ -900,7 +984,6 @@ species 8
 ion_species 9
 movie_tag 5
 electron_species 17
-movie_tag 3
 ionization_potential 871.4
 cross_sections
   0.0
@@ -926,7 +1009,6 @@ species 10
 ion_species 11
 movie_tag 5
 electron_species 17
-movie_tag 3
 ionization_potential 11.3
 cross_sections
   0.0
@@ -951,7 +1033,6 @@ species 11
 ion_species 12
 movie_tag 5
 electron_species 17
-movie_tag 3
 ionization_potential 24.4
 cross_sections
   0.0
@@ -976,7 +1057,6 @@ species 12
 ion_species 13
 movie_tag 5
 electron_species 17
-movie_tag 3
 ionization_potential 47.9
 cross_sections
   0.0
@@ -1001,7 +1081,6 @@ species 13
 ion_species 14
 movie_tag 5
 electron_species 17
-movie_tag 3
 ionization_potential 64.5
 cross_sections
   0.0
@@ -1026,7 +1105,6 @@ species 14
 ion_species 15
 movie_tag 5
 electron_species 17
-movie_tag 3
 ionization_potential 392.1
 cross_sections
   0.0
@@ -1051,7 +1129,6 @@ species 15
 ion_species 16
 movie_tag 5
 electron_species 17
-movie_tag 3
 ionization_potential 490.0
 cross_sections
   0.0
@@ -1168,26 +1245,26 @@ type 19   ; f-number: ~3.762878770705575
 coefficients 7.800000e-05 1.868508e-04 end
 
 ;;
-function3 ; electrons
+function3 ; electrons#
 
 type 40
-data_file target45.dat
+data_file target_plasma.dat
 independent_variable_multiplier 1.0
 dependent_variable_multiplier 10.0
 
 ;;
-function4 ; Oxygen
+function4 ; O+
 
 type 40
-data_file target45.dat
+data_file target_plasma.dat
 independent_variable_multiplier 1.0
 dependent_variable_multiplier 2.0
 
 ;;
-function5 ; Carbon
+function5 ; C+
 
 type 40
-data_file target45.dat
+data_file target_plasma.dat
 independent_variable_multiplier 1.0
 dependent_variable_multiplier 2.0
 
@@ -1195,11 +1272,36 @@ dependent_variable_multiplier 2.0
 function6 ; Protons
 
 type 40
-data_file target45.dat
+data_file target_plasma.dat
 independent_variable_multiplier 1.0
 dependent_variable_multiplier 6.0
 
 ;;
+function7 ; O
+
+type 40
+data_file target_neutral.dat
+independent_variable_multiplier 1.0
+dependent_variable_multiplier 2.0
+
+;;
+function8 ; C
+
+type 40
+data_file target_neutral.dat
+independent_variable_multiplier 1.0
+dependent_variable_multiplier 2.0
+
+;;
+function9 ; H
+
+type 40
+data_file target_neutral.dat
+independent_variable_multiplier 1.0
+dependent_variable_multiplier 6.0
+
+;;
+
 
 
 

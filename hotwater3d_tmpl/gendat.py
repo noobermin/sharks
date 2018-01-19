@@ -70,12 +70,12 @@ def gendat(**kw):
         np.savetxt(s,np.array(d).T,fmt='%.8e',);
         return s.getvalue();
     else:
-        if test(kw, 'f_3d'):
+        if test(kw, 'f_3D'):
             x = np.linspace(tlim[0],tlim[1],res);
             y = np.linspace(tlim[2],tlim[3],res);
             z = np.linspace(tlim[4],tlim[5],res);
             X,Y,Z = np.meshgrid(x,y,z,indexing='ij');
-            d = getkw('f_3d')(X,Y,Z);
+            d = getkw('f_3D')(X,Y,Z);
         elif test(kw,'data3D'):
             x,y,z,d = getkw('data3D');
         s = StringIO();
