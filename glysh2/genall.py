@@ -121,10 +121,10 @@ d.update(**dict(
     #this is assuming the shoulder is 1e14 W/cm^2 at 12 picoseconds
     #using wilks scaling.
     thermal_energy=(
-        #plasma is 6 eV
-        6.0,0.1,0.1,0.1,
+        #
+        1.0,1.0,1.0,1.0,
         #and (god help me) neutrals are...not
-        0.1, 0.1, 0.1),
+        1.0, 1.0, 1.0),
     target_temps=(
         None,None,None,None,
         None,None,None),
