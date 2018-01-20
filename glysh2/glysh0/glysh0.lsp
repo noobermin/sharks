@@ -469,21 +469,7 @@ scattering_flag on
 implicit_filtering_parameter 0.1
 selection_ratio 1.0
 ;
-species18 ; protons
-charge +1
-mass 1836
-atomic_number 1
-migrant_species_flag off
-implicit_species_flag on
-particle_motion_flag on
-particle_forces_option PRIMARY
-transverse_weighting_flag on
-particle_kinematics_option STANDARD
-scattering_flag off
-implicit_filtering_parameter 0.1
-selection_ratio 1.0
-                                        ;
-species19 ; H atom
+species18 ; H atom
 charge 0
 mass 1837
 atomic_number 1
@@ -496,7 +482,21 @@ particle_kinematics_option STANDARD
 scattering_flag off
 implicit_filtering_parameter 0.1
 selection_ratio 1.0
-
+;
+species19 ; protons
+charge +1
+mass 1836
+atomic_number 1
+migrant_species_flag off
+implicit_species_flag on
+particle_motion_flag on
+particle_forces_option PRIMARY
+transverse_weighting_flag on
+particle_kinematics_option STANDARD
+scattering_flag off
+implicit_filtering_parameter 0.1
+selection_ratio 1.0
+;                                        
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -505,23 +505,6 @@ selection_ratio 1.0
 [Particle Creation]
 
 ;; initial states ;;
-
-plasma ; H
-from -3.500000e-03 -3.500000e-03  0.000000e+00
-to   3.500000e-03 3.500000e-03  0.000000e+00
-species 19
-movie_tag 3
-unbound off
-discrete_numbers 3 3 1
-density_function 9
-reference_point 0.000000e+00 0.000000e+00 0.000000e+00
-density_flags 1 1 0
-momentum_flags 0 0 0
-thermal_energy 0.1
-
-movie_fraction 0.000
-
-
 plasma ; O
 from -3.500000e-03  -3.500000e-03  0.000000e+00
 to   3.500000e-03  3.500000e-03  0.000000e+00
@@ -537,7 +520,6 @@ thermal_energy 0.1
 
 movie_fraction 0.000
 ;
-
 plasma ; C
 from -3.500000e-03  -3.500000e-03  0.000000e+00
 to   3.500000e-03  3.500000e-03  0.000000e+00
@@ -553,7 +535,21 @@ thermal_energy 0.1
 
 movie_fraction 0.000
 ;
+plasma ; H
+from -3.500000e-03 -3.500000e-03  0.000000e+00
+to   3.500000e-03 3.500000e-03  0.000000e+00
+species 18
+movie_tag 3
+unbound off
+discrete_numbers 3 3 1
+density_function 9
+reference_point 0.000000e+00 0.000000e+00 0.000000e+00
+density_flags 1 1 0
+momentum_flags 0 0 0
+thermal_energy 0.1
 
+movie_fraction 0.000
+;
 
 
 plasma ; O+
@@ -587,7 +583,21 @@ thermal_energy 0.1
 
 movie_fraction 0.000
 ;
+plasma ; p+
+from -3.500000e-03 -3.500000e-03  0.000000e+00
+to   3.500000e-03 3.500000e-03  0.000000e+00
+species 19
+movie_tag 3
+unbound off
+discrete_numbers 3 3 1
+density_function 6
+reference_point 0.000000e+00 0.000000e+00 0.000000e+00
+density_flags 1 1 0
+momentum_flags 0 0 0
+thermal_energy 0.1
 
+movie_fraction 0.000
+;
 plasma ; e-
 from -3.500000e-03 -3.500000e-03  0.000000e+00
 to   3.500000e-03 3.500000e-03  0.000000e+00
@@ -602,21 +612,6 @@ momentum_flags 0 0 0
 thermal_energy 6.0
 
 movie_fraction 0.050
-;
-plasma ; p+
-from -3.500000e-03 -3.500000e-03  0.000000e+00
-to   3.500000e-03 3.500000e-03  0.000000e+00
-species 18
-movie_tag 3
-unbound off
-discrete_numbers 3 3 1
-density_function 6
-reference_point 0.000000e+00 0.000000e+00 0.000000e+00
-density_flags 1 1 0
-momentum_flags 0 0 0
-thermal_energy 0.1
-
-movie_fraction 0.000
 
 ;; emission from conductors
 ;;e-
@@ -634,7 +629,7 @@ emission child-langmuir field-stress
 from -3.500000e-03 -3.500000e-03 0.000000e+00
 to   3.500000e-03 3.500000e-03 0.000000e+00
 interval 1
-species 18
+species 19
 discrete_numbers 3 3 1
 inclusion SOLID
 thermal_energy 1.0
@@ -666,8 +661,8 @@ higherstate              ; H -> p+
 from -3.500000e-03 -3.500000e-03  0.000000e+00
 to   3.500000e-03 3.500000e-03  0.000000e+00
 interval 1
-species 19
-ion_species 18
+species 18
+ion_species 19
 movie_tag 5
 electron_species 17
 ionization_potential 13.6
