@@ -509,7 +509,7 @@ selection_ratio 1.0
 plasma ; H
 from -3.500000e-03 -3.500000e-03  0.000000e+00
 to   3.500000e-03 3.500000e-03  0.000000e+00
-species 18
+species 19
 movie_tag 3
 unbound off
 discrete_numbers 3 3 1
@@ -525,7 +525,7 @@ movie_fraction 0.000
 plasma ; O
 from -3.500000e-03  -3.500000e-03  0.000000e+00
 to   3.500000e-03  3.500000e-03  0.000000e+00
-species 2
+species 1
 movie_tag 3
 unbound off
 discrete_numbers 3 3 1
@@ -541,7 +541,7 @@ movie_fraction 0.000
 plasma ; C
 from -3.500000e-03  -3.500000e-03  0.000000e+00
 to   3.500000e-03  3.500000e-03  0.000000e+00
-species 11
+species 10
 movie_tag 3
 unbound off
 discrete_numbers 3 3 1
@@ -643,7 +643,7 @@ movie_fraction 0.0
 emission child-langmuir field-stress
 from -3.500000e-03 -3.500000e-03 0.000000e+00
 to   3.500000e-03 3.500000e-03 0.000000e+00
-interval 100
+interval 1
 species 11
 discrete_numbers 3 3 1
 inclusion SOLID
@@ -653,7 +653,7 @@ movie_fraction 0.0
 emission child-langmuir field-stress
 from -3.500000e-03 -3.500000e-03 0.000000e+00
 to   3.500000e-03 3.500000e-03 0.000000e+00
-interval 100
+interval 1
 species 2
 discrete_numbers 3 3 1
 inclusion SOLID

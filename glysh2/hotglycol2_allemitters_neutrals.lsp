@@ -325,7 +325,7 @@ selection_ratio 1.0
 plasma ; H
 from {targ_xmin:e} {targ_ymin:e}  {targ_zmin:e}
 to   {targ_xmax:e} {targ_ymax:e}  {targ_zmax:e}
-species 18
+species 19
 movie_tag 3
 unbound off
 discrete_numbers {discrete}
@@ -340,7 +340,7 @@ movie_fraction 0.000
 plasma ; O
 from {targ_xmin:e}  {targ_ymin:e}  {targ_zmin:e}
 to   {targ_xmax:e}  {targ_ymax:e}  {targ_zmax:e}
-species 2
+species 1
 movie_tag 3
 unbound off
 discrete_numbers {discrete}
@@ -355,7 +355,7 @@ movie_fraction 0.000
 plasma ; C
 from {targ_xmin:e}  {targ_ymin:e}  {targ_zmin:e}
 to   {targ_xmax:e}  {targ_ymax:e}  {targ_zmax:e}
-species 11
+species 10
 movie_tag 3
 unbound off
 discrete_numbers {discrete}
@@ -452,7 +452,7 @@ movie_fraction {cond_fraction}
 emission child-langmuir field-stress
 from {xmin:e} {ymin:e} {zmin:e}
 to   {xmax:e} {ymax:e} {zmax:e}
-interval 100
+interval 1
 species 11
 discrete_numbers {discrete}
 inclusion SOLID
@@ -462,7 +462,7 @@ movie_fraction {cond_fraction}
 emission child-langmuir field-stress
 from {xmin:e} {ymin:e} {zmin:e}
 to   {xmax:e} {ymax:e} {zmax:e}
-interval 100
+interval 1
 species 2
 discrete_numbers {discrete}
 inclusion SOLID
