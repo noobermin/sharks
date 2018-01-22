@@ -40,23 +40,21 @@ plasma_frequency_limit 2.0
 ;;Diagnostic Dumps
 dump_number_densities_flag ON
 dump_plasma_quantities_flag ON
+dump_time_zero_flag ON
 probe_interval 1
 spatial_skip_x 1
 spatial_skip_y 1
 spatial_skip_z 1
 
 dump_fields_flag ON
-field_dump_interval_ns 5.000000000000001e-07
+field_dump_interval_ns 2e-08
 dump_scalars_flag ON
-scalar_dump_interval_ns 5.000000000000001e-07
+scalar_dump_interval_ns 2e-08
 dump_particles_flag ON
 particle_dump_interval_ns 0.0
 particle_dump_times_ns 0.0001 0.00011 0.00014 end
 
 ;;pmovies
-
-particle_movie_interval_ns 5.000000000000001e-07
-particle_movie_components Q X Y Z VX VY VZ XI YI ZI
 
 
 ;

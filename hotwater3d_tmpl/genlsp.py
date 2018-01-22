@@ -150,6 +150,7 @@ dump_opts = dict(
     temperatures=None,
     potential=None,
     velocities=None,
+    time_zero=None,
 );
 #no shame.
 keys = list(dump_opts.keys());

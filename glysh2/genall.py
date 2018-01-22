@@ -177,7 +177,10 @@ smd = sd(d,
                0),
          timestep = 2e-17,
          totaltime= 150e-15,
-         pbsbase='glyshs'
+         dumpinterval=2e-17,
+         dump_time_zero_flag=True,
+         pbsbase='glyshs',
+         no_pmovies=True,
 );
 smd.update(**mkconds(d['tlim'], backin=0.5e-4));
 gensim(**smd);
