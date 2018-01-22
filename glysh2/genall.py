@@ -149,7 +149,7 @@ def gendats(di,
         depth = depth, #chosen arbitrarily
         mindensity=mindensity);
     if not dat_xres:
-        dat_xres = di['xres']+1;
+        dat_xres = di['res'][0]+1;
     print("making targets for {}".format(di['pbsbase']));
     dd = sd(di, f_2D = targ_plasma, dat_xres = dat_xres);
     dat = gendat(**dd);
