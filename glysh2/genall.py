@@ -78,34 +78,35 @@ d=dict(
     pext_species=(17,18),
 );
 #conductors
-backout=1e-4
-backin =5e-4
-w = 0.460e-4;
-offset = backin+np.sqrt(2)*1e-4
-#lower left corner
-lca=np.array([xmin,ymin])*1e-4 - backout;
-lcb=lca + np.array([1,0])*offset;
-lcc=lca + np.array([0,1])*offset;
-
-#upper right corner
-uca=np.array([xmax,ymax])*1e-4 + backout;
-ucb=uca - np.array([1,0])*offset;
-ucc=uca - np.array([0,1])*offset;
-
-d['conductors'] = [
-    {'type':'TRILATERAL',
-     'from':(lca[0],lca[1],0.0),
-     'to'  :[
-         (lcb[0],lcb[1],0.0),
-         (lcc[0],lcc[1],0.0)]},
-    {'type':'TRILATERAL',
-     'from':(uca[0],uca[1],0.0),
-     'to'  :[
-         (ucb[0],ucb[1],0.0),
-         (ucc[0],ucc[1],0.0)]}
-];
-
-
+def mkconds(dims,
+            backout=1e-4,
+            backin =5e-4,
+            width = 0.460e-4):
+    xmin,xmax,ymin,ymax = dims[:4];
+    offset = backin+np.sqrt(2)*1e-4
+    #lower left corner
+    lca=np.array([xmin,ymin])*1e-4 - backout;
+    lcb=lca + np.array([1,0])*offset;
+    lcc=lca + np.array([0,1])*offset;
+    
+    #upper right corner
+    uca=np.array([xmax,ymax])*1e-4 + backout;
+    ucb=uca - np.array([1,0])*offset;
+    ucc=uca - np.array([0,1])*offset;
+    
+    return dict(conductors=[
+        {'type':'TRILATERAL',
+         'from':(lca[0],lca[1],0.0),
+         'to'  :[
+             (lcb[0],lcb[1],0.0),
+             (lcc[0],lcc[1],0.0)]},
+        {'type':'TRILATERAL',
+         'from':(uca[0],uca[1],0.0),
+         'to'  :[
+             (ucb[0],ucb[1],0.0),
+             (ucc[0],ucc[1],0.0)]}
+    ]);
+d.update(**mkconds(d['tlim']));
 
 
 #species and target.
@@ -122,35 +123,63 @@ d.update(**dict(
     #using wilks scaling.
     thermal_energy=(
         #
-        1.0,1.0,1.0,1.0,
+        6.0, 0.01, 0.01, 0.01,
         #and (god help me) neutrals are...not
-        1.0, 1.0, 1.0),
+        0.01, 0.01, 0.01),
     target_temps=(
         None,None,None,None,
         None,None,None),
 ));
 
-targ_plasma, targ_neutral = mk45_pinprick_plasma(
-    dim = [i*1e-4 for i in d['tlim']],
-    N0  = 1.08e22,
-    laser_radius = w0*1e2,
-    width = 0.46e-4,
-    L = 0.043e-4,# 43nm
-    depth = 0.086e-4, #chosen arbitrarily
-    mindensity=1e18);
 gensim(**d);
+def gendats(di,
+            w0=w0*1e2,
+            width=0.46e-4,
+            L=0.043e-4,
+            N0=1.08e22,
+            depth=0.086e-4,
+            mindensity=1e18,
+            dat_xres=None,):
+    targ_plasma, targ_neutral = mk45_pinprick_plasma(
+        dim = [i*1e-4 for i in d['tlim']],
+        N0  = N0,
+        laser_radius = w0,
+        width = width,
+        L = L,# 43nm
+        depth = depth, #chosen arbitrarily
+        mindensity=mindensity);
+    if not dat_xres:
+        dat_xres = di['xres']+1;
+    print("making targets for {}".format(di['pbsbase']));
+    dd = sd(di, f_2D = targ_plasma, dat_xres = dat_xres);
+    dat = gendat(**dd);
+    savetxt(
+        "{}/{}".format(di['pbsbase'],'target_plasma.dat'),
+        dat);
+    dd = sd(d, f_2D = targ_neutral, dat_xres = dat_xres);
+    dat = gendat(**dd);
+    savetxt(
+        "{}/{}".format(di['pbsbase'],'target_neutral.dat'),
+        dat);
+
 if opts['--make-target']:
-    print("making targets");
-    dd = sd(d, f_2D = targ_plasma, dat_xres = 7001);
-    dat = gendat(**dd);
-    savetxt(
-        "{}/{}".format(d['pbsbase'],'target_plasma.dat'),
-        dat);
-    dd = sd(d, f_2D = targ_neutral, dat_xres = 7001);
-    dat = gendat(**dd);
-    savetxt(
-        "{}/{}".format(d['pbsbase'],'target_neutral.dat'),
-        dat);
+    gendats(d);
 
-
-
+smd = sd(d,
+         lim =(-5.0,5.0,
+               -5.0,5.0,
+               0,0),
+         tlim=(-5.0,5.0,
+               -5.0,5.0,
+               0,0),
+         res =(1000,
+               1000,
+               0),
+         timestep = 2e-17,
+         totaltime= 150e-15,
+         pbsbase='glyshs'
+);
+smd.update(**mkconds(d['tlim'], backin=0.5e-4));
+gensim(**smd);
+if opts['--make-target']:
+    gendats(smd);
