@@ -14,7 +14,7 @@ from gensim import gensim, fromenergy,c;
 from gendat import gendat;
 import numpy as np;
 import shutil as sh;
-
+e0 = 8.854e-12;
 #E = 0.5e-3; # 5mJ
 I = 5e18;
 l = 0.78e-6
@@ -192,11 +192,19 @@ gensim(**smd);
 if opts['--make-target']:
     gendats(smd);
 
+EfromI = lambda i: np.sqrt(i*1e4 * 2 / c / e0);
+BfromI = lambda i: EfromI(i)/c*1e4;
 smd2=sd(smd,**mkconds(smd['tlim'], backin=0.5e-4));
 smd2.update(
     pbsbase='glysh1',
     domains=44*4,
-    region_split=('y',4));
+    region_split=('y',4),
+    movE=dict(
+        clim=(EfromI(1e14),EfromI(1e19)),
+        contour_lines=(1.7e21),
+        contour_quantities=('RhoN17'),
+    ),
+);
 gensim(**smd2);
 if opts['--make-target']:
     gendats(smd2);
