@@ -21,7 +21,7 @@ l = 0.78e-6
 w0=2.2e-6 / np.sqrt(2*np.log(2))
 T0=42e-15
 
-from gen45  import mk45_pinprick_plasma;
+from gen45  import mk45_pinprick_plasma_old,mk45_pinprick_plasma;
 
 xmin=ymin=-35;
 xmax=ymax= 35;
@@ -139,8 +139,13 @@ def gendats(di,
             N0=1.08e22,
             depth=0.086e-4,
             mindensity=1e18,
-            dat_xres=None,):
-    targ_plasma, targ_neutral = mk45_pinprick_plasma(
+            dat_xres=None,
+            new=False):
+    if new:
+        mkpinprick = mk45_pinprick_plasma
+    else:
+        mkpinprick = mk45_pinprick_plasma_old
+    targ_plasma, targ_neutral = mkpinprick(
         dim = [i*1e-4 for i in d['tlim']],
         N0  = N0,
         laser_radius = w0,
@@ -186,3 +191,12 @@ smd.update(**mkconds(d['tlim'], backin=0.5e-4));
 gensim(**smd);
 if opts['--make-target']:
     gendats(smd);
+
+smd2=sd(smd,**mkconds(smd['tlim'], backin=0.5e-4));
+smd2.update(
+    pbsbase='glysh1',
+    domains=44*4,
+    region_split=('y',4));
+gensim(**smd2);
+if opts['--make-target']:
+    gendats(smd2);

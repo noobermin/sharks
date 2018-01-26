@@ -49,6 +49,58 @@ def mk45_pinprick_plasma(
     xlim = dim[:2];
     ylim = dim[2:];
     longmask = lambda x,y: np.logical_and(
+        y <= x + width/np.sqrt(2.0),
+        y >= x + (width-depth)/np.sqrt(2.0));
+    spotmask = lambda x,y: np.logical_and(
+        y <= -x -width/np.sqrt(2.0) + np.sqrt(2)*laser_radius,
+        y >= -x -width/np.sqrt(2.0) - np.sqrt(2)*laser_radius);
+    dfront = lambda x,y: np.abs(y-x-w/np.sqrt(2))/np.sqrt(2);
+    if scalemax:
+        restrict_front = lambda d: d < scalemax
+        minN = N0*np.exp(-scalemax/L);
+        print("minimum density: {:e}".format(minN));
+    elif mindensity:
+        scalemax = np.log(N0/mindensity)*L
+        restrict_front = lambda d: d < scalemax
+        print("maximum dfront: {:e}".format(scalemax));
+    else:
+        restrict_front = lambda d: np.ones(d.shape).astype(bool);
+    def f_plasma(x,y):
+        out = np.ones(x.shape)*floor;
+        longm = longmask(x,y);
+        #a gaussian radius on both sides
+        spotm = spotmask(x,y)
+        out[np.logical_and(longm,spotm)]=N0;
+        infront =np.logical_and(
+            y >= x + width/np.sqrt(2.0),
+            spotm);
+        d = dfront(x,y);
+        infront&=restrict_front(d);
+        out[infront]=N0*np.exp(-d/L)[infront];
+        out = np.where(out > floor, out,floor);
+        return out;
+    def f_neutral(x,y):
+        out = np.ones(x.shape)*floor;
+        good =np.abs(y-x)*np.sqrt(2) < width;
+        out[good] = N0;
+        inside = np.logical_and(longmask(x,y),spotmask(x,y));
+        out[inside] = floor;
+        return out;
+    return f_plasma, f_neutral;
+
+def mk45_pinprick_plasma_old(
+        dim=[-35e-4,35e-4,-35e-4,35e-4],
+        N0=1.08e22,
+        laser_radius=2.2e-4,
+        L = 1e-4,
+        depth = 1e-4,
+        mindensity=None,
+        scalemax=None,
+        width=0.5e-4,
+        floor=0.0,):
+    xlim = dim[:2];
+    ylim = dim[2:];
+    longmask = lambda x,y: np.logical_and(
         x-y <= width/np.sqrt(2.0),
         x-y >= (width-depth)/np.sqrt(2.0));
     spotmask = lambda x,y: np.logical_and(
@@ -87,6 +139,7 @@ def mk45_pinprick_plasma(
         out[inside] = floor;
         return out;
     return f_plasma, f_neutral;
+
 
 if __name__ == "__main__":
     opts = docopt(__doc__,help=True);
