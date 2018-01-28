@@ -54,7 +54,7 @@ def mk45_pinprick_plasma(
     spotmask = lambda x,y: np.logical_and(
         y <= -x -width/np.sqrt(2.0) + np.sqrt(2)*laser_radius,
         y >= -x -width/np.sqrt(2.0) - np.sqrt(2)*laser_radius);
-    dfront = lambda x,y: np.abs(y-x-w/np.sqrt(2))/np.sqrt(2);
+    dfront = lambda x,y: np.abs(y-x-width/np.sqrt(2))/np.sqrt(2);
     if scalemax:
         restrict_front = lambda d: d < scalemax
         minN = N0*np.exp(-scalemax/L);
