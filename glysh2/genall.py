@@ -199,6 +199,7 @@ smd2.update(
     pbsbase='glysh1',
     domains=44*4,
     region_split=('y',4),
+    dumpinterval=1e-16,
     movE=dict(
         clim=(EfromI(1e14),EfromI(1e19)),
         contour_lines=(1.7e21),
@@ -207,4 +208,4 @@ smd2.update(
 );
 gensim(**smd2);
 if opts['--make-target']:
-    gendats(smd2);
+    gendats(smd2,new=True);
