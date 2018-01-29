@@ -83,7 +83,7 @@ def mkconds(dims,
             backin =5e-4,
             width = 0.460e-4):
     xmin,xmax,ymin,ymax = dims[:4];
-    offset = backin+np.sqrt(2)*1e-4
+    offset = 2*(backin+backout);
     #lower left corner
     lca=np.array([xmin,ymin])*1e-4 - backout;
     lcb=lca + np.array([1,0])*offset;

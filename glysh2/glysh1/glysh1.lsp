@@ -147,15 +147,15 @@ number_of_cells AUTO ; cells = 0
 object1 TRILATERAL
 conductor on medium 0 potential 0
 from -6.000000e-04 -6.000000e-04 0.000000e+00
-to   -4.085786e-04 -6.000000e-04 0.000000e+00
-to   -6.000000e-04 -4.085786e-04 0.000000e+00
+to   -3.000000e-04 -6.000000e-04 0.000000e+00
+to   -6.000000e-04 -3.000000e-04 0.000000e+00
 sweep_direction Z
 
 object2 TRILATERAL
 conductor on medium 0 potential 0
 from 6.000000e-04 6.000000e-04 0.000000e+00
-to   4.085786e-04 6.000000e-04 0.000000e+00
-to   6.000000e-04 4.085786e-04 0.000000e+00
+to   3.000000e-04 6.000000e-04 0.000000e+00
+to   6.000000e-04 3.000000e-04 0.000000e+00
 sweep_direction Z
 
 
