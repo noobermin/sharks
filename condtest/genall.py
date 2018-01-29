@@ -155,7 +155,6 @@ noc=dict(
     lsptemplate='hotwater3d_cond_tmpl.lsp',
     speciesl=[ 'e', 'O', 'p'],
     fracs   =[3.0, 1.0, 2.0],
-    thermal_energy=(1e3,1e3,1e3),
     target_temps=(None,None,None),
     #density
     tref = (0.0, 0.0, 0.0),
@@ -213,3 +212,40 @@ nonoc = sd(noc,
                dict(outlet='ymax',start=-1.0),],
            cond_temp=1e3,);
 gensim(**nonoc);
+trid = sd(
+    d,
+    lim =(-4,4,
+          -4,4,
+          0,0),
+    tlim=(-4,4,
+          -4,4,
+          0,0),
+    res =(800,
+          800,
+          0),
+    f_2D = mkbgtarg(
+        N_bg = n_bg,
+        N0 = n_s,
+        sdim = [1.0e-4, 2.0e-4],
+        L=0.4e-4,
+        twidth=6e-4,
+        dim=[-4e-4,4e-4,-4e-4,4e-4],
+    ),
+    pbsbase='trc',
+    thermal_energy=(0.1,0.1,0.1),
+    timestep =   2e-18,
+    totaltime= 140e-15,
+    domains=44,
+    fp=(0.0,0.0,0.0),
+    conductors = [
+        {'type':'TRILATERAL',
+         'from':(-5, -5, 0.0),
+         'to'  :[
+             (-5, 5, 0.0),
+             ( 5,-5, 0.0),]},
+    ],
+);
+gensim(**trid);
+        
+            
+    
