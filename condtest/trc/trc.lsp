@@ -98,7 +98,7 @@ number_of_cells AUTO ; cells = 0
 
 object1 TRILATERAL
 conductor on medium 0 potential 0
-from -5.000000e+00 -5.000000e+00 0.000000e+00
+from 5.000000e+00 5.000000e+00 0.000000e+00
 to   -5.000000e+00 5.000000e+00 0.000000e+00
 to   5.000000e+00 -5.000000e+00 0.000000e+00
 sweep_direction Z
