@@ -21,7 +21,7 @@ l = 0.78e-6
 w0=2.2e-6 / np.sqrt(2*np.log(2))
 T0=42e-15
 
-from gen45  import mk45_pinprick_plasma_old,mk45_pinprick_plasma;
+from gen45  import mk45_pinprick_plasma_old, mk45_pinprick_plasma, mk45_pinprick_neutral;
 
 xmin=ymin=-35;
 xmax=ymax= 35;
