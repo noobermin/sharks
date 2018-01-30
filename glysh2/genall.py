@@ -166,6 +166,28 @@ def gendats(di,
     savetxt(
         "{}/{}".format(di['pbsbase'],'target_neutral.dat'),
         dat);
+def gendatn(di,
+            w0=w0*1e2,
+            width=0.46e-4,
+            L=0.043e-4,
+            N0=1.08e22,
+            mindensity=1e18,
+            dat_xres=None):
+    targ_neutral = mk_pinprick_neutral(
+        dim = [i*1e-4 for i in d['tlim']],
+        N0  = N0,
+        laser_radius = w0,
+        width = width,
+        L = L,# 43nm
+        mindensity=mindensity);
+    if not dat_xres:
+        dat_xres = di['res'][0]+1;
+    print("making targets for {}".format(di['pbsbase']));
+    dd = sd(di, f_2D = targ_plasma, dat_xres = dat_xres);
+    dat = gendat(**dd);
+    savetxt(
+        "{}/{}".format(di['pbsbase'],di['dens_dat']),
+        dat);
 
 if opts['--make-target']:
     gendats(d);
@@ -209,3 +231,31 @@ smd2.update(
 gensim(**smd2);
 if opts['--make-target']:
     gendats(smd2,new=True);
+reald = sd(
+    d,
+    domains=44*5,
+    region_split=('y',5),
+    dump_time_zero_flag=True,
+    pbsbase='glysh2',
+    **mkconds(d['tlim'], backin=1e-4),
+);
+reald.update(
+    lsptemplate="neutralglycol_allemitters.lsp",
+    speciesl=['O0','C0','H'],
+    fracs   =[2.0, 2.0,6.0],
+    dens_type=40,
+    dens_dat='target_neutral.dat',
+    thermal_energy=(
+        0.02, 0.02, 0.02),
+    target_temps=(
+        None,None,None),
+    particle_dump_interval_ns=0.0,
+    splittime=[
+        (115e-15, None),
+        (400e-15, dict(particle_dump_interval_ns=6e-16)),
+        (3e-12,   dict(particle_dump_interval_ns=3e-15)),
+    ],
+);
+gensim(**reald);
+if opts['--make-target']:
+    gendatn(smd2);

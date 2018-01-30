@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-'''usage: gen45.py (45|pinprick_plasma|pinprick_neutrals|pinprick_real)'''
+'''usage: gen45.py (45|pinprick_plasma|pinprick_neutrals|pinprick_real|neutral_only)'''
 from docopt import docopt;
 import numpy as np;
 
@@ -36,6 +36,48 @@ def mk45(dim=[-5e-4,5e-4,-5e-4,5e-4,],
         out[good]=N0;
         return out;
     return f;
+
+def mk45_pinprick_neutral(
+        dim=[-35e-4,35e-4,-35e-4,35e-4],
+        N0=1.08e22,
+        laser_radius=2.2e-4,
+        L = 1e-4,
+        mindensity=None,
+        scalemax=None,
+        width=0.5e-4,
+        floor=0.0,):
+    xlim = dim[:2];
+    ylim = dim[2:];
+    longmask = lambda x,y: y <= x + width/np.sqrt(2.0);
+    spotmask = lambda x,y: np.logical_and(
+        y <= -x -width/np.sqrt(2.0) + np.sqrt(2)*laser_radius,
+        y >= -x -width/np.sqrt(2.0) - np.sqrt(2)*laser_radius);
+    dfront = lambda x,y: np.abs(y-x-width/np.sqrt(2))/np.sqrt(2);
+    if scalemax:
+        restrict_front = lambda d: d < scalemax
+        minN = N0*np.exp(-scalemax/L);
+        print("minimum density: {:e}".format(minN));
+    elif mindensity:
+        scalemax = np.log(N0/mindensity)*L
+        restrict_front = lambda d: d < scalemax
+        print("maximum dfront: {:e}".format(scalemax));
+    else:
+        restrict_front = lambda d: np.ones(d.shape).astype(bool);
+    def f_neutral(x,y):
+        out = np.ones(x.shape)*floor;
+        good =np.abs(y-x)*np.sqrt(2) < width;
+        out[good] = N0;
+        inside = np.logical_and(longmask(x,y),spotmask(x,y));
+        infront =np.logical_and(
+            y >= x + width/np.sqrt(2.0),
+            spotmask(x,y));
+        d = dfront(x,y);
+        infront&=restrict_front(d);
+        out[infront]=N0*np.exp(-d/L)[infront];
+        out = np.where(out > floor, out,floor);
+        return out;
+    return f_neutral;
+
 def mk45_pinprick_plasma(
         dim=[-35e-4,35e-4,-35e-4,35e-4],
         N0=1.08e22,
@@ -87,6 +129,8 @@ def mk45_pinprick_plasma(
         out[inside] = floor;
         return out;
     return f_plasma, f_neutral;
+
+
 
 def mk45_pinprick_plasma_old(
         dim=[-35e-4,35e-4,-35e-4,35e-4],
@@ -181,6 +225,14 @@ if __name__ == "__main__":
             depth=0.08,
             mindensity=1e18,
             floor=1.0)[1];
+    elif opts['neutral_only']:
+        F=mk45_pinprick_neutral(
+            dim=[mn,mx,mn,mx],
+            width=width,
+            laser_radius=2.0,
+            mindensity=1e19,
+            L=L,
+            floor=1.0);
     X,Y=np.mgrid[
         lmn:lmx + dx:dx,
         lmn:lmx + dx:dx];
