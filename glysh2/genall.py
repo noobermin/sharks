@@ -183,7 +183,7 @@ def gendatn(di,
     if not dat_xres:
         dat_xres = di['res'][0]+1;
     print("making targets for {}".format(di['pbsbase']));
-    dd = sd(di, f_2D = targ_plasma, dat_xres = dat_xres);
+    dd = sd(di, f_2D = targ_neutral, dat_xres = dat_xres);
     dat = gendat(**dd);
     savetxt(
         "{}/{}".format(di['pbsbase'],di['dens_dat']),
