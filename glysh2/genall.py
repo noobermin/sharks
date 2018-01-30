@@ -173,7 +173,7 @@ def gendatn(di,
             N0=1.08e22,
             mindensity=1e18,
             dat_xres=None):
-    targ_neutral = mk_pinprick_neutral(
+    targ_neutral = mk45_pinprick_neutral(
         dim = [i*1e-4 for i in d['tlim']],
         N0  = N0,
         laser_radius = w0,
