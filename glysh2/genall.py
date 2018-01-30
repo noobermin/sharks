@@ -258,4 +258,4 @@ reald.update(
 );
 gensim(**reald);
 if opts['--make-target']:
-    gendatn(smd2);
+    gendatn(reald);
