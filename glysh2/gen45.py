@@ -37,6 +37,47 @@ def mk45(dim=[-5e-4,5e-4,-5e-4,5e-4,],
         return out;
     return f;
 
+def mk45_pinprick_neutral3d(
+        dim=[-35e-4,35e-4,-35e-4,35e-4,-30e-4,30e-4],
+        N0=1.08e22,
+        laser_radius=2.2e-4,
+        L = 1e-4,
+        mindensity=None,
+        scalemax=None,
+        width=0.5e-4,
+        floor=0.0,):
+    xlim = dim[:2];
+    ylim = dim[2:];
+    longmask = lambda x,y: y <= x + width/np.sqrt(2.0);
+    spotmask = lambda x,y,z: np.sqrt(y**2 + z**2) <= laser_radius;
+    dfront = lambda x,y: np.abs(y-x-width/np.sqrt(2))/np.sqrt(2);
+    if scalemax:
+        restrict_front = lambda d: d < scalemax
+        minN = N0*np.exp(-scalemax/L);
+        print("minimum density: {:e}".format(minN));
+    elif mindensity:
+        scalemax = np.log(N0/mindensity)*L
+        restrict_front = lambda d: d < scalemax
+        print("maximum dfront: {:e}".format(scalemax));
+    else:
+        restrict_front = lambda d: np.ones(d.shape).astype(bool);
+    def f_neutral(x,y,z):
+        out = np.ones(x.shape)*floor;
+        good =np.abs(y-x)*np.sqrt(2) < width;
+        out[good] = N0;
+        inside = np.logical_and(longmask(x,y),spotmask(x,y,z));
+        infront =np.logical_and(
+            y >= x + width/np.sqrt(2.0),
+            spotmask(x,y));
+        d = dfront(x,y);
+        infront&=restrict_front(d);
+        out[infront]=N0*np.exp(-d/L)[infront];
+        out = np.where(out > floor, out,floor);
+        return out;
+    return f_neutral;
+
+
+
 def mk45_pinprick_neutral(
         dim=[-35e-4,35e-4,-35e-4,35e-4],
         N0=1.08e22,
@@ -67,10 +108,9 @@ def mk45_pinprick_neutral(
         out = np.ones(x.shape)*floor;
         good =np.abs(y-x)*np.sqrt(2) < width;
         out[good] = N0;
-        inside = np.logical_and(longmask(x,y),spotmask(x,y));
         infront =np.logical_and(
             y >= x + width/np.sqrt(2.0),
-            spotmask(x,y));
+            spotmask(x,y,z));
         d = dfront(x,y);
         infront&=restrict_front(d);
         out[infront]=N0*np.exp(-d/L)[infront];

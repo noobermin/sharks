@@ -237,8 +237,14 @@ reald = sd(
     region_split=('y',5),
     dump_time_zero_flag=True,
     pbsbase='glysh2',
+    movE=dict(
+        clim=(EfromI(1e14),EfromI(1e19)),
+        contour_lines=(1.7e21),
+        contour_quantities=('RhoN17'),
+    ),
     **mkconds(d['tlim'], backin=1e-4),
 );
+mkmovE = lambda d, I: sd(d['movE'],clim=(EfromI(I*1e-4),EfromI(I*2)))
 reald.update(
     lsptemplate="neutralglycol_allemitters.lsp",
     speciesl=['O0','C0','H'],
@@ -259,3 +265,52 @@ reald.update(
 gensim(**reald);
 if opts['--make-target']:
     gendatn(reald);
+exit();
+
+zres = 600.0;
+threed = sd(
+    reald,
+    dens_flags=(True,True,True),
+    discrete=(2,2,2),
+    lim =(xmin,xmax,
+          ymin,ymax,
+          -30.,30.0),
+    tlim=(xmin,xmax,
+          ymin,ymax,
+          -30.,30,0),
+    res =(xres,
+          yres,
+          zres),
+    timestep = 2e-17,
+    totaltime= 3e-12,
+    fp=(0.0,0.0,0.0),
+    pbsbase='glysh3',
+    description="After TNSA expansion",
+    dumpinterval=5e-16,
+    #PIC/grid details
+    domains=44*100,
+    region_split=('y',100),
+    pbses='defaults',
+    #density
+    tref = (0.0, 0.0, 0.0),
+    singlescale=None,
+    dens_type=40,
+    #misc
+    lspexec='lsp-10-3d',
+    dir=True,
+    restart=11.95,
+    dump_restart_flag=True,
+    #movs
+    movne=dict(
+        ne_species = 'RhoN17',
+        clim=(1e19,1e23)),
+    #pmovies
+    no_pmovies=True,
+    #particle dumps
+    dump_particle=True,
+    particle_dump_interval_ns=0.0,
+    pext_species=(17),
+);
+threed.update(
+    mkconds(threed['tlim'], backin=1e-4));
+
