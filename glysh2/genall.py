@@ -261,7 +261,7 @@ reald.update(
     splittime=[
         (115e-15, None),
         (400e-15, dict(
-            scalar_dump_interval_ns=1.5e-15,
+            scalar_dump_interval_ns=3e-15,
             particle_dump_interval_ns=5e-16,
             no_pmovies= True,),),
         (3e-12,   dict(particle_dump_interval_ns=3e-15)),
