@@ -262,7 +262,7 @@ reald.update(
         (115e-15, None),
         (400e-15, dict(
             scalar_dump_interval_ns=1.5e-15,
-            particle_dump_interval_ns=6e-16,
+            particle_dump_interval_ns=5e-16,
             no_pmovies= True,),),
         (3e-12,   dict(particle_dump_interval_ns=3e-15)),
     ],
