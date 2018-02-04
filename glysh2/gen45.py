@@ -46,9 +46,7 @@ def mk45_pinprick_neutral3d(
         scalemax=None,
         width=0.5e-4,
         floor=0.0,):
-    xlim = dim[:2];
-    ylim = dim[2:];
-    longmask = lambda x,y: y <= x + width/np.sqrt(2.0);
+    longmask = lambda x,y,z: y <= x + width/np.sqrt(2.0);
     spotmask = lambda x,y,z: np.sqrt(y**2 + z**2) <= laser_radius;
     dfront = lambda x,y: np.abs(y-x-width/np.sqrt(2))/np.sqrt(2);
     if scalemax:
@@ -65,7 +63,9 @@ def mk45_pinprick_neutral3d(
         out = np.ones(x.shape)*floor;
         good =np.abs(y-x)*np.sqrt(2) < width;
         out[good] = N0;
-        inside = np.logical_and(longmask(x,y),spotmask(x,y,z));
+        inside = np.logical_and(
+            longmask(x,y,z),
+            spotmask(x,y,z));
         infront =np.logical_and(
             y >= x + width/np.sqrt(2.0),
             spotmask(x,y));

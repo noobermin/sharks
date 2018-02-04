@@ -52,7 +52,6 @@ dump_scalars_flag ON
 scalar_dump_interval_ns 5.000000000000001e-07
 dump_particles_flag ON
 particle_dump_interval_ns 0.0
-particle_dump_times_ns 0.0001 0.00011 0.00014 end
 
 ;;pmovies
 

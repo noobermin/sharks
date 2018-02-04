@@ -4,7 +4,9 @@ Usage:
     ./genall.py [options]
 
 Options:
-     --make-target         Make the target.
+     --make-target=A         Make the target for the dict with pbsbase
+                             of A.
+     --make-all-targets      Make all targets.
 '''
 from docopt import docopt
 opts=docopt(__doc__,help=True);
@@ -21,11 +23,16 @@ l = 0.78e-6
 w0=2.2e-6 / np.sqrt(2*np.log(2))
 T0=42e-15
 
-from gen45  import mk45_pinprick_plasma_old, mk45_pinprick_plasma, mk45_pinprick_neutral;
+from gen45  import mk45_pinprick_plasma_old,mk45_pinprick_plasma,mk45_pinprick_neutral;
+from gen45  import mk45_pinprick_neutral3d;
 
 xmin=ymin=-35;
 xmax=ymax= 35;
 xres=yres= 35*2 * 100; #7000
+targds=[];
+def addtotargs(d,f):
+    d['mktargf'] = f;
+    targds.append(d);
 
 d=dict(
     l=l,
@@ -56,8 +63,7 @@ d=dict(
     #density
     tref = (0.0, 0.0, 0.0),
     singlescale=None,
-    dens_type=40,
-    #misc
+    dens_type=40,    #misc
     lspexec='lsp-10-xy',
     dir=True,
     restart=11.95,
@@ -189,9 +195,7 @@ def gendatn(di,
         "{}/{}".format(di['pbsbase'],di['dens_dat']),
         dat);
 
-if opts['--make-target']:
-    gendats(d);
-
+addtotargs(d,gendats);
 smd = sd(d,
          lim =(-5.0,5.0,
                -5.0,5.0,
@@ -211,8 +215,7 @@ smd = sd(d,
 );
 smd.update(**mkconds(d['tlim'], backin=0.5e-4));
 gensim(**smd);
-if opts['--make-target']:
-    gendats(smd);
+addtotargs(smd,gendats);
 
 EfromI = lambda i: np.sqrt(i*1e4 * 2 / c / e0);
 BfromI = lambda i: EfromI(i)/c*1e4;
@@ -229,8 +232,7 @@ smd2.update(
     ),
 );
 gensim(**smd2);
-if opts['--make-target']:
-    gendats(smd2,new=True);
+addtotargs(smd2,lambda d:gendats(d,new=True));
 reald = sd(
     d,
     domains=44*5,
@@ -244,7 +246,6 @@ reald = sd(
     ),
     **mkconds(d['tlim'], backin=1e-4),
 );
-mkmovE = lambda d, I: sd(d['movE'],clim=(EfromI(I*1e-4),EfromI(I*2)))
 reald.update(
     lsptemplate="neutralglycol_allemitters.lsp",
     speciesl=['O0','C0','H'],
@@ -256,16 +257,18 @@ reald.update(
     target_temps=(
         None,None,None),
     particle_dump_interval_ns=0.0,
+    particle_dump_times_ns=None,
     splittime=[
         (115e-15, None),
-        (400e-15, dict(particle_dump_interval_ns=6e-16)),
+        (400e-15, dict(
+            scalar_dump_interval_ns=1.5e-15,
+            particle_dump_interval_ns=6e-16,
+            no_pmovies= True,),),
         (3e-12,   dict(particle_dump_interval_ns=3e-15)),
     ],
 );
 gensim(**reald);
-if opts['--make-target']:
-    gendatn(reald);
-exit();
+addtotargs(reald,gendatn);
 
 zres = 600.0;
 threed = sd(
@@ -277,7 +280,7 @@ threed = sd(
           -30.,30.0),
     tlim=(xmin,xmax,
           ymin,ymax,
-          -30.,30,0),
+          -30.,30.0),
     res =(xres,
           yres,
           zres),
@@ -294,7 +297,6 @@ threed = sd(
     #density
     tref = (0.0, 0.0, 0.0),
     singlescale=None,
-    dens_type=40,
     #misc
     lspexec='lsp-10-3d',
     dir=True,
@@ -309,8 +311,67 @@ threed = sd(
     #particle dumps
     dump_particle=True,
     particle_dump_interval_ns=0.0,
-    pext_species=(17),
+    pext_species=(17,),
+    #species and target info
+    lsptemplate="neutralglycol_allemitters.lsp",
+    speciesl=['O0','C0','H'],
+    fracs   =[2.0, 2.0,6.0],
+    dens_type=40,
+    dens_dat='target_neutral.dat',
+    thermal_energy=(
+        0.02, 0.02, 0.02),
+    target_temps=(
+        None,None,None),
+    splittime=[
+        (115e-15, None),
+        (400e-15, dict(particle_dump_interval_ns=6e-16)),
+        (3e-12,   dict(particle_dump_interval_ns=3e-15)),
+    ],
+
 );
+
 threed.update(
     mkconds(threed['tlim'], backin=1e-4));
+threed['conductors'] += [
+    dict(outlet='zmax',
+         start=0.5e-4,
+         width=1.0e-4),
+    dict(outlet='zmin',
+         start=0.5e-4,
+         width=1.0e-4),];
+gensim(**threed);
 
+def gendat3d(
+        di,
+        w0=w0*1e2,
+        width=0.46e-4,
+        L=0.043e-4,
+        N0=1.08e22,
+        mindensity=1e18,
+        dat_xres=None):
+    targ_neutral = mk45_pinprick_neutral3d(
+        dim = [i*1e-4 for i in d['tlim']],
+        N0  = N0,
+        laser_radius = w0,
+        width = width,
+        L = L,# 43nm
+        mindensity=mindensity);
+    if not dat_xres:
+        dat_xres = di['res'][0]+1;
+    print("making targets for {}".format(di['pbsbase']));
+    dd = sd(di, f_2D = targ_neutral, dat_xres = dat_xres);
+    dat = gendat(**dd);
+    savetxt(
+        "{}/{}".format(di['pbsbase'],di['dens_dat']),
+        dat);
+addtotargs(threed, gendat3d);
+if opts['--make-all-targets']:
+    for d in addtotargs:
+        d['mktargf'](d);
+elif opts['--make-target']:
+    for d in addtotargs:
+        if d['pbsbase'] == opts['--make-target']:
+            d['mktargf'](d);
+    else:
+        raise ValueError(
+            "dict with pbsbase=='{}' not found".format(opts['--make-target']));
