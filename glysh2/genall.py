@@ -394,10 +394,10 @@ gensim(**mini3d);
 addtotargs(mini3d,gendat3d);
 
 if opts['--make-all-targets']:
-    for d in addtotargs:
+    for d in targds:
         d['mktargf'](d);
 elif opts['--make-target']:
-    for d in addtotargs:
+    for d in targds:
         if d['pbsbase'] == opts['--make-target']:
             d['mktargf'](d);
     else:
