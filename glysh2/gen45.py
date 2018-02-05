@@ -68,7 +68,7 @@ def mk45_pinprick_neutral3d(
             spotmask(x,y,z));
         infront =np.logical_and(
             y >= x + width/np.sqrt(2.0),
-            spotmask(x,y));
+            spotmask(x,y,z));
         d = dfront(x,y);
         infront&=restrict_front(d);
         out[infront]=N0*np.exp(-d/L)[infront];

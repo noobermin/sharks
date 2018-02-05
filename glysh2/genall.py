@@ -348,7 +348,10 @@ def gendat3d(
         L=0.043e-4,
         N0=1.08e22,
         mindensity=1e18,
-        dat_xres=None):
+        dat_xres=None,
+        dat_zres=4,#works for no z variation
+        fmt='%.4e'
+):
     targ_neutral = mk45_pinprick_neutral3d(
         dim = [i*1e-4 for i in d['tlim']],
         N0  = N0,
@@ -360,7 +363,7 @@ def gendat3d(
         dat_xres = di['res'][0]+1;
     print("making targets for {}".format(di['pbsbase']));
     dd = sd(di, f_3D = targ_neutral, dat_xres = dat_xres);
-    dat = gendat(**dd);
+    dat = gendat(dat_zres=dat_zres,datfmt=fmt,**dd);
     savetxt(
         "{}/{}".format(di['pbsbase'],di['dens_dat']),
         dat);
@@ -400,6 +403,7 @@ elif opts['--make-target']:
     for d in targds:
         if d['pbsbase'] == opts['--make-target']:
             d['mktargf'](d);
+            break;
     else:
         raise ValueError(
             "dict with pbsbase=='{}' not found".format(opts['--make-target']));
