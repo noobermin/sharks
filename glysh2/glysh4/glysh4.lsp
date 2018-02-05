@@ -77,7 +77,7 @@ z-cells          400
 [Regions]
 ;
 
-;total number of domains: 1760
+;total number of domains: 6600
 
 ;
 region1
@@ -85,599 +85,2249 @@ xmin             -2.600000e-03
 xmax             2.600000e-03
 
 ymin             -2.600000e-03
-ymax             2.600000e-03
+ymax             -2.565333e-03
 
 zmin             -1.000000e-03
-zmax             -9.500000e-04
+zmax             1.000000e-03
 ;
 number_of_domains 44
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 67600000
+number_of_cells AUTO ; cells = 13520000
 ;
 ;
 region2
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.600000e-03
-ymax             2.600000e-03
+ymin             -2.565333e-03
+ymax             -2.530667e-03
 
-zmin             -9.500000e-04
-zmax             -9.000000e-04
+zmin             -1.000000e-03
+zmax             1.000000e-03
 ;
 number_of_domains 44
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 67600000
+number_of_cells AUTO ; cells = 13520000
 ;
 ;
 region3
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.600000e-03
-ymax             2.600000e-03
+ymin             -2.530667e-03
+ymax             -2.496000e-03
 
-zmin             -9.000000e-04
-zmax             -8.500000e-04
+zmin             -1.000000e-03
+zmax             1.000000e-03
 ;
 number_of_domains 44
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 67600000
+number_of_cells AUTO ; cells = 13520000
 ;
 ;
 region4
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.600000e-03
-ymax             2.600000e-03
+ymin             -2.496000e-03
+ymax             -2.461333e-03
 
-zmin             -8.500000e-04
-zmax             -8.000000e-04
+zmin             -1.000000e-03
+zmax             1.000000e-03
 ;
 number_of_domains 44
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 67600000
+number_of_cells AUTO ; cells = 13520000
 ;
 ;
 region5
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.600000e-03
-ymax             2.600000e-03
+ymin             -2.461333e-03
+ymax             -2.426667e-03
 
-zmin             -8.000000e-04
-zmax             -7.500000e-04
+zmin             -1.000000e-03
+zmax             1.000000e-03
 ;
 number_of_domains 44
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 67600000
+number_of_cells AUTO ; cells = 13520000
 ;
 ;
 region6
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.600000e-03
-ymax             2.600000e-03
+ymin             -2.426667e-03
+ymax             -2.392000e-03
 
-zmin             -7.500000e-04
-zmax             -7.000000e-04
+zmin             -1.000000e-03
+zmax             1.000000e-03
 ;
 number_of_domains 44
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 67600000
+number_of_cells AUTO ; cells = 13520000
 ;
 ;
 region7
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.600000e-03
-ymax             2.600000e-03
+ymin             -2.392000e-03
+ymax             -2.357333e-03
 
-zmin             -7.000000e-04
-zmax             -6.500000e-04
+zmin             -1.000000e-03
+zmax             1.000000e-03
 ;
 number_of_domains 44
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 67600000
+number_of_cells AUTO ; cells = 13520000
 ;
 ;
 region8
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.600000e-03
-ymax             2.600000e-03
+ymin             -2.357333e-03
+ymax             -2.322667e-03
 
-zmin             -6.500000e-04
-zmax             -6.000000e-04
+zmin             -1.000000e-03
+zmax             1.000000e-03
 ;
 number_of_domains 44
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 67600000
+number_of_cells AUTO ; cells = 13520000
 ;
 ;
 region9
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.600000e-03
-ymax             2.600000e-03
+ymin             -2.322667e-03
+ymax             -2.288000e-03
 
-zmin             -6.000000e-04
-zmax             -5.500000e-04
+zmin             -1.000000e-03
+zmax             1.000000e-03
 ;
 number_of_domains 44
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 67600000
+number_of_cells AUTO ; cells = 13520000
 ;
 ;
 region10
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.600000e-03
-ymax             2.600000e-03
+ymin             -2.288000e-03
+ymax             -2.253333e-03
 
-zmin             -5.500000e-04
-zmax             -5.000000e-04
+zmin             -1.000000e-03
+zmax             1.000000e-03
 ;
 number_of_domains 44
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 67600000
+number_of_cells AUTO ; cells = 13520000
 ;
 ;
 region11
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.600000e-03
-ymax             2.600000e-03
+ymin             -2.253333e-03
+ymax             -2.218667e-03
 
-zmin             -5.000000e-04
-zmax             -4.500000e-04
+zmin             -1.000000e-03
+zmax             1.000000e-03
 ;
 number_of_domains 44
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 67600000
+number_of_cells AUTO ; cells = 13520000
 ;
 ;
 region12
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.600000e-03
-ymax             2.600000e-03
+ymin             -2.218667e-03
+ymax             -2.184000e-03
 
-zmin             -4.500000e-04
-zmax             -4.000000e-04
+zmin             -1.000000e-03
+zmax             1.000000e-03
 ;
 number_of_domains 44
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 67600000
+number_of_cells AUTO ; cells = 13520000
 ;
 ;
 region13
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.600000e-03
-ymax             2.600000e-03
+ymin             -2.184000e-03
+ymax             -2.149333e-03
 
-zmin             -4.000000e-04
-zmax             -3.500000e-04
+zmin             -1.000000e-03
+zmax             1.000000e-03
 ;
 number_of_domains 44
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 67600000
+number_of_cells AUTO ; cells = 13520000
 ;
 ;
 region14
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.600000e-03
-ymax             2.600000e-03
+ymin             -2.149333e-03
+ymax             -2.114667e-03
 
-zmin             -3.500000e-04
-zmax             -3.000000e-04
+zmin             -1.000000e-03
+zmax             1.000000e-03
 ;
 number_of_domains 44
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 67600000
+number_of_cells AUTO ; cells = 13520000
 ;
 ;
 region15
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.600000e-03
-ymax             2.600000e-03
+ymin             -2.114667e-03
+ymax             -2.080000e-03
 
-zmin             -3.000000e-04
-zmax             -2.500000e-04
+zmin             -1.000000e-03
+zmax             1.000000e-03
 ;
 number_of_domains 44
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 67600000
+number_of_cells AUTO ; cells = 13520000
 ;
 ;
 region16
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.600000e-03
-ymax             2.600000e-03
+ymin             -2.080000e-03
+ymax             -2.045333e-03
 
-zmin             -2.500000e-04
-zmax             -2.000000e-04
+zmin             -1.000000e-03
+zmax             1.000000e-03
 ;
 number_of_domains 44
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 67600000
+number_of_cells AUTO ; cells = 13520000
 ;
 ;
 region17
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.600000e-03
-ymax             2.600000e-03
+ymin             -2.045333e-03
+ymax             -2.010667e-03
 
-zmin             -2.000000e-04
-zmax             -1.500000e-04
+zmin             -1.000000e-03
+zmax             1.000000e-03
 ;
 number_of_domains 44
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 67600000
+number_of_cells AUTO ; cells = 13520000
 ;
 ;
 region18
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.600000e-03
-ymax             2.600000e-03
+ymin             -2.010667e-03
+ymax             -1.976000e-03
 
-zmin             -1.500000e-04
-zmax             -1.000000e-04
+zmin             -1.000000e-03
+zmax             1.000000e-03
 ;
 number_of_domains 44
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 67600000
+number_of_cells AUTO ; cells = 13520000
 ;
 ;
 region19
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.600000e-03
-ymax             2.600000e-03
+ymin             -1.976000e-03
+ymax             -1.941333e-03
 
-zmin             -1.000000e-04
-zmax             -5.000000e-05
+zmin             -1.000000e-03
+zmax             1.000000e-03
 ;
 number_of_domains 44
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 67600000
+number_of_cells AUTO ; cells = 13520000
 ;
 ;
 region20
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.600000e-03
-ymax             2.600000e-03
+ymin             -1.941333e-03
+ymax             -1.906667e-03
 
-zmin             -5.000000e-05
-zmax             0.000000e+00
+zmin             -1.000000e-03
+zmax             1.000000e-03
 ;
 number_of_domains 44
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 67600000
+number_of_cells AUTO ; cells = 13520000
 ;
 ;
 region21
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.600000e-03
-ymax             2.600000e-03
+ymin             -1.906667e-03
+ymax             -1.872000e-03
 
-zmin             0.000000e+00
-zmax             5.000000e-05
+zmin             -1.000000e-03
+zmax             1.000000e-03
 ;
 number_of_domains 44
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 67600000
+number_of_cells AUTO ; cells = 13520000
 ;
 ;
 region22
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.600000e-03
-ymax             2.600000e-03
+ymin             -1.872000e-03
+ymax             -1.837333e-03
 
-zmin             5.000000e-05
-zmax             1.000000e-04
+zmin             -1.000000e-03
+zmax             1.000000e-03
 ;
 number_of_domains 44
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 67600000
+number_of_cells AUTO ; cells = 13520000
 ;
 ;
 region23
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.600000e-03
-ymax             2.600000e-03
+ymin             -1.837333e-03
+ymax             -1.802667e-03
 
-zmin             1.000000e-04
-zmax             1.500000e-04
+zmin             -1.000000e-03
+zmax             1.000000e-03
 ;
 number_of_domains 44
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 67600000
+number_of_cells AUTO ; cells = 13520000
 ;
 ;
 region24
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.600000e-03
-ymax             2.600000e-03
+ymin             -1.802667e-03
+ymax             -1.768000e-03
 
-zmin             1.500000e-04
-zmax             2.000000e-04
+zmin             -1.000000e-03
+zmax             1.000000e-03
 ;
 number_of_domains 44
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 67600000
+number_of_cells AUTO ; cells = 13520000
 ;
 ;
 region25
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.600000e-03
-ymax             2.600000e-03
+ymin             -1.768000e-03
+ymax             -1.733333e-03
 
-zmin             2.000000e-04
-zmax             2.500000e-04
+zmin             -1.000000e-03
+zmax             1.000000e-03
 ;
 number_of_domains 44
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 67600000
+number_of_cells AUTO ; cells = 13520000
 ;
 ;
 region26
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.600000e-03
-ymax             2.600000e-03
+ymin             -1.733333e-03
+ymax             -1.698667e-03
 
-zmin             2.500000e-04
-zmax             3.000000e-04
+zmin             -1.000000e-03
+zmax             1.000000e-03
 ;
 number_of_domains 44
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 67600000
+number_of_cells AUTO ; cells = 13520000
 ;
 ;
 region27
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.600000e-03
-ymax             2.600000e-03
+ymin             -1.698667e-03
+ymax             -1.664000e-03
 
-zmin             3.000000e-04
-zmax             3.500000e-04
+zmin             -1.000000e-03
+zmax             1.000000e-03
 ;
 number_of_domains 44
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 67600000
+number_of_cells AUTO ; cells = 13520000
 ;
 ;
 region28
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.600000e-03
-ymax             2.600000e-03
+ymin             -1.664000e-03
+ymax             -1.629333e-03
 
-zmin             3.500000e-04
-zmax             4.000000e-04
+zmin             -1.000000e-03
+zmax             1.000000e-03
 ;
 number_of_domains 44
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 67600000
+number_of_cells AUTO ; cells = 13520000
 ;
 ;
 region29
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.600000e-03
-ymax             2.600000e-03
+ymin             -1.629333e-03
+ymax             -1.594667e-03
 
-zmin             4.000000e-04
-zmax             4.500000e-04
+zmin             -1.000000e-03
+zmax             1.000000e-03
 ;
 number_of_domains 44
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 67600000
+number_of_cells AUTO ; cells = 13520000
 ;
 ;
 region30
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.600000e-03
-ymax             2.600000e-03
+ymin             -1.594667e-03
+ymax             -1.560000e-03
 
-zmin             4.500000e-04
-zmax             5.000000e-04
+zmin             -1.000000e-03
+zmax             1.000000e-03
 ;
 number_of_domains 44
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 67600000
+number_of_cells AUTO ; cells = 13520000
 ;
 ;
 region31
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.600000e-03
-ymax             2.600000e-03
+ymin             -1.560000e-03
+ymax             -1.525333e-03
 
-zmin             5.000000e-04
-zmax             5.500000e-04
+zmin             -1.000000e-03
+zmax             1.000000e-03
 ;
 number_of_domains 44
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 67600000
+number_of_cells AUTO ; cells = 13520000
 ;
 ;
 region32
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.600000e-03
-ymax             2.600000e-03
+ymin             -1.525333e-03
+ymax             -1.490667e-03
 
-zmin             5.500000e-04
-zmax             6.000000e-04
+zmin             -1.000000e-03
+zmax             1.000000e-03
 ;
 number_of_domains 44
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 67600000
+number_of_cells AUTO ; cells = 13520000
 ;
 ;
 region33
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.600000e-03
-ymax             2.600000e-03
+ymin             -1.490667e-03
+ymax             -1.456000e-03
 
-zmin             6.000000e-04
-zmax             6.500000e-04
+zmin             -1.000000e-03
+zmax             1.000000e-03
 ;
 number_of_domains 44
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 67600000
+number_of_cells AUTO ; cells = 13520000
 ;
 ;
 region34
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.600000e-03
-ymax             2.600000e-03
+ymin             -1.456000e-03
+ymax             -1.421333e-03
 
-zmin             6.500000e-04
-zmax             7.000000e-04
+zmin             -1.000000e-03
+zmax             1.000000e-03
 ;
 number_of_domains 44
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 67600000
+number_of_cells AUTO ; cells = 13520000
 ;
 ;
 region35
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.600000e-03
-ymax             2.600000e-03
+ymin             -1.421333e-03
+ymax             -1.386667e-03
 
-zmin             7.000000e-04
-zmax             7.500000e-04
+zmin             -1.000000e-03
+zmax             1.000000e-03
 ;
 number_of_domains 44
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 67600000
+number_of_cells AUTO ; cells = 13520000
 ;
 ;
 region36
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.600000e-03
-ymax             2.600000e-03
+ymin             -1.386667e-03
+ymax             -1.352000e-03
 
-zmin             7.500000e-04
-zmax             8.000000e-04
+zmin             -1.000000e-03
+zmax             1.000000e-03
 ;
 number_of_domains 44
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 67600000
+number_of_cells AUTO ; cells = 13520000
 ;
 ;
 region37
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.600000e-03
-ymax             2.600000e-03
+ymin             -1.352000e-03
+ymax             -1.317333e-03
 
-zmin             8.000000e-04
-zmax             8.500000e-04
+zmin             -1.000000e-03
+zmax             1.000000e-03
 ;
 number_of_domains 44
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 67600000
+number_of_cells AUTO ; cells = 13520000
 ;
 ;
 region38
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.600000e-03
-ymax             2.600000e-03
+ymin             -1.317333e-03
+ymax             -1.282667e-03
 
-zmin             8.500000e-04
-zmax             9.000000e-04
+zmin             -1.000000e-03
+zmax             1.000000e-03
 ;
 number_of_domains 44
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 67600000
+number_of_cells AUTO ; cells = 13520000
 ;
 ;
 region39
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.600000e-03
-ymax             2.600000e-03
+ymin             -1.282667e-03
+ymax             -1.248000e-03
 
-zmin             9.000000e-04
-zmax             9.500000e-04
+zmin             -1.000000e-03
+zmax             1.000000e-03
 ;
 number_of_domains 44
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 67600000
+number_of_cells AUTO ; cells = 13520000
 ;
 ;
 region40
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.600000e-03
-ymax             2.600000e-03
+ymin             -1.248000e-03
+ymax             -1.213333e-03
 
-zmin             9.500000e-04
+zmin             -1.000000e-03
 zmax             1.000000e-03
 ;
 number_of_domains 44
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 67600000
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region41
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             -1.213333e-03
+ymax             -1.178667e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region42
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             -1.178667e-03
+ymax             -1.144000e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region43
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             -1.144000e-03
+ymax             -1.109333e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region44
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             -1.109333e-03
+ymax             -1.074667e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region45
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             -1.074667e-03
+ymax             -1.040000e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region46
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             -1.040000e-03
+ymax             -1.005333e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region47
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             -1.005333e-03
+ymax             -9.706667e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region48
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             -9.706667e-04
+ymax             -9.360000e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region49
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             -9.360000e-04
+ymax             -9.013333e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region50
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             -9.013333e-04
+ymax             -8.666667e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region51
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             -8.666667e-04
+ymax             -8.320000e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region52
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             -8.320000e-04
+ymax             -7.973333e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region53
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             -7.973333e-04
+ymax             -7.626667e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region54
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             -7.626667e-04
+ymax             -7.280000e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region55
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             -7.280000e-04
+ymax             -6.933333e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region56
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             -6.933333e-04
+ymax             -6.586667e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region57
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             -6.586667e-04
+ymax             -6.240000e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region58
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             -6.240000e-04
+ymax             -5.893333e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region59
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             -5.893333e-04
+ymax             -5.546667e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region60
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             -5.546667e-04
+ymax             -5.200000e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region61
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             -5.200000e-04
+ymax             -4.853333e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region62
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             -4.853333e-04
+ymax             -4.506667e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region63
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             -4.506667e-04
+ymax             -4.160000e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region64
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             -4.160000e-04
+ymax             -3.813333e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region65
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             -3.813333e-04
+ymax             -3.466667e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region66
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             -3.466667e-04
+ymax             -3.120000e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region67
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             -3.120000e-04
+ymax             -2.773333e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region68
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             -2.773333e-04
+ymax             -2.426667e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region69
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             -2.426667e-04
+ymax             -2.080000e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region70
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             -2.080000e-04
+ymax             -1.733333e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region71
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             -1.733333e-04
+ymax             -1.386667e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region72
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             -1.386667e-04
+ymax             -1.040000e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region73
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             -1.040000e-04
+ymax             -6.933333e-05
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region74
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             -6.933333e-05
+ymax             -3.466667e-05
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region75
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             -3.466667e-05
+ymax             0.000000e+00
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region76
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             0.000000e+00
+ymax             3.466667e-05
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region77
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             3.466667e-05
+ymax             6.933333e-05
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region78
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             6.933333e-05
+ymax             1.040000e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region79
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             1.040000e-04
+ymax             1.386667e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region80
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             1.386667e-04
+ymax             1.733333e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region81
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             1.733333e-04
+ymax             2.080000e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region82
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             2.080000e-04
+ymax             2.426667e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region83
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             2.426667e-04
+ymax             2.773333e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region84
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             2.773333e-04
+ymax             3.120000e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region85
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             3.120000e-04
+ymax             3.466667e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region86
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             3.466667e-04
+ymax             3.813333e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region87
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             3.813333e-04
+ymax             4.160000e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region88
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             4.160000e-04
+ymax             4.506667e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region89
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             4.506667e-04
+ymax             4.853333e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region90
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             4.853333e-04
+ymax             5.200000e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region91
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             5.200000e-04
+ymax             5.546667e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region92
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             5.546667e-04
+ymax             5.893333e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region93
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             5.893333e-04
+ymax             6.240000e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region94
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             6.240000e-04
+ymax             6.586667e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region95
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             6.586667e-04
+ymax             6.933333e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region96
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             6.933333e-04
+ymax             7.280000e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region97
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             7.280000e-04
+ymax             7.626667e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region98
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             7.626667e-04
+ymax             7.973333e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region99
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             7.973333e-04
+ymax             8.320000e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region100
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             8.320000e-04
+ymax             8.666667e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region101
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             8.666667e-04
+ymax             9.013333e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region102
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             9.013333e-04
+ymax             9.360000e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region103
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             9.360000e-04
+ymax             9.706667e-04
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region104
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             9.706667e-04
+ymax             1.005333e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region105
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             1.005333e-03
+ymax             1.040000e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region106
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             1.040000e-03
+ymax             1.074667e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region107
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             1.074667e-03
+ymax             1.109333e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region108
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             1.109333e-03
+ymax             1.144000e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region109
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             1.144000e-03
+ymax             1.178667e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region110
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             1.178667e-03
+ymax             1.213333e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region111
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             1.213333e-03
+ymax             1.248000e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region112
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             1.248000e-03
+ymax             1.282667e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region113
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             1.282667e-03
+ymax             1.317333e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region114
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             1.317333e-03
+ymax             1.352000e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region115
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             1.352000e-03
+ymax             1.386667e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region116
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             1.386667e-03
+ymax             1.421333e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region117
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             1.421333e-03
+ymax             1.456000e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region118
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             1.456000e-03
+ymax             1.490667e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region119
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             1.490667e-03
+ymax             1.525333e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region120
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             1.525333e-03
+ymax             1.560000e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region121
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             1.560000e-03
+ymax             1.594667e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region122
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             1.594667e-03
+ymax             1.629333e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region123
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             1.629333e-03
+ymax             1.664000e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region124
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             1.664000e-03
+ymax             1.698667e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region125
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             1.698667e-03
+ymax             1.733333e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region126
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             1.733333e-03
+ymax             1.768000e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region127
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             1.768000e-03
+ymax             1.802667e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region128
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             1.802667e-03
+ymax             1.837333e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region129
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             1.837333e-03
+ymax             1.872000e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region130
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             1.872000e-03
+ymax             1.906667e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region131
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             1.906667e-03
+ymax             1.941333e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region132
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             1.941333e-03
+ymax             1.976000e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region133
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             1.976000e-03
+ymax             2.010667e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region134
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             2.010667e-03
+ymax             2.045333e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region135
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             2.045333e-03
+ymax             2.080000e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region136
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             2.080000e-03
+ymax             2.114667e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region137
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             2.114667e-03
+ymax             2.149333e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region138
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             2.149333e-03
+ymax             2.184000e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region139
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             2.184000e-03
+ymax             2.218667e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region140
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             2.218667e-03
+ymax             2.253333e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region141
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             2.253333e-03
+ymax             2.288000e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region142
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             2.288000e-03
+ymax             2.322667e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region143
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             2.322667e-03
+ymax             2.357333e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region144
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             2.357333e-03
+ymax             2.392000e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region145
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             2.392000e-03
+ymax             2.426667e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region146
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             2.426667e-03
+ymax             2.461333e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region147
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             2.461333e-03
+ymax             2.496000e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region148
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             2.496000e-03
+ymax             2.530667e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region149
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             2.530667e-03
+ymax             2.565333e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 13520000
+;
+;
+region150
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             2.565333e-03
+ymax             2.600000e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 689520000
 ;
 
 
