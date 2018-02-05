@@ -380,8 +380,8 @@ mini3d = sd(
     timestep =40e-18,
     totaltime=150e-15,
     pbsbase='glysh4',
-    domains=44*20,
-    region_split=('z',20),
+    domains=44*40,
+    region_split=('z',40),
     splittime=None,
 );
 mini3d.update(
