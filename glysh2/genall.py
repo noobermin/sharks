@@ -365,6 +365,34 @@ def gendat3d(
         "{}/{}".format(di['pbsbase'],di['dens_dat']),
         dat);
 addtotargs(threed, gendat3d);
+
+mini3dlim = (-26,26,
+       -26,26,
+       -10,10);
+mini3d = sd(
+    threed,
+    lim=mini3dlim,
+    tlim=mini3dlim,
+    res = (2600,2600,400),
+    timestep =40e-18,
+    totaltime=150e-15,
+    pbsbase='glysh4',
+    domains=44*20,
+    region_split=('z',20),
+    splittime=None,
+);
+mini3d.update(
+    mkconds(mini3dlim, backin=0.5e-4));
+mini3d['conductors'] += [
+    dict(outlet='zmax',
+         start=0.5e-4,
+         width=1.0e-4),
+    dict(outlet='zmin',
+         start=0.5e-4,
+         width=1.0e-4),];
+gensim(**mini3d);
+addtotargs(mini3d,gendat3d);
+
 if opts['--make-all-targets']:
     for d in addtotargs:
         d['mktargf'](d);
