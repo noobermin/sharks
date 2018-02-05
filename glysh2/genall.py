@@ -381,7 +381,7 @@ mini3d = sd(
     totaltime=150e-15,
     pbsbase='glysh4',
     domains=44*150,
-    region_split=('y',150),
+    region_split=('y',75),
     splittime=None,
 );
 mini3d.update(
