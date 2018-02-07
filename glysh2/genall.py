@@ -396,6 +396,39 @@ mini3d['conductors'] += [
 gensim(**mini3d);
 addtotargs(mini3d,gendat3d);
 
+minierlim = (-26,26,
+             -26,26,
+             -6,6);
+minier = sd(
+    threed,
+    lim=(-20,20,
+         -20,20,
+          -6,6),
+    tlim=(-20,20,
+          -20,20,
+          -6,6),
+    res = (2000,2000,240),
+    timestep =40e-18,
+    totaltime=150e-15,
+    pbsbase='glysh5',
+    domains=44*50,
+    region_split=('y',50),
+    splittime=None,
+);
+minier.update(
+    mkconds(mini3dlim, backin=0.5e-4));
+minier['conductors'] += [
+    dict(outlet='zmax',
+         start=0.5e-4,
+         width=1.0e-4),
+    dict(outlet='zmin',
+         start=0.5e-4,
+         width=1.0e-4),];
+gensim(**minier);
+addtotargs(minier,gendat3d);
+
+
+
 if opts['--make-all-targets']:
     for d in targds:
         d['mktargf'](d);
