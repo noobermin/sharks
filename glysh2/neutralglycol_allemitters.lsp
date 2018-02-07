@@ -49,7 +49,7 @@ x-cells          {xcells}
 ;; O
 species1 ; neutral O
 charge 0
-mass 29165
+mass 29158.7
 atomic_number 8
 migrant_species_flag off
 implicit_species_flag on
@@ -63,7 +63,7 @@ selection_ratio 1.0
 ;
 species2 ; O+
 charge +1
-mass 29164
+mass 29157.7
 atomic_number 8
 migrant_species_flag off
 implicit_species_flag on
@@ -77,7 +77,7 @@ selection_ratio 1.0
 ;
 species3 ; O++
 charge +2
-mass 29163
+mass 29156.7
 atomic_number 8
 migrant_species_flag off
 implicit_species_flag on
@@ -91,7 +91,7 @@ selection_ratio 1.0
 ;
 species4 ; O 3+
 charge +3
-mass 29162
+mass 29155.7
 atomic_number 8
 migrant_species_flag off
 implicit_species_flag on
@@ -105,7 +105,7 @@ selection_ratio 1.0
 ;
 species5 ; O 4+
 charge +4
-mass 29161
+mass 29154.7
 atomic_number 8
 migrant_species_flag off
 implicit_species_flag on
@@ -119,7 +119,7 @@ selection_ratio 1.0
 ;
 species6 ; O 5+
 charge +5
-mass 29160
+mass 29153.7
 atomic_number 8
 migrant_species_flag off
 implicit_species_flag on
@@ -133,7 +133,7 @@ selection_ratio 1.0
 ;
 species7 ; O 6+
 charge +6
-mass 29159
+mass 29152.7
 atomic_number 8
 migrant_species_flag off
 implicit_species_flag on
@@ -147,7 +147,7 @@ selection_ratio 1.0
 ;
 species8 ; O 7+
 charge +7
-mass 29158
+mass 29151.7
 atomic_number 8
 migrant_species_flag off
 implicit_species_flag on
@@ -161,7 +161,7 @@ selection_ratio 1.0
 ;
 species9 ; O 8+
 charge +8
-mass 29157
+mass 29150.7
 atomic_number 8
 migrant_species_flag off
 implicit_species_flag on
@@ -176,7 +176,7 @@ selection_ratio 1.0
 ;; C
 species10 ; neutral C
 charge 0
-mass 21874.6
+mass 21887.3
 atomic_number 6
 migrant_species_flag off
 implicit_species_flag on
@@ -190,7 +190,7 @@ selection_ratio 1.0
 ;
 species11 ; C+
 charge +1
-mass 21783.6
+mass 21886.3
 atomic_number 6
 migrant_species_flag off
 implicit_species_flag on
@@ -204,7 +204,7 @@ selection_ratio 1.0
 ;
 species12 ; C++
 charge +2
-mass 21782.6
+mass 21885.3
 atomic_number 6
 migrant_species_flag off
 implicit_species_flag on
@@ -218,7 +218,7 @@ selection_ratio 1.0
 ;
 species13 ; C 3+
 charge +3
-mass 21781.6
+mass 21884.3
 atomic_number 6
 migrant_species_flag off
 implicit_species_flag on
@@ -232,7 +232,7 @@ selection_ratio 1.0
 ;
 species14 ; C 4+
 charge +4
-mass 21780.6
+mass 21883.3
 atomic_number 6
 migrant_species_flag off
 implicit_species_flag on
@@ -246,7 +246,7 @@ selection_ratio 1.0
 ;
 species15 ; C 5+
 charge +5
-mass 21779.6
+mass 21882.3
 atomic_number 6
 migrant_species_flag off
 implicit_species_flag on
@@ -260,7 +260,7 @@ selection_ratio 1.0
 ;
 species16 ; C 6+
 charge +6
-mass 21778.6
+mass 21881.3
 atomic_number 6
 migrant_species_flag off
 implicit_species_flag on
