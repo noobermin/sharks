@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-CONDAFILE={conda}
-[ -n "$CONDAFILE" ] && source $CONDAFILE
+CONDAFILE=${{CONDAFILE:-"{conda}"}}
+[ -e "$CONDAFILE" ] && source $CONDAFILE
 WAITDELAY=${{WAITDELAY:-1}}
 DIR=${{1:-"."}}
 if [ ! -n "$OUTDIR" ]; then

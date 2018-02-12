@@ -1,0 +1,48 @@
+#PBS -l walltime=96:0:00
+#PBS -l nodes=8:ppn=12
+#PBS -N bg=1e+18_I=1e+20_T=4e-14
+#PBS -S /bin/bash
+#PBS -j oe
+#PBS -m ae
+#PBS -M ngirmang.1@osu.edu
+
+
+PBSBASE=bg=1e+18_I=1e+20_T=4e-14
+#source $HOME/.bashrc
+
+#This outputs the name of the root node
+#to the directory where you submitted this PBS job
+echo $HOSTNAME > $PBS_O_WORKDIR/hostname.txt   
+cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/nodesfile.txt
+
+
+cd "$PBS_O_WORKDIR"
+#zipper
+./loopscript zipper &> $PBS_O_WORKDIR/zipper.log&
+zipper_PID=$!
+#movB
+./loopscript movB &> $PBS_O_WORKDIR/movB.log&
+movB_PID=$!
+#movE
+./loopscript movE &> $PBS_O_WORKDIR/movE.log&
+movE_PID=$!
+#movne
+./loopscript movne &> $PBS_O_WORKDIR/movne.log&
+movne_PID=$!
+#movrho
+./loopscript movrho &> $PBS_O_WORKDIR/movrho.log&
+movrho_PID=$!
+
+
+mpiexec -n 88 ./lsp-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+
+kill $zipper_PID
+./zipper -a >$PBS_O_WORKDIR
+kill $movB_PID
+./movB
+kill $movE_PID
+./movE
+kill $movne_PID
+./movne
+kill $movrho_PID
+./movrho

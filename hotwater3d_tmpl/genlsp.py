@@ -93,6 +93,9 @@ lspdefaults = dict(
     #this is bad now...
     funcnum = 10,#a "global" which holds the number count"
     other_funcs = '',
+    #conductor
+    cond_temp = 1.0,
+    cond_fraction = 0.0,
 );
 
 ###############
@@ -147,6 +150,7 @@ dump_opts = dict(
     temperatures=None,
     potential=None,
     velocities=None,
+    time_zero=None,
 );
 #no shame.
 keys = list(dump_opts.keys());
@@ -280,10 +284,38 @@ at {position}
                  stop_time =getkw('stop_time'),
                  position  =joinspace(lim))
             for j,(d,lim) in enumerate(planes)];
-    return joinspace(
-        [tmpl.format(**d)
-         for i,sp in enumerate(getkw('species'))
-         for d in formatsp(sp,len(planes)*i)])
+    pextplanes = [
+        tmpl.format(**d)
+        for i,sp in enumerate(getkw('species'))
+        for d in formatsp(sp,len(planes)*i)];
+    ret = joinspace(pextplanes);
+    if test(kw, 'extrapexts'):
+        ppl = len(pextplanes);
+        expext_def = dict(
+            species=10,
+            direction='X',
+            start_time=0,
+            stop_time=1,
+            position=(0.0,0.0,0.0),
+        );
+        expexts = [];
+        for p in getkw('extrapexts'):
+            if test(p,'species') and p['species'] != 'all':
+                expexts.append(p);
+            elif test(p,'species') and type(p['species']) != str:
+                expexts += [ sd(p, species = sp) for sp in p['species']];
+            else:
+                expexts += [ sd(p, species = sp) for sp in getkw('species') ];
+        for i,ep in enumerate(expexts):
+            pgetkw = mk_getkw(p, expext_def, prefer_passed = True);
+            ret+=tmpl.format(
+                i=ppl+i+1,
+                species   = pgetkw('species'),
+                direction = pgetkw('direction'),
+                start_time = pgetkw('start_time'),
+                stop_time = pgetkw('stop_time'),
+                position  = joinspace(pgetkw('position')),);
+    return ret;
 
 region_defaults = sd(
     lspdefaults,
@@ -485,7 +517,6 @@ def gendens(**kw):
         pass;
     return kw;
 
-
 outletdefaults = sd(
     lspdefaults,
     lasertfunc=1,
@@ -496,6 +527,25 @@ laserdefaults = sd(
     outlet = 'xmin',
     label = None,
 );
+
+all_lims = [
+    '{}{}'.format(i,j)
+    for i in ['x','y','z']
+    for j in ['min', 'max']
+];
+
+all_limsft = [
+    '{}{}'.format(i,j)
+    for i in ['x','y','z']
+    for j in ['f', 't']
+]
+
+otherside = lambda s: s[:-2] + ('ax' if s[-2:] == 'in' else 'in');
+def outlet_coords(iside,d):
+    out = {k:d[k] for k in all_lims };
+    out[otherside(iside)] = out[iside];
+    return out;
+
 def genoutlets(**kw):
     outlet_tmpl='''
 ;{label}
@@ -523,11 +573,6 @@ time_delay {time_delay}
     laserkw = sd(kw, **laserkw);
     getkw = mk_getkw(laserkw,outletdefaults,prefer_passed = True);
     lset = set();
-    alll = [
-        '{}{}'.format(i,j)
-        for i in ['x','y','z']
-        for j in ['min', 'max']
-    ];
     side_label = dict(
         xmin='front',
         xmax='back',
@@ -535,11 +580,6 @@ time_delay {time_delay}
         ymax='right',
         zmin='bottom',
         zmax='top');
-    otherside = lambda s: s[:-2] + ('ax' if s[-2:] == 'in' else 'in')
-    def coords(iside,d):
-        out = {k:d[k] for k in alll };
-        out[otherside(iside)] = out[iside];
-        return out;
     ls = [];
     if not test(laserkw, 'multilaser') and not test(laserkw,'nolaser'):
         ls = [ sd(laserkw, outlet='xmin') ];
@@ -554,6 +594,8 @@ time_delay {time_delay}
         l = sd(laserkw, **l);
         lgetkw = mk_getkw(l, laserdefaults, prefer_passed = True);
         outlet = lgetkw('outlet');
+        if outlet not in all_lims:
+            raise ValueError('Unknown outlet "{}"'.format(outlet));
         lset.add(outlet);
         retoutlets += laser10_tmpl.format(
             fp = joinspace(scaletuple(lgetkw("fp"))),
@@ -562,16 +604,91 @@ time_delay {time_delay}
             lasertfunc = lgetkw('lasertfunc'),
             laserafunc = lgetkw('laserafunc'),
             time_delay = lgetkw('laser_time_delay'),
-            **coords(outlet, l)
+            **outlet_coords(outlet, l)
         );
     #outlet boundaries
-    for side in [i for i in alll if i not in lset] :
+    for side in [i for i in all_lims if i not in lset] :
         if laserkw[side[0]+'cells'] > 0:
             retoutlets += outlet_tmpl.format(
                 label = side_label[side],
-                **coords(side, laserkw));
+                **outlet_coords(side, laserkw));
     return retoutlets;
 
+condb_objdef=sd(
+    lspdefaults,
+    width=10.0,
+    potential=0, #should usually be zero
+    medium=0,    #and this too.
+    outlet=None,
+    type="BLOCK",
+    start=0,
+    sweep_direction='Z',
+);
+condb_defaults = sd(
+    lspdefaults,
+    conductors=[]);
+condb_tmpl='''
+object{i} {type}
+conductor on medium {medium} potential {potential}
+from {xmin:e}  {ymin:e} {zmin:e}
+to   {xmax:e}  {ymax:e} {zmax:e}
+'''
+condf_tmpl='''
+object{i} {type}
+conductor on medium {medium} potential {potential}
+from {xf:e} {yf:e} {zf:e}
+'''
+#shape of cd['to'] should either be list of tuples or tuple
+#each tuple is a triple of coordinates.
+condt_tmpl="to   {xt:e} {yt:e} {zt:e}\n"
+
+def genconductors(**kw):
+    getkw=mk_getkw(kw, condb_defaults);
+    conductorss='';
+    for I,conductor in enumerate(getkw('conductors')):
+        cd = sd(condb_objdef, **conductor);
+        coords=dict();
+        if test(cd,'outlet'):
+            outlet = cd['outlet'];
+            if outlet not in all_lims:
+                raise ValueError('Unknown outlet "{}"'.format(outlet));
+            coords = outlet_coords(outlet,kw);
+            cd['width']*=1e-4;
+            cd['start']*=1e-4;
+            if outlet[-2:] == 'ax':
+                sign = 1.0;
+            else:
+                sign =-1.0
+            cd['type']= 'BLOCK';
+            coords[outlet] += sign*(cd['width'] + cd['start']);
+            coords[otherside(outlet)] += sign*cd['start'];
+            cd['from'] = (coords['xmin'],coords['ymin'],coords['zmin']);
+            cd['to']   = (coords['xmax'],coords['ymax'],coords['zmax']);
+        conductorss += condf_tmpl.format(
+            i=I+1,
+            xf=cd['from'][0],yf=cd['from'][1],zf=cd['from'][2],
+            **cd);
+        def mk_to(cd):
+            '''generate the to's'''
+            return ''.join([
+                condt_tmpl.format(xt=xt,yt=yt,zt=zt)
+                for xt,yt,zt in cd['to'] ]);
+        
+        if cd['type'] == 'BLOCK':
+            if type(cd['to']) == list: cd['to'] = cd['to'][0]
+            conductorss += condt_tmpl.format(
+                xt=cd['to'][0],yt=cd['to'][1],zt=cd['to'][2]);
+        elif cd['type'] == 'PARALLELPIPED':
+            conductorss += mk_to(cd);
+        elif cd['type'] == 'TRILATERAL':
+            conductorss += mk_to(cd);
+            conductorss += 'sweep_direction {sweep_direction}\n'.format(
+                **cd);
+        else:
+            raise ValueError(
+                "Unknown conductor type '{}'".format(cd['type']));
+    return conductorss;
+    
 def genlsp(**kw):
     def getkw(l,scale=None):
         if test(kw, l):
@@ -605,8 +722,13 @@ def genlsp(**kw):
     else:
         kw['xcells'], kw['ycells'], kw['zcells'] = getkw("res");
     xcells, ycells, zcells = kw['xcells'], kw['ycells'], kw['zcells'];
-    #generating non x outlets
+    #generating outlets
     other_outlets=genoutlets(**kw);
+    conductors=genconductors(**kw);
+    #dealing with conductors
+    fmtd['cond_temp'] = getkw('cond_temp');
+    fmtd['cond_fraction'] = getkw('cond_fraction');
+    #others
     w0=fmtd['w0'] = getkw('w')*100.0;
     fmtd['pulse']  = getkw('T')*1e9;
     #generating grid
@@ -676,6 +798,7 @@ particle_movie_components Q X Y Z VX VY VZ XI YI ZI
         ygrid=ygrid,
         zgrid=zgrid,
         other_outlets=other_outlets,
+        objects=conductors,
         targ_xmin=txmin, targ_xmax=txmax,
         targ_ymin=tymin, targ_ymax=tymax,
         targ_zmin=tzmin, targ_zmax=tzmax,
@@ -688,6 +811,7 @@ particle_movie_components Q X Y Z VX VY VZ XI YI ZI
     );
     return s;
 if __name__ == "__main__":
+    print("!!!!!! This probably no longer works! Use at your own risk!");
     from docopt import docopt;
     opts=docopt(__doc__,help=True);
     gettuple = lambda l,length=6,scale=1,intype=float: parse_numtuple(

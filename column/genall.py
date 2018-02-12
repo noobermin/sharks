@@ -132,7 +132,7 @@ if opts['--make-target']:
     print("making targets");
     mktarg(
         c,
-        No = 1e23 * F(0.3/15.0),
+        No = 3.34e22 * F(0.3/15.0),
         ro = 15e-4,
         L  = 0.3e-4);
 

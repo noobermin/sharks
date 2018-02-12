@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+CONDAFILE=${CONDAFILE:-"$HOME/conda"}
+[ -e $CONDAFILE ] && source $CONDAFILE
+WAITDELAY=${WAITDELAY:-1}
+DIR=${1:-"."}
+[ ! -n "$OUTDIR" ] && OUTDIR=${2:-"movE_norm"}
+mkdir -p "$OUTDIR"
+LIMS=${LIMS:-"(3881900706.7440405, 3881900706744.0405)"}
+QUANTITY=${QUANTITY:-"E_norm"}
+NPROCS=${NPROCS:-1}
+CONTOURS=${COUNTOURS:-"(5e+18, 1e+21)"}
+CONTOURQS=${CONTOURQS:-"(RhoN10,RhoN10)"}
+SCRIPT=${SCRIPT:-"EM.py"}
+for i in $(ls "$DIR" | grep 'flds[0-9]\+\.p4' | sort -V); do
+    n=$(echo ${i#flds*} | sed 's/\.p4.*$//')
+    I=$(printf '%05d' "$n" )
+    [ -e "$OUTDIR"/$I.png ] && [ ! -n "$DONTSKIP" ] && echo skipping...$i &&  continue;
+    while [ $(pgrep -f 'python[23]* *.*'"$SCRIPT" | wc -l ) -ge $NPROCS ]; do sleep $WAITDELAY; done;
+    sleep 0.25;
+    echo $i...
+    $SCRIPT -D "$DIR" $n "$OUTDIR"/$I.png $EXTRA_EM_ARGS \
+            --target="$CONTOURS" --targetq="$CONTOURQS" \
+            -l --lims="$LIMS" -Q "$QUANTITY"  &
+done
+while [ $(pgrep -f 'python[23]* *.*'"$SCRIPT" | wc -l ) -gt 0 ]; do
+    echo waiting...
+    sleep 5; done;
+OUTMOV=${OUTMOV:-"dg=1e+19_T=1e+02-$QUANTITY.mp4"}
+ffmpeg -pattern_type glob -i "$OUTDIR/*.png" -c:v libx264 -pix_fmt yuv420p -y $OUTMOV
+[ -e $OUTMOV ] && [ -n "$PBS_O_WORKDIR" ] && rcp $OUTMOV $PBS_O_WORKDIR
