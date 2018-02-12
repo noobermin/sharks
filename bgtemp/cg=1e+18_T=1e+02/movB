@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-CONDAFILE=${CONDAFILE:-"~/conda"}
-[ -e "$CONDAFILE" ] && source $CONDAFILE
+CONDAFILE=${CONDAFILE:-"$HOME/conda"}
+[ -e $CONDAFILE ] && source $CONDAFILE
 WAITDELAY=${WAITDELAY:-1}
 DIR=${1:-"."}
 [ ! -n "$OUTDIR" ] && OUTDIR=${2:-"movB_norm"}
