@@ -377,17 +377,17 @@ mini3d = sd(
     lim=mini3dlim,
     tlim=mini3dlim,
     res = (2600,2600,400),
-    totaltime=150e-15,
+    totaltime=200e-15,
     pbsbase='glysh4',
-    domains=44*140,
-    region_split=('y',70),
-    splittime=None,
+    domains=44*150,
+    region_split=('y',75),
     dump_scalar=False,
     dump_plasma_quantities_flag=False,
     dump_number_densities_flag=False,
     dump_particle=True,
     timestep =40e-18,
     dumpinterval=2e-15,
+    splittime=None,
 );
 mini3d.update(
     mkconds(mini3dlim, backin=0.5e-4));

@@ -6,7 +6,7 @@ simulation_title "After TNSA expansion, I = 5.000000e+18 W/cm^2"
 ;
 [Control]
 ;Time-advance
- time_limit   1.5000e-04
+ time_limit   2.0000e-04
  time_step_ns 4.0000e-08
 
 ;;Restarts
@@ -75,7 +75,7 @@ z-cells          400
 [Regions]
 ;
 
-;total number of domains: 6160
+;total number of domains: 6600
 
 ;
 region1
@@ -83,7 +83,7 @@ xmin             -2.600000e-03
 xmax             2.600000e-03
 
 ymin             -2.600000e-03
-ymax             -2.525714e-03
+ymax             -2.530667e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -97,8 +97,8 @@ region2
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.525714e-03
-ymax             -2.451429e-03
+ymin             -2.530667e-03
+ymax             -2.461333e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -112,8 +112,8 @@ region3
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.451429e-03
-ymax             -2.377143e-03
+ymin             -2.461333e-03
+ymax             -2.392000e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -127,8 +127,8 @@ region4
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.377143e-03
-ymax             -2.302857e-03
+ymin             -2.392000e-03
+ymax             -2.322667e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -142,8 +142,8 @@ region5
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.302857e-03
-ymax             -2.228571e-03
+ymin             -2.322667e-03
+ymax             -2.253333e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -157,8 +157,8 @@ region6
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.228571e-03
-ymax             -2.154286e-03
+ymin             -2.253333e-03
+ymax             -2.184000e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -172,8 +172,8 @@ region7
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.154286e-03
-ymax             -2.080000e-03
+ymin             -2.184000e-03
+ymax             -2.114667e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -187,8 +187,8 @@ region8
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.080000e-03
-ymax             -2.005714e-03
+ymin             -2.114667e-03
+ymax             -2.045333e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -202,8 +202,8 @@ region9
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.005714e-03
-ymax             -1.931429e-03
+ymin             -2.045333e-03
+ymax             -1.976000e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -217,8 +217,8 @@ region10
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -1.931429e-03
-ymax             -1.857143e-03
+ymin             -1.976000e-03
+ymax             -1.906667e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -232,8 +232,8 @@ region11
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -1.857143e-03
-ymax             -1.782857e-03
+ymin             -1.906667e-03
+ymax             -1.837333e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -247,8 +247,8 @@ region12
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -1.782857e-03
-ymax             -1.708571e-03
+ymin             -1.837333e-03
+ymax             -1.768000e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -262,8 +262,8 @@ region13
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -1.708571e-03
-ymax             -1.634286e-03
+ymin             -1.768000e-03
+ymax             -1.698667e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -277,8 +277,8 @@ region14
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -1.634286e-03
-ymax             -1.560000e-03
+ymin             -1.698667e-03
+ymax             -1.629333e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -292,8 +292,8 @@ region15
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -1.560000e-03
-ymax             -1.485714e-03
+ymin             -1.629333e-03
+ymax             -1.560000e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -307,8 +307,8 @@ region16
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -1.485714e-03
-ymax             -1.411429e-03
+ymin             -1.560000e-03
+ymax             -1.490667e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -322,8 +322,8 @@ region17
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -1.411429e-03
-ymax             -1.337143e-03
+ymin             -1.490667e-03
+ymax             -1.421333e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -337,8 +337,8 @@ region18
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -1.337143e-03
-ymax             -1.262857e-03
+ymin             -1.421333e-03
+ymax             -1.352000e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -352,8 +352,8 @@ region19
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -1.262857e-03
-ymax             -1.188571e-03
+ymin             -1.352000e-03
+ymax             -1.282667e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -367,8 +367,8 @@ region20
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -1.188571e-03
-ymax             -1.114286e-03
+ymin             -1.282667e-03
+ymax             -1.213333e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -382,8 +382,8 @@ region21
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -1.114286e-03
-ymax             -1.040000e-03
+ymin             -1.213333e-03
+ymax             -1.144000e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -397,8 +397,8 @@ region22
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -1.040000e-03
-ymax             -9.657143e-04
+ymin             -1.144000e-03
+ymax             -1.074667e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -412,8 +412,8 @@ region23
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -9.657143e-04
-ymax             -8.914286e-04
+ymin             -1.074667e-03
+ymax             -1.005333e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -427,8 +427,8 @@ region24
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -8.914286e-04
-ymax             -8.171429e-04
+ymin             -1.005333e-03
+ymax             -9.360000e-04
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -442,8 +442,8 @@ region25
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -8.171429e-04
-ymax             -7.428571e-04
+ymin             -9.360000e-04
+ymax             -8.666667e-04
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -457,8 +457,8 @@ region26
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -7.428571e-04
-ymax             -6.685714e-04
+ymin             -8.666667e-04
+ymax             -7.973333e-04
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -472,8 +472,8 @@ region27
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -6.685714e-04
-ymax             -5.942857e-04
+ymin             -7.973333e-04
+ymax             -7.280000e-04
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -487,8 +487,8 @@ region28
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -5.942857e-04
-ymax             -5.200000e-04
+ymin             -7.280000e-04
+ymax             -6.586667e-04
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -502,8 +502,8 @@ region29
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -5.200000e-04
-ymax             -4.457143e-04
+ymin             -6.586667e-04
+ymax             -5.893333e-04
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -517,8 +517,8 @@ region30
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -4.457143e-04
-ymax             -3.714286e-04
+ymin             -5.893333e-04
+ymax             -5.200000e-04
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -532,8 +532,8 @@ region31
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -3.714286e-04
-ymax             -2.971429e-04
+ymin             -5.200000e-04
+ymax             -4.506667e-04
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -547,8 +547,8 @@ region32
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.971429e-04
-ymax             -2.228571e-04
+ymin             -4.506667e-04
+ymax             -3.813333e-04
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -562,8 +562,8 @@ region33
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -2.228571e-04
-ymax             -1.485714e-04
+ymin             -3.813333e-04
+ymax             -3.120000e-04
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -577,8 +577,8 @@ region34
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -1.485714e-04
-ymax             -7.428571e-05
+ymin             -3.120000e-04
+ymax             -2.426667e-04
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -592,8 +592,8 @@ region35
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             -7.428571e-05
-ymax             0.000000e+00
+ymin             -2.426667e-04
+ymax             -1.733333e-04
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -607,8 +607,8 @@ region36
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             0.000000e+00
-ymax             7.428571e-05
+ymin             -1.733333e-04
+ymax             -1.040000e-04
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -622,8 +622,8 @@ region37
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             7.428571e-05
-ymax             1.485714e-04
+ymin             -1.040000e-04
+ymax             -3.466667e-05
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -637,8 +637,8 @@ region38
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             1.485714e-04
-ymax             2.228571e-04
+ymin             -3.466667e-05
+ymax             3.466667e-05
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -652,8 +652,8 @@ region39
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             2.228571e-04
-ymax             2.971429e-04
+ymin             3.466667e-05
+ymax             1.040000e-04
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -667,8 +667,8 @@ region40
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             2.971429e-04
-ymax             3.714286e-04
+ymin             1.040000e-04
+ymax             1.733333e-04
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -682,8 +682,8 @@ region41
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             3.714286e-04
-ymax             4.457143e-04
+ymin             1.733333e-04
+ymax             2.426667e-04
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -697,8 +697,8 @@ region42
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             4.457143e-04
-ymax             5.200000e-04
+ymin             2.426667e-04
+ymax             3.120000e-04
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -712,8 +712,8 @@ region43
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             5.200000e-04
-ymax             5.942857e-04
+ymin             3.120000e-04
+ymax             3.813333e-04
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -727,8 +727,8 @@ region44
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             5.942857e-04
-ymax             6.685714e-04
+ymin             3.813333e-04
+ymax             4.506667e-04
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -742,8 +742,8 @@ region45
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             6.685714e-04
-ymax             7.428571e-04
+ymin             4.506667e-04
+ymax             5.200000e-04
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -757,8 +757,8 @@ region46
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             7.428571e-04
-ymax             8.171429e-04
+ymin             5.200000e-04
+ymax             5.893333e-04
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -772,8 +772,8 @@ region47
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             8.171429e-04
-ymax             8.914286e-04
+ymin             5.893333e-04
+ymax             6.586667e-04
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -787,8 +787,8 @@ region48
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             8.914286e-04
-ymax             9.657143e-04
+ymin             6.586667e-04
+ymax             7.280000e-04
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -802,8 +802,8 @@ region49
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             9.657143e-04
-ymax             1.040000e-03
+ymin             7.280000e-04
+ymax             7.973333e-04
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -817,8 +817,8 @@ region50
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             1.040000e-03
-ymax             1.114286e-03
+ymin             7.973333e-04
+ymax             8.666667e-04
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -832,8 +832,8 @@ region51
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             1.114286e-03
-ymax             1.188571e-03
+ymin             8.666667e-04
+ymax             9.360000e-04
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -847,8 +847,8 @@ region52
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             1.188571e-03
-ymax             1.262857e-03
+ymin             9.360000e-04
+ymax             1.005333e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -862,8 +862,8 @@ region53
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             1.262857e-03
-ymax             1.337143e-03
+ymin             1.005333e-03
+ymax             1.074667e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -877,8 +877,8 @@ region54
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             1.337143e-03
-ymax             1.411429e-03
+ymin             1.074667e-03
+ymax             1.144000e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -892,8 +892,8 @@ region55
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             1.411429e-03
-ymax             1.485714e-03
+ymin             1.144000e-03
+ymax             1.213333e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -907,8 +907,8 @@ region56
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             1.485714e-03
-ymax             1.560000e-03
+ymin             1.213333e-03
+ymax             1.282667e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -922,8 +922,8 @@ region57
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             1.560000e-03
-ymax             1.634286e-03
+ymin             1.282667e-03
+ymax             1.352000e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -937,8 +937,8 @@ region58
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             1.634286e-03
-ymax             1.708571e-03
+ymin             1.352000e-03
+ymax             1.421333e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -952,8 +952,8 @@ region59
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             1.708571e-03
-ymax             1.782857e-03
+ymin             1.421333e-03
+ymax             1.490667e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -967,8 +967,8 @@ region60
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             1.782857e-03
-ymax             1.857143e-03
+ymin             1.490667e-03
+ymax             1.560000e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -982,8 +982,8 @@ region61
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             1.857143e-03
-ymax             1.931429e-03
+ymin             1.560000e-03
+ymax             1.629333e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -997,8 +997,8 @@ region62
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             1.931429e-03
-ymax             2.005714e-03
+ymin             1.629333e-03
+ymax             1.698667e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -1012,8 +1012,8 @@ region63
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             2.005714e-03
-ymax             2.080000e-03
+ymin             1.698667e-03
+ymax             1.768000e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -1027,8 +1027,8 @@ region64
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             2.080000e-03
-ymax             2.154286e-03
+ymin             1.768000e-03
+ymax             1.837333e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -1042,8 +1042,8 @@ region65
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             2.154286e-03
-ymax             2.228571e-03
+ymin             1.837333e-03
+ymax             1.906667e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -1057,8 +1057,8 @@ region66
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             2.228571e-03
-ymax             2.302857e-03
+ymin             1.906667e-03
+ymax             1.976000e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -1072,8 +1072,8 @@ region67
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             2.302857e-03
-ymax             2.377143e-03
+ymin             1.976000e-03
+ymax             2.045333e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -1087,8 +1087,8 @@ region68
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             2.377143e-03
-ymax             2.451429e-03
+ymin             2.045333e-03
+ymax             2.114667e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -1102,8 +1102,8 @@ region69
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             2.451429e-03
-ymax             2.525714e-03
+ymin             2.114667e-03
+ymax             2.184000e-03
 
 zmin             -1.000000e-03
 zmax             1.000000e-03
@@ -1117,7 +1117,82 @@ region70
 xmin             -2.600000e-03
 xmax             2.600000e-03
 
-ymin             2.525714e-03
+ymin             2.184000e-03
+ymax             2.253333e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 88
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 33800000
+;
+;
+region71
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             2.253333e-03
+ymax             2.322667e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 88
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 33800000
+;
+;
+region72
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             2.322667e-03
+ymax             2.392000e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 88
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 33800000
+;
+;
+region73
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             2.392000e-03
+ymax             2.461333e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 88
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 33800000
+;
+;
+region74
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             2.461333e-03
+ymax             2.530667e-03
+
+zmin             -1.000000e-03
+zmax             1.000000e-03
+;
+number_of_domains 88
+split_direction XSPLIT
+number_of_cells AUTO ; cells = 33800000
+;
+;
+region75
+xmin             -2.600000e-03
+xmax             2.600000e-03
+
+ymin             2.530667e-03
 ymax             2.600000e-03
 
 zmin             -1.000000e-03
@@ -1125,7 +1200,7 @@ zmax             1.000000e-03
 ;
 number_of_domains 88
 split_direction XSPLIT
-number_of_cells AUTO ; cells = 371800000
+number_of_cells AUTO ; cells = 202800000
 ;
 
 
