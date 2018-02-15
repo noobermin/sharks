@@ -177,9 +177,9 @@ for density in denses:
     d_mod=sd(d,
         pbsbase="d_v{:3.1e}".format(density),
     )
-    gendat = lambda d_mod: gendatn(d_mod, floor=density)
+    igendat = lambda d_mod: gendatn(d_mod, floor=density)
     ds.append(d_mod)
-    addtotargs(d_mod, gendat)
+    addtotargs(d_mod, igendat)
     gensim(**d_mod)
 
 if opts['--make-all-targets']:
