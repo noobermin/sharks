@@ -98,7 +98,7 @@ dlim = np.array([8.6e17/3.33*1e-3, 8.6e17/3.33])
 dlim = np.log10(dlim);
 print("creating range between {} and {}".format(dlim[0],dlim[1]));
 denses = np.logspace(dlim[0], dlim[1], 5);
-denses = np.append(denses, [2e16, 7e16, 1e17, 1.8e17, 8.6e17])
+denses = np.append(denses, [3e18, 1e19, 8e19, 5e20, 1.7e21])
 
 fromd = lambda d,density,l='movE': sd(d[l],contour_lines=(
     float("{:0.2e}".format(density*0.5)),
