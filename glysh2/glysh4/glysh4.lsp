@@ -38,8 +38,8 @@ load_balance_flag OFF
 plasma_frequency_limit 2.0
 
 ;;Diagnostic Dumps
-dump_number_densities_flag ON
-dump_plasma_quantities_flag ON
+dump_number_densities_flag OFF
+dump_plasma_quantities_flag OFF
 dump_time_zero_flag ON
 probe_interval 1
 spatial_skip_x 1
