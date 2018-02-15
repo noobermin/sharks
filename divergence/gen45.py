@@ -110,7 +110,7 @@ def mk45_pinprick_neutral(
         out[good] = N0;
         infront =np.logical_and(
             y >= x + width/np.sqrt(2.0),
-            spotmask(x,y,z));
+            spotmask(x,y));
         d = dfront(x,y);
         infront&=restrict_front(d);
         out[infront]=N0*np.exp(-d/L)[infront];
