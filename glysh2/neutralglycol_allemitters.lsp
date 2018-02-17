@@ -373,9 +373,10 @@ interval 1
 species 17
 discrete_numbers {discrete}
 inclusion SOLID
+threshold {cond_threshold:e}
 thermal_energy {cond_temp}
 movie_fraction {cond_fraction}
-threshold {cond_threshold:e}
+
 ;;p+
 emission child-langmuir field-stress
 from {xmin:e} {ymin:e} {zmin:e}
@@ -384,9 +385,10 @@ interval 1
 species 19
 discrete_numbers {discrete}
 inclusion SOLID
+threshold {cond_threshold:e}
 thermal_energy {cond_temp}
 movie_fraction {cond_fraction}
-threshold {cond_threshold:e}
+
 ;;O+
 emission child-langmuir field-stress
 from {xmin:e} {ymin:e} {zmin:e}
@@ -395,9 +397,10 @@ interval 1
 species 11
 discrete_numbers {discrete}
 inclusion SOLID
+threshold {cond_threshold:e}
 thermal_energy {cond_temp}
 movie_fraction {cond_fraction}
-threshold {cond_threshold:e}
+
 ;;C+
 emission child-langmuir field-stress
 from {xmin:e} {ymin:e} {zmin:e}
@@ -406,9 +409,9 @@ interval 1
 species 2
 discrete_numbers {discrete}
 inclusion SOLID
+threshold {cond_threshold:e}
 thermal_energy {cond_temp}
 movie_fraction {cond_fraction}
-threshold {cond_threshold:e}
 
 ;; ionization states ;;
 ;; Hydrogen
