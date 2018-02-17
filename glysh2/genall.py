@@ -393,6 +393,7 @@ mini3d = sd(
     splittime=None,
     cond_threshold=1/20e-7,
 );
+del mini3d['particle_dump_interval_ns'];
 mini3d.update(
     mkconds(mini3dlim, backin=0.5e-4));
 mini3d['conductors'] += [
