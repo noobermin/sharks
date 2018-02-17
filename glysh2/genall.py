@@ -82,6 +82,7 @@ d=dict(
     particle_dump_interval_ns=0.0,
     particle_dump_times_ns=(1e-4, 1.1e-4, 1.4e-4),
     pext_species=(17,18),
+    cond_threshold=0,
 );
 #conductors
 def mkconds(dims,
@@ -266,6 +267,7 @@ reald.update(
             no_pmovies= True,),),
         (3e-12,   dict(particle_dump_interval_ns=3e-15)),
     ],
+    cond_threshold=1/10e-7,
 );
 gensim(**reald);
 addtotargs(reald,gendatn);
@@ -322,6 +324,7 @@ threed = sd(
         0.02, 0.02, 0.02),
     target_temps=(
         None,None,None),
+    cond_threshold=1/20e-7,
     splittime=[
         (115e-15, None),
         (400e-15, dict(particle_dump_interval_ns=6e-16)),
@@ -388,6 +391,7 @@ mini3d = sd(
     timestep =40e-18,
     dumpinterval=2e-15,
     splittime=None,
+    cond_threshold=1/20e-7,
 );
 mini3d.update(
     mkconds(mini3dlim, backin=0.5e-4));

@@ -375,6 +375,7 @@ discrete_numbers {discrete}
 inclusion SOLID
 thermal_energy {cond_temp}
 movie_fraction {cond_fraction}
+threshold {cond_threshold:e}
 ;;p+
 emission child-langmuir field-stress
 from {xmin:e} {ymin:e} {zmin:e}
@@ -385,6 +386,7 @@ discrete_numbers {discrete}
 inclusion SOLID
 thermal_energy {cond_temp}
 movie_fraction {cond_fraction}
+threshold {cond_threshold:e}
 ;;O+
 emission child-langmuir field-stress
 from {xmin:e} {ymin:e} {zmin:e}
@@ -395,6 +397,7 @@ discrete_numbers {discrete}
 inclusion SOLID
 thermal_energy {cond_temp}
 movie_fraction {cond_fraction}
+threshold {cond_threshold:e}
 ;;C+
 emission child-langmuir field-stress
 from {xmin:e} {ymin:e} {zmin:e}
@@ -405,6 +408,7 @@ discrete_numbers {discrete}
 inclusion SOLID
 thermal_energy {cond_temp}
 movie_fraction {cond_fraction}
+threshold {cond_threshold:e}
 
 ;; ionization states ;;
 ;; Hydrogen

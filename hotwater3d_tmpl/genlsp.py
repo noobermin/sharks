@@ -96,6 +96,7 @@ lspdefaults = dict(
     #conductor
     cond_temp = 1.0,
     cond_fraction = 0.0,
+    cond_threshold= 0.0,
 );
 
 ###############
@@ -728,6 +729,7 @@ def genlsp(**kw):
     #dealing with conductors
     fmtd['cond_temp'] = getkw('cond_temp');
     fmtd['cond_fraction'] = getkw('cond_fraction');
+    fmtd['cond_threshold']= getkw('cond_threshold');
     #others
     w0=fmtd['w0'] = getkw('w')*100.0;
     fmtd['pulse']  = getkw('T')*1e9;

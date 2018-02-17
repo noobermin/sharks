@@ -622,6 +622,7 @@ discrete_numbers 3 3 1
 inclusion SOLID
 thermal_energy 1.0
 movie_fraction 0.0
+threshold 0
 ;;p+
 emission child-langmuir field-stress
 from -5.000000e-04 -5.000000e-04 0.000000e+00
@@ -632,6 +633,7 @@ discrete_numbers 3 3 1
 inclusion SOLID
 thermal_energy 1.0
 movie_fraction 0.0
+threshold 0
 ;;O+
 emission child-langmuir field-stress
 from -5.000000e-04 -5.000000e-04 0.000000e+00
@@ -642,6 +644,7 @@ discrete_numbers 3 3 1
 inclusion SOLID
 thermal_energy 1.0
 movie_fraction 0.0
+threshold 0
 ;;C+
 emission child-langmuir field-stress
 from -5.000000e-04 -5.000000e-04 0.000000e+00
@@ -652,6 +655,7 @@ discrete_numbers 3 3 1
 inclusion SOLID
 thermal_energy 1.0
 movie_fraction 0.0
+threshold 0
 
 ;; ionization states ;;
 ;; Hydrogen
