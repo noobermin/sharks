@@ -302,7 +302,7 @@ threed = sd(
     #misc
     lspexec='lsp-10-3d',
     dir=True,
-    restart=11.95,
+    restart=11.75,
     dump_restart_flag=True,
     #movs
     movne=dict(
