@@ -1,15 +1,13 @@
-#PBS -l walltime=48:0:00
-#PBS -l select=150:ncpus=44:mpiprocs=44
-#PBS -N glysh4
+#PBS -l walltime=96:0:00
+#PBS -l nodes=550:ppn=12
+#PBS -N glysh4_1
 #PBS -S /bin/bash
 #PBS -j oe
 #PBS -m ae
 #PBS -M ngirmang.1@osu.edu
-#PBS -A __projectid__
-#PBS -q standard_lw
 
 
-PBSBASE=glysh4
+PBSBASE=glysh4_1
 #source $HOME/.bashrc
 
 #This outputs the name of the root node
@@ -19,7 +17,12 @@ cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/nodesfile.txt
 
 
 cd "$PBS_O_WORKDIR"
+#zipper
+./loopscript zipper &> $PBS_O_WORKDIR/zipper.log&
+zipper_PID=$!
 
 
-aprun -n 6600 ./lsp-10-3d -r  $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+mpiexec -n 6600 ./lsp-10-3d -r  $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
 
+kill $zipper_PID
+./zipper -a >$PBS_O_WORKDIR

@@ -1,6 +1,6 @@
-#PBS -l walltime=48:0:00
+#PBS -l walltime=168:0:00
 #PBS -l select=150:ncpus=44:mpiprocs=44
-#PBS -N glysh4
+#PBS -N glysh4_2
 #PBS -S /bin/bash
 #PBS -j oe
 #PBS -m ae
@@ -9,7 +9,7 @@
 #PBS -q standard_lw
 
 
-PBSBASE=glysh4
+PBSBASE=glysh4_2
 #source $HOME/.bashrc
 
 #This outputs the name of the root node

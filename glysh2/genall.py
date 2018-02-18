@@ -390,8 +390,15 @@ mini3d = sd(
     dump_particle=True,
     timestep =40e-18,
     dumpinterval=2e-15,
-    splittime=None,
     cond_threshold=1/20e-7,
+    splittime=[
+        (28e-15, None),
+        (160e-15, dict(
+            dumpinterval=2e-15,
+            particle_dump_interval_ns=1e-15)),
+        (250e-15, dict(
+            field_dump_interval_ns=5e-15,)),
+    ],
 );
 del mini3d['particle_dump_interval_ns'];
 mini3d.update(
