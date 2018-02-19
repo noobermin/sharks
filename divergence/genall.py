@@ -70,7 +70,7 @@ d=dict(
     #movs
     movne=dict(
         ne_species = 'RhoN17',
-        clim=(1e19,1e23)),
+        clim=(1e16,1e22)),
     movrho=dict(
         clim=(-1e19,1e19),
         linthresh=1e15,),
@@ -110,7 +110,7 @@ def mkconds(dims,
              (ucb[0],ucb[1],0.0),
              (ucc[0],ucc[1],0.0)]}
     ]);
-d.update(**mkconds(d['tlim']));
+d.update(**mkconds(d['tlim'],backin=2e-4));
 d['conductors'] += [
     dict(
         outlet='xmax',
