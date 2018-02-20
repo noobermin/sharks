@@ -131,8 +131,8 @@ d12s = [sd(di,
 for di in d12s:
     gensim(**di);
 ri8um = [0.0, 0.5, 4.0/np.sqrt(3), 3.0];
-d8um  = [sd(d12um,
-            pbsbase="B1=lI={:3.1f}_ri={:3.2}".format(np.log(di['I']),ri),
+d8um  = [sd(di,
+            pbsbase="B1=lI={:3.1f}_ri={:3.2}".format(np.log10(di['I']),ri),
             f_2D = mkcircle(
                 No = n_s,
                 # 20.0/760.0 * 101325/e*1e-6
