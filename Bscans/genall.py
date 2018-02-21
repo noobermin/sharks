@@ -141,7 +141,7 @@ d8um  = [sd(di,
                 #
                 Li = 0.04e-4,
                 Lo = 0.04e-4,
-                ro = 5.0e-4,
+                ro = 4.0e-4,
                 ri = ri*1e-4,
                 dim=[i*1e-4 for i in di['tlim']]),)
          for di in dIs for ri in ri8um];
