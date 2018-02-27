@@ -469,7 +469,7 @@ zp=[(zn,zx) for zn, zx in zip(zs,zs[1:])]
 ys=[-26e-4,-18.6e-4,-11.2e-4, -3.7e-4, 3.7e-4, 11.2e-4, 18.6e-4, 26e-4]
 yp=[(yn,yx) for yn, yx in zip(ys,ys[1:])]
 rs = [
-    sd(r0, zmin=zn*1e-4,zmax=zx*1e-4,ymin=yn,ymax=yx)
+    sd(r0, zmin=zn,zmax=zx,ymin=yn,ymax=yx)
     for yn,yx in yp for zn,zx in zp]
 for i,r in enumerate(rs):
     r['i']=i+1;

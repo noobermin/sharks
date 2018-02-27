@@ -85,8 +85,8 @@ xmax             2.600000e-03
 ymin             -2.600000e-03
 ymax             -1.860000e-03
 
-zmin             -1.000000e-07
-zmax             -7.000000e-08
+zmin             -1.000000e-03
+zmax             -7.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -100,8 +100,8 @@ xmax             2.600000e-03
 ymin             -2.600000e-03
 ymax             -1.860000e-03
 
-zmin             -7.000000e-08
-zmax             -4.000000e-08
+zmin             -7.000000e-04
+zmax             -4.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -115,8 +115,8 @@ xmax             2.600000e-03
 ymin             -2.600000e-03
 ymax             -1.860000e-03
 
-zmin             -4.000000e-08
-zmax             -1.000000e-08
+zmin             -4.000000e-04
+zmax             -1.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -130,8 +130,8 @@ xmax             2.600000e-03
 ymin             -2.600000e-03
 ymax             -1.860000e-03
 
-zmin             -1.000000e-08
-zmax             1.000000e-08
+zmin             -1.000000e-04
+zmax             1.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -145,8 +145,8 @@ xmax             2.600000e-03
 ymin             -2.600000e-03
 ymax             -1.860000e-03
 
-zmin             1.000000e-08
-zmax             4.000000e-08
+zmin             1.000000e-04
+zmax             4.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -160,8 +160,8 @@ xmax             2.600000e-03
 ymin             -2.600000e-03
 ymax             -1.860000e-03
 
-zmin             4.000000e-08
-zmax             7.000000e-08
+zmin             4.000000e-04
+zmax             7.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -175,8 +175,8 @@ xmax             2.600000e-03
 ymin             -2.600000e-03
 ymax             -1.860000e-03
 
-zmin             7.000000e-08
-zmax             1.000000e-07
+zmin             7.000000e-04
+zmax             1.000000e-03
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -190,8 +190,8 @@ xmax             2.600000e-03
 ymin             -1.860000e-03
 ymax             -1.120000e-03
 
-zmin             -1.000000e-07
-zmax             -7.000000e-08
+zmin             -1.000000e-03
+zmax             -7.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -205,8 +205,8 @@ xmax             2.600000e-03
 ymin             -1.860000e-03
 ymax             -1.120000e-03
 
-zmin             -7.000000e-08
-zmax             -4.000000e-08
+zmin             -7.000000e-04
+zmax             -4.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -220,8 +220,8 @@ xmax             2.600000e-03
 ymin             -1.860000e-03
 ymax             -1.120000e-03
 
-zmin             -4.000000e-08
-zmax             -1.000000e-08
+zmin             -4.000000e-04
+zmax             -1.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -235,8 +235,8 @@ xmax             2.600000e-03
 ymin             -1.860000e-03
 ymax             -1.120000e-03
 
-zmin             -1.000000e-08
-zmax             1.000000e-08
+zmin             -1.000000e-04
+zmax             1.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -250,8 +250,8 @@ xmax             2.600000e-03
 ymin             -1.860000e-03
 ymax             -1.120000e-03
 
-zmin             1.000000e-08
-zmax             4.000000e-08
+zmin             1.000000e-04
+zmax             4.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -265,8 +265,8 @@ xmax             2.600000e-03
 ymin             -1.860000e-03
 ymax             -1.120000e-03
 
-zmin             4.000000e-08
-zmax             7.000000e-08
+zmin             4.000000e-04
+zmax             7.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -280,8 +280,8 @@ xmax             2.600000e-03
 ymin             -1.860000e-03
 ymax             -1.120000e-03
 
-zmin             7.000000e-08
-zmax             1.000000e-07
+zmin             7.000000e-04
+zmax             1.000000e-03
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -295,8 +295,8 @@ xmax             2.600000e-03
 ymin             -1.120000e-03
 ymax             -3.700000e-04
 
-zmin             -1.000000e-07
-zmax             -7.000000e-08
+zmin             -1.000000e-03
+zmax             -7.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -310,8 +310,8 @@ xmax             2.600000e-03
 ymin             -1.120000e-03
 ymax             -3.700000e-04
 
-zmin             -7.000000e-08
-zmax             -4.000000e-08
+zmin             -7.000000e-04
+zmax             -4.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -325,8 +325,8 @@ xmax             2.600000e-03
 ymin             -1.120000e-03
 ymax             -3.700000e-04
 
-zmin             -4.000000e-08
-zmax             -1.000000e-08
+zmin             -4.000000e-04
+zmax             -1.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -340,8 +340,8 @@ xmax             2.600000e-03
 ymin             -1.120000e-03
 ymax             -3.700000e-04
 
-zmin             -1.000000e-08
-zmax             1.000000e-08
+zmin             -1.000000e-04
+zmax             1.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -355,8 +355,8 @@ xmax             2.600000e-03
 ymin             -1.120000e-03
 ymax             -3.700000e-04
 
-zmin             1.000000e-08
-zmax             4.000000e-08
+zmin             1.000000e-04
+zmax             4.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -370,8 +370,8 @@ xmax             2.600000e-03
 ymin             -1.120000e-03
 ymax             -3.700000e-04
 
-zmin             4.000000e-08
-zmax             7.000000e-08
+zmin             4.000000e-04
+zmax             7.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -385,8 +385,8 @@ xmax             2.600000e-03
 ymin             -1.120000e-03
 ymax             -3.700000e-04
 
-zmin             7.000000e-08
-zmax             1.000000e-07
+zmin             7.000000e-04
+zmax             1.000000e-03
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -400,8 +400,8 @@ xmax             2.600000e-03
 ymin             -3.700000e-04
 ymax             3.700000e-04
 
-zmin             -1.000000e-07
-zmax             -7.000000e-08
+zmin             -1.000000e-03
+zmax             -7.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -415,8 +415,8 @@ xmax             2.600000e-03
 ymin             -3.700000e-04
 ymax             3.700000e-04
 
-zmin             -7.000000e-08
-zmax             -4.000000e-08
+zmin             -7.000000e-04
+zmax             -4.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -430,8 +430,8 @@ xmax             2.600000e-03
 ymin             -3.700000e-04
 ymax             3.700000e-04
 
-zmin             -4.000000e-08
-zmax             -1.000000e-08
+zmin             -4.000000e-04
+zmax             -1.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -445,8 +445,8 @@ xmax             2.600000e-03
 ymin             -3.700000e-04
 ymax             3.700000e-04
 
-zmin             -1.000000e-08
-zmax             1.000000e-08
+zmin             -1.000000e-04
+zmax             1.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -460,8 +460,8 @@ xmax             2.600000e-03
 ymin             -3.700000e-04
 ymax             3.700000e-04
 
-zmin             1.000000e-08
-zmax             4.000000e-08
+zmin             1.000000e-04
+zmax             4.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -475,8 +475,8 @@ xmax             2.600000e-03
 ymin             -3.700000e-04
 ymax             3.700000e-04
 
-zmin             4.000000e-08
-zmax             7.000000e-08
+zmin             4.000000e-04
+zmax             7.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -490,8 +490,8 @@ xmax             2.600000e-03
 ymin             -3.700000e-04
 ymax             3.700000e-04
 
-zmin             7.000000e-08
-zmax             1.000000e-07
+zmin             7.000000e-04
+zmax             1.000000e-03
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -505,8 +505,8 @@ xmax             2.600000e-03
 ymin             3.700000e-04
 ymax             1.120000e-03
 
-zmin             -1.000000e-07
-zmax             -7.000000e-08
+zmin             -1.000000e-03
+zmax             -7.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -520,8 +520,8 @@ xmax             2.600000e-03
 ymin             3.700000e-04
 ymax             1.120000e-03
 
-zmin             -7.000000e-08
-zmax             -4.000000e-08
+zmin             -7.000000e-04
+zmax             -4.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -535,8 +535,8 @@ xmax             2.600000e-03
 ymin             3.700000e-04
 ymax             1.120000e-03
 
-zmin             -4.000000e-08
-zmax             -1.000000e-08
+zmin             -4.000000e-04
+zmax             -1.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -550,8 +550,8 @@ xmax             2.600000e-03
 ymin             3.700000e-04
 ymax             1.120000e-03
 
-zmin             -1.000000e-08
-zmax             1.000000e-08
+zmin             -1.000000e-04
+zmax             1.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -565,8 +565,8 @@ xmax             2.600000e-03
 ymin             3.700000e-04
 ymax             1.120000e-03
 
-zmin             1.000000e-08
-zmax             4.000000e-08
+zmin             1.000000e-04
+zmax             4.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -580,8 +580,8 @@ xmax             2.600000e-03
 ymin             3.700000e-04
 ymax             1.120000e-03
 
-zmin             4.000000e-08
-zmax             7.000000e-08
+zmin             4.000000e-04
+zmax             7.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -595,8 +595,8 @@ xmax             2.600000e-03
 ymin             3.700000e-04
 ymax             1.120000e-03
 
-zmin             7.000000e-08
-zmax             1.000000e-07
+zmin             7.000000e-04
+zmax             1.000000e-03
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -610,8 +610,8 @@ xmax             2.600000e-03
 ymin             1.120000e-03
 ymax             1.860000e-03
 
-zmin             -1.000000e-07
-zmax             -7.000000e-08
+zmin             -1.000000e-03
+zmax             -7.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -625,8 +625,8 @@ xmax             2.600000e-03
 ymin             1.120000e-03
 ymax             1.860000e-03
 
-zmin             -7.000000e-08
-zmax             -4.000000e-08
+zmin             -7.000000e-04
+zmax             -4.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -640,8 +640,8 @@ xmax             2.600000e-03
 ymin             1.120000e-03
 ymax             1.860000e-03
 
-zmin             -4.000000e-08
-zmax             -1.000000e-08
+zmin             -4.000000e-04
+zmax             -1.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -655,8 +655,8 @@ xmax             2.600000e-03
 ymin             1.120000e-03
 ymax             1.860000e-03
 
-zmin             -1.000000e-08
-zmax             1.000000e-08
+zmin             -1.000000e-04
+zmax             1.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -670,8 +670,8 @@ xmax             2.600000e-03
 ymin             1.120000e-03
 ymax             1.860000e-03
 
-zmin             1.000000e-08
-zmax             4.000000e-08
+zmin             1.000000e-04
+zmax             4.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -685,8 +685,8 @@ xmax             2.600000e-03
 ymin             1.120000e-03
 ymax             1.860000e-03
 
-zmin             4.000000e-08
-zmax             7.000000e-08
+zmin             4.000000e-04
+zmax             7.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -700,8 +700,8 @@ xmax             2.600000e-03
 ymin             1.120000e-03
 ymax             1.860000e-03
 
-zmin             7.000000e-08
-zmax             1.000000e-07
+zmin             7.000000e-04
+zmax             1.000000e-03
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -715,8 +715,8 @@ xmax             2.600000e-03
 ymin             1.860000e-03
 ymax             2.600000e-03
 
-zmin             -1.000000e-07
-zmax             -7.000000e-08
+zmin             -1.000000e-03
+zmax             -7.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -730,8 +730,8 @@ xmax             2.600000e-03
 ymin             1.860000e-03
 ymax             2.600000e-03
 
-zmin             -7.000000e-08
-zmax             -4.000000e-08
+zmin             -7.000000e-04
+zmax             -4.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -745,8 +745,8 @@ xmax             2.600000e-03
 ymin             1.860000e-03
 ymax             2.600000e-03
 
-zmin             -4.000000e-08
-zmax             -1.000000e-08
+zmin             -4.000000e-04
+zmax             -1.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -760,8 +760,8 @@ xmax             2.600000e-03
 ymin             1.860000e-03
 ymax             2.600000e-03
 
-zmin             -1.000000e-08
-zmax             1.000000e-08
+zmin             -1.000000e-04
+zmax             1.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -775,8 +775,8 @@ xmax             2.600000e-03
 ymin             1.860000e-03
 ymax             2.600000e-03
 
-zmin             1.000000e-08
-zmax             4.000000e-08
+zmin             1.000000e-04
+zmax             4.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -790,8 +790,8 @@ xmax             2.600000e-03
 ymin             1.860000e-03
 ymax             2.600000e-03
 
-zmin             4.000000e-08
-zmax             7.000000e-08
+zmin             4.000000e-04
+zmax             7.000000e-04
 ;
 number_of_domains 88
 split_direction XSPLIT
@@ -805,8 +805,8 @@ xmax             2.600000e-03
 ymin             1.860000e-03
 ymax             2.600000e-03
 
-zmin             7.000000e-08
-zmax             1.000000e-07
+zmin             7.000000e-04
+zmax             1.000000e-03
 ;
 number_of_domains 88
 split_direction XSPLIT
