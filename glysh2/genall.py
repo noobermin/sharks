@@ -12,6 +12,7 @@ from docopt import docopt
 opts=docopt(__doc__,help=True);
 from pys import sd, parse_ituple, savetxt;
 from genpbs import genpbs;
+from genlsp import mkregion_str
 from gensim import gensim, fromenergy,c;
 from gendat import gendat;
 import numpy as np;
@@ -444,23 +445,44 @@ minier['conductors'] += [
 gensim(**minier);
 addtotargs(minier,gendat3d);
 
+
+
+
 mini3d_redo = sd(
     mini3d,
-    domains = 44*80,
-    region_split=('z', 40),
+    region_split=None,
     pbsbase='glysh6',
     splittime=[
         (160e-15, dict(particle_dump_interval=1e-15)),
         (250e-15, dict(field_dump_interval=5e-15)),
     ]);
+#manual regioning
+r0 = dict(
+    domains=88,
+    xmin=-26e-4,
+    xmax= 26e-4,
+    split="XSPLIT")
+zs=[
+    -10e-4,-7e-4,-4e-4,-1e-4,
+    1e-4,  4e-4,  7e-4, 10e-4];
+zp=[(zn,zx) for zn, zx in zip(zs,zs[1:])]
+ys=[-26e-4,-18.6e-4,-11.2e-4, -3.7e-4, 3.7e-4, 11.2e-4, 18.6e-4, 26e-4]
+yp=[(yn,yx) for yn, yx in zip(ys,ys[1:])]
+rs = [
+    sd(r0, zmin=zn*1e-4,zmax=zx*1e-4,ymin=yn,ymax=yx)
+    for yn,yx in yp for zn,zx in zp]
+for i,r in enumerate(rs):
+    r['i']=i+1;
+mini3d_redo['regions'] = mkregion_str(rs,split_cells=2600);
+mini3d_redo['domains'] = 88*len(rs);
 mini3d_redo.update(
     mkconds(mini3dlim, backin=0.5e-4));
 mini3d_redo['conductors'] += [
     dict(outlet='zmax',
-         start=0.1,
+         start=-0.1,
          width=1.0),
     dict(outlet='zmin',
-         start=0.1,
+         start=-0.1,
          width=1.0),];
 gensim(**mini3d_redo);
 addtotargs(mini3d_redo,gendatn);
