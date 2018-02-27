@@ -489,7 +489,7 @@ addtotargs(mini3d_redo,gendatn);
 mini3d_another=sd(
     mini3d_redo,
     region_split=('z', 100),
-    domains=8800,
+    domains=6600,
     regions=None,
     pbsbase='glysh7');
 gensim(**mini3d_another);

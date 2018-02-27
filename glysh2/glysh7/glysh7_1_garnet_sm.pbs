@@ -1,5 +1,5 @@
 #PBS -l walltime=24:0:00
-#PBS -l select=275:ncpus=32:mpiprocs=32
+#PBS -l select=207:ncpus=32:mpiprocs=32
 #PBS -N glysh7_1
 #PBS -S /bin/bash
 #PBS -j oe
@@ -21,5 +21,5 @@ cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/nodesfile.txt
 cd "$PBS_O_WORKDIR"
 
 
-aprun -n 8800 ./lsp-10-3d -r  $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+aprun -n 6600 ./lsp-10-3d -r  $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
 
