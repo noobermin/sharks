@@ -444,6 +444,26 @@ minier['conductors'] += [
 gensim(**minier);
 addtotargs(minier,gendat3d);
 
+mini3d_redo = sd(
+    mini3d,
+    domains = 44*80,
+    region_split=('z', 40),
+    pbsbase='glysh6',
+    splittime=[
+        (160e-15, dict(particle_dump_interval=1e-15)),
+        (250e-15, dict(field_dump_interval=5e-15)),
+    ]);
+mini3d_redo.update(
+    mkconds(mini3dlim, backin=0.5e-4));
+mini3d_redo['conductors'] += [
+    dict(outlet='zmax',
+         start=0.1,
+         width=1.0),
+    dict(outlet='zmin',
+         start=0.1,
+         width=1.0),];
+gensim(**mini3d_redo);
+addtotargs(mini3d_redo,gendatn);
 
 
 if opts['--make-all-targets']:
