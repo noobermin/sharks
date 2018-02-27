@@ -486,7 +486,14 @@ mini3d_redo['conductors'] += [
          width=1.0),];
 gensim(**mini3d_redo);
 addtotargs(mini3d_redo,gendatn);
-
+mini3d_another=sd(
+    mini3d_redo,
+    region_split=('z', 100),
+    domains=8800,
+    regions=None,
+    pbsbase='glysh7');
+gensim(**mini3d_another);
+addtotargs(mini3d_another,gendatn);
 
 if opts['--make-all-targets']:
     for d in targds:
