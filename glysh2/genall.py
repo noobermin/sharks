@@ -495,6 +495,34 @@ mini3d_another=sd(
 gensim(**mini3d_another);
 addtotargs(mini3d_another,gendatn);
 
+mini3d_rtw=sd(
+    mini3d,
+    pbsbase='glysh8',
+    dumpinterval=10e-15,
+    cond_threshold=1/20e-7,
+    splittime=[
+        (50e-15, None),
+        (160e-15, dict(
+            dumpinterval=2e-15,
+            particle_dump_interval_ns=1e-15)),
+        (250e-15, dict(
+            dumpinterval=2e-15,
+            field_dump_interval_ns=10e-15,)),
+    ],
+);
+mini3d_rtw.update(
+    mkconds(mini3dlim, backin=0.5e-4));
+mini3d_rtw['conductors'] += [
+    dict(outlet='zmax',
+         start=-0.1,
+         width=1.0),
+    dict(outlet='zmin',
+         start=-0.1,
+         width=1.0),];
+gensim(**mini3d_rtw);
+addtotargs(mini3d_rtw,gendatn);
+
+
 if opts['--make-all-targets']:
     for d in targds:
         d['mktargf'](d);
