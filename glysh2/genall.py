@@ -503,8 +503,8 @@ mini3d_rtw=sd(
     splittime=[
         (50e-15, None),
         (160e-15, dict(
-            dumpinterval=2e-15,
-            particle_dump_interval_ns=1e-15)),
+            dumpinterval=4e-15,
+            particle_dump_interval_ns=2e-15)),
         (250e-15, dict(
             dumpinterval=2e-15,
             field_dump_interval_ns=10e-15,)),
