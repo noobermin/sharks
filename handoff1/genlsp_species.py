@@ -100,6 +100,9 @@ options_dont_touch = ''';Field Solution and Modification
  flux_limit_fraction 0.2
 
 '''
+field_opts = ('Field Solution and Modification', dict(
+    field_initialization_flag=None,
+),)
 #6.2.8 Kinematics Checks
 kinematic_opts = ('Kinematics', dict(
     plasma_frequency_limit=2.0,#default in manual
@@ -131,7 +134,7 @@ dump_opts.update(
     probe_interval = 1,
     probe_output_digits=None,
 );
-    
+
     
 dump_opts = ("Diagnostic Dumps",dump_opts);
 
@@ -183,7 +186,8 @@ def genoptions(**kw):
     ]);
     out+=options_dont_touch
     out+=''.join([
-        genopts(iopts) for iopts in [kinematic_opts,dump_opts,]
+        genopts(iopts) for iopts in [
+            field_opts,kinematic_opts,dump_opts,]
     ]);
 
     #now we do big dumps

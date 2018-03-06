@@ -34,6 +34,9 @@ load_balance_flag OFF
  fluid_ion_streaming_factor 0.01 ;Tony insists this is 0.01 instead of 0.005
  flux_limit_fraction 0.2
 
+;;Field Solution and Modification
+field_initialization_flag ON
+
 ;;Kinematics
 plasma_frequency_limit 2.0
 

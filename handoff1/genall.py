@@ -52,6 +52,8 @@ d=dict(
     pbsbase='glysh2_ho1',
     description="bad glysh2 handoff1",
     dumpinterval=2.1e-15,
+    #godsave me
+    field_initialization_flag=True,
     #PIC/grid details
     domains=44,
     pbses='defaults',
