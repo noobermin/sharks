@@ -416,7 +416,7 @@ selection_ratio 1.0
 
 ;; initial states ;;
 plasma ; O
-from 4.500000e-03  -2.300000e-05  0.000000e+00
+from 3.500000e-03  -2.300000e-05  0.000000e+00
 to   2.000000e-02  2.300000e-03  0.000000e+00
 species 1
 movie_tag 3
@@ -431,7 +431,7 @@ thermal_energy 0.02
 movie_fraction 0.000
 ;
 plasma ; C
-from 4.500000e-03  -2.300000e-05  0.000000e+00
+from 3.500000e-03  -2.300000e-05  0.000000e+00
 to   2.000000e-02  2.300000e-03  0.000000e+00
 species 10
 movie_tag 3
@@ -446,7 +446,7 @@ thermal_energy 0.02
 movie_fraction 0.000
 ;
 plasma ; H
-from 4.500000e-03 -2.300000e-05  0.000000e+00
+from 3.500000e-03 -2.300000e-05  0.000000e+00
 to   2.000000e-02 2.300000e-03  0.000000e+00
 species 18
 movie_tag 3
@@ -464,152 +464,152 @@ movie_fraction 0.000
 
 ;;O0
 cluster
-from 0.000000e+00 -5.750000e+00 0.000000e+00
-to   4.500000e+01 5.750000e+00 0.000000e+00
+from 0.000000e+00 -5.750000e-04 0.000000e+00
+to   3.500000e-03 5.750000e-04 0.000000e+00
 ion_species 1
 electron_species 0
 number_of_clusters 1
 particle_data_file O0part.p4
 ;;O+
 cluster
-from 0.000000e+00 -5.750000e+00 0.000000e+00
-to   4.500000e+01 5.750000e+00 0.000000e+00
+from 0.000000e+00 -5.750000e-04 0.000000e+00
+to   3.500000e-03 5.750000e-04 0.000000e+00
 ion_species 2
 electron_species 0
 number_of_clusters 1
 particle_data_file O+part.p4
 ;;O++
 cluster
-from 0.000000e+00 -5.750000e+00 0.000000e+00
-to   4.500000e+01 5.750000e+00 0.000000e+00
+from 0.000000e+00 -5.750000e-04 0.000000e+00
+to   3.500000e-03 5.750000e-04 0.000000e+00
 ion_species 3
 electron_species 0
 number_of_clusters 1
 particle_data_file O++part.p4
 ;;O3+
 cluster
-from 0.000000e+00 -5.750000e+00 0.000000e+00
-to   4.500000e+01 5.750000e+00 0.000000e+00
+from 0.000000e+00 -5.750000e-04 0.000000e+00
+to   3.500000e-03 5.750000e-04 0.000000e+00
 ion_species 4
 electron_species 0
 number_of_clusters 1
 particle_data_file O3+part.p4
 ;;O4+
 cluster
-from 0.000000e+00 -5.750000e+00 0.000000e+00
-to   4.500000e+01 5.750000e+00 0.000000e+00
+from 0.000000e+00 -5.750000e-04 0.000000e+00
+to   3.500000e-03 5.750000e-04 0.000000e+00
 ion_species 5
 electron_species 0
 number_of_clusters 1
 particle_data_file O4+part.p4
 ;;O5+
 cluster
-from 0.000000e+00 -5.750000e+00 0.000000e+00
-to   4.500000e+01 5.750000e+00 0.000000e+00
+from 0.000000e+00 -5.750000e-04 0.000000e+00
+to   3.500000e-03 5.750000e-04 0.000000e+00
 ion_species 6
 electron_species 0
 number_of_clusters 1
 particle_data_file O5+part.p4
 ;;O6+
 cluster
-from 0.000000e+00 -5.750000e+00 0.000000e+00
-to   4.500000e+01 5.750000e+00 0.000000e+00
+from 0.000000e+00 -5.750000e-04 0.000000e+00
+to   3.500000e-03 5.750000e-04 0.000000e+00
 ion_species 7
 electron_species 0
 number_of_clusters 1
 particle_data_file O6+part.p4
 ;;O7+
 cluster
-from 0.000000e+00 -5.750000e+00 0.000000e+00
-to   4.500000e+01 5.750000e+00 0.000000e+00
+from 0.000000e+00 -5.750000e-04 0.000000e+00
+to   3.500000e-03 5.750000e-04 0.000000e+00
 ion_species 8
 electron_species 0
 number_of_clusters 1
 particle_data_file O7+part.p4
 ;;O8+
 cluster
-from 0.000000e+00 -5.750000e+00 0.000000e+00
-to   4.500000e+01 5.750000e+00 0.000000e+00
+from 0.000000e+00 -5.750000e-04 0.000000e+00
+to   3.500000e-03 5.750000e-04 0.000000e+00
 ion_species 9
 electron_species 0
 number_of_clusters 1
 particle_data_file O8+part.p4
 ;;C0
 cluster
-from 0.000000e+00 -5.750000e+00 0.000000e+00
-to   4.500000e+01 5.750000e+00 0.000000e+00
+from 0.000000e+00 -5.750000e-04 0.000000e+00
+to   3.500000e-03 5.750000e-04 0.000000e+00
 ion_species 10
 electron_species 0
 number_of_clusters 1
 particle_data_file C0part.p4
 ;;C+
 cluster
-from 0.000000e+00 -5.750000e+00 0.000000e+00
-to   4.500000e+01 5.750000e+00 0.000000e+00
+from 0.000000e+00 -5.750000e-04 0.000000e+00
+to   3.500000e-03 5.750000e-04 0.000000e+00
 ion_species 11
 electron_species 0
 number_of_clusters 1
 particle_data_file C+part.p4
 ;;C++
 cluster
-from 0.000000e+00 -5.750000e+00 0.000000e+00
-to   4.500000e+01 5.750000e+00 0.000000e+00
+from 0.000000e+00 -5.750000e-04 0.000000e+00
+to   3.500000e-03 5.750000e-04 0.000000e+00
 ion_species 12
 electron_species 0
 number_of_clusters 1
 particle_data_file C++part.p4
 ;;C3+
 cluster
-from 0.000000e+00 -5.750000e+00 0.000000e+00
-to   4.500000e+01 5.750000e+00 0.000000e+00
+from 0.000000e+00 -5.750000e-04 0.000000e+00
+to   3.500000e-03 5.750000e-04 0.000000e+00
 ion_species 13
 electron_species 0
 number_of_clusters 1
 particle_data_file C3+part.p4
 ;;C4+
 cluster
-from 0.000000e+00 -5.750000e+00 0.000000e+00
-to   4.500000e+01 5.750000e+00 0.000000e+00
+from 0.000000e+00 -5.750000e-04 0.000000e+00
+to   3.500000e-03 5.750000e-04 0.000000e+00
 ion_species 14
 electron_species 0
 number_of_clusters 1
 particle_data_file C4+part.p4
 ;;C5+
 cluster
-from 0.000000e+00 -5.750000e+00 0.000000e+00
-to   4.500000e+01 5.750000e+00 0.000000e+00
+from 0.000000e+00 -5.750000e-04 0.000000e+00
+to   3.500000e-03 5.750000e-04 0.000000e+00
 ion_species 15
 electron_species 0
 number_of_clusters 1
 particle_data_file C5+part.p4
 ;;C6+
 cluster
-from 0.000000e+00 -5.750000e+00 0.000000e+00
-to   4.500000e+01 5.750000e+00 0.000000e+00
+from 0.000000e+00 -5.750000e-04 0.000000e+00
+to   3.500000e-03 5.750000e-04 0.000000e+00
 ion_species 16
 electron_species 0
 number_of_clusters 1
 particle_data_file C6+part.p4
 ;;H0
 cluster
-from 0.000000e+00 -5.750000e+00 0.000000e+00
-to   4.500000e+01 5.750000e+00 0.000000e+00
+from 0.000000e+00 -5.750000e-04 0.000000e+00
+to   3.500000e-03 5.750000e-04 0.000000e+00
 ion_species 18
 electron_species 0
 number_of_clusters 1
 particle_data_file H0part.p4
 ;;p+
 cluster
-from 0.000000e+00 -5.750000e+00 0.000000e+00
-to   4.500000e+01 5.750000e+00 0.000000e+00
+from 0.000000e+00 -5.750000e-04 0.000000e+00
+to   3.500000e-03 5.750000e-04 0.000000e+00
 ion_species 19
 electron_species 0
 number_of_clusters 1
 particle_data_file p+part.p4
 ;;e-
 cluster
-from 0.000000e+00 -5.750000e+00 0.000000e+00
-to   4.500000e+01 5.750000e+00 0.000000e+00
+from 0.000000e+00 -5.750000e-04 0.000000e+00
+to   3.500000e-03 5.750000e-04 0.000000e+00
 ion_species 0
 electron_species 17
 number_of_clusters 1

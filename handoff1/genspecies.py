@@ -13,6 +13,7 @@ electron_species {electron_species}
 number_of_clusters {number_of_clusters}
 particle_data_file {fname}'''
 
+mt  = lambda t,m=1e-4: tuple([i*m for i in t]);
 def genclusters(
         electron_species=None,
         ion_species=None,
@@ -29,7 +30,7 @@ def genclusters(
         if type(i) == dict:
             out+=species_fmt.format(**i);
         else:
-            xmin,xmax,ymin,ymax,zmin,zmax = clims;
+            xmin,xmax,ymin,ymax,zmin,zmax = mt(clims);
             out+=species_fmt.format(
                 label=l,
                 ion_species=i,
@@ -43,7 +44,7 @@ def genclusters(
     if type(electron_species) == dict:
         out+=species_fmt.format(**electron_species);
     else:
-        xmin,xmax,ymin,ymax,zmin,zmax = clims;
+        xmin,xmax,ymin,ymax,zmin,zmax = mt(clims);
         out+=species_fmt.format(
             label="e-",
             ion_species=0,
