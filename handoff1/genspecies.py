@@ -17,7 +17,7 @@ def genclusters(
         electron_species=None,
         ion_species=None,
         ion_labels=None,
-        fname='__handoff_part__',
+        fname_fmt='{}part.p4',
         clims=None,
         num=1):
     out="";
@@ -35,7 +35,7 @@ def genclusters(
                 ion_species=i,
                 electron_species=0,
                 number_of_clusters=num,
-                fname=fname,
+                fname=fname_fmt.format(l),
                 xmin=xmin,xmax=xmax,
                 ymin=ymin,ymax=ymax,
                 zmin=zmin,zmax=zmax);
@@ -49,7 +49,7 @@ def genclusters(
             ion_species=0,
             electron_species=electron_species,
             number_of_clusters=num,
-            fname=fname,
+            fname=fname_fmt.format("e-"),
             xmin=xmin,xmax=xmax,
             ymin=ymin,ymax=ymax,
             zmin=zmin,zmax=zmax);

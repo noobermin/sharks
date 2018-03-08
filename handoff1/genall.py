@@ -53,6 +53,7 @@ d=dict(
     description="bad glysh2 handoff1",
     dumpinterval=2.1e-15,
     #godsave me
+    dump_time_zero_flag=True,
     field_initialization_flag=True,
     #PIC/grid details
     domains=44,
