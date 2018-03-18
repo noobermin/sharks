@@ -172,6 +172,7 @@ d3d = dict(
     no_pmovies=True,
     #particle dumps
     dump_particle=True,
+    dump_scalar=False,
     dump_plasma_quantities_flag=False,
     spatial_skip_x=2,
     spatial_skip_z=2,

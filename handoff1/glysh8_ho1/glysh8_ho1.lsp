@@ -50,8 +50,6 @@ spatial_skip_z 2
 
 dump_fields_flag ON
 field_dump_interval_ns 2.1e-06
-dump_scalars_flag ON
-scalar_dump_interval_ns 2.1e-06
 dump_particles_flag ON
 particle_dump_interval_ns 2.1e-06
 
