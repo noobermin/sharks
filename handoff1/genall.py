@@ -148,9 +148,11 @@ d3d = dict(
         0.02, 0.02, 0.02),
     target_temps=(
         None,None,None),
+    pbses='defaults',
     dir=True,
     restart=0.75,
     dump_restart_flag=True,
+    dump_time_zero_flag=True,
     #movs
     movne=dict(
         ne_species = 'RhoN17',
@@ -170,6 +172,7 @@ d3d = dict(
     no_pmovies=True,
     #particle dumps
     dump_particle=True,
+    dumpinterval=2.1e-15,
     pext_species=[17],
     conductors=[],
     fileread_spec = dict(
