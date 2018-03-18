@@ -758,10 +758,13 @@ particle_movie_components Q X Y Z VX VY VZ XI YI ZI
 '''.format(dumpinterval=fmtd['dumpinterval']);
     else:
         pmovies = '';
-    fmtd['other_funcs'] = getkw('other_funcs');
     if test(kw,'clusters_spec'):
         from genspecies import genclusters
         fmtd['clusters'] = genclusters(**kw['clusters_spec']);
+    if test(kw,'fileread_spec'):
+        from genspecies import genfileread
+        fmtd['filereads']= genfileread(**kw['fileread_spec']);
+    fmtd['other_funcs'] = getkw('other_funcs');
     lsptemplate=getkw("lsptemplate");
     with open(lsptemplate) as f:
         s=f.read();

@@ -3,7 +3,7 @@
 import numpy as np;
 from pys import sd;
 
-species_fmt='''
+cluster_fmt='''
 ;;{label}
 cluster
 from {xmin:e} {ymin:e} {zmin:e}
@@ -28,10 +28,10 @@ def genclusters(
             for i in ion_species ];
     for i,l in zip(ion_species,ion_labels):
         if type(i) == dict:
-            out+=species_fmt.format(**i);
+            out+=cluster_fmt.format(**i);
         else:
             xmin,xmax,ymin,ymax,zmin,zmax = mt(clims);
-            out+=species_fmt.format(
+            out+=cluster_fmt.format(
                 label=l,
                 ion_species=i,
                 electron_species=0,
@@ -42,10 +42,10 @@ def genclusters(
                 zmin=zmin,zmax=zmax);
             
     if type(electron_species) == dict:
-        out+=species_fmt.format(**electron_species);
+        out+=cluster_fmt.format(**electron_species);
     else:
         xmin,xmax,ymin,ymax,zmin,zmax = mt(clims);
-        out+=species_fmt.format(
+        out+=cluster_fmt.format(
             label="e-",
             ion_species=0,
             electron_species=electron_species,
@@ -55,3 +55,49 @@ def genclusters(
             ymin=ymin,ymax=ymax,
             zmin=zmin,zmax=zmax);
     return out;
+
+
+
+
+
+
+fileread_fmt = '''
+from {xmin} {ymin} {zmin}
+to   {xmax} {ymax} {zmax}
+normal {normal}
+interval {interval}
+species {species}
+temporal_function {tfunc}
+particle_data_file {fname}
+recycle_time {recycle}
+time_advance {advance}
+
+'''
+
+def genfileread(
+        lims=None,
+        normal='X',
+        interval=1,
+        species=17,
+        fname=None,
+        tfunc=6,
+        time_advance=0,
+        recycle_time=0):
+    xmin,xmax = lims[:2]
+    ymin,ymax = lims[2:4]
+    zmin,zmax = lims[4:6];
+    return fileread_fmt.format(
+        xmin=xmin,
+        xmax=xmax,
+        ymin=ymin,
+        ymax=ymax,
+        zmin=zmin,
+        zmax=zmax,
+        normal=normal,
+        interval=interval,
+        species=species,
+        tfunc=tfunc,
+        fname=fname,
+        recycle=recycle_time,
+        advance=time_advance);
+

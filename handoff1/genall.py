@@ -40,7 +40,7 @@ d=dict(
            -5.75,5.75,
            0,   0),
     tlim=(   35,200,
-          -0.23, 23,
+          -0.23, 0.23,
               0,  0),
     clim=(0,35,-5.75,5.75, 0,0),
     res =(800,
@@ -114,4 +114,76 @@ d['clusters_spec'] =dict(
     electron_species=17,
     clims = d['clim'],
 );
-gensim(**d);
+d3d = dict(
+    l=1,
+    w=0,
+    T=0,
+    I=0,
+    dens_flags=(True,False,False),
+    discrete=(2,2,2),
+    lims=(5,205,
+          -5.75,5.75,
+          -100, 100),
+    tlims=(5,205,
+          -5.75,5.75,
+          -100, 100),
+    res=(1000, 500, 1000),
+    timestep = 6e-17,
+    totaltime= 2e-12,
+    region_split=('z', 20),
+    domains=880,
+    nolaser=True,
+    dens_type=30,#misc
+    lspexec='lsp-10-3d',
+    externalf_1D=True,
+    new_externalf=True,
+    pbsbase="glysh8_ho1",
+    f_1D=lambda x: np.ones(x.shape)*1.08e22,
+    speciesl=['O0','C0','H'],
+    fracs   =[2.0, 2.0,6.0],
+    lsptemplate="neutralglycol_allemitters_fileread.lsp",
+    dens_dat='target_dumb.dat',
+    dat_xres=2,
+    thermal_energy=(
+        0.02, 0.02, 0.02),
+    target_temps=(
+        None,None,None),
+    dir=True,
+    restart=0.75,
+    dump_restart_flag=True,
+    #movs
+    movne=dict(
+        ne_species = 'RhoN17',
+        n_c=4*1.7e21,
+        clim=(1e20,1e23)),
+    movrho=dict(
+        n_c=4*1.7e21,
+        clim=(-1e19,1e19),
+        linthresh=1e15,),
+    movE=dict(
+        n_c=4*1.7e21,
+        clim=(EfromI(1e14),EfromI(1e19)),
+        contour_lines=(1.7e21),
+        contour_quantities=('RhoN17'),
+    ),
+    #pmovies
+    no_pmovies=True,
+    #particle dumps
+    dump_particle=True,
+    pext_species=[17],
+    conductors=[],
+    fileread_spec = dict(
+        lims = (
+            5e-4,5e-4,
+            -5.75e-4, 5.75e-4,
+            -100e-4, 100e-4),
+        fname='glysh8-synthpext.p4',
+        tfunc=6,
+    ),
+    other_funcs='''
+function6
+type 3
+coefficients 1 100e-6 ; 100fs
+''',
+);
+gensim(**d3d);
