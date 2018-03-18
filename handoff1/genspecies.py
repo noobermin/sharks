@@ -68,8 +68,9 @@ to   {xmax} {ymax} {zmax}
 normal {normal}
 interval {interval}
 species {species}
-temporal_function {tfunc}
 particle_data_file {fname}
+temporal_function {tfunc}
+reference_point {ref}
 recycle_time {recycle}
 time_advance {advance}
 
@@ -82,6 +83,7 @@ def genfileread(
         species=17,
         fname=None,
         tfunc=6,
+        reference_point=[0.0,0.0,0.0],
         time_advance=0,
         recycle_time=0):
     xmin,xmax = lims[:2]
@@ -95,6 +97,7 @@ def genfileread(
         zmin=zmin,
         zmax=zmax,
         normal=normal,
+        ref=' '.join((str(i) for i in reference_point)),
         interval=interval,
         species=species,
         tfunc=tfunc,
