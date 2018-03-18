@@ -246,6 +246,11 @@ reald = sd(
         contour_lines=(1.7e21),
         contour_quantities=('RhoN17'),
     ),
+    movB=dict(
+        clim=(BfromI(1e14),BfromI(1e19)),
+        contour_lines=(1.7e21),
+        contour_quantities=('RhoN17'),
+    ),
     **mkconds(d['tlim'], backin=1e-4),
 );
 reald.update(

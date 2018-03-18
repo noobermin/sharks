@@ -22,6 +22,9 @@ cd "$PBS_O_WORKDIR"
 #zipper
 ./loopscript zipper &> $PBS_O_WORKDIR/zipper.log&
 zipper_PID=$!
+#movB
+./loopscript movB &> $PBS_O_WORKDIR/movB.log&
+movB_PID=$!
 #movE
 ./loopscript movE &> $PBS_O_WORKDIR/movE.log&
 movE_PID=$!
@@ -37,6 +40,8 @@ mpirun -np 4312 -hostfile $PBS_NODEFILE ./lsp-10-3d -r  $PBSBASE.lsp >$PBS_O_WOR
 
 kill $zipper_PID
 ./zipper -a >$PBS_O_WORKDIR
+kill $movB_PID
+./movB
 kill $movE_PID
 ./movE
 kill $movne_PID
