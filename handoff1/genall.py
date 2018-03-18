@@ -114,6 +114,11 @@ d['clusters_spec'] =dict(
     electron_species=17,
     clims = d['clim'],
 );
+
+d3dlim = (
+      5,     185,
+     -5.75,    5.75,
+    -92,      92) 
 d3d = dict(
     l=1,
     w=0,
@@ -121,13 +126,9 @@ d3d = dict(
     I=0,
     dens_flags=(True,False,False),
     discrete=(2,2,2),
-    lim=(5,205,
-          -5.75,5.75,
-          -100, 100),
-    tlim=(5,185,
-          -5.75,5.75,
-          -90, 90),
-    res=(900, 500, 900),
+    lim=d3dlim,
+    tlim=d3dlim,
+    res=(900, 500, 920),
     timestep = 6e-17,
     totaltime= 2e-12,
     region_split=('z', 40),
