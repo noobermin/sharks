@@ -755,6 +755,7 @@ movie_fraction 0.000
 ;
 ;; handoff
 
+fileread
 from 0.0005 -0.000575 -0.01
 to   0.0005 0.000575 0.01
 normal X

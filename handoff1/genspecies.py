@@ -62,6 +62,7 @@ def genclusters(
 
 
 fileread_fmt = '''
+fileread
 from {xmin} {ymin} {zmin}
 to   {xmax} {ymax} {zmax}
 normal {normal}
