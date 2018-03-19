@@ -196,3 +196,18 @@ coefficients 1 100e-6 ; 100fs
 ''',
 );
 gensim(**d3d);
+d3dlim = (
+      5,     181,
+     -5.75,    5.75,
+    -80,      80) 
+
+d3d_coarser = sd(
+    d3d,
+    res=(440,500,400),
+    spatial_skip_x=1,
+    spatial_skip_z=1,
+    region_split=('z',40),
+    domains=44*40,
+    pbsbase='glysh8_ho2',
+);
+gensim(**d3d_coarser);
