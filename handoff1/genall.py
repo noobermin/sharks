@@ -230,7 +230,7 @@ gensim(**g8ho3);
 #this is coarser in y
 g8ho4 = sd(
     g8ho3,
-    mres = 250,
+    res=(440, 250, 400),
     region_split=('z',20),
     domains=44*20,
     pbsbase='glysh8_ho4');
