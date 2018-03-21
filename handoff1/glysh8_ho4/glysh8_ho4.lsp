@@ -1292,7 +1292,7 @@ dependent_variable_multiplier 6.0
 
 function6
 type 3
-coefficients 1 100e-6 ; 100fs
+coefficients 1 7e-5 ; 70fs
 
 
 [Probes]

@@ -224,7 +224,12 @@ g8ho3 = sd(
     res = mres,
     region_split = ('z',40),
     domains=44*40,
-    pbsbase='glysh8_ho3');
+    pbsbase='glysh8_ho3',
+    other_funcs='''
+function6
+type 3
+coefficients 1 7e-5 ; 70fs
+''',);
 gensim(**g8ho3);
 
 #this is coarser in y
