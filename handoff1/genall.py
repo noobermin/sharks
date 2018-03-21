@@ -211,3 +211,19 @@ d3d_coarser = sd(
     pbsbase='glysh8_ho2',
 );
 gensim(**d3d_coarser);
+
+mlim = (
+     5.00,   93.00,
+    -5.75,    5.75,
+   -40.00,   40.00);
+mres = (440, 500, 400)
+g8ho3 = sd(
+    d3d_coarser,
+    lim = mlim,
+    tlim= mlim,
+    res = mres,
+    region_split = ('z',40),
+    domains=44*40,
+    pbsbase='glysh8_ho3');
+gensim(**g8ho3);
+    
