@@ -240,3 +240,10 @@ g8ho4 = sd(
     domains=44*20,
     pbsbase='glysh8_ho4');
 gensim(**g8ho4);
+
+
+g8ho5 = sd(
+    g8ho4,
+    discrete=(2,2,2),
+    pbsbase='glysh8_ho5');
+gensim(**g8ho5);
