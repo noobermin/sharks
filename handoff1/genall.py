@@ -247,3 +247,33 @@ g8ho5 = sd(
     discrete=(2,2,2),
     pbsbase='glysh8_ho5');
 gensim(**g8ho5);
+
+g8hi = sd(
+    g8ho5,
+    timestep=1e-16,
+    lim = d3dlim,
+    tlim= d3dlim,
+    res = (880, 250, 800),
+    discrete=(2,2,2),
+    region_split=('z',40),
+    domains=44*40,
+    pbsbase='glysh8_hi1',
+    fileread_spec = [
+        dict(
+            lims = (
+                5e-4,5e-4,
+                -5.75e-4, 5.75e-4,
+                -80e-4, 80e-4),
+            fname='glysh8-synthpext.p4',
+            tfunc=6,),
+        dict(
+            lims = (
+                5e-4,5e-4,
+                -5.75e-4, 5.75e-4,
+                -80e-4, 80e-4),
+            fname='glysh8-synthpext-neutral.p4',
+            species=19,
+            tfunc=6,),],
+    dumpinterval=2e-15,
+);
+gensim(**g8hi);

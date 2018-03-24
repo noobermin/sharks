@@ -762,8 +762,12 @@ particle_movie_components Q X Y Z VX VY VZ XI YI ZI
         from genspecies import genclusters
         fmtd['clusters'] = genclusters(**kw['clusters_spec']);
     if test(kw,'fileread_spec'):
-        from genspecies import genfileread
-        fmtd['filereads']= genfileread(**kw['fileread_spec']);
+        from genspecies import genfilereads;
+        if type(kw['fileread_spec']) == list or type(kw['fileread_spec']) == tuple:
+            a = kw['fileread_spec'];
+        else:
+            a = [kw['fileread_spec']];
+        fmtd['filereads']= genfilereads(a);
     fmtd['other_funcs'] = getkw('other_funcs');
     lsptemplate=getkw("lsptemplate");
     with open(lsptemplate) as f:

@@ -105,3 +105,8 @@ def genfileread(
         recycle=recycle_time,
         advance=time_advance);
 
+
+def genfilereads(a):
+    return '\n'.join([
+        genfileread(**di)
+        for di in a])
