@@ -287,5 +287,10 @@ g8hi2 = sd(
     region_split=('z',50),
     domains=44*50,
     lsptemplate='neutralglycol_allemitters_fileread_partreduct.lsp',
+        other_funcs='''
+function6
+type 3
+coefficients 1 7e-5 ; 54fs
+''',
 );
 gensim(**g8hi2);
