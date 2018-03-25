@@ -287,7 +287,7 @@ g8hi2 = sd(
     region_split=('z',50),
     domains=44*50,
     lsptemplate='neutralglycol_allemitters_fileread_partreduct.lsp',
-        other_funcs='''
+    other_funcs='''
 function6
 type 3
 coefficients 1 54e-6 ; 54fs
@@ -309,5 +309,11 @@ g8hi3 = sd(
         dict(outlet='xmin',start=-0.1,width=1.0),
         dict(outlet='ymin',start=-0.1,width=1.0),
         dict(outlet='ymax',start=-0.1,width=1.0),],
+    timestep = 4e-17,
+    splittime=[
+        (54e-15, None),
+        (150e-15, dict(timestep=8e-17)),
+        (1e-12,   dict(timestep=1.2e-16))
+    ]
 );
 gensim(**g8hi3);

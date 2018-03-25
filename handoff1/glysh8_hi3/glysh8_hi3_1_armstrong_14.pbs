@@ -1,6 +1,6 @@
 #PBS -l walltime=14:0:00
 #PBS -l select=92:ncpus=24:mpiprocs=24
-#PBS -N glysh8_hi3
+#PBS -N glysh8_hi3_1
 #PBS -S /bin/bash
 #PBS -j oe
 #PBS -m ae
@@ -9,7 +9,7 @@
 #PBS -q standard
 
 
-PBSBASE=glysh8_hi3
+PBSBASE=glysh8_hi3_1
 #source $HOME/.bashrc
 
 #This outputs the name of the root node

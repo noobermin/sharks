@@ -1,15 +1,15 @@
-#PBS -l walltime=14:0:00
-#PBS -l select=92:ncpus=24:mpiprocs=24
-#PBS -N glysh8_hi3
+#PBS -l walltime=1:0:00
+#PBS -l select=50:ncpus=44:mpiprocs=44
+#PBS -N glysh8_hi3_1
 #PBS -S /bin/bash
 #PBS -j oe
 #PBS -m ae
 #PBS -M ngirmang.1@osu.edu
 #PBS -A __projectid__
-#PBS -q standard
+#PBS -q debug
 
 
-PBSBASE=glysh8_hi3
+PBSBASE=glysh8_hi3_1
 #source $HOME/.bashrc
 
 #This outputs the name of the root node

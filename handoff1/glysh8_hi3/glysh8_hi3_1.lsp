@@ -6,8 +6,8 @@ simulation_title "Hotwater in 2d, I = 0.000000e+00 W/cm^2"
 ;
 [Control]
 ;Time-advance
- time_limit   5.4000e-05
- time_step_ns 4.0000e-08
+ time_limit   1.5000e-04
+ time_step_ns 8.0000e-08
 
 ;;Restarts
 dump_restart_flag ON

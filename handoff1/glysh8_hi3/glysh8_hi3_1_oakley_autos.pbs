@@ -1,13 +1,13 @@
 #PBS -l walltime=96:0:00
 #PBS -l nodes=184:ppn=12
-#PBS -N glysh8_hi3
+#PBS -N glysh8_hi3_1
 #PBS -S /bin/bash
 #PBS -j oe
 #PBS -m ae
 #PBS -M ngirmang.1@osu.edu
 
 
-PBSBASE=glysh8_hi3
+PBSBASE=glysh8_hi3_1
 #source $HOME/.bashrc
 
 #This outputs the name of the root node
