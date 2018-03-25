@@ -290,7 +290,24 @@ g8hi2 = sd(
         other_funcs='''
 function6
 type 3
-coefficients 1 7e-5 ; 54fs
+coefficients 1 54e-6 ; 54fs
 ''',
 );
 gensim(**g8hi2);
+
+g8hi3 = sd(
+    g8hi2,
+    pbsbase='glysh8_hi3',
+    fileread_spec = dict(
+        lims = (
+            5e-4,5e-4,
+            -5.75e-4, 5.75e-4,
+            -80e-4, 80e-4),
+        fname='glysh8-synthpext.p4',
+        tfunc=6,),
+    conductors=[
+        dict(outlet='xmin',start=-0.1,width=1.0),
+        dict(outlet='ymin',start=-0.1,width=1.0),
+        dict(outlet='ymax',start=-0.1,width=1.0),],
+);
+gensim(**g8hi3);

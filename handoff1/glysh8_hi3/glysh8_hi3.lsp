@@ -836,6 +836,21 @@ number_of_cells AUTO ; cells = 3520000
 ;
 [Objects]
 
+object1 BLOCK
+conductor on medium 0 potential 0
+from 4.100000e-04 -5.750000e-04 -4.000000e-03
+to   5.100000e-04 5.750000e-04 4.000000e-03
+
+object2 BLOCK
+conductor on medium 0 potential 0
+from 5.000000e-04 -6.650000e-04 -4.000000e-03
+to   9.300000e-03 -5.650000e-04 4.000000e-03
+
+object3 BLOCK
+conductor on medium 0 potential 0
+from 5.000000e-04 5.650000e-04 -4.000000e-03
+to   9.300000e-03 6.650000e-04 4.000000e-03
+
 
 [Boundaries]
 ;back this is the laser
@@ -1210,20 +1225,6 @@ normal X
 interval 1
 species 17
 particle_data_file glysh8-synthpext.p4
-temporal_function 6
-reference_point 0.0 0.0 0.0
-recycle_time 0
-time_advance 0
-
-
-
-fileread
-from 0.0005 -0.000575 -0.008
-to   0.0005 0.000575 0.008
-normal X
-interval 1
-species 19
-particle_data_file glysh8-synthpext-neutral.p4
 temporal_function 6
 reference_point 0.0 0.0 0.0
 recycle_time 0
