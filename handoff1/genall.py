@@ -310,10 +310,38 @@ g8hi3 = sd(
         dict(outlet='ymin',start=-0.1,width=1.0),
         dict(outlet='ymax',start=-0.1,width=1.0),],
     timestep = 4e-17,
+    cond_threshold=1e-3/200e-7,#kV/cm
     splittime=[
-        (54e-15, None),
-        (150e-15, dict(timestep=8e-17)),
+        ( 80e-15, None),
+        (160e-15, dict(timestep=8e-17)),
         (1e-12,   dict(timestep=1.2e-16))
-    ]
+    ],
+    other_funcs='''
+function6
+type 3
+coefficients 1 50e-6 ; 50fs
+''',
 );
 gensim(**g8hi3);
+
+g8hi4 = sd(
+    g8hi3,
+    pbsbase='glysh8_hi4',
+    fileread_spec = [
+        dict(
+            lims = (
+                5e-4,5e-4,
+                -5.75e-4, 5.75e-4,
+                -80e-4, 80e-4),
+            fname='glysh8-synthpext.p4',
+            tfunc=6,),
+        dict(
+            lims = (
+                5e-4,5e-4,
+                -5.75e-4, 5.75e-4,
+                -80e-4, 80e-4),
+            fname='glysh8-synthpext-neutral.p4',
+            species=19,
+            tfunc=6,),],
+);
+gensim(**g8hi4);

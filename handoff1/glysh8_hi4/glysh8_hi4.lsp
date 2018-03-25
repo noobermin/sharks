@@ -6,8 +6,8 @@ simulation_title "Hotwater in 2d, I = 0.000000e+00 W/cm^2"
 ;
 [Control]
 ;Time-advance
- time_limit   1.0000e-03
- time_step_ns 1.2000e-07
+ time_limit   8.0000e-05
+ time_step_ns 4.0000e-08
 
 ;;Restarts
 dump_restart_flag ON
@@ -1225,6 +1225,20 @@ normal X
 interval 1
 species 17
 particle_data_file glysh8-synthpext.p4
+temporal_function 6
+reference_point 0.0 0.0 0.0
+recycle_time 0
+time_advance 0
+
+
+
+fileread
+from 0.0005 -0.000575 -0.008
+to   0.0005 0.000575 0.008
+normal X
+interval 1
+species 19
+particle_data_file glysh8-synthpext-neutral.p4
 temporal_function 6
 reference_point 0.0 0.0 0.0
 recycle_time 0

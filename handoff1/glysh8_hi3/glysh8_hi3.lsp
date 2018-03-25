@@ -6,7 +6,7 @@ simulation_title "Hotwater in 2d, I = 0.000000e+00 W/cm^2"
 ;
 [Control]
 ;Time-advance
- time_limit   5.4000e-05
+ time_limit   8.0000e-05
  time_step_ns 4.0000e-08
 
 ;;Restarts
@@ -1242,7 +1242,7 @@ interval 1
 species 17
 discrete_numbers 2 2 1
 inclusion SOLID
-threshold 0.000000e+00
+threshold 5.000000e+01
 thermal_energy 1.0
 movie_fraction 0.0
 
@@ -1254,7 +1254,7 @@ interval 1
 species 19
 discrete_numbers 2 2 1
 inclusion SOLID
-threshold 0.000000e+00
+threshold 5.000000e+01
 thermal_energy 1.0
 movie_fraction 0.0
 
@@ -1266,7 +1266,7 @@ interval 1
 species 11
 discrete_numbers 2 2 1
 inclusion SOLID
-threshold 0.000000e+00
+threshold 5.000000e+01
 thermal_energy 1.0
 movie_fraction 0.0
 
@@ -1278,7 +1278,7 @@ interval 1
 species 2
 discrete_numbers 2 2 1
 inclusion SOLID
-threshold 0.000000e+00
+threshold 5.000000e+01
 thermal_energy 1.0
 movie_fraction 0.0
 
@@ -1757,7 +1757,7 @@ dependent_variable_multiplier 6.0
 
 function6
 type 3
-coefficients 1 54e-6 ; 54fs
+coefficients 1 50e-6 ; 50fs
 
 
 [Probes]
