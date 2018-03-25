@@ -284,6 +284,8 @@ g8hi2 = sd(
     res = (880,250,800),
     pbsbase='glysh8_hi2',
     dumpinterval=2.5e-15,
+    region_split=('z',50),
+    domains=44*50,
     lsptemplate='neutralglycol_allemitters_fileread_partreduct.lsp',
 );
 gensim(**g8hi2);
