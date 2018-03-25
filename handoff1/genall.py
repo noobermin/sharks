@@ -295,8 +295,14 @@ coefficients 1 54e-6 ; 54fs
 );
 gensim(**g8hi2);
 
+condlims=[
+     4.8,     92.8,
+    -5.75,    5.75,
+   -40.00,   40.00];
 g8hi3 = sd(
     g8hi2,
+    lim=condlims,
+    tlim=condlims,
     pbsbase='glysh8_hi3',
     fileread_spec = dict(
         lims = (

@@ -60,8 +60,8 @@ particle_dump_interval_ns 2.5e-06
 [Grid]
 ;
 grid1
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 x-cells          880
                                         ;
 ;
@@ -81,8 +81,8 @@ z-cells          800
 
 ;
 region1
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -96,8 +96,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region2
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -111,8 +111,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region3
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -126,8 +126,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region4
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -141,8 +141,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region5
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -156,8 +156,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region6
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -171,8 +171,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region7
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -186,8 +186,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region8
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -201,8 +201,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region9
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -216,8 +216,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region10
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -231,8 +231,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region11
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -246,8 +246,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region12
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -261,8 +261,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region13
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -276,8 +276,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region14
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -291,8 +291,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region15
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -306,8 +306,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region16
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -321,8 +321,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region17
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -336,8 +336,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region18
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -351,8 +351,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region19
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -366,8 +366,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region20
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -381,8 +381,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region21
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -396,8 +396,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region22
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -411,8 +411,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region23
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -426,8 +426,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region24
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -441,8 +441,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region25
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -456,8 +456,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region26
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -471,8 +471,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region27
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -486,8 +486,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region28
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -501,8 +501,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region29
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -516,8 +516,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region30
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -531,8 +531,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region31
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -546,8 +546,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region32
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -561,8 +561,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region33
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -576,8 +576,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region34
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -591,8 +591,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region35
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -606,8 +606,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region36
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -621,8 +621,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region37
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -636,8 +636,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region38
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -651,8 +651,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region39
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -666,8 +666,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region40
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -681,8 +681,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region41
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -696,8 +696,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region42
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -711,8 +711,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region43
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -726,8 +726,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region44
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -741,8 +741,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region45
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -756,8 +756,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region46
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -771,8 +771,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region47
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -786,8 +786,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region48
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -801,8 +801,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region49
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -816,8 +816,8 @@ number_of_cells AUTO ; cells = 3520000
 ;
 ;
 region50
-xmin             5.000000e-04
-xmax             9.300000e-03
+xmin             4.800000e-04
+xmax             9.280000e-03
 
 ymin             -5.750000e-04
 ymax             5.750000e-04
@@ -838,18 +838,18 @@ number_of_cells AUTO ; cells = 3520000
 
 object1 BLOCK
 conductor on medium 0 potential 0
-from 4.100000e-04 -5.750000e-04 -4.000000e-03
-to   5.100000e-04 5.750000e-04 4.000000e-03
+from 3.900000e-04 -5.750000e-04 -4.000000e-03
+to   4.900000e-04 5.750000e-04 4.000000e-03
 
 object2 BLOCK
 conductor on medium 0 potential 0
-from 5.000000e-04 -6.650000e-04 -4.000000e-03
-to   9.300000e-03 -5.650000e-04 4.000000e-03
+from 4.800000e-04 -6.650000e-04 -4.000000e-03
+to   9.280000e-03 -5.650000e-04 4.000000e-03
 
 object3 BLOCK
 conductor on medium 0 potential 0
-from 5.000000e-04 5.650000e-04 -4.000000e-03
-to   9.300000e-03 6.650000e-04 4.000000e-03
+from 4.800000e-04 5.650000e-04 -4.000000e-03
+to   9.280000e-03 6.650000e-04 4.000000e-03
 
 
 [Boundaries]
@@ -857,38 +857,38 @@ to   9.300000e-03 6.650000e-04 4.000000e-03
 
 ;front
 outlet
-from 5.000000e-04  -5.750000e-04 -4.000000e-03
-to   5.000000e-04  5.750000e-04 4.000000e-03
+from 4.800000e-04  -5.750000e-04 -4.000000e-03
+to   4.800000e-04  5.750000e-04 4.000000e-03
 phase_velocity 1.0
 drive_model NONE
 ;back
 outlet
-from 9.300000e-03  -5.750000e-04 -4.000000e-03
-to   9.300000e-03  5.750000e-04 4.000000e-03
+from 9.280000e-03  -5.750000e-04 -4.000000e-03
+to   9.280000e-03  5.750000e-04 4.000000e-03
 phase_velocity 1.0
 drive_model NONE
 ;left
 outlet
-from 5.000000e-04  -5.750000e-04 -4.000000e-03
-to   9.300000e-03  -5.750000e-04 4.000000e-03
+from 4.800000e-04  -5.750000e-04 -4.000000e-03
+to   9.280000e-03  -5.750000e-04 4.000000e-03
 phase_velocity 1.0
 drive_model NONE
 ;right
 outlet
-from 5.000000e-04  5.750000e-04 -4.000000e-03
-to   9.300000e-03  5.750000e-04 4.000000e-03
+from 4.800000e-04  5.750000e-04 -4.000000e-03
+to   9.280000e-03  5.750000e-04 4.000000e-03
 phase_velocity 1.0
 drive_model NONE
 ;bottom
 outlet
-from 5.000000e-04  -5.750000e-04 -4.000000e-03
-to   9.300000e-03  5.750000e-04 -4.000000e-03
+from 4.800000e-04  -5.750000e-04 -4.000000e-03
+to   9.280000e-03  5.750000e-04 -4.000000e-03
 phase_velocity 1.0
 drive_model NONE
 ;top
 outlet
-from 5.000000e-04  -5.750000e-04 4.000000e-03
-to   9.300000e-03  5.750000e-04 4.000000e-03
+from 4.800000e-04  -5.750000e-04 4.000000e-03
+to   9.280000e-03  5.750000e-04 4.000000e-03
 phase_velocity 1.0
 drive_model NONE
 
@@ -1172,14 +1172,14 @@ selection_ratio 1.0
 
 ;; initial states ;;
 plasma ; O
-from 5.000000e-04  -5.750000e-04  -4.000000e-03
-to   9.300000e-03  5.750000e-04  4.000000e-03
+from 4.800000e-04  -5.750000e-04  -4.000000e-03
+to   9.280000e-03  5.750000e-04  4.000000e-03
 species 1
 movie_tag 3
 unbound off
 discrete_numbers 2 2 1
 density_function 3
-reference_point 5.000000e-04 -5.750000e-04 -4.000000e-03
+reference_point 4.800000e-04 -5.750000e-04 -4.000000e-03
 density_flags 1 0 0
 momentum_flags 0 0 0
 thermal_energy 0.02
@@ -1187,14 +1187,14 @@ thermal_energy 0.02
 movie_fraction 0.000
 ;
 plasma ; C
-from 5.000000e-04  -5.750000e-04  -4.000000e-03
-to   9.300000e-03  5.750000e-04  4.000000e-03
+from 4.800000e-04  -5.750000e-04  -4.000000e-03
+to   9.280000e-03  5.750000e-04  4.000000e-03
 species 10
 movie_tag 3
 unbound off
 discrete_numbers 2 2 1
 density_function 4
-reference_point 5.000000e-04 -5.750000e-04 -4.000000e-03
+reference_point 4.800000e-04 -5.750000e-04 -4.000000e-03
 density_flags 1 0 0
 momentum_flags 0 0 0
 thermal_energy 0.02
@@ -1202,14 +1202,14 @@ thermal_energy 0.02
 movie_fraction 0.000
 ;
 plasma ; H
-from 5.000000e-04 -5.750000e-04  -4.000000e-03
-to   9.300000e-03 5.750000e-04  4.000000e-03
+from 4.800000e-04 -5.750000e-04  -4.000000e-03
+to   9.280000e-03 5.750000e-04  4.000000e-03
 species 18
 movie_tag 3
 unbound off
 discrete_numbers 2 2 1
 density_function 5
-reference_point 5.000000e-04 -5.750000e-04 -4.000000e-03
+reference_point 4.800000e-04 -5.750000e-04 -4.000000e-03
 density_flags 1 0 0
 momentum_flags 0 0 0
 thermal_energy 0.02
@@ -1236,8 +1236,8 @@ time_advance 0
 ;; emission from conductors
 ;;e-
 emission child-langmuir field-stress
-from 5.000000e-04 -5.750000e-04 -4.000000e-03
-to   9.300000e-03 5.750000e-04 4.000000e-03
+from 4.800000e-04 -5.750000e-04 -4.000000e-03
+to   9.280000e-03 5.750000e-04 4.000000e-03
 interval 1
 species 17
 discrete_numbers 2 2 1
@@ -1248,8 +1248,8 @@ movie_fraction 0.0
 
 ;;p+
 emission child-langmuir field-stress
-from 5.000000e-04 -5.750000e-04 -4.000000e-03
-to   9.300000e-03 5.750000e-04 4.000000e-03
+from 4.800000e-04 -5.750000e-04 -4.000000e-03
+to   9.280000e-03 5.750000e-04 4.000000e-03
 interval 1
 species 19
 discrete_numbers 2 2 1
@@ -1260,8 +1260,8 @@ movie_fraction 0.0
 
 ;;O+
 emission child-langmuir field-stress
-from 5.000000e-04 -5.750000e-04 -4.000000e-03
-to   9.300000e-03 5.750000e-04 4.000000e-03
+from 4.800000e-04 -5.750000e-04 -4.000000e-03
+to   9.280000e-03 5.750000e-04 4.000000e-03
 interval 1
 species 11
 discrete_numbers 2 2 1
@@ -1272,8 +1272,8 @@ movie_fraction 0.0
 
 ;;C+
 emission child-langmuir field-stress
-from 5.000000e-04 -5.750000e-04 -4.000000e-03
-to   9.300000e-03 5.750000e-04 4.000000e-03
+from 4.800000e-04 -5.750000e-04 -4.000000e-03
+to   9.280000e-03 5.750000e-04 4.000000e-03
 interval 1
 species 2
 discrete_numbers 2 2 1
@@ -1285,8 +1285,8 @@ movie_fraction 0.0
 ;; ionization states ;;
 ;; Hydrogen
 higherstate              ; H -> p+
-from 5.000000e-04 -5.750000e-04  -4.000000e-03
-to   9.300000e-03 5.750000e-04  4.000000e-03
+from 4.800000e-04 -5.750000e-04  -4.000000e-03
+to   9.280000e-03 5.750000e-04  4.000000e-03
 interval 1
 species 18
 ion_species 19
@@ -1310,8 +1310,8 @@ movie_fraction 0.0
 
 ;; Oxygen
 higherstate              ; O -> O+
-from 5.000000e-04 -5.750000e-04  -4.000000e-03
-to   9.300000e-03 5.750000e-04  4.000000e-03
+from 4.800000e-04 -5.750000e-04  -4.000000e-03
+to   9.280000e-03 5.750000e-04  4.000000e-03
 interval 1
 species 1
 ion_species 2
@@ -1334,8 +1334,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O+ -> O++
-from 5.000000e-04 -5.750000e-04  -4.000000e-03
-to   9.300000e-03 5.750000e-04  4.000000e-03
+from 4.800000e-04 -5.750000e-04  -4.000000e-03
+to   9.280000e-03 5.750000e-04  4.000000e-03
 interval 1
 species 2
 ion_species 3
@@ -1358,8 +1358,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O++ -> O 3+
-from 5.000000e-04 -5.750000e-04  -4.000000e-03
-to   9.300000e-03 5.750000e-04  4.000000e-03
+from 4.800000e-04 -5.750000e-04  -4.000000e-03
+to   9.280000e-03 5.750000e-04  4.000000e-03
 interval 1
 species 3
 ion_species 4
@@ -1382,8 +1382,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O 3+ -> O 4+
-from 5.000000e-04 -5.750000e-04  -4.000000e-03
-to   9.300000e-03 5.750000e-04  4.000000e-03
+from 4.800000e-04 -5.750000e-04  -4.000000e-03
+to   9.280000e-03 5.750000e-04  4.000000e-03
 interval 1
 species 4
 ion_species 5
@@ -1406,8 +1406,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O 4+ -> O 5+
-from 5.000000e-04 -5.750000e-04  -4.000000e-03
-to   9.300000e-03 5.750000e-04  4.000000e-03
+from 4.800000e-04 -5.750000e-04  -4.000000e-03
+to   9.280000e-03 5.750000e-04  4.000000e-03
 interval 1
 species 5
 ion_species 6
@@ -1431,8 +1431,8 @@ movie_fraction 0.0
 ;
 ;
 higherstate              ; O 5+ -> O 6+
-from 5.000000e-04 -5.750000e-04  -4.000000e-03
-to   9.300000e-03 5.750000e-04  4.000000e-03
+from 4.800000e-04 -5.750000e-04  -4.000000e-03
+to   9.280000e-03 5.750000e-04  4.000000e-03
 interval 1
 species 6
 ion_species 7
@@ -1455,8 +1455,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O 6+ -> O 7+
-from 5.000000e-04 -5.750000e-04  -4.000000e-03
-to   9.300000e-03 5.750000e-04  4.000000e-03
+from 4.800000e-04 -5.750000e-04  -4.000000e-03
+to   9.280000e-03 5.750000e-04  4.000000e-03
 interval 1
 species 7
 ion_species 8
@@ -1479,8 +1479,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O 7+ -> O 8+
-from 5.000000e-04 -5.750000e-04  -4.000000e-03
-to   9.300000e-03 5.750000e-04  4.000000e-03
+from 4.800000e-04 -5.750000e-04  -4.000000e-03
+to   9.280000e-03 5.750000e-04  4.000000e-03
 interval 1
 species 8
 ion_species 9
@@ -1504,8 +1504,8 @@ movie_fraction 0.0
 ;
 ;; carbon
 higherstate              ; C -> C+
-from 5.000000e-04 -5.750000e-04  -4.000000e-03
-to   9.300000e-03 5.750000e-04  4.000000e-03
+from 4.800000e-04 -5.750000e-04  -4.000000e-03
+to   9.280000e-03 5.750000e-04  4.000000e-03
 interval 1
 species 10
 ion_species 11
@@ -1528,8 +1528,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; C+ -> C++
-from 5.000000e-04 -5.750000e-04  -4.000000e-03
-to   9.300000e-03 5.750000e-04  4.000000e-03
+from 4.800000e-04 -5.750000e-04  -4.000000e-03
+to   9.280000e-03 5.750000e-04  4.000000e-03
 interval 1
 species 11
 ion_species 12
@@ -1552,8 +1552,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; C++ -> C 3+
-from 5.000000e-04 -5.750000e-04  -4.000000e-03
-to   9.300000e-03 5.750000e-04  4.000000e-03
+from 4.800000e-04 -5.750000e-04  -4.000000e-03
+to   9.280000e-03 5.750000e-04  4.000000e-03
 interval 1
 species 12
 ion_species 13
@@ -1576,8 +1576,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; C 3+ -> C 4+
-from 5.000000e-04 -5.750000e-04  -4.000000e-03
-to   9.300000e-03 5.750000e-04  4.000000e-03
+from 4.800000e-04 -5.750000e-04  -4.000000e-03
+to   9.280000e-03 5.750000e-04  4.000000e-03
 interval 1
 species 13
 ion_species 14
@@ -1600,8 +1600,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; C 4+ -> C 5+
-from 5.000000e-04 -5.750000e-04  -4.000000e-03
-to   9.300000e-03 5.750000e-04  4.000000e-03
+from 4.800000e-04 -5.750000e-04  -4.000000e-03
+to   9.280000e-03 5.750000e-04  4.000000e-03
 interval 1
 species 14
 ion_species 15
@@ -1624,8 +1624,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; C 5+ -> C 6+
-from 5.000000e-04 -5.750000e-04  -4.000000e-03
-to   9.300000e-03 5.750000e-04  4.000000e-03
+from 4.800000e-04 -5.750000e-04  -4.000000e-03
+to   9.280000e-03 5.750000e-04  4.000000e-03
 interval 1
 species 15
 ion_species 16
@@ -1662,7 +1662,7 @@ direction X
 maximum_number  1000000000
 start_time 0
 stop_time  1
-at 0.0005 0 0
+at 0.00048 0 0
  
 ;
 extract2
@@ -1671,7 +1671,7 @@ direction X
 maximum_number  1000000000
 start_time 0
 stop_time  1
-at 0.009300000000000001 0 0
+at 0.00928 0 0
  
 ;
 extract3
