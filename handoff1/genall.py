@@ -368,6 +368,7 @@ g8ji1 = sd(
     tlim=jtlim,
     res = [400, 250, 220],
     region_split=('x', 40),
+    domains=40*44,
     fileread_spec = [
         dict(
             lims = (
