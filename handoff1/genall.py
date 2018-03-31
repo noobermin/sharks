@@ -351,6 +351,15 @@ g8hi4 = sd(
             tfunc=6,),],
 );
 gensim(**g8hi4);
+g8hi4f = sd(
+    g8hi4,
+    pbsbase='glysh8_hi4f',
+    tlim = [
+        4.8,     92.8,
+        -0.23,    0.23,
+        -40.00,   40.00]);
+gensim(**g8hi4f)
+
 
 jlim = [
       -40,      40,
