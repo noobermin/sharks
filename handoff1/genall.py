@@ -351,3 +351,50 @@ g8hi4 = sd(
             tfunc=6,),],
 );
 gensim(**g8hi4);
+
+jlim = [
+      -40,      40,
+    -5.75,    5.75,
+        5.8,    49.8];
+jtlim= [
+      -40,      40,
+    -0.23, 0.23,
+       5.8,    49.8];
+g8ji1 = sd(
+    g8hi4,
+    discrete=(2,2,2),
+    pbsbase='glysh8_ji1',
+    lim =jlim,
+    tlim=jtlim,
+    res = [400, 250, 220],
+    region_split=('x', 40),
+    fileread_spec = [
+        dict(
+            lims = (
+                -40e-4,40e-4,
+                -5.75e-4, 5.75e-4,
+                6e-4, 60e-4),
+            fname='glysh8-synthpextz.p4',
+            tfunc=6,),
+        dict(
+            lims = (
+                -40e-4,40e-4,
+                -5.75e-4, 5.75e-4,
+                6e-4, 60e-4),
+            fname='glysh8-synthpext-neutralz.p4',
+            species=19,
+            tfunc=6,),],
+    conductors=[
+        dict(outlet='zmin',start=-0.1,width=1.0),
+        dict(outlet='ymin',start=-0.1,width=1.0),
+        dict(outlet='ymax',start=-0.1,width=1.0),
+    ],
+    timestep = 4e-17,
+    cond_threshold=1e-3/200e-7,#kV/cm
+    splittime=[
+        ( 80e-15, None),
+        (1e-12, dict(timestep=8e-17)),
+    ],
+);
+            
+gensim(**g8ji1);
