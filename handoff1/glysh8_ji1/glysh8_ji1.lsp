@@ -1070,7 +1070,7 @@ movie_fraction 0.000
 
 fileread
 from -0.004 -0.000575 0.0006
-to   0.004 0.000575 0.006
+to   0.004 0.000575 0.0006
 normal X
 interval 1
 species 17
@@ -1084,7 +1084,7 @@ time_advance 0
 
 fileread
 from -0.004 -0.000575 0.0006
-to   0.004 0.000575 0.006
+to   0.004 0.000575 0.0006
 normal X
 interval 1
 species 19

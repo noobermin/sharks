@@ -374,14 +374,14 @@ g8ji1 = sd(
             lims = (
                 -40e-4,40e-4,
                 -5.75e-4, 5.75e-4,
-                6e-4, 60e-4),
+                6e-4, 6e-4),
             fname='glysh8-synthpextz.p4',
             tfunc=6,),
         dict(
             lims = (
                 -40e-4,40e-4,
                 -5.75e-4, 5.75e-4,
-                6e-4, 60e-4),
+                6e-4, 6e-4),
             fname='glysh8-synthpext-neutralz.p4',
             species=19,
             tfunc=6,),],
