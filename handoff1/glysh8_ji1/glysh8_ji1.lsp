@@ -1071,7 +1071,7 @@ movie_fraction 0.000
 fileread
 from -0.004 -0.000575 0.0006
 to   0.004 0.000575 0.0006
-normal X
+normal Z
 interval 1
 species 17
 particle_data_file glysh8-synthpextz.p4
@@ -1085,7 +1085,7 @@ time_advance 0
 fileread
 from -0.004 -0.000575 0.0006
 to   0.004 0.000575 0.0006
-normal X
+normal Z
 interval 1
 species 19
 particle_data_file glysh8-synthpext-neutralz.p4

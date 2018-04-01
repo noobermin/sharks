@@ -385,6 +385,7 @@ g8ji1 = sd(
                 -40e-4,40e-4,
                 -5.75e-4, 5.75e-4,
                 6e-4, 6e-4),
+            normal='Z',
             fname='glysh8-synthpextz.p4',
             tfunc=6,),
         dict(
@@ -392,6 +393,7 @@ g8ji1 = sd(
                 -40e-4,40e-4,
                 -5.75e-4, 5.75e-4,
                 6e-4, 6e-4),
+            normal='Z',
             fname='glysh8-synthpext-neutralz.p4',
             species=19,
             tfunc=6,),],
