@@ -357,8 +357,15 @@ g8hi4f = sd(
     tlim = [
         4.8,     92.8,
         -0.23,    0.23,
-        -40.00,   40.00]);
-gensim(**g8hi4f)
+        -40.00,   40.00],
+        other_funcs='''
+function6
+type 3
+coefficients 1 80e-6 ; 80fs
+''',
+);
+
+gensim(**g8hi4f);
 
 
 jlim = [
