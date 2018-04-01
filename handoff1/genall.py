@@ -413,6 +413,12 @@ g8ji1 = sd(
         ( 80e-15, None),
         (1e-12, dict(timestep=8e-17)),
     ],
+    other_funcs='''
+function6
+type 3
+coefficients 1 64e-6 ; 64fs
+''',
+
 );
             
 gensim(**g8ji1);
