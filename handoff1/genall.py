@@ -144,6 +144,7 @@ d3d = dict(
     fracs   =[2.0, 2.0,6.0],
     lsptemplate="neutralglycol_allemitters_fileread.lsp",
     dens_dat='target_dumb.dat',
+    tref=(0.0,0.0,0.0),
     dat_xres=2,
     thermal_energy=(
         0.02, 0.02, 0.02),
@@ -353,6 +354,8 @@ g8hi4 = sd(
 gensim(**g8hi4);
 g8hi4f = sd(
     g8hi4,
+    discrete=(2,2,1),
+    res = (880,250,800),
     pbsbase='glysh8_hi4f',
     tlim = [
         4.8,     92.8,
@@ -366,6 +369,48 @@ coefficients 1 80e-6 ; 80fs
 );
 
 gensim(**g8hi4f);
+
+g8hs1 = sd(
+    g8hi4,
+    discrete=(2,1,2),
+    res = (440,500,600),
+    pbsbase='glysh8_hs1',
+    fileread_spec = [
+        dict(
+            lims = (
+                5e-4,5e-4,
+                -5.75e-4, 5.75e-4,
+                -40e-4, 40e-4),
+            fname='glysh8-synthpextnewx.p4',
+            species=17,
+            tfunc=6),
+        dict(
+            lims = (
+                5e-4,5e-4,
+                -5.75e-4, 5.75e-4,
+                -40e-4, 40e-4),
+            fname='glysh8-synthpext-neutralnewx.p4',
+            species=19,
+            tfunc=6),],
+    tlim = [
+        4.8,     44+4.8,
+        -0.23,    0.23,
+        -30.00,   30.00],
+        other_funcs='''
+function6
+type 3
+coefficients 1 80e-6 ; 80fs
+''',
+    region_split=('z',15),
+    domains=15*44,
+    timestep=4e-17,
+    splittime=[
+        (80e-15, None),
+        (200e-15, dict(timestep=6e-17)),
+    ],
+);
+
+gensim(**g8hs1);
 
 
 jlim = [

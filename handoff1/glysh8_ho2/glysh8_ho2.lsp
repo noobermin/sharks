@@ -1014,7 +1014,7 @@ movie_tag 3
 unbound off
 discrete_numbers 2 2 1
 density_function 3
-reference_point 5.000000e-04 -5.750000e-04 -9.200000e-03
+reference_point 0.000000e+00 0.000000e+00 0.000000e+00
 density_flags 1 0 0
 momentum_flags 0 0 0
 thermal_energy 0.02
@@ -1029,7 +1029,7 @@ movie_tag 3
 unbound off
 discrete_numbers 2 2 1
 density_function 4
-reference_point 5.000000e-04 -5.750000e-04 -9.200000e-03
+reference_point 0.000000e+00 0.000000e+00 0.000000e+00
 density_flags 1 0 0
 momentum_flags 0 0 0
 thermal_energy 0.02
@@ -1044,7 +1044,7 @@ movie_tag 3
 unbound off
 discrete_numbers 2 2 1
 density_function 5
-reference_point 5.000000e-04 -5.750000e-04 -9.200000e-03
+reference_point 0.000000e+00 0.000000e+00 0.000000e+00
 density_flags 1 0 0
 momentum_flags 0 0 0
 thermal_energy 0.02
