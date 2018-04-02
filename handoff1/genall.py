@@ -392,6 +392,10 @@ g8hs1 = sd(
             fname='glysh8-synthpext-neutralnewx.p4',
             species=19,
             tfunc=6),],
+    lim = [
+        4.8, 48.8,
+        -5.75, 5.75,
+        -30.00,30.00],
     tlim = [
         4.8,     44+4.8,
         -0.23,    0.23,
