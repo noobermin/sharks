@@ -25,9 +25,11 @@ T0=15e-15
 
 from gengrate import mkgrate, mk45dum;
 
-xmin=ymin=-70;
-xmax=ymax= 70;
-xres=yres=5600;
+xmin=ymin=-100;
+xmax=ymax= 100;
+xres=yres=8000;
+tmin=-70;
+tmax=70;
 targds=[];
 def addtotargs(d,f):
     d['mktargf'] = f;
@@ -52,14 +54,14 @@ d=dict(
           yres,
           0),
     timestep = 5e-17,
-    totaltime=500e-15,
+    totaltime= 1e-12,
     fp=(0.0,0.0,0.0),
     pbsbase='grate1',
     description="grate",
     dumpinterval=5e-16,
     #PIC/grid details
-    domains=44*4,
-    region_split=('y',4),
+    domains=44*6,
+    region_split=('y',6),
     pbses='defaults',
     #density
     tref = (0.0, 0.0, 0.0),
