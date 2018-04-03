@@ -190,7 +190,7 @@ lgd = sd(
 );
 lgd.update(**mkconds(lgd['tlim']));
 gensim(**lgd)
-addtotargs(lgd,gendats);
+addtotargs(lgd,lambda d: gendats(d,dat_xres=8800+1));
     
 if opts['--make-all-targets']:
     for d in targds:
