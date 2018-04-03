@@ -47,6 +47,8 @@ spatial_skip_z 1
 
 dump_fields_flag ON
 field_dump_interval_ns 5.000000000000001e-07
+dump_particles_flag ON
+particle_dump_interval_ns 5.000000000000001e-07
 
 ;;pmovies
 

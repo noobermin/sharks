@@ -79,7 +79,7 @@ d=dict(
     no_pmovies=True,
     #particle dumps
     dump_scalar=False,
-    particle_dump_interval_ns=0.0,
+    dump_particle=True,
     #
     movE=dict(
         clim=(EfromI(1e12),EfromI(2*I)),
