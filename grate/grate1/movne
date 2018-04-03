@@ -7,7 +7,7 @@ if [ ! -n "$OUTDIR" ]; then
     OUTDIR=${2:-"movne-laser"}
 fi
 mkdir -p "$OUTDIR"
-INTENSITY=${INTENSITY:-"5.000000e+17"}
+INTENSITY=${INTENSITY:-"1.000000e+14"}
 LIMS=${LIMS:-"(1e+19, 1e+23)"}
 HIGHLIGHT=${HIGHLIGHT:-"1.741961e+21"}
 QUANTITY=${QUANTITY:-"RhoN17"}

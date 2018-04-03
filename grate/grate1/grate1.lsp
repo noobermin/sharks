@@ -2,7 +2,7 @@
 ;; Use this sandpie for no plasma.
 
 [Title]
-simulation_title "grate, I = 5.000000e+18 W/cm^2"
+simulation_title "grate, I = 1.000000e+15 W/cm^2"
 ;
 [Control]
 ;Time-advance
@@ -1075,8 +1075,8 @@ type 30
 data_file sine700points.dat
 ;; pulse duration length, 2xFWHM
 independent_variable_multiplier 3.000000e-05
-;; Emax, intensity=5.000000e+18 W/cm^2
-dependent_variable_multiplier   6.137836e+07
+;; Emax, intensity=1.000000e+15 W/cm^2
+dependent_variable_multiplier   8.680211e+05
 
 function2 ;laser analytic function for lsp v10
 type 19   ; f-number: ~116.7347618639343
