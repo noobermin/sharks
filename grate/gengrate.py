@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 '''
-usage: ./gengrate [<output>]
+usage: ./gengrate.py [<output>]
 '''
 
 import numpy as np;
@@ -46,7 +46,7 @@ def mk45dum(N0=1.08e22,
 if __name__ == "__main__":
     from docopt import docopt
     opts=docopt(__doc__,help=True);
-    dx = 0.025e-4
+    dx = 0.050e-4
     mn,mx = -16e-4,16e-4
     lmn, lmx = -4e-4,4e-4
     # if opts['circle']:

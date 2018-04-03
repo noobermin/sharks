@@ -173,6 +173,25 @@ def gendats(di,
         dat);
 addtotargs(d,gendats);
 
+lgd = sd(
+    d,
+    lim=(
+        -137.5,137.5,
+        -137.5,137.5,
+        0,0),
+    tlim=(
+        -110,110,
+        -110,110,
+        0,0),
+    res=(11000,11000,0),
+    region_split=('y',10),
+    domains=10*44,
+    pbsbase='grate2',
+);
+lgd.update(**mkconds(lgd['tlim']));
+gensim(**lgd)
+addtotargs(lgd,gendats);
+    
 if opts['--make-all-targets']:
     for d in targds:
         d['mktargf'](d);
