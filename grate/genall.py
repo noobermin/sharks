@@ -146,6 +146,7 @@ def gendats(di,
             width=0.45e-4,
             N0=1.08e22,
             targw=450e-7,
+            datfmt="%.4e",
             dat_xres=None):
     targ_plasma = mkgrate(
         N0=N0,
@@ -156,12 +157,14 @@ def gendats(di,
         N0=N0,
         width=targw);
     print("making targets for {}".format(di['pbsbase']));
-    dd = sd(di, f_2D = targ_plasma, dat_xres = dat_xres);
+    if not dat_xres:
+        dat_xres = di['res'][0]+1;
+    dd = sd(di, f_2D = targ_plasma, dat_xres = dat_xres,datfmt=datfmt);
     dat = gendat(**dd);
     savetxt(
         "{}/{}".format(di['pbsbase'],'target_plasma.dat'),
         dat);
-    dd = sd(d, f_2D = targ_neutral, dat_xres = dat_xres);
+    dd = sd(d, f_2D = targ_neutral, dat_xres = dat_xres,datfmt=datfmt);
     dat = gendat(**dd);
     savetxt(
         "{}/{}".format(di['pbsbase'],'target_neutral.dat'),

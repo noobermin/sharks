@@ -26,7 +26,7 @@ def mkgrate(N0=1.08e22,
         el = np.nan_to_num(el)
         out[ry > el] = False;
         out[ry < 0.0]= False;
-        out = np.where(out, No, floor);
+        out = np.where(out, N0, floor);
         return out;
     return f;
 
@@ -37,10 +37,10 @@ def mk45dum(N0=1.08e22,
     phi = angle/180*np.pi;
     def f(x,y):
         out = np.ones(x.shape).astype(bool);
-        ry =-x*np.cos(phi) + Y*np.sin(phi);
+        ry =-x*np.cos(phi) + y*np.sin(phi);
         out[ry >= 0.0] = False;
         out[ry <-width] = False;
-        return np.where(out, No, floor);
+        return np.where(out, N0, floor);
     return f;
 
 if __name__ == "__main__":

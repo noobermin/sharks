@@ -6,7 +6,7 @@ simulation_title "grate, I = 5.000000e+18 W/cm^2"
 ;
 [Control]
 ;Time-advance
- time_limit   3.0000e-03
+ time_limit   5.0000e-04
  time_step_ns 5.0000e-08
 
 ;;Restarts
@@ -77,12 +77,12 @@ xmin             -7.000000e-03
 xmax             7.000000e-03
 
 ymin             -7.000000e-03
-ymax             -5.600000e-03
+ymax             -3.500000e-03
 
 zmin             0.000000e+00
 zmax             0.000000e+00
 ;
-number_of_domains 17
+number_of_domains 44
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 0
 ;
@@ -91,13 +91,13 @@ region2
 xmin             -7.000000e-03
 xmax             7.000000e-03
 
-ymin             -5.600000e-03
-ymax             -4.200000e-03
+ymin             -3.500000e-03
+ymax             0.000000e+00
 
 zmin             0.000000e+00
 zmax             0.000000e+00
 ;
-number_of_domains 17
+number_of_domains 44
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 0
 ;
@@ -106,13 +106,13 @@ region3
 xmin             -7.000000e-03
 xmax             7.000000e-03
 
-ymin             -4.200000e-03
-ymax             -2.800000e-03
+ymin             0.000000e+00
+ymax             3.500000e-03
 
 zmin             0.000000e+00
 zmax             0.000000e+00
 ;
-number_of_domains 17
+number_of_domains 44
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 0
 ;
@@ -121,103 +121,13 @@ region4
 xmin             -7.000000e-03
 xmax             7.000000e-03
 
-ymin             -2.800000e-03
-ymax             -1.400000e-03
-
-zmin             0.000000e+00
-zmax             0.000000e+00
-;
-number_of_domains 17
-split_direction XSPLIT
-number_of_cells AUTO ; cells = 0
-;
-;
-region5
-xmin             -7.000000e-03
-xmax             7.000000e-03
-
-ymin             -1.400000e-03
-ymax             8.673617e-19
-
-zmin             0.000000e+00
-zmax             0.000000e+00
-;
-number_of_domains 17
-split_direction XSPLIT
-number_of_cells AUTO ; cells = 0
-;
-;
-region6
-xmin             -7.000000e-03
-xmax             7.000000e-03
-
-ymin             8.673617e-19
-ymax             1.400000e-03
-
-zmin             0.000000e+00
-zmax             0.000000e+00
-;
-number_of_domains 17
-split_direction XSPLIT
-number_of_cells AUTO ; cells = 0
-;
-;
-region7
-xmin             -7.000000e-03
-xmax             7.000000e-03
-
-ymin             1.400000e-03
-ymax             2.800000e-03
-
-zmin             0.000000e+00
-zmax             0.000000e+00
-;
-number_of_domains 17
-split_direction XSPLIT
-number_of_cells AUTO ; cells = 0
-;
-;
-region8
-xmin             -7.000000e-03
-xmax             7.000000e-03
-
-ymin             2.800000e-03
-ymax             4.200000e-03
-
-zmin             0.000000e+00
-zmax             0.000000e+00
-;
-number_of_domains 17
-split_direction XSPLIT
-number_of_cells AUTO ; cells = 0
-;
-;
-region9
-xmin             -7.000000e-03
-xmax             7.000000e-03
-
-ymin             4.200000e-03
-ymax             5.600000e-03
-
-zmin             0.000000e+00
-zmax             0.000000e+00
-;
-number_of_domains 17
-split_direction XSPLIT
-number_of_cells AUTO ; cells = 0
-;
-;
-region10
-xmin             -7.000000e-03
-xmax             7.000000e-03
-
-ymin             5.600000e-03
+ymin             3.500000e-03
 ymax             7.000000e-03
 
 zmin             0.000000e+00
 zmax             0.000000e+00
 ;
-number_of_domains 23
+number_of_domains 44
 split_direction XSPLIT
 number_of_cells AUTO ; cells = 0
 ;
