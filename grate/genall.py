@@ -184,8 +184,8 @@ lgd = sd(
         -110,110,
         0,0),
     res=(11000,11000,0),
-    region_split=('y',10),
-    domains=10*44,
+    region_split=('y',12),
+    domains=12*44,
     pbsbase='grate2',
 );
 lgd.update(**mkconds(lgd['tlim']));
