@@ -172,16 +172,16 @@ number_of_cells AUTO ; cells = 0
 
 object1 TRILATERAL
 conductor on medium 0 potential 0
-from -1.010000e-02 -1.010000e-02 0.000000e+00
-to   -9.800000e-03 -1.010000e-02 0.000000e+00
-to   -1.010000e-02 -9.800000e-03 0.000000e+00
+from -7.100000e-03 -7.100000e-03 0.000000e+00
+to   -6.800000e-03 -7.100000e-03 0.000000e+00
+to   -7.100000e-03 -6.800000e-03 0.000000e+00
 sweep_direction Z
 
 object2 TRILATERAL
 conductor on medium 0 potential 0
-from 1.010000e-02 1.010000e-02 0.000000e+00
-to   9.800000e-03 1.010000e-02 0.000000e+00
-to   1.010000e-02 9.800000e-03 0.000000e+00
+from 7.100000e-03 7.100000e-03 0.000000e+00
+to   6.800000e-03 7.100000e-03 0.000000e+00
+to   7.100000e-03 6.800000e-03 0.000000e+00
 sweep_direction Z
 
 
@@ -500,8 +500,8 @@ selection_ratio 1.0
 
 ;; initial states ;;
 plasma ; O
-from -1.000000e-02  -1.000000e-02  0.000000e+00
-to   1.000000e-02  1.000000e-02  0.000000e+00
+from -7.000000e-03  -7.000000e-03  0.000000e+00
+to   7.000000e-03  7.000000e-03  0.000000e+00
 species 1
 movie_tag 3
 unbound off
@@ -515,8 +515,8 @@ thermal_energy 0.02
 movie_fraction 0.000
 ;
 plasma ; C
-from -1.000000e-02  -1.000000e-02  0.000000e+00
-to   1.000000e-02  1.000000e-02  0.000000e+00
+from -7.000000e-03  -7.000000e-03  0.000000e+00
+to   7.000000e-03  7.000000e-03  0.000000e+00
 species 10
 movie_tag 3
 unbound off
@@ -530,8 +530,8 @@ thermal_energy 0.02
 movie_fraction 0.000
 ;
 plasma ; H
-from -1.000000e-02 -1.000000e-02  0.000000e+00
-to   1.000000e-02 1.000000e-02  0.000000e+00
+from -7.000000e-03 -7.000000e-03  0.000000e+00
+to   7.000000e-03 7.000000e-03  0.000000e+00
 species 18
 movie_tag 3
 unbound off
@@ -545,8 +545,8 @@ thermal_energy 0.02
 movie_fraction 0.000
 ;
 plasma ; O+
-from -1.000000e-02  -1.000000e-02  0.000000e+00
-to   1.000000e-02  1.000000e-02  0.000000e+00
+from -7.000000e-03  -7.000000e-03  0.000000e+00
+to   7.000000e-03  7.000000e-03  0.000000e+00
 species 2
 movie_tag 3
 unbound off
@@ -561,8 +561,8 @@ movie_fraction 0.000
 ;
 
 plasma ; C+
-from -1.000000e-02  -1.000000e-02  0.000000e+00
-to   1.000000e-02  1.000000e-02  0.000000e+00
+from -7.000000e-03  -7.000000e-03  0.000000e+00
+to   7.000000e-03  7.000000e-03  0.000000e+00
 species 11
 movie_tag 3
 unbound off
@@ -576,8 +576,8 @@ thermal_energy 0.02
 movie_fraction 0.000
 ;
 plasma ; p+
-from -1.000000e-02 -1.000000e-02  0.000000e+00
-to   1.000000e-02 1.000000e-02  0.000000e+00
+from -7.000000e-03 -7.000000e-03  0.000000e+00
+to   7.000000e-03 7.000000e-03  0.000000e+00
 species 19
 movie_tag 3
 unbound off
@@ -591,8 +591,8 @@ thermal_energy 0.02
 movie_fraction 0.000
 ;
 plasma ; e-
-from -1.000000e-02 -1.000000e-02  0.000000e+00
-to   1.000000e-02 1.000000e-02  0.000000e+00
+from -7.000000e-03 -7.000000e-03  0.000000e+00
+to   7.000000e-03 7.000000e-03  0.000000e+00
 species 17
 movie_tag 3
 unbound off
