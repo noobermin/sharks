@@ -144,7 +144,6 @@ def gendats(di,
             h = 0.2e-4,
             w = 0.66e-4,
             spacing=0.66e-4,
-            w0=w0*1e2,
             width=0.45e-4,
             N0=1.08e22,
             targw=450e-7,
@@ -176,21 +175,21 @@ addtotargs(d,gendats);
 lgd = sd(
     d,
     lim=(
-        -137.5,137.5,
-        -137.5,137.5,
+        -80.0,80.0,
+        -80.0,80.0,
         0,0),
     tlim=(
-        -110,110,
-        -110,110,
+        -75,75,
+        -75,75,
         0,0),
-    res=(11000,11000,0),
-    region_split=('y',12),
-    domains=12*44,
+    res=(6400,6400,0),
+    region_split=('y',10),
+    domains=10*44,
     pbsbase='grate2',
 );
 lgd.update(**mkconds(lgd['tlim']));
 gensim(**lgd)
-addtotargs(lgd,lambda d: gendats(d,dat_xres=8800+1));
+addtotargs(lgd,lambda di: gendats(di,dat_xres=6401,h=0.25e-4,w=0.2e-4));
     
 if opts['--make-all-targets']:
     for d in targds:
