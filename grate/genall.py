@@ -235,7 +235,7 @@ def gendatb(di,
 addtotargs(g3,gendatb);
 mingrate = sd(
     g3,
-    w0=2.2e-6/np.sqrt(2*np.log(2)),
+    w=2.2e-6/np.sqrt(2*np.log(2)),
     pbsbase='mingrate',
     lim=[-10,10,-10,10,0,0],
     tlim=[-9,9,-9,9,0,0],
