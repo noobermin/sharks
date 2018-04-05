@@ -23,7 +23,7 @@ l = 0.8e-6
 w0=70e-6 / np.sqrt(2*np.log(2))
 T0=15e-15
 
-from gengrate import mkgrate, mk45dum;
+from gengrate import mkgrate, mk45dum, mkboth;
 
 xmin=ymin=-100;
 xmax=ymax= 100;
