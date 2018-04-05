@@ -233,7 +233,18 @@ def gendatb(di,
         "{}/{}".format(di['pbsbase'],'target_plasma.dat'),
         dat);
 addtotargs(g3,gendatb);
-
+mingrate = sd(
+    g3,
+    w0=2.2e-6/np.sqrt(2*np.log(2)),
+    pbsbase='mingrate',
+    lim=[-10,10,-10,10,0,0],
+    tlim=[-9,9,-9,9,0,0],
+    res=(800,800,0),
+    region_split=('y',1),
+    domains=44,
+    totaltime=140e-15)
+gensim(**mingrate);
+addtotargs(mingrate,gendatb);
 
 if opts['--make-all-targets']:
     for d in targds:
