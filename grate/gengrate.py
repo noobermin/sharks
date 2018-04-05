@@ -26,8 +26,7 @@ def mkgrate(N0=1.08e22,
         el = np.nan_to_num(el)
         out[ry > el] = False;
         out[ry < 0.0]= False;
-        out = np.where(out, N0, floor);
-        return out;
+        return np.where(out, N0, floor);
     return f;
 
 def mk45dum(N0=1.08e22,
@@ -43,6 +42,30 @@ def mk45dum(N0=1.08e22,
         return np.where(out, N0, floor);
     return f;
 
+def mkboth(N0=1.08e22,
+           h = 4e-5,
+           w = 3e-5,
+           floor=0.0,
+           angle=45,
+           spacing=0.65e-4,
+           width=6e-5):
+    phi = angle/180 * np.pi;
+    yax = h;
+    #semiminor axis
+    xax = w/2;
+    def f(x,y):
+        out = np.ones(x.shape).astype(bool);
+        rx = x*np.cos(phi) + y*np.sin(phi)
+        ry =-x*np.sin(phi) + y*np.cos(phi)
+        nx = rx - np.round(rx/spacing)*spacing
+        out[ry >= h]  = False;
+        out[np.abs(nx) > xax]= False;
+        el = yax*np.sqrt(1-nx**2/xax**2)
+        el = np.nan_to_num(el)
+        out[ry > el] = False;
+        out[ry < -width]= False;
+        return np.where(out, N0, floor);
+    return f;
 if __name__ == "__main__":
     from docopt import docopt
     opts=docopt(__doc__,help=True);

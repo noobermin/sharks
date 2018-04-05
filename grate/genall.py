@@ -192,7 +192,49 @@ lgd = sd(
 lgd.update(**mkconds(lgd['tlim']));
 gensim(**lgd)
 addtotargs(lgd,lambda di: gendats(di,dat_xres=6401,h=0.25e-4,w=0.2e-4));
-    
+
+g3 =sd(
+    lgd,
+    pbsbase='grate3',);
+g3.update(**dict(
+    lsptemplate="hotglycol2_allemitters.lsp",
+    speciesl=['O1','C1','p','e'],
+    fracs   =[2.0, 2.0, 6.0, 10.0],
+    #there are two densities, one for plasma and one for neutrals.
+    dens_type=40,
+    dens_dat='target_plasma.dat',
+    thermal_energy=(
+        0.02, 0.02, 0.02,1.0),
+    target_temps=(
+        None,None,None,None),
+    conductors=None,
+));
+gensim(**g3);
+def gendatb(di,
+            h = 0.25e-4,
+            w = 0.2e-4,
+            spacing=0.66e-4,
+            N0=1.08e22,
+            targw=450e-7,
+            datfmt="%.4e",
+            dat_xres=None):
+    targ_plasma = mkboth(
+        N0=N0,
+        spacing=spacing,
+        w=w,
+        h=h,
+        width=targw);
+    print("making targets for {}".format(di['pbsbase']));
+    if not dat_xres:
+        dat_xres = di['res'][0]+1;
+    dd = sd(di, f_2D = targ_plasma, dat_xres = dat_xres,datfmt=datfmt);
+    dat = gendat(**dd);
+    savetxt(
+        "{}/{}".format(di['pbsbase'],'target_plasma.dat'),
+        dat);
+addtotargs(g3,gendatb);
+
+
 if opts['--make-all-targets']:
     for d in targds:
         d['mktargf'](d);
