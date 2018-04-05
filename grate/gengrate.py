@@ -59,7 +59,7 @@ def mkboth(N0=1.08e22,
         ry =-x*np.sin(phi) + y*np.cos(phi)
         nx = rx - np.round(rx/spacing)*spacing
         out[ry >= h]  = False;
-        out[np.abs(nx) > xax]= False;
+        out[np.logical_and(np.abs(nx) > xax,ry>=0.0)]= False;
         el = yax*np.sqrt(1-nx**2/xax**2)
         el = np.nan_to_num(el)
         out[ry > el] = False;
