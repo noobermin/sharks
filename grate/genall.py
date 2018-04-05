@@ -185,6 +185,8 @@ lgd = sd(
     res=(6400,6400,0),
     region_split=('y',10),
     domains=10*44,
+    restart=5.75,
+    particle_dump_interval_ns=1e-6,
     pbsbase='grate2',
 );
 lgd.update(**mkconds(lgd['tlim']));
