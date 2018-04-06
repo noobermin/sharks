@@ -268,9 +268,20 @@ tg2 = sd(
     w=4e-6/np.sqrt(2*np.log(2)),
     pbsbase='tgrate2');
 
+
 gensim(**tg2);
 addtotargs(tg2,lambda di: gendatb(di, dat_xres=801));
 
+
+tg3 = sd(
+    tgrate,
+    lim=[-40,10,-10,20,0,0],
+    tlim=[-7,7,-7,7,0,0],
+    res=(2000,1200,0),
+    domains=72,
+    pbsbase='tgrate3');
+gensim(**tg3);
+addtotargs(tg3,lambda di: gendatb(di, dat_xres=801));
 
 if opts['--make-all-targets']:
     for d in targds:
