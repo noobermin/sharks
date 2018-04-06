@@ -242,9 +242,33 @@ mingrate = sd(
     res=(800,800,0),
     region_split=('y',1),
     domains=44,
-    totaltime=140e-15)
+    totaltime=140e-15);
 gensim(**mingrate);
 addtotargs(mingrate,gendatb);
+
+tgrate = sd(
+    mingrate,
+    w=2.2e-6/np.sqrt(2*np.log(2)),
+    T=233e-15,
+    lim=[-35,10,-35,10,0,0],
+    res=(1800,1800,0),
+    domains=44*2,
+    totaltime=700e-15,
+    pbsbase='tgrate1',
+    movE=dict(
+        clim=(8e9,1e11),
+    ),);
+gensim(**tgrate);
+addtotargs(tgrate,lambda di: gendatb(di, dat_xres=801));
+
+tg2 = sd(
+    tgrate,
+    w=4e-6/np.sqrt(2*np.log(2)),
+    pbsbase='tgrate2');
+
+gensim(**tg2);
+addtotargs(tg2,lambda di: gendatb(di, dat_xres=801));
+
 
 if opts['--make-all-targets']:
     for d in targds:
