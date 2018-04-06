@@ -1,5 +1,5 @@
 #PBS -l walltime=96:0:00
-#PBS -l nodes=8:ppn=12
+#PBS -l nodes=4:ppn=12
 #PBS -N tgrate1
 #PBS -S /bin/bash
 #PBS -j oe
@@ -31,7 +31,7 @@ movE_PID=$!
 movne_PID=$!
 
 
-mpiexec -n 88 ./lsp-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+mpiexec -n 44 ./lsp-10-xy $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
 
 kill $zipper_PID
 ./zipper -a >$PBS_O_WORKDIR

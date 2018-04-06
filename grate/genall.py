@@ -250,11 +250,13 @@ tgrate = sd(
     mingrate,
     w=2.2e-6/np.sqrt(2*np.log(2)),
     T=233e-15,
-    lim=[-35,10,-35,10,0,0],
-    res=(1800,1800,0),
-    domains=44*2,
+    lim=[-20,10,-10,20,0,0],
+    tlim=[-8,8,-8,8,0,0],
+    res=(1200,1200,0),
+    domains=44,
     totaltime=700e-15,
     pbsbase='tgrate1',
+    particle_dump_interval_ns=2e-15,
     movE=dict(
         clim=(8e9,1e11),
     ),);
