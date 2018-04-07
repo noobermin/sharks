@@ -297,7 +297,7 @@ addtotargs(tg5,lambda di: gendatb(di, dat_xres=801,targw=1e-4));
 
 tg6 = sd(tg4,pbsbase='tgrate6');
 gensim(**tg6);
-addtotargs(tg5,lambda di: gendatb(di, dat_xres=801,w=0.66e-4));
+addtotargs(tg6,lambda di: gendatb(di, dat_xres=801,w=0.66e-4));
 
 
 if opts['--make-all-targets']:
