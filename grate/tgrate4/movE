@@ -3,10 +3,10 @@ CONDAFILE=${CONDAFILE:-"$HOME/conda"}
 [ -e $CONDAFILE ] && source $CONDAFILE
 WAITDELAY=${WAITDELAY:-1}
 DIR=${1:-"."}
-[ ! -n "$OUTDIR" ] && OUTDIR=${2:-"movB_norm"}
+[ ! -n "$OUTDIR" ] && OUTDIR=${2:-"movE_norm"}
 mkdir -p "$OUTDIR"
-LIMS=${LIMS:-"(915617.71074440202, 4094766.885254445)"}
-QUANTITY=${QUANTITY:-"B_norm"}
+LIMS=${LIMS:-"(8000000000.0, 100000000000.0)"}
+QUANTITY=${QUANTITY:-"E_norm"}
 NPROCS=${NPROCS:-1}
 CONTOURS=${COUNTOURS:-"1e+19"}
 CONTOURQS=${CONTOURQS:-"RhoN10"}
@@ -25,6 +25,6 @@ done
 while [ $(pgrep -f 'python[23]* *.*'"$SCRIPT" | wc -l ) -gt 0 ]; do
     echo waiting...
     sleep 5; done;
-OUTMOV=${OUTMOV:-"grate1-$QUANTITY.mp4"}
+OUTMOV=${OUTMOV:-"tgrate4-$QUANTITY.mp4"}
 ffmpeg -pattern_type glob -i "$OUTDIR/*.png" -c:v libx264 -pix_fmt yuv420p -y $OUTMOV
 [ -e $OUTMOV ] && [ -n "$PBS_O_WORKDIR" ] && rcp $OUTMOV $PBS_O_WORKDIR

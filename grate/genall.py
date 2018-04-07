@@ -283,6 +283,19 @@ tg3 = sd(
 gensim(**tg3);
 addtotargs(tg3,lambda di: gendatb(di, dat_xres=801));
 
+tg4 = sd(
+    tg3,
+    pbsbase='tgrate4');
+gensim(**tg4);
+addtotargs(tg4,lambda di: gendatb(di, dat_xres=801,w=0.5e-4));
+
+tg5 = sd(
+    tg4,
+    pbsbase='tgrate5');
+gensim(**tg5);
+addtotargs(tg5,lambda di: gendatb(di, dat_xres=801,targw=1e-4));
+
+
 if opts['--make-all-targets']:
     for d in targds:
         d['mktargf'](d);
