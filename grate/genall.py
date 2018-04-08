@@ -325,8 +325,7 @@ tg7f = sd(
     timestep=3e-17,
     lim=[-40,10,-10,20,0,0],
     res=(5000,3000,0),
-    region_split=('y',2),
-    domains=24*4);
+    domains=24*5);
 gensim(**tg7f);
 addtotargs(tg7f,lambda di:gendatb(di, dat_xres=1401,w=0.5e-4));
 
