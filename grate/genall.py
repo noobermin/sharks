@@ -299,6 +299,23 @@ tg6 = sd(tg4,pbsbase='tgrate6');
 gensim(**tg6);
 addtotargs(tg6,lambda di: gendatb(di, dat_xres=801,w=0.66e-4));
 
+tg7 = sd(
+    tg4,
+    w=5e-6/np.sqrt(2*np.log(2)),
+    pbsbase='tgrate7');
+gensim(**tg7);
+addtotargs(tg7,lambda di: gendatb(di, dat_xres=801,w=0.5e-4));
+
+
+tg8 = sd(
+    tg4,
+    I=1e17,
+    T=100e-15,
+    w=4e-6/np.sqrt(2*np.log(2)),
+    pbsbase='tgrate8');
+gensim(**tg8);
+addtotargs(tg8,lambda di: gendatb(di, dat_xres=801,w=0.5e-4));
+
 
 if opts['--make-all-targets']:
     for d in targds:
