@@ -6,8 +6,8 @@ simulation_title "grate, I = 1.000000e+15 W/cm^2"
 ;
 [Control]
 ;Time-advance
- time_limit   5.1300e-04
- time_step_ns 3.0000e-08
+ time_limit   5.1200e-04
+ time_step_ns 2.0000e-08
 
 ;;Restarts
 dump_restart_flag ON
@@ -46,9 +46,9 @@ spatial_skip_y 1
 spatial_skip_z 1
 
 dump_fields_flag ON
-field_dump_interval_ns 3e-07
+field_dump_interval_ns 5.000000000000001e-07
 dump_particles_flag ON
-particle_dump_interval_ns 1.8000000000000001e-06
+particle_dump_interval_ns 2.0000000000000003e-06
 
 ;;pmovies
 

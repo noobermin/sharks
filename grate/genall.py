@@ -319,10 +319,10 @@ addtotargs(tg8,lambda di: gendatb(di, dat_xres=801,w=0.5e-4));
 tg7f = sd(
     tg7,
     pbsbase='tgrate7f',
-    dumpinterval=3e-16,
-    particle_dump_interval_ns=1.8e-15,
-    totaltime=513e-15,
-    timestep=3e-17,
+    dumpinterval=5e-16,
+    particle_dump_interval_ns=2e-15,
+    totaltime=512e-15,
+    timestep=2e-17,
     lim=[-40,10,-10,20,0,0],
     res=(5000,3000,0),
     domains=24*5);
