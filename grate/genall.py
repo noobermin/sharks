@@ -329,6 +329,14 @@ tg7f = sd(
 gensim(**tg7f);
 addtotargs(tg7f,lambda di:gendatb(di, dat_xres=1401,w=0.5e-4));
 
+tg7g = sd(
+    tg7f,
+    discrete=(2,2,1),
+    pbsbase='tgrate7g');
+gensim(**tg7g);
+addtotargs(tg7g,lambda di:gendatb(di, dat_xres=1401,w=0.5e-4));
+
+
 if opts['--make-all-targets']:
     for d in targds:
         d['mktargf'](d);
