@@ -316,6 +316,19 @@ tg8 = sd(
 gensim(**tg8);
 addtotargs(tg8,lambda di: gendatb(di, dat_xres=801,w=0.5e-4));
 
+tg7f = sd(
+    tg7,
+    pbsbase='tgrate7f',
+    dumpinterval=3e-16,
+    particle_dump_interval_ns=1.8e-15,
+    totaltime=513e-15,
+    timestep=3e-17,
+    lim=[-40,10,-10,20,0,0],
+    res=(5000,3000,0),
+    split_regions=('y',2),
+    domains=24*4);
+gensim(**tg7f);
+addtotargs(tg7f,lambda di:gendatb(di, dat_xres=1401,w=0.5e-4));
 
 if opts['--make-all-targets']:
     for d in targds:
