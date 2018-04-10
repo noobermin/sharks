@@ -335,6 +335,12 @@ tg7g = sd(
     pbsbase='tgrate7g');
 gensim(**tg7g);
 addtotargs(tg7g,lambda di:gendatb(di, dat_xres=1401,w=0.5e-4));
+tg9 = sd(
+    tg7f,
+    domains=88,
+    pbsbase='tgrate9');
+gensim(**tg9);
+addtotargs(tg9,lambda di:gendatb(di, dat_xres=1401,w=0.5e-4));
 
 
 if opts['--make-all-targets']:
