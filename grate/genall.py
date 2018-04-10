@@ -343,6 +343,32 @@ tg9 = sd(
 gensim(**tg9);
 addtotargs(tg9,lambda di:gendatb(di, dat_xres=1401,w=0.5e-4));
 
+tgA = sd(
+    tg7f,
+    w=2.2e-6/np.sqrt(2*np.log(2)),
+    timestep=2e-17,
+    totaltime=460e-15,
+    lim=[-32,10,-10,20,0,0],
+    res=(4200,3000,0),
+    domains=44*3, #this will not work unless you hack it
+    pbsbase='tgrateA');
+gensim(**tgA);
+addtotargs(tgA,lambda di:gendatb(di, dat_xres=1401,w=0.5e-4));
+
+tgB = sd(
+    tg7f,
+    I=1e14,
+    w=4e-6/np.sqrt(2*np.log(2)),
+    timestep=4e-17,
+    totaltime=460e-15,
+    lim=[-32,10,-10,20,0,0],
+    res=(2100,1500,0),
+    domains=44, #this will not work unless you hack it
+    pbsbase='tgrateB');
+gensim(**tgB);
+addtotargs(tgB,lambda di:gendatb(
+    di, dat_xres=1401,w=0.5e-4,N0=1.08e21));
+
 
 if opts['--make-all-targets']:
     for d in targds:
