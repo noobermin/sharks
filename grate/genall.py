@@ -338,7 +338,7 @@ addtotargs(tg7g,lambda di:gendatb(di, dat_xres=1401,w=0.5e-4));
 tg9 = sd(
     tg7f,
     timestep=1.5e-17,
-    domains=88,
+    domains=44*3, #this will not work unless you hack it
     pbsbase='tgrate9');
 gensim(**tg9);
 addtotargs(tg9,lambda di:gendatb(di, dat_xres=1401,w=0.5e-4));
