@@ -941,7 +941,7 @@ function1 ; laser temporal function
 type 30
 data_file sine700points.dat
 ;; pulse duration length, 2xFWHM
-independent_variable_multiplier 2.330000e-04
+independent_variable_multiplier 2.000000e-04
 ;; Emax, intensity=1.000000e+14 W/cm^2
 dependent_variable_multiplier   2.744924e+05
 

@@ -358,6 +358,7 @@ addtotargs(tgA,lambda di:gendatb(di, dat_xres=1401,w=0.5e-4));
 tgB = sd(
     tg7f,
     I=1e14,
+    T=200e-15,
     w=4e-6/np.sqrt(2*np.log(2)),
     timestep=4e-17,
     totaltime=460e-15,
