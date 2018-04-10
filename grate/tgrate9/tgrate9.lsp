@@ -7,7 +7,7 @@ simulation_title "grate, I = 1.000000e+15 W/cm^2"
 [Control]
 ;Time-advance
  time_limit   5.1200e-04
- time_step_ns 2.0000e-08
+ time_step_ns 1.5000e-08
 
 ;;Restarts
 dump_restart_flag ON

@@ -337,6 +337,7 @@ gensim(**tg7g);
 addtotargs(tg7g,lambda di:gendatb(di, dat_xres=1401,w=0.5e-4));
 tg9 = sd(
     tg7f,
+    timestep=1.5e-17,
     domains=88,
     pbsbase='tgrate9');
 gensim(**tg9);
