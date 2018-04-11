@@ -390,6 +390,19 @@ gensim(**tgD);
 addtotargs(tgD,lambda di:gendatb(
     di, dat_xres=1401,w=0.5e-4,N0=1.08e22));
 
+tgE = sd(
+    tgB,
+    timestep=2e-17,
+    totaltime=450e-15,
+    lim=[-32,10,-10,18,0,0],
+    res=(4200,2800,0),
+    domains=44*3, #this will not work unless you hack it
+    pbsbase='tgrateE');
+gensim(**tgE);
+addtotargs(tgE,lambda di:gendatb(
+    di, dat_xres=1401,w=0.5e-4,N0=1.08e22));
+
+
 
 
 
