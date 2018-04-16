@@ -26,6 +26,7 @@ T0=42e-15
 
 from gen45  import mk45_pinprick_plasma_old,mk45_pinprick_plasma,mk45_pinprick_neutral;
 from gen45  import mk45_pinprick_neutral3d;
+from gen45  import mk0_pinprick_neutral3d;
 
 xmin=ymin=-35;
 xmax=ymax= 35;
@@ -526,6 +527,102 @@ mini3d_rtw['conductors'] += [
          width=1.0),];
 gensim(**mini3d_rtw);
 addtotargs(mini3d_rtw,gendatn);
+
+# here we go
+rotlim = (
+    -25,25,
+    -20,20,
+    -25,25);
+rotres = (
+    2500,
+    2000,
+    1000,)
+    
+rot3d = sd(
+    threed,
+    nolaser=True,
+    lim =(-25, 25, -20,20, -25,25),
+    tlim=(-25, 25, -1,0.5,   -25,25),
+    res = (2500,   2000, 1000),
+    totaltime=200e-15,
+    pbsbase='glysh8_hj1',
+    domains=44*200,
+    region_split=('z',100),
+    dump_scalar=False,
+    dump_plasma_quantities_flag=False,
+    dump_number_densities_flag=False,
+    dump_particle=True,
+    dump_field=True,
+    dumpinterval=0,
+    dump_time_zero_flag=True,
+    dump_restart_ns=2e-15,
+    lsptemplate="neutralglycol_allemitters.lsp",
+    speciesl=['O0','C0','H'],
+    fracs   =[2.0, 2.0,6.0],
+    dens_type=50,
+    dens_dat='target_neutral.dat',
+    thermal_energy=(
+        0.02, 0.02, 0.02),
+    target_temps=(
+        None,None,None),
+    splittime=[
+        (1e-15, None),
+        (200e-15, dict(
+            dump_particle=False,
+            dump_field=False,))
+    ],
+    conductors=[],
+);
+def gendatrot(
+        di,
+        w0=w0*1e2,
+        width=0.46e-4,
+        L=0.043e-4,
+        N0=1.08e22,
+        mindensity=1e18,
+        spotz_width=20e-4,
+        yres = 75,
+        fmt='%.4e',):
+    print("warning: this will only work for rot3d");
+    targ_neutral = mk0_pinprick_neutral3d(
+        N0  = N0,
+        spotz_width=spotz_width,
+        laser_radius = w0,
+        width = width,
+        L = L,# 43nm
+        mindensity=mindensity);
+    #manual hacks to save space
+    #generate cell sized samples around the corners.
+    # x's edge
+    def getsamples(point,lims,res,ndxs = 3):
+        out=np.linspace(lims[0]*1e-4,lims[1]*1e-4,res+1);
+        dx = out[1] - out[0];
+        out = out[ out >= point - ndxs*dx ];
+        out = out[ out <= point + ndxs*dx ];
+        return list(out);
+    def axissamples(half_width, tlim, lim, res,ndxs=3):
+        p = [ tlim[0] ] + getsamples(-half_width,lim,res,ndxs=ndxs)
+        p+= [0.0] + getsamples(half_width,lim,res,ndxs=ndxs)
+        p+= [ tlim[1] ];
+        return np.array(p);
+    x = axissamples(
+        w0, di['tlim'][0:2], di['lim'][0:2], di['res'][0]);
+    y = np.linspace(
+        di['tlim'][2]*1e-4,di['tlim'][3]*1e-4,yres+1);
+    z = axissamples(
+        spotz_width/2.0,
+        di['tlim'][4:6], di['lim'][4:6], di['res'][2]);
+    print("making targets for {}".format(di['pbsbase']));
+    X,Y,Z=np.meshgrid(x,y,z,indexing='ij');
+    Q=targ_neutral(X,Y,Z)
+    dd = sd(di, data3D =(x,y,z,Q), datfmt=fmt);
+    dat = gendat(**dd);
+    savetxt(
+        "{}/{}".format(di['pbsbase'],di['dens_dat']),
+        dat);
+gensim(**rot3d);
+addtotargs(rot3d,gendatrot);
+
 
 
 if opts['--make-all-targets']:

@@ -90,8 +90,10 @@ def gendat(**kw):
             np.savetxt(s,np.array(x).reshape(1,-1),fmt=fmt);
             np.savetxt(s,np.array(y).reshape(1,-1),fmt=fmt);
             np.savetxt(s,np.array(z).reshape(1,-1),fmt=fmt);
-        for sub in np.rollaxis(d,1):
-            np.savetxt(s,np.array(sub).T,fmt=fmt);
+        #manual is probably best.
+        zl = d.shape[-1];
+        for i in range(zl):
+            np.savetxt(s,np.array(d[:,:,i]).T,fmt=fmt);
         return s.getvalue();
     pass;
 

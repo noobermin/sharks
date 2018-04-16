@@ -37,6 +37,34 @@ def mk45(dim=[-5e-4,5e-4,-5e-4,5e-4,],
         return out;
     return f;
 
+def mk0_pinprick_neutral3d(
+        N0=1.08e22,
+        spotz_width=20e-4,
+        laser_radius=2.2e-4,
+        L = 1e-4,
+        mindensity=1e18,
+        width=0.5e-4,
+        floor=0.0,):
+    spotmask = lambda x,y,z: np.logical_and(
+        np.abs(x) <= laser_radius, np.abs(z) <= spotz_width/2.0);
+    scalemax = np.log(N0/mindensity)*L
+    restrict_front = lambda iy: scalemax > iy
+    print("maximum dfront: {:e}".format(scalemax));
+    def f_neutral(x,y,z):
+        out  = np.ones(x.shape)*floor;
+        solid = np.abs(y) < width/2;
+        out[solid] = N0;
+        infront = np.logical_and(
+            y < -width/2.0,
+            spotmask(x,y,z));
+        d = np.abs(y+width/2.0);
+        infront&=restrict_front(d);
+        out[infront]=N0*np.exp(-d/L)[infront];
+        out = np.where(out > floor, out,floor);
+        return out;
+    return f_neutral;
+
+
 def mk45_pinprick_neutral3d(
         dim=[-35e-4,35e-4,-35e-4,35e-4,-30e-4,30e-4],
         N0=1.08e22,
