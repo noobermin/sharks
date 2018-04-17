@@ -528,6 +528,16 @@ mini3d_rtw['conductors'] += [
 gensim(**mini3d_rtw);
 addtotargs(mini3d_rtw,gendatn);
 
+larger = (
+    -26,26,
+    -26,26,
+    -26,26);
+lgres = (2600,2600,1040)
+lgd1 = sd(
+    mini3d);
+lgd1.update(
+    mkconds(mini3dlim, backin=0.5e-4));
+
 # here we go
 rotlim = (
     -25,25,
@@ -546,8 +556,8 @@ rot3d = sd(
     res = (2500,   2000, 1000),
     totaltime=200e-15,
     pbsbase='glysh8_hj1',
-    domains=44*200,
-    region_split=('z',100),
+    domains=44*240,
+    region_split=('z',120),
     dump_scalar=False,
     dump_plasma_quantities_flag=False,
     dump_number_densities_flag=False,
