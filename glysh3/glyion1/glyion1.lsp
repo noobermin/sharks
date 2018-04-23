@@ -7,7 +7,7 @@ simulation_title "ionization dynamics, I = 5.000000e+18 W/cm^2"
 [Control]
 ;Time-advance
  time_limit   8.4000e-05
- time_step_ns 2.0000e-08
+ time_step_ns 4.0000e-08
 
 ;;Restarts
 dump_restart_flag ON
