@@ -48,8 +48,8 @@ d3d=dict(
     description="ionization dynamics",
     dumpinterval=0.0,
     #PIC/grid details
-    domains=44*2*65,
-    region_split=('y',65),
+    domains=44*130,
+    region_split=('y',130),
     pbses='defaults',
     #density
     tref = (0.0, 0.0, 0.0),
