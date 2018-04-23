@@ -23,7 +23,7 @@ I = 5e18;
 l = 0.78e-6
 w0=2.2e-6 / np.sqrt(2*np.log(2))
 T0=42e-15
-from gen45 import mk45_clean_neutral3d;
+from gen45 import mk45_clean_neutral2d;
 
 targds=[];
 def addtotargs(d,f):
@@ -89,7 +89,7 @@ def gendatclean(
         width=0.46e-4,
         N0=1.08e22,
         fmt='%.4e',):
-    targ_neutral = mk45_clean_neutral3d(
+    targ_neutral = mk45_clean_neutral2d(
         width=width,
         N0  = N0,);
     print("making targets for {}".format(di['pbsbase']));

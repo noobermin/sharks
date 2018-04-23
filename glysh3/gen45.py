@@ -37,11 +37,11 @@ def mk45(dim=[-5e-4,5e-4,-5e-4,5e-4,],
         return out;
     return f;
 
-def mk45_clean_neutral3d(
+def mk45_clean_neutral2d(
         N0=1.08e22,
         width=0.5e-4,
         floor=0.0,):
-    def f_neutral(x,y,z):
+    def f_neutral(x,y):
         out = np.ones(x.shape)*floor;
         good =np.abs(y-x)*np.sqrt(2) < width;
         out[good] = N0;
