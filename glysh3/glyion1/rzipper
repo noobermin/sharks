@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+SZ=155018200
+
+cprestart(){
+    END=$1
+    if [ -e restart1.${END} ]; then
+        [ -L restart1.${END} ] && echo a link && return;
+        NOWSZ=$(du restart*.${END} -c  | tail -1 | sed 's/\ttotal//')
+        if [ $NOWSZ -ge $SZ ]; then
+            OUTDIR=res$(mkdatetime)
+            mkdir -vp $OUTDIR
+            mv -v restart*.${END} $OUTDIR/
+        fi
+    fi
+}
+cprestart alt
+cprestart dat
+            
+

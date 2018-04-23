@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+DELAY=${DELAY:-"1m"}
+while true; do ./$1 && echo sleeping for $DELAY... && sleep $DELAY; done
