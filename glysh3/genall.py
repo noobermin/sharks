@@ -97,7 +97,7 @@ def gendatclean(
             f_2D = targ_neutral,
             dat_xres=di['res'][0]+1,
             dat_yres=di['res'][0]+1);
-    dat = gendat(dat_zres=dat_zres,datfmt=fmt,**dd);
+    dat = gendat(datfmt=fmt,**dd);
     savetxt(
         "{}/{}".format(di['pbsbase'],di['dens_dat']),
         dat);
