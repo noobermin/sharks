@@ -42,9 +42,9 @@ d3d=dict(
     tlim=(-16, 16, -16, 16, -22, 22),
     res =(1600,1600,880),
     timestep = 4e-17,
-    totaltime=84e-15,
+    totaltime=90e-15,
     fp=(0.0,0.0,0.0),
-    pbsbase='glyion1',
+    pbsbase='glyion1ro',
     description="ionization dynamics",
     dumpinterval=0.0,
     #regions
@@ -108,6 +108,9 @@ def gendatclean(
 gensim(**d3d);
 addtotargs(d3d,gendatclean);
 
+d3dra = sd(d3d, domains=8*8*2*24*2, pbsbase='glyion1ra');
+gensim(**d3dra);
+addtotargs(d3dra, gendatclean);
 
 if opts['--make-all-targets']:
     for d in targds:
