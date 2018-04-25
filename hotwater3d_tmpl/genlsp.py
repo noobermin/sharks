@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 '''
 Generate an lsp file.
 
@@ -43,8 +43,8 @@ import numpy as np;
 from pys import test,parse_numtuple,sd,take,mk_getkw;
 from collections import OrderedDict;
 joinspace = lambda l: " ".join([str(i) for i in l]);
-def scaletuple(t,scale=1e-4):
-    return tuple([it*scale for it in t]);
+mt  = lambda t,m=1e-4: tuple([i*m for i in t]);
+scaletuple=mt;
 import types;
 def isvalue(v):
     a = isinstance(v, str);
@@ -193,7 +193,7 @@ def genoptions(**kw):
             if isvalue(i):
                 i*=1e9;
             else:
-                scaletuple(i,1e9);
+                mt(i,1e9);
         if i is None or i is ():
             return "";
         elif i is True:
@@ -318,10 +318,6 @@ at {position}
                 position  = joinspace(pgetkw('position')),);
     return ret;
 
-region_defaults = sd(
-    lspdefaults,
-    region_split=('z',1),
-    region_dom_split='x');
 
 region_tmpl=''';
 region{i}
@@ -336,17 +332,16 @@ zmax             {zmax:e}
 ;
 number_of_domains {domains}
 split_direction {split}
-number_of_cells AUTO ; {cells}
+number_of_cells AUTO; {cells}
 ;
 '''
-
 def mkregion_str(regions,split_cells=None):
     def format_region(region):
         if not test(region,"cells"):
             region['cells'] = ""
         else:
             region['cells'] = "cells = {}".format(region['cells'])
-        if float(split_cells)/float(region['domains']) < 4:
+        if split_cells is not None and split_cells/region['domains'] < 4:
             print("warning: {} limits less than 4 cells thick".format(
                 region['split'][0]));
         return region_tmpl.format(**region);
@@ -354,48 +349,74 @@ def mkregion_str(regions,split_cells=None):
     return ''.join([format_region(region)
                     for region in regions ]);
 
-def genregions(**kw):
-    def getkw(l,scale=None):
-        if test(kw, l):
-            ret = kw[l]
-        else:
-            ret = region_defaults[l];
-        if scale:
-            return [scale*i for i in ret];
-        return ret;
-    regsplit_dir, subdivs = getkw('region_split');
-    
-    nonsplits = [x for x in ['x','y','z']
-                 if x != regsplit_dir ];
-    limkw = [x+lims
-             for x in ['x','y','z']
-             for lims in ['min','max']];
-    lims = {k:lim for k,lim in zip(limkw,getkw('lim',scale=1e-4))};
-    
-    total_doms = getkw('domains');
-    doms =  [total_doms//subdivs for i in range(subdivs)];
-    doms[-1] += total_doms % subdivs;
-    lmn,lmx = regsplit_dir+'min', regsplit_dir+'max';
-    mn,mx = lims[lmn],lims[lmx]
-    edges = [mn+i*(mx-mn)/subdivs
-             for i in range(subdivs)] + [mx];
-    split_cells = getkw(getkw("region_dom_split")+"cells");
-    
-    mins = edges[:-1];
-    maxs = edges[1:];
-    if test(kw,"xcells") and test(kw,"ycells") and test(kw,"zcells"):
-        zcells_per_region = [kw['zcells']//subdivs 
-                             for i in range(subdivs)]
-        zcells_per_region[-1] += kw['zcells'] % subdivs;
-        
-        cellses = [ kw['xcells']*kw['ycells']*zc
-                    for i,zc in enumerate(zcells_per_region)];
+unireg_defaults = sd(
+    lspdefaults,
+    region_split=('z',1),
+    region_dom_split='x',    
+)
+def genregions_uniform(subdivs,**kw):
+    '''
+    genregions in a uniform fashion
+
+    subdivs is a list of tuples, each of which specify a range to divide
+    along an axis. There are two options, the first is
+       (d, split)
+    in which d is a string representing the dimension, and split is
+    the number of subdivions along that axis.
+    The section option is
+       (d, split, dmin, dmax) or (d, split, (dmin, dmax))
+    where dmin is the minimum along the d axis and dmax is the max.
+
+    The subdivisions are cartesian multiplied (or cartesian product).
+    '''
+    getkw = mk_getkw(kw, unireg_defaults);
+    lims = mt(getkw('lim'));
+    dims = 'xyz';
+    out={}
+    for subdiv in subdivs:
+        if len(subdiv) == 3:
+            subdiv = subdiv[:2] + subdiv[2];
+        elif len(subdiv) == 2:
+            i=dims.index(subdiv[0])
+            subdiv = subdiv + tuple(lims[i*2:i*2+2])
+        ax, split, mn, mx = subdiv;
+        if ax not in out:
+            out[ax]=[];
+        out[ax].extend(list(
+            np.linspace(mn,mx,split+1)));
+    for i,dim in enumerate(dims):
+        if dim not in out:
+            out[dim] =lims[i*2:i*2+2];
+    regs = [ dict(xmin=xmin,xmax=xmax,
+                  ymin=ymin,ymax=ymax,
+                  zmin=zmin,zmax=zmax,)
+             for xmin,xmax in zip(out['x'],out['x'][1:])
+             for ymin,ymax in zip(out['y'],out['y'][1:])
+             for zmin,zmax in zip(out['z'],out['z'][1:]) ];
+    for i,reg in enumerate(regs):
+        reg['i'] = i+1;
+    if test(kw,"domains_per_region"):
+        for reg in regs:
+            reg['domains'] = getkw("domains_per_region");
     else:
-        cellses = [None for i in range(subdivs)];
-    reg = sd(lims,split=getkw("region_dom_split").upper()+"SPLIT")
-    regions = [ sd(reg,**{lmn:mn,lmx:mx,'i':i+1,'domains':di,'cells':cells})
-                for i,(mn,mx,di,cells) in enumerate(zip(mins,maxs,doms,cellses)) ];
-    return mkregion_str(regions, split_cells=split_cells);
+        ndom = getkw("domains")//len(regs);
+        ex   = getkw("domains") %len(regs);
+        for reg in regs:
+            reg['domains'] = ndom;
+        regs[-1]['domains'] += ex;
+    for reg in regs:
+        reg['split'] = "{}SPLIT".format(
+            getkw("region_dom_split").upper());
+    return regs;
+
+def genregions(**kw):
+    if test(kw,'region_split'):
+        regs = genregions_uniform([kw['region_split']],**kw);
+    elif test(kw, 'region_splits'):
+        regs = genregions_uniform(kw['region_splits'],**kw);
+    else:
+        regs = genregions_uniform([],**kw);
+    return mkregion_str(regs);
 
 densdefaults = sd(
     lspdefaults,
@@ -599,7 +620,7 @@ time_delay {time_delay}
             raise ValueError('Unknown outlet "{}"'.format(outlet));
         lset.add(outlet);
         retoutlets += laser10_tmpl.format(
-            fp = joinspace(scaletuple(lgetkw("fp"))),
+            fp = joinspace(mt(lgetkw("fp"))),
             components = joinspace(lgetkw("components")),
             phases =  joinspace(lgetkw("phases")),
             lasertfunc = lgetkw('lasertfunc'),

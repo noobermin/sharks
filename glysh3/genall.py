@@ -38,18 +38,22 @@ d3d=dict(
     dens_flags=(True,True,False),
     dump_time_zero_flag=True,
     discrete=(2,2,2),
-    lim =(-16, 16, -16.25, 16.25, -22, 22),
-    tlim=(-16, 16, -16.25, 16.25, -22, 22),
-    res =(1628,1625,880),
+    lim =(-16, 16, -16, 16, -22, 22),
+    tlim=(-16, 16, -16, 16, -22, 22),
+    res =(1600,1600,880),
     timestep = 4e-17,
     totaltime=84e-15,
     fp=(0.0,0.0,0.0),
     pbsbase='glyion1',
     description="ionization dynamics",
     dumpinterval=0.0,
-    #PIC/grid details
-    domains=44*130,
-    region_split=('y',130),
+    #regions
+    domains=8*8*2*44,
+    region_dom_split='z',
+    region_splits=[
+        ('x',8),
+        ('y',8),
+        ('z',2),],
     pbses='defaults',
     #density
     tref = (0.0, 0.0, 0.0),
