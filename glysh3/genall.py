@@ -114,6 +114,7 @@ addtotargs(d3dra, gendatclean);
 
 d3danglea = sd(
     d3d,
+    restart_interval=40,
     lim= (-8,  5,   -20,20, -20,20),
     tlim=(-0.23,0.23,-20,20, -20,20),
     res =(1300, 1600, 800),
@@ -122,7 +123,7 @@ d3danglea = sd(
         ('z',8)],
     region_dom_split='x',
     domains=(88*8*8),
-    timestep = 3e-17,
+    timestep = 2.5e-17,
     dens_type = None,
     dens_dat = None,
     target_density = 1.08e22,
