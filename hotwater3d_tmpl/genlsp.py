@@ -434,6 +434,11 @@ data_pairs
 {data}
 end
 '''
+
+plainconst_tmpl = '''type 1
+coefficients {data} end
+'''
+
 tempdefaults = sd(
     lspdefaults,
     thermal_energy = (1.0, 1.0, 1.0),
@@ -497,8 +502,16 @@ def gentemp(**kw):
 def gendens(**kw):
     getkw = mk_getkw(kw, densdefaults);
     speciesl =  getkw('speciesl');
+    outputfmt = "n_{}";
     if test(kw,'target_density'):
         Q = kw['target_density'];
+        fracs = getkw('fracs');
+        if test(kw, 'target_density_plainconst'):
+            ret = {
+                outputfmt.format(species) : plainconst_tmpl.format(data=Q*f)
+                for species,f in zip(speciesl,fracs) };
+            kw.update(ret);
+            return kw;
         if type(Q) == tuple:
         #the reason for tuple and not a general iterable
         #is when we pass a single scale, for example, which
@@ -519,6 +532,7 @@ def gendens(**kw):
             outputfmt.format(species) : densitypairs_tmpl.format(data = iQ)
             for species,iQ in zip(speciesl,Q) };
         kw.update(ret)
+        return kw;
     else:
         kw['dens_dat'] = getkw('dens_dat');
         kw['dens_imul'] = getkw('dens_imul');
@@ -536,9 +550,8 @@ def gendens(**kw):
                 type = kw['dens_type'][i],
                 imul = kw['dens_imul'][i],
                 dmul = kw['fracs'][i]);
-        pass;
-    return kw;
-
+        return kw;
+    pass;
 outletdefaults = sd(
     lspdefaults,
     lasertfunc=1,

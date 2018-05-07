@@ -112,6 +112,26 @@ d3dra = sd(d3d, domains=8*8*2*24*2, pbsbase='glyion1ra');
 gensim(**d3dra);
 addtotargs(d3dra, gendatclean);
 
+d3danglea = sd(
+    d3d,
+    lim= (-8,  5,   -20,20, -20,20),
+    tlim=(-0.23,0.23,-20,20, -20,20),
+    res =(1300, 1600, 800),
+    region_splits=[
+        ('y',8),
+        ('z',8)],
+    region_dom_split='x',
+    domains=(88*8*8),
+    timestep = 3e-17,
+    dens_type = None,
+    dens_dat = None,
+    target_density = 1.08e22,
+    target_density_plainconst=True,
+    pbsbase='glyions1o',
+    #magic
+    phases = [np.pi/4.0, 0.0, -20e-4],
+)
+gensim(**d3danglea);
 if opts['--make-all-targets']:
     for d in targds:
         d['mktargf'](d);
