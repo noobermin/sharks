@@ -133,6 +133,30 @@ d3danglea = sd(
     phases = [np.pi/4.0, 0.0, -20e-4],
 )
 gensim(**d3danglea);
+
+d3dangleb = sd(
+    d3d,
+    restart_interval=40,
+    lim= (-8,  7.5,  -20,20, -20,20),
+    tlim=(-0.23,0.23,-20,20, -20,20),
+    res =(1550, 1600, 800),
+    region_splits=[
+        ('y',10),
+        ('z',10)],
+    region_dom_split='x',
+    domains=6600,
+    timestep = 2.5e-17,
+    dens_type = None,
+    dens_dat = None,
+    target_density = 1.08e22,
+    target_density_plainconst=True,
+    pbsbase='glyions2o',
+    #magic
+    phases = [np.pi/4.0, 0.0, -20e-4],
+)
+gensim(**d3dangleb);
+
+
 if opts['--make-all-targets']:
     for d in targds:
         d['mktargf'](d);
