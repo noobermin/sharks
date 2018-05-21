@@ -153,6 +153,15 @@ d3dangleb = sd(
     pbsbase='glyions2o',
     #magic
     phases = [np.pi/4.0, 0.0, -20e-4],
+    #noneed for dumps
+    dump_particle=False,
+    dump_field=False,
+    dump_scalar=False,
+    dump_number_densities_flag=False,
+    dump_plasma_quantities_flag=False,
+    dump_time_zero_flag=False,
+    dump_restart_steps=[1],
+    
 )
 gensim(**d3dangleb);
 
