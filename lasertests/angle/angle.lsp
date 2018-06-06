@@ -107,14 +107,36 @@ temporal_function 1
 analytic_function 2
 time_delay 0.0
 
-;freespace
-freespace
-from  -4e-4 -7e-4 -4e-4
-to     0e-4  7e-4  4e-4
-model_type WAVEABC
+;back
+outlet
+from 0.000000e+00  -7.000000e-04 -4.000000e-04
+to   0.000000e+00  7.000000e-04 4.000000e-04
 phase_velocity 1.0
-reference_point 0.0 0.0 0.0
-
+drive_model NONE
+;left
+outlet
+from -3.000000e-04  -7.000000e-04 -4.000000e-04
+to   0.000000e+00  -7.000000e-04 4.000000e-04
+phase_velocity 1.0
+drive_model NONE
+;right
+outlet
+from -3.000000e-04  7.000000e-04 -4.000000e-04
+to   0.000000e+00  7.000000e-04 4.000000e-04
+phase_velocity 1.0
+drive_model NONE
+;bottom
+outlet
+from -3.000000e-04  -7.000000e-04 -4.000000e-04
+to   0.000000e+00  7.000000e-04 -4.000000e-04
+phase_velocity 1.0
+drive_model NONE
+;top
+outlet
+from -3.000000e-04  -7.000000e-04 4.000000e-04
+to   0.000000e+00  7.000000e-04 4.000000e-04
+phase_velocity 1.0
+drive_model NONE
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Functions

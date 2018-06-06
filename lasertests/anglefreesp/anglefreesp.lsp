@@ -58,9 +58,9 @@ xmax             0.000000e+00
 x-cells          60
                                         ;
 ;
-ymin             -7.000000e-04
-ymax             7.000000e-04
-y-cells          280
+ymin             -1.000000e-03
+ymax             1.000000e-03
+y-cells          400
 
 ;
 zmin             -4.000000e-04
@@ -77,8 +77,8 @@ region1
 xmin             -3.000000e-04
 xmax             0.000000e+00
 
-ymin             -7.000000e-04
-ymax             7.000000e-04
+ymin             -1.000000e-03
+ymax             1.000000e-03
 
 zmin             -4.000000e-04
 zmax             4.000000e-04
@@ -96,47 +96,26 @@ number_of_cells AUTO;
 
 ;laser
 outlet
-from -3.000000e-04  -7.000000e-04 -4.000000e-04
-to   -3.000000e-04  7.000000e-04 4.000000e-04
+from -3.000000e-04  -1.000000e-03 -4.000000e-04
+to   -3.000000e-04  1.000000e-03 4.000000e-04
 phase_velocity 1.0
 drive_model LASER
 reference_point 0.0 0.0 0.0
 components 0 1 0
-phases 0.7853981633974483 0.0 -0.0007
+phases 0.7853981633974483 0.0 -0.001
 temporal_function 1
 analytic_function 2
 time_delay 0.0
 
-;back
-outlet
-from 0.000000e+00  -7.000000e-04 -4.000000e-04
-to   0.000000e+00  7.000000e-04 4.000000e-04
+;freespace boundaries
+freespace
+from -4.000000e-04  -1.000000e-03 -4.000000e-04
+to   0.000000e+00  1.000000e-03 4.000000e-04
+model_type WAVEABC
 phase_velocity 1.0
-drive_model NONE
-;left
-outlet
-from -3.000000e-04  -7.000000e-04 -4.000000e-04
-to   0.000000e+00  -7.000000e-04 4.000000e-04
-phase_velocity 1.0
-drive_model NONE
-;right
-outlet
-from -3.000000e-04  7.000000e-04 -4.000000e-04
-to   0.000000e+00  7.000000e-04 4.000000e-04
-phase_velocity 1.0
-drive_model NONE
-;bottom
-outlet
-from -3.000000e-04  -7.000000e-04 -4.000000e-04
-to   0.000000e+00  7.000000e-04 -4.000000e-04
-phase_velocity 1.0
-drive_model NONE
-;top
-outlet
-from -3.000000e-04  -7.000000e-04 4.000000e-04
-to   0.000000e+00  7.000000e-04 4.000000e-04
-phase_velocity 1.0
-drive_model NONE
+
+reference_point 0.0 0.0 0.0
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Functions

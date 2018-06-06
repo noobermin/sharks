@@ -44,7 +44,7 @@ d3d=dict(
     totaltime=100e-15,
     fp=(0.0,0.0,0.0),
     phases = [np.pi/4.0, 0.0, -7e-4],
-    pbsbase='anglefreesp',
+    pbsbase='angle',
     description="lasertests: angle test",
     dumpinterval=1.0e-15,
     #regions
@@ -71,3 +71,16 @@ d3d=dict(
     ),
 );
 gensim(**d3d);
+
+d3d_cfspml = sd(
+    d3d,
+    lim =(-3, 0, -10, 10, -4, 4),
+    res =(3*20,20*20,8*10),
+    phases = [np.pi/4.0, 0.0, -10e-4],
+    freespace=dict(
+        model_type='CFSPML',
+        freesp_delta = 0.1e-4,
+        num_of_cells = 4,),
+    pbsbase='anglefreesp',
+);
+gensim(**d3d_cfspml);

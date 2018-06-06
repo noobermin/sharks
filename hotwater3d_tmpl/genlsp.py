@@ -97,6 +97,8 @@ lspdefaults = dict(
     cond_temp = 1.0,
     cond_fraction = 0.0,
     cond_threshold= 0.0,
+    #boundary hacks
+    freespace = None,
 );
 
 ###############
@@ -581,6 +583,14 @@ def outlet_coords(iside,d):
     out[otherside(iside)] = out[iside];
     return out;
 
+frsp_defs = dict(
+    num_of_cells = 4,
+    model_type = 'WAVEABC',
+    freesp_delta = 1e-4,
+    freesp_refp = [0.0,0.0,0.0],
+    freesp_label='freespace boundaries',
+);
+
 def genoutlets(**kw):
     outlet_tmpl='''
 ;{label}
@@ -589,6 +599,16 @@ from {xmin:e}  {ymin:e} {zmin:e}
 to   {xmax:e}  {ymax:e} {zmax:e}
 phase_velocity 1.0
 drive_model NONE''';
+    freespace_tmpl='''
+;{label}
+freespace
+from {xmin:e}  {ymin:e} {zmin:e}
+to   {xmax:e}  {ymax:e} {zmax:e}
+model_type {model_type}
+phase_velocity 1.0
+{num_of_cells}
+reference_point {refp}
+''';
     laser10_tmpl='''
 ;laser
 outlet
@@ -641,12 +661,38 @@ time_delay {time_delay}
             time_delay = lgetkw('laser_time_delay'),
             **outlet_coords(outlet, l)
         );
-    #outlet boundaries
-    for side in [i for i in all_lims if i not in lset] :
-        if laserkw[side[0]+'cells'] > 0:
-            retoutlets += outlet_tmpl.format(
-                label = side_label[side],
-                **outlet_coords(side, laserkw));
+    if test(kw,'freespace'):
+        getkwfr = mk_getkw(frsp_defs,sd(kw,**kw['freespace']),prefer_passed=True);
+        di=dict();
+        di['model_type'] = getkwfr('model_type');
+        if di['model_type'] not in ["WAVEABC","UNIAXIAL","CFSPML"]:
+            raise ValueError("unrecognized model_type for freespace");
+        if di['model_type']=="WAVEABC":
+            di['num_of_cells'] = "";
+        else:
+            di['num_of_cells'] = "number_of_cells {}".format(getkwfr('num_of_cells'));
+        if test(kw,'frlim'):
+            for dim,lim in zip(kw['frlim'],all_lims):
+                di[lim] = dim;
+        else:
+            dx = getkwfr('freesp_delta');
+            for lim in all_lims:
+                di[lim] = getkw(lim);
+                if lim in lset:
+                    if 'min' in lim:
+                        di[lim] -= dx;
+                    else:
+                        di[lim] += dx;
+        di['refp'] = joinspace(getkwfr('freesp_refp'));
+        di['label']= getkwfr('freesp_label');
+        retoutlets += freespace_tmpl.format(**di);
+    else:
+        #outlet boundaries which are not lasers
+        for side in [i for i in all_lims if i not in lset] :
+            if laserkw[side[0]+'cells'] > 0:
+                retoutlets += outlet_tmpl.format(
+                    label = side_label[side],
+                    **outlet_coords(side, laserkw));
     return retoutlets;
 
 condb_objdef=sd(
