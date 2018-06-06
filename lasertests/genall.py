@@ -30,11 +30,14 @@ def addtotargs(d,f):
     d['mktargf'] = f;
     targds.append(d);
 
+EfromI = lambda i: np.sqrt(i*1e4 * 2 / c / e0);
+BfromI = lambda i: EfromI(i)/c*1e4;
+
 d3d=dict(
     l=l,
     w=w0,
     T=T0*2,
-    I=5e18,
+    I=I,
     lim =(-5, 1, -9, 2, -4, 4),
     res =(6*20,11*20,8*10),
     timestep = 1e-16,
@@ -47,10 +50,6 @@ d3d=dict(
     #regions
     domains=44,
     region_dom_split='y',
-    #region_splits=[
-    #    ('x',8),
-    #    ('y',8),
-    #    ('z',2),],
     pbses='defaults',
     #density
     lspexec='lsp-10-3d',
@@ -67,5 +66,8 @@ d3d=dict(
     dump_scalar=False,
     dump_number_densities_flag=False,
     dump_plasma_quantities_flag=False,
+    movE=dict(
+        clim=(EfromI(1e17),EfromI(5e18))
+    ),
 );
 gensim(**d3d);
