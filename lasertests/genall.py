@@ -45,7 +45,7 @@ d3d=dict(
     description="lasertests: angle test",
     dumpinterval=1.0e-15,
     #regions
-    domains=2*44,
+    domains=44,
     region_dom_split='y',
     #region_splits=[
     #    ('x',8),
