@@ -2,11 +2,11 @@
 ;; this includes most correct masses for water
 ;; and better selection ratios
 [Title]
-simulation_title "lasertests: angle test with freespace, I = 5.000000e+18 W/cm^2"
+simulation_title "lasertests: angle test, I = 5.000000e+18 W/cm^2"
 ;
 [Control]
 ;Time-advance
- time_limit   5.0000e-05
+ time_limit   1.0000e-04
  time_step_ns 1.0000e-07
 
 ;;Restarts
@@ -53,14 +53,14 @@ field_dump_interval_ns 1.0000000000000002e-06
 [Grid]
 ;
 grid1
-xmin             -5.000000e-04
-xmax             1.000000e-04
-x-cells          120
+xmin             -3.000000e-04
+xmax             0.000000e+00
+x-cells          60
                                         ;
 ;
-ymin             -9.000000e-04
-ymax             2.000000e-04
-y-cells          220
+ymin             -7.000000e-04
+ymax             7.000000e-04
+y-cells          280
 
 ;
 zmin             -4.000000e-04
@@ -74,11 +74,11 @@ z-cells          80
 
 ;
 region1
-xmin             -5.000000e-04
-xmax             1.000000e-04
+xmin             -3.000000e-04
+xmax             0.000000e+00
 
-ymin             -9.000000e-04
-ymax             2.000000e-04
+ymin             -7.000000e-04
+ymax             7.000000e-04
 
 zmin             -4.000000e-04
 zmax             4.000000e-04
@@ -96,24 +96,21 @@ number_of_cells AUTO;
 
 ;laser
 outlet
-from -5.000000e-04  -9.000000e-04 -4.000000e-04
-to   -5.000000e-04  2.000000e-04 4.000000e-04
+from -3.000000e-04  -7.000000e-04 -4.000000e-04
+to   -3.000000e-04  7.000000e-04 4.000000e-04
 phase_velocity 1.0
 drive_model LASER
 reference_point 0.0 0.0 0.0
 components 0 1 0
-phases 0.7853981633974483 0.0 -0.0009
+phases 0.7853981633974483 0.0 -0.0007
 temporal_function 1
 analytic_function 2
 time_delay 0.0
 
 ;freespace
-freespace
-from  -6e-4 -9e-4  -4e-4
-to     1e-4  2e-4   4e-4
-model_type WAVEABC
-phase_velocity 1.0
-reference_point 0.0 0.0 0.0
+freespace -4e-4 -7e-4 -4e-4
+to         0e-4  7e-4 -4e-4
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Functions
