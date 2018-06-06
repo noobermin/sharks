@@ -108,8 +108,12 @@ analytic_function 2
 time_delay 0.0
 
 ;freespace
-freespace -4e-4 -7e-4 -4e-4
-to         0e-4  7e-4 -4e-4
+freespace
+from  -4e-4 -7e-4 -4e-4
+to     0e-4  7e-4 -4e-4
+model_type WAVEABC
+phase_velocity 1.0
+reference_point 0.0 0.0 0.0
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
