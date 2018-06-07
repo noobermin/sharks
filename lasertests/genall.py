@@ -72,6 +72,19 @@ d3d=dict(
 );
 gensim(**d3d);
 
+d3d_exp=sd(
+    d3d,
+    lim =(-3, 0, -10, 10, -4, 4),
+    totaltime=120e-15,
+    res =(3*20,20*20,8*10),
+    phases = [np.pi/4.0, 0.0, -10e-4],
+    movE=dict(
+        clim=(1e10,EfromI(5e18))
+    ),
+    pbsbase='angle2',
+);
+gensim(**d3d_exp);
+
 d3d_cfspml = sd(
     d3d,
     lim =(-3, 0, -10, 10, -4, 4),
