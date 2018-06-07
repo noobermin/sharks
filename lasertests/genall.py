@@ -131,3 +131,12 @@ d3d_cfspml2 = sd(
 gensim(**d3d_cfspml2);
 
 
+gensim(**sd(
+    d3d_exp,
+    freespace=dict(
+        model_type='WAVEABC',
+        freesp_delta = 0.2e-4,
+        keep_outlets=['xmax','ymin','ymax','zmin','zmax'],),
+    pbsbase='anglefreesp_abc',)
+);
+
