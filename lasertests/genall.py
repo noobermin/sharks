@@ -88,3 +88,33 @@ d3d_cfspml = sd(
     ),
 );
 gensim(**d3d_cfspml);
+
+d3d_cfspml = sd(
+    d3d,
+    lim =(-3, 0, -10, 10, -4, 4),
+    totaltime=120e-15,
+    res =(3*20,20*20,8*10),
+    phases = [np.pi/4.0, 0.0, -10e-4],
+    freespace=dict(
+        model_type='CFSPML',
+        freesp_delta = 0.2e-4,
+        num_of_cells = 8,),
+    pbsbase='anglefreesp',
+    movE=dict(
+        clim=(1e10,EfromI(5e18))
+    ),
+);
+gensim(**d3d_cfspml);
+
+d3d_cfspml2 = sd(
+    d3d_cfspml,
+    freespace=dict(
+        model_type='CFSPML',
+        freesp_delta = 0.2e-4,
+        num_of_cells = 8,
+        keep_outlets=['xmax'],),
+    pbsbase='anglefreesp2',
+);
+gensim(**d3d_cfspml2);
+
+

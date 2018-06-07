@@ -116,6 +116,12 @@ phase_velocity 1.0
 number_of_cells 8
 reference_point 0.0 0.0 0.0
 
+;back
+outlet
+from 0.000000e+00  -1.000000e-03 -4.000000e-04
+to   0.000000e+00  1.000000e-03 4.000000e-04
+phase_velocity 1.0
+drive_model NONE
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Functions

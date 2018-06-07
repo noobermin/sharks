@@ -589,6 +589,7 @@ frsp_defs = dict(
     freesp_delta = 1e-4,
     freesp_refp = [0.0,0.0,0.0],
     freesp_label='freespace boundaries',
+    keep_outlets=[],
 );
 
 def genoutlets(**kw):
@@ -661,8 +662,10 @@ time_delay {time_delay}
             time_delay = lgetkw('laser_time_delay'),
             **outlet_coords(outlet, l)
         );
+    just_outlets = [i for i in all_lims if i not in lset];
     if test(kw,'freespace'):
-        getkwfr = mk_getkw(frsp_defs,sd(kw,**kw['freespace']),prefer_passed=True);
+        getkwfr = mk_getkw(
+            sd(kw,**kw['freespace']),frsp_defs,prefer_passed=True);
         di=dict();
         di['model_type'] = getkwfr('model_type');
         if di['model_type'] not in ["WAVEABC","UNIAXIAL","CFSPML"]:
@@ -671,11 +674,18 @@ time_delay {time_delay}
             di['num_of_cells'] = "";
         else:
             di['num_of_cells'] = "number_of_cells {}".format(getkwfr('num_of_cells'));
+        keeps = getkwfr('keep_outlets');
+        print(keeps);
+        if keeps is None: keeps = [];
+        just_outlets = [ i for i in just_outlets
+                         if i in keeps ];
+        print(just_outlets);
         if test(kw,'frlim'):
             for dim,lim in zip(kw['frlim'],all_lims):
                 di[lim] = dim;
         else:
             dx = getkwfr('freesp_delta');
+            keepset = lset.union(just_outlets);
             for lim in all_lims:
                 di[lim] = getkw(lim);
                 if lim in lset:
@@ -686,13 +696,12 @@ time_delay {time_delay}
         di['refp'] = joinspace(getkwfr('freesp_refp'));
         di['label']= getkwfr('freesp_label');
         retoutlets += freespace_tmpl.format(**di);
-    else:
-        #outlet boundaries which are not lasers
-        for side in [i for i in all_lims if i not in lset] :
-            if laserkw[side[0]+'cells'] > 0:
-                retoutlets += outlet_tmpl.format(
-                    label = side_label[side],
-                    **outlet_coords(side, laserkw));
+    #outlet boundaries which and are not removed by freespace
+    for side in just_outlets:
+        if laserkw[side[0]+'cells'] > 0:
+            retoutlets += outlet_tmpl.format(
+                label = side_label[side],
+                **outlet_coords(side, laserkw));
     return retoutlets;
 
 condb_objdef=sd(
