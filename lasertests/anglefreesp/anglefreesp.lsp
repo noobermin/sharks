@@ -112,8 +112,8 @@ freespace
 from -3.200000e-04  -1.000000e-03 -4.000000e-04
 to   0.000000e+00  1.000000e-03 4.000000e-04
 model_type CFSPML
-phase_velocity 1.0
 number_of_cells 8
+phase_velocity 1.0
 reference_point 0.0 0.0 0.0
 
 

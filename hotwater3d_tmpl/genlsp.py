@@ -606,8 +606,8 @@ freespace
 from {xmin:e}  {ymin:e} {zmin:e}
 to   {xmax:e}  {ymax:e} {zmax:e}
 model_type {model_type}
-phase_velocity 1.0
 {num_of_cells}
+phase_velocity 1.0
 reference_point {refp}
 ''';
     laser10_tmpl='''
@@ -673,13 +673,12 @@ time_delay {time_delay}
         if di['model_type']=="WAVEABC":
             di['num_of_cells'] = "";
         else:
-            di['num_of_cells'] = "number_of_cells {}".format(getkwfr('num_of_cells'));
+            di['num_of_cells'] = "number_of_cells {}".format(
+                getkwfr('num_of_cells'));
         keeps = getkwfr('keep_outlets');
-        print(keeps);
         if keeps is None: keeps = [];
         just_outlets = [ i for i in just_outlets
                          if i in keeps ];
-        print(just_outlets);
         if test(kw,'frlim'):
             for dim,lim in zip(kw['frlim'],all_lims):
                 di[lim] = dim;
@@ -688,7 +687,7 @@ time_delay {time_delay}
             keepset = lset.union(just_outlets);
             for lim in all_lims:
                 di[lim] = getkw(lim);
-                if lim in lset:
+                if lim in keepset:
                     if 'min' in lim:
                         di[lim] -= dx;
                     else:
