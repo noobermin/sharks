@@ -6,7 +6,7 @@ simulation_title "lasertests: angle test, I = 5.000000e+18 W/cm^2"
 ;
 [Control]
 ;Time-advance
- time_limit   1.0000e-04
+ time_limit   1.2000e-04
  time_step_ns 1.0000e-07
 
 ;;Restarts

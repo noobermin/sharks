@@ -5,12 +5,13 @@ WAITDELAY=${WAITDELAY:-1}
 DIR=${1:-"."}
 [ ! -n "$OUTDIR" ] && OUTDIR=${2:-"movE_norm"}
 mkdir -p "$OUTDIR"
-LIMS=${LIMS:-"(868030304706.96082, 6137901147337.1699)"}
+LIMS=${LIMS:-"(10000000000.0, 6137901147337.17)"}
 QUANTITY=${QUANTITY:-"E_norm"}
 NPROCS=${NPROCS:-1}
 CONTOURS=${COUNTOURS:-"1e+19"}
 CONTOURQS=${CONTOURQS:-"RhoN10"}
 SCRIPT=${SCRIPT:-"EM.py"}
+FILETYPE=${FILETYPE:-"avi"}
 for i in $(ls "$DIR" | grep 'flds[0-9]\+\.p4' | sort -V); do
     n=$(echo ${i#flds*} | sed 's/\.p4.*$//')
     I=$(printf '%05d' "$n" )
@@ -25,6 +26,6 @@ done
 while [ $(pgrep -f 'python[23]* *.*'"$SCRIPT" | wc -l ) -gt 0 ]; do
     echo waiting...
     sleep 5; done;
-OUTMOV=${OUTMOV:-"anglefreesp-$QUANTITY.mp4"}
+OUTMOV=${OUTMOV:-"anglefreesp-$QUANTITY.$FILETYPE"}
 ffmpeg -pattern_type glob -i "$OUTDIR/*.png" -c:v libx264 -pix_fmt yuv420p -y $OUTMOV
 [ -e $OUTMOV ] && [ -n "$PBS_O_WORKDIR" ] && rcp $OUTMOV $PBS_O_WORKDIR

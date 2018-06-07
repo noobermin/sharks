@@ -11,6 +11,7 @@ NPROCS=${{NPROCS:-1}}
 CONTOURS=${{COUNTOURS:-"{contour_lines}"}}
 CONTOURQS=${{CONTOURQS:-"{contour_quantities}"}}
 SCRIPT=${{SCRIPT:-"EM.py"}}
+FILETYPE=${{FILETYPE:-"avi"}}
 for i in $(ls "$DIR" | grep 'flds[0-9]\+\.p4' | sort -V); do
     n=$(echo ${{i#flds*}} | sed 's/\.p4.*$//')
     I=$(printf '%05d' "$n" )
@@ -25,6 +26,6 @@ done
 while [ $(pgrep -f 'python[23]* *.*'"$SCRIPT" | wc -l ) -gt 0 ]; do
     echo waiting...
     sleep 5; done;
-OUTMOV=${{OUTMOV:-"{pbsbase}-$QUANTITY.mp4"}}
+OUTMOV=${{OUTMOV:-"{pbsbase}-$QUANTITY.$FILETYPE"}}
 ffmpeg -pattern_type glob -i "$OUTDIR/*.png" -c:v libx264 -pix_fmt yuv420p -y $OUTMOV
 [ -e $OUTMOV ] && [ -n "$PBS_O_WORKDIR" ] && rcp $OUTMOV $PBS_O_WORKDIR
