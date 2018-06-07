@@ -18,9 +18,11 @@ balance_interval 0.0
 balance_interval_ns 0.0
 load_balance_flag OFF
 
-;Field Solution and Modification
- time_bias_coefficient 0
- time_bias_iterations 1
+;;Field Solution and Modification
+time_bias_coefficient 0.0
+time_bias_iterations 1
+
+;Don't touch? Hmm...
 ;Implicit Field Algorithm
  error_current_filtering_parameter 0.95
  implicit_iterations 10

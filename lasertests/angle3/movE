@@ -28,6 +28,6 @@ done
 while [ $(pgrep -f 'python[23]* *.*'"$SCRIPT" | wc -l ) -gt 0 ]; do
     echo waiting...
     sleep 5; done;
-OUTMOV=${OUTMOV:-"anglefreesp-$QUANTITY.$FILETYPE"}
+OUTMOV=${OUTMOV:-"angle3-$QUANTITY.$FILETYPE"}
 ffmpeg -pattern_type glob -i "$OUTDIR/*.png" -c:v libx264 -pix_fmt yuv420p -y $OUTMOV
 [ -e $OUTMOV ] && [ -n "$PBS_O_WORKDIR" ] && rcp $OUTMOV $PBS_O_WORKDIR

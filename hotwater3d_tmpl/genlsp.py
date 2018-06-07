@@ -120,9 +120,10 @@ balance_opts = ('Load Balancing', dict(
 ),)
 #6.2.4 Field solution, do not touch.
 #...
-options_dont_touch = ''';Field Solution and Modification
- time_bias_coefficient 0
- time_bias_iterations 1
+fieldmod_opts = ('Field Solution and Modification', dict(
+    time_bias_coefficient=0.0,
+    time_bias_iterations=1,),);
+options_dont_touch = ''';Don't touch? Hmm...
 ;Implicit Field Algorithm
  error_current_filtering_parameter 0.95
  implicit_iterations 10
@@ -215,7 +216,7 @@ def genoptions(**kw):
         return tmpl.format(title,all_opts);
     out=''.join([
         genopts(iopts)
-        for iopts in [restart_opts, balance_opts,]
+        for iopts in [restart_opts, balance_opts,fieldmod_opts]
     ]);
     out+=options_dont_touch
     out+=''.join([

@@ -6,7 +6,7 @@ simulation_title "lasertests: angle test, I = 5.000000e+18 W/cm^2"
 ;
 [Control]
 ;Time-advance
- time_limit   1.2000e-04
+ time_limit   1.5000e-04
  time_step_ns 1.0000e-07
 
 ;;Restarts
@@ -20,7 +20,7 @@ load_balance_flag OFF
 
 ;;Field Solution and Modification
 time_bias_coefficient 0.0
-time_bias_iterations 1
+time_bias_iterations 0
 
 ;Don't touch? Hmm...
 ;Implicit Field Algorithm
@@ -55,12 +55,12 @@ field_dump_interval_ns 1.0000000000000002e-06
 [Grid]
 ;
 grid1
-xmin             -3.000000e-04
+xmin             -4.000000e-04
 xmax             0.000000e+00
 x-cells          60
                                         ;
 ;
-ymin             -1.000000e-03
+ymin             -1.100000e-03
 ymax             1.000000e-03
 y-cells          400
 
@@ -76,10 +76,10 @@ z-cells          80
 
 ;
 region1
-xmin             -3.000000e-04
+xmin             -4.000000e-04
 xmax             0.000000e+00
 
-ymin             -1.000000e-03
+ymin             -1.100000e-03
 ymax             1.000000e-03
 
 zmin             -4.000000e-04
@@ -98,8 +98,8 @@ number_of_cells AUTO;
 
 ;laser
 outlet
-from -3.000000e-04  -1.000000e-03 -4.000000e-04
-to   -3.000000e-04  1.000000e-03 4.000000e-04
+from -4.000000e-04  -1.100000e-03 -4.000000e-04
+to   -4.000000e-04  1.000000e-03 4.000000e-04
 phase_velocity 1.0
 drive_model LASER
 reference_point 0.0 0.0 0.0
@@ -111,31 +111,31 @@ time_delay 0.0
 
 ;back
 outlet
-from 0.000000e+00  -1.000000e-03 -4.000000e-04
+from 0.000000e+00  -1.100000e-03 -4.000000e-04
 to   0.000000e+00  1.000000e-03 4.000000e-04
 phase_velocity 1.0
 drive_model NONE
 ;left
 outlet
-from -3.000000e-04  -1.000000e-03 -4.000000e-04
-to   0.000000e+00  -1.000000e-03 4.000000e-04
+from -4.000000e-04  -1.100000e-03 -4.000000e-04
+to   0.000000e+00  -1.100000e-03 4.000000e-04
 phase_velocity 1.0
 drive_model NONE
 ;right
 outlet
-from -3.000000e-04  1.000000e-03 -4.000000e-04
+from -4.000000e-04  1.000000e-03 -4.000000e-04
 to   0.000000e+00  1.000000e-03 4.000000e-04
 phase_velocity 1.0
 drive_model NONE
 ;bottom
 outlet
-from -3.000000e-04  -1.000000e-03 -4.000000e-04
+from -4.000000e-04  -1.100000e-03 -4.000000e-04
 to   0.000000e+00  1.000000e-03 -4.000000e-04
 phase_velocity 1.0
 drive_model NONE
 ;top
 outlet
-from -3.000000e-04  -1.000000e-03 4.000000e-04
+from -4.000000e-04  -1.100000e-03 4.000000e-04
 to   0.000000e+00  1.000000e-03 4.000000e-04
 phase_velocity 1.0
 drive_model NONE
@@ -149,7 +149,7 @@ function1 ; laser temporal function
 type 30
 data_file sine700points.dat
 ;; pulse duration length, 2xFWHM
-independent_variable_multiplier 3.000000e-05
+independent_variable_multiplier 2.000000e-05
 ;; Emax, intensity=5.000000e+18 W/cm^2
 dependent_variable_multiplier   6.137836e+07
 

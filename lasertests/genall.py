@@ -85,6 +85,23 @@ d3d_exp=sd(
 );
 gensim(**d3d_exp);
 
+d3d_exp=sd(
+    d3d,
+    lim =(-4, 0, -11, 10, -4, 4),
+    T=20e-15,
+    totaltime=150e-15,
+    res =(3*20,20*20,8*10),
+    phases = [np.pi/4.0, 0.0, -10e-4],
+    movE=dict(
+        clim=(1e10,EfromI(5e18))
+    ),
+    time_bias_iterations=0,
+    pbsbase='angle3',
+);
+gensim(**d3d_exp);
+
+
+
 d3d_cfspml = sd(
     d3d,
     lim =(-3, 0, -10, 10, -4, 4),
