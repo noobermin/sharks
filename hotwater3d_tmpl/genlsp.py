@@ -680,8 +680,8 @@ time_delay {time_delay}
         if keeps is None: keeps = [];
         just_outlets = [ i for i in just_outlets
                          if i in keeps ];
-        if test(kw,'frlim'):
-            for dim,lim in zip(kw['frlim'],all_lims):
+        if test(kw['freespace'],'frlim'):
+            for dim,lim in zip(getkwfr('frlim'),all_lims):
                 di[lim] = dim;
         else:
             dx = getkwfr('freesp_delta');
