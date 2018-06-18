@@ -60,8 +60,8 @@ xmax             4.000000e-04
 x-cells          120
                                         ;
 ;
-ymin             -6.000000e-04
-ymax             1.600000e-03
+ymin             -1.000000e-03
+ymax             1.000000e-03
 y-cells          400
 
 ;
@@ -79,8 +79,8 @@ region1
 xmin             -2.000000e-04
 xmax             4.000000e-04
 
-ymin             -6.000000e-04
-ymax             1.600000e-03
+ymin             -1.000000e-03
+ymax             1.000000e-03
 
 zmin             -4.000000e-04
 zmax             4.000000e-04
@@ -98,21 +98,21 @@ number_of_cells AUTO;
 
 ;laser
 outlet
-from -2.000000e-04  -6.000000e-04 -4.000000e-04
-to   -2.000000e-04  1.600000e-03 4.000000e-04
+from -2.000000e-04  -1.000000e-03 -4.000000e-04
+to   -2.000000e-04  1.000000e-03 4.000000e-04
 phase_velocity 1.0
 drive_model LASER
 reference_point 0.0 0.0 0.0
 components 0 1 0
-phases 0.7853981633974483 0.0 -0.0006
+phases 0.7853981633974483 0.0 -0.001
 temporal_function 1
 analytic_function 2
 time_delay 0.0
 
 ;freespace boundaries
 freespace
-from 3.000000e-04  -6.000000e-04 -4.000000e-04
-to   4.000000e-04  1.600000e-03 4.000000e-04
+from 2.900000e-04  -9.000000e-04 -3.500000e-04
+to   3.900000e-04  9.000000e-04 3.500000e-04
 model_type CFSPML
 number_of_cells 10
 phase_velocity 1.0
@@ -120,32 +120,32 @@ reference_point 0.0 0.0 0.0
 
 ;back
 outlet
-from 4.000000e-04  -6.000000e-04 -4.000000e-04
-to   4.000000e-04  1.600000e-03 4.000000e-04
+from 4.000000e-04  -1.000000e-03 -4.000000e-04
+to   4.000000e-04  1.000000e-03 4.000000e-04
 phase_velocity 1.0
 drive_model NONE
 ;left
 outlet
-from -2.000000e-04  -6.000000e-04 -4.000000e-04
-to   4.000000e-04  -6.000000e-04 4.000000e-04
+from -2.000000e-04  -1.000000e-03 -4.000000e-04
+to   4.000000e-04  -1.000000e-03 4.000000e-04
 phase_velocity 1.0
 drive_model NONE
 ;right
 outlet
-from -2.000000e-04  1.600000e-03 -4.000000e-04
-to   4.000000e-04  1.600000e-03 4.000000e-04
+from -2.000000e-04  1.000000e-03 -4.000000e-04
+to   4.000000e-04  1.000000e-03 4.000000e-04
 phase_velocity 1.0
 drive_model NONE
 ;bottom
 outlet
-from -2.000000e-04  -6.000000e-04 -4.000000e-04
-to   4.000000e-04  1.600000e-03 -4.000000e-04
+from -2.000000e-04  -1.000000e-03 -4.000000e-04
+to   4.000000e-04  1.000000e-03 -4.000000e-04
 phase_velocity 1.0
 drive_model NONE
 ;top
 outlet
-from -2.000000e-04  -6.000000e-04 4.000000e-04
-to   4.000000e-04  1.600000e-03 4.000000e-04
+from -2.000000e-04  -1.000000e-03 4.000000e-04
+to   4.000000e-04  1.000000e-03 4.000000e-04
 phase_velocity 1.0
 drive_model NONE
 

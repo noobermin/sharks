@@ -121,12 +121,12 @@ gensim(**d3d_cfspml);
 
 d3d_cfspml = sd(
     d3d,
-    lim =(-2, 4, -6, 16, -4, 4),
+    lim =(-2, 4, -10, 10, -4, 4),
     totaltime=120e-15,
     res =(6*20, 20*20, 8*10),
-    phases = [np.pi/4.0, 0.0, -6e-4],
+    phases = [np.pi/4.0, 0.0, -10e-4],
     freespace=dict(
-        frlim=[3e-4,4e-4, -6e-4,16e-4, -4e-4,4e-4],
+        frlim=[2.9e-4,3.9e-4, -9e-4,9e-4, -3.5e-4, 3.5e-4],
         keep_outlets=['xmax','ymin','ymax','zmin','zmax'],
         model_type='CFSPML',
         freesp_delta = 0.0,
