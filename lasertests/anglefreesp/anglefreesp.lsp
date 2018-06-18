@@ -104,7 +104,7 @@ phase_velocity 1.0
 drive_model LASER
 reference_point 0.0 0.0 0.0
 components 0 1 0
-phases 0.7853981633974483 0.0 -0.001
+phases 0.7853981633974483 0.0 -0.0006
 temporal_function 1
 analytic_function 2
 time_delay 0.0
