@@ -55,9 +55,9 @@ field_dump_interval_ns 1.0000000000000002e-06
 [Grid]
 ;
 grid1
-xmin             -2.000000e-04
-xmax             4.000000e-04
-x-cells          120
+xmin             -3.000000e-04
+xmax             0.000000e+00
+x-cells          60
                                         ;
 ;
 ymin             -1.000000e-03
@@ -76,8 +76,8 @@ z-cells          80
 
 ;
 region1
-xmin             -2.000000e-04
-xmax             4.000000e-04
+xmin             -3.000000e-04
+xmax             0.000000e+00
 
 ymin             -1.000000e-03
 ymax             1.000000e-03
@@ -98,8 +98,8 @@ number_of_cells AUTO;
 
 ;laser
 outlet
-from -2.000000e-04  -1.000000e-03 -4.000000e-04
-to   -2.000000e-04  1.000000e-03 4.000000e-04
+from -3.000000e-04  -1.000000e-03 -4.000000e-04
+to   -3.000000e-04  1.000000e-03 4.000000e-04
 phase_velocity 1.0
 drive_model LASER
 reference_point 0.0 0.0 0.0
@@ -111,43 +111,13 @@ time_delay 0.0
 
 ;freespace boundaries
 freespace
-from 2.900000e-04  -9.000000e-04 -3.500000e-04
-to   3.900000e-04  9.000000e-04 3.500000e-04
+from -3.200000e-04  -1.000000e-03 -4.000000e-04
+to   0.000000e+00  1.000000e-03 4.000000e-04
 model_type CFSPML
-number_of_cells 10
+number_of_cells 8
 phase_velocity 1.0
 reference_point 0.0 0.0 0.0
 
-;back
-outlet
-from 4.000000e-04  -1.000000e-03 -4.000000e-04
-to   4.000000e-04  1.000000e-03 4.000000e-04
-phase_velocity 1.0
-drive_model NONE
-;left
-outlet
-from -2.000000e-04  -1.000000e-03 -4.000000e-04
-to   4.000000e-04  -1.000000e-03 4.000000e-04
-phase_velocity 1.0
-drive_model NONE
-;right
-outlet
-from -2.000000e-04  1.000000e-03 -4.000000e-04
-to   4.000000e-04  1.000000e-03 4.000000e-04
-phase_velocity 1.0
-drive_model NONE
-;bottom
-outlet
-from -2.000000e-04  -1.000000e-03 -4.000000e-04
-to   4.000000e-04  1.000000e-03 -4.000000e-04
-phase_velocity 1.0
-drive_model NONE
-;top
-outlet
-from -2.000000e-04  -1.000000e-03 4.000000e-04
-to   4.000000e-04  1.000000e-03 4.000000e-04
-phase_velocity 1.0
-drive_model NONE
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Functions
