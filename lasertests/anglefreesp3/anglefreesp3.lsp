@@ -60,14 +60,14 @@ xmax             2.000000e-04
 x-cells          80
                                         ;
 ;
-ymin             -1.800000e-03
-ymax             1.200000e-03
+ymin             -1.500000e-03
+ymax             1.500000e-03
 y-cells          600
 
 ;
-zmin             -4.000000e-04
-zmax             4.000000e-04
-z-cells          80
+zmin             -6.000000e-04
+zmax             6.000000e-04
+z-cells          120
 
 [Regions]
 ;
@@ -79,11 +79,11 @@ region1
 xmin             -2.000000e-04
 xmax             2.000000e-04
 
-ymin             -1.800000e-03
-ymax             1.200000e-03
+ymin             -1.500000e-03
+ymax             1.500000e-03
 
-zmin             -4.000000e-04
-zmax             4.000000e-04
+zmin             -6.000000e-04
+zmax             6.000000e-04
 ;
 number_of_domains 44
 split_direction YSPLIT
@@ -93,61 +93,56 @@ number_of_cells AUTO;
 ;
 [Objects]
 
+object1 BLOCK
+conductor on medium 0 potential 0
+from 1.900000e-04 -1.500000e-03 -6.000000e-04
+to   2.100000e-04 1.500000e-03 6.000000e-04
+
+object2 BLOCK
+conductor on medium 0 potential 0
+from -2.000000e-04 1.490000e-03 -6.000000e-04
+to   2.000000e-04 1.510000e-03 6.000000e-04
+
+object3 BLOCK
+conductor on medium 0 potential 0
+from -2.000000e-04 -1.510000e-03 -6.000000e-04
+to   2.000000e-04 -1.490000e-03 6.000000e-04
+
+object4 BLOCK
+conductor on medium 0 potential 0
+from -2.000000e-04 -1.500000e-03 5.900000e-04
+to   2.000000e-04 1.500000e-03 6.100000e-04
+
+object5 BLOCK
+conductor on medium 0 potential 0
+from -2.000000e-04 -1.500000e-03 -6.100000e-04
+to   2.000000e-04 1.500000e-03 -5.900000e-04
+
 
 [Boundaries]
 
 ;laser
 outlet
-from -2.000000e-04  -1.800000e-03 -4.000000e-04
-to   -2.000000e-04  1.200000e-03 4.000000e-04
+from -2.000000e-04  -1.500000e-03 -6.000000e-04
+to   -2.000000e-04  1.500000e-03 6.000000e-04
 phase_velocity 1.0
 drive_model LASER
 reference_point 0.0 0.0 0.0
 components 0 1 0
-phases 0.7853981633974483 0.0 -0.0018
+phases 0.7853981633974483 0.0 -0.0015
 temporal_function 1
 analytic_function 2
 time_delay 0.0
 
 ;freespace boundaries
 freespace
-from 1.000000e-04  -1.800000e-03 -4.000000e-04
-to   2.000000e-04  1.200000e-03 4.000000e-04
+from -1.900000e-04  -1.490000e-03 -5.900000e-04
+to   1.900000e-04  1.490000e-03 5.900000e-04
 model_type CFSPML
 number_of_cells 8
 phase_velocity 1.0
 reference_point 0.0 0.0 0.0
 
-;back
-outlet
-from 2.000000e-04  -1.800000e-03 -4.000000e-04
-to   2.000000e-04  1.200000e-03 4.000000e-04
-phase_velocity 1.0
-drive_model NONE
-;left
-outlet
-from -2.000000e-04  -1.800000e-03 -4.000000e-04
-to   2.000000e-04  -1.800000e-03 4.000000e-04
-phase_velocity 1.0
-drive_model NONE
-;right
-outlet
-from -2.000000e-04  1.200000e-03 -4.000000e-04
-to   2.000000e-04  1.200000e-03 4.000000e-04
-phase_velocity 1.0
-drive_model NONE
-;bottom
-outlet
-from -2.000000e-04  -1.800000e-03 -4.000000e-04
-to   2.000000e-04  1.200000e-03 -4.000000e-04
-phase_velocity 1.0
-drive_model NONE
-;top
-outlet
-from -2.000000e-04  -1.800000e-03 4.000000e-04
-to   2.000000e-04  1.200000e-03 4.000000e-04
-phase_velocity 1.0
-drive_model NONE
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Functions

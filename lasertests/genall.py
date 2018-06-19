@@ -119,24 +119,55 @@ d3d_cfspml = sd(
 );
 gensim(**d3d_cfspml);
 
-d3d_cfspml = sd(
+d3d_cfspml2 = sd(
     d3d,
     lim =(-2, 2, -18, 12, -4, 4),
     totaltime=150e-15,
     res =(4*20, 30*20, 8*10),
     phases = [np.pi/4.0, 0.0, -18e-4],
     freespace=dict(
-        frlim=[1e-4,2e-4, -10e-4, 10e-4, -3.9e-4, 3.9e-4],
+        frlim=[1e-4,2e-4, -18e-4, 12e-4, -4e-4, 4e-4],
         keep_outlets=['xmax','ymin','ymax','zmin','zmax'],
         model_type='CFSPML',
         freesp_delta = 0.0,
-        num_of_cells = 10,),
+        num_of_cells = 8,),
     pbsbase='anglefreesp2',
     movE=dict(
         clim=(1e10,EfromI(5e18))
     ),
 );
-gensim(**d3d_cfspml);
+gensim(**d3d_cfspml2);
+
+
+cond = dict(
+    outlet = 'xmin',
+    start  =-0.1,
+    width  = 0.2,);
+d3d_cfspml3 = sd(
+    d3d,
+    lim =(-2, 2, -15, 15, -6, 6),
+    totaltime=150e-15,
+    res =(4*20, 30*20, 12*10),
+    phases = [np.pi/4.0, 0.0, -15e-4],
+    freespace=dict(
+        frlim=[-1.9e-4,1.9e-4, -14.9e-4,14.9e-4, -5.9e-4,5.9e-4],
+        model_type='CFSPML',
+        freesp_delta = 0.0,
+        num_of_cells = 8,),
+    conductors=[
+        sd(cond, outlet='xmax'),
+        sd(cond, outlet='ymax'),
+        sd(cond, outlet='ymin'),
+        sd(cond, outlet='zmax'),
+        sd(cond, outlet='zmin'),],
+    pbsbase='anglefreesp3',
+    movE=dict(
+        clim=(1e10,EfromI(5e18))
+    ),
+);
+gensim(**d3d_cfspml3);
+
+
 gensim(**sd(
     d3d_exp,
     freespace=dict(
