@@ -141,7 +141,7 @@ gensim(**d3d_cfspml2);
 
 cond = dict(
     outlet = 'xmin',
-    start  =-0.1,
+    start  = 0.0,
     width  = 0.1,);
 d3d_cfspml3 = sd(
     d3d,
