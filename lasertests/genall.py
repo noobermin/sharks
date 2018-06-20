@@ -142,7 +142,7 @@ gensim(**d3d_cfspml2);
 cond = dict(
     outlet = 'xmin',
     start  =-0.1,
-    width  = 0.2,);
+    width  = 0.1,);
 d3d_cfspml3 = sd(
     d3d,
     lim =(-2, 2, -15, 15, -6, 6),
@@ -150,10 +150,10 @@ d3d_cfspml3 = sd(
     res =(4*20, 30*20, 12*10),
     phases = [np.pi/4.0, 0.0, -15e-4],
     freespace=dict(
-        frlim=[-1.9e-4,1.9e-4, -14.9e-4,14.9e-4, -5.9e-4,5.9e-4],
+        frlim=[-2e-4,2e-4, -15e-4,15e-4, -6e-4,6e-4],
         model_type='CFSPML',
         freesp_delta = 0.0,
-        num_of_cells = 8,),
+        num_of_cells = 10,),
     conductors=[
         sd(cond, outlet='xmax'),
         sd(cond, outlet='ymax'),

@@ -96,26 +96,26 @@ number_of_cells AUTO;
 object1 BLOCK
 conductor on medium 0 potential 0
 from 1.900000e-04 -1.500000e-03 -6.000000e-04
-to   2.100000e-04 1.500000e-03 6.000000e-04
+to   2.000000e-04 1.500000e-03 6.000000e-04
 
 object2 BLOCK
 conductor on medium 0 potential 0
 from -2.000000e-04 1.490000e-03 -6.000000e-04
-to   2.000000e-04 1.510000e-03 6.000000e-04
+to   2.000000e-04 1.500000e-03 6.000000e-04
 
 object3 BLOCK
 conductor on medium 0 potential 0
-from -2.000000e-04 -1.510000e-03 -6.000000e-04
+from -2.000000e-04 -1.500000e-03 -6.000000e-04
 to   2.000000e-04 -1.490000e-03 6.000000e-04
 
 object4 BLOCK
 conductor on medium 0 potential 0
 from -2.000000e-04 -1.500000e-03 5.900000e-04
-to   2.000000e-04 1.500000e-03 6.100000e-04
+to   2.000000e-04 1.500000e-03 6.000000e-04
 
 object5 BLOCK
 conductor on medium 0 potential 0
-from -2.000000e-04 -1.500000e-03 -6.100000e-04
+from -2.000000e-04 -1.500000e-03 -6.000000e-04
 to   2.000000e-04 1.500000e-03 -5.900000e-04
 
 
@@ -136,10 +136,10 @@ time_delay 0.0
 
 ;freespace boundaries
 freespace
-from -1.900000e-04  -1.490000e-03 -5.900000e-04
-to   1.900000e-04  1.490000e-03 5.900000e-04
+from -2.000000e-04  -1.500000e-03 -6.000000e-04
+to   2.000000e-04  1.500000e-03 6.000000e-04
 model_type CFSPML
-number_of_cells 8
+number_of_cells 10
 phase_velocity 1.0
 reference_point 0.0 0.0 0.0
 
