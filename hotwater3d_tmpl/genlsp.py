@@ -593,7 +593,7 @@ frsp_defs = dict(
     keep_outlets=[],
 );
 
-def genoutlets(**kw):
+def genboundaries(**kw):
     outlet_tmpl='''
 ;{label}
 outlet
@@ -625,7 +625,7 @@ temporal_function {lasertfunc}
 analytic_function {laserafunc}
 time_delay {time_delay}
 '''
-    retoutlets = ''
+    retboundaries = ''
     laserkw =  kw['laseroutlet'] if test(kw, 'laseroutlet') else dict();
     laserkw = sd(kw, **laserkw);
     getkw = mk_getkw(laserkw,outletdefaults,prefer_passed = True);
@@ -638,7 +638,7 @@ time_delay {time_delay}
         zmin='bottom',
         zmax='top');
     ls = [];
-    if not test(laserkw, 'multilaser') and not test(laserkw,'nolaser'):
+    if not test(laserkw, 'multilaser') and not (test(laserkw,'nolaser') or test(laserkw,'nolaser_outlet')):
         ls = [ sd(laserkw, outlet='xmin') ];
     elif test(laserkw,'multilaser'):
         ls = kw['multilaser'];
@@ -654,7 +654,7 @@ time_delay {time_delay}
         if outlet not in all_lims:
             raise ValueError('Unknown outlet "{}"'.format(outlet));
         lset.add(outlet);
-        retoutlets += laser10_tmpl.format(
+        retboundaries += laser10_tmpl.format(
             fp = joinspace(mt(lgetkw("fp"))),
             components = joinspace(lgetkw("components")),
             phases =  joinspace(lgetkw("phases")),
@@ -695,14 +695,47 @@ time_delay {time_delay}
                         di[lim] += dx;
         di['refp'] = joinspace(getkwfr('freesp_refp'));
         di['label']= getkwfr('freesp_label');
-        retoutlets += freespace_tmpl.format(**di);
+        retboundaries += freespace_tmpl.format(**di);
     #outlet boundaries which and are not removed by freespace
     for side in just_outlets:
         if laserkw[side[0]+'cells'] > 0:
-            retoutlets += outlet_tmpl.format(
+            retboundaries += outlet_tmpl.format(
                 label = side_label[side],
                 **outlet_coords(side, laserkw));
-    return retoutlets;
+    pwbtmpl='''
+planewave
+from {xmin:e}  {ymin:e} {zmin:e}
+to   {xmax:e}  {ymax:e} {zmax:e}
+reference_point {refp}
+polar_angle {polar}          
+azimuthal_angle  {azimuth}
+rotation_angle {rotation}
+frequency {freq}
+temporal_function {pwfunc}
+'''
+    pwbdefs = dict(
+        polar=90,
+        azimuth=45,
+        rotation=0.0,
+        freq=1e3,
+        pwfunc=3,
+        pw_refp=[0.0,0.0,0.0],
+    )
+    if test(kw, 'planewave_boundary'):
+        di=dict();
+        pwkw = sd(kw,**kw['planewave_boundary']);
+        getkwpw = mk_getkw(
+            pwkw,pwbdefs,prefer_passed=True);
+        if not test(pwkw, 'pwblim'):
+            raise ValueError("This requires pwblim for now");
+        pwlims = getkwpw('pwblim');
+        for dim,lim in zip(pwlims,all_lims):
+            di[lim] = dim;
+        for qi in ['polar','azimuth','rotation','freq','pwfunc']:
+            di[qi] = getkwpw(qi);
+        di['refp'] = joinspace(getkwpw('pw_refp'));
+        retboundaries+=pwbtmpl.format(**di);
+    return retboundaries;
 
 condb_objdef=sd(
     lspdefaults,
@@ -813,7 +846,7 @@ def genlsp(**kw):
         kw['xcells'], kw['ycells'], kw['zcells'] = getkw("res");
     xcells, ycells, zcells = kw['xcells'], kw['ycells'], kw['zcells'];
     #generating outlets
-    other_outlets=genoutlets(**kw);
+    other_boundaries=genboundaries(**kw);
     conductors=genconductors(**kw);
     #dealing with conductors
     fmtd['cond_temp'] = getkw('cond_temp');
@@ -888,7 +921,7 @@ particle_movie_components Q X Y Z VX VY VZ XI YI ZI
         xcells=xcells,ycells=ycells,zcells=zcells,
         ygrid=ygrid,
         zgrid=zgrid,
-        other_outlets=other_outlets,
+        other_outlets=other_boundaries,
         objects=conductors,
         targ_xmin=txmin, targ_xmax=txmax,
         targ_ymin=tymin, targ_ymax=tymax,
