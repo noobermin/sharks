@@ -716,7 +716,7 @@ temporal_function {pwfunc}
     pwbdefs = dict(
         polar=90,
         azimuth=45,
-        rotation=0.0,
+        rotation=-45,
         freq=1e3,
         pwfunc=3,
         pw_refp=[0.0,0.0,0.0],

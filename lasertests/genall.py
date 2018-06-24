@@ -185,6 +185,7 @@ d3d_cfspml4 = sd(
         num_of_cells = 8,),
     planewave_boundary=dict(
         pwblim = [-1.5e-4, 3e-4, -16e-4, 16e-4, -7e-4, 7e-4],
+        
     ),
     conductors=[
         sd(cond, outlet='xmin'),
