@@ -20,7 +20,7 @@ load_balance_flag OFF
 
 ;;Field Solution and Modification
 time_bias_coefficient 0.0
-time_bias_iterations 1
+time_bias_iterations 0
 
 ;Don't touch? Hmm...
 ;Implicit Field Algorithm

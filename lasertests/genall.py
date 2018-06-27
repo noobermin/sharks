@@ -225,6 +225,7 @@ gensim(**d3d_pwb);
 d3d_pwb2 = sd(
     d3d_pwb,
     T=20e-15,
+    time_bias_iterations=0,
     nolaser=True,
     lim =(-2, 2, -15, 15, -6, 6),
     totaltime=110e-15,
