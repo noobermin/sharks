@@ -222,6 +222,25 @@ d3d_pwb = sd(
 );
 gensim(**d3d_pwb);
 
+d3d_pwb2 = sd(
+    d3d_pwb,
+    nolaser=True,
+    lim =(-2, 2, -15, 15, -6, 6),
+    totaltime=150e-15,
+    res =(4*20, 30*20, 12*10),
+    planewave_boundary=dict(
+        pwblim = [-1.5e-4, 3e-4, -14e-4, 14e-4, -5e-4, 5e-4],
+        rotation=270,
+        pwfunc=1,
+    ),
+    freespace = None,
+    pbsbase='pwout2',
+    lsptemplate='emonly83_tmpl.lsp',
+    movE=dict(
+        clim=(1e10,EfromI(5e18))
+    ),
+);
+gensim(**d3d_pwb2);
 
 
 
