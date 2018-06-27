@@ -203,6 +203,27 @@ d3d_cfspml4 = sd(
 gensim(**d3d_cfspml4);
 
 
+d3d_pwb = sd(
+    d3d_cfspml4,
+    nolaser=True,
+    lim =(-2, 2, -15, 15, -6, 6),
+    totaltime=150e-15,
+    res =(4*20, 30*20, 12*10),
+    phases = [np.pi/4.0, 0.0, -15e-4],
+    planewave_boundary=dict(
+        pwblim = [-1.5e-4, 3e-4, -16e-4, 16e-4, -7e-4, 7e-4],
+        
+    ),
+    pbsbase='pwoutlets',
+    lsptemplate='emonly83_tmpl.lsp',
+    movE=dict(
+        clim=(1e10,EfromI(5e18))
+    ),
+);
+gensim(**d3d_pwb);
+
+
+
 
 
 gensim(**sd(
