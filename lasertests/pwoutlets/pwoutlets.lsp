@@ -168,7 +168,7 @@ to   3.000000e-04  1.600000e-03 7.000000e-04
 reference_point 0.0 0.0 0.0
 polar_angle 90          
 azimuthal_angle  45
-rotation_angle -45
+rotation_angle 270
 frequency 1000.0
 temporal_function 3
 

@@ -211,6 +211,7 @@ d3d_pwb = sd(
     res =(4*20, 30*20, 12*10),
     planewave_boundary=dict(
         pwblim = [-1.5e-4, 3e-4, -16e-4, 16e-4, -7e-4, 7e-4],
+        rotation=270,
     ),
     freespace = None,
     pbsbase='pwoutlets',
