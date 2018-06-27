@@ -224,9 +224,10 @@ gensim(**d3d_pwb);
 
 d3d_pwb2 = sd(
     d3d_pwb,
+    T=20e-15,
     nolaser=True,
     lim =(-2, 2, -15, 15, -6, 6),
-    totaltime=150e-15,
+    totaltime=110e-15,
     res =(4*20, 30*20, 12*10),
     planewave_boundary=dict(
         pwblim = [-1.5e-4, 3e-4, -14e-4, 14e-4, -5e-4, 5e-4],
