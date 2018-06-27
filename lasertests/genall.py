@@ -209,11 +209,10 @@ d3d_pwb = sd(
     lim =(-2, 2, -15, 15, -6, 6),
     totaltime=150e-15,
     res =(4*20, 30*20, 12*10),
-    phases = [np.pi/4.0, 0.0, -15e-4],
     planewave_boundary=dict(
         pwblim = [-1.5e-4, 3e-4, -16e-4, 16e-4, -7e-4, 7e-4],
-        
     ),
+    freespace = None,
     pbsbase='pwoutlets',
     lsptemplate='emonly83_tmpl.lsp',
     movE=dict(

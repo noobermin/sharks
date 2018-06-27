@@ -126,15 +126,42 @@ to   2.000000e-04 1.500000e-03 -6.000000e-04
 
 [Boundaries]
 
-;freespace boundaries
-freespace
+;front
+outlet
 from -2.000000e-04  -1.500000e-03 -6.000000e-04
-to   2.000000e-04  1.500000e-03 6.000000e-04
-model_type CFSPML
-number_of_cells 8
+to   -2.000000e-04  1.500000e-03 6.000000e-04
 phase_velocity 1.0
-reference_point 0.0 0.0 0.0
-
+drive_model NONE
+;back
+outlet
+from 2.000000e-04  -1.500000e-03 -6.000000e-04
+to   2.000000e-04  1.500000e-03 6.000000e-04
+phase_velocity 1.0
+drive_model NONE
+;left
+outlet
+from -2.000000e-04  -1.500000e-03 -6.000000e-04
+to   2.000000e-04  -1.500000e-03 6.000000e-04
+phase_velocity 1.0
+drive_model NONE
+;right
+outlet
+from -2.000000e-04  1.500000e-03 -6.000000e-04
+to   2.000000e-04  1.500000e-03 6.000000e-04
+phase_velocity 1.0
+drive_model NONE
+;bottom
+outlet
+from -2.000000e-04  -1.500000e-03 -6.000000e-04
+to   2.000000e-04  1.500000e-03 -6.000000e-04
+phase_velocity 1.0
+drive_model NONE
+;top
+outlet
+from -2.000000e-04  -1.500000e-03 6.000000e-04
+to   2.000000e-04  1.500000e-03 6.000000e-04
+phase_velocity 1.0
+drive_model NONE
 planewave
 from -1.500000e-04  -1.600000e-03 -7.000000e-04
 to   3.000000e-04  1.600000e-03 7.000000e-04
