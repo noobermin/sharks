@@ -93,36 +93,6 @@ number_of_cells AUTO;
 ;
 [Objects]
 
-object1 BLOCK
-conductor on medium 0 potential 0
-from -2.100000e-04 -1.500000e-03 -6.000000e-04
-to   -2.000000e-04 1.500000e-03 6.000000e-04
-
-object2 BLOCK
-conductor on medium 0 potential 0
-from 2.000000e-04 -1.500000e-03 -6.000000e-04
-to   2.100000e-04 1.500000e-03 6.000000e-04
-
-object3 BLOCK
-conductor on medium 0 potential 0
-from -2.000000e-04 1.500000e-03 -6.000000e-04
-to   2.000000e-04 1.510000e-03 6.000000e-04
-
-object4 BLOCK
-conductor on medium 0 potential 0
-from -2.000000e-04 -1.510000e-03 -6.000000e-04
-to   2.000000e-04 -1.500000e-03 6.000000e-04
-
-object5 BLOCK
-conductor on medium 0 potential 0
-from -2.000000e-04 -1.500000e-03 6.000000e-04
-to   2.000000e-04 1.500000e-03 6.100000e-04
-
-object6 BLOCK
-conductor on medium 0 potential 0
-from -2.000000e-04 -1.500000e-03 -6.100000e-04
-to   2.000000e-04 1.500000e-03 -6.000000e-04
-
 
 [Boundaries]
 

@@ -236,6 +236,7 @@ d3d_pwb2 = sd(
         pwfunc=1,
     ),
     freespace = None,
+    conductors= [],
     pbsbase='pwout2',
     lsptemplate='emonly83_tmpl.lsp',
     movE=dict(
