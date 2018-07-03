@@ -185,7 +185,6 @@ d3d_cfspml4 = sd(
         num_of_cells = 8,),
     planewave_boundary=dict(
         pwblim = [-1.5e-4, 3e-4, -16e-4, 16e-4, -7e-4, 7e-4],
-        
     ),
     conductors=[
         sd(cond, outlet='xmin'),
@@ -201,6 +200,32 @@ d3d_cfspml4 = sd(
     ),
 );
 gensim(**d3d_cfspml4);
+
+d3d_cfspml5 = sd(
+    d3d_cfspml4,
+    nolaser=True,
+    lim =(-2, 2, -15, 15, -6, 6),
+    totaltime=150e-15,
+    res =(4*20, 30*20, 12*10),
+    freespace=dict(
+        frlim=[-2e-4,2e-4, -15e-4,15e-4, -6e-4,6e-4],
+        model_type='CFSPML',
+        freesp_delta = 0.0,
+        num_of_cells = 10,),
+    planewave_boundary=dict(
+        pwblim = [ -2e-4, 3e-4,
+                  -16e-4, 16e-4,
+                   -7e-4, 7e-4],
+        rotation=270,
+    ),
+    pbsbase='anglefreesp5',
+    lsptemplate='emonly83_tmpl.lsp',
+    movE=dict(
+        clim=(1e10,EfromI(5e18))
+    ),
+);
+gensim(**d3d_cfspml5);
+
 
 
 d3d_pwb = sd(
