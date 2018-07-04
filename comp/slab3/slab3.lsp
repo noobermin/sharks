@@ -6,8 +6,8 @@ simulation_title "drivewaves, I = 5.000000e+18 W/cm^2"
 ;
 [Control]
 ;Time-advance
- time_limit   9.0000e-05
- time_step_ns 4.0000e-08
+ time_limit   2.1000e-04
+ time_step_ns 1.0000e-07
 
 ;;Restarts
 dump_restart_flag ON
