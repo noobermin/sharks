@@ -13,7 +13,7 @@ simulation_title "drivewaves, I = 5.000000e+18 W/cm^2"
 dump_restart_flag ON
 maximum_restart_dump_time 1000
 rename_restart_flag ON
-restart_interval 50
+restart_interval 10
 
 ;;Load Balancing
 balance_interval 0.0
@@ -22,7 +22,7 @@ load_balance_flag OFF
 
 ;;Field Solution and Modification
 time_bias_coefficient 0.0
-time_bias_iterations 1
+time_bias_iterations 0
 
 ;Don't touch? Hmm...
 ;Implicit Field Algorithm
@@ -43,7 +43,6 @@ plasma_frequency_limit 2.0
 ;;Diagnostic Dumps
 dump_number_densities_flag ON
 dump_plasma_quantities_flag ON
-dump_time_zero_flag ON
 probe_interval 1
 spatial_skip_x 1
 spatial_skip_y 1
@@ -51,8 +50,6 @@ spatial_skip_z 1
 
 dump_fields_flag ON
 field_dump_interval_ns 0.0
-dump_scalars_flag ON
-scalar_dump_interval_ns 0.0
 
 ;;pmovies
 
@@ -78,18 +75,18 @@ z-cells          160
 [Regions]
 ;
 
-;total number of domains: 88
+;total number of domains: 176
 
 ;
 region1
 xmin             -1.510000e-03
-xmax             2.500000e-04
+xmax             2.010000e-03
 
 ymin             -8.000000e-04
-ymax             8.000000e-04
+ymax             0.000000e+00
 
 zmin             -8.000000e-04
-zmax             8.000000e-04
+zmax             0.000000e+00
 ;
 number_of_domains 44
 split_direction XSPLIT
@@ -97,13 +94,43 @@ number_of_cells AUTO;
 ;
 ;
 region2
-xmin             2.500000e-04
+xmin             -1.510000e-03
 xmax             2.010000e-03
 
 ymin             -8.000000e-04
+ymax             0.000000e+00
+
+zmin             0.000000e+00
+zmax             8.000000e-04
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO; 
+;
+;
+region3
+xmin             -1.510000e-03
+xmax             2.010000e-03
+
+ymin             0.000000e+00
 ymax             8.000000e-04
 
 zmin             -8.000000e-04
+zmax             0.000000e+00
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO; 
+;
+;
+region4
+xmin             -1.510000e-03
+xmax             2.010000e-03
+
+ymin             0.000000e+00
+ymax             8.000000e-04
+
+zmin             0.000000e+00
 zmax             8.000000e-04
 ;
 number_of_domains 44
@@ -450,7 +477,7 @@ to   2.010000e-03  8.000000e-04  8.000000e-04
 species 1
 movie_tag 3
 unbound off
-discrete_numbers 2 2 2
+discrete_numbers 4 1 1
 density_function 3
 reference_point 0.000000e+00 0.000000e+00 0.000000e+00
 density_flags 1 1 1
@@ -465,7 +492,7 @@ to   2.010000e-03  8.000000e-04  8.000000e-04
 species 10
 movie_tag 3
 unbound off
-discrete_numbers 2 2 2
+discrete_numbers 4 1 1
 density_function 4
 reference_point 0.000000e+00 0.000000e+00 0.000000e+00
 density_flags 1 1 1
@@ -480,7 +507,7 @@ movie_fraction 0.000
 ;species 18
 ;movie_tag 3
 ;unbound off
-;discrete_numbers 2 2 2
+;discrete_numbers 4 1 1
 ;density_function 5
 ;reference_point 0.000000e+00 0.000000e+00 0.000000e+00
 ;density_flags 1 1 1
@@ -497,7 +524,7 @@ from -1.510000e-03 -8.000000e-04 -8.000000e-04
 to   2.010000e-03 8.000000e-04 8.000000e-04
 interval 1
 species 17
-discrete_numbers 2 2 2
+discrete_numbers 4 1 1
 inclusion SOLID
 threshold 0.000000e+00
 thermal_energy 1.0
@@ -509,7 +536,7 @@ from -1.510000e-03 -8.000000e-04 -8.000000e-04
 to   2.010000e-03 8.000000e-04 8.000000e-04
 interval 1
 species 19
-discrete_numbers 2 2 2
+discrete_numbers 4 1 1
 inclusion SOLID
 threshold 0.000000e+00
 thermal_energy 1.0
@@ -521,7 +548,7 @@ from -1.510000e-03 -8.000000e-04 -8.000000e-04
 to   2.010000e-03 8.000000e-04 8.000000e-04
 interval 1
 species 11
-discrete_numbers 2 2 2
+discrete_numbers 4 1 1
 inclusion SOLID
 threshold 0.000000e+00
 thermal_energy 1.0
@@ -533,7 +560,7 @@ from -1.510000e-03 -8.000000e-04 -8.000000e-04
 to   2.010000e-03 8.000000e-04 8.000000e-04
 interval 1
 species 2
-discrete_numbers 2 2 2
+discrete_numbers 4 1 1
 inclusion SOLID
 threshold 0.000000e+00
 thermal_energy 1.0

@@ -36,8 +36,8 @@ d3d=dict(
     T=T0*2,
     I=5e18,
     dens_flags=(True,True,True),
-    dump_time_zero_flag=True,
-    discrete=(2,2,2),
+    time_bias_iterations=0,
+    discrete=(4,1,1),
     lim =(-15.1, 20.1, -8, 8, -8, 8),
     tlim=(-14,   20.1, -8, 8, -8, 8),
     res =(704,160,160),
@@ -48,9 +48,11 @@ d3d=dict(
     description="drivewaves",
     dumpinterval=0.0,
     #regions
-    domains=88,
+    domains=176,
     region_splits=[
-        ('x',2)],
+        ('y',2),
+        ('z',2),
+    ],
     region_dom_split='x',
     pbses='defaults',
     #density
@@ -61,7 +63,7 @@ d3d=dict(
     lspexec='lsp-10-3d',
     dir=True,
     restart=1000,
-    restart_interval=50,
+    restart_interval=10,
     dump_restart_flag=True,
     #movs
     movne=dict(
@@ -71,6 +73,8 @@ d3d=dict(
     no_pmovies=True,
     #particle dumps
     dump_particle=False,
+    dump_fields=False,
+    dump_scalar=False,
     pext_species=(17,),
 );
 #species and target.
