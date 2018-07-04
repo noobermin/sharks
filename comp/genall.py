@@ -48,7 +48,9 @@ d3d=dict(
     description="drivewaves",
     dumpinterval=0.0,
     #regions
-    domains=44,
+    domains=88,
+    region_splits=[
+        ('x',2)],
     region_dom_split='x',
     pbses='defaults',
     #density

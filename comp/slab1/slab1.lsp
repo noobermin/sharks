@@ -78,11 +78,26 @@ z-cells          160
 [Regions]
 ;
 
-;total number of domains: 44
+;total number of domains: 88
 
 ;
 region1
 xmin             -1.510000e-03
+xmax             2.500000e-04
+
+ymin             -8.000000e-04
+ymax             8.000000e-04
+
+zmin             -8.000000e-04
+zmax             8.000000e-04
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO; 
+;
+;
+region2
+xmin             2.500000e-04
 xmax             2.010000e-03
 
 ymin             -8.000000e-04

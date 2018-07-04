@@ -1,5 +1,5 @@
 #PBS -l walltime=9999:0:00
-#PBS -l nodes=1:ppn=48
+#PBS -l nodes=2:ppn=48
 #PBS -N slab2
 #PBS -S /bin/bash
 #PBS -j oe
@@ -19,15 +19,6 @@ module load openmpi-1.4.3-gnu-rpm
 
 
 cd "$PBS_O_WORKDIR"
-
-D=/tmp/ngirmang.1-`mkdate`-$PBSBASE
-mkdir -p $D
-cd "$PBS_O_WORKDIR"
-cp lsp-10-3d slab2.lsp *.dat $D/
-cp zipper $D/
-cp movne $D/
-cp loopscript $D/
-cd $D
 #zipper
 ./loopscript zipper &> $PBS_O_WORKDIR/zipper.log&
 zipper_PID=$!
@@ -36,7 +27,7 @@ zipper_PID=$!
 movne_PID=$!
 
 
-mpirun -np 44 -hostfile $PBS_NODEFILE ./lsp-10-3d $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+mpirun -np 88 -hostfile $PBS_NODEFILE ./lsp-10-3d $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
 
 kill $zipper_PID
 ./zipper -a >$PBS_O_WORKDIR
