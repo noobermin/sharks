@@ -5,12 +5,13 @@ WAITDELAY=${WAITDELAY:-1}
 DIR=${1:-"."}
 [ ! -n "$OUTDIR" ] && OUTDIR=${2:-"movB_norm"}
 mkdir -p "$OUTDIR"
-LIMS=${LIMS:-"(4094766.8852544455, 1831235421.4888041)"}
+LIMS=${LIMS:-"(4094766.8852544455, 1831235421.488804)"}
 QUANTITY=${QUANTITY:-"B_norm"}
 NPROCS=${NPROCS:-1}
 CONTOURS=${COUNTOURS:-"1.7e+21"}
 CONTOURQS=${CONTOURQS:-"RhoN10"}
 SCRIPT=${SCRIPT:-"EM.py"}
+FILETYPE=${FILETYPE:-"avi"}
 for i in $(ls "$DIR" | grep 'flds[0-9]\+\.p4' | sort -V); do
     n=$(echo ${i#flds*} | sed 's/\.p4.*$//')
     I=$(printf '%05d' "$n" )
@@ -18,13 +19,15 @@ for i in $(ls "$DIR" | grep 'flds[0-9]\+\.p4' | sort -V); do
     while [ $(pgrep -f 'python[23]* *.*'"$SCRIPT" | wc -l ) -ge $NPROCS ]; do sleep $WAITDELAY; done;
     sleep 0.25;
     echo $i...
+    if [ -e sclr$n.p4* ]; then
+        cargs="--target=\"$CONTOURS\" --targetq=\"$CONTOURQS\""
+    fi
     $SCRIPT -D "$DIR" $n "$OUTDIR"/$I.png $EXTRA_EM_ARGS \
-            --target="$CONTOURS" --targetq="$CONTOURQS" \
-            -l --lims="$LIMS" -Q "$QUANTITY"  &
+            $cargs -l --lims="$LIMS" -Q "$QUANTITY"  &
 done
 while [ $(pgrep -f 'python[23]* *.*'"$SCRIPT" | wc -l ) -gt 0 ]; do
     echo waiting...
     sleep 5; done;
-OUTMOV=${OUTMOV:-"B1_lI=20.3_ri=2.3-$QUANTITY.mp4"}
+OUTMOV=${OUTMOV:-"B1_lI=20.3_ri=2.3-$QUANTITY.$FILETYPE"}
 ffmpeg -pattern_type glob -i "$OUTDIR/*.png" -c:v libx264 -pix_fmt yuv420p -y $OUTMOV
 [ -e $OUTMOV ] && [ -n "$PBS_O_WORKDIR" ] && rcp $OUTMOV $PBS_O_WORKDIR

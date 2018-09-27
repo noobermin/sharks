@@ -147,3 +147,47 @@ d8um  = [sd(di,
          for di in dIs for ri in ri8um];
 for di in d8um:
     gensim(**di);
+
+
+d15um = sd(d12um,
+           lim =(-15,15,
+                 -15,15,
+                 0,0),
+           tlim=(-15,15,
+                 -15,15,
+                 0,0),
+           res =(30*xres_perum,
+                 30*xres_perum,
+                 0),
+           regions_splits = [
+               ('x', 2)],
+           region_dom_split='y',
+           domains = 88,
+           multilaser=[
+               dict(outlet='xmin',
+                    fp=(0.0, 8.0, 0.0)),
+               dict(outlet='xmax',
+                    fp=(0.0,-8.0, 0.0))],);
+dIs2 = [sd(d15um,
+          I = I,
+          movE=mkmovE(d15um,I),
+          movB=mkmovB(d15um,I))
+       for I in Is];
+
+dIsub= [dIs2[1]];
+d8um2  = [sd(di,
+            pbsbase="B2_lI={:3.1f}_ri={:3.2}".format(np.log10(di['I']),ri),
+            f_2D = mkcircle(
+                No = n_s,
+                # 20.0/760.0 * 101325/e*1e-6
+                zero=6.66e17,
+                floor=6.66e17,
+                #
+                Li = 0.04e-4,
+                Lo = 0.04e-4,
+                ro = 4.0e-4,
+                ri = ri*1e-4,
+                dim=[i*1e-4 for i in di['tlim']]),)
+         for di in dIsub for ri in ri8um];
+for di in d8um2:
+    gensim(**di);
