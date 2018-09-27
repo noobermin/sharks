@@ -21,7 +21,7 @@ e0=8.854e-12
 EfromI = lambda i: np.sqrt(i*1e4 * 2 / c / e0);
 BfromI = lambda i: EfromI(i)/c*1e4;
 mkmovE = lambda d, I: sd(d['movE'],clim=(EfromI(I*1e-4),EfromI(I*2)))
-mkmovB = lambda d, I: sd(d['movB'],clim=(BfromI(I*1e-4),BfromI(I*2)))
+mkmovB = lambda d, I: sd(d['movB'],clim=(BfromI(I*1e-5),BfromI(I*2)))
 
 from gencircle import mkcircle;
 ###########
@@ -108,9 +108,14 @@ d12um=dict(
 #adding this to select special times for different intensities
 #first, smaller scale-lengths
 ris = [0.0, 1.0, 5.0/np.sqrt(3), 4.0];
-d12s = [sd(d12um,
-           pbsbase="B0_lI={:3.1f}_ri={:3.2}".format(np.log10(I),ri),
-           I=I,
+dIs = [sd(d12um,
+          I = I,
+           movE=mkmovE(d12um,I),
+           movB=mkmovB(d12um,I))
+       for I in Is]
+          
+d12s = [sd(di,
+           pbsbase="B0_lI={:3.1f}_ri={:3.2}".format(np.log10(di['I']),ri),
            f_2D = mkcircle(
                No = n_s,
                # 20.0/760.0 * 101325/e*1e-6
@@ -121,9 +126,24 @@ d12s = [sd(d12um,
                Lo = 0.04e-4,
                ro = 5.0e-4,
                ri = ri*1e-4,
-               dim=[i*1e-4 for i in d12um['tlim']]),
-           movE=mkmovE(d12um,I),
-           movB=mkmovB(d12um,I))
-        for I in Is for ri in ris];
+               dim=[i*1e-4 for i in di['tlim']]),)
+        for di in dIs for ri in ris];
 for di in d12s:
+    gensim(**di);
+ri8um = [0.0, 0.5, 4.0/np.sqrt(3), 3.0];
+d8um  = [sd(di,
+            pbsbase="B1_lI={:3.1f}_ri={:3.2}".format(np.log10(di['I']),ri),
+            f_2D = mkcircle(
+                No = n_s,
+                # 20.0/760.0 * 101325/e*1e-6
+                zero=6.66e17,
+                floor=6.66e17,
+                #
+                Li = 0.04e-4,
+                Lo = 0.04e-4,
+                ro = 4.0e-4,
+                ri = ri*1e-4,
+                dim=[i*1e-4 for i in di['tlim']]),)
+         for di in dIs for ri in ri8um];
+for di in d8um:
     gensim(**di);
