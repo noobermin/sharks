@@ -149,29 +149,29 @@ for di in d8um:
     gensim(**di);
 
 
-d15um = sd(d12um,
-           lim =(-15,15,
-                 -15,15,
+d14um = sd(d12um,
+           lim =(-14,14,
+                 -14,14,
                  0,0),
-           tlim=(-15,15,
-                 -15,15,
+           tlim=(-14,14,
+                 -14,14,
                  0,0),
-           res =(30*xres_perum,
-                 30*xres_perum,
+           res =(28*xres_perum,
+                 28*xres_perum,
                  0),
            regions_splits = [
-               ('x', 2)],
+               ('x', 1)],
            region_dom_split='y',
-           domains = 88,
+           domains = 44,
            multilaser=[
                dict(outlet='xmin',
-                    fp=(0.0, 8.0, 0.0)),
+                    fp=(0.0, 6.0, 0.0)),
                dict(outlet='xmax',
-                    fp=(0.0,-8.0, 0.0))],);
-dIs2 = [sd(d15um,
+                    fp=(0.0,-6.0, 0.0))],);
+dIs2 = [sd(d14um,
           I = I,
-          movE=mkmovE(d15um,I),
-          movB=mkmovB(d15um,I))
+          movE=mkmovE(d14um,I),
+          movB=mkmovB(d14um,I))
        for I in Is];
 
 dIsub= [dIs2[1]];
