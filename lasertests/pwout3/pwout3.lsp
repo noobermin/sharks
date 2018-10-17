@@ -56,13 +56,13 @@ field_dump_interval_ns 1.0000000000000002e-06
 ;
 grid1
 xmin             -2.000000e-04
-xmax             2.000000e-04
-x-cells          80
+xmax             8.000000e-04
+x-cells          200
                                         ;
 ;
-ymin             -1.500000e-03
-ymax             1.500000e-03
-y-cells          600
+ymin             -1.000000e-03
+ymax             1.000000e-03
+y-cells          400
 
 ;
 zmin             -6.000000e-04
@@ -77,10 +77,10 @@ z-cells          120
 ;
 region1
 xmin             -2.000000e-04
-xmax             2.000000e-04
+xmax             8.000000e-04
 
-ymin             -1.500000e-03
-ymax             1.500000e-03
+ymin             -1.000000e-03
+ymax             1.000000e-03
 
 zmin             -6.000000e-04
 zmax             6.000000e-04
@@ -95,49 +95,49 @@ number_of_cells AUTO;
 
 object1 BLOCK
 conductor on medium 0 potential 0
-from -2.100000e-04 -1.500000e-03 -6.000000e-04
-to   -2.000000e-04 1.500000e-03 6.000000e-04
+from -2.100000e-04 -1.000000e-03 -6.000000e-04
+to   -2.000000e-04 1.000000e-03 6.000000e-04
 
 object2 BLOCK
 conductor on medium 0 potential 0
-from 2.000000e-04 -1.500000e-03 -6.000000e-04
-to   2.100000e-04 1.500000e-03 6.000000e-04
+from 8.000000e-04 -1.000000e-03 -6.000000e-04
+to   8.100000e-04 1.000000e-03 6.000000e-04
 
 object3 BLOCK
 conductor on medium 0 potential 0
-from -2.000000e-04 1.500000e-03 -6.000000e-04
-to   2.000000e-04 1.510000e-03 6.000000e-04
+from -2.000000e-04 1.000000e-03 -6.000000e-04
+to   8.000000e-04 1.010000e-03 6.000000e-04
 
 object4 BLOCK
 conductor on medium 0 potential 0
-from -2.000000e-04 -1.510000e-03 -6.000000e-04
-to   2.000000e-04 -1.500000e-03 6.000000e-04
+from -2.000000e-04 -1.010000e-03 -6.000000e-04
+to   8.000000e-04 -1.000000e-03 6.000000e-04
 
 object5 BLOCK
 conductor on medium 0 potential 0
-from -2.000000e-04 -1.500000e-03 6.000000e-04
-to   2.000000e-04 1.500000e-03 6.100000e-04
+from -2.000000e-04 -1.000000e-03 6.000000e-04
+to   8.000000e-04 1.000000e-03 6.100000e-04
 
 object6 BLOCK
 conductor on medium 0 potential 0
-from -2.000000e-04 -1.500000e-03 -6.100000e-04
-to   2.000000e-04 1.500000e-03 -6.000000e-04
+from -2.000000e-04 -1.000000e-03 -6.100000e-04
+to   8.000000e-04 1.000000e-03 -6.000000e-04
 
 
 [Boundaries]
 
 ;freespace boundaries
 freespace
-from -2.000000e-04  -1.500000e-03 -6.000000e-04
-to   2.000000e-04  1.500000e-03 6.000000e-04
+from -2.000000e-04  -1.000000e-03 -6.000000e-04
+to   8.000000e-04  1.000000e-03 6.000000e-04
 model_type CFSPML
 number_of_cells 8
 phase_velocity 1.0
 reference_point 0.0 0.0 0.0
 
 planewave
-from -1.500000e-04  -1.600000e-03 -7.000000e-04
-to   3.000000e-04  1.600000e-03 7.000000e-04
+from -1.500000e-04  -1.100000e-03 -7.000000e-04
+to   9.000000e-04  1.100000e-03 7.000000e-04
 reference_point 0.0 0.0 0.0
 polar_angle 90          
 azimuthal_angle  0
