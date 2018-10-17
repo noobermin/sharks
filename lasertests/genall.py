@@ -276,17 +276,18 @@ gensim(**d3d_pwb2);
 
 d3d_pwb3 = sd(
     d3d_pwb2,
+    l=1e-6,
     T=30e-15,
+    totaltime=80e-15,
     time_bias_iterations=0,
     nolaser=True,
     lim =(-5, 5, -7.5, 7.5, -7.5, 7.5),
-    totaltime=110e-15,
     res =(10*20, 15*10, 15*10),
     planewave_boundary=dict(
         pwblim = [-4.5e-4, 10e-4, -11e-4, 11e-4, -7e-4, 7e-4],
         rotation=0,
         azimuth=0,
-        freq=3.7e14,
+        freq=3e14,
         pwfunc=3,
     ),
     freespace = dict(

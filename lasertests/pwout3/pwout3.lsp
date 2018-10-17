@@ -6,7 +6,7 @@ simulation_title "lasertests: angle test, I = 5.000000e+18 W/cm^2"
 ;
 [Control]
 ;Time-advance
- time_limit   1.1000e-04
+ time_limit   8.0000e-05
  time_step_ns 1.0000e-07
 
 ;;Restarts
@@ -142,7 +142,7 @@ reference_point 0.0 0.0 0.0
 polar_angle 90          
 azimuthal_angle  0
 rotation_angle 0
-frequency 370000000000000.0
+frequency 300000000000000.0
 temporal_function 3
 
 
@@ -160,9 +160,9 @@ independent_variable_multiplier 3.000000e-05
 dependent_variable_multiplier   6.137836e+07
 
 function2 ;laser analytic function for lsp v10
-type 19   ; f-number: ~2.668223128318498
+type 19   ; f-number: ~2.134578502654798
           ; \lambda spotsize
-coefficients 8.000000e-05 1.358915e-04 end
+coefficients 1.000000e-04 1.358915e-04 end
 
 function3
 type 83
