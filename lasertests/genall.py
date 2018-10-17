@@ -285,7 +285,7 @@ d3d_pwb3 = sd(
     planewave_boundary=dict(
         pwblim = [-1.5e-4, 3e-4, -16e-4, 16e-4, -7e-4, 7e-4],
         rotation=0,
-        azimuthal_angle=0,
+        azimuth=0,
         pwfunc=1,
     ),
     freespace = dict(
