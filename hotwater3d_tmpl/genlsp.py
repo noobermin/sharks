@@ -683,6 +683,9 @@ time_delay {time_delay}
         if test(kw['freespace'],'frlim'):
             for dim,lim in zip(getkwfr('frlim'),all_lims):
                 di[lim] = dim;
+        elif test(kw['freespace'],'frlim_whole'):
+            for dim,lim in zip(getkwfr('lim'),all_lims):
+                di[lim] = dim;
         else:
             dx = getkwfr('freesp_delta');
             keepset = lset.union(just_outlets);
