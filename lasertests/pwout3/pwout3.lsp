@@ -142,8 +142,8 @@ reference_point 0.0 0.0 0.0
 polar_angle 90          
 azimuthal_angle  0
 rotation_angle 0
-frequency 1000.0
-temporal_function 1
+frequency 370000000000000.0
+temporal_function 3
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
