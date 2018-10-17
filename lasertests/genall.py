@@ -286,7 +286,8 @@ d3d_pwb3 = sd(
         pwblim = [-1.5e-4, 3e-4, -16e-4, 16e-4, -7e-4, 7e-4],
         rotation=0,
         azimuth=0,
-        pwfunc=1,
+        freq=3.7e14,
+        pwfunc=3,
     ),
     freespace = dict(
         frlim=[-2e-4,2e-4, -15e-4, 15e-4, -6e-4, 6e-4],
