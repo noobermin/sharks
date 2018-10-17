@@ -308,6 +308,13 @@ d3d_pwb3 = sd(
     ),
 );
 gensim(**d3d_pwb3);
+d3d_pwb3r = sd(
+    d3d_pwb3,
+    planewave_boundary=sd(d3d_pwb3['planewave_boundary'],
+        pwfunc=1,
+    ),
+    pbsbase='pwout3r');
+gensim(**d3d_pwb3r);
 
 
 gensim(**sd(
