@@ -282,9 +282,9 @@ d3d_pwb3 = sd(
     time_bias_iterations=0,
     nolaser=True,
     lim =(-5, 5, -7.5, 7.5, -7.5, 7.5),
-    res =(10*20, 15*10, 15*10),
+    res =(10*16, 15*16, 15*16),
     planewave_boundary=dict(
-        pwblim = [-4.5e-4, 10e-4, -11e-4, 11e-4, -7e-4, 7e-4],
+        pwblim = [-4.5e-4, 10e-4, -10e-4, 10e-4, -10e-4, 10e-4],
         rotation=0,
         azimuth=0,
         freq=3e14,
@@ -293,7 +293,7 @@ d3d_pwb3 = sd(
     freespace = dict(
         frlim_whole=True,
         model_type='CFSPML',
-        num_of_cells = 4,),
+        num_of_cells = 6,),
     conductors=[
         sd(cond, outlet='xmin'),
         sd(cond, outlet='xmax'),
@@ -304,7 +304,7 @@ d3d_pwb3 = sd(
     pbsbase='pwout3',
     lsptemplate='emonly83_tmpl.lsp',
     movE=dict(
-        clim=(1e10,EfromI(5e18))
+        clim=(8e9,EfromI(5e18))
     ),
 );
 gensim(**d3d_pwb3);
