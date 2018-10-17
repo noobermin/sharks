@@ -128,8 +128,8 @@ to   5.000000e-04 7.500000e-04 -7.500000e-04
 
 ;freespace boundaries
 freespace
-from -5.000000e+00  -7.500000e+00 -7.500000e+00
-to   5.000000e+00  7.500000e+00 7.500000e+00
+from -5.000000e-04  -7.500000e-04 -7.500000e-04
+to   5.000000e-04  7.500000e-04 7.500000e-04
 model_type CFSPML
 number_of_cells 6
 phase_velocity 1.0
