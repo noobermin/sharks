@@ -60,14 +60,14 @@ xmax             5.000000e-04
 x-cells          200
                                         ;
 ;
-ymin             -8.000000e-04
-ymax             8.000000e-04
-y-cells          320
+ymin             -7.500000e-04
+ymax             7.500000e-04
+y-cells          150
 
 ;
-zmin             -6.000000e-04
-zmax             6.000000e-04
-z-cells          120
+zmin             -7.500000e-04
+zmax             7.500000e-04
+z-cells          150
 
 [Regions]
 ;
@@ -79,11 +79,11 @@ region1
 xmin             -5.000000e-04
 xmax             5.000000e-04
 
-ymin             -8.000000e-04
-ymax             8.000000e-04
+ymin             -7.500000e-04
+ymax             7.500000e-04
 
-zmin             -6.000000e-04
-zmax             6.000000e-04
+zmin             -7.500000e-04
+zmax             7.500000e-04
 ;
 number_of_domains 44
 split_direction YSPLIT
@@ -95,43 +95,43 @@ number_of_cells AUTO;
 
 object1 BLOCK
 conductor on medium 0 potential 0
-from -5.100000e-04 -8.000000e-04 -6.000000e-04
-to   -5.000000e-04 8.000000e-04 6.000000e-04
+from -5.100000e-04 -7.500000e-04 -7.500000e-04
+to   -5.000000e-04 7.500000e-04 7.500000e-04
 
 object2 BLOCK
 conductor on medium 0 potential 0
-from 5.000000e-04 -8.000000e-04 -6.000000e-04
-to   5.100000e-04 8.000000e-04 6.000000e-04
+from 5.000000e-04 -7.500000e-04 -7.500000e-04
+to   5.100000e-04 7.500000e-04 7.500000e-04
 
 object3 BLOCK
 conductor on medium 0 potential 0
-from -5.000000e-04 8.000000e-04 -6.000000e-04
-to   5.000000e-04 8.100000e-04 6.000000e-04
+from -5.000000e-04 7.500000e-04 -7.500000e-04
+to   5.000000e-04 7.600000e-04 7.500000e-04
 
 object4 BLOCK
 conductor on medium 0 potential 0
-from -5.000000e-04 -8.100000e-04 -6.000000e-04
-to   5.000000e-04 -8.000000e-04 6.000000e-04
+from -5.000000e-04 -7.600000e-04 -7.500000e-04
+to   5.000000e-04 -7.500000e-04 7.500000e-04
 
 object5 BLOCK
 conductor on medium 0 potential 0
-from -5.000000e-04 -8.000000e-04 6.000000e-04
-to   5.000000e-04 8.000000e-04 6.100000e-04
+from -5.000000e-04 -7.500000e-04 7.500000e-04
+to   5.000000e-04 7.500000e-04 7.600000e-04
 
 object6 BLOCK
 conductor on medium 0 potential 0
-from -5.000000e-04 -8.000000e-04 -6.100000e-04
-to   5.000000e-04 8.000000e-04 -6.000000e-04
+from -5.000000e-04 -7.500000e-04 -7.600000e-04
+to   5.000000e-04 7.500000e-04 -7.500000e-04
 
 
 [Boundaries]
 
 ;freespace boundaries
 freespace
-from -5.000000e+00  -8.000000e+00 -6.000000e+00
-to   5.000000e+00  8.000000e+00 6.000000e+00
+from -5.000000e+00  -7.500000e+00 -7.500000e+00
+to   5.000000e+00  7.500000e+00 7.500000e+00
 model_type CFSPML
-number_of_cells 8
+number_of_cells 4
 phase_velocity 1.0
 reference_point 0.0 0.0 0.0
 
@@ -155,7 +155,7 @@ function1 ; laser temporal function
 type 30
 data_file sine700points.dat
 ;; pulse duration length, 2xFWHM
-independent_variable_multiplier 2.000000e-05
+independent_variable_multiplier 3.000000e-05
 ;; Emax, intensity=5.000000e+18 W/cm^2
 dependent_variable_multiplier   6.137836e+07
 
