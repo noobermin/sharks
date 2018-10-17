@@ -57,17 +57,17 @@ field_dump_interval_ns 1.0000000000000002e-06
 grid1
 xmin             -5.000000e-04
 xmax             5.000000e-04
-x-cells          200
+x-cells          160
                                         ;
 ;
 ymin             -7.500000e-04
 ymax             7.500000e-04
-y-cells          150
+y-cells          240
 
 ;
 zmin             -7.500000e-04
 zmax             7.500000e-04
-z-cells          150
+z-cells          240
 
 [Regions]
 ;
@@ -131,13 +131,13 @@ freespace
 from -5.000000e+00  -7.500000e+00 -7.500000e+00
 to   5.000000e+00  7.500000e+00 7.500000e+00
 model_type CFSPML
-number_of_cells 4
+number_of_cells 6
 phase_velocity 1.0
 reference_point 0.0 0.0 0.0
 
 planewave
-from -4.500000e-04  -1.100000e-03 -7.000000e-04
-to   1.000000e-03  1.100000e-03 7.000000e-04
+from -4.500000e-04  -1.000000e-03 -1.000000e-03
+to   1.000000e-03  1.000000e-03 1.000000e-03
 reference_point 0.0 0.0 0.0
 polar_angle 90          
 azimuthal_angle  0
