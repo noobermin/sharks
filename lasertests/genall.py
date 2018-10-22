@@ -327,6 +327,16 @@ d3d_pwb3r2 = sd(
 gensim(**d3d_pwb3r2);
 
 
+d3d_pwb4r = sd(
+    d3d_pwb3,
+    planewave_boundary=sd(
+        d3d_pwb3['planewave_boundary'],
+        pwblim = [-4.5e-4, 10e-4, -7e-4, 7e-4, -7e-4, 7e-4],
+        pwfunc=1,
+        model_type='UNIAXIAL',
+    ),
+    pbsbase='pwout4r');
+gensim(**d3d_pwb4r);
 
 
 gensim(**sd(
