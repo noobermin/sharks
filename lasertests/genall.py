@@ -338,6 +338,18 @@ d3d_pwb4r = sd(
     pbsbase='pwout4r');
 gensim(**d3d_pwb4r);
 
+d3d_pwb5 = sd(
+    d3d_pwb3,
+    lim =(-6, 5, -8, 8, -8, 8),
+    res =(11*16, 16*16, 16*16),
+    planewave_boundary=sd(
+        d3d_pwb3['planewave_boundary'],
+        pwfunc=3,
+        model_type='CFSPML',
+    ),
+    pbsbase='pwout5');
+gensim(**d3d_pwb5);
+
 
 gensim(**sd(
     d3d_exp,
