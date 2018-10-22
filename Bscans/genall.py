@@ -175,19 +175,22 @@ dIs2 = [sd(d14um,
        for I in Is];
 
 dIsub= [dIs2[1]];
+mkmycircle = lambda ri,di: mkcircle(
+    No = n_s,
+    # 20.0/760.0 * 101325/e*1e-6
+    zero=6.66e17,
+    floor=6.66e17,
+    #
+    Li = 0.04e-4,
+    Lo = 0.04e-4,
+    ro = 4.0e-4,
+    ri = ri*1e-4,
+    dim=[i*1e-4 for i in di['tlim']]);
+print("making new ones");
 d8um2  = [sd(di,
-            pbsbase="B2_lI={:3.1f}_ri={:3.2}".format(np.log10(di['I']),ri),
-            f_2D = mkcircle(
-                No = n_s,
-                # 20.0/760.0 * 101325/e*1e-6
-                zero=6.66e17,
-                floor=6.66e17,
-                #
-                Li = 0.04e-4,
-                Lo = 0.04e-4,
-                ro = 4.0e-4,
-                ri = ri*1e-4,
-                dim=[i*1e-4 for i in di['tlim']]),)
+             pbsbase="B2_lI={:3.1f}_ri={:3.2}".format(np.log10(di['I']),ri),
+             f_2D = mkmycircle(ri,di),
+             dat_xres=2400)
          for di in dIsub for ri in ri8um];
 for di in d8um2:
     gensim(**di);
