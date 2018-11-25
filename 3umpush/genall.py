@@ -44,6 +44,7 @@ d=dict(
     timestep = 1e-16,
     totaltime= 3e-13,
     fp=(0.0,0.0,0.0),
+    dumpinterval=0,
     pbsbase='3umparta',
     description='observing target formation',
     #PIC/grid details

@@ -48,9 +48,9 @@ spatial_skip_y 1
 spatial_skip_z 1
 
 dump_fields_flag ON
-field_dump_interval_ns 2e-07
+field_dump_interval_ns 0.0
 dump_scalars_flag ON
-scalar_dump_interval_ns 2e-07
+scalar_dump_interval_ns 0.0
 
 ;;pmovies
 
