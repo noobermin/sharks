@@ -49,7 +49,7 @@ d=dict(
     description='observing target formation',
     #PIC/grid details
     domains=44*2,
-    region_splits=[('y',2),('x',2)],
+    region_splits=[('y',2)],
     pbses='defaults',
     lspexec='lsp-10-xy',
     dir=True,
