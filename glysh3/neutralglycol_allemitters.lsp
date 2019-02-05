@@ -15,14 +15,10 @@ simulation_title "{description}, I = {intensity:e} W/cm^2"
 
 ;
 [Grid]
-;
 grid1
-xmin             {xmin:e}
-xmax             {xmax:e}
-x-cells          {xcells}
-                                        ;
-{ygrid}
 
+{xgrid}
+{ygrid}
 {zgrid}
 
 [Regions]
@@ -39,8 +35,7 @@ x-cells          {xcells}
 {objects}
 
 [Boundaries]
-;back this is the laser
-{other_outlets}
+{other_boundaries}
 
 ;;;;;;;;;;;;;;;;
 ;; species
@@ -322,44 +317,44 @@ selection_ratio 1.0
 
 ;; initial states ;;
 plasma ; O
-from {targ_xmin:e}  {targ_ymin:e}  {targ_zmin:e}
-to   {targ_xmax:e}  {targ_ymax:e}  {targ_zmax:e}
+from {O0_xmin:e}  {O0_ymin:e}  {O0_zmin:e}
+to   {O0_xmax:e}  {O0_ymax:e}  {O0_zmax:e}
 species 1
 movie_tag 3
 unbound off
-discrete_numbers {discrete}
+discrete_numbers {O0_discrete}
 density_function 3
-reference_point {targrefx:e} {targrefy:e} {targrefz:e}
+reference_point {O0_targref}
 density_flags {dens_flags}
-momentum_flags 0 0 0
+momentum_flags {gb_flags}
 {O0_thermalopts}
 movie_fraction 0.000
 ;
 plasma ; C
-from {targ_xmin:e}  {targ_ymin:e}  {targ_zmin:e}
-to   {targ_xmax:e}  {targ_ymax:e}  {targ_zmax:e}
+from {C0_xmin:e}  {C0_ymin:e}  {C0_zmin:e}
+to   {C0_xmax:e}  {C0_ymax:e}  {C0_zmax:e}
 species 10
 movie_tag 3
 unbound off
-discrete_numbers {discrete}
+discrete_numbers {C0_discrete}
 density_function 4
-reference_point {targrefx:e} {targrefy:e} {targrefz:e}
+reference_point {C0_targref}
 density_flags {dens_flags}
-momentum_flags 0 0 0
+momentum_flags {gb_flags}
 {C0_thermalopts}
 movie_fraction 0.000
 ;
 plasma ; H
-from {targ_xmin:e} {targ_ymin:e}  {targ_zmin:e}
-to   {targ_xmax:e} {targ_ymax:e}  {targ_zmax:e}
+from {H_xmin:e} {H_ymin:e}  {H_zmin:e}
+to   {H_xmax:e} {H_ymax:e}  {H_zmax:e}
 species 18
 movie_tag 3
 unbound off
-discrete_numbers {discrete}
+discrete_numbers {H_discrete}
 density_function 5
-reference_point {targrefx:e} {targrefy:e} {targrefz:e}
+reference_point {H_targref}
 density_flags {dens_flags}
-momentum_flags 0 0 0
+momentum_flags {gb_flags}
 {H_thermalopts}
 movie_fraction 0.000
 ;

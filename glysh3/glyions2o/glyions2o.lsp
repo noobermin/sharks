@@ -16,27 +16,37 @@ rename_restart_flag ON
 restart_interval 40
 
 ;;Load Balancing
-balance_interval 0.0
+balance_interval 0
 balance_interval_ns 0.0
 load_balance_flag OFF
 
-;Field Solution and Modification
- time_bias_coefficient 0
- time_bias_iterations 1
-;Implicit Field Algorithm
- error_current_filtering_parameter 0.95
- implicit_iterations 10
- implicit_tolerance 1.e-5
-;Matrix Solution Algorithm
- preconditioner JACOBI
- linear_solution GMRES
-;Fluid Physics Algorithm
- fluid_electron_streaming_factor 0.1
- fluid_ion_streaming_factor 0.01 ;Tony insists this is 0.01 instead of 0.005
- flux_limit_fraction 0.2
+;;Field Solution and Modification
+time_bias_coefficient 0.0
+time_bias_iterations 1
+
+;;Implicit Field Algorithm (mostly don't touch, for use in high density plasma)
+error_current_filtering_parameter 0.95
+implicit_iterations 10
+implicit_tolerance 1e-05
+
+;;Matrix Solution Algorithm (mostly don't touch, for use in multi-domain decks)
+linear_solution GMRES
+preconditioner JACOBI
 
 ;;Kinematics
 plasma_frequency_limit 2.0
+
+;;Collision Algorithm
+electron_stimulation_factor 0.5
+ion_stimulation_factor 1.0
+ionization_interval 1
+scattering_interval 1
+
+;;Fluid Physics Algorithm
+eulerian_maximum_temperature 10000.0
+fluid_electron_streaming_factor 0.1
+fluid_ion_streaming_factor 0.01
+fluid_streaming_factor 0.1
 
 ;;Diagnostic Dumps
 dump_number_densities_flag OFF
@@ -53,18 +63,17 @@ spatial_skip_z 1
 
 ;
 [Grid]
-;
 grid1
+
+
 xmin             -8.000000e-04
 xmax             7.500000e-04
 x-cells          1550
-                                        ;
-;
+
 ymin             -2.000000e-03
 ymax             2.000000e-03
 y-cells          1600
 
-;
 zmin             -2.000000e-03
 zmax             2.000000e-03
 z-cells          800
@@ -1583,7 +1592,6 @@ number_of_cells AUTO;
 
 
 [Boundaries]
-;back this is the laser
 
 ;laser
 outlet
@@ -1604,30 +1612,35 @@ from 7.500000e-04  -2.000000e-03 -2.000000e-03
 to   7.500000e-04  2.000000e-03 2.000000e-03
 phase_velocity 1.0
 drive_model NONE
+
 ;left
 outlet
 from -8.000000e-04  -2.000000e-03 -2.000000e-03
 to   7.500000e-04  -2.000000e-03 2.000000e-03
 phase_velocity 1.0
 drive_model NONE
+
 ;right
 outlet
 from -8.000000e-04  2.000000e-03 -2.000000e-03
 to   7.500000e-04  2.000000e-03 2.000000e-03
 phase_velocity 1.0
 drive_model NONE
+
 ;bottom
 outlet
 from -8.000000e-04  -2.000000e-03 -2.000000e-03
 to   7.500000e-04  2.000000e-03 -2.000000e-03
 phase_velocity 1.0
 drive_model NONE
+
 ;top
 outlet
 from -8.000000e-04  -2.000000e-03 2.000000e-03
 to   7.500000e-04  2.000000e-03 2.000000e-03
 phase_velocity 1.0
 drive_model NONE
+
 
 ;;;;;;;;;;;;;;;;
 ;; species
@@ -1916,7 +1929,7 @@ movie_tag 3
 unbound off
 discrete_numbers 2 2 2
 density_function 3
-reference_point 0.000000e+00 0.000000e+00 0.000000e+00
+reference_point 0.0 0.0 0.0
 density_flags 1 1 0
 momentum_flags 0 0 0
 thermal_energy 0.025
@@ -1931,7 +1944,7 @@ movie_tag 3
 unbound off
 discrete_numbers 2 2 2
 density_function 4
-reference_point 0.000000e+00 0.000000e+00 0.000000e+00
+reference_point 0.0 0.0 0.0
 density_flags 1 1 0
 momentum_flags 0 0 0
 thermal_energy 0.025
@@ -1946,7 +1959,7 @@ movie_tag 3
 unbound off
 discrete_numbers 2 2 2
 density_function 5
-reference_point 0.000000e+00 0.000000e+00 0.000000e+00
+reference_point 0.0 0.0 0.0
 density_flags 1 1 0
 momentum_flags 0 0 0
 thermal_energy 0.025

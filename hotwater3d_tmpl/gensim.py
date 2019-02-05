@@ -53,6 +53,7 @@ defaults.update(dict(
     angular=None,
     pbses=None,
     dir=None,
+    ux=1e-4,
 ));
 
 def get_roundfpx(d):

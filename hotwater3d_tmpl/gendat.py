@@ -21,7 +21,7 @@ datdefaults = {
     'long_margin' : [2.5, 5.0],
     'sdim': (17.5,27.5, 0.0,0.0, 0.0,0.0),
     'type' : 'singlescale',
-    'unit' : 1e-4,
+    'ux' : 1e-4,
     'dat_xres'  : 100,
     'datfmt'  : '%.8e',
 };
@@ -34,7 +34,7 @@ def gendat(**kw):
     yres=zres=xres;
     if test(kw,'dat_yres'): yres = kw['dat_yres'];
     if test(kw,'dat_zres'): zres = kw['dat_zres'];
-    unit=getkw('unit');
+    unit=getkw('ux');
     tlim = mt(getkw('tlim'),m=unit);
     fmt = getkw('datfmt');
     if test(kw,'f_1D') or test(kw, 'data1D'):
@@ -116,11 +116,11 @@ def tlim_mvorig(tlim):
 def genf(**kw):
     getkw=mk_getkw(kw,datdefaults);
     if getkw('type') == 'singlescale':
-        tlim = mt(getkw('tlim'),m=getkw('unit'));
+        tlim = mt(getkw('tlim'),m=getkw('ux'));
         xdim = tlim[0], tlim[1];
         return mkdecay(
-            getkw('n_s'), mt(getkw('sdim'),m=getkw('unit')),
-            xdim, getkw('expf')*getkw('unit'));
+            getkw('n_s'), mt(getkw('sdim'),m=getkw('ux')),
+            xdim, getkw('expf')*getkw('ux'));
     else:
         raise NotImplementedError("Coming soon!");
 
