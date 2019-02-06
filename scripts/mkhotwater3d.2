@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+if [ -z "$1" ] || [ "$1" == "-h" ]; then
+   echo "usage: mkhotwater3d.2 <newdir>"
+   echo ""
+   echo "call in the sharks directory"
+   exit 0
+fi
+
+mkdir -vp "$1"
+cp -v hotwater3d_tmpl/hotwater3d_2_tmpl.lsp \
+   hotwater3d_tmpl/hotwater3d_tmpl.pbs \
+   hotwater3d_tmpl/movne_tmpl \
+   hotwater3d_tmpl/movni_tmpl \
+   hotwater3d_tmpl/genpbs.py \
+   hotwater3d_tmpl/genlsp.py \
+   hotwater3d_tmpl/gendat.py \
+   hotwater3d_tmpl/gensim.py \
+   hotwater3d_tmpl/mklin.py \
+   hotwater3d_tmpl/*.dat $1/
+cp -v scripts/loopscript scripts/zipper scripts/autozipper $1/
+cp -v hotwater3d_tmpl/genangular $1/
