@@ -22,7 +22,7 @@ e0 = 8.854e-12;
 I = 5e18;
 l = 0.78e-6
 w0=2.2e-6 / np.sqrt(2*np.log(2))
-T0=40e-15
+T0=30e-15
 #from gen45 import mk45_clean_neutral2d;
 
 targds=[];
@@ -37,11 +37,11 @@ test1=dict(
     I=5e18,
     dens_flags=(True,True,False),
     discrete=(2,2,2),
-    lim =(-15, 7, -10, 10, -10, 10),
-    tlim=(-15, 7, -10, 10, -10, 10),
-    res =(220,200,200),
-    timestep = 2e-16,
-    totaltime=155e-15,
+    lim =(-10, 1, -8, 8, -8, 8),
+    tlim=(-10, 1, -8, 8, -8, 8),
+    res =(220,320,320),
+    timestep = 1e-16,
+    totaltime=100e-15,
     fp=(0.0,0.0,0.0),
     pbsbase='newlasertest1',
     description="new laser test",
@@ -74,6 +74,7 @@ test1=dict(
     newlaser=True,
     laser_polarization=(0,1,0),
     laser_direction=(1,0,0),
+    laserafunc=4,
 );
 #species and target.
 test1.update(
