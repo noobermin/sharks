@@ -47,10 +47,11 @@ test1=dict(
     description="new laser test",
     dumpinterval=0.0,
     #regions
-    domains=2*44,
+    domains=4*44,
     region_dom_split='x',
     region_splits=[
-        ('y',2),],
+        ('y',2),
+        ('z',2)],
     pbses='defaults',
     #density
     tref = (0.0, 0.0, 0.0),
