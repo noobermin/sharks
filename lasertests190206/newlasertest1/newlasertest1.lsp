@@ -62,19 +62,19 @@ spatial_skip_z 1
 ;
 grid1
 
-xmin             -1.000000e-03
-xmax             1.000000e-04
+xmin             -1.500000e-03
+xmax             2.600000e-04
 x-cells          220
                                         ;
 
 ymin             -8.000000e-04
 ymax             8.000000e-04
-y-cells          320
+y-cells          200
 
 
 zmin             -8.000000e-04
 zmax             8.000000e-04
-z-cells          320
+z-cells          200
 
 [Regions]
 ;
@@ -83,8 +83,8 @@ z-cells          320
 
 ;
 region1
-xmin             -1.000000e-03
-xmax             1.000000e-04
+xmin             -1.500000e-03
+xmax             2.600000e-04
 
 ymin             -8.000000e-04
 ymax             0.000000e+00
@@ -98,8 +98,8 @@ number_of_cells AUTO;
 ;
 ;
 region2
-xmin             -1.000000e-03
-xmax             1.000000e-04
+xmin             -1.500000e-03
+xmax             2.600000e-04
 
 ymin             -8.000000e-04
 ymax             0.000000e+00
@@ -113,8 +113,8 @@ number_of_cells AUTO;
 ;
 ;
 region3
-xmin             -1.000000e-03
-xmax             1.000000e-04
+xmin             -1.500000e-03
+xmax             2.600000e-04
 
 ymin             0.000000e+00
 ymax             8.000000e-04
@@ -128,8 +128,8 @@ number_of_cells AUTO;
 ;
 ;
 region4
-xmin             -1.000000e-03
-xmax             1.000000e-04
+xmin             -1.500000e-03
+xmax             2.600000e-04
 
 ymin             0.000000e+00
 ymax             8.000000e-04
@@ -153,8 +153,8 @@ number_of_cells AUTO;
 
 ;laser
 outlet
-from -1.000000e-03  -8.000000e-04 -8.000000e-04
-to   -1.000000e-03  8.000000e-04 8.000000e-04
+from -1.500000e-03  -8.000000e-04 -8.000000e-04
+to   -1.500000e-03  8.000000e-04 8.000000e-04
 phase_velocity 1.0
 drive_model LASER
 reference_point 0.0 0.0 0.0
@@ -166,36 +166,36 @@ time_delay 0.0
 
 ;back
 outlet
-from 1.000000e-04  -8.000000e-04 -8.000000e-04
-to   1.000000e-04  8.000000e-04 8.000000e-04
+from 2.600000e-04  -8.000000e-04 -8.000000e-04
+to   2.600000e-04  8.000000e-04 8.000000e-04
 phase_velocity 1.0
 drive_model NONE
 
 ;left
 outlet
-from -1.000000e-03  -8.000000e-04 -8.000000e-04
-to   1.000000e-04  -8.000000e-04 8.000000e-04
+from -1.500000e-03  -8.000000e-04 -8.000000e-04
+to   2.600000e-04  -8.000000e-04 8.000000e-04
 phase_velocity 1.0
 drive_model NONE
 
 ;right
 outlet
-from -1.000000e-03  8.000000e-04 -8.000000e-04
-to   1.000000e-04  8.000000e-04 8.000000e-04
+from -1.500000e-03  8.000000e-04 -8.000000e-04
+to   2.600000e-04  8.000000e-04 8.000000e-04
 phase_velocity 1.0
 drive_model NONE
 
 ;bottom
 outlet
-from -1.000000e-03  -8.000000e-04 -8.000000e-04
-to   1.000000e-04  8.000000e-04 -8.000000e-04
+from -1.500000e-03  -8.000000e-04 -8.000000e-04
+to   2.600000e-04  8.000000e-04 -8.000000e-04
 phase_velocity 1.0
 drive_model NONE
 
 ;top
 outlet
-from -1.000000e-03  -8.000000e-04 8.000000e-04
-to   1.000000e-04  8.000000e-04 8.000000e-04
+from -1.500000e-03  -8.000000e-04 8.000000e-04
+to   2.600000e-04  8.000000e-04 8.000000e-04
 phase_velocity 1.0
 drive_model NONE
 
@@ -380,8 +380,8 @@ selection_ratio 1.0
 
 ;; initial states ;;
 plasma ; e-
-from -1.000000e-03 -8.000000e-04  -8.000000e-04
-to   1.000000e-04 8.000000e-04  8.000000e-04
+from -1.500000e-03 -8.000000e-04  -8.000000e-04
+to   2.600000e-04 8.000000e-04  8.000000e-04
 species 10
 movie_tag 5
 unbound off
@@ -395,8 +395,8 @@ thermal_energy 1.0
 movie_fraction 0.050
 ;
 plasma ; p+
-from -1.000000e-03 -8.000000e-04  -8.000000e-04
-to   1.000000e-04 8.000000e-04  8.000000e-04
+from -1.500000e-03 -8.000000e-04  -8.000000e-04
+to   2.600000e-04 8.000000e-04  8.000000e-04
 species 11
 movie_tag 3
 unbound off
@@ -410,8 +410,8 @@ thermal_energy 1.0
 movie_fraction 0.000
 ;
 plasma ; O+
-from -1.000000e-03  -8.000000e-04  -8.000000e-04
-to   1.000000e-04  8.000000e-04  8.000000e-04
+from -1.500000e-03  -8.000000e-04  -8.000000e-04
+to   2.600000e-04  8.000000e-04  8.000000e-04
 species 2
 movie_tag 3
 unbound off
@@ -427,8 +427,8 @@ movie_fraction 0.000
 
 ;; emission from conductors
 emission child-langmuir field-stress
-from -1.000000e-03 -8.000000e-04 -8.000000e-04
-to   1.000000e-04 8.000000e-04 8.000000e-04
+from -1.500000e-03 -8.000000e-04 -8.000000e-04
+to   2.600000e-04 8.000000e-04 8.000000e-04
 interval 1
 species 10
 discrete_numbers 2 2 2
@@ -437,8 +437,8 @@ thermal_energy 1.0
 movie_fraction 0.0
 ;; ionization states ;;
 higherstate              ; H -> p+
-from -1.000000e-03 -8.000000e-04  -8.000000e-04
-to   1.000000e-04 8.000000e-04  8.000000e-04
+from -1.500000e-03 -8.000000e-04  -8.000000e-04
+to   2.600000e-04 8.000000e-04  8.000000e-04
 interval 1
 species 12
 ion_species 11
@@ -462,8 +462,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O -> O+
-from -1.000000e-03 -8.000000e-04  -8.000000e-04
-to   1.000000e-04 8.000000e-04  8.000000e-04
+from -1.500000e-03 -8.000000e-04  -8.000000e-04
+to   2.600000e-04 8.000000e-04  8.000000e-04
 interval 1
 species 1
 ion_species 2
@@ -487,8 +487,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O+ -> O++
-from -1.000000e-03 -8.000000e-04  -8.000000e-04
-to   1.000000e-04 8.000000e-04  8.000000e-04
+from -1.500000e-03 -8.000000e-04  -8.000000e-04
+to   2.600000e-04 8.000000e-04  8.000000e-04
 interval 1
 species 2
 ion_species 3
@@ -512,8 +512,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O++ -> O 3+
-from -1.000000e-03 -8.000000e-04  -8.000000e-04
-to   1.000000e-04 8.000000e-04  8.000000e-04
+from -1.500000e-03 -8.000000e-04  -8.000000e-04
+to   2.600000e-04 8.000000e-04  8.000000e-04
 interval 1
 species 3
 ion_species 4
@@ -537,8 +537,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O 3+ -> O 4+
-from -1.000000e-03 -8.000000e-04  -8.000000e-04
-to   1.000000e-04 8.000000e-04  8.000000e-04
+from -1.500000e-03 -8.000000e-04  -8.000000e-04
+to   2.600000e-04 8.000000e-04  8.000000e-04
 interval 1
 species 4
 ion_species 5
@@ -562,8 +562,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O 4+ -> O 5+
-from -1.000000e-03 -8.000000e-04  -8.000000e-04
-to   1.000000e-04 8.000000e-04  8.000000e-04
+from -1.500000e-03 -8.000000e-04  -8.000000e-04
+to   2.600000e-04 8.000000e-04  8.000000e-04
 interval 1
 species 5
 ion_species 6
@@ -588,8 +588,8 @@ movie_fraction 0.0
 ;
 ;
 higherstate              ; O 5+ -> O 6+
-from -1.000000e-03 -8.000000e-04  -8.000000e-04
-to   1.000000e-04 8.000000e-04  8.000000e-04
+from -1.500000e-03 -8.000000e-04  -8.000000e-04
+to   2.600000e-04 8.000000e-04  8.000000e-04
 interval 1
 species 6
 ion_species 7
@@ -613,8 +613,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O 6+ -> O 7+
-from -1.000000e-03 -8.000000e-04  -8.000000e-04
-to   1.000000e-04 8.000000e-04  8.000000e-04
+from -1.500000e-03 -8.000000e-04  -8.000000e-04
+to   2.600000e-04 8.000000e-04  8.000000e-04
 interval 1
 species 7
 ion_species 8
@@ -638,8 +638,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O 7+ -> O 8+
-from -1.000000e-03 -8.000000e-04  -8.000000e-04
-to   1.000000e-04 8.000000e-04  8.000000e-04
+from -1.500000e-03 -8.000000e-04  -8.000000e-04
+to   2.600000e-04 8.000000e-04  8.000000e-04
 interval 1
 species 8
 ion_species 9
@@ -674,7 +674,7 @@ movie_fraction 0.0
 ;;maximum_number 1000000000
 ;;start_time 0.0
 ;;stop_time 1
-;;at -1.000000e-03 0 0
+;;at -1.500000e-03 0 0
 ;
 ;;extract2
 ;;species 10
@@ -682,7 +682,7 @@ movie_fraction 0.0
 ;;maximum_number 1000000000
 ;;start_time 0.0
 ;;stop_time 1
-;;at 1.000000e-04 0 0
+;;at 2.600000e-04 0 0
 ;
 ;;extract3
 ;;species 10
@@ -708,7 +708,7 @@ direction X
 maximum_number  1000000000
 start_time 0
 stop_time  1
-at -0.001 0 0
+at -0.0015 0 0
  
 ;
 extract2
@@ -717,7 +717,7 @@ direction X
 maximum_number  1000000000
 start_time 0
 stop_time  1
-at 0.0001 0 0
+at 0.00026000000000000003 0 0
  
 ;
 extract3
