@@ -105,6 +105,7 @@ test2=sd(
     totaltime=100e-15,
     #regions
     domains=44,
+    region_splits=None,
 );
 gensim(**test2);
 if opts['--make-all-targets']:
