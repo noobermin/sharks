@@ -69,6 +69,9 @@ lspdefaults = dict(
     cond_threshold= 0.0,
     #boundary hacks
     freespace = None,
+    #newlaser
+    laser_t0=0,
+    lpmode=(0,0),
 );
 
 ###############
@@ -1158,6 +1161,9 @@ particle_movie_components Q X Y Z VX VY VZ XI YI ZI
     if test(kw,"newlaser"):
         fmtd['laser_polarization'] = joinspace(kw['laser_polarization']);
         fmtd['laser_direction'] = joinspace(kw['laser_direction']);
+        fmtd['t0'] = getkw("laser_t0")*1e9;
+        fmtd['fp'] = joinspace(mt(getkw("fp"),getkw('ux')));
+        fmtd['lpmode'] = joinspace(getkw("lpmode"));
     lsptemplate=getkw("lsptemplate");
     with open(lsptemplate) as f:
         s=f.read();
