@@ -562,7 +562,7 @@ temporal_function 1
 polarization_function 3
 wavelength {l:e}
 spotsize {w0:e}
-lp-mode {lpmode}
+lp_mode {lpmode}
 direction {laser_direction}
 focal_point {fp}
 end

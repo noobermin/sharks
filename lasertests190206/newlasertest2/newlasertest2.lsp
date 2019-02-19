@@ -736,7 +736,7 @@ temporal_function 1
 polarization_function 3
 wavelength 7.800000e-05
 spotsize 1.868508e-04
-lp-mode 0 0
+lp_mode 0 0
 direction 1 0 0
 focal_point 0.0 0.0 0.0
 end
