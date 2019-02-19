@@ -69,7 +69,7 @@ x-cells          220
 
 ymin             -8.000000e-04
 ymax             8.000000e-04
-y-cells          220
+y-cells          200
 
 
 zmin             -8.000000e-04
@@ -718,7 +718,7 @@ at 0 0 0.0008
 [Functions]
 function1 ; laser temporal function, sine squared
 type 23   ; requires new modifications
-coefficients 6.137836e+07 4.950000e-05 2.601800e-05 end
+coefficients 6.137836e+07 4.960000e-05 2.601800e-05 end
 
 function2 ;laser analytic function for lsp v10
 type 19   ; f-number: ~3.762878770705575
@@ -736,7 +736,7 @@ temporal_function 1
 polarization_function 3
 wavelength 7.800000e-05
 spotsize 1.868508e-04
-lp-mode 0 0
+lp-mode 1 0
 direction 1 0 0
 focal_point 0.0 0.0 0.0
 end

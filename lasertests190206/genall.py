@@ -95,19 +95,40 @@ test2=sd(
     fp=(0.0,0.0,0.0),
     #       l p
     lpmode=(0,0),
-    laser_t0=50.3e-15,
+    T=26.018e-15,
+    laser_t0=49.5e-15,
     pbsbase="newlasertest2",
-    T=40e-15,
     lim =(-15, 2.6, -8, 8, -8, 8),
     tlim=(-15, 2.6, -8, 8, -8, 8),
     res =(220,220,200),
     timestep = 1e-16,
-    totaltime=100e-15,
+    totaltime=30e-15,
     #regions
     domains=44,
     region_splits=None,
 );
 gensim(**test2);
+
+test3=sd(
+    test1,
+    lsptemplate="hotwater3d_laser86_tmpl.lsp",
+    fp=(0.0,0.0,0.0),
+    #       l p
+    lpmode=(1,0),
+    laser_t0=49.6e-15,
+    T=26.018e-15,
+    pbsbase="newlasertest3",
+    lim =(-15, 2.6, -8, 8, -8, 8),
+    tlim=(-15, 2.6, -8, 8, -8, 8),
+    res =(220,200,200),
+    timestep = 1e-16,
+    totaltime=30e-15,
+    #regions
+    domains=44,
+    region_splits=None,
+);
+gensim(**test3);
+
 if opts['--make-all-targets']:
     for d in targds:
         d['mktargf'](d);
