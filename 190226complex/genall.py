@@ -74,6 +74,8 @@ targ1=dict(
     fracs   =[3.0, 2.0,1.0],
     dens_type=None,
     dens_dat=None,
+    laser_t0=35.0e-15,
+    lpmode=(1,0),
     #scale
     ux=1.0,
     scale_with_min=True,
