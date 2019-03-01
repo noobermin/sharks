@@ -6,8 +6,8 @@ simulation_title "complex beam target interaction, I = 5.000000e+18 W/cm^2"
 ;
 [Control]
 ;Time-advance
- time_limit   2.2500e-04
- time_step_ns 7.5000e-08
+ time_limit   2.0000e-04
+ time_step_ns 5.0000e-08
 
 ;;Restarts
 dump_restart_flag ON
