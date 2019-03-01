@@ -29,7 +29,7 @@ def addtotargs(d,f):
 targ1=dict(
     l=0.78e-6,
     w=2.0e-6/np.sqrt(2*np.log(2)),
-    T=60e-25,
+    T=60e-15,
     I=5e18,
     dens_flags=(True,True,False),
     discrete=(2,2,2),
