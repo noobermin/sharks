@@ -421,8 +421,7 @@ dependent_variable_multiplier {dmul}
 densitypairs_tmpl = '''
 type 0
 data_pairs
-{data}
-end
+{data}end
 '''
 
 plainconst_tmpl = '''type 1

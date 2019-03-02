@@ -861,7 +861,6 @@ data_pairs
 7.63636364e-05 1.00200000e+23
 7.81818182e-05 1.00200000e+23
 8.00000000e-05 0.00000000e+00
-
 end
 
 ;;
@@ -969,7 +968,6 @@ data_pairs
 7.63636364e-05 6.68000000e+22
 7.81818182e-05 6.68000000e+22
 8.00000000e-05 0.00000000e+00
-
 end
 
 ;;
@@ -1077,7 +1075,6 @@ data_pairs
 7.63636364e-05 3.34000000e+22
 7.81818182e-05 3.34000000e+22
 8.00000000e-05 0.00000000e+00
-
 end
 
 ;;
@@ -1093,4 +1090,10 @@ probe2
 energy total_energy
 ;
 probe3
+energy particle_energy
+;
+probe4
+energy field_energy
+;
+probe5
 performance cpu_time
