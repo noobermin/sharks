@@ -31,7 +31,7 @@ targ1=dict(
     w=2.0e-6/np.sqrt(2*np.log(2)),
     T=60e-15,
     I=5e18,
-    dens_flags=(True,True,False),
+    dens_flags=(True,False,False),
     discrete=(2,2,2),
     lim =(-10.6e-4, 7.0e-4, -6.6e-4, 6.6e-4, -6.6e-4, 6.6e-4),
     tlim=( -1.0e-4, 0.8e-4, -6.6e-4, 6.6e-4, -6.6e-4, 6.6e-4),
@@ -53,7 +53,7 @@ targ1=dict(
     lspexec='lsp-10-3d',
     dir=True,
     restart=1000,
-    restart_interval=15,
+    restart_interval=20,
     dump_restart_flag=True,
     #movs
     #pmovies

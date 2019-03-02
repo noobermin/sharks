@@ -13,7 +13,7 @@ simulation_title "complex beam target interaction, I = 5.000000e+18 W/cm^2"
 dump_restart_flag ON
 maximum_restart_dump_time 1000
 rename_restart_flag ON
-restart_interval 15
+restart_interval 20
 
 ;;Load Balancing
 balance_interval 0
@@ -358,7 +358,7 @@ unbound off
 discrete_numbers 2 2 2
 density_function 5
 reference_point 0.0 0.0 0.0
-density_flags 1 1 0
+density_flags 1 0 0
 momentum_flags 0 0 0
 thermal_energy 1.0
 
@@ -373,7 +373,7 @@ unbound off
 discrete_numbers 2 2 2
 density_function 6
 reference_point 0.0 0.0 0.0
-density_flags 1 1 0
+density_flags 1 0 0
 momentum_flags 0 0 0
 thermal_energy 1.0
 
@@ -388,7 +388,7 @@ unbound off
 discrete_numbers 2 2 2
 density_function 7
 reference_point 0.0 0.0 0.0
-density_flags 1 1 0
+density_flags 1 0 0
 momentum_flags 0 0 0
 thermal_energy 1.0
 
