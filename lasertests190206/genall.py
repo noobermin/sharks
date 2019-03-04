@@ -143,7 +143,7 @@ test4=sd(
     res =(220,200,200),
     timestep = 1e-16,
     totaltime=30e-15,
-    laser_polarization=(0,1,0,1,0),
+    laser_polarization=(1,0,0,1,0),
     #regions
     domains=44,
     region_splits=None,

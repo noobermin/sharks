@@ -727,7 +727,7 @@ coefficients 7.800000e-05 1.868508e-04 end
 
 function3 ; laser polarization function
 type 88 ;87
-coefficients 0 1 0 1 0 end
+coefficients 1 0 0 1 0 end
 
 function4 ; laser
 type 86
