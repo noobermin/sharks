@@ -150,6 +150,29 @@ test4=sd(
 );
 gensim(**test4);
 
+test5=sd(
+    test1,
+    lsptemplate="hotwater3d_laser86spin_tmpl.lsp",
+    fp=(0.0,0.0,0.0),
+    #       l p
+    w=0.5e-6,
+    lpmode=(0,0),
+    laser_t0=49.6e-15,
+    T=26.018e-15,
+    pbsbase="newlasertest5",
+    lim =(-15, 2.6, -8, 8, -8, 8),
+    tlim=(-15, 2.6, -8, 8, -8, 8),
+    res =(220,200,200),
+    timestep = 1e-16,
+    totaltime=60e-15,
+    laser_polarization=(1,0,0,1,0),
+    #regions
+    domains=44,
+    region_splits=None,
+);
+gensim(**test5);
+
+
 if opts['--make-all-targets']:
     for d in targds:
         d['mktargf'](d);
