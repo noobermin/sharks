@@ -718,7 +718,7 @@ at 0 0 0.0008
 [Functions]
 function1 ; laser temporal function, sine squared
 type 23   ; requires new modifications
-coefficients 6.137836e+07 4.960000e-05 2.601800e-05 end
+coefficients 6.137836e+07 1.950000e-05 2.601800e-05 end
 
 function2 ;laser analytic function for lsp v10
 type 19   ; f-number: ~1.006920722304421

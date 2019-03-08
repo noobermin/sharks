@@ -181,7 +181,7 @@ test6=sd(
     w=0.5e-6,
     #       l p
     lpmode=(0,0),
-    laser_t0=49.6e-15,
+    laser_t0=19.5e-15,
     T=26.018e-15,
     pbsbase="newlasertest6",
     lim =(-6, 2, -8, 8, -8, 8),
