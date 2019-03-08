@@ -7,13 +7,13 @@ simulation_title "new laser test, I = 5.000000e+18 W/cm^2"
 [Control]
 ;Time-advance
  time_limit   6.0000e-05
- time_step_ns 1.0000e-07
+ time_step_ns 5.0000e-08
 
 ;;Restarts
 dump_restart_flag ON
 maximum_restart_dump_time 1000
 rename_restart_flag ON
-restart_interval 5
+restart_interval 20
 
 ;;Load Balancing
 balance_interval 0
@@ -721,9 +721,9 @@ type 23   ; requires new modifications
 coefficients 6.137836e+07 4.960000e-05 2.601800e-05 end
 
 function2 ;laser analytic function for lsp v10
-type 19   ; f-number: ~1.006920722304421
+type 19   ; f-number: ~1.5103810834566316
           ; \lambda spotsize
-coefficients 7.800000e-05 5.000000e-05 end
+coefficients 7.800000e-05 7.500000e-05 end
 
 function3 ; laser polarization function
 type 88 ;87
@@ -735,7 +735,7 @@ laser
 temporal_function 1
 polarization_function 3
 wavelength 7.800000e-05
-spotsize 5.000000e-05
+spotsize 7.500000e-05
 lp_mode 0 0
 direction 1 0 0
 focal_point 0.0 0.0 0.0
