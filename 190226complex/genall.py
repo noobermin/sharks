@@ -88,6 +88,44 @@ targ1=dict(
 );
 gensim(**targ1);
 
+targ2 = sd(
+    targ1,
+    ###
+    dens_flags=(True,False,False),
+    discrete=(2,4,2),
+    lim =(-9.6e-4, 8.0e-4, -8.8e-4, 8.8e-4, -8.8e-4, 8.8e-4),
+    tlim=(-2.0e-4, 1.8e-4, -5.0e-4, 5.0e-4, -5.0e-4, 5.0e-4),
+    res =(440,220,220),
+    timestep = 0.5e-16,
+    totaltime=200e-15,
+    fp=(0.0,0.0,0.0),
+    pbsbase='compx_rad2',
+    description="actual complex beam target interaction",
+    dumpinterval=0.0,
+    #regions
+    domains=4*44,
+    region_dom_split='x',
+    region_splits=[('y',2),('z',2)],
+    pbses='defaults',
+    #laser
+    lpmode=(0,0),
+    l=0.78e-6,
+    w=0.78e-6, #f==2.467
+    T=60e-15,
+    I=5e18,
+    #scale
+    scale_with_min=False,
+    two_scales=True,
+    n_s = 3.34e22,
+    n_bmin = 3.059023e+16/3.0,
+    n_fmin = 1.622836e17/3.0,
+    solid_len=0.8e-4,
+    Lf = 75e-7,
+    Lb = 50e-7,
+    long_res = 25e4,
+    long_margin=[8.6e-4,6.45e-4],);
+gensim(**targ2);
+
 if opts['--make-all-targets']:
     for d in targds:
         d['mktargf'](d);

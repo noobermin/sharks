@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 from genlsp import genlsp,lspdefaults,scaletuple;
 from genpbs import genpbs,gen_mov,pbsdefaults,mov_defaults,mk_hpcmp_pbses;
-from gendat import gendats,gendat,genonescale,datdefaults,mkdecay;
+from gendat import gendats,gendat,genonescale,datdefaults,mkdecay, mktwoscales;
 import re;
 import os,stat;
 from pys import sd,test,mk_getkw,take,takef
@@ -133,6 +133,57 @@ def gensim(**kw):
             kw['target_density'] = mkdecay(n_s, [0.0, slen], kw['tlim'][:2], expf);
         print("from scale_with_min, generated dimensions:");
         print(take(kw,['expf','res','tlim','lim','timestep']))
+    elif test(kw, 'two_scales'):
+        #this involves a single scale where we
+        #pick the min. We figure out the longitudinal
+        #dimensions ourselves
+        if not test(kw,'long_res') and not test(kw,'long_resd'):
+            raise ValueError(
+                "you must supply a longitudinal resolution for scale_with_min");
+        long_margin = getkw('long_margin');
+        Lf,Lb,n_s,n_bmin,n_fmin,slen=getkw('Lf','Lb','n_s','n_bmin','n_fmin','solid_len');
+        Lf*=ux;
+        Lb*=ux;
+        slen*=ux;
+        ppf_len = Lf*np.log(n_s/n_fmin);
+        ppb_len = Lb*np.log(n_s/n_bmin);
+        if test(kw,'roundup_pp'):
+            ppf_len = np.ceil(ppf_len);
+            ppb_len = np.ceil(ppb_len);
+        elif test(kw,'roundup_ten_pp'):
+            ppf_len = np.ceil(ppf_len/10) * 10;
+            ppb_len = np.ceil(ppb_len/10) * 10;
+        if type(getkw('fp')) != tuple:
+            fpx = get_roundfpx(kw);
+            if getkw('fp') != 'nc':
+                fpx += getkw('fp');
+            kw['fp'] = (fpx,0.0,0.0);
+        kw['lim'] = list(getkw('lim'));
+        kw['tlim'] = list(getkw('tlim'));
+        kw['res']  = list(getkw('res'));
+        kw['tlim'][0] = -ppf_len;
+        kw['tlim'][1] = slen+ppb_len;
+        kw['lim'][0] = kw['tlim'][0] - long_margin[0];
+        kw['lim'][1] = kw['tlim'][1] + long_margin[1];
+        xlen = kw['lim'][1] - kw['lim'][0];
+        if test(kw, 'long_res'):
+            kw['res'][0]  = int(np.round(xlen * kw['long_res']));
+        elif test(kw, 'long_resd'):
+            kw['res'][0]  = int(np.round(xlen / (getkw('l')*1e6 / kw['long_resd'])));
+        kw['timestep'] = getkw('timestep');
+        #if xlen*1e-6/kw['res'][0] < c*kw['timestep']:
+        #    print("adapting timestep...");
+        #    kw['timestep'] = xlen*1e-6/kw['res'][0];
+        #dens = genonescale(xlen=kw['tlim'][1]-kw['tlim'][0], **kw);
+        if test(kw,'dens_dat') and kw['dens_dat'] is not None:
+            kw['dens_dat'] = "{:0.2f}um.dat".format(getkw('expf'));
+            files.append((kw['dens_dat'], dens));
+        else:
+            mytlim = kw['tlim'][:2];
+            kw['target_density'] = mktwoscales(n_s, [0.0, slen], mytlim, Lf, Lb, mytlim, n_fmin, n_bmin);
+        print("two scales, generated dimensions:");
+        print(take(kw,['Lf','Lb','res','tlim','lim','timestep']));
+
     #elif test(kw,'shelf'):
     #    if type(getkw('fp')) != tuple:
             # tlim = getkw('tlim');

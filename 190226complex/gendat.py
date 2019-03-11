@@ -97,6 +97,38 @@ def gendat(**kw):
         return s.getvalue();
     pass;
 
+def mktwoscales(solid, sdim, xdim, L_front, L_back,
+                tlim=None,
+                front_floor=0.0,
+                back_floor=0.0):
+    if tlim is None:
+        tlim = xdim;
+    #the darkness...
+    ppf_len = abs(sdim[0] - tlim[0]);
+    if front_floor > 0.0:
+        ppf_len = min(np.log(solid/front_floor)*L_front, ppf_len);
+        
+    ppb_len = abs(sdim[1] - tlim[1]);
+    if back_floor > 0.0:
+        ppb_len = min(np.log(solid/back_floor)*L_back, ppb_len);
+
+    def outf(x):
+        out = np.zeros_like(x);
+        good= np.logical_and(x >= xdim[0],x <= xdim[1])
+        out[np.logical_and(sdim[0] >= x, x >= tlim[0])] = front_floor;
+        out[np.logical_and(sdim[1] <= x, x <= tlim[1])] = back_floor;
+        solids = np.logical_and(sdim[0] <= x, x <= sdim[1]);
+        out[solids] = solid;
+
+        fronts = np.logical_and(sdim[0] - ppf_len <= x, x<= sdim[0]);
+        out[fronts] = solid*np.exp(-np.abs(x-sdim[0])/L_front)[fronts];
+        
+        backs = np.logical_and(sdim[1] <= x, x <= sdim[1] + ppb_len);
+        out[backs] = solid*np.exp(-np.abs(x-sdim[1])/L_back)[backs];
+        return out;
+    return outf;
+
+
 def mkdecay(solid, sdim, xdim, l):
     def out(x):
         if x <= xdim[0] or x >= xdim[1]:
@@ -106,6 +138,8 @@ def mkdecay(solid, sdim, xdim, l):
         else:
             return np.exp(-np.abs(x-sdim[0])/l)*solid;
     return np.vectorize(out);
+
+
 
 def tlim_mvorig(tlim):
     return (
