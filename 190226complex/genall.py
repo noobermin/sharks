@@ -111,6 +111,7 @@ targ2 = sd(
     lpmode=(0,0),
     l=0.78e-6,
     w=0.78e-6, #f==2.467
+    laser_t0=32.0e-15,
     T=60e-15,
     I=5e18,
     #scale
