@@ -771,8 +771,8 @@ type 19   ; f-number: ~1.5707963267948963
 coefficients 7.800000e-05 7.800000e-05 end
 
 function3 ; laser polarization function
-type 87
-coefficients 0 1 0 end
+type 88 ;87
+coefficients 1 0 0 1 0 end
 
 function4 ; laser
 type 86
@@ -1120,10 +1120,4 @@ probe2
 energy total_energy
 ;
 probe3
-energy particle_energy
-;
-probe4
-energy field_energy
-;
-probe5
 performance cpu_time

@@ -112,8 +112,10 @@ targ2 = sd(
     l=0.78e-6,
     w=0.78e-6, #f==2.467
     laser_t0=32.0e-15,
+    laser_polarization=(1,0,0,1,0),
     T=60e-15,
     I=5e18,
+    lsptemplate="hotwater3d_laser86spin_tmpl.lsp",
     #scale
     scale_with_min=False,
     two_scales=True,
