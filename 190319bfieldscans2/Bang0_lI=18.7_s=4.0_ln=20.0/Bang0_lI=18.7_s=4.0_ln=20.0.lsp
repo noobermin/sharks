@@ -843,4 +843,11 @@ probe2
 energy total_energy
 ;
 probe3
+energy particle_energy
+;
+probe4
+energy field_energy
+;
+probe5
 performance cpu_time
+
