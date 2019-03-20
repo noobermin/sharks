@@ -388,11 +388,11 @@ selection_ratio 1.0
 plasma ; e-
 from -8.000000e-04 -6.000000e-04  -7.000000e-04
 to   8.000000e-04 6.000000e-04  7.000000e-04
-species 1
+species 10
 movie_tag 5
 unbound off
 discrete_numbers 2 2 2
-density_function 5
+density_function 1
 reference_point 0.0 0.0 0.0
 density_flags 1 1 0
 momentum_flags 0 0 0
@@ -403,11 +403,11 @@ movie_fraction 0.050
 plasma ; p+
 from -8.000000e-04 -6.000000e-04  -7.000000e-04
 to   8.000000e-04 6.000000e-04  7.000000e-04
-species 2
+species 11
 movie_tag 3
 unbound off
 discrete_numbers 2 2 2
-density_function 6
+density_function 2
 reference_point 0.0 0.0 0.0
 density_flags 1 1 0
 momentum_flags 0 0 0
@@ -418,11 +418,11 @@ movie_fraction 0.000
 plasma ; O+
 from -8.000000e-04  -6.000000e-04  -7.000000e-04
 to   8.000000e-04  6.000000e-04  7.000000e-04
-species 3
+species 2
 movie_tag 3
 unbound off
 discrete_numbers 2 2 2
-density_function 7
+density_function 3
 reference_point 0.0 0.0 0.0
 density_flags 1 1 0
 momentum_flags 0 0 0

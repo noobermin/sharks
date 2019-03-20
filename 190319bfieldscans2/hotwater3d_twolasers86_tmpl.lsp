@@ -220,11 +220,11 @@ selection_ratio 1.0
 plasma ; e-
 from {e_xmin:e} {e_ymin:e}  {e_zmin:e}
 to   {e_xmax:e} {e_ymax:e}  {e_zmax:e}
-species 1
+species 10
 movie_tag 5
 unbound off
 discrete_numbers {discrete}
-density_function 5
+density_function 1
 reference_point {e_targref}
 density_flags {dens_flags}
 momentum_flags {gb_flags}
@@ -234,11 +234,11 @@ movie_fraction 0.050
 plasma ; p+
 from {p_xmin:e} {p_ymin:e}  {p_zmin:e}
 to   {p_xmax:e} {p_ymax:e}  {p_zmax:e}
-species 2
+species 11
 movie_tag 3
 unbound off
 discrete_numbers {p_discrete}
-density_function 6
+density_function 2
 reference_point {p_targref}
 density_flags {dens_flags}
 momentum_flags {gb_flags}
@@ -248,11 +248,11 @@ movie_fraction 0.000
 plasma ; O+
 from {O+_xmin:e}  {O+_ymin:e}  {O+_zmin:e}
 to   {O+_xmax:e}  {O+_ymax:e}  {O+_zmax:e}
-species 3
+species 2
 movie_tag 3
 unbound off
 discrete_numbers {O+_discrete}
-density_function 7
+density_function 3
 reference_point {O+_targref}
 density_flags {dens_flags}
 momentum_flags {gb_flags}
