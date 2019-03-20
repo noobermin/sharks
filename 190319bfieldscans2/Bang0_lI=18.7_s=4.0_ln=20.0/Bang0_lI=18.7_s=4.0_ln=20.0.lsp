@@ -806,8 +806,8 @@ type 86
 laser
 temporal_function 4
 polarization_function 5
-wavelength 7.800000e-07
-spotsize 1.760000e-06
+wavelength 7.800000e-05
+spotsize 1.760000e-04
 lp_mode 0 0
 direction 1 0 0
 focal_point 0.0 0.0 0.0
@@ -826,8 +826,8 @@ type 86
 laser
 temporal_function 7
 polarization_function 8
-wavelength 7.800000e-07
-spotsize 1.760000e-06
+wavelength 7.800000e-05
+spotsize 1.760000e-04
 lp_mode 0 0
 direction -1 0 0
 focal_point 0.0 0.0 0.0
