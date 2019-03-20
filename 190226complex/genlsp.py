@@ -1163,6 +1163,7 @@ particle_movie_components Q X Y Z VX VY VZ XI YI ZI
         pmovies = '';
     fmtd['other_funcs'] = getkw('other_funcs');
     if test(kw,"newlaser"):
+        print("you seriously need to formalize this as this seems to change");
         fmtd['laser_polarization'] = joinspace(kw['laser_polarization']);
         fmtd['laser_direction'] = joinspace(kw['laser_direction']);
         fmtd['t0'] = getkw("laser_t0")*1e9;
