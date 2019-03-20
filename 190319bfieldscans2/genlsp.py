@@ -77,6 +77,7 @@ lspdefaults = dict(
     laser_pol=(0,1,0),
     laser_dir=(1,0,0),
     laser_pol_type=87,
+    starting_funcnum=1,
 );
 
 ###############
@@ -770,9 +771,10 @@ def manual_genboundary(bspec,**kw):
 def genboundaries(**kw):
     retboundaries = ''
     if test(kw,'manual_boundaries'):
-        return '\n'.join([
+        kw['other_boundaries'] = '\n'.join([
             manual_genboundary(bspec,**kw)
             for bspec in kw['manual_boundaries'] ]);
+        return kw;
     laserkw =  kw['laseroutlet'] if test(kw, 'laseroutlet') else dict();
     laserkw = sd(kw, **laserkw);
     getkw = mk_getkw(laserkw,outletdefaults,prefer_passed = True);
@@ -1143,6 +1145,7 @@ def genlsp(**kw):
     xcells, ycells, zcells = kw['xcells'], kw['ycells'], kw['zcells'];
     #generating outlets
     kw = genboundaries(**kw);
+
     fmtd['other_boundaries']=kw['other_boundaries'];
     fmtd['objects']=genobjects(**kw);
     #dealing with conductors
