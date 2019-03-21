@@ -126,3 +126,32 @@ d=sd(
     dat_yres=151,
 );
 gensim(**d);
+
+N0 = 1e21;
+F_2D1 = mkpill(
+    a = [ (-PrL-sep)*0.5, -PrL*0.5],
+    b = [  (PrL-sep)*0.5,  PrL*0.5],
+    xlim=d['tlim'],
+    N0=N0,
+    floor = floor,
+    L = L,
+    width = width);
+F_2D2 = mkpill(
+    a = [ (-PrL+sep)*0.5, -PrL*0.5],
+    b = [  (PrL+sep)*0.5,  PrL*0.5],
+    xlim=d['tlim'],
+    N0=N0,
+    floor = floor,
+    L = L,
+    width = width);
+F_2D = lambda x,y: F_2D1(x,y) + F_2D2(x,y);
+d=sd(
+    d,
+    pbsbase="Bang1_lI={:3.1f}_s={:2.1f}_ln={:3.1f}".format(
+        np.log10(di['I']),sep*1e4,np.log10(N0)),
+    f_2D = F_2D,
+    dat_xres=321,
+    dat_yres=151,
+);
+gensim(**d);
+
