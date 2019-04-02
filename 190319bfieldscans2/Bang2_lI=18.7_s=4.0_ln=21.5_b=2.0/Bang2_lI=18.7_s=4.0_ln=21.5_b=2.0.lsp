@@ -79,7 +79,7 @@ z-cells          220
 [Regions]
 ;
 
-;total number of domains: 176
+;total number of domains: 220
 
 ;
 region1
@@ -90,7 +90,7 @@ ymin             -8.800000e-04
 ymax             8.800000e-04
 
 zmin             -8.800000e-04
-zmax             -4.400000e-04
+zmax             -5.280000e-04
 ;
 number_of_domains 44
 split_direction XSPLIT
@@ -104,8 +104,8 @@ xmax             1.100000e-03
 ymin             -8.800000e-04
 ymax             8.800000e-04
 
-zmin             -4.400000e-04
-zmax             0.000000e+00
+zmin             -5.280000e-04
+zmax             -1.760000e-04
 ;
 number_of_domains 44
 split_direction XSPLIT
@@ -119,8 +119,8 @@ xmax             1.100000e-03
 ymin             -8.800000e-04
 ymax             8.800000e-04
 
-zmin             0.000000e+00
-zmax             4.400000e-04
+zmin             -1.760000e-04
+zmax             1.760000e-04
 ;
 number_of_domains 44
 split_direction XSPLIT
@@ -134,7 +134,22 @@ xmax             1.100000e-03
 ymin             -8.800000e-04
 ymax             8.800000e-04
 
-zmin             4.400000e-04
+zmin             1.760000e-04
+zmax             5.280000e-04
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO; 
+;
+;
+region5
+xmin             -1.100000e-03
+xmax             1.100000e-03
+
+ymin             -8.800000e-04
+ymax             8.800000e-04
+
+zmin             5.280000e-04
 zmax             8.800000e-04
 ;
 number_of_domains 44
@@ -157,7 +172,7 @@ from -1.100000e-03  -8.800000e-04 -8.800000e-04
 to   -1.100000e-03  8.800000e-04 8.800000e-04
 phase_velocity 1.0
 drive_model LASER
-reference_point 0.0 0.0 -2e-08
+reference_point 0.0 0.0 -0.0002
 components 0 1 0
 phases 0 0 0
 temporal_function 4
@@ -170,7 +185,7 @@ from 1.100000e-03  -8.800000e-04 -8.800000e-04
 to   1.100000e-03  8.800000e-04 8.800000e-04
 phase_velocity 1.0
 drive_model LASER
-reference_point 0.0 0.0 2e-08
+reference_point 0.0 0.0 0.0002
 components 0 1 0
 phases 0 0 0
 temporal_function 7
@@ -810,7 +825,7 @@ wavelength 7.800000e-05
 spotsize 1.490000e-04
 lp_mode 0 0
 direction 1 0 0
-focal_point 0.0 0.0 -2e-08
+focal_point 0.0 0.0 -0.0002
 end
 
 function7 ; laser temporal function, sine squared
@@ -830,7 +845,7 @@ wavelength 7.800000e-05
 spotsize 1.490000e-04
 lp_mode 0 0
 direction -1 0 0
-focal_point 0.0 0.0 2e-08
+focal_point 0.0 0.0 0.0002
 end
 
 
