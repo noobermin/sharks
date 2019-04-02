@@ -71,8 +71,8 @@ d=dict(
     email='ngirmang.1@osu.edu',
     #computational division
     region_dom_split='x',
-    region_splits = [('z',5)],
-    domains=5*44,
+    region_splits = [('z',4)],
+    domains=4*44,
     #newlaser
     new_multilaser=True,
     starting_funcnum = 4,
@@ -83,7 +83,7 @@ d=dict(
         dict(outlet='xmax',
              laser_dir = (-1,0,0),
              laser_pol= (0, -1, 0))],
-    laser_t0=30e-15,
+    laser_t0=35e-15,
     laser_pol_type = 87,
     fp = (0.0,0.0,0.0),
     l=0.78e-4,
