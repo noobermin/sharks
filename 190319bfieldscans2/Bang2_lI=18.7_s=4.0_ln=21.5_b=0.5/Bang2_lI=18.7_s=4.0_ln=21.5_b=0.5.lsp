@@ -157,7 +157,7 @@ from -1.100000e-03  -8.800000e-04 -8.800000e-04
 to   -1.100000e-03  8.800000e-04 8.800000e-04
 phase_velocity 1.0
 drive_model LASER
-reference_point 0.0 -5e-05 0.0
+reference_point 0.0 0.0 -5e-05
 components 0 1 0
 phases 0 0 0
 temporal_function 4
@@ -170,7 +170,7 @@ from 1.100000e-03  -8.800000e-04 -8.800000e-04
 to   1.100000e-03  8.800000e-04 8.800000e-04
 phase_velocity 1.0
 drive_model LASER
-reference_point 0.0 5e-05 0.0
+reference_point 0.0 0.0 5e-05
 components 0 1 0
 phases 0 0 0
 temporal_function 7
@@ -810,7 +810,7 @@ wavelength 7.800000e-05
 spotsize 1.490000e-04
 lp_mode 0 0
 direction 1 0 0
-focal_point 0.0 -5e-05 0.0
+focal_point 0.0 0.0 -5e-05
 end
 
 function7 ; laser temporal function, sine squared
@@ -830,7 +830,7 @@ wavelength 7.800000e-05
 spotsize 1.490000e-04
 lp_mode 0 0
 direction -1 0 0
-focal_point 0.0 5e-05 0.0
+focal_point 0.0 0.0 5e-05
 end
 
 

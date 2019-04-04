@@ -129,12 +129,12 @@ ds=[
            dict(outlet='xmin',
                 laser_dir = (1,0,0),
                 laser_pol = (0,1,0),
-                fp = (0,-ib,0),
+                fp = (0,0,-ib),
            ),
            dict(outlet='xmax',
                 laser_dir = (-1,0,0),
                 laser_pol= (0, -1, 0),
-                fp = (0,ib,0),
+                fp = (0,0, ib),
            )],)
     for ib in bs];
 for di in ds:
