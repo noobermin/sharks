@@ -65,8 +65,8 @@ d=dict(
     email='ngirmang.1@osu.edu',
     #computational division
     region_dom_split='y',
-    region_splits = [('z',2)],
-    domains=2*44,
+    region_splits = [('x',2),('z',2)],
+    domains=4*44,
     #newlaser
     new_multilaser=True,
     starting_funcnum = 4,
