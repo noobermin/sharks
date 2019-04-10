@@ -79,18 +79,18 @@ z-cells          440
 [Regions]
 ;
 
-;total number of domains: 176
+;total number of domains: 220
 
 ;
 region1
 xmin             -1.100000e-03
-xmax             0.000000e+00
+xmax             -6.600000e-04
 
 ymin             -8.800000e-04
 ymax             8.800000e-04
 
 zmin             -8.800000e-04
-zmax             0.000000e+00
+zmax             8.800000e-04
 ;
 number_of_domains 44
 split_direction YSPLIT
@@ -98,13 +98,13 @@ number_of_cells AUTO;
 ;
 ;
 region2
-xmin             -1.100000e-03
-xmax             0.000000e+00
+xmin             -6.600000e-04
+xmax             -2.200000e-04
 
 ymin             -8.800000e-04
 ymax             8.800000e-04
 
-zmin             0.000000e+00
+zmin             -8.800000e-04
 zmax             8.800000e-04
 ;
 number_of_domains 44
@@ -113,14 +113,14 @@ number_of_cells AUTO;
 ;
 ;
 region3
-xmin             0.000000e+00
-xmax             1.100000e-03
+xmin             -2.200000e-04
+xmax             2.200000e-04
 
 ymin             -8.800000e-04
 ymax             8.800000e-04
 
 zmin             -8.800000e-04
-zmax             0.000000e+00
+zmax             8.800000e-04
 ;
 number_of_domains 44
 split_direction YSPLIT
@@ -128,13 +128,28 @@ number_of_cells AUTO;
 ;
 ;
 region4
-xmin             0.000000e+00
+xmin             2.200000e-04
+xmax             6.600000e-04
+
+ymin             -8.800000e-04
+ymax             8.800000e-04
+
+zmin             -8.800000e-04
+zmax             8.800000e-04
+;
+number_of_domains 44
+split_direction YSPLIT
+number_of_cells AUTO; 
+;
+;
+region5
+xmin             6.600000e-04
 xmax             1.100000e-03
 
 ymin             -8.800000e-04
 ymax             8.800000e-04
 
-zmin             0.000000e+00
+zmin             -8.800000e-04
 zmax             8.800000e-04
 ;
 number_of_domains 44
