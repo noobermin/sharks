@@ -93,6 +93,10 @@ d=dict(
     target_density = 0.0,
     target_density_plainconst=True,
 );
-d['pbsbase'] = 'mttest01'
+d['pbsbase'] = 'mttest01';
 gensim(**d);
-
+#going backwards in time
+d['lpmode'] = (0,0);
+d['pbsbase'] = 'mttest00';
+d['totaltime'] = 100e-15;
+gensim(**d);
