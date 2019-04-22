@@ -100,3 +100,10 @@ d['lpmode'] = (0,0);
 d['pbsbase'] = 'mttest00';
 d['totaltime'] = 100e-15;
 gensim(**d);
+d=sd(d,
+     lim =(-11.0e-4, 33.0e-4,
+           -17.6e-4, 17.6e-4,
+           -17.6e-4, 17.6e-4),
+     res = (550,440,440),
+     pbsbase='mttest00a',);
+gensim(**d);
