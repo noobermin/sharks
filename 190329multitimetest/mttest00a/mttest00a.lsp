@@ -166,18 +166,12 @@ number_of_cells AUTO;
 
 [Boundaries]
 
-;laser
+;front
 outlet
 from -1.100000e-03  -1.760000e-03 -1.760000e-03
 to   -1.100000e-03  1.760000e-03 1.760000e-03
 phase_velocity 1.0
-drive_model LASER
-reference_point 0.0 0.0 0.0
-components 0 1 0
-phases 0 0 0
-temporal_function 4
-analytic_function 6
-time_delay 0.0
+drive_model NONE
 
 ;back
 outlet
@@ -792,26 +786,6 @@ type 1
 coefficients 0.0 end
 
 ;;
-
-function4 ; laser temporal function, sine squared
-type 23   ; requires new modifications
-coefficients 6.137836e+07 3.660000e-05 7.000000e-05 end
-
-function5 ; laser polarization function
-type 87
-coefficients 0 1 0 end
-
-function6 ; laser
-type 86
-laser
-temporal_function 4
-polarization_function 5
-wavelength 8.000000e-05
-spotsize 1.527800e-04
-lp_mode 0 0
-direction 1 0 0
-focal_point 0.0 0.0 0.0
-end
 
 
 [Probes]

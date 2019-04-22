@@ -105,5 +105,7 @@ d=sd(d,
            -17.6e-4, 17.6e-4,
            -17.6e-4, 17.6e-4),
      res = (550,440,440),
+     multilaser=[],
+     nolaser=True,
      pbsbase='mttest00a',);
 gensim(**d);
