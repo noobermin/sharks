@@ -103,7 +103,8 @@ fieldmod_opts = ('Field Solution and Modification', dict(
     time_bias_coefficient=0.0,
     time_bias_iterations=1,),);
 
-implicitfield_opts = ("Implicit Field Algorithm (mostly don't touch, for use in high density plasma)",dict(
+implicitfield_opts = ("Implicit Field Algorithm (mostly don't touch,\
+for use in high density plasma)",dict(
     error_current_filtering_parameter=0.95,
     implicit_iterations=10,
     implicit_tolerance=1e-5),);
@@ -352,8 +353,8 @@ def genregions_uniform(subdivs,**kw):
     '''
     genregions in a uniform fashion
 
-    subdivs is a list of tuples, each of which specify a range to divide
-    along an axis. There are two options, the first is
+    subdivs is a list of tuples, each of which specify a range to
+    divide along an axis. There are two options, the first is
        (d, split)
     in which d is a string representing the dimension, and split is
     the number of subdivions along that axis.
@@ -429,9 +430,7 @@ data_pairs
 end
 '''
 
-plainconst_tmpl = '''type 1
-coefficients {data} end
-'''
+lspfuncsimple_tmpl = 'type {type} coefficients {data} end\n'
 
 tempdefaults = sd(
     lspdefaults,
@@ -521,10 +520,25 @@ def gendens(**kw):
     if test(kw,'target_density'):
         Q = kw['target_density'];
         fracs = getkw('fracs');
-        if test(kw, 'target_density_plainconst'):
+        if Q == 'plainconst' or test(kw,'target_density_plainconst'):
             ret = {
-                outputfmt.format(species) : plainconst_tmpl.format(data=Q*f)
+                outputfmt.format(species) : lspfuncsimple_tmpl.format(1,data=Q*f)
                 for species,f in zip(speciesl,fracs) };
+            kw.update(ret);
+            return kw;
+        elif Q == 'lspfunc' or Q == 'dens_lspfunc' or test(kw, 'dens_lspfunc'):
+            if test(kw,'dens_lspfunc') and type(kw['dens_lspfunc']) == dict:
+                fs = kw['dens_lspfunc'];
+            else:
+                fs = dict();
+            fs = sd(kw,**fs);
+            ret=dict();
+            for species,f in zip(speciesl,fracs):
+                dat = list(fs['dens_data']);
+                if 'dens_imul_arg' in fs and fs['dens_imul_arg'] is not None:
+                    dat[fs['dens_imul_arg']]*=f
+                ret[outputfmt.format(species)] = lspfuncsimple_tmpl.format(
+                    type=fs['dens_type'],data=joinspace(dat));
             kw.update(ret);
             return kw;
         if hasattr(Q,'__call__'):
@@ -833,7 +847,8 @@ def genboundaries(**kw):
         kw['starting_funcnum'] = funcnum;
         #this is terrible, I need to be smarter, somehow...
         ls = [];
-    elif not test(laserkw, 'multilaser') and not (test(laserkw,'nolaser') or test(laserkw,'nolaser_outlet')):
+    elif not test(laserkw, 'multilaser') and not (
+            test(laserkw,'nolaser') or test(laserkw,'nolaser_outlet')):
         ls = [ sd(laserkw, outlet='xmin') ];
     elif test(laserkw,'multilaser'):
         ls = kw['multilaser'];
@@ -1171,20 +1186,22 @@ def genlsp(**kw):
             return kw[v.format(*arg)];
         #f_ = format
         #dim_couraunts = [
-        #( f_('{}max',dim) - f_('{}min',dim) ) / f_('{}cells',dim) / c_cgs * 1e9 if f_('{}cells',dim) > 0 else float('inf')
+        #( f_('{}max',dim) - f_('{}min',dim) ) / f_('{}cells',dim) / c_cgs * 1e9
+        #if f_('{}cells',dim) > 0 else float('inf')
         #    for dim in 'xyz'];
         #couraunt = min(*dim_couraunts);
         #if fmtd['timestep'] > couraunt:
         #    print("warning: timestep exceeds couraunt limit\n");
         dim_courants = [
-             1 / ( f_('{}max',dim)*ux - f_('{}min',dim)*ux) * f_('{}cells',dim)  if f_('{}cells',dim) > 0 else 0
-            for dim in 'xyz'];
+            1 / ( f_('{}max',dim)*ux - f_('{}min',dim)*ux) * f_('{}cells',dim)
+            if f_('{}cells',dim) > 0 else 0 for dim in 'xyz'];
         courant = fmtd['timestep']*c_cgs*ut*sum(dim_courants);
         print("courant: {}".format(courant))
         if courant > 1.0:
             print("warning: timestep exceeds couraunt limit");
         #lsp couraunt.
-        lspcourant = fmtd['timestep']*c_cgs*ut*np.sqrt(sum(i**2 for i in dim_courants));
+        lspcourant = fmtd['timestep']*c_cgs*ut*np.sqrt(
+            sum(i**2 for i in dim_courants));
         print("lsp courant: {}".format(lspcourant));
         if lspcourant > 1.0:
             print("warning: timestep even exceeds lsp's couraunt limit");
