@@ -27,7 +27,6 @@ from gencircle import mkcircle;
 from genpilltarg import mkpill;
 ###########
 d=dict(
-    dens_flags=(True,True,False),
     discrete=(3,2,2),
     lim =(-11e-4, 11e-4,
           -11e-4, 11e-4,
@@ -91,6 +90,7 @@ d=dict(
     thermal_energy=(0.039,0.039),#room temp (25 C)
     target_temps=(None,None),
     dens_type=51,
+    dens_flags=(True,True,True),
     dens_dat=None,
     dens_imul_arg=1,
     #          rmin,n0,  L,    rmax
