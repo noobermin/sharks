@@ -99,3 +99,17 @@ d=dict(
 d['pbsbase'] = 'mttesy00';
 gensim(**d);
 
+dlarger = sd(
+    d,
+    lim =(-14e-4, 8e-4,
+          -13e-4, 13e-4,
+          -13e-4, 13e-4),
+    tlim=(-6e-4, 6e-4,
+          -6e-4, 6e-4,
+          -6e-4, 6e-4),
+    res =(550,660,660),
+    pbsbase='mttesy01');
+gensim(**dlarger);
+
+    
+             

@@ -522,7 +522,7 @@ def gendens(**kw):
         fracs = getkw('fracs');
         if Q == 'plainconst' or test(kw,'target_density_plainconst'):
             ret = {
-                outputfmt.format(species) : lspfuncsimple_tmpl.format(1,data=Q*f)
+                outputfmt.format(species) : lspfuncsimple_tmpl.format(type=1,data=Q*f)
                 for species,f in zip(speciesl,fracs) };
             kw.update(ret);
             return kw;
