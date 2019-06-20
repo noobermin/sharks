@@ -111,5 +111,21 @@ dlarger = sd(
     pbsbase='mttesy01');
 gensim(**dlarger);
 
+dlarger2 = sd(
+    d,
+    lim =(-16.2e-4, 10.2e-4,
+          -13.0e-4, 13.0e-4,
+          -13.0e-4, 13.0e-4),
+    tlim=(-6e-4, 6e-4,
+          -6e-4, 6e-4,
+          -6e-4, 6e-4),
+    res =(660,660,660),
+    pbsbase='mttesy02',
+    target_density = 0.0,
+    target_density_plainconst=True,
+    multilaser=[],
+);
+gensim(**dlarger2);
+
     
              

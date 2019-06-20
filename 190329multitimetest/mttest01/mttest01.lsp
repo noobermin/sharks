@@ -24,7 +24,7 @@ load_balance_flag OFF
 time_bias_coefficient 0.0
 time_bias_iterations 1
 
-;;Implicit Field Algorithm (mostly don't touch, for use in high density plasma)
+;;Implicit Field Algorithm (mostly don't touch,for use in high density plasma)
 error_current_filtering_parameter 0.95
 implicit_iterations 10
 implicit_tolerance 1e-05
@@ -778,18 +778,15 @@ at 0 0 0.00088
 [Functions]
 ;;
 function1 ; electrons
-type 1
-coefficients 0.0 end
+type 1 coefficients 0.0 end
 
 ;;
 function2 ; Protons
-type 1
-coefficients 0.0 end
+type 1 coefficients 0.0 end
 
 ;;
 function3 ; Oxygen
-type 1
-coefficients 0.0 end
+type 1 coefficients 0.0 end
 
 ;;
 

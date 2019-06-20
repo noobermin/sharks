@@ -2,11 +2,11 @@
 ;; this includes most correct masses for water
 ;; and better selection ratios
 [Title]
-simulation_title "high efield test, I = 5.000000e+18 W/cm^2"
+simulation_title "multi-time real time, I = 5.000000e+18 W/cm^2"
 ;
 [Control]
 ;Time-advance
- time_limit   1.0000e-04
+ time_limit   2.0000e-04
  time_step_ns 5.0000e-08
 
 ;;Restarts
@@ -62,98 +62,263 @@ spatial_skip_z 1
 ;
 grid1
 
-xmin             -1.100000e-03
-xmax             3.300000e-03
-x-cells          550
+xmin             -1.620000e-03
+xmax             1.020000e-03
+x-cells          660
                                         ;
 
-ymin             -1.760000e-03
-ymax             1.760000e-03
-y-cells          440
+ymin             -1.300000e-03
+ymax             1.300000e-03
+y-cells          660
 
 
-zmin             -1.760000e-03
-zmax             1.760000e-03
-z-cells          440
+zmin             -1.300000e-03
+zmax             1.300000e-03
+z-cells          660
 
 [Regions]
 ;
 
-;total number of domains: 220
+;total number of domains: 704
 
 ;
 region1
-xmin             -1.100000e-03
-xmax             -2.200000e-04
+xmin             -1.620000e-03
+xmax             -9.600000e-04
 
-ymin             -1.760000e-03
-ymax             1.760000e-03
+ymin             -1.300000e-03
+ymax             -6.500000e-04
 
-zmin             -1.760000e-03
-zmax             1.760000e-03
+zmin             -1.300000e-03
+zmax             1.300000e-03
 ;
 number_of_domains 44
-split_direction YSPLIT
+split_direction ZSPLIT
 number_of_cells AUTO; 
 ;
 ;
 region2
-xmin             -2.200000e-04
-xmax             6.600000e-04
+xmin             -1.620000e-03
+xmax             -9.600000e-04
 
-ymin             -1.760000e-03
-ymax             1.760000e-03
+ymin             -6.500000e-04
+ymax             0.000000e+00
 
-zmin             -1.760000e-03
-zmax             1.760000e-03
+zmin             -1.300000e-03
+zmax             1.300000e-03
 ;
 number_of_domains 44
-split_direction YSPLIT
+split_direction ZSPLIT
 number_of_cells AUTO; 
 ;
 ;
 region3
-xmin             6.600000e-04
-xmax             1.540000e-03
+xmin             -1.620000e-03
+xmax             -9.600000e-04
 
-ymin             -1.760000e-03
-ymax             1.760000e-03
+ymin             0.000000e+00
+ymax             6.500000e-04
 
-zmin             -1.760000e-03
-zmax             1.760000e-03
+zmin             -1.300000e-03
+zmax             1.300000e-03
 ;
 number_of_domains 44
-split_direction YSPLIT
+split_direction ZSPLIT
 number_of_cells AUTO; 
 ;
 ;
 region4
-xmin             1.540000e-03
-xmax             2.420000e-03
+xmin             -1.620000e-03
+xmax             -9.600000e-04
 
-ymin             -1.760000e-03
-ymax             1.760000e-03
+ymin             6.500000e-04
+ymax             1.300000e-03
 
-zmin             -1.760000e-03
-zmax             1.760000e-03
+zmin             -1.300000e-03
+zmax             1.300000e-03
 ;
 number_of_domains 44
-split_direction YSPLIT
+split_direction ZSPLIT
 number_of_cells AUTO; 
 ;
 ;
 region5
-xmin             2.420000e-03
-xmax             3.300000e-03
+xmin             -9.600000e-04
+xmax             -3.000000e-04
 
-ymin             -1.760000e-03
-ymax             1.760000e-03
+ymin             -1.300000e-03
+ymax             -6.500000e-04
 
-zmin             -1.760000e-03
-zmax             1.760000e-03
+zmin             -1.300000e-03
+zmax             1.300000e-03
 ;
 number_of_domains 44
-split_direction YSPLIT
+split_direction ZSPLIT
+number_of_cells AUTO; 
+;
+;
+region6
+xmin             -9.600000e-04
+xmax             -3.000000e-04
+
+ymin             -6.500000e-04
+ymax             0.000000e+00
+
+zmin             -1.300000e-03
+zmax             1.300000e-03
+;
+number_of_domains 44
+split_direction ZSPLIT
+number_of_cells AUTO; 
+;
+;
+region7
+xmin             -9.600000e-04
+xmax             -3.000000e-04
+
+ymin             0.000000e+00
+ymax             6.500000e-04
+
+zmin             -1.300000e-03
+zmax             1.300000e-03
+;
+number_of_domains 44
+split_direction ZSPLIT
+number_of_cells AUTO; 
+;
+;
+region8
+xmin             -9.600000e-04
+xmax             -3.000000e-04
+
+ymin             6.500000e-04
+ymax             1.300000e-03
+
+zmin             -1.300000e-03
+zmax             1.300000e-03
+;
+number_of_domains 44
+split_direction ZSPLIT
+number_of_cells AUTO; 
+;
+;
+region9
+xmin             -3.000000e-04
+xmax             3.600000e-04
+
+ymin             -1.300000e-03
+ymax             -6.500000e-04
+
+zmin             -1.300000e-03
+zmax             1.300000e-03
+;
+number_of_domains 44
+split_direction ZSPLIT
+number_of_cells AUTO; 
+;
+;
+region10
+xmin             -3.000000e-04
+xmax             3.600000e-04
+
+ymin             -6.500000e-04
+ymax             0.000000e+00
+
+zmin             -1.300000e-03
+zmax             1.300000e-03
+;
+number_of_domains 44
+split_direction ZSPLIT
+number_of_cells AUTO; 
+;
+;
+region11
+xmin             -3.000000e-04
+xmax             3.600000e-04
+
+ymin             0.000000e+00
+ymax             6.500000e-04
+
+zmin             -1.300000e-03
+zmax             1.300000e-03
+;
+number_of_domains 44
+split_direction ZSPLIT
+number_of_cells AUTO; 
+;
+;
+region12
+xmin             -3.000000e-04
+xmax             3.600000e-04
+
+ymin             6.500000e-04
+ymax             1.300000e-03
+
+zmin             -1.300000e-03
+zmax             1.300000e-03
+;
+number_of_domains 44
+split_direction ZSPLIT
+number_of_cells AUTO; 
+;
+;
+region13
+xmin             3.600000e-04
+xmax             1.020000e-03
+
+ymin             -1.300000e-03
+ymax             -6.500000e-04
+
+zmin             -1.300000e-03
+zmax             1.300000e-03
+;
+number_of_domains 44
+split_direction ZSPLIT
+number_of_cells AUTO; 
+;
+;
+region14
+xmin             3.600000e-04
+xmax             1.020000e-03
+
+ymin             -6.500000e-04
+ymax             0.000000e+00
+
+zmin             -1.300000e-03
+zmax             1.300000e-03
+;
+number_of_domains 44
+split_direction ZSPLIT
+number_of_cells AUTO; 
+;
+;
+region15
+xmin             3.600000e-04
+xmax             1.020000e-03
+
+ymin             0.000000e+00
+ymax             6.500000e-04
+
+zmin             -1.300000e-03
+zmax             1.300000e-03
+;
+number_of_domains 44
+split_direction ZSPLIT
+number_of_cells AUTO; 
+;
+;
+region16
+xmin             3.600000e-04
+xmax             1.020000e-03
+
+ymin             6.500000e-04
+ymax             1.300000e-03
+
+zmin             -1.300000e-03
+zmax             1.300000e-03
+;
+number_of_domains 44
+split_direction ZSPLIT
 number_of_cells AUTO; 
 ;
 
@@ -168,43 +333,43 @@ number_of_cells AUTO;
 
 ;front
 outlet
-from -1.100000e-03  -1.760000e-03 -1.760000e-03
-to   -1.100000e-03  1.760000e-03 1.760000e-03
+from -1.620000e-03  -1.300000e-03 -1.300000e-03
+to   -1.620000e-03  1.300000e-03 1.300000e-03
 phase_velocity 1.0
 drive_model NONE
 
 ;back
 outlet
-from 3.300000e-03  -1.760000e-03 -1.760000e-03
-to   3.300000e-03  1.760000e-03 1.760000e-03
+from 1.020000e-03  -1.300000e-03 -1.300000e-03
+to   1.020000e-03  1.300000e-03 1.300000e-03
 phase_velocity 1.0
 drive_model NONE
 
 ;left
 outlet
-from -1.100000e-03  -1.760000e-03 -1.760000e-03
-to   3.300000e-03  -1.760000e-03 1.760000e-03
+from -1.620000e-03  -1.300000e-03 -1.300000e-03
+to   1.020000e-03  -1.300000e-03 1.300000e-03
 phase_velocity 1.0
 drive_model NONE
 
 ;right
 outlet
-from -1.100000e-03  1.760000e-03 -1.760000e-03
-to   3.300000e-03  1.760000e-03 1.760000e-03
+from -1.620000e-03  1.300000e-03 -1.300000e-03
+to   1.020000e-03  1.300000e-03 1.300000e-03
 phase_velocity 1.0
 drive_model NONE
 
 ;bottom
 outlet
-from -1.100000e-03  -1.760000e-03 -1.760000e-03
-to   3.300000e-03  1.760000e-03 -1.760000e-03
+from -1.620000e-03  -1.300000e-03 -1.300000e-03
+to   1.020000e-03  1.300000e-03 -1.300000e-03
 phase_velocity 1.0
 drive_model NONE
 
 ;top
 outlet
-from -1.100000e-03  -1.760000e-03 1.760000e-03
-to   3.300000e-03  1.760000e-03 1.760000e-03
+from -1.620000e-03  -1.300000e-03 1.300000e-03
+to   1.020000e-03  1.300000e-03 1.300000e-03
 phase_velocity 1.0
 drive_model NONE
 
@@ -388,66 +553,52 @@ selection_ratio 1.0
 [Particle Creation]
 
 ;; initial states ;;
-plasma ; e-
-from -8.000000e-04 -6.000000e-04  -7.000000e-04
-to   8.000000e-04 6.000000e-04  7.000000e-04
-species 10
-movie_tag 5
-unbound off
-discrete_numbers 2 2 2
-density_function 1
-reference_point 0.0 0.0 0.0
-density_flags 1 1 0
-momentum_flags 0 0 0
-thermal_energy 1.0
-
-movie_fraction 0.050
 ;
-plasma ; p+
-from -8.000000e-04 -6.000000e-04  -7.000000e-04
-to   8.000000e-04 6.000000e-04  7.000000e-04
-species 11
+plasma ; H
+from -6.000000e-04 -6.000000e-04  -6.000000e-04
+to   6.000000e-04 6.000000e-04  6.000000e-04
+species 12
 movie_tag 3
 unbound off
-discrete_numbers 2 2 2
-density_function 2
+discrete_numbers 3 2 2
+density_function 1
 reference_point 0.0 0.0 0.0
-density_flags 1 1 0
+density_flags 1 1 1
 momentum_flags 0 0 0
-thermal_energy 1.0
+thermal_energy 0.039
 
 movie_fraction 0.000
 ;
 plasma ; O+
-from -8.000000e-04  -6.000000e-04  -7.000000e-04
-to   8.000000e-04  6.000000e-04  7.000000e-04
-species 2
+from -6.000000e-04  -6.000000e-04  -6.000000e-04
+to   6.000000e-04  6.000000e-04  6.000000e-04
+species 1
 movie_tag 3
 unbound off
-discrete_numbers 2 2 2
-density_function 3
+discrete_numbers 3 2 2
+density_function 2
 reference_point 0.0 0.0 0.0
-density_flags 1 1 0
+density_flags 1 1 1
 momentum_flags 0 0 0
-thermal_energy 1.0
+thermal_energy 0.039
 
 movie_fraction 0.000
 ;
 
 ;; emission from conductors
 emission child-langmuir field-stress
-from -1.100000e-03 -1.760000e-03 -1.760000e-03
-to   3.300000e-03 1.760000e-03 1.760000e-03
+from -1.620000e-03 -1.300000e-03 -1.300000e-03
+to   1.020000e-03 1.300000e-03 1.300000e-03
 interval 1
 species 10
-discrete_numbers 2 2 2
+discrete_numbers 3 2 2
 inclusion SOLID
 thermal_energy 1.0
 movie_fraction 0.0
 ;; ionization states ;;
 higherstate              ; H -> p+
-from -1.100000e-03 -1.760000e-03  -1.760000e-03
-to   3.300000e-03 1.760000e-03  1.760000e-03
+from -1.620000e-03 -1.300000e-03  -1.300000e-03
+to   1.020000e-03 1.300000e-03  1.300000e-03
 interval 1
 species 12
 ion_species 11
@@ -471,8 +622,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O -> O+
-from -1.100000e-03 -1.760000e-03  -1.760000e-03
-to   3.300000e-03 1.760000e-03  1.760000e-03
+from -1.620000e-03 -1.300000e-03  -1.300000e-03
+to   1.020000e-03 1.300000e-03  1.300000e-03
 interval 1
 species 1
 ion_species 2
@@ -496,8 +647,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O+ -> O++
-from -1.100000e-03 -1.760000e-03  -1.760000e-03
-to   3.300000e-03 1.760000e-03  1.760000e-03
+from -1.620000e-03 -1.300000e-03  -1.300000e-03
+to   1.020000e-03 1.300000e-03  1.300000e-03
 interval 1
 species 2
 ion_species 3
@@ -521,8 +672,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O++ -> O 3+
-from -1.100000e-03 -1.760000e-03  -1.760000e-03
-to   3.300000e-03 1.760000e-03  1.760000e-03
+from -1.620000e-03 -1.300000e-03  -1.300000e-03
+to   1.020000e-03 1.300000e-03  1.300000e-03
 interval 1
 species 3
 ion_species 4
@@ -546,8 +697,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O 3+ -> O 4+
-from -1.100000e-03 -1.760000e-03  -1.760000e-03
-to   3.300000e-03 1.760000e-03  1.760000e-03
+from -1.620000e-03 -1.300000e-03  -1.300000e-03
+to   1.020000e-03 1.300000e-03  1.300000e-03
 interval 1
 species 4
 ion_species 5
@@ -571,8 +722,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O 4+ -> O 5+
-from -1.100000e-03 -1.760000e-03  -1.760000e-03
-to   3.300000e-03 1.760000e-03  1.760000e-03
+from -1.620000e-03 -1.300000e-03  -1.300000e-03
+to   1.020000e-03 1.300000e-03  1.300000e-03
 interval 1
 species 5
 ion_species 6
@@ -597,8 +748,8 @@ movie_fraction 0.0
 ;
 ;
 higherstate              ; O 5+ -> O 6+
-from -1.100000e-03 -1.760000e-03  -1.760000e-03
-to   3.300000e-03 1.760000e-03  1.760000e-03
+from -1.620000e-03 -1.300000e-03  -1.300000e-03
+to   1.020000e-03 1.300000e-03  1.300000e-03
 interval 1
 species 6
 ion_species 7
@@ -622,8 +773,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O 6+ -> O 7+
-from -1.100000e-03 -1.760000e-03  -1.760000e-03
-to   3.300000e-03 1.760000e-03  1.760000e-03
+from -1.620000e-03 -1.300000e-03  -1.300000e-03
+to   1.020000e-03 1.300000e-03  1.300000e-03
 interval 1
 species 7
 ion_species 8
@@ -647,8 +798,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O 7+ -> O 8+
-from -1.100000e-03 -1.760000e-03  -1.760000e-03
-to   3.300000e-03 1.760000e-03  1.760000e-03
+from -1.620000e-03 -1.300000e-03  -1.300000e-03
+to   1.020000e-03 1.300000e-03  1.300000e-03
 interval 1
 species 8
 ion_species 9
@@ -683,7 +834,7 @@ movie_fraction 0.0
 ;;maximum_number 1000000000
 ;;start_time 0.0
 ;;stop_time 1
-;;at -1.100000e-03 0 0
+;;at -1.620000e-03 0 0
 ;
 ;;extract2
 ;;species 10
@@ -691,7 +842,7 @@ movie_fraction 0.0
 ;;maximum_number 1000000000
 ;;start_time 0.0
 ;;stop_time 1
-;;at 3.300000e-03 0 0
+;;at 1.020000e-03 0 0
 ;
 ;;extract3
 ;;species 10
@@ -699,7 +850,7 @@ movie_fraction 0.0
 ;;maximum_number 1000000000
 ;;start_time 0.0
 ;;stop_time 1
-;;at 0 1.760000e-03 0
+;;at 0 1.300000e-03 0
 ;
 ;;extract4
 ;;species 10
@@ -707,7 +858,7 @@ movie_fraction 0.0
 ;;maximum_number 1000000000
 ;;start_time 0.0
 ;;stop_time 1
-;;at 0 -1.760000e-03 0
+;;at 0 -1.300000e-03 0
 ;
 
 ;
@@ -717,7 +868,7 @@ direction X
 maximum_number  1000000000
 start_time 0
 stop_time  1
-at -0.0011 0 0
+at -0.00162 0 0
  
 ;
 extract2
@@ -726,7 +877,7 @@ direction X
 maximum_number  1000000000
 start_time 0
 stop_time  1
-at 0.0033 0 0
+at 0.00102 0 0
  
 ;
 extract3
@@ -735,7 +886,7 @@ direction Y
 maximum_number  1000000000
 start_time 0
 stop_time  1
-at 0 -0.00176 0
+at 0 -0.0013 0
  
 ;
 extract4
@@ -744,7 +895,7 @@ direction Y
 maximum_number  1000000000
 start_time 0
 stop_time  1
-at 0 0.00176 0
+at 0 0.0013 0
  
 ;
 extract5
@@ -753,7 +904,7 @@ direction Z
 maximum_number  1000000000
 start_time 0
 stop_time  1
-at 0 0 -0.00176
+at 0 0 -0.0013
  
 ;
 extract6
@@ -762,7 +913,7 @@ direction Z
 maximum_number  1000000000
 start_time 0
 stop_time  1
-at 0 0 0.00176
+at 0 0 0.0013
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -771,15 +922,11 @@ at 0 0 0.00176
 
 [Functions]
 ;;
-function1 ; electrons
+function1 ; Hydrogen
 type 1 coefficients 0.0 end
 
 ;;
-function2 ; Protons
-type 1 coefficients 0.0 end
-
-;;
-function3 ; Oxygen
+function2 ; Oxygen
 type 1 coefficients 0.0 end
 
 ;;
