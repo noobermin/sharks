@@ -120,6 +120,8 @@ dlarger2 = sd(
           -6e-4, 6e-4,
           -6e-4, 6e-4),
     res =(660,660,660),
+    region_splits = [('x',5),('y',4)],
+    domains=20*44,
     pbsbase='mttesy02',
     target_density = 0.0,
     target_density_plainconst=True,
