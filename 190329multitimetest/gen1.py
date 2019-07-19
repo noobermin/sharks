@@ -123,9 +123,6 @@ dlarger2 = sd(
     region_splits = [('x',5),('y',4)],
     domains=20*44,
     pbsbase='mttesy02',
-    target_density = 0.0,
-    target_density_plainconst=True,
-    multilaser=[],
 );
 gensim(**dlarger2);
 
