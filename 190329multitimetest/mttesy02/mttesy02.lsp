@@ -67,13 +67,13 @@ xmax             1.020000e-03
 x-cells          660
                                         ;
 
-ymin             -1.300000e-03
-ymax             1.300000e-03
+ymin             -1.320000e-03
+ymax             1.320000e-03
 y-cells          660
 
 
-zmin             -1.300000e-03
-zmax             1.300000e-03
+zmin             -1.320000e-03
+zmax             1.320000e-03
 z-cells          660
 
 [Regions]
@@ -86,11 +86,11 @@ region1
 xmin             -1.620000e-03
 xmax             -1.092000e-03
 
-ymin             -1.300000e-03
-ymax             -6.500000e-04
+ymin             -1.320000e-03
+ymax             -6.600000e-04
 
-zmin             -1.300000e-03
-zmax             1.300000e-03
+zmin             -1.320000e-03
+zmax             1.320000e-03
 ;
 number_of_domains 44
 split_direction ZSPLIT
@@ -101,11 +101,11 @@ region2
 xmin             -1.620000e-03
 xmax             -1.092000e-03
 
-ymin             -6.500000e-04
+ymin             -6.600000e-04
 ymax             0.000000e+00
 
-zmin             -1.300000e-03
-zmax             1.300000e-03
+zmin             -1.320000e-03
+zmax             1.320000e-03
 ;
 number_of_domains 44
 split_direction ZSPLIT
@@ -117,10 +117,10 @@ xmin             -1.620000e-03
 xmax             -1.092000e-03
 
 ymin             0.000000e+00
-ymax             6.500000e-04
+ymax             6.600000e-04
 
-zmin             -1.300000e-03
-zmax             1.300000e-03
+zmin             -1.320000e-03
+zmax             1.320000e-03
 ;
 number_of_domains 44
 split_direction ZSPLIT
@@ -131,11 +131,11 @@ region4
 xmin             -1.620000e-03
 xmax             -1.092000e-03
 
-ymin             6.500000e-04
-ymax             1.300000e-03
+ymin             6.600000e-04
+ymax             1.320000e-03
 
-zmin             -1.300000e-03
-zmax             1.300000e-03
+zmin             -1.320000e-03
+zmax             1.320000e-03
 ;
 number_of_domains 44
 split_direction ZSPLIT
@@ -146,11 +146,11 @@ region5
 xmin             -1.092000e-03
 xmax             -5.640000e-04
 
-ymin             -1.300000e-03
-ymax             -6.500000e-04
+ymin             -1.320000e-03
+ymax             -6.600000e-04
 
-zmin             -1.300000e-03
-zmax             1.300000e-03
+zmin             -1.320000e-03
+zmax             1.320000e-03
 ;
 number_of_domains 44
 split_direction ZSPLIT
@@ -161,11 +161,11 @@ region6
 xmin             -1.092000e-03
 xmax             -5.640000e-04
 
-ymin             -6.500000e-04
+ymin             -6.600000e-04
 ymax             0.000000e+00
 
-zmin             -1.300000e-03
-zmax             1.300000e-03
+zmin             -1.320000e-03
+zmax             1.320000e-03
 ;
 number_of_domains 44
 split_direction ZSPLIT
@@ -177,10 +177,10 @@ xmin             -1.092000e-03
 xmax             -5.640000e-04
 
 ymin             0.000000e+00
-ymax             6.500000e-04
+ymax             6.600000e-04
 
-zmin             -1.300000e-03
-zmax             1.300000e-03
+zmin             -1.320000e-03
+zmax             1.320000e-03
 ;
 number_of_domains 44
 split_direction ZSPLIT
@@ -191,11 +191,11 @@ region8
 xmin             -1.092000e-03
 xmax             -5.640000e-04
 
-ymin             6.500000e-04
-ymax             1.300000e-03
+ymin             6.600000e-04
+ymax             1.320000e-03
 
-zmin             -1.300000e-03
-zmax             1.300000e-03
+zmin             -1.320000e-03
+zmax             1.320000e-03
 ;
 number_of_domains 44
 split_direction ZSPLIT
@@ -206,11 +206,11 @@ region9
 xmin             -5.640000e-04
 xmax             -3.600000e-05
 
-ymin             -1.300000e-03
-ymax             -6.500000e-04
+ymin             -1.320000e-03
+ymax             -6.600000e-04
 
-zmin             -1.300000e-03
-zmax             1.300000e-03
+zmin             -1.320000e-03
+zmax             1.320000e-03
 ;
 number_of_domains 44
 split_direction ZSPLIT
@@ -221,11 +221,11 @@ region10
 xmin             -5.640000e-04
 xmax             -3.600000e-05
 
-ymin             -6.500000e-04
+ymin             -6.600000e-04
 ymax             0.000000e+00
 
-zmin             -1.300000e-03
-zmax             1.300000e-03
+zmin             -1.320000e-03
+zmax             1.320000e-03
 ;
 number_of_domains 44
 split_direction ZSPLIT
@@ -237,10 +237,10 @@ xmin             -5.640000e-04
 xmax             -3.600000e-05
 
 ymin             0.000000e+00
-ymax             6.500000e-04
+ymax             6.600000e-04
 
-zmin             -1.300000e-03
-zmax             1.300000e-03
+zmin             -1.320000e-03
+zmax             1.320000e-03
 ;
 number_of_domains 44
 split_direction ZSPLIT
@@ -251,11 +251,11 @@ region12
 xmin             -5.640000e-04
 xmax             -3.600000e-05
 
-ymin             6.500000e-04
-ymax             1.300000e-03
+ymin             6.600000e-04
+ymax             1.320000e-03
 
-zmin             -1.300000e-03
-zmax             1.300000e-03
+zmin             -1.320000e-03
+zmax             1.320000e-03
 ;
 number_of_domains 44
 split_direction ZSPLIT
@@ -266,11 +266,11 @@ region13
 xmin             -3.600000e-05
 xmax             4.920000e-04
 
-ymin             -1.300000e-03
-ymax             -6.500000e-04
+ymin             -1.320000e-03
+ymax             -6.600000e-04
 
-zmin             -1.300000e-03
-zmax             1.300000e-03
+zmin             -1.320000e-03
+zmax             1.320000e-03
 ;
 number_of_domains 44
 split_direction ZSPLIT
@@ -281,11 +281,11 @@ region14
 xmin             -3.600000e-05
 xmax             4.920000e-04
 
-ymin             -6.500000e-04
+ymin             -6.600000e-04
 ymax             0.000000e+00
 
-zmin             -1.300000e-03
-zmax             1.300000e-03
+zmin             -1.320000e-03
+zmax             1.320000e-03
 ;
 number_of_domains 44
 split_direction ZSPLIT
@@ -297,10 +297,10 @@ xmin             -3.600000e-05
 xmax             4.920000e-04
 
 ymin             0.000000e+00
-ymax             6.500000e-04
+ymax             6.600000e-04
 
-zmin             -1.300000e-03
-zmax             1.300000e-03
+zmin             -1.320000e-03
+zmax             1.320000e-03
 ;
 number_of_domains 44
 split_direction ZSPLIT
@@ -311,11 +311,11 @@ region16
 xmin             -3.600000e-05
 xmax             4.920000e-04
 
-ymin             6.500000e-04
-ymax             1.300000e-03
+ymin             6.600000e-04
+ymax             1.320000e-03
 
-zmin             -1.300000e-03
-zmax             1.300000e-03
+zmin             -1.320000e-03
+zmax             1.320000e-03
 ;
 number_of_domains 44
 split_direction ZSPLIT
@@ -326,11 +326,11 @@ region17
 xmin             4.920000e-04
 xmax             1.020000e-03
 
-ymin             -1.300000e-03
-ymax             -6.500000e-04
+ymin             -1.320000e-03
+ymax             -6.600000e-04
 
-zmin             -1.300000e-03
-zmax             1.300000e-03
+zmin             -1.320000e-03
+zmax             1.320000e-03
 ;
 number_of_domains 44
 split_direction ZSPLIT
@@ -341,11 +341,11 @@ region18
 xmin             4.920000e-04
 xmax             1.020000e-03
 
-ymin             -6.500000e-04
+ymin             -6.600000e-04
 ymax             0.000000e+00
 
-zmin             -1.300000e-03
-zmax             1.300000e-03
+zmin             -1.320000e-03
+zmax             1.320000e-03
 ;
 number_of_domains 44
 split_direction ZSPLIT
@@ -357,10 +357,10 @@ xmin             4.920000e-04
 xmax             1.020000e-03
 
 ymin             0.000000e+00
-ymax             6.500000e-04
+ymax             6.600000e-04
 
-zmin             -1.300000e-03
-zmax             1.300000e-03
+zmin             -1.320000e-03
+zmax             1.320000e-03
 ;
 number_of_domains 44
 split_direction ZSPLIT
@@ -371,11 +371,11 @@ region20
 xmin             4.920000e-04
 xmax             1.020000e-03
 
-ymin             6.500000e-04
-ymax             1.300000e-03
+ymin             6.600000e-04
+ymax             1.320000e-03
 
-zmin             -1.300000e-03
-zmax             1.300000e-03
+zmin             -1.320000e-03
+zmax             1.320000e-03
 ;
 number_of_domains 44
 split_direction ZSPLIT
@@ -393,8 +393,8 @@ number_of_cells AUTO;
 
 ;laser
 outlet
-from -1.620000e-03  -1.300000e-03 -1.300000e-03
-to   -1.620000e-03  1.300000e-03 1.300000e-03
+from -1.620000e-03  -1.320000e-03 -1.320000e-03
+to   -1.620000e-03  1.320000e-03 1.320000e-03
 phase_velocity 1.0
 drive_model LASER
 reference_point 0.0 0.0 0.0
@@ -406,36 +406,36 @@ time_delay 0.0
 
 ;back
 outlet
-from 1.020000e-03  -1.300000e-03 -1.300000e-03
-to   1.020000e-03  1.300000e-03 1.300000e-03
+from 1.020000e-03  -1.320000e-03 -1.320000e-03
+to   1.020000e-03  1.320000e-03 1.320000e-03
 phase_velocity 1.0
 drive_model NONE
 
 ;left
 outlet
-from -1.620000e-03  -1.300000e-03 -1.300000e-03
-to   1.020000e-03  -1.300000e-03 1.300000e-03
+from -1.620000e-03  -1.320000e-03 -1.320000e-03
+to   1.020000e-03  -1.320000e-03 1.320000e-03
 phase_velocity 1.0
 drive_model NONE
 
 ;right
 outlet
-from -1.620000e-03  1.300000e-03 -1.300000e-03
-to   1.020000e-03  1.300000e-03 1.300000e-03
+from -1.620000e-03  1.320000e-03 -1.320000e-03
+to   1.020000e-03  1.320000e-03 1.320000e-03
 phase_velocity 1.0
 drive_model NONE
 
 ;bottom
 outlet
-from -1.620000e-03  -1.300000e-03 -1.300000e-03
-to   1.020000e-03  1.300000e-03 -1.300000e-03
+from -1.620000e-03  -1.320000e-03 -1.320000e-03
+to   1.020000e-03  1.320000e-03 -1.320000e-03
 phase_velocity 1.0
 drive_model NONE
 
 ;top
 outlet
-from -1.620000e-03  -1.300000e-03 1.300000e-03
-to   1.020000e-03  1.300000e-03 1.300000e-03
+from -1.620000e-03  -1.320000e-03 1.320000e-03
+to   1.020000e-03  1.320000e-03 1.320000e-03
 phase_velocity 1.0
 drive_model NONE
 
@@ -653,8 +653,8 @@ movie_fraction 0.000
 
 ;; emission from conductors
 emission child-langmuir field-stress
-from -1.620000e-03 -1.300000e-03 -1.300000e-03
-to   1.020000e-03 1.300000e-03 1.300000e-03
+from -1.620000e-03 -1.320000e-03 -1.320000e-03
+to   1.020000e-03 1.320000e-03 1.320000e-03
 interval 1
 species 10
 discrete_numbers 3 2 2
@@ -663,8 +663,8 @@ thermal_energy 1.0
 movie_fraction 0.0
 ;; ionization states ;;
 higherstate              ; H -> p+
-from -1.620000e-03 -1.300000e-03  -1.300000e-03
-to   1.020000e-03 1.300000e-03  1.300000e-03
+from -1.620000e-03 -1.320000e-03  -1.320000e-03
+to   1.020000e-03 1.320000e-03  1.320000e-03
 interval 1
 species 12
 ion_species 11
@@ -688,8 +688,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O -> O+
-from -1.620000e-03 -1.300000e-03  -1.300000e-03
-to   1.020000e-03 1.300000e-03  1.300000e-03
+from -1.620000e-03 -1.320000e-03  -1.320000e-03
+to   1.020000e-03 1.320000e-03  1.320000e-03
 interval 1
 species 1
 ion_species 2
@@ -713,8 +713,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O+ -> O++
-from -1.620000e-03 -1.300000e-03  -1.300000e-03
-to   1.020000e-03 1.300000e-03  1.300000e-03
+from -1.620000e-03 -1.320000e-03  -1.320000e-03
+to   1.020000e-03 1.320000e-03  1.320000e-03
 interval 1
 species 2
 ion_species 3
@@ -738,8 +738,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O++ -> O 3+
-from -1.620000e-03 -1.300000e-03  -1.300000e-03
-to   1.020000e-03 1.300000e-03  1.300000e-03
+from -1.620000e-03 -1.320000e-03  -1.320000e-03
+to   1.020000e-03 1.320000e-03  1.320000e-03
 interval 1
 species 3
 ion_species 4
@@ -763,8 +763,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O 3+ -> O 4+
-from -1.620000e-03 -1.300000e-03  -1.300000e-03
-to   1.020000e-03 1.300000e-03  1.300000e-03
+from -1.620000e-03 -1.320000e-03  -1.320000e-03
+to   1.020000e-03 1.320000e-03  1.320000e-03
 interval 1
 species 4
 ion_species 5
@@ -788,8 +788,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O 4+ -> O 5+
-from -1.620000e-03 -1.300000e-03  -1.300000e-03
-to   1.020000e-03 1.300000e-03  1.300000e-03
+from -1.620000e-03 -1.320000e-03  -1.320000e-03
+to   1.020000e-03 1.320000e-03  1.320000e-03
 interval 1
 species 5
 ion_species 6
@@ -814,8 +814,8 @@ movie_fraction 0.0
 ;
 ;
 higherstate              ; O 5+ -> O 6+
-from -1.620000e-03 -1.300000e-03  -1.300000e-03
-to   1.020000e-03 1.300000e-03  1.300000e-03
+from -1.620000e-03 -1.320000e-03  -1.320000e-03
+to   1.020000e-03 1.320000e-03  1.320000e-03
 interval 1
 species 6
 ion_species 7
@@ -839,8 +839,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O 6+ -> O 7+
-from -1.620000e-03 -1.300000e-03  -1.300000e-03
-to   1.020000e-03 1.300000e-03  1.300000e-03
+from -1.620000e-03 -1.320000e-03  -1.320000e-03
+to   1.020000e-03 1.320000e-03  1.320000e-03
 interval 1
 species 7
 ion_species 8
@@ -864,8 +864,8 @@ end
 movie_fraction 0.0
 ;
 higherstate              ; O 7+ -> O 8+
-from -1.620000e-03 -1.300000e-03  -1.300000e-03
-to   1.020000e-03 1.300000e-03  1.300000e-03
+from -1.620000e-03 -1.320000e-03  -1.320000e-03
+to   1.020000e-03 1.320000e-03  1.320000e-03
 interval 1
 species 8
 ion_species 9
@@ -916,7 +916,7 @@ movie_fraction 0.0
 ;;maximum_number 1000000000
 ;;start_time 0.0
 ;;stop_time 1
-;;at 0 1.300000e-03 0
+;;at 0 1.320000e-03 0
 ;
 ;;extract4
 ;;species 10
@@ -924,7 +924,7 @@ movie_fraction 0.0
 ;;maximum_number 1000000000
 ;;start_time 0.0
 ;;stop_time 1
-;;at 0 -1.300000e-03 0
+;;at 0 -1.320000e-03 0
 ;
 
 ;
@@ -952,7 +952,7 @@ direction Y
 maximum_number  1000000000
 start_time 0
 stop_time  1
-at 0 -0.0013 0
+at 0 -0.00132 0
  
 ;
 extract4
@@ -961,7 +961,7 @@ direction Y
 maximum_number  1000000000
 start_time 0
 stop_time  1
-at 0 0.0013 0
+at 0 0.00132 0
  
 ;
 extract5
@@ -970,7 +970,7 @@ direction Z
 maximum_number  1000000000
 start_time 0
 stop_time  1
-at 0 0 -0.0013
+at 0 0 -0.00132
  
 ;
 extract6
@@ -979,7 +979,7 @@ direction Z
 maximum_number  1000000000
 start_time 0
 stop_time  1
-at 0 0 0.0013
+at 0 0 0.00132
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
