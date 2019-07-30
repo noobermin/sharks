@@ -126,5 +126,23 @@ dlarger2 = sd(
 );
 gensim(**dlarger2);
 
-    
+#dx = 44e-9 ~ lambda/n ~ n=8.863636...
+#xtot = 29.04, add 1.32 to each end
+#ytot/ztot = 
+dlarger3 = sd(
+    d,
+    lim =(-17.52e-4, 11.52e-4,
+          -14.52e-4, 14.52e-4,
+          -14.52e-4, 14.52e-4),
+    tlim=(-6e-4, 6e-4,
+          -6e-4, 6e-4,
+          -6e-4, 6e-4),
+    res =(660,660,660),
+    region_splits = [('x',5),('y',4)],
+    domains=20*44,
+    pbsbase='mttesy03',
+);
+gensim(**dlarger3);
+
+
              

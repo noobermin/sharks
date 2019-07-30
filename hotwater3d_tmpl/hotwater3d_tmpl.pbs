@@ -17,6 +17,6 @@ cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/nodesfile.txt
 
 {pre}
 
-{mpirun} ./{lspexec} $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+{mpirun} ./{lspexec} $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.$(date +%y%m%d%H%M).o.txt
 
 {post}
