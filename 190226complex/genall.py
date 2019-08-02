@@ -129,6 +129,22 @@ targ2 = sd(
     long_margin=[8.6e-4,6.45e-4],);
 gensim(**targ2);
 
+targ3 = sd(
+    targ2,
+    discrete=(2,4,2),
+    lim =(-20e-4, 10.8e-4, -13.2e-4, 13.2e-4, -13.2e-4, 13.2e-4),
+    tlim=(-2.0e-4, 1.8e-4, -5.0e-4, 5.0e-4, -5.0e-4, 5.0e-4),
+    res =(616,528,528),
+    timestep = 0.5e-16,
+    totaltime=200e-15,
+    laser_t0=66.0e-15,
+    domains=4*44,
+    region_dom_split='x',
+    region_splits=[('y',2),('z',2)],
+    pbsbase='compx_rad3',
+);
+gensim(**targ3);
+
 if opts['--make-all-targets']:
     for d in targds:
         d['mktargf'](d);
