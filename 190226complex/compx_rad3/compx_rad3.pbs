@@ -1,5 +1,5 @@
 #PBS -l walltime=9999:0:00
-#PBS -l nodes=5:ppn=48
+#PBS -l nodes=6:ppn=48
 #PBS -N compx_rad3
 #PBS -S /bin/bash
 #PBS -j oe
@@ -24,7 +24,7 @@ cd "$PBS_O_WORKDIR"
 zipper_PID=$!
 
 
-mpirun -np 220 -hostfile $PBS_NODEFILE ./lsp-10-3d $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+mpirun -np 264 -hostfile $PBS_NODEFILE ./lsp-10-3d $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
 
 kill $zipper_PID
 ./zipper -a >$PBS_O_WORKDIR

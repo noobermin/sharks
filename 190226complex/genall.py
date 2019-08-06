@@ -138,9 +138,9 @@ targ3 = sd(
     timestep = 0.5e-16,
     totaltime=200e-15,
     laser_t0=66.0e-15,
-    domains=5*44,
-    region_dom_split='y',
-    region_splits=[('x',5)],
+    domains=6*44,
+    region_dom_split='z',
+    region_splits=[('y',3),('x',2)],
     pbsbase='compx_rad3',
     #scale
     scale_with_min=False,
