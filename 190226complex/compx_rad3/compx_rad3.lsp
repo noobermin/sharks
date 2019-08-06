@@ -400,7 +400,7 @@ to   1.750100e-04 5.000000e-04  5.000000e-04
 species 10
 movie_tag 5
 unbound off
-discrete_numbers 2 4 2
+discrete_numbers 2 3 2
 density_function 5
 reference_point 0.0 0.0 0.0
 density_flags 1 0 0
@@ -415,7 +415,7 @@ to   1.750100e-04 5.000000e-04  5.000000e-04
 species 11
 movie_tag 3
 unbound off
-discrete_numbers 2 4 2
+discrete_numbers 2 3 2
 density_function 6
 reference_point 0.0 0.0 0.0
 density_flags 1 0 0
@@ -430,7 +430,7 @@ to   1.750100e-04  5.000000e-04  5.000000e-04
 species 2
 movie_tag 3
 unbound off
-discrete_numbers 2 4 2
+discrete_numbers 2 3 2
 density_function 7
 reference_point 0.0 0.0 0.0
 density_flags 1 0 0
@@ -446,7 +446,7 @@ from -2.000000e-03 -1.320000e-03 -1.320000e-03
 to   1.300010e-03 1.320000e-03 1.320000e-03
 interval 1
 species 10
-discrete_numbers 2 4 2
+discrete_numbers 2 3 2
 inclusion SOLID
 thermal_energy 1.0
 movie_fraction 0.0
