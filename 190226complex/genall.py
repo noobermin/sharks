@@ -156,6 +156,19 @@ targ3 = sd(
 
 gensim(**targ3);
 
+targ4 = sd(
+    targ3,
+    discrete=(2,3,2),
+    totaltime=200e-15,
+    laser_t0=66.7e-15,
+    domains=9*44,
+    region_dom_split='z',
+    region_splits=[('y',3),('x',3)],#some foresight
+    pbsbase='compx_rad4',
+    lsptemplate="hotwater3d_laser86_tmpl.lsp",
+    laser_polarization=(0,1,0),);
+gensim(**targ4);
+
 if opts['--make-all-targets']:
     for d in targds:
         d['mktargf'](d);
