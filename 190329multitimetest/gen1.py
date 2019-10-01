@@ -149,5 +149,12 @@ dlarger3 = sd(
 );
 gensim(**dlarger3);
 
+dlgcentered = sd(
+    dlarger3,
+    lim =(-17.512e-4, 11.528e-4,
+          -14.52e-4, 14.52e-4,
+          -14.52e-4, 14.52e-4),
+    pbsbase='mttesy03a');
+gensim(**dlgcentered);
 
              
