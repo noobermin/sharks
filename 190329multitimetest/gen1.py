@@ -158,3 +158,22 @@ dlgcentered = sd(
 gensim(**dlgcentered);
 
              
+d4 = sd(
+    d,
+    lim =(-32.4e-4, 20.4e-4,
+          -26.4e-4, 26.4e-4,
+          -26.4e-4, 26.4e-4),
+    tlim=(-6e-4, 6e-4,
+          -6e-4, 6e-4,
+          -6e-4, 6e-4),
+    res =(660,660,660),
+    region_splits = [('x',5),('y',4)],
+    domains=20*44,
+    pbsbase='mttesy04',
+    target_density=0.0,
+    target_density_plainconst=True,
+    multilaser=[],
+    nolaser=True,
+    
+);
+gensim(**d4);
