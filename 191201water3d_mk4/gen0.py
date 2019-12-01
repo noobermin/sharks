@@ -23,18 +23,16 @@ BfromI = lambda i: EfromI(i)/c*1e4;
 mkmovE = lambda d, I: sd(d['movE'],clim=(EfromI(I*1e-4),EfromI(I*2)))
 mkmovB = lambda d, I: sd(d['movB'],clim=(BfromI(I*1e-5),BfromI(I*2)))
 
-from gencircle import mkcircle;
-from genpilltarg import mkpill;
 ###########
 d=dict(
-    dens_flags=(True,True,False),
+    dens_flags=(True,False,False),
     discrete=(2,2,2),
     lim =( -14e-4,  8.0e-4,
            -11e-4, 11.0e-4,
            -11e-4, 11.0e-4,),
-    tlim=(-8e-4, 8e-4,
-          -9e-4, 9e-4,
-          -9e-4, 9e-4),
+    tlim=(-12e-4, 8e-4, #overwritten
+           -9e-4, 9e-4,
+           -9e-4, 9e-4),
     res =(440,440,440),
     description="lsp reference",
     #no outputs because we do restarts now!

@@ -403,7 +403,7 @@ unbound off
 discrete_numbers 2 2 2
 density_function 1
 reference_point 0.0 0.0 0.0
-density_flags 1 1 0
+density_flags 1 0 0
 momentum_flags 0 0 0
 thermal_energy 1.0
 
@@ -418,7 +418,7 @@ unbound off
 discrete_numbers 2 2 2
 density_function 2
 reference_point 0.0 0.0 0.0
-density_flags 1 1 0
+density_flags 1 0 0
 momentum_flags 0 0 0
 thermal_energy 1.0
 
@@ -433,7 +433,7 @@ unbound off
 discrete_numbers 2 2 2
 density_function 3
 reference_point 0.0 0.0 0.0
-density_flags 1 1 0
+density_flags 1 0 0
 momentum_flags 0 0 0
 thermal_energy 1.0
 
