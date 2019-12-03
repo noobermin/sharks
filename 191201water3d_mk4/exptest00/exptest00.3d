@@ -1,0 +1,105 @@
+#################################
+####### GENERAL PARAMETERS ######
+#################################
+max_step = 1000
+amr.n_cell =  220 220 220
+amr.plot_int = 10
+amr.max_grid_size = 128
+amr.blocking_factor = 32
+amr.max_level = 1
+geometry.coord_sys   = 0                  # 0: Cartesian
+geometry.is_periodic = 0 0 0     # Is periodic?
+geometry.prob_lo     = -14.0e-6 -11.0e-6 -11.0e-6    # physical domain
+geometry.prob_hi     =   8.0e-6  11.0e-6  11.0e-6
+warpx.verbose = 0
+warpx.serialize_ics = 1
+
+#################################
+############ NUMERICS ###########
+#################################
+#interpolation.nox = 3
+#interpolation.noy = 3
+#interpolation.noz = 3
+my_constants.xmn   =-12.0e-6
+my_constants.xmx   =  3.0e-6
+my_constants.tmn   = -9.0e-6
+my_constants.tmx   =  9.0e-6
+my_constants.Lf = 0.84e-6
+my_constants.Lb = 0.01e-6
+my_constants.ns = 1e28
+my_constants.slen = 1.0e-6
+my_constants.m_O = 2.6762e-26
+my_constants.T0 = 70e-15
+my_constants.E0 = 6137836047522.271
+warpx.cfl = 0.8
+warpx.do_dynamic_scheduling = 0
+#warpx.load_balance_int = 66
+#warpx.use_filter = 1
+
+#################################
+############ PLASMA #############
+#################################
+particles.nspecies = 3
+particles.species_names = electrons oplus protons
+
+electrons.charge = -q_e
+electrons.mass = m_e
+electrons.injection_style = NUniformPerCell
+electrons.num_particles_per_cell_each_dim = 2 2 2
+electrons.momentum_distribution_type = "gaussian"
+electrons.ux_th = .01
+electrons.uz_th = .01
+electrons.zmin = 19.520e-6
+electrons.zmax = 25.47931e-6
+electrons.profile = parse_density_function
+#                                   
+electrons.density_function(x,y,z) = "\
+3*((x>xmn and x<0)*ns*exp(-x/Lf)+(x>=0 and <slen)*ns+(x>=slen and x<xmx)*ns*exp(-(x-slen)/Lb))*(\
+(z>tmn)*(z<tmx)*(y>tmn)*(y<tmx))"
+
+oplus.charge = q_e
+oplus.mass = m_p
+oplus.injection_style = NUniformPerCell
+oplus.num_particles_per_cell_each_dim = 2 2 2
+oplus.momentum_distribution_type = "gaussian"
+oplus.ux_th = 0.
+oplus.uz_th = 0.
+oplus.zmin = 19.520e-6
+oplus.zmax = 25.47931e-6
+oplus.profile = parse_density_function
+oplus.density_function(x,y,z) = "\
+1*((x>xmn and x<0)*ns*exp(-x/Lf)+(x>=0 and x<slen)*ns+(x>=slen and x<xmx)*ns*exp(-(x-slen)/Lb))*(\
+(z>tmn)*(z<tmx)*(y>tmn)*(y<tmx))"
+
+protons.charge = q_e
+protons.mass = *m_0
+protons.injection_style = NUniformPerCell
+protons.num_particles_per_cell_each_dim = 2 2 2
+protons.momentum_distribution_type = "gaussian"
+protons.ux_th = 0.
+protons.uz_th = 0.
+protons.zmin = 19.520e-6
+protons.zmax = 25.47931e-6
+protons.profile = parse_density_function
+protons.density_function(x,y,z) = "\
+2*((x>xmn and x<0)*ns*exp(-x/Lf)+(x>=0 and x<slen)*ns+(x>=slen and x<xmx)*ns*exp(-(x-slen)/Lb))*(\
+(z>tmn)*(z<tmx)*(y>tmn)*(y<tmx))"
+
+
+#################################
+############# LASER #############
+#################################
+lasers.nlasers      = 1
+lasers.names        = laser1
+laser1.position     = 0. 0. 0.          # This point is on the laser plane
+laser1.direction    = 1. 0. 0.          # The plane normal direction
+laser1.polarization = 0. 1. 0.          # The main polarization vector
+laser1.e_max        = E0                # Maximum amplitude of the laser field (in V/m)
+laser1.wavelength = 0.8e-6              # The wavelength of the laser (in meters)
+laser1.profile      = parse_field_function
+laser1.field_function(X,Y.t) = "\
+(t<T0)*E0*sin(pi*t/T0)*cos(2*pi*c*t/0.8e-6-0.5*(X^2+Y^2)/()"
+laser1.profile_waist = 5.e-6            # The waist of the laser (in meters)
+laser1.profile_duration = 15.e-15       # The duration of the laser (in seconds)
+laser1.profile_t_peak = 25.e-15         # The time at which the laser reaches its peak (in seconds)
+laser1.profile_focal_distance = 15.e-6  # Focal distance from the antenna (in meters)

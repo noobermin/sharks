@@ -73,6 +73,7 @@ d=dict(
              laser_dir = (1,0,0),
              laser_pol = (0,1,0)),],
     laser_t0=14e-6/c,
+    laser_tfunctype=23,
     fp = (0.0,0.0,0.0),
     l=0.8e-4,
     w0=1.5278e-4,
@@ -101,3 +102,9 @@ d=dict(
 d['pbsbase'] = 'reftest00';
 gensim(**d);
 
+d1 = sd(d,
+        pbsbase='reftest01',
+        laser_tfunctype=16,
+        laser_tcutoff=14e-6/c,
+);
+gensim(**d1);

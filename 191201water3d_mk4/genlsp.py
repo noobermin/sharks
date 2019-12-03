@@ -718,8 +718,8 @@ time_delay {time_delay}
 '''
 newlaser86_tmpl='''
 function{tfuncnum} ; laser temporal function, sine squared
-type 23   ; requires new modifications
-coefficients {E0:e} {t0:e} {pulse:e} end
+type {tfunctype}   ; requires new modifications
+coefficients {coeffs} end
 
 function{pfuncnum} ; laser polarization function
 type {pfunctype}
@@ -826,12 +826,25 @@ def genboundaries(**kw):
             );
             if not test(kw,'other_funcs'):
                 kw['other_funcs'] = '';
+            tfunctype = lgetkw('laser_tfunctype');
+            if tfunctype == 23:
+                coeffs = '{E0:e} {t0:e} {pulse:e}'.format(
+                    E0=ItoE(getkw('I')),
+                    t0=lgetkw('laser_t0')*1e9,
+                    pulse=getkw('T')*1e9);
+            elif tfunctype == 16:
+                coeffs = '{E0:e} {pulse:e} {tcutoff:e} {t0:e}';
+                coeffs=coeffs.format(
+                    E0=ItoE(getkw('I')),
+                    tcutoff=lgetkw('laser_tcutoff')*1e9,
+                    t0=lgetkw('laser_t0')*1e9,
+                    # T = 2xFWHM, T = FWHM/sqrt(2*ln2)
+                    pulse=getkw('T')/np.sqrt(8*np.log(2))*1e9);
             kw['other_funcs'] += newlaser86_tmpl.format(
                 #time
                 tfuncnum = funcnum,
-                E0 = ItoE(getkw('I')),
-                t0 = lgetkw('laser_t0')*1e9,
-                pulse = getkw('T')*1e9,
+                tfunctype= tfunctype,
+                coeffs   = coeffs,
                 #polarization
                 pfuncnum = funcnum + 1,
                 pfunctype = lgetkw('laser_pol_type'),
