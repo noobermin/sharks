@@ -108,3 +108,26 @@ d1 = sd(d,
         laser_tcutoff=14e-6/c,
 );
 gensim(**d1);
+
+d2 = sd(
+    d1,
+    pbsbase='reftest02',
+    laser_tcutoff=1e-13,
+    thermal_energy=(1.0,1.0,1.0),
+    target_temps=(None,None,None),
+    speciesl=['e','p','O+'],
+    fracs   =[1.0, 1.0,0.0],
+    discrete=(2,2,2),
+    lim =( -14e-4,  8.0e-4,
+           -11e-4, 11.0e-4,
+              0.0, 0.0,),
+    tlim=(-12e-4, 8e-4, #overwritten
+           -9e-4, 9e-4,
+             0.0,   0.0),
+    res =(440,440,0),
+    #computational division
+    region_dom_split='y',
+    region_splits = None,
+    domains=2*44,
+);
+gensim(**d2);
