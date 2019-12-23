@@ -470,7 +470,7 @@ end'''
 
 func_simple_defs = dict(
     comment='',
-    functype=19);
+    type=19);
 
 def mkfunc_simple(**kw):
     simple_func_tmpl='''
@@ -494,7 +494,7 @@ coefficients {coeffs} end
     coeffs = ' '.join(coeffs);
     return simple_func_tmpl.format(
         header  =header,
-        functype=getkw('functype'),
+        functype=getkw('type'),
         coeffs  =coeffs);
 
 densityfile_tmpl = '''
@@ -996,7 +996,7 @@ def new_multilaser(kw,**lkw):
 
             tfunc = mkfunc_simple(
                 funcnum = funcnum,
-                functype=tfunctype,
+                type=tfunctype,
                 comment ='temporal laser function',
                 coeffs=coeffs);
             outlet_info['tfuncnum'] = funcnum;

@@ -833,19 +833,19 @@ at 0 0 0.00132
 ;;
 function1 ; electrons
 
-type 19
+type 1
 coefficients 0.000000e+00 end
 
 ;;
 function2 ; Protons
 
-type 19
+type 1
 coefficients 0.000000e+00 end
 
 ;;
 function3 ; Oxygen
 
-type 19
+type 1
 coefficients 0.000000e+00 end
 
 ;;
