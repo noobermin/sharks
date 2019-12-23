@@ -72,7 +72,7 @@ d=dict(
                 dat = 'gaussimag.dat',
                 imul= 1.0,
                 dmul= 1.0),),],
-    laser_t0 = 0.0,
+    laser_t0 = -20e-15,
     laser_tfunctype=16,
     laser_tcutoff = 80e-15,
     l = 0.78e-4,
@@ -90,3 +90,14 @@ d=dict(
 d['pbsbase'] = 'gausstest00';
 gensim(**d);
 
+d2 = sd(d,
+        multilaser = [
+            dict(
+                laser_func_type = 86,
+                outlet='xmin',
+                laser_dir = (1,0,0),
+                lpmode = (0,0))],
+        pbsbase = 'gaussctrl00');
+gensim(**d2);
+                
+                

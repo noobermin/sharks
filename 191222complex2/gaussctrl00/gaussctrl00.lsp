@@ -223,7 +223,7 @@ reference_point 0.0 0.0 0.0
 components 0 1 0
 phases 0 0 0
 temporal_function 1
-analytic_function 7
+analytic_function 6
 time_delay 0.0
 
 ;front
@@ -855,27 +855,21 @@ function4 ; temporal laser function
 type 16
 coefficients 6.137836e+07 2.547965e-05 8.000000e-05 -2.000000e-05 end
 
-function5
-type 55
-data_file gaussreal.dat
-independent_variable_multiplier 1.0
-dependent_variable_multiplier 1.0
 
-function6
-type 55
-data_file gaussimag.dat
-independent_variable_multiplier 1.0
-dependent_variable_multiplier 1.0
+function5 ; 
+type 19
+coefficients 0.000000e+00 1.000000e+00 0.000000e+00 end
 
 
 
-function7 ; laser
-type 56
+function6 ; laser
+type 86
 laser
   temporal_function 4
-  Ey_real 5
-  Ey_imag 6
+  polarization_function 5
   wavelength 7.800000e-05
+  spotsize 7.800000e-05
+  lp_mode 0 0
   direction 1 0 0
   focal_point 0.0 0.0 0.0
 
