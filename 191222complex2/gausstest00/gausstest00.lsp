@@ -222,7 +222,7 @@ drive_model LASER
 reference_point 0.0 0.0 0.0
 components 0 1 0
 phases 0 0 0
-temporal_function 0
+temporal_function 1
 analytic_function 7
 time_delay 0.0
 

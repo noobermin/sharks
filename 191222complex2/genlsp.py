@@ -1096,7 +1096,7 @@ end
             components = joinspace(lgetkw("components")),
             phase_velocity = lgetkw('phase_velocity'),
             phases =  joinspace(lgetkw("phases")),
-            lasertfunc = 0,
+            lasertfunc = 1, #we just need to not trip the dumb checks
             laserafunc = funcnum, 
             time_delay = lgetkw('laser_time_delay'),
             **outlet_coords(outlet, l)
