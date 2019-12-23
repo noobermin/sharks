@@ -1016,7 +1016,7 @@ def new_multilaser(kw,**lkw):
 '''
                 pfunc = mkfunc_simple(
                     funcnum = funcnum,
-                    functype= lgetkw('laser_pol_type'),
+                    type    = lgetkw('laser_pol_type'),
                     coeffs  = lgetkw('laser_pol'));
                 outlet_info['pfuncnum'] = funcnum;
                 outlet_info['pfunc'] = pfunc;

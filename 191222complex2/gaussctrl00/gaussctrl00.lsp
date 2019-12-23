@@ -857,7 +857,7 @@ coefficients 6.137836e+07 2.547965e-05 8.000000e-05 -2.000000e-05 end
 
 
 function5 ; 
-type 19
+type 87
 coefficients 0.000000e+00 1.000000e+00 0.000000e+00 end
 
 
