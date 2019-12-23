@@ -853,7 +853,7 @@ coefficients 0.000000e+00 end
 
 function4 ; temporal laser function
 type 16
-coefficients 6.137836e+07 2.547965e-05 3.000000e-05 0.000000e+00 end
+coefficients 6.137836e+07 2.547965e-05 8.000000e-05 0.000000e+00 end
 
 function5
 type 55
