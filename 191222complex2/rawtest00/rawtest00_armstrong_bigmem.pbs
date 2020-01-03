@@ -1,6 +1,6 @@
 #PBS -l walltime=24:0:00
-#PBS -l select=15:ncpus=24:mpiprocs=24
-#PBS -N gausstest00
+#PBS -l select=10:ncpus=24:mpiprocs=24
+#PBS -N rawtest00
 #PBS -S /bin/bash
 #PBS -j oe
 #PBS -m ae
@@ -9,12 +9,12 @@
 #PBS -q bigmem
 
 
-PBSBASE=gausstest00
+PBSBASE=rawtest00
 #source $HOME/.bashrc
 
 
 cd "$PBS_O_WORKDIR"
 
 
-aprun -n 352 ./lsp-10-3d -r $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.$(date +%y%m%d%H%M).o.txt
+aprun -n 224 ./lsp-10-3d -r $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.$(date +%y%m%d%H%M).o.txt
 

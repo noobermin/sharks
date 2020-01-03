@@ -47,6 +47,11 @@ clusters= {
         max_ppn=12,
         max_walltime=96,
         mpi='mpiexec -n {}'),
+    'owens':sd(
+        cluster,
+        max_ppn=28,
+        max_walltime=96,
+        mpi='mpiexec -n {}'),
     'garnet_standard_lw':sd(
         cluster,
         max_ppn=32,
@@ -330,6 +335,13 @@ def mk_hpcmp_pbses(pbsbase='hotwater3d_tmpl',**kw):
         dict(
             pbsname = pbsbase+'_oakley_autos',
             cluster = 'oakley',),
+        dict(
+            pbsname = pbsbase+'_owens',
+            cluster = 'owens',),
+        dict(
+            pbsname = pbsbase+'_owens_12',
+            cluster = 'owens',
+            walltime=12),
         hpcmp_defpbs,
         sd(
             hpcmp_defpbs,

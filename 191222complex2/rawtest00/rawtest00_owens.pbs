@@ -1,13 +1,13 @@
 #PBS -l walltime=96:0:00
-#PBS -l nodes=30:ppn=12
-#PBS -N gausstest00
+#PBS -l nodes=8:ppn=28
+#PBS -N rawtest00
 #PBS -S /bin/bash
 #PBS -j oe
 #PBS -m ae
 #PBS -M ngirmang.1@osu.edu
 
 
-PBSBASE=gausstest00
+PBSBASE=rawtest00
 #source $HOME/.bashrc
 
 
@@ -17,7 +17,7 @@ cd "$PBS_O_WORKDIR"
 zipper_PID=$!
 
 
-mpiexec -n 352 ./lsp-10-3d -r $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.$(date +%y%m%d%H%M).o.txt
+mpiexec -n 224 ./lsp-10-3d -r $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.$(date +%y%m%d%H%M).o.txt
 
 kill $zipper_PID
 ./zipper -a >$PBS_O_WORKDIR

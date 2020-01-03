@@ -1419,6 +1419,7 @@ particle_movie_components Q X Y Z VX VY VZ XI YI ZI
     lsptemplate=getkw("lsptemplate");
     with open(lsptemplate) as f:
         s=f.read();
+    fmtd['pexts'] = pexts;
     s=s.format(
         xgrid=xgrid,
         ygrid=ygrid,
@@ -1426,7 +1427,6 @@ particle_movie_components Q X Y Z VX VY VZ XI YI ZI
         intensity=getkw('I'),
         pmovies=pmovies,
         regions=regions,
-        pexts=pexts,
         description=description,
         **fmtd
     );
