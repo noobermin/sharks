@@ -188,4 +188,6 @@ energy field_energy
 ;
 probe5
 performance cpu_time
-
+;
+probe6
+circuit 1 element 1 voltage

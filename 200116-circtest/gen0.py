@@ -45,7 +45,7 @@ d=dict(
     dump_restart_flag=True,
     email='ngirmang.1@osu.edu',
     pbses='defaults',
-    lsptemplate='laseronly_tmpl200101.lsp',
+    lsptemplate='laseronly_tmpl200119.lsp',
     #units
     ux=1.0,
     #computational division
