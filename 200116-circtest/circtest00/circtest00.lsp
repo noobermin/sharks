@@ -106,7 +106,7 @@ object1 SOLID ;cathode
 conductor on medium 0 potential 1
 
 object2 BLOCK ;vacuum
-conductor on medium 0 potential 0
+conductor off medium 0 potential 0
 from 1.000000e-01 -1.000000e-01 0.000000e+00
 to   1.000000e+00 5.100000e+00 0.000000e+00
 

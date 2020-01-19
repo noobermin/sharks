@@ -84,7 +84,7 @@ d=dict(
         {'type':'BLOCK',
          'potential':0,
          'label':'vacuum',
-         'condoff':'off',
+         'condon':'off',
          'medium':0,
          'from':(0.1,-0.1, 0.0),
          'to'  :(1.0, 5.1, 0.0),},
