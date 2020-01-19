@@ -35,7 +35,7 @@ grid1
 [Objects]
 {objects}
 
-[Circuits]
+[Circuit Models]
 {circuits}
 
 [Boundaries]

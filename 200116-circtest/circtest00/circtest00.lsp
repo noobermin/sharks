@@ -116,7 +116,7 @@ from 1.000000e+00 -1.000000e-01 0.000000e+00
 to   1.200000e+00 5.100000e+00 0.000000e+00
 
 
-[Circuits]
+[Circuit Models]
 
 circuit1
 transmission-line
