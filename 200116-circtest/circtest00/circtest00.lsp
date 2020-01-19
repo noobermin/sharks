@@ -150,7 +150,7 @@ circuit 1
 voltage_measurement
   from 1.000000e-01 0.000000e+00 0.000000e+00
   to   1.000000e+00 0.000000e+00 0.000000e+00
-temporal_function 
+
 time_delay 0.0
 
 

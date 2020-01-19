@@ -740,7 +740,7 @@ end
 circuit {circuit}
 {connection_rank}
 {voltage_measurement}
-temporal_function {vtfunc}
+{vtfunc}
 time_delay {time_delay}
 ''';
 freespace_tmpl='''
