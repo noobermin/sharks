@@ -69,11 +69,8 @@ d=dict(
     ],
     circuits = [ dict(
         type='transline',
-        segments = [ dict(length=1.0) ],
-        termination='LCR',
-        L = 0.0,
-        C = 0.0,
-        R = 5.0,
+        segments = [ dict(length=1.0,Z=5.0) ],
+        termination='CHARGED',
         V = 2.0), ],
     starting_funcnum = 1,
     #target

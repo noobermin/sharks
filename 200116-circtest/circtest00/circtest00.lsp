@@ -122,14 +122,11 @@ circuit1
 transmission-line
 doubling off
 segments
-  length 1.0 impedance 1.0 
+  length 1.0 impedance 5.0 
 
 end
-termination  LCR
-capacitance  0.0
-inductance   0.0
-resistance   5.0
-voltage      2.0
+termination CHARGED
+voltage 2.0
 startup_time 0.0
 
 

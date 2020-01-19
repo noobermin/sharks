@@ -1324,11 +1324,7 @@ doubling {doubling}
 segments
 {segments}
 end
-termination  {term}
-capacitance  {C}
-inductance   {L}
-resistance   {R}
-voltage      {V}
+{termination}
 startup_time {startup_time}
 ''';
 
@@ -1366,15 +1362,31 @@ def gencircuits(**kw):
                     chis = 'dielectric_constant {}'.format(seg['chi']);
                 segss+=circ_lineseg_tmpl.format(
                     length=segkw('length'),Z=segkw('Z'), chi=chis);
+            #termination
+            term = circkw("termination");
+            if term == 'LCR':
+                terms = '''termination LCR
+capacitance  {C}
+inductance   {L}
+resistance   {R}
+voltage      {V}'''.format(C=circkw('C'),
+                           L=circkw('L'),
+                           R=circkw('R'),
+                           V=circkw('V'));
+            elif term == 'OPEN':
+                terms = "termination OPEN"
+            elif term == 'SHORT':
+                terms = "termination SHORT"
+            elif term == 'CHARGED':
+                terms = "termination CHARGED\nvoltage {V}".format(
+                    V=circkw('V'));
+            else:
+                raise ValueError("unknown termination '{}'".format(term));
             outs+=circ_line_tmpl.format(
                 i=i+1,
                 doubling='on' if circkw('doubling') else 'off',
                 segments=segss,
-                term=circkw('termination'),
-                L = circkw('L'),
-                C = circkw('C'),
-                R = circkw('R'),
-                V = circkw('V'),
+                termination=terms,
                 startup_time=circkw('startup_time'));
         else:
             raise NotImplementedError("Unknown type (or unimplemented type)");
