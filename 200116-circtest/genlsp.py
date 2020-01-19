@@ -1373,6 +1373,8 @@ voltage      {V}'''.format(C=circkw('C'),
                            L=circkw('L'),
                            R=circkw('R'),
                            V=circkw('V'));
+                if circkw('C') == 0.0 and circkw('L') == 0.0:
+                    print("warning: LSP 10 will complain if there is no L or C...");
             elif term == 'OPEN':
                 terms = "termination OPEN"
             elif term == 'SHORT':
