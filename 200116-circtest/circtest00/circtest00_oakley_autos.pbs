@@ -1,0 +1,23 @@
+#PBS -l walltime=96:0:00
+#PBS -l nodes=8:ppn=12
+#PBS -N circtest00
+#PBS -S /bin/bash
+#PBS -j oe
+#PBS -m ae
+#PBS -M ngirmang.1@osu.edu
+
+
+PBSBASE=circtest00
+#source $HOME/.bashrc
+
+
+cd "$PBS_O_WORKDIR"
+#zipper
+./loopscript zipper &> $PBS_O_WORKDIR/zipper.log&
+zipper_PID=$!
+
+
+mpiexec -n 88 ./lsp-10-xy -r $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.$(date +%y%m%d%H%M).o.txt
+
+kill $zipper_PID
+./zipper -a >$PBS_O_WORKDIR
