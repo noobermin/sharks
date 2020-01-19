@@ -138,7 +138,7 @@ startup_time 0.0
 ;circuit
 outlet
 from 1.000000e-01 0.000000e+00 0.000000e+00
-to   1.000000e+01 0.000000e+00 0.000000e+00
+to   1.000000e+00 0.000000e+00 0.000000e+00
 phase_velocity 1.0
 drive_model POTENTIAL
 potentials
@@ -148,8 +148,8 @@ end
 circuit 1
 
 voltage_measurement
-  from 0.000000e+00 0.000000e+00 0.000000e+00
-  to   1.100000e+00 0.000000e+00 0.000000e+00
+  from 1.000000e-01 0.000000e+00 0.000000e+00
+  to   1.000000e+00 0.000000e+00 0.000000e+00
 temporal_function 
 time_delay 0.0
 
@@ -157,7 +157,7 @@ time_delay 0.0
 ;top outlet
 outlet
 from 1.000000e-01  5.000000e+00 0.000000e+00
-to   1.000000e+01  5.000000e+00 0.000000e+00
+to   1.000000e+00  5.000000e+00 0.000000e+00
 phase_velocity 1.0
 drive_model NONE
 

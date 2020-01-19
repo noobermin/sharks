@@ -55,14 +55,14 @@ d=dict(
     #circuit
     manual_boundaries = [
         dict(
-            lim=(0.1,10.0, 0.0, 0.0, 0.0, 0.0),
+            lim=(0.1,1.0, 0.0, 0.0, 0.0, 0.0),
             circuit=1,
             label='circuit',
             type='outlet',
             model='potential',
-            voltage_measurement = (0.0,1.1,0.0,0.0,0.0,0.0),),
+            voltage_measurement = (0.1,1.0,0.0,0.0,0.0,0.0),),
         dict(
-            lim=(0.1,10.0, 5.0, 5.0, 0.0, 0.0),
+            lim=(0.1,1.0, 5.0, 5.0, 0.0, 0.0),
             label='top outlet',
             type='outlet',
             model='none'),
