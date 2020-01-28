@@ -86,5 +86,36 @@ d=dict(
 d['pbsbase'] = 'rawtest00';
 gensim(**d);
 
-                
-                
+d2 = sd(
+    d,
+    lim = (-20.0e-4, 6.4e-4,
+           -13.2e-4,13.2e-4,
+           -13.2e-4,13.2e-4),
+    res = (528, 528, 528),
+    description = "attempt to use nour's stuff",
+    domains = 44*8,
+    multilaser=[
+        dict(
+            laser_func_type = 56,
+            outlet='xmin',
+            laser_dir = (1,0,0),
+            Ey_real   = dict(
+                dat = 'nour00Ey_real.dat',
+                imul= 1.0,
+                dmul= 1.0),
+            Ey_imag   = dict(
+                dat = 'nour00Ey_imag.dat',
+                imul= 1.0,
+                dmul= 1.0),
+            Ez_real   = dict(
+                dat = 'nour00Ez_real.dat',
+                imul= 1.0,
+                dmul= 1.0),
+            Ez_imag   = dict(
+                dat = 'nour00Ez_imag.dat',
+                imul= 1.0,
+                dmul= 1.0),),],
+    pbsbase = 'nour00');
+gensim(**d2);
+
+

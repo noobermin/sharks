@@ -1,0 +1,20 @@
+#PBS -l walltime=24:0:00
+#PBS -l select=11:ncpus=32:mpiprocs=32
+#PBS -N nour00
+#PBS -S /bin/bash
+#PBS -j oe
+#PBS -m ae
+#PBS -M ngirmang.1@osu.edu
+#PBS -A __projectid__
+#PBS -q standard_sm
+
+
+PBSBASE=nour00
+#source $HOME/.bashrc
+
+
+cd "$PBS_O_WORKDIR"
+
+
+aprun -n 352 ./lsp-10-3d -r $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.$(date +%y%m%d%H%M).o.txt
+
