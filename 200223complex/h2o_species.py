@@ -82,18 +82,15 @@ h2o_creation_plasma = [
     dict(type='plasma',
          label = 'O+',
          species = 2,
-         momentum_flags = (False, False, False),
-         energy_flags = (False, False, False),),
+         momentum_flags = (False, False, False),),
     dict(type='plasma',
          label = 'p',
          species = 11,
-         momentum_flags = (False, False, False),
-         energy_flags = (False, False, False),),
+         momentum_flags = (False, False, False),),
     dict(type='plasma',
          label = 'e',
          species = 12,
-         momentum_flags = (False, False, False),
-         energy_flags = (False, False, False),),];
+         momentum_flags = (False, False, False),),];
 
 higherstate = dict(type='higherstate', lim='full', electron_species=12,
                    cross_sections = [0.0, 0.0, 0.0, 0.0,

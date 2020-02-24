@@ -458,7 +458,6 @@ density_flags 1 0 0
 momentum_flags 0 0 0
 drift_momentum 0 0 0
 thermal_energy 1.0
-energy_flags 0 0 0
 
 plasma ; p
 from -1.126611e-04 -5.000000e-04 -5.000000e-04
@@ -471,7 +470,6 @@ density_flags 1 0 0
 momentum_flags 0 0 0
 drift_momentum 0 0 0
 thermal_energy 1.0
-energy_flags 0 0 0
 
 plasma ; e
 from -1.126611e-04 -5.000000e-04 -5.000000e-04
@@ -484,7 +482,6 @@ density_flags 1 0 0
 momentum_flags 0 0 0
 drift_momentum 0 0 0
 thermal_energy 1.0
-energy_flags 0 0 0
 
 higherstate ; O -> O+
 from -2.000000e-03 -1.320000e-03 -1.320000e-03
