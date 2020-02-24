@@ -74,8 +74,7 @@ h2o_species_explicit = [
     dict(label = 'e',
          implicit_species_flag = implicit_species_flag,
          charge = -1,
-         mass = 1836.2,
-         atomic_number = 1,
+         mass = 1.0,
          scattering_flag = True,),];
 
 h2o_creation_plasma = [

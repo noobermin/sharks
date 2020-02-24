@@ -432,8 +432,7 @@ selection_ratio 1.0
 
 species12 ; e
 charge -1
-mass 1836.2
-atomic_number 1
+mass 1.0
 fluid_species_flag OFF
 migrant_species_flag OFF
 implicit_species_flag OFF
