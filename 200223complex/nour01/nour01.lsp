@@ -633,7 +633,7 @@ laser
   Ey_imag 3
   Ez_real 4
   Ez_imag 5
-  wavelength 7.800000e-05
+  wavelength 8.000000e-05
   direction 1 0 0
   focal_point 0.0 0.0 0.0
 

@@ -10,6 +10,7 @@ from docopt import docopt
 opts=docopt(__doc__,help=True);
 from pys import sd, parse_ituple, savetxt, sdl;
 from genlsp import gensim;
+
 import numpy as np;
 import shutil as sh;
 import re;
@@ -21,11 +22,11 @@ BfromI = lambda i: EfromI(i)/c*1e4;
 mkmovE = lambda d, I: sd(d['movE'],clim=(EfromI(I*1e-4),EfromI(I*2)))
 mkmovB = lambda d, I: sd(d['movB'],clim=(BfromI(I*1e-5),BfromI(I*2)))
 
-from h2o_species import h2o_species_explicit as h2o_species;
-from h2o_species import h2o_creation_plasma, h2o_creation_other;
+from genlsp.h2o_species import h2o_species_explicit as h2o_species;
+from genlsp.h2o_species import h2o_creation_plasma_single, h2o_creation_other;
 discrete=(2,2,2)
 species = h2o_species;
-plasmacs = sdl(h2o_creation_plasma,
+plasmacs = sdl(h2o_creation_plasma_single,
                lim = 'tlim',
                discrete_numbers = discrete,
                reference_point  = (0.0,0.0,0.0),
@@ -90,8 +91,8 @@ d=dict(
     laser_t0 = -20e-15,
     laser_tfunctype=16,
     laser_tcutoff = 80e-15,
-    l = 0.78e-4,
-    w0= 0.78e-4,
+    l = 0.8e-4,
+    w0= 0.8e-4,
     fp = (0.0,0.0,0.0),
     I = 5e18,
     T = 60e-15,
