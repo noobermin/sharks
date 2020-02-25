@@ -111,7 +111,18 @@ d=dict(
     Lf = 75e-7,
     Lb = 50e-7,
     keep_lims = True,
-
+    #probes
+    probes = [
+        dict(type = 'energy',
+             measurement_type = 'net_energy'),
+        dict(type = 'energy',
+             measurement_type = 'total_energy'),
+        dict(type = 'energy',
+             measurement_type = 'particle_energy'),
+        dict(type = 'energy',
+             measurement_type = 'field_energy'),
+        dict(type = 'performance',
+             measurement_type = 'cpu_time')],
 );
 gensim(**d);
 
