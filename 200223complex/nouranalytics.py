@@ -7,13 +7,12 @@ Options:
      --help -h        Help me.
 '''
 from docopt import docopt;
-opts = docopt(__doc__,help=True);
 import numpy as np;
 
 E0 = 1.0;
 l  = 0.8e-4;
 F  = 2.0
-r0 = 2*l*F/np.pi;
+w0 = r0 = 2*l*F/np.pi;
 k  = 2*np.pi/l;
 c  = 29.9792458
 om = k*c;
@@ -25,7 +24,8 @@ phi0 = 0.0;
 t0 = 40e-6;
 print(zr);
 def f(z): return np.sqrt(1 + (z/zr)**2);
-def phi(t,z,r): return om*t - k*z + 2 * np.arctan2(z,zr) - z/zr * (r/(r0*f(z)))**2 + phi0
+#def phi(t,z,r): return om*t - k*z + 2 * np.arctan2(z,zr) - z/zr * (r/(r0*f(z)))**2 + phi0
+def phi(t,z,r): return -om*t + k*z - 2*np.arctan2(z,zr) + z/zr * (r/(r0*f(z)))**2 + phi0
 print(f(z0));
 
 def gauss(t,z,r):
@@ -42,35 +42,36 @@ def E_z(t, z, r):
 def E_r_sp(z,r):
     return r / (r0*f(z)) * gauss_sp(z,r);
 def phase(z,r):
-    return np.exp(1j*(np.arctan2(z,zr) - z/zr*(r/(r0*f(z)))**2 + phi0));
+    return np.exp(1j*(k*z-2*np.arctan2(z,zr) + z/zr*(r/(r0*f(z)))**2 + phi0));
 
-
-x = np.linspace(-20.1e-4, -19.9e-4, 5);
-y = np.linspace(-13.2e-4,  13.2e-4, 201);
-z = np.linspace(-13.2e-4,  13.2e-4, 201);
-X,Y,Z = np.meshgrid(x,y,z,indexing='ij');
-
-R = np.sqrt(Y**2 + Z**2);
-#Ex = E_z(t0, X, R);
-#Er = E_r(t0, X, R);
-Er_sp = E_r_sp(X,R)*phase(X,R);
-# make Er into Ey and Ez...flipping to lsp coordinate system.
-cs = np.where(R>0,Y/R,0.0);
-sn = np.where(R>0,Z/R,0.0);
-Ey = cs*Er_sp;
-Ez = sn*Er_sp;
-Ersq = np.sqrt(np.abs(Ey)**2 + np.abs(Ez)**2);
-out = dict(
-    Ey_real=np.real(Ey), Ey_imag=np.imag(Ey),
-    Ez_real=np.real(Ez), Ez_imag=np.imag(Ez));
-namefmt = opts['<namefmt>'];
-names = {
-    k : namefmt.format(k) for k in out };
-print("basic statistics");
-print("max: {:e}".format(np.max(Ersq)));
-print("min: {:e}".format(np.min(Ersq)));
-#np.savez(opts['<output>'],Ey=Ey,Ez=Ez);
-from noob3a import output_centered;
-for k in out:
-    name = names[k]
-    output_centered(name,x,y,z,out[k], order=None);
+if __name__ == '__main__':
+    opts = docopt(__doc__,help=True);
+    x = np.linspace(-20.1e-4, -19.9e-4, 5);
+    y = np.linspace(-13.2e-4,  13.2e-4, 201);
+    z = np.linspace(-13.2e-4,  13.2e-4, 201);
+    X,Y,Z = np.meshgrid(x,y,z,indexing='ij');
+    
+    R = np.sqrt(Y**2 + Z**2);
+    #Ex = E_z(t0, X, R);
+    #Er = E_r(t0, X, R);
+    Er_sp = E_r_sp(X,R)*phase(X,R);
+    # make Er into Ey and Ez...flipping to lsp coordinate system.
+    cs = np.where(R>0,Y/R,0.0);
+    sn = np.where(R>0,Z/R,0.0);
+    Ey = cs*Er_sp;
+    Ez = sn*Er_sp;
+    Ersq = np.sqrt(np.abs(Ey)**2 + np.abs(Ez)**2);
+    out = dict(
+        Ey_real=np.real(Ey), Ey_imag=np.imag(Ey),
+        Ez_real=np.real(Ez), Ez_imag=np.imag(Ez));
+    namefmt = opts['<namefmt>'];
+    names = {
+        k : namefmt.format(k) for k in out };
+    print("basic statistics");
+    print("max: {:e}".format(np.max(Ersq)));
+    print("min: {:e}".format(np.min(Ersq)));
+    #np.savez(opts['<output>'],Ey=Ey,Ez=Ez);
+    from noob3a import output_centered;
+    for k in out:
+        name = names[k]
+        output_centered(name,x,y,z,out[k], order=None);
