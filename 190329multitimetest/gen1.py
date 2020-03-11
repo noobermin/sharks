@@ -68,7 +68,7 @@ d=dict(
     domains=16*44,
     #newlaser
     new_multilaser=True,
-    starting_funcnum = 4,
+    starting_funcnum = 1,
     multilaser=[
         dict(outlet='xmin',
              laser_dir = (1,0,0),
