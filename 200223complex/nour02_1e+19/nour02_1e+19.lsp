@@ -1,5 +1,5 @@
 [Title]
-simulation_title "attempt to use nour's stuff"
+simulation_title "Complex beam interacting with matter, I=1e+19"
 ;
 [Control]
 ;Time-advance
@@ -659,7 +659,7 @@ at 0 0 0.00132
 
 function1 ; temporal laser function
 type 16
-coefficients 6.137836e+07 2.547965e-05 8.000000e-05 -2.000000e-05 end
+coefficients 8.680211e+07 2.547965e-05 8.000000e-05 -2.000000e-05 end
 
 function2
 type 55
