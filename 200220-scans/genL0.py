@@ -73,7 +73,7 @@ def mksim(E,l,fn,cy,L,
     pbsbase = pbsfmt.format(
         l = llabel,
         I = d['I'],
-        scale = scale,
+        scale = scale*1e4,
         fn= np.pi*d['w']/2/d['l'],
         cs=cy,);
     print("processing {}".format(pbsbase));
