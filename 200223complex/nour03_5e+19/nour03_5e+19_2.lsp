@@ -9,7 +9,7 @@ simulation_title "High Intensity Complex beam interacting with matter, I=5e+19"
 ;;Restarts
 dump_restart_flag ON
 rename_restart_flag ON
-restart_interval 20
+restart_interval_ns 1.0000000000000002e-06
 
 ;;Load Balancing
 balance_interval 0
