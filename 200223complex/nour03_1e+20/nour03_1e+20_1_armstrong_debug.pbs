@@ -1,0 +1,25 @@
+#PBS -l walltime=0:30:00
+#PBS -l select=15:ncpus=24:mpiprocs=24
+#PBS -N nour03_1e+20_1
+#PBS -S /bin/bash
+#PBS -j oe
+#PBS -m ae
+#PBS -M ngirmang.1@osu.edu
+#PBS -A __projectid__
+#PBS -q debug
+
+
+PBSBASE=nour03_1e+20_1
+#source $HOME/.bashrc
+
+#This outputs the name of the root node
+#to the directory where you submitted this PBS job
+echo $HOSTNAME > $PBS_O_WORKDIR/hostname.txt   
+cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/nodesfile.txt
+
+
+cd "$PBS_O_WORKDIR"
+
+
+aprun -n 352 ./lsp-10-3d -r  $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+
