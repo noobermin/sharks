@@ -35,7 +35,7 @@ plasmacs = sdl(h2o_creation_plasma_single,
 creation = plasmacs + h2o_creation_other;
 
 ###########
-d1=dict(
+d = dict(
     dens_flags=(True,False,False),
     lim = (-20.0e-4, 6.4e-4,
            -13.2e-4,13.2e-4,
@@ -127,26 +127,40 @@ d1=dict(
     #splittime to reduce timestep around
     splittime = [
         [ 90e-15, dict(timestep = 50e-18)],
-        [120e-15, dict(timestep = 25e-18)],
+        [130e-15, dict(timestep = 25e-18)],
         [200e-15, dict(timestep = 50e-18)],],
 );
 
-Is1 = [5e19, 1e20,5e20]
+Is0 = [5e19]
+Is1 = [1e20,5e20]
 Is2 = [1e21,5e21];
 pbsfmt = 'nour03_{:0.0e}'
 def mkpbsbase(I): return pbsfmt.format(I);
 descrfmt = 'High Intensity Complex beam interacting with matter, I={}'
 def mkdescr(I): return descrfmt.format(I);
-ds = [ sd(d1, pbsbase=mkpbsbase(I),description=mkdescr(I),I=I,)
+ds = [ sd(d, pbsbase=mkpbsbase(I),description=mkdescr(I),I=I,)
+       for I in Is0 ];
+
+ds+= [ sd(
+    d,
+    splittime = [
+        [ 90e-15, dict(timestep = 50e-18)],
+        [120e-15, dict(timestep = 25e-18)],
+        [200e-15, dict(timestep = 50e-18)],],
+    pbsbase=mkpbsbase(I),
+    description=mkdescr(I),
+    I=I,)
        for I in Is1 ];
-d2 = sd(
-    d1,
+    
+ds+= [ sd(
+    d,
     splittime = [
         [ 85e-15, dict(timestep = 50e-18)],
         [125e-15, dict(timestep = 25e-18)],
-        [200e-15, dict(timestep = 50e-18)],]);
-    
-ds+= [ sd(d2, pbsbase=mkpbsbase(I),description=mkdescr(I),I=I,)
+        [200e-15, dict(timestep = 50e-18)],],
+    pbsbase=mkpbsbase(I),
+    description=mkdescr(I),
+    I=I,)
        for I in Is2 ];
 for di in ds:
     gensim(**di);
