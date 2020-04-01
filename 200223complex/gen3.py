@@ -129,6 +129,8 @@ d = dict(
         [ 90e-15, dict(timestep = 50e-18)],
         [180e-15, dict(timestep = 25e-18)],
         [200e-15, dict(timestep = 50e-18)],],
+    #pext
+    pext_species=(12,),
 );
 
 Is0 = [5e19]

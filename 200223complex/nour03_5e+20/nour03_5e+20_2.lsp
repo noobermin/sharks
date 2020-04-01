@@ -578,7 +578,7 @@ cross_sections 0 0 0 0 0 0 0 0 0 0 0 0 end
 
 ;
 extract1
-species 10
+species 12
 direction X
 maximum_number  1000000000
 start_time 0
@@ -588,7 +588,7 @@ at -0.002 0 0
  
 ;
 extract2
-species 10
+species 12
 direction X
 maximum_number  1000000000
 start_time 0
@@ -598,7 +598,7 @@ at 0.00064 0 0
  
 ;
 extract3
-species 10
+species 12
 direction Y
 maximum_number  1000000000
 start_time 0
@@ -608,7 +608,7 @@ at 0 -0.00132 0
  
 ;
 extract4
-species 10
+species 12
 direction Y
 maximum_number  1000000000
 start_time 0
@@ -618,7 +618,7 @@ at 0 0.00132 0
  
 ;
 extract5
-species 10
+species 12
 direction Z
 maximum_number  1000000000
 start_time 0
@@ -628,7 +628,7 @@ at 0 0 -0.00132
  
 ;
 extract6
-species 10
+species 12
 direction Z
 maximum_number  1000000000
 start_time 0
