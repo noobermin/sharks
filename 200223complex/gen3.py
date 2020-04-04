@@ -127,7 +127,7 @@ d = dict(
     #splittime to reduce timestep around
     splittime = [
         [ 90e-15, dict(timestep = 50e-18)],
-        [180e-15, dict(timestep = 25e-18)],
+        [190e-15, dict(timestep = 25e-18)],
         [200e-15, dict(timestep = 50e-18)],],
     #pext
     pext_species=(12,),
@@ -147,7 +147,7 @@ ds+= [ sd(
     d,
     splittime = [
         [ 90e-15, dict(timestep = 50e-18)],
-        [180e-15, dict(timestep = 25e-18)],
+        [190e-15, dict(timestep = 25e-18)],
         [200e-15, dict(timestep = 50e-18)],],
     pbsbase=mkpbsbase(I),
     description=mkdescr(I),
@@ -158,7 +158,7 @@ ds+= [ sd(
     d,
     splittime = [
         [ 85e-15, dict(timestep = 50e-18)],
-        [185e-15, dict(timestep = 25e-18)],
+        [195e-15, dict(timestep = 25e-18)],
         [200e-15, dict(timestep = 50e-18)],],
     pbsbase=mkpbsbase(I),
     description=mkdescr(I),
