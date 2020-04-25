@@ -127,43 +127,46 @@ d = dict(
     #splittime to reduce timestep around
     splittime = [
         [ 90e-15, dict(timestep = 50e-18)],
-        [190e-15, dict(timestep = 25e-18)],
-        [200e-15, dict(timestep = 50e-18)],],
+        [200e-15, dict(timestep = 25e-18)]],
     #pext
     pext_species=(12,),
 );
 
-Is0 = [5e19]
-Is1 = [1e20,5e20]
-Is2 = [1e21,5e21];
+Is0 = [5e19];
+Is1 = [1e20,5e20];
+Is2 = [1e21];
+Is3 = [5e21];
 pbsfmt = 'nour03_{:0.0e}'
 def mkpbsbase(I): return pbsfmt.format(I);
 descrfmt = 'High Intensity Complex beam interacting with matter, I={}'
 def mkdescr(I): return descrfmt.format(I);
-ds = [ sd(d, pbsbase=mkpbsbase(I),description=mkdescr(I),I=I,)
-       for I in Is0 ];
 
-ds+= [ sd(
-    d,
-    splittime = [
-        [ 90e-15, dict(timestep = 50e-18)],
-        [190e-15, dict(timestep = 25e-18)],
-        [200e-15, dict(timestep = 50e-18)],],
-    pbsbase=mkpbsbase(I),
-    description=mkdescr(I),
-    I=I,)
-       for I in Is1 ];
-    
-ds+= [ sd(
-    d,
-    splittime = [
-        [ 85e-15, dict(timestep = 50e-18)],
-        [195e-15, dict(timestep = 25e-18)],
-        [200e-15, dict(timestep = 50e-18)],],
-    pbsbase=mkpbsbase(I),
-    description=mkdescr(I),
-    I=I,)
-       for I in Is2 ];
+def mkI(Is, splittime=None):
+    if splittime is None:
+        return [
+            sd(d, pbsbase=mkpbsbase(I),description=mkdescr(I),I=I,)
+            for I in Is ];
+    return [
+        sd(d,
+           splittime=splittime,
+           pbsbase=mkpbsbase(I),description=mkdescr(I),I=I)
+        for I in Is ];
+
+ds = mkI(Is0);
+ds+= mkI(Is1,
+         splittime = [
+             [ 90e-15, dict(timestep = 50e-18)],
+             [200e-15, dict(timestep = 25e-18)]]);
+ds+= mkI(Is2,
+         splittime = [
+             [ 80e-15, dict(timestep = 50e-18)],
+             [130e-15, dict(timestep = 25e-18)],
+             [200e-15, dict(timestep = 10e-18)]]);
+ds+= mkI(Is3,
+         splittime = [
+             [ 80e-15, dict(timestep = 50e-18)],
+             [190e-15, dict(timestep = 10e-18)]]);
+
 for di in ds:
     gensim(**di);
 

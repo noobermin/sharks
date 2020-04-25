@@ -3,8 +3,8 @@ simulation_title "High Intensity Complex beam interacting with matter, I=5e+21"
 ;
 [Control]
 ;Time-advance
- time_limit   1.9500e-04
- time_step_ns 2.5000e-08
+ time_limit   1.9000e-04
+ time_step_ns 1.0000e-08
 
 ;;Restarts
 dump_restart_flag ON
