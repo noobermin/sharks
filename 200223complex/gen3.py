@@ -160,7 +160,7 @@ ds+= mkI(Is1,
 ds+= mkI(Is2,
          splittime = [
              [ 80e-15, dict(timestep = 50e-18)],
-             [130e-15, dict(timestep = 25e-18)],
+             [120e-15, dict(timestep = 25e-18)],
              [200e-15, dict(timestep = 10e-18)]]);
 ds+= mkI(Is3,
          splittime = [
@@ -169,6 +169,3 @@ ds+= mkI(Is3,
 
 for di in ds:
     gensim(**di);
-
-
-
