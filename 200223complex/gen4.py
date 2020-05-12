@@ -135,8 +135,7 @@ ds+= [ sd(
     d,
     splittime = [
         [ 90e-15, dict(timestep = 50e-18)],
-        [190e-15, dict(timestep = 25e-18)],
-        [200e-15, dict(timestep = 50e-18)],],
+        [200e-15, dict(timestep = 25e-18)],],
     pbsbase=mkpbsbase(I),
     description=mkdescr(I),
     I=I,)
