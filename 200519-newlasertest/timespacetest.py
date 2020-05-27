@@ -23,4 +23,4 @@ z = np.linspace(-11.0e-4, 11.0e-4, 441);
 T,X,Y,Z = np.meshgrid(t,x,y,z,indexing='ij', sparse=True);
 gauss = mkgauss();
 out = gauss(T,X,Y,Z);
-noobna.output_centered(opts['<output>'],[t,x,y,z],out);
+noobna.output_centered(opts['<output>'],[t,x,y,z],out,dtype='float64');
