@@ -73,7 +73,7 @@ d=dict(
             outlet='xmin',
             laser_dir = (1,0,0),
             Ey   = dict(dat = 'gaussEy.dat'),
-            timeshift = 60e-15,
+            timeshift = 40e-15,
         ),
     ],
     I = 1e19,
