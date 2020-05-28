@@ -62,8 +62,8 @@ domain_boundary_check ON
 
 [Grid]
 
-xmin             -2.000000e-03
-xmax             6.400000e-04
+xmin             -1.320000e-03
+xmax             1.320000e-03
 x-cells          528
 
 ymin             -1.320000e-03
@@ -78,8 +78,8 @@ z-cells          528
 ;total number of domains: 352
 ;
 region1
-xmin             -2.000000e-03
-xmax             -6.800000e-04
+xmin             -1.320000e-03
+xmax             0.000000e+00
 
 ymin             -1.320000e-03
 ymax             0.000000e+00
@@ -93,8 +93,8 @@ number_of_cells AUTO;
 ;
 ;
 region2
-xmin             -2.000000e-03
-xmax             -6.800000e-04
+xmin             -1.320000e-03
+xmax             0.000000e+00
 
 ymin             -1.320000e-03
 ymax             0.000000e+00
@@ -108,8 +108,8 @@ number_of_cells AUTO;
 ;
 ;
 region3
-xmin             -2.000000e-03
-xmax             -6.800000e-04
+xmin             -1.320000e-03
+xmax             0.000000e+00
 
 ymin             0.000000e+00
 ymax             1.320000e-03
@@ -123,8 +123,8 @@ number_of_cells AUTO;
 ;
 ;
 region4
-xmin             -2.000000e-03
-xmax             -6.800000e-04
+xmin             -1.320000e-03
+xmax             0.000000e+00
 
 ymin             0.000000e+00
 ymax             1.320000e-03
@@ -138,8 +138,8 @@ number_of_cells AUTO;
 ;
 ;
 region5
-xmin             -6.800000e-04
-xmax             6.400000e-04
+xmin             0.000000e+00
+xmax             1.320000e-03
 
 ymin             -1.320000e-03
 ymax             0.000000e+00
@@ -153,8 +153,8 @@ number_of_cells AUTO;
 ;
 ;
 region6
-xmin             -6.800000e-04
-xmax             6.400000e-04
+xmin             0.000000e+00
+xmax             1.320000e-03
 
 ymin             -1.320000e-03
 ymax             0.000000e+00
@@ -168,8 +168,8 @@ number_of_cells AUTO;
 ;
 ;
 region7
-xmin             -6.800000e-04
-xmax             6.400000e-04
+xmin             0.000000e+00
+xmax             1.320000e-03
 
 ymin             0.000000e+00
 ymax             1.320000e-03
@@ -183,8 +183,8 @@ number_of_cells AUTO;
 ;
 ;
 region8
-xmin             -6.800000e-04
-xmax             6.400000e-04
+xmin             0.000000e+00
+xmax             1.320000e-03
 
 ymin             0.000000e+00
 ymax             1.320000e-03
@@ -221,8 +221,8 @@ energy_units EV
 
 ;laser
 outlet
-from -2.000000e-03  -1.320000e-03 -1.320000e-03
-to   -2.000000e-03  1.320000e-03 1.320000e-03
+from -1.320000e-03  -1.320000e-03 -1.320000e-03
+to   -1.320000e-03  1.320000e-03 1.320000e-03
 phase_velocity 1.0
 drive_model LASER
 reference_point 0.0 0.0 0.0
@@ -234,43 +234,43 @@ time_delay 0.0
 
 ;front
 outlet
-from -2.000000e-03  -1.320000e-03 -1.320000e-03
-to   -2.000000e-03  1.320000e-03 1.320000e-03
+from -1.320000e-03  -1.320000e-03 -1.320000e-03
+to   -1.320000e-03  1.320000e-03 1.320000e-03
 phase_velocity 1.0
 drive_model NONE
 
 ;back
 outlet
-from 6.400000e-04  -1.320000e-03 -1.320000e-03
-to   6.400000e-04  1.320000e-03 1.320000e-03
+from 1.320000e-03  -1.320000e-03 -1.320000e-03
+to   1.320000e-03  1.320000e-03 1.320000e-03
 phase_velocity 1.0
 drive_model NONE
 
 ;left
 outlet
-from -2.000000e-03  -1.320000e-03 -1.320000e-03
-to   6.400000e-04  -1.320000e-03 1.320000e-03
+from -1.320000e-03  -1.320000e-03 -1.320000e-03
+to   1.320000e-03  -1.320000e-03 1.320000e-03
 phase_velocity 1.0
 drive_model NONE
 
 ;right
 outlet
-from -2.000000e-03  1.320000e-03 -1.320000e-03
-to   6.400000e-04  1.320000e-03 1.320000e-03
+from -1.320000e-03  1.320000e-03 -1.320000e-03
+to   1.320000e-03  1.320000e-03 1.320000e-03
 phase_velocity 1.0
 drive_model NONE
 
 ;bottom
 outlet
-from -2.000000e-03  -1.320000e-03 -1.320000e-03
-to   6.400000e-04  1.320000e-03 -1.320000e-03
+from -1.320000e-03  -1.320000e-03 -1.320000e-03
+to   1.320000e-03  1.320000e-03 -1.320000e-03
 phase_velocity 1.0
 drive_model NONE
 
 ;top
 outlet
-from -2.000000e-03  -1.320000e-03 1.320000e-03
-to   6.400000e-04  1.320000e-03 1.320000e-03
+from -1.320000e-03  -1.320000e-03 1.320000e-03
+to   1.320000e-03  1.320000e-03 1.320000e-03
 phase_velocity 1.0
 drive_model NONE
 
@@ -457,7 +457,7 @@ direction X
 maximum_number  1000000000
 start_time 0
 stop_time  1
-at -0.002 0 0
+at -0.00132 0 0
 
  
 ;
@@ -467,7 +467,7 @@ direction X
 maximum_number  1000000000
 start_time 0
 stop_time  1
-at 0.00064 0 0
+at 0.00132 0 0
 
  
 ;
@@ -547,7 +547,7 @@ function3 ; laser
 type 57
 boundary_condition
   Ey 2
-timeshift 4e-05
+timeshift -2e-05
 
 end
 

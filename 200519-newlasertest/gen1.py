@@ -37,7 +37,7 @@ creation = plasmacs + h2o_creation_other;
 ###########
 d=dict(
     dens_flags=(True,False,False),
-    lim = (-20.0e-4, 6.4e-4,
+    lim = (-13.2e-4,13.2e-4,
            -13.2e-4,13.2e-4,
            -13.2e-4,13.2e-4),
     tlim=( -2e-4,1.8e-4,
@@ -73,7 +73,7 @@ d=dict(
             outlet='xmin',
             laser_dir = (1,0,0),
             Ey   = dict(dat = 'gaussEy.dat'),
-            timeshift = 40e-15,
+            timeshift = -20e-15,
         ),
     ],
     I = 1e19,
