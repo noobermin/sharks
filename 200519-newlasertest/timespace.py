@@ -31,16 +31,19 @@ def gauss(t,z,r):
 def gauss_sp(z,r):
     return E0 / f(z) * np.exp( - (r/(f(z)*r0))**2 );
 
-def mkgauss(l=0.8e-4, F=3.0, t0 = 60e-6, phi0=0):
+def mkgauss(l=0.8e-4, F=3.0, t0=60e-6, phi0=0):
     k = 2*np.pi/l;
     w0 = F*l/(np.pi/2.0);
     zr = k*w0**2/2.0;
+    print(t0);
     def _f(x): return np.sqrt(1 + (x/zr)**2);
-    def _r(y,z): return y**2 + z**2;
+    def _r(y,z): return np.sqrt(y**2 + z**2);
     def _phi(t,x,y,z):
         return k*(x-c*t) - 2*np.arctan2(x,zr) + x/zr*(_r(y,z)/w0/_f(x))**2 + phi0
     def _T(t,x):
-        return np.exp( -((t-x/c)/(2*t0))**2 );
+        return np.exp(-(0.5*t/t0)**2);
+    #def _T(t,x):
+    #    return np.exp( -((t-x/c)/(2*t0))**2 );
     def _gauss(t,x,y,z):
         return E0/f(x) * np.cos(_phi(t,x,y,z))*np.exp(-(_r(y,z)/f(x)/w0)**2)*_T(t,x);
     return _gauss;
