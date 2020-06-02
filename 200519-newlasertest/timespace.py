@@ -47,6 +47,7 @@ def mkgauss(l=0.8e-4, F=3.0, t0=60e-6, phi0=0):
     def _gauss(t,x,y,z):
         return E0/f(x) * np.cos(_phi(t,x,y,z))*np.exp(-(_r(y,z)/f(x)/w0)**2)*_T(t,x);
     return _gauss;
+
 # def E_r(t, z, r):
 #     return  r / (r0*f(z)) * gauss(t,z,r);
 # def E_z(t, z, r):

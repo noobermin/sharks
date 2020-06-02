@@ -20,7 +20,7 @@ t0 = Th/np.sqrt(8*np.log(2));
 
 dt = 0.10e-6;
 t = np.arange(-1.5*Th,1.5*Th+dt,dt);
-x = np.linspace(-13.3e-4,-13.2e-4, 3);
+x = np.linspace(-13.3e-4,-13.4e-4, 3);
 y = np.linspace(-8.0e-4, 8.0e-4, 161);
 z = np.linspace(-8.0e-4, 8.0e-4, 161);
 
