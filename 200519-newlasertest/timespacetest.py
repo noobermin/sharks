@@ -7,6 +7,7 @@ Usage:
 Options:
      --help -h        Help me.
      --plot           Plot instead.
+     --npz -N         Output npy instead.
 '''
 from docopt import docopt;
 from timespace import mkgauss, c;
@@ -26,11 +27,28 @@ z = np.linspace(-8.0e-4, 8.0e-4, 161);
 T,X,Y,Z = np.meshgrid(t,x,y,z,indexing='ij', sparse=True);
 gauss = mkgauss(t0=t0);
 out = gauss(T,X,Y,Z);
+
+#zero edges
+out[ 0, :, :, :] = 0;
+out[-1, :, :, :] = 0;
+
+out[ :, 0, :, :] = 0;
+out[ :,-1, :, :] = 0;
+
+out[ :, :, 0, :] = 0;
+out[ :, :,-1, :] = 0;
+
+out[ :, :, :, 0] = 0;
+out[ :, :, :,-1] = 0;
+
+
 print("shape of axes: {}".format(out.shape));
 if opts['--plot']:
     import matplotlib.pyplot as plt;
     from lspplot.pc import pc;
     pc(out[:,0,:,0].T, p=(t*1e6,y), xlabel='fs', ylabel='cm');
     plt.show();
+elif opts['--npz']:
+    np.savez(opts['<output>'], d=out, t=t,x=x,y=y,z=z);
 else:
     noobna.output_centered(opts['<output>'],[t,x,y,z],out,dtype='float64');
