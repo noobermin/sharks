@@ -19,10 +19,11 @@ Th= 6e-6;
 t0 = Th/np.sqrt(8*np.log(2));
 Fnum=1.5
 dt = 0.05e-6;
-t = np.arange(-1.5*Th,1.5*Th+dt,dt);
-x = np.linspace(-13.3e-4,-13.2e-4, 3);
-y = np.linspace(-6e-4, 6e-4, 121);
-z = np.linspace(-6e-4, 6e-4, 121);
+#t = np.arange(-1.5*Th,1.5*Th+dt,dt);
+t = np.linspace(-4.1e-6,4.1e-6,165);
+x = np.linspace(-11.0e-4,-10.9e-4, 3);
+y = np.linspace(-5e-4, 5e-4, 201);
+z = np.linspace(-5e-4, 5e-4, 201);
 
 T,X,Y,Z = np.meshgrid(t,x,y,z,indexing='ij', sparse=True);
 gauss = mkgauss(t0=t0,F=Fnum);
@@ -32,8 +33,9 @@ out = gauss(T,X,Y,Z);
 out[ 0, :, :, :] = 0;
 out[-1, :, :, :] = 0;
 
-out[ :, 0, :, :] = 0;
-out[ :,-1, :, :] = 0;
+# don't zero x axis
+#out[ :, 0, :, :] = 0;
+#out[ :,-1, :, :] = 0;
 
 out[ :, :, 0, :] = 0;
 out[ :, :,-1, :] = 0;

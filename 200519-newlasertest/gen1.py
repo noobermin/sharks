@@ -99,4 +99,27 @@ d=dict(
 gensim(**d);
 
 
+d2 = sd(
+    d,
+    pbsbase = 'neog02',
+    lim = (-11.0e-4,11.0e-4,
+           -11.0e-4,11.0e-4,
+           -11.0e-4,11.0e-4),
+    res = (440, 440, 440),
+    region_dom_split='x',
+    region_splits = [('x',2),('y',2),('z',2)],
+    totaltime=10e-15,
+    timestep=0.05e-15,
+    multilaser=[
+        dict(
+            laser_func_type = 57,
+            outlet='xmin',
+            laser_dir = (1,0,0),
+            Ey   = dict(dat = 'gaussEy.dat'),
+            timeshift = -4e-15,
+        ),
+    ],
+    I = 1e19,
 
+);
+gensim(**d2);
