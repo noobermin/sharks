@@ -107,7 +107,7 @@ d2 = sd(
            -11.0e-4,11.0e-4),
     res = (440, 440, 440),
     region_dom_split='x',
-    region_splits = [('x',2),('y',2),('z',2)],
+    region_splits = [('x',2),('z',2)],
     totaltime=10e-15,
     timestep=0.05e-15,
     multilaser=[
