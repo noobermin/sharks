@@ -75,7 +75,7 @@ zmax             1.100000e-03
 z-cells          440
 
 [Regions]
-;total number of domains: 352
+;total number of domains: 176
 ;
 region1
 xmin             -1.100000e-03
@@ -87,7 +87,7 @@ ymax             1.100000e-03
 zmin             -1.100000e-03
 zmax             0.000000e+00
 ;
-number_of_domains 88
+number_of_domains 44
 split_direction XSPLIT
 number_of_cells AUTO; 
 ;
@@ -102,7 +102,7 @@ ymax             1.100000e-03
 zmin             0.000000e+00
 zmax             1.100000e-03
 ;
-number_of_domains 88
+number_of_domains 44
 split_direction XSPLIT
 number_of_cells AUTO; 
 ;
@@ -117,7 +117,7 @@ ymax             1.100000e-03
 zmin             -1.100000e-03
 zmax             0.000000e+00
 ;
-number_of_domains 88
+number_of_domains 44
 split_direction XSPLIT
 number_of_cells AUTO; 
 ;
@@ -132,7 +132,7 @@ ymax             1.100000e-03
 zmin             0.000000e+00
 zmax             1.100000e-03
 ;
-number_of_domains 88
+number_of_domains 44
 split_direction XSPLIT
 number_of_cells AUTO; 
 ;
