@@ -9,7 +9,7 @@ simulation_title "attempt to use nour's stuff"
 ;;Restarts
 dump_restart_flag ON
 rename_restart_flag ON
-restart_interval 2
+restart_interval 5
 
 ;;Load Balancing
 balance_interval 0
