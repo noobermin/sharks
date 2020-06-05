@@ -41,7 +41,7 @@ def mkgauss(l=0.8e-4, F=3.0, t0=60e-6, phi0=0):
     def _phi(t,x,y,z):
         return k*(x-c*t) - 2*np.arctan2(x,zr) + x/zr*(_r(y,z)/w0/_f(x))**2 + phi0
     def _T(t,x):
-        return np.exp(-(0.5*t/t0)**2);
+        return np.exp(-(t/t0)**2);
     #def _T(t,x):
     #    return np.exp( -((t-x/c)/(2*t0))**2 );
     def _gauss(t,x,y,z):
