@@ -111,7 +111,7 @@ d2 = sd(
     domains = 176,
     totaltime=10e-15,
     timestep=0.05e-15,
-    restart_interval=2,
+    restart_interval=5,
     multilaser=[
         dict(
             laser_func_type = 57,
