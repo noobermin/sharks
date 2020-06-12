@@ -125,3 +125,37 @@ d2 = sd(
 
 );
 gensim(**d2);
+
+d3 = sd(
+    d,
+    pbsbase = 'neog03',
+    lim = (-11.0e-4,11.0e-4,
+           -11.0e-4,11.0e-4,
+           -11.0e-4,11.0e-4),
+    res = (440, 440, 440),
+    region_dom_split='x',
+    region_splits = [('x',2),('z',2)],
+    domains = 176,
+    totaltime=10e-15,
+    timestep=0.05e-15,
+    restart_interval=5,
+    #
+    laser_tfunctype=60,
+    laser_dat = 'tfunc.dat',
+    I=1e19,
+    
+    multilaser=[
+        dict(
+            laser_func_type = 54,
+            outlet='xmin',
+            laser_dir = (1,0,0),
+            timeshift_function = dict(
+                type= 60,
+                dat = 'tshift.dat'),
+            Ey   = dict(
+                type= 60,
+                dat = 'gaussEy.dat'),
+        ),
+    ],);
+    
+gensim(**d3);

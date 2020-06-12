@@ -487,7 +487,7 @@ function3 ; laser
 type 57
 boundary_condition
   Ey 2
-timeshift -4.000000000000001e-06
+  timeshift -4.000000000000001e-06
 
 end
 

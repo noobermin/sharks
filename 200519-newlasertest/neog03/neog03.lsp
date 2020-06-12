@@ -3,13 +3,13 @@ simulation_title "attempt to use nour's stuff"
 ;
 [Control]
 ;Time-advance
- time_limit   2.0000e-04
+ time_limit   1.0000e-05
  time_step_ns 5.0000e-08
 
 ;;Restarts
 dump_restart_flag ON
 rename_restart_flag ON
-restart_interval 20
+restart_interval 5
 
 ;;Load Balancing
 balance_interval 0
@@ -62,138 +62,78 @@ domain_boundary_check ON
 
 [Grid]
 
-xmin             -1.320000e-03
-xmax             1.320000e-03
-x-cells          528
+xmin             -1.100000e-03
+xmax             1.100000e-03
+x-cells          440
 
-ymin             -1.320000e-03
-ymax             1.320000e-03
-y-cells          528
+ymin             -1.100000e-03
+ymax             1.100000e-03
+y-cells          440
 
-zmin             -1.320000e-03
-zmax             1.320000e-03
-z-cells          528
+zmin             -1.100000e-03
+zmax             1.100000e-03
+z-cells          440
 
 [Regions]
-;total number of domains: 352
+;total number of domains: 176
 ;
 region1
-xmin             -1.320000e-03
+xmin             -1.100000e-03
 xmax             0.000000e+00
 
-ymin             -1.320000e-03
-ymax             0.000000e+00
+ymin             -1.100000e-03
+ymax             1.100000e-03
 
-zmin             -1.320000e-03
+zmin             -1.100000e-03
 zmax             0.000000e+00
 ;
 number_of_domains 44
-split_direction YSPLIT
+split_direction XSPLIT
 number_of_cells AUTO; 
 ;
 ;
 region2
-xmin             -1.320000e-03
+xmin             -1.100000e-03
 xmax             0.000000e+00
 
-ymin             -1.320000e-03
-ymax             0.000000e+00
+ymin             -1.100000e-03
+ymax             1.100000e-03
 
 zmin             0.000000e+00
-zmax             1.320000e-03
+zmax             1.100000e-03
 ;
 number_of_domains 44
-split_direction YSPLIT
+split_direction XSPLIT
 number_of_cells AUTO; 
 ;
 ;
 region3
-xmin             -1.320000e-03
-xmax             0.000000e+00
+xmin             0.000000e+00
+xmax             1.100000e-03
 
-ymin             0.000000e+00
-ymax             1.320000e-03
+ymin             -1.100000e-03
+ymax             1.100000e-03
 
-zmin             -1.320000e-03
+zmin             -1.100000e-03
 zmax             0.000000e+00
 ;
 number_of_domains 44
-split_direction YSPLIT
+split_direction XSPLIT
 number_of_cells AUTO; 
 ;
 ;
 region4
-xmin             -1.320000e-03
-xmax             0.000000e+00
+xmin             0.000000e+00
+xmax             1.100000e-03
 
-ymin             0.000000e+00
-ymax             1.320000e-03
+ymin             -1.100000e-03
+ymax             1.100000e-03
 
 zmin             0.000000e+00
-zmax             1.320000e-03
+zmax             1.100000e-03
 ;
 number_of_domains 44
-split_direction YSPLIT
-number_of_cells AUTO; 
-;
-;
-region5
-xmin             0.000000e+00
-xmax             1.320000e-03
-
-ymin             -1.320000e-03
-ymax             0.000000e+00
-
-zmin             -1.320000e-03
-zmax             0.000000e+00
-;
-number_of_domains 44
-split_direction YSPLIT
-number_of_cells AUTO; 
-;
-;
-region6
-xmin             0.000000e+00
-xmax             1.320000e-03
-
-ymin             -1.320000e-03
-ymax             0.000000e+00
-
-zmin             0.000000e+00
-zmax             1.320000e-03
-;
-number_of_domains 44
-split_direction YSPLIT
-number_of_cells AUTO; 
-;
-;
-region7
-xmin             0.000000e+00
-xmax             1.320000e-03
-
-ymin             0.000000e+00
-ymax             1.320000e-03
-
-zmin             -1.320000e-03
-zmax             0.000000e+00
-;
-number_of_domains 44
-split_direction YSPLIT
-number_of_cells AUTO; 
-;
-;
-region8
-xmin             0.000000e+00
-xmax             1.320000e-03
-
-ymin             0.000000e+00
-ymax             1.320000e-03
-
-zmin             0.000000e+00
-zmax             1.320000e-03
-;
-number_of_domains 44
-split_direction YSPLIT
+split_direction XSPLIT
 number_of_cells AUTO; 
 ;
 
@@ -221,56 +161,56 @@ energy_units EV
 
 ;laser
 outlet
-from -1.320000e-03  -1.320000e-03 -1.320000e-03
-to   -1.320000e-03  1.320000e-03 1.320000e-03
+from -1.100000e-03  -1.100000e-03 -1.100000e-03
+to   -1.100000e-03  1.100000e-03 1.100000e-03
 phase_velocity 1.0
 drive_model LASER
 reference_point 0.0 0.0 0.0
 components 0 1 0
 phases 0 0 0
 temporal_function 1
-analytic_function 3
+analytic_function 4
 time_delay 0.0
 
 ;front
 outlet
-from -1.320000e-03  -1.320000e-03 -1.320000e-03
-to   -1.320000e-03  1.320000e-03 1.320000e-03
+from -1.100000e-03  -1.100000e-03 -1.100000e-03
+to   -1.100000e-03  1.100000e-03 1.100000e-03
 phase_velocity 1.0
 drive_model NONE
 
 ;back
 outlet
-from 1.320000e-03  -1.320000e-03 -1.320000e-03
-to   1.320000e-03  1.320000e-03 1.320000e-03
+from 1.100000e-03  -1.100000e-03 -1.100000e-03
+to   1.100000e-03  1.100000e-03 1.100000e-03
 phase_velocity 1.0
 drive_model NONE
 
 ;left
 outlet
-from -1.320000e-03  -1.320000e-03 -1.320000e-03
-to   1.320000e-03  -1.320000e-03 1.320000e-03
+from -1.100000e-03  -1.100000e-03 -1.100000e-03
+to   1.100000e-03  -1.100000e-03 1.100000e-03
 phase_velocity 1.0
 drive_model NONE
 
 ;right
 outlet
-from -1.320000e-03  1.320000e-03 -1.320000e-03
-to   1.320000e-03  1.320000e-03 1.320000e-03
+from -1.100000e-03  1.100000e-03 -1.100000e-03
+to   1.100000e-03  1.100000e-03 1.100000e-03
 phase_velocity 1.0
 drive_model NONE
 
 ;bottom
 outlet
-from -1.320000e-03  -1.320000e-03 -1.320000e-03
-to   1.320000e-03  1.320000e-03 -1.320000e-03
+from -1.100000e-03  -1.100000e-03 -1.100000e-03
+to   1.100000e-03  1.100000e-03 -1.100000e-03
 phase_velocity 1.0
 drive_model NONE
 
 ;top
 outlet
-from -1.320000e-03  -1.320000e-03 1.320000e-03
-to   1.320000e-03  1.320000e-03 1.320000e-03
+from -1.100000e-03  -1.100000e-03 1.100000e-03
+to   1.100000e-03  1.100000e-03 1.100000e-03
 phase_velocity 1.0
 drive_model NONE
 
@@ -457,7 +397,7 @@ direction X
 maximum_number  1000000000
 start_time 0
 stop_time  1
-at -0.00132 0 0
+at -0.0011 0 0
 
  
 ;
@@ -467,7 +407,7 @@ direction X
 maximum_number  1000000000
 start_time 0
 stop_time  1
-at 0.00132 0 0
+at 0.0011 0 0
 
  
 ;
@@ -477,7 +417,7 @@ direction Y
 maximum_number  1000000000
 start_time 0
 stop_time  1
-at 0 -0.00132 0
+at 0 -0.0011 0
 
  
 ;
@@ -487,7 +427,7 @@ direction Y
 maximum_number  1000000000
 start_time 0
 stop_time  1
-at 0 0.00132 0
+at 0 0.0011 0
 
  
 ;
@@ -497,7 +437,7 @@ direction Z
 maximum_number  1000000000
 start_time 0
 stop_time  1
-at 0 0 -0.00132
+at 0 0 -0.0011
 
  
 ;
@@ -507,7 +447,7 @@ direction Z
 maximum_number  1000000000
 start_time 0
 stop_time  1
-at 0 0 0.00132
+at 0 0 0.0011
 
 
 ;[Particle Collapse]
@@ -530,24 +470,33 @@ at 0 0 0.00132
 
 [Functions]
 
-
-function1 ; temporal laser function
-type 23
-coefficients 8.680211e+07 0.000000e+00 6.000000e-05 end
-
-function2
+function1 ; laser temporal function
 type 60
-data_file gaussEy.dat
+data_file tfunc.dat
 independent_variable_multiplier 1.0
 dependent_variable_multiplier 86802109.8202847
 
+function2
+type 60
+data_file tshift.dat
+independent_variable_multiplier 1.0
+dependent_variable_multiplier 1.0
+
+function3
+type 60
+data_file gaussEy.dat
+independent_variable_multiplier 1.0
+dependent_variable_multiplier 1.0
 
 
-function3 ; laser
-type 57
+
+function4 ; laser
+type 54
 boundary_condition
-  Ey 2
-  timeshift -2e-05
+  temporal 1
+  timeshift_function 2
+  Ey 3
+  timeshift 0.0
 
 end
 
