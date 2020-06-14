@@ -3,7 +3,7 @@ simulation_title "attempt to use nour's stuff"
 ;
 [Control]
 ;Time-advance
- time_limit   1.0000e-05
+ time_limit   8.0000e-05
  time_step_ns 5.0000e-08
 
 ;;Restarts

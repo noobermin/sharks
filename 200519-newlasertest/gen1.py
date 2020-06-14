@@ -136,7 +136,7 @@ d3 = sd(
     region_dom_split='x',
     region_splits = [('x',2),('z',2)],
     domains = 176,
-    totaltime=10e-15,
+    totaltime=80e-15,
     timestep=0.05e-15,
     restart_interval=5,
     #
