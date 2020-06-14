@@ -155,6 +155,7 @@ d3 = sd(
             Ey   = dict(
                 type= 60,
                 dat = 'gaussEy.dat'),
+            timeshift = -20e-15,
         ),
     ],);
     
