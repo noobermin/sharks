@@ -3,13 +3,13 @@ simulation_title "attempt to use nour's stuff"
 ;
 [Control]
 ;Time-advance
- time_limit   8.0000e-05
+ time_limit   9.0000e-05
  time_step_ns 5.0000e-08
 
 ;;Restarts
 dump_restart_flag ON
 rename_restart_flag ON
-restart_interval 5
+restart_interval_ns 5.000000000000001e-07
 
 ;;Load Balancing
 balance_interval 0
@@ -496,7 +496,7 @@ boundary_condition
   temporal 1
   timeshift_function 2
   Ey 3
-  timeshift -2e-05
+  timeshift -2.5e-05
 
 end
 

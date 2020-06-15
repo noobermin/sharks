@@ -136,9 +136,10 @@ d3 = sd(
     region_dom_split='x',
     region_splits = [('x',2),('z',2)],
     domains = 176,
-    totaltime=80e-15,
+    totaltime=90e-15,
     timestep=0.05e-15,
-    restart_interval=5,
+    restart_interval=None,
+    restart_interval_ns=0.5e-15,
     #
     laser_tfunctype=60,
     laser_dat = 'tfunc.dat',
@@ -155,7 +156,7 @@ d3 = sd(
             Ey   = dict(
                 type= 60,
                 dat = 'gaussEy.dat'),
-            timeshift = -20e-15,
+            timeshift = -25e-15,
         ),
     ],);
     
