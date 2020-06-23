@@ -82,7 +82,7 @@ d=dict(
     ],
     l = 0.8e-4,
     I = 1e19,
-    laser_t0 = -40e-15,
+    laser_t0 = 40e-15,
     laser_tfunctype=16,
     laser_tcutoff = 80e-15,
     fp = (0.0,0.0,0.0),
