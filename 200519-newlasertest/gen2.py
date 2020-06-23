@@ -52,7 +52,7 @@ d=dict(
     #misc
     lspexec='lsp-10-2d',
     dir=True,
-    totaltime=80e-15,
+    totaltime=160e-15,
     timestep =5e-17,
     restart_interval=20,
     dump_restart_flag=True,
@@ -108,3 +108,11 @@ d=dict(
              measurement_type = 'cpu_time')],
 );
 gensim(**d);
+d1=sd(
+    d,
+    totaltime=160e-15,
+    multilaser=None,
+    new_multilaser=False,
+    w0 = 3.0*d['l']/(np.pi/2.0),
+    pbsbase='reog01');
+gensim(**d1);

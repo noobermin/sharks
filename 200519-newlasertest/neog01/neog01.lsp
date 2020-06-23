@@ -232,13 +232,6 @@ temporal_function 1
 analytic_function 3
 time_delay 0.0
 
-;front
-outlet
-from -1.320000e-03  -1.320000e-03 -1.320000e-03
-to   -1.320000e-03  1.320000e-03 1.320000e-03
-phase_velocity 1.0
-drive_model NONE
-
 ;back
 outlet
 from 1.320000e-03  -1.320000e-03 -1.320000e-03

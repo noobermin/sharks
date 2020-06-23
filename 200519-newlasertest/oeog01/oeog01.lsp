@@ -3,7 +3,7 @@ simulation_title "does it work with 2D?"
 ;
 [Control]
 ;Time-advance
- time_limit   8.0000e-05
+ time_limit   1.6000e-04
  time_step_ns 5.0000e-08
 
 ;;Restarts
@@ -168,13 +168,6 @@ phases 0 0 0
 temporal_function 1
 analytic_function 4
 time_delay 0.0
-
-;front
-outlet
-from -1.100000e-03  -1.100000e-03 0.000000e+00
-to   -1.100000e-03  1.100000e-03 0.000000e+00
-phase_velocity 1.0
-drive_model NONE
 
 ;back
 outlet
