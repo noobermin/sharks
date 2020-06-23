@@ -73,12 +73,7 @@ d=dict(
             outlet='xmin',
             laser_dir = (1,0,0),
             Ey_real   = dict(dat = 'gauss2D_EyR.dat'),
-        ),
-        dict(
-            laser_func_type = 56,
-            outlet='xmin',
-            laser_dir = (1,0,0),
-            Ey_real   = dict(dat = 'gauss2D_EyI.dat'),
+            Ey_imag   = dict(dat = 'gauss2D_EyI.dat'),
         ),
     ],
     l = 0.8e-4,

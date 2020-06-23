@@ -166,7 +166,7 @@ reference_point 0.0 0.0 0.0
 components 0 1 0
 phases 0 0 0
 temporal_function 1
-analytic_function 5
+analytic_function 4
 time_delay 0.0
 
 ;front
@@ -444,12 +444,7 @@ data_file gauss2D_EyR.dat
 independent_variable_multiplier 1.0
 dependent_variable_multiplier 1.0
 
-
-function3 ; temporal laser function
-type 16
-coefficients 8.680211e+07 2.547965e-05 8.000000e-05 -2.000000e-05 end
-
-function4
+function3
 type 55
 data_file gauss2D_EyI.dat
 independent_variable_multiplier 1.0
@@ -457,17 +452,12 @@ dependent_variable_multiplier 1.0
 
 
 
-function5 ; laser
+function4 ; laser
 type 56
 laser
   temporal_function 1
   Ey_real 2
-  wavelength 8.000000e-05
-  direction 1 0 0
-  focal_point 0.0 0.0 0.0
-laser
-  temporal_function 3
-  Ey_real 4
+  Ey_imag 3
   wavelength 8.000000e-05
   direction 1 0 0
   focal_point 0.0 0.0 0.0
