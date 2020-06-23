@@ -28,12 +28,14 @@ if __name__ == '__main__':
 
     opts = docopt(__doc__,help=True);
     x = np.linspace(-11.5e-4,-10.5e-4,  3);
-    yz= np.linspace(-11.0e-4, 11.0e-4,221);
+    y = np.linspace(-11.0e-4, 11.0e-4,221);
+    z = np.linspace(     0.0,     1.0,  1);
 
-    X,Y,Z = np.meshgrid(x,yz,yz,indexing='ij');
+    
+    X,Y,Z = np.meshgrid(x,y,z,indexing='ij');
     gauss = mkgauss2D();
-    D = gauss(0,X,Y,Z);
+    D = gauss(0,X,Y,0);
     RD = np.real(D);
     ID = np.imag(D);
-    nbna.output(opts['<outputR>'],[x,yz,yz],RD);
-    nbna.output(opts['<outputI>'],[x,yz,yz],ID);
+    nbna.output(opts['<outputR>'],[x,y,z],RD);
+    nbna.output(opts['<outputI>'],[x,y,z],ID);
