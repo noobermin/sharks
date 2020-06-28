@@ -108,6 +108,41 @@ d=dict(
              measurement_type = 'cpu_time')],
 );
 gensim(**d);
+
+d3d=sd(
+    d,
+    dens_flags=(True,False,False),
+    lim = (-11.0e-4,11.0e-4,
+           -11.0e-4,11.0e-4,
+           -11.0e-4,11.0e-4),
+    tlim=( -2e-4,1.8e-4,
+           -5e-4,5.0e-4,
+             0e-4,0e-4),
+    res = (440, 440, 440),
+    description = "does it work with 3D?",
+    #no outputs because we do restarts now!
+    restarts_only = True,
+    #density
+    tref = (0.0, 0.0, 0.0),
+    #misc
+    lspexec='lsp-10-3d',
+    multilaser=[
+        dict(
+            laser_func_type = 56,
+            outlet='xmin',
+            laser_dir = (1,0,0),
+            Ey_real   = dict(
+                dat = 'gauss3D_EyR.dat',
+                type= 60,),
+            Ey_imag   = dict(
+                dat = 'gauss3D_EyI.dat',
+                type= 60,),
+        ),
+    ],
+    pbsbase = 'oeog02',
+);
+gensim(**d3d);
+
 d1=sd(
     d,
     totaltime=160e-15,
