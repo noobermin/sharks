@@ -115,9 +115,9 @@ d3d=sd(
     lim = (-11.0e-4,11.0e-4,
            -11.0e-4,11.0e-4,
            -11.0e-4,11.0e-4),
-    tlim=( -2e-4,1.8e-4,
-           -5e-4,5.0e-4,
-             0e-4,0e-4),
+    tlim=( -2.0e-4, 2.0e-4,
+           -5.0e-4, 5.0e-4,
+           -5.0e-4, 5.0e-4),
     res = (440, 440, 440),
     description = "does it work with 3D?",
     #no outputs because we do restarts now!

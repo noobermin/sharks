@@ -12,13 +12,14 @@ def mkgauss3D(l=0.8e-4, F=3.0, t0=60e-6, phi0=0):
     E0 = 1.0;
     def _f(x): return np.sqrt(1 + (x/xr)**2);
     def _r(y,z): return np.sqrt(y**2 + z**2);
+    def rp(x,y,z): return _r(y,z)/(w0*_f(x));
     def _phi(t,x,y,z):
-        return k*(x-c*t) - 0.5*np.arctan2(x,xr) + x/xr*(_r(y,z)/w0/_f(x))**2 + phi0
+        return k*(x-c*t) - np.arctan2(x,xr) + x/xr*rp(x,y,z)**2 + phi0
     def _T(t,x):
         return np.exp(-(t/t0)**2);
     def _gauss(t,x,y,z):
         return \
-            E0/_f(x)*np.exp(1j*_phi(t,x,y,z)-(_r(y,z)/_f(x)/w0)**2)*_T(t,x)
+            E0/_f(x)*np.exp(1j*_phi(t,x,y,z))*np.exp(-rp(x,y,z)**2)*_T(t,x)
     return _gauss;
 
 
