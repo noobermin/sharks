@@ -151,3 +151,12 @@ d1=sd(
     w0 = 3.0*d['l']/(np.pi/2.0),
     pbsbase='reog01');
 gensim(**d1);
+
+
+d3d1=sd(
+    d3d,
+    multilaser=None,
+    new_multilaser=False,
+    w0 = 3.0*d['l']/(np.pi/2.0),
+    pbsbase='reog02');
+gensim(**d3d1);
