@@ -144,6 +144,21 @@ d3d=sd(
 );
 gensim(**d3d);
 
+d3 = sd(d,
+        pbsbase='oeog03',
+        laser_t0 = 0,
+        multilaser = [
+            dict(
+                laser_func_type = 85,
+                outlet = 'xmin',
+                laser_dir = (1,0,0),
+                lp_mode = (0, 0),
+                laser_pol = (0, 1, 0),
+                laser_pol_type = 87)],
+        w0 = 3.0*d['l']/(np.pi/2.0),
+);
+gensim(**d3);
+
 d1=sd(
     d,
     totaltime=160e-15,
