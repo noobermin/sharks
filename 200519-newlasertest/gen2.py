@@ -16,7 +16,7 @@ import shutil as sh;
 import re;
 e0=8.854e-12
 #E = 0.5e-3; # 5mJ
-
+c_cgs = 299792458e2;
 EfromI = lambda i: np.sqrt(i*1e4 * 2 / c / e0);
 BfromI = lambda i: EfromI(i)/c*1e4;
 mkmovE = lambda d, I: sd(d['movE'],clim=(EfromI(I*1e-4),EfromI(I*2)))
@@ -140,6 +140,7 @@ d3d=sd(
         ),
     ],
     pbsbase = 'oeog02',
+    laser_t0 = 40e-15 + 11e-4/c_cgs,
 );
 gensim(**d3d);
 
@@ -158,5 +159,6 @@ d3d1=sd(
     multilaser=None,
     new_multilaser=False,
     w0 = 3.0*d['l']/(np.pi/2.0),
-    pbsbase='reog02');
+    pbsbase='reog02',
+    laser_t0 = 40e-15);
 gensim(**d3d1);
