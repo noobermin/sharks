@@ -156,6 +156,9 @@ d3 = sd(d,
                 laser_pol = (0, 1, 0),
                 laser_pol_type = 87)],
         w0 = 3.0*d['l']/(np.pi/2.0),
+        region_dom_split='x',
+        region_splits = [('x',2)],
+
 );
 gensim(**d3);
 
