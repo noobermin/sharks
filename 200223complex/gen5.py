@@ -143,23 +143,26 @@ def lims_from_ints(xints,yints,zints):
 cenlims = lims_from_ints(xints,yints,zints);
 
 #only z is subdiv for front and back (hence yfb)
-yfb    =  [[-13.2e-4, 13.2e-4]];
+#yfb    =  [[-13.2e-4, 13.2e-4]];
 #front
-xfr    =  [[-26.4e-4,-13.2e-4]];
-frlims =  lims_from_ints(xfr,   yfb, zints);
+#xfr    =  [[-26.4e-4,-13.2e-4]];
+#frlims =  lims_from_ints(xfr,   yfb, zints);
 #back
-xback  =  [[13.2e-4,26.4e-4]];
-backlims =  lims_from_ints(xback, yfb, zints);
+#xback  =  [[13.2e-4,26.4e-4]];
+#backlims =  lims_from_ints(xback, yfb, zints);
 
-reglims = frlims + cenlims + backlims;
-regtmpl = dict(
-    domains = 44,
-    split   = 'XSPLIT');
-regions = [
-    sd(regtmpl, lim = lim, i = i+1)
-    for i,lim in enumerate(reglims)];
-d['regions'] = regions;
-d['domains'] = 44*len(regions);
+#reglims = frlims + cenlims + backlims;
+#regtmpl = dict(
+#    domains = 44,
+#    split   = 'XSPLIT');
+#regions = [
+#    sd(regtmpl, lim = lim, i = i+1)
+#    for i,lim in enumerate(reglims)];
+#d['regions'] = regions;
+d['region_splits'] = [
+    ('x', 4), ('y',2), ('z',2)];
+#d['domains'] = 44*len(regions);
+d['domains'] = 44*4*2*2;
 Is0 = [5e19]
 Is1 = [1e20,5e20]
 pbsfmt = 'nour05_{:0.0e}'
