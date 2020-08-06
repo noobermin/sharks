@@ -1,0 +1,28 @@
+#PBS -l walltime=96:0:00
+#PBS -l nodes=59:ppn=12
+#PBS -N noura03_5e+19_2
+#PBS -S /bin/bash
+#PBS -j oe
+#PBS -m ae
+#PBS -M ngirmang.1@osu.edu
+
+
+PBSBASE=noura03_5e+19_2
+#source $HOME/.bashrc
+
+#This outputs the name of the root node
+#to the directory where you submitted this PBS job
+echo $HOSTNAME > $PBS_O_WORKDIR/hostname.txt   
+cat $PBS_NODEFILE | uniq > $PBS_O_WORKDIR/nodesfile.txt
+
+
+cd "$PBS_O_WORKDIR"
+#zipper
+./loopscript zipper &> $PBS_O_WORKDIR/zipper.log&
+zipper_PID=$!
+
+
+mpiexec -n 704 ./lsp-10-3d -r  $PBSBASE.lsp >$PBS_O_WORKDIR/$PBSBASE.o.txt
+
+kill $zipper_PID
+./zipper -a >$PBS_O_WORKDIR
