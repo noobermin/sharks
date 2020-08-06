@@ -62,9 +62,9 @@ domain_boundary_check ON
 
 [Grid]
 
-xmin             -2.640000e-03
-xmax             2.640000e-03
-x-cells          1056
+xmin             -2.000000e-03
+xmax             2.000000e-03
+x-cells          800
 
 ymin             -1.320000e-03
 ymax             1.320000e-03
@@ -75,11 +75,11 @@ zmax             1.320000e-03
 z-cells          528
 
 [Regions]
-;total number of domains: 704
+;total number of domains: 528
 ;
 region1
-xmin             -2.640000e-03
-xmax             -1.320000e-03
+xmin             -2.000000e-03
+xmax             -6.800000e-04
 
 ymin             -1.320000e-03
 ymax             0.000000e+00
@@ -93,8 +93,8 @@ number_of_cells AUTO;
 ;
 ;
 region2
-xmin             -2.640000e-03
-xmax             -1.320000e-03
+xmin             -2.000000e-03
+xmax             -6.800000e-04
 
 ymin             -1.320000e-03
 ymax             0.000000e+00
@@ -108,8 +108,8 @@ number_of_cells AUTO;
 ;
 ;
 region3
-xmin             -2.640000e-03
-xmax             -1.320000e-03
+xmin             -2.000000e-03
+xmax             -6.800000e-04
 
 ymin             0.000000e+00
 ymax             1.320000e-03
@@ -123,8 +123,8 @@ number_of_cells AUTO;
 ;
 ;
 region4
-xmin             -2.640000e-03
-xmax             -1.320000e-03
+xmin             -2.000000e-03
+xmax             -6.800000e-04
 
 ymin             0.000000e+00
 ymax             1.320000e-03
@@ -138,8 +138,8 @@ number_of_cells AUTO;
 ;
 ;
 region5
-xmin             -1.320000e-03
-xmax             0.000000e+00
+xmin             -6.800000e-04
+xmax             6.800000e-04
 
 ymin             -1.320000e-03
 ymax             0.000000e+00
@@ -153,8 +153,8 @@ number_of_cells AUTO;
 ;
 ;
 region6
-xmin             -1.320000e-03
-xmax             0.000000e+00
+xmin             -6.800000e-04
+xmax             6.800000e-04
 
 ymin             -1.320000e-03
 ymax             0.000000e+00
@@ -168,8 +168,8 @@ number_of_cells AUTO;
 ;
 ;
 region7
-xmin             -1.320000e-03
-xmax             0.000000e+00
+xmin             -6.800000e-04
+xmax             6.800000e-04
 
 ymin             0.000000e+00
 ymax             1.320000e-03
@@ -183,8 +183,8 @@ number_of_cells AUTO;
 ;
 ;
 region8
-xmin             -1.320000e-03
-xmax             0.000000e+00
+xmin             -6.800000e-04
+xmax             6.800000e-04
 
 ymin             0.000000e+00
 ymax             1.320000e-03
@@ -198,8 +198,8 @@ number_of_cells AUTO;
 ;
 ;
 region9
-xmin             0.000000e+00
-xmax             1.320000e-03
+xmin             6.800000e-04
+xmax             2.000000e-03
 
 ymin             -1.320000e-03
 ymax             0.000000e+00
@@ -213,8 +213,8 @@ number_of_cells AUTO;
 ;
 ;
 region10
-xmin             0.000000e+00
-xmax             1.320000e-03
+xmin             6.800000e-04
+xmax             2.000000e-03
 
 ymin             -1.320000e-03
 ymax             0.000000e+00
@@ -228,8 +228,8 @@ number_of_cells AUTO;
 ;
 ;
 region11
-xmin             0.000000e+00
-xmax             1.320000e-03
+xmin             6.800000e-04
+xmax             2.000000e-03
 
 ymin             0.000000e+00
 ymax             1.320000e-03
@@ -243,68 +243,8 @@ number_of_cells AUTO;
 ;
 ;
 region12
-xmin             0.000000e+00
-xmax             1.320000e-03
-
-ymin             0.000000e+00
-ymax             1.320000e-03
-
-zmin             0.000000e+00
-zmax             1.320000e-03
-;
-number_of_domains 44
-split_direction XSPLIT
-number_of_cells AUTO; 
-;
-;
-region13
-xmin             1.320000e-03
-xmax             2.640000e-03
-
-ymin             -1.320000e-03
-ymax             0.000000e+00
-
-zmin             -1.320000e-03
-zmax             0.000000e+00
-;
-number_of_domains 44
-split_direction XSPLIT
-number_of_cells AUTO; 
-;
-;
-region14
-xmin             1.320000e-03
-xmax             2.640000e-03
-
-ymin             -1.320000e-03
-ymax             0.000000e+00
-
-zmin             0.000000e+00
-zmax             1.320000e-03
-;
-number_of_domains 44
-split_direction XSPLIT
-number_of_cells AUTO; 
-;
-;
-region15
-xmin             1.320000e-03
-xmax             2.640000e-03
-
-ymin             0.000000e+00
-ymax             1.320000e-03
-
-zmin             -1.320000e-03
-zmax             0.000000e+00
-;
-number_of_domains 44
-split_direction XSPLIT
-number_of_cells AUTO; 
-;
-;
-region16
-xmin             1.320000e-03
-xmax             2.640000e-03
+xmin             6.800000e-04
+xmax             2.000000e-03
 
 ymin             0.000000e+00
 ymax             1.320000e-03
@@ -341,8 +281,8 @@ energy_units EV
 
 ;laser
 outlet
-from -2.640000e-03  -1.320000e-03 -1.320000e-03
-to   -2.640000e-03  1.320000e-03 1.320000e-03
+from -2.000000e-03  -1.320000e-03 -1.320000e-03
+to   -2.000000e-03  1.320000e-03 1.320000e-03
 phase_velocity 1.0
 drive_model LASER
 reference_point 0.0 0.0 0.0
@@ -354,36 +294,36 @@ time_delay 0.0
 
 ;back
 outlet
-from 2.640000e-03  -1.320000e-03 -1.320000e-03
-to   2.640000e-03  1.320000e-03 1.320000e-03
+from 2.000000e-03  -1.320000e-03 -1.320000e-03
+to   2.000000e-03  1.320000e-03 1.320000e-03
 phase_velocity 1.0
 drive_model NONE
 
 ;left
 outlet
-from -2.640000e-03  -1.320000e-03 -1.320000e-03
-to   2.640000e-03  -1.320000e-03 1.320000e-03
+from -2.000000e-03  -1.320000e-03 -1.320000e-03
+to   2.000000e-03  -1.320000e-03 1.320000e-03
 phase_velocity 1.0
 drive_model NONE
 
 ;right
 outlet
-from -2.640000e-03  1.320000e-03 -1.320000e-03
-to   2.640000e-03  1.320000e-03 1.320000e-03
+from -2.000000e-03  1.320000e-03 -1.320000e-03
+to   2.000000e-03  1.320000e-03 1.320000e-03
 phase_velocity 1.0
 drive_model NONE
 
 ;bottom
 outlet
-from -2.640000e-03  -1.320000e-03 -1.320000e-03
-to   2.640000e-03  1.320000e-03 -1.320000e-03
+from -2.000000e-03  -1.320000e-03 -1.320000e-03
+to   2.000000e-03  1.320000e-03 -1.320000e-03
 phase_velocity 1.0
 drive_model NONE
 
 ;top
 outlet
-from -2.640000e-03  -1.320000e-03 1.320000e-03
-to   2.640000e-03  1.320000e-03 1.320000e-03
+from -2.000000e-03  -1.320000e-03 1.320000e-03
+to   2.000000e-03  1.320000e-03 1.320000e-03
 phase_velocity 1.0
 drive_model NONE
 
@@ -596,8 +536,8 @@ drift_momentum 0 0 0
 thermal_energy 1.0
 
 higherstate ; O -> O+
-from -2.640000e-03 -1.320000e-03 -1.320000e-03
-to 2.640000e-03 1.320000e-03 1.320000e-03
+from -2.000000e-03 -1.320000e-03 -1.320000e-03
+to 2.000000e-03 1.320000e-03 1.320000e-03
 interval 1
 species 1
 ion_species 2
@@ -606,8 +546,8 @@ ionization_potential 13.6
 cross_sections 0 0 0 0 0 0 0 0 0 0 0 0 end
 
 higherstate ; O+ -> O++
-from -2.640000e-03 -1.320000e-03 -1.320000e-03
-to 2.640000e-03 1.320000e-03 1.320000e-03
+from -2.000000e-03 -1.320000e-03 -1.320000e-03
+to 2.000000e-03 1.320000e-03 1.320000e-03
 interval 1
 species 2
 ion_species 3
@@ -616,8 +556,8 @@ ionization_potential 35.1
 cross_sections 0 0 0 0 0 0 0 0 0 0 0 0 end
 
 higherstate ; O++ -> O3+
-from -2.640000e-03 -1.320000e-03 -1.320000e-03
-to 2.640000e-03 1.320000e-03 1.320000e-03
+from -2.000000e-03 -1.320000e-03 -1.320000e-03
+to 2.000000e-03 1.320000e-03 1.320000e-03
 interval 1
 species 3
 ion_species 4
@@ -626,8 +566,8 @@ ionization_potential 54.9
 cross_sections 0 0 0 0 0 0 0 0 0 0 0 0 end
 
 higherstate ; O3+ -> O4+
-from -2.640000e-03 -1.320000e-03 -1.320000e-03
-to 2.640000e-03 1.320000e-03 1.320000e-03
+from -2.000000e-03 -1.320000e-03 -1.320000e-03
+to 2.000000e-03 1.320000e-03 1.320000e-03
 interval 1
 species 4
 ion_species 5
@@ -636,8 +576,8 @@ ionization_potential 77.4
 cross_sections 0 0 0 0 0 0 0 0 0 0 0 0 end
 
 higherstate ; O4+ -> O5+
-from -2.640000e-03 -1.320000e-03 -1.320000e-03
-to 2.640000e-03 1.320000e-03 1.320000e-03
+from -2.000000e-03 -1.320000e-03 -1.320000e-03
+to 2.000000e-03 1.320000e-03 1.320000e-03
 interval 1
 species 5
 ion_species 6
@@ -646,8 +586,8 @@ ionization_potential 113.9
 cross_sections 0 0 0 0 0 0 0 0 0 0 0 0 end
 
 higherstate ; O5+ -> O6+
-from -2.640000e-03 -1.320000e-03 -1.320000e-03
-to 2.640000e-03 1.320000e-03 1.320000e-03
+from -2.000000e-03 -1.320000e-03 -1.320000e-03
+to 2.000000e-03 1.320000e-03 1.320000e-03
 interval 1
 species 6
 ion_species 7
@@ -656,8 +596,8 @@ ionization_potential 138.1
 cross_sections 0 0 0 0 0 0 0 0 0 0 0 0 end
 
 higherstate ; O6+ -> O7+
-from -2.640000e-03 -1.320000e-03 -1.320000e-03
-to 2.640000e-03 1.320000e-03 1.320000e-03
+from -2.000000e-03 -1.320000e-03 -1.320000e-03
+to 2.000000e-03 1.320000e-03 1.320000e-03
 interval 1
 species 7
 ion_species 8
@@ -666,8 +606,8 @@ ionization_potential 739.4
 cross_sections 0 0 0 0 0 0 0 0 0 0 0 0 end
 
 higherstate ; O7+ -> O8+
-from -2.640000e-03 -1.320000e-03 -1.320000e-03
-to 2.640000e-03 1.320000e-03 1.320000e-03
+from -2.000000e-03 -1.320000e-03 -1.320000e-03
+to 2.000000e-03 1.320000e-03 1.320000e-03
 interval 1
 species 8
 ion_species 9
@@ -676,8 +616,8 @@ ionization_potential 871.4
 cross_sections 0 0 0 0 0 0 0 0 0 0 0 0 end
 
 higherstate ; H -> p
-from -2.640000e-03 -1.320000e-03 -1.320000e-03
-to 2.640000e-03 1.320000e-03 1.320000e-03
+from -2.000000e-03 -1.320000e-03 -1.320000e-03
+to 2.000000e-03 1.320000e-03 1.320000e-03
 interval 1
 species 10
 ion_species 11
@@ -696,7 +636,7 @@ direction X
 maximum_number  1000000000
 start_time 0
 stop_time  1
-at -0.00264 0 0
+at -0.002 0 0
 
  
 ;
@@ -706,7 +646,7 @@ direction X
 maximum_number  1000000000
 start_time 0
 stop_time  1
-at 0.00264 0 0
+at 0.002 0 0
 
  
 ;

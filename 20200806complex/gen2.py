@@ -37,13 +37,13 @@ creation = plasmacs + h2o_creation_other;
 ###########
 d = dict(
     dens_flags=(True,False,False),
-    lim = (-26.4e-4,26.4e-4,
+    lim = (-20.0e-4,20.0e-4,
            -13.2e-4,13.2e-4,
            -13.2e-4,13.2e-4),
     tlim=( -2e-4,1.8e-4,
            -5e-4,5.0e-4,
            -5e-4,5.0e-4),
-    res = (1056, 528, 528),
+    res = (800, 528, 528),
     description = "attempt to use nour's stuff",
     #no outputs because we do restarts now!
     restarts_only = True,
@@ -131,38 +131,36 @@ d = dict(
 
 #regioning
 #center
-xcen = ycen = zcen = [-13.2e-4,0,13.2e-4];
-xints = yints = zints = list(zip(xcen[:-1],xcen[1:]));
-
+ycen   = zcen = [-13.2e-4,0,13.2e-4];
+yints  = zints = list(zip(ycen[:-1],ycen[1:]));
+xcints = [[ -6.8e-4, 6.8e-4 ]]
 def lims_from_ints(xints,yints,zints):
     return [ [xmin,xmax,ymin,ymax,zmin,zmax]
             for xmin, xmax in xints
             for ymin, ymax in yints
             for zmin, zmax in zints ];
 
-cenlims = lims_from_ints(xints,yints,zints);
+cenlims = lims_from_ints(xcints,yints,zints);
 
-#only z is subdiv for front and back (hence yfb)
-#yfb    =  [[-13.2e-4, 13.2e-4]];
 #front
-#xfr    =  [[-26.4e-4,-13.2e-4]];
-#frlims =  lims_from_ints(xfr,   yfb, zints);
+xfints =  [[-20.0e-4, -6.8e-4]];
+frlims =  lims_from_ints(xfints, yints, zints);
 #back
-#xback  =  [[13.2e-4,26.4e-4]];
-#backlims =  lims_from_ints(xback, yfb, zints);
+xbints =  [[  6.8e-4, 20.0e-4]];
+bklims =  lims_from_ints(xbints, yints, zints);
 
-#reglims = frlims + cenlims + backlims;
-#regtmpl = dict(
-#    domains = 44,
-#    split   = 'XSPLIT');
-#regions = [
-#    sd(regtmpl, lim = lim, i = i+1)
-#    for i,lim in enumerate(reglims)];
-#d['regions'] = regions;
-d['region_splits'] = [
-    ('x', 4), ('y',2), ('z',2)];
-#d['domains'] = 44*len(regions);
-d['domains'] = 44*4*2*2;
+reglims = frlims + cenlims + bklims;
+regtmpl = dict(
+    domains = 44,
+    split   = 'XSPLIT');
+regions = [
+    sd(regtmpl, lim = lim, i = i+1)
+    for i,lim in enumerate(reglims)];
+d['regions'] = regions;
+d['domains'] = 44*len(regions);
+#d['region_splits'] = [
+#    ('x', 4), ('y',2), ('z',2)];
+#d['domains'] = 44*4*2*2;
 Is0 = [5e19]
 Is1 = [1e20,5e20]
 pbsfmt = 'noura03_{:0.0e}'
