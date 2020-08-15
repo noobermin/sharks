@@ -91,7 +91,7 @@ d = dict(
     l = 0.8e-4,
     w0= 2*0.8e-4*2/np.pi,#F/2
     fp = (0.0,0.0,0.0),
-    I = 5e18,
+    I = 5e19,
     T = 60e-15,
     #target
     pbsbase = 'nref04',
@@ -173,7 +173,7 @@ dref = sd(
     l = 0.8e-4,
     w0= 2*0.8e-4*2/np.pi,#F/2
     fp = (0.0,0.0,0.0),
-    I = 5e18,
+    I = 5e19,
     T = 60e-15,
     pbsbase='laserr3_{:0.0e}'.format(Is0[0]),
     description=mkdescr(Is0[0]));
