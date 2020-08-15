@@ -1,5 +1,5 @@
 [Title]
-simulation_title "Forward too complex with matter, I=5e+19"
+simulation_title "Laser test, I=5e+19"
 ;
 [Control]
 ;Time-advance
