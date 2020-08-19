@@ -37,13 +37,13 @@ creation = plasmacs + h2o_creation_other;
 ###########
 d = dict(
     dens_flags=(True,False,False),
-    lim = (-20.0e-4,20.0e-4,
+    lim = (-10.0e-4,10.0e-4,
            -13.2e-4,13.2e-4,
            -13.2e-4,13.2e-4),
     tlim=( -2e-4,1.8e-4,
            -5e-4,5.0e-4,
            -5e-4,5.0e-4),
-    res = (800, 528, 528),
+    res = (400, 528, 528),
     description = "attempt to use nour's stuff",
     #no outputs because we do restarts now!
     restarts_only = True,
@@ -52,7 +52,7 @@ d = dict(
     #misc
     lspexec='lsp-10-3d',
     dir=True,
-    totaltime=200e-15,
+    totaltime=400e-15,
     timestep =5e-17,
     restart_interval=None,
     restart_interval_ns = 1e-15,
@@ -61,6 +61,10 @@ d = dict(
     pbses='defaults',
     #units
     ux=1.0,
+    #computational division
+    region_dom_split='x',
+    region_splits = [('x',2),('y',2),('z',2)],
+    domains=8*44,
     #newlaser
     new_multilaser=True,
     starting_funcnum = 1,
@@ -94,20 +98,11 @@ d = dict(
     I = 5e18,
     T = 60e-15,
     #target
-    pbsbase = 'nref04',
+    pbsbase = 'noura04',
     species = species,
     new_create=True,
-    creation= creation,
-    #scale
-    fracs = [1,2,3],
-    two_scales=True,
-    n_s = 3.34e22,
-    n_bmin = 1e16,
-    n_fmin = 1e16,
-    solid_len=1.0e-4,
-    Lf = 75e-7,
-    Lb = 50e-7,
-    keep_lims = True,
+    creation=[],
+    no_matter=True,
     #probes
     probes = [
         dict(type = 'energy',
@@ -120,50 +115,12 @@ d = dict(
              measurement_type = 'field_energy'),
         dict(type = 'performance',
              measurement_type = 'cpu_time')],
-    #splittime to reduce timestep around
-    splittime = [
-        [ 90e-15, dict(timestep = 50e-18)],
-        [190e-15, dict(timestep = 25e-18)],
-        [210e-15, dict(timestep = 50e-18)],],
     #pext
     pext_species=(12,),
 );
-
-#regioning
-#center
-ycen   = zcen = [-13.2e-4,0,13.2e-4];
-yints  = zints = list(zip(ycen[:-1],ycen[1:]));
-xcints = [[ -6.8e-4, 6.8e-4 ]]
-def lims_from_ints(xints,yints,zints):
-    return [ [xmin,xmax,ymin,ymax,zmin,zmax]
-            for xmin, xmax in xints
-            for ymin, ymax in yints
-            for zmin, zmax in zints ];
-
-cenlims = lims_from_ints(xcints,yints,zints);
-
-#front
-xfints =  [[-20.0e-4, -6.8e-4]];
-frlims =  lims_from_ints(xfints, yints, zints);
-#back
-xbints =  [[  6.8e-4, 20.0e-4]];
-bklims =  lims_from_ints(xbints, yints, zints);
-
-reglims = frlims + cenlims + bklims;
-regtmpl = dict(
-    domains = 44,
-    split   = 'XSPLIT');
-regions = [
-    sd(regtmpl, lim = lim, i = i+1)
-    for i,lim in enumerate(reglims)];
-d['regions'] = regions;
-d['domains'] = 44*len(regions);
-#d['region_splits'] = [
-#    ('x', 4), ('y',2), ('z',2)];
-#d['domains'] = 44*4*2*2;
 Is0 = [5e19]
 Is1 = [1e20,5e20,1e21]
-pbsfmt = 'noura03_{:0.0e}'
+pbsfmt = 'noura04_{:0.0e}'
 def mkpbsbase(I): return pbsfmt.format(I);
 descrfmt = 'Forward too complex with matter, I={}'
 def mkdescr(I): return descrfmt.format(I);
@@ -172,9 +129,7 @@ ds = [ sd(d, pbsbase=mkpbsbase(I),description=mkdescr(I),I=I,)
 
 ds+= [ sd(
     d,
-    splittime = [
-        [ 90e-15, dict(timestep = 50e-18)],
-        [200e-15, dict(timestep = 25e-18)],],
+    #timestep=25e-18,
     pbsbase=mkpbsbase(I),
     description=mkdescr(I),
     I=I,)
