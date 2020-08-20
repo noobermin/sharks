@@ -151,7 +151,7 @@ d['domains'] = 44*len(regions);
 #d['domains'] = 44*4*2*2;
 comp = 0.5*np.exp(-1);
 Is0 = [5e19*comp]
-Is1 = [1e20*comp, 5e20*comp]
+Is1 = [1e20*comp, 5e20*comp, 1e21*comp, 5e21*comp]
 pbsfmt = 'nrefb03_{:0.0e}'
 def mkpbsbase(I): return pbsfmt.format(I);
 descrfmt = 'Forward too complex with matter, I={}'

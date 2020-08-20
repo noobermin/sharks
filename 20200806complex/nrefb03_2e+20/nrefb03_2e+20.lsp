@@ -1,9 +1,9 @@
 [Title]
-simulation_title "Forward too complex with matter, I=5e+19"
+simulation_title "Forward too complex with matter, I=1.8393972058572115e+20"
 ;
 [Control]
 ;Time-advance
- time_limit   2.1000e-04
+ time_limit   9.0000e-05
  time_step_ns 5.0000e-08
 
 ;;Restarts
@@ -289,7 +289,7 @@ reference_point 0.0 0.0 0.0
 components 0 1 0
 phases 0 0 0
 temporal_function 1
-analytic_function 6
+analytic_function 3
 time_delay 0.0
 
 ;back
@@ -504,7 +504,7 @@ from -1.126611e-04 -5.000000e-04 -5.000000e-04
 to 1.751074e-04 5.000000e-04 5.000000e-04
 species 2
 discrete_numbers 2 2 2
-density_function 7
+density_function 4
 reference_point 0 0 0
 density_flags 1 0 0
 momentum_flags 0 0 0
@@ -516,7 +516,7 @@ from -1.126611e-04 -5.000000e-04 -5.000000e-04
 to 1.751074e-04 5.000000e-04 5.000000e-04
 species 11
 discrete_numbers 2 2 2
-density_function 8
+density_function 5
 reference_point 0 0 0
 density_flags 1 0 0
 momentum_flags 0 0 0
@@ -528,7 +528,7 @@ from -1.126611e-04 -5.000000e-04 -5.000000e-04
 to 1.751074e-04 5.000000e-04 5.000000e-04
 species 12
 discrete_numbers 2 2 2
-density_function 9
+density_function 6
 reference_point 0 0 0
 density_flags 1 0 0
 momentum_flags 0 0 0
@@ -712,48 +712,28 @@ at 0 0 0.00132
 
 function1 ; temporal laser function
 type 16
-coefficients 1.940954e+08 2.547965e-05 8.000000e-05 -2.000000e-05 end
+coefficients 3.722786e+08 2.547965e-05 8.000000e-05 -2.000000e-05 end
 
-function2
-type 55
-data_file nour01Ey_real.dat
-independent_variable_multiplier 1.0
-dependent_variable_multiplier 1.0
 
-function3
-type 55
-data_file nour01Ey_imag.dat
-independent_variable_multiplier 1.0
-dependent_variable_multiplier 1.0
-
-function4
-type 55
-data_file nour01Ez_real.dat
-independent_variable_multiplier 1.0
-dependent_variable_multiplier 1.0
-
-function5
-type 55
-data_file nour01Ez_imag.dat
-independent_variable_multiplier 1.0
-dependent_variable_multiplier 1.0
+function2 ; 
+type 87
+coefficients 0.000000e+00 1.000000e+00 0.000000e+00 end
 
 
 
-function6 ; laser
-type 56
+function3 ; laser
+type 86
 laser
   temporal_function 1
-  Ey_real 2
-  Ey_imag 3
-  Ez_real 4
-  Ez_imag 5
+  polarization_function 2
   wavelength 8.000000e-05
+  spotsize 1.018592e-04
+  lp_mode 0 0
   direction 1 0 0
   focal_point 0.0 0.0 0.0
 
 end
-function7 ; 
+function4 ; 
 type 0
 data_pairs
 -1.12661110e-04 1.00000000e+16
@@ -858,7 +838,7 @@ data_pairs
 1.75107407e-04 1.00000000e+16
 
 end
-function8 ; 
+function5 ; 
 type 0
 data_pairs
 -1.12661110e-04 2.00000000e+16
@@ -963,7 +943,7 @@ data_pairs
 1.75107407e-04 2.00000000e+16
 
 end
-function9 ; 
+function6 ; 
 type 0
 data_pairs
 -1.12661110e-04 3.00000000e+16

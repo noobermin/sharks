@@ -1,10 +1,10 @@
 [Title]
-simulation_title "Forward too complex with matter, I=5e+19"
+simulation_title "Forward too complex with matter, I=5e+21"
 ;
 [Control]
 ;Time-advance
- time_limit   2.1000e-04
- time_step_ns 5.0000e-08
+ time_limit   2.0000e-04
+ time_step_ns 2.5000e-08
 
 ;;Restarts
 dump_restart_flag ON
@@ -712,7 +712,7 @@ at 0 0 0.00132
 
 function1 ; temporal laser function
 type 16
-coefficients 1.940954e+08 2.547965e-05 8.000000e-05 -2.000000e-05 end
+coefficients 1.940954e+09 2.547965e-05 8.000000e-05 -2.000000e-05 end
 
 function2
 type 55
