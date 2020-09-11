@@ -211,7 +211,7 @@ species 1
 ion_species 2
 electron_species 3
 ionization_potential 13.6
-cross_sections 0 0 0 0 0 0 0 0 0 0 0 0 end
+cross_sections 0 0 0 end
 
 
 ;
