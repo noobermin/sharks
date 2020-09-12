@@ -79,7 +79,7 @@ d = dict(
     l = 0.8e-4,
     w0= 2*0.8e-4*2/np.pi,#F/2
     fp = (0.0,0.0,0.0),
-    I = 5e18,
+    I = 1e19,
     T = 60e-15,
     #target
     pill2D  = True,
