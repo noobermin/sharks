@@ -302,7 +302,7 @@ laser
 
 end
 function4 ; 
-type 30
+type 40
 data_file dens.dat
 independent_variable_multiplier 1.0
 dependent_variable_multiplier 1
