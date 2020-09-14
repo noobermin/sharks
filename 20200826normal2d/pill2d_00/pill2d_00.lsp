@@ -290,7 +290,7 @@ coefficients 0.000000e+00 1.000000e+00 0.000000e+00 end
 
 
 function3 ; laser
-type 86
+type 85
 laser
   temporal_function 1
   polarization_function 2
