@@ -66,7 +66,7 @@ d = dict(
     starting_funcnum = 1,
     multilaser=[
         dict(
-            laser_func_type = 86,
+            laser_func_type = 85,
             outlet='xmin',
             laser_dir = (1,0,0),
             lpmode = (0,0),
