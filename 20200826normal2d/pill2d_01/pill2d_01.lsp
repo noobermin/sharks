@@ -194,7 +194,7 @@ selection_ratio 1.0
 plasma ; p
 from -4.100000e-04 -9.100000e-04 0.000000e+00
 to 4.100000e-04 9.100000e-04 0.000000e+00
-species 11
+species 2
 discrete_numbers 3 3 1
 density_function 4
 reference_point 0 0 0
@@ -206,7 +206,7 @@ thermal_energy 1.0
 plasma ; e
 from -4.100000e-04 -9.100000e-04 0.000000e+00
 to 4.100000e-04 9.100000e-04 0.000000e+00
-species 12
+species 3
 discrete_numbers 3 3 1
 density_function 5
 reference_point 0 0 0
