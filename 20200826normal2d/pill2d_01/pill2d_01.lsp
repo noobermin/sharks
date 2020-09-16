@@ -191,12 +191,24 @@ selection_ratio 1.0
 
 ;
 [Particle Creation]
-plasma ; H
+plasma ; p
 from -4.100000e-04 -9.100000e-04 0.000000e+00
 to 4.100000e-04 9.100000e-04 0.000000e+00
-species 1
+species 11
 discrete_numbers 3 3 1
 density_function 4
+reference_point 0 0 0
+density_flags 1 1 0
+momentum_flags 0 0 0
+drift_momentum 0 0 0
+thermal_energy 1.0
+
+plasma ; e
+from -4.100000e-04 -9.100000e-04 0.000000e+00
+to 4.100000e-04 9.100000e-04 0.000000e+00
+species 12
+discrete_numbers 3 3 1
+density_function 5
 reference_point 0 0 0
 density_flags 1 1 0
 momentum_flags 0 0 0
@@ -303,6 +315,11 @@ laser
 
 end
 function4 ; 
+type 40
+data_file dens.dat
+independent_variable_multiplier 1.0
+dependent_variable_multiplier 1
+function5 ; 
 type 40
 data_file dens.dat
 independent_variable_multiplier 1.0
