@@ -83,9 +83,9 @@ d = dict(
     T = 60e-15,
     #target
     pill2D  = True,
-    L       = 0.3e-4,
+    L       = 0.2e-4,
     n_s   = 1e23,
-    n_min = np.exp(-3.6/0.3)*1e23,
+    n_min = np.exp(-4.0/0.2)*1e23,
     length = 10e-4,
     trans_margin = 4.2e-4,
     long_margin  = 9.2e-4,
@@ -115,3 +115,11 @@ d = dict(
 );
 
 gensim(**d);
+
+
+d1 = sd(
+    d,
+    pbsbase = 'pill2d_10',
+    L       = 0.3e-4,
+    n_s   = 1e23,
+    n_min = np.exp(-3.6/0.3)*1e23);
