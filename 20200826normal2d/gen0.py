@@ -120,5 +120,6 @@ gensim(**d);
 d1 = sd(
     d,
     pbsbase = 'pill2d_10',
-    laser_t0 = 0.0);
+    laser_t0 = 0.0,
+    I=3e18,);
 gensim(**d1);
