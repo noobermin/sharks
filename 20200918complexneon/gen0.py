@@ -130,6 +130,7 @@ ne_plasma = dict(
     species = 1,
     lim='tlim',
     momentum_flags = (False, False, False),
+    density_flags  = (True,False,False),
     reference_point = (0.0,0.0,0.0),
     drift_momentum  = (0.0,0.0,0.0),
     thermal_energy  = 0.026,
