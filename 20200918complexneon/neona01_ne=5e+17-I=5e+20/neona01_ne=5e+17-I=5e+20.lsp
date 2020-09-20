@@ -446,6 +446,7 @@ species 1
 discrete_numbers 2 2 2
 density_function 7
 reference_point 0 0 0
+density_flags 1 0 0
 momentum_flags 0 0 0
 drift_momentum 0 0 0
 thermal_energy 0.026
