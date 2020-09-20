@@ -75,11 +75,11 @@ zmax             1.320000e-03
 z-cells          528
 
 [Regions]
-;total number of domains: 528
+;total number of domains: 704
 ;
 region1
 xmin             -1.000000e-03
-xmax             1.200000e-03
+xmax             1.000000e-04
 
 ymin             -1.320000e-03
 ymax             0.000000e+00
@@ -87,14 +87,14 @@ ymax             0.000000e+00
 zmin             -1.320000e-03
 zmax             0.000000e+00
 ;
-number_of_domains 66
-split_direction YSPLIT
+number_of_domains 44
+split_direction XSPLIT
 number_of_cells AUTO; 
 ;
 ;
 region2
 xmin             -1.000000e-03
-xmax             1.200000e-03
+xmax             1.000000e-04
 
 ymin             -1.320000e-03
 ymax             0.000000e+00
@@ -102,14 +102,14 @@ ymax             0.000000e+00
 zmin             0.000000e+00
 zmax             1.320000e-03
 ;
-number_of_domains 66
-split_direction YSPLIT
+number_of_domains 44
+split_direction XSPLIT
 number_of_cells AUTO; 
 ;
 ;
 region3
 xmin             -1.000000e-03
-xmax             1.200000e-03
+xmax             1.000000e-04
 
 ymin             0.000000e+00
 ymax             1.320000e-03
@@ -117,13 +117,73 @@ ymax             1.320000e-03
 zmin             -1.320000e-03
 zmax             0.000000e+00
 ;
-number_of_domains 66
-split_direction YSPLIT
+number_of_domains 44
+split_direction XSPLIT
 number_of_cells AUTO; 
 ;
 ;
 region4
 xmin             -1.000000e-03
+xmax             1.000000e-04
+
+ymin             0.000000e+00
+ymax             1.320000e-03
+
+zmin             0.000000e+00
+zmax             1.320000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO; 
+;
+;
+region5
+xmin             1.000000e-04
+xmax             1.200000e-03
+
+ymin             -1.320000e-03
+ymax             0.000000e+00
+
+zmin             -1.320000e-03
+zmax             0.000000e+00
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO; 
+;
+;
+region6
+xmin             1.000000e-04
+xmax             1.200000e-03
+
+ymin             -1.320000e-03
+ymax             0.000000e+00
+
+zmin             0.000000e+00
+zmax             1.320000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO; 
+;
+;
+region7
+xmin             1.000000e-04
+xmax             1.200000e-03
+
+ymin             0.000000e+00
+ymax             1.320000e-03
+
+zmin             -1.320000e-03
+zmax             0.000000e+00
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO; 
+;
+;
+region8
+xmin             1.000000e-04
 xmax             1.200000e-03
 
 ymin             0.000000e+00
@@ -132,13 +192,73 @@ ymax             1.320000e-03
 zmin             0.000000e+00
 zmax             1.320000e-03
 ;
-number_of_domains 66
-split_direction YSPLIT
+number_of_domains 44
+split_direction XSPLIT
 number_of_cells AUTO; 
 ;
 ;
-region5
+region9
 xmin             1.200000e-03
+xmax             2.300000e-03
+
+ymin             -1.320000e-03
+ymax             0.000000e+00
+
+zmin             -1.320000e-03
+zmax             0.000000e+00
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO; 
+;
+;
+region10
+xmin             1.200000e-03
+xmax             2.300000e-03
+
+ymin             -1.320000e-03
+ymax             0.000000e+00
+
+zmin             0.000000e+00
+zmax             1.320000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO; 
+;
+;
+region11
+xmin             1.200000e-03
+xmax             2.300000e-03
+
+ymin             0.000000e+00
+ymax             1.320000e-03
+
+zmin             -1.320000e-03
+zmax             0.000000e+00
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO; 
+;
+;
+region12
+xmin             1.200000e-03
+xmax             2.300000e-03
+
+ymin             0.000000e+00
+ymax             1.320000e-03
+
+zmin             0.000000e+00
+zmax             1.320000e-03
+;
+number_of_domains 44
+split_direction XSPLIT
+number_of_cells AUTO; 
+;
+;
+region13
+xmin             2.300000e-03
 xmax             3.400000e-03
 
 ymin             -1.320000e-03
@@ -147,13 +267,13 @@ ymax             0.000000e+00
 zmin             -1.320000e-03
 zmax             0.000000e+00
 ;
-number_of_domains 66
-split_direction YSPLIT
+number_of_domains 44
+split_direction XSPLIT
 number_of_cells AUTO; 
 ;
 ;
-region6
-xmin             1.200000e-03
+region14
+xmin             2.300000e-03
 xmax             3.400000e-03
 
 ymin             -1.320000e-03
@@ -162,13 +282,13 @@ ymax             0.000000e+00
 zmin             0.000000e+00
 zmax             1.320000e-03
 ;
-number_of_domains 66
-split_direction YSPLIT
+number_of_domains 44
+split_direction XSPLIT
 number_of_cells AUTO; 
 ;
 ;
-region7
-xmin             1.200000e-03
+region15
+xmin             2.300000e-03
 xmax             3.400000e-03
 
 ymin             0.000000e+00
@@ -177,13 +297,13 @@ ymax             1.320000e-03
 zmin             -1.320000e-03
 zmax             0.000000e+00
 ;
-number_of_domains 66
-split_direction YSPLIT
+number_of_domains 44
+split_direction XSPLIT
 number_of_cells AUTO; 
 ;
 ;
-region8
-xmin             1.200000e-03
+region16
+xmin             2.300000e-03
 xmax             3.400000e-03
 
 ymin             0.000000e+00
@@ -192,8 +312,8 @@ ymax             1.320000e-03
 zmin             0.000000e+00
 zmax             1.320000e-03
 ;
-number_of_domains 66
-split_direction YSPLIT
+number_of_domains 44
+split_direction XSPLIT
 number_of_cells AUTO; 
 ;
 
@@ -638,7 +758,7 @@ at 0 0 0.00132
 
 function1 ; temporal laser function
 type 16
-coefficients 6.137836e+07 2.547965e-05 8.000000e-05 -2.000000e-05 end
+coefficients 6.137836e+07 2.547965e-05 8.000000e-05 4.770000e-05 end
 
 function2
 type 55

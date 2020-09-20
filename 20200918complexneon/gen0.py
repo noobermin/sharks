@@ -50,9 +50,9 @@ d=dict(
     #units
     ux=1.0,
     #computational division
-    region_dom_split='y',
-    region_splits = [('x',2),('y',2),('z',2)],
-    domains=12*44,
+    region_dom_split='x',
+    region_splits = [('x',4),('y',2),('z',2)],
+    domains=16*44,
     #newlaser
     new_multilaser=True,
     starting_funcnum = 1,
@@ -77,7 +77,7 @@ d=dict(
                 dat = 'nourb01Ez_imag.dat',
                 imul= 1.0,
                 dmul= 1.0),),],
-    laser_t0 = -20e-15,
+    laser_t0 = 47.7e-15,#33.4e-15 +
     laser_tfunctype=16,
     laser_tcutoff = 80e-15,
     l = 0.8e-4,
