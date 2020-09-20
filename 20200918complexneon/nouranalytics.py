@@ -46,7 +46,7 @@ def phase(z,r):
 
 if __name__ == '__main__':
     opts = docopt(__doc__,help=True);
-    x = np.linspace(-20.1e-4, -19.9e-4, 5);
+    x = np.linspace(-10.1e-4,  -9.9e-4, 5);
     y = np.linspace(-13.2e-4,  13.2e-4, 201);
     z = np.linspace(-13.2e-4,  13.2e-4, 201);
     X,Y,Z = np.meshgrid(x,y,z,indexing='ij');
