@@ -150,6 +150,7 @@ for ne,I in ne_x_I:
     #each simulation
     curd = sd(
         d,
+        I=I,
         pbsbase=mkpbsbase(ne,I),
         description = mkdescr(ne,I),
         creation=curcreation);
