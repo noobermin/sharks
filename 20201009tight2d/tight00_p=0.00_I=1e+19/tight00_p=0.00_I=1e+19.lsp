@@ -384,7 +384,7 @@ at 0 0.00132 0
 
 function1 ; temporal laser function
 type 16
-coefficients 8.680211e+07 1.221749e-06 1.000000e-05 0.000000e+00 end
+coefficients 8.680211e+07 1.221749e-06 2.000000e-05 0.000000e+00 end
 
 
 function2 ; 
