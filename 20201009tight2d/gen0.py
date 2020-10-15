@@ -68,6 +68,7 @@ d = dict(
             lpmode = (0,0),
             laser_pol_type = 87,
             laser_pol= (0,1,0),
+            timeshift_type = 1,
         )],
     I = 1e19,
     T = 2.877e-15,#fitted elsewhere
