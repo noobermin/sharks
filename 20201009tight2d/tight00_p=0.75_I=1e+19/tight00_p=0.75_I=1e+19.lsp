@@ -396,14 +396,15 @@ coefficients 0.000000e+00 1.000000e+00 0.000000e+00 end
 function3 ; laser
 type 85
 laser
-  temporal_function 1
+  temporal_function     1
   polarization_function 2
-  wavelength 7.100000e-05
-  spotsize 1.050000e-04
-  phase    7.500000e-01
-  lp_mode 0 0
-  focal_point 0.0 0.0 0.0
-  direction 1 0 0
+  wavelength     7.100000e-05
+  spotsize       1.050000e-04
+  phase          7.500000e-01
+  timeshift_type 0.0
+  lp_mode        0 0
+  focal_point    0.0 0.0 0.0
+  direction      1 0 0
 
 end
 
