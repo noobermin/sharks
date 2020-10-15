@@ -48,7 +48,7 @@ d = dict(
     #misc
     lspexec='lsp-10-xy',
     dir=True,
-    totaltime=200e-15,
+    totaltime=280e-15,
     timestep =5e-17,
     restart_interval=None,
     restart_interval_ns = 1e-15,

@@ -3,7 +3,7 @@ simulation_title "Tight, phase=0, I=1.0"
 ;
 [Control]
 ;Time-advance
- time_limit   2.0000e-04
+ time_limit   2.8000e-04
  time_step_ns 5.0000e-08
 
 ;;Restarts
