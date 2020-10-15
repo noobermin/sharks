@@ -72,7 +72,7 @@ d = dict(
         )],
     I = 1e19,
     T = 2.877e-15,#fitted elsewhere
-    laser_t0 = 20e-15,
+    laser_t0 =-20e-15,
     laser_tfunctype=16,
     laser_tcutoff = 20e-15,
     l = 0.710e-4,
