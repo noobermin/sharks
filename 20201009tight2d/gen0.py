@@ -48,7 +48,7 @@ d = dict(
     #misc
     lspexec='lsp-10-xy',
     dir=True,
-    totaltime=280e-15,
+    totaltime=160e-15,
     timestep =5e-17,
     restart_interval=None,
     restart_interval_ns = 1e-15,
@@ -72,9 +72,9 @@ d = dict(
         )],
     I = 1e19,
     T = 2.877e-15,#fitted elsewhere
-    laser_t0 =-20e-15,
+    laser_t0 =-30e-15,
     laser_tfunctype=16,
-    laser_tcutoff = 20e-15,
+    laser_tcutoff = 30e-15,
     l = 0.710e-4,
     w0= 1.05e-4,
     fp = (0.0,0.0,0.0),
