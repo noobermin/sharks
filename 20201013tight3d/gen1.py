@@ -193,7 +193,7 @@ def process_d(
     #use gaussian distance
     w  = gauss_w(xmin,xr,w0);
     print("gauss radius: {:+.2e}".format(w));
-    rl = 3*w;
+    rl = 2.5*w;
     xf = 0.5*(xmax-xmin);
     s  = np.sqrt(rl**2 + xf**2) - xf;
     d['timeshift'] = (t_st - s/c)*1e-9;
