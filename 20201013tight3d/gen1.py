@@ -186,9 +186,10 @@ def process_d(
     Ts = tshift(X,Y,Z,[xmin,by,bz],d['fp']);
     #calculate timeshift
     #half diagonal distance
-    s = (xmax-xmin)*np.sqrt(3)/2.0;
+    s = (xmax-xmin)*np.sqrt(3)/2.0 - 0.5*(xmax-xmin);
     d['timeshift'] = (t_st - s/c)*1e-9;
-    
+    print('timeshift={} vs min={}, diff={}'.format(
+        d['timeshift']*1e9,Ts.max(),d['timeshift']*1e9+Ts.max()));
     Tf = tfunc(t,d['T'],phase=d['phase']);
     tamp(Tf,tbi);
 
