@@ -121,6 +121,9 @@ l  = 0.710e-4;
 w0 = 1.05e-4;
 xr = np.pi*w0**2/l;
 c  = 29.9792458;
+def gauss_w(x,xr,w0):
+    return w0*np.sqrt(1 + (np.abs(x)/xr)**2);
+
 def gauss_sp(x,y,z):
     rs = y**2 + z**2;
     xa = np.abs(x)
@@ -186,7 +189,13 @@ def process_d(
     Ts = tshift(X,Y,Z,[xmin,by,bz],d['fp']);
     #calculate timeshift
     #half diagonal distance
-    s = (xmax-xmin)*np.sqrt(3)/2.0 - 0.5*(xmax-xmin);
+    #s = (xmax-xmin)*np.sqrt(3)/2.0 - 0.5*(xmax-xmin);
+    #use gaussian distance
+    w  = gauss_w(xmin,xr,w0);
+    print("gauss radius: {:+.2e}".format(w));
+    rl = 3*w;
+    xf = 0.5*(xmax-xmin);
+    s  = np.sqrt(rl**2 + xf**2) - xf;
     d['timeshift'] = (t_st - s/c)*1e-9;
     print('timeshift={} vs min={}, diff={}'.format(
         d['timeshift']*1e9,Ts.max(),d['timeshift']*1e9+Ts.max()));

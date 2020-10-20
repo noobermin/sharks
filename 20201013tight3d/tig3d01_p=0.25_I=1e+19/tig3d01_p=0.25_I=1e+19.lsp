@@ -549,7 +549,7 @@ boundary_condition
   temporal 1
   timeshift_function 2
   Ey 3
-  timeshift -4.69604451792368e-05
+  timeshift -2.833063608049405e-05
 
 end
 
