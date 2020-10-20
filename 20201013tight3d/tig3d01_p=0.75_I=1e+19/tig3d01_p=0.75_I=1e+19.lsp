@@ -64,15 +64,15 @@ domain_boundary_check ON
 
 xmin             -1.100000e-03
 xmax             1.100000e-03
-x-cells          528
+x-cells          440
 
 ymin             -1.100000e-03
 ymax             1.100000e-03
-y-cells          528
+y-cells          440
 
 zmin             -1.100000e-03
 zmax             1.100000e-03
-z-cells          528
+z-cells          440
 
 [Regions]
 ;total number of domains: 352
@@ -549,7 +549,7 @@ boundary_condition
   temporal 1
   timeshift_function 2
   Ey 3
-  timeshift -2.1e-05
+  timeshift -8.365249565103351e-05
 
 end
 

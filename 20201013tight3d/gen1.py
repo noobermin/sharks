@@ -40,7 +40,7 @@ d=dict(
     tlim=( -2e-4,1.8e-4,
            -5e-4,5.0e-4,
            -5e-4,5.0e-4),
-    res = (528, 528, 528),
+    res = (440,440,440),
     description = "tight3d",
     #no outputs because we do restarts now!
     restarts_only = True,
@@ -81,7 +81,6 @@ d=dict(
                 dat = 'gaussEy.dat',),
             laser_tfunctype=60,
             laser_dat = 'tfunc.dat',
-            timeshift = -21e-15,
         ),
     ],
     #target
@@ -118,9 +117,10 @@ ds   = [ sd(d,
          for I   in Is ];
 
 
-l  = 0.8e-4
+l  = 0.710e-4;
 w0 = 1.05e-4;
-xr = np.pi*w0**2/l
+xr = np.pi*w0**2/l;
+c  = 29.9792458;
 def gauss_sp(x,y,z):
     rs = y**2 + z**2;
     xa = np.abs(x)
@@ -131,11 +131,11 @@ def tshift(x,y,z,bv,fp):
     bv = np.array(bv) - np.array(fp);
     br = np.sqrt(np.sum(bv**2,axis=0));
     ds = np.sqrt((x-fp[0])**2 + (y-fp[1])**2 + (z-fp[2])**2)
-    return ds - br;
+    return (ds - br)/c;
 
-def tfunc(t,T):
+def tfunc(t,T,phase=0.0):
     tau = T/np.sqrt(8*np.log(2))*1e9;
-    return np.exp(-(t/tau)**2)
+    return np.cos(2*np.pi*c*t/l + phase)*np.exp(-(t/tau)**2)
 
 def tamp(d,i1,i2=None,inplace=True):
     '''
@@ -161,7 +161,6 @@ def process_d(
         t_end=+20.1e-6,
         t_res=420,
         t_tampbuf=1e-7):
-    gensim(**d);
     pbsbase = d['pbsbase'];
     # get limits
     xmin,xmax = d['lim'][0:2];
@@ -185,10 +184,15 @@ def process_d(
 
     Ey = gauss_sp(X,Y,Z);
     Ts = tshift(X,Y,Z,[xmin,by,bz],d['fp']);
-    Tf = tfunc(t,d['T']);
+    #calculate timeshift
+    #half diagonal distance
+    s = (xmax-xmin)*np.sqrt(3)/2.0;
+    d['timeshift'] = (t_st - s/c)*1e-9;
+    
+    Tf = tfunc(t,d['T'],phase=d['phase']);
     tamp(Tf,tbi);
 
-
+    gensim(**d);
     nbna.output(
         '{}/{}'.format(pbsbase,'gaussEy.dat'),
         [x,y,z],
