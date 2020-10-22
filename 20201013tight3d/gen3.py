@@ -68,7 +68,7 @@ d=dict(
     T = 2.877e-15,#fitted elsewhere
     l = 0.710e-4,
     w0= 1.05e-4,
-    fp= (1e-4, 0.0, 0.0),
+    fp= (0.0, 0.0, 0.0),
     multilaser=[
         dict(
             laser_func_type = 54,
@@ -192,7 +192,7 @@ def process_d(
     #use gaussian distance
     w  = gauss_w(xmin,xr,w0,fp=d['fp']);
     print("gauss radius: {:+.2e}".format(w));
-    rl = 3*w;
+    rl = 4*w;
     xf = 0.5*(xmax-xmin);
     s  = np.sqrt(rl**2 + xf**2) - xf;
     d['timeshift'] =  -s/c*1e-9;
