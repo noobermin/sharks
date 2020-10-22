@@ -200,7 +200,7 @@ def process_d(
     #use gaussian distance
     w  = gauss_w(xmin,xr,w0,fp=d['fp']);
     print("gauss radius: {:+.2e}".format(w));
-    rl = 4*w;
+    rl = 5*w;
     xf = 0.5*(xmax-xmin);
     s  = np.sqrt(rl**2 + xf**2) - xf;
     d['timeshift'] =  -s/c*1e-9;
