@@ -137,7 +137,7 @@ def tshift(x,y,z,bv,fp):
     ds = np.sqrt((x-fp[0])**2 + (y-fp[1])**2 + (z-fp[2])**2)
     return (ds - br)/c;
 
-def tshift_gauss(x,y,z,bv,fp):
+def gauss_tshift(x,y,z,bv,fp):
     bv = np.array(bv) - np.array(fp);
     br = np.sqrt(np.sum(bv**2,axis=0));
     r  = np.sqrt((y-fp[1])**2 + (z-fp[2])**2);
@@ -193,7 +193,7 @@ def process_d(
     by = 0.5*(ymin+ymax)
     bz = 0.5*(zmin+zmax);
     Ey = gauss_sp(X,Y,Z,fp=d['fp']);
-    Ts = tshift(X,Y,Z,[xmin,by,bz],d['fp']);
+    Ts = gauss_tshift(X,Y,Z,[xmin,by,bz],d['fp']);
     #calculate timeshift
     #half diagonal distance
     #s = (xmax-xmin)*np.sqrt(3)/2.0 - 0.5*(xmax-xmin);
