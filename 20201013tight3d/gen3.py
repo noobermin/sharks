@@ -68,7 +68,7 @@ d=dict(
     T = 2.877e-15,#fitted elsewhere
     l = 0.710e-4,
     w0= 1.05e-4,
-    fp= (0.0, 0.0, 0.0),
+    fp= (2.0e-4, 0.0, 0.0),
     multilaser=[
         dict(
             laser_func_type = 54,
