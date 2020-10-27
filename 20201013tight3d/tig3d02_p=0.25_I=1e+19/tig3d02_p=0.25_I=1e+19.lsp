@@ -225,7 +225,7 @@ from -1.100000e-03  -1.100000e-03 -1.100000e-03
 to   -1.100000e-03  1.100000e-03 1.100000e-03
 phase_velocity 1.0
 drive_model LASER
-reference_point 0.0001 0.0 0.0
+reference_point 5e-05 0.0 0.0
 components 0 1 0
 phases 0 0 0
 temporal_function 1
@@ -549,7 +549,7 @@ boundary_condition
   temporal 1
   timeshift_function 2
   Ey 3
-  timeshift -2.2541767519845778e-05
+  timeshift -2.1249541921027427e-05
 
 end
 
