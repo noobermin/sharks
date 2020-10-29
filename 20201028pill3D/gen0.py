@@ -40,7 +40,7 @@ d=dict(
     tlim=( -2e-4,1.8e-4,
            -5e-4,5.0e-4,
            -5e-4,5.0e-4),
-    res = (660,660,440),
+    res = (528,528,440),
     description = "tight3d",
     #no outputs because we do restarts now!
     restarts_only = True,
