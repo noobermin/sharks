@@ -58,7 +58,7 @@ d=dict(
     #units
     ux=1.0,
     #computational division
-    region_dom_split='x',
+    region_dom_split='y',
     region_splits = [('x',2),('y',2),('z',2)],
     domains=8*44,
     #newlaser
@@ -68,7 +68,9 @@ d=dict(
     T = 2.877e-15,#fitted elsewhere
     l = 0.710e-4,
     w0= 1.05e-4,
-    fp= (0.710e-4, 0.0, 0.0),
+    # from gen0.py, shift north by half of 1.73
+    # so add 1.74/np.sqrt(2) to x and y
+    fp= (0.710e-4 + 1.73e-4/np.sqrt(2), 1.73e-4/np.sqrt(2), 0.0),
     multilaser=[
         dict(
             laser_func_type = 54,
@@ -121,7 +123,7 @@ pbsfmt = 'targ_{:02}_p={:0.2f}_I={:0.0e}'
 def mkpbsbase(N,phi,I): return pbsfmt.format(N,phi,I);
 descrfmt = 'Target phase={}, I={}'
 def mkdescr(N,phi,I): return descrfmt.format(N,phi,I);
-N    = 2
+N    = 1
 phis = [0.0,0.25,0.5,0.75,1.0];
 Is   = [1e19];
 ds   = [ sd(d,
@@ -131,7 +133,7 @@ ds   = [ sd(d,
             phase = phi)
          for phi in phis
          for I   in Is ];
-wfactor = 4.0;
+
 
 l  = 0.710e-4;
 w0 = 1.05e-4;
@@ -208,7 +210,7 @@ def process_d(
     #use gaussian distance
     w  = gauss_w(xmin,xr,w0,fp=d['fp']);
     print("gauss radius: {:+.2e}".format(w));
-    rl = wfactor*w;
+    rl = 5*w;
     xf = 0.5*(xmax-xmin);
     s  = np.sqrt(rl**2 + xf**2) - xf;
     d['timeshift'] =  -s/c*1e-9;
