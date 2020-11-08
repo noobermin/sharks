@@ -199,16 +199,19 @@ def process_d(
     t = np.linspace(t_st,t_end,t_res+1);
     tbi = int(t_tampbuf/(t_end/t_res));
     
+    fp = d['fp'];    
     # xmin reference point
-    by = 0.5*(ymin+ymax)
-    bz = 0.5*(zmin+zmax);
-    Ey = gauss_sp(X,Y,Z,fp=d['fp']);
-    Ts = tshift(X,Y,Z,[xmin,by,bz],d['fp']);
+    by,bz = fp[1],fp[2]
+    #by = 0.5*(ymin+ymax)
+    #bz = 0.5*(zmin+zmax);
+
+    Ey = gauss_sp(X,Y,Z,fp=fp);
+    Ts = tshift(X,Y,Z,[xmin,by,bz],fp);
     #calculate timeshift
     #half diagonal distance
     #s = (xmax-xmin)*np.sqrt(3)/2.0 - 0.5*(xmax-xmin);
     #use gaussian distance
-    w  = gauss_w(xmin,xr,w0,fp=d['fp']);
+    w  = gauss_w(xmin,xr,w0,fp=fp);
     print("gauss radius: {:+.2e}".format(w));
     rl = 5*w;
     xf = 0.5*(xmax-xmin);

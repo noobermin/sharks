@@ -173,9 +173,15 @@ def process_d(
     ymin,ymax = d['lim'][2:4];
     zmin,zmax = d['lim'][4:6];
     sh = d['res'];
+    # fp
+    fp = d['fp'];
     # dimensions
     y = np.linspace(ymin,ymax,sh[1]+1);
     z = np.linspace(zmin,zmax,sh[2]+1);
+    #take into account shifting focal point
+    y += fp[1];
+    z += fp[1];
+    
     dx = (xmax - xmin)/sh[0];
     x = np.arange(xmin - dx, xmin+dx*2, dx);
     X,Y,Z = np.meshgrid(x,y,z,indexing='ij');
@@ -184,7 +190,6 @@ def process_d(
     tbi = int(t_tampbuf/(t_end/t_res));
     
     # xmin reference point
-    fp = d['fp'];
     by,bz = fp[1],fp[2]
     #by = 0.5*(ymin+ymax)
     #bz = 0.5*(zmin+zmax);
