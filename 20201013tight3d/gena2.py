@@ -176,25 +176,27 @@ def process_d(
     # fp
     fp = d['fp'];
     # dimensions
-    y = np.linspace(ymin,ymax,sh[1]+1);
-    z = np.linspace(zmin,zmax,sh[2]+1);
+    oy = np.linspace(ymin,ymax,sh[1]+1);
+    oz = np.linspace(zmin,zmax,sh[2]+1);
     #take into account shifting focal point
-    y += fp[1];
-    z += fp[1];
+    y = oy+fp[1];
+    z = oz+fp[2];
     
     dx = (xmax - xmin)/sh[0];
     x = np.arange(xmin - dx, xmin+dx*2, dx);
     X,Y,Z = np.meshgrid(x,y,z,indexing='ij');
+    _,oY,oZ = np.meshgrid(x,oy,oz,indexing='ij');
     # time
     t = np.linspace(t_st,t_end,t_res+1);
     tbi = int(t_tampbuf/(t_end/t_res));
     
     # xmin reference point
     by,bz = fp[1],fp[2]
+    sfp = [0.0,0.0,0.0];
     #by = 0.5*(ymin+ymax)
     #bz = 0.5*(zmin+zmax);
-    Ey = gauss_sp(X,Y,Z,fp=fp);
-    Ts = tshift(X,Y,Z,[xmin,by,bz],fp);
+    Ey = gauss_sp(X,Y,Z,fp=sfp);
+    Ts = tshift(X,oY,oZ,[xmin,by,bz],fp);
     #calculate timeshift
     #half diagonal distance
     #s = (xmax-xmin)*np.sqrt(3)/2.0 - 0.5*(xmax-xmin);
@@ -213,11 +215,11 @@ def process_d(
     gensim(**d);
     nbna.output(
         '{}/{}'.format(pbsbase,'gaussEy.dat'),
-        [x,y,z],
+        [x,oy,oz],
         Ey);
     nbna.output(
         '{}/{}'.format(pbsbase,'tshift.dat'),
-        [x,y,z],
+        [x,oy,oz],
         Ts);
     nbna.output(
         '{}/{}'.format(pbsbase,'tfunc.dat'),
