@@ -179,8 +179,8 @@ def process_d(
     oy = np.linspace(ymin,ymax,sh[1]+1);
     oz = np.linspace(zmin,zmax,sh[2]+1);
     #take into account shifting focal point
-    y = oy+fp[1];
-    z = oz+fp[2];
+    y = oy-fp[1];
+    z = oz-fp[2];
     
     dx = (xmax - xmin)/sh[0];
     x = np.arange(xmin - dx, xmin+dx*2, dx);
@@ -197,6 +197,7 @@ def process_d(
     #bz = 0.5*(zmin+zmax);
     Ey = gauss_sp(X,Y,Z,fp=sfp);
     Ts = tshift(X,oY,oZ,[xmin,by,bz],fp);
+
     #calculate timeshift
     #half diagonal distance
     #s = (xmax-xmin)*np.sqrt(3)/2.0 - 0.5*(xmax-xmin);
