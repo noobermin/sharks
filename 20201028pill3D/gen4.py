@@ -123,7 +123,7 @@ pbsfmt = 'targ_{:02}_p={:0.2f}_I={:0.0e}'
 def mkpbsbase(N,phi,I): return pbsfmt.format(N,phi,I);
 descrfmt = 'Target phase={}, I={}'
 def mkdescr(N,phi,I): return descrfmt.format(N,phi,I);
-N    = 3
+N    = 4
 phis = [0.0,0.25,0.5,0.75,1.0];
 Is   = [1e19];
 ds   = [ sd(d,
