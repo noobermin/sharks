@@ -130,7 +130,7 @@ ds   = [ sd(d,
             pbsbase  =  mkpbsbase(N,phi,I),
             description = mkdescr(N,phi,I),
             I = I,
-            phase = phi)
+            phase = phi*np.pi)
          for phi in phis
          for I   in Is ];
 
