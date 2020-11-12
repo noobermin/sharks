@@ -3,7 +3,7 @@ simulation_title "Target phase=2, I=0.25"
 ;
 [Control]
 ;Time-advance
- time_limit   8.0000e-04
+ time_limit   1.0000e-04
  time_step_ns 5.0000e-08
 
 ;;Restarts
