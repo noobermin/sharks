@@ -142,7 +142,7 @@ def gauss_tshift(x,y,z,bv,fp):
     br = np.sqrt(np.sum(bv**2,axis=0));
     r  = np.sqrt((y-fp[1])**2 + (z-fp[2])**2);
     xa = np.abs(x);
-    return (r**2*xa/(xa**2 + xr**2) - br)/c;
+    return (r**2*xa/(xa**2 + xr**2))/c;
 
 
 def tfunc(t,T,phase=0.0):
