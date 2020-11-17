@@ -71,8 +71,8 @@ d=dict(
         dict(
             laser_tfunctype = 16,
             laser_func_type = 86,
-            laser_t0        = 0e-15,
-            laser_tcutoff   = 20e-15,
+            laser_t0        = -10e-15,
+            laser_tcutoff   = 40e-15,
             timeshift_type  = 1.0,
             outlet='xmin',
             laser_dir = (1,0,0),
