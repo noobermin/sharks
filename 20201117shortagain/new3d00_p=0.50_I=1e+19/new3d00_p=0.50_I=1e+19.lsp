@@ -3,7 +3,7 @@ simulation_title "Tight, phase=0, I=0.5"
 ;
 [Control]
 ;Time-advance
- time_limit   2.0000e-04
+ time_limit   1.6000e-04
  time_step_ns 5.0000e-08
 
 ;;Restarts
@@ -466,7 +466,7 @@ at 0 0 0.0011
 
 function1 ; temporal laser function
 type 16
-coefficients 8.680211e+07 1.221749e-06 2.000000e-05 0.000000e+00 end
+coefficients 8.680211e+07 6.108747e-06 2.000000e-05 0.000000e+00 end
 
 
 function2 ; 

@@ -47,7 +47,7 @@ d=dict(
     #misc
     lspexec='lsp-10-3d',
     dir=True,
-    totaltime=200e-15,
+    totaltime=160e-15,
     timestep =5e-17,
     restart_interval=20,
     dump_restart_flag=True,
@@ -63,7 +63,7 @@ d=dict(
     new_multilaser=True,
     starting_funcnum = 1,
     I=1e19,
-    T = 2.877e-15,#fitted elsewhere
+    T = 2.877e-15*5,#fitted elsewhere
     l = 0.710e-4,
     w0= 1.05e-4,
     fp= (0.0, 0.0, 0.0),
