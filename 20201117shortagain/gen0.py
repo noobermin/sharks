@@ -71,9 +71,9 @@ d=dict(
         dict(
             laser_tfunctype = 16,
             laser_func_type = 86,
-            laser_t0        = -10e-15,
-            laser_tcutoff   = 40e-15,
-            timeshift_type  = 1.0,
+            laser_t0        = -20.0e-15,
+            laser_tcutoff   =  40.0e-15,
+            timeshift_type  =   0.0,
             outlet='xmin',
             laser_dir = (1,0,0),
             lpmode = (0,0),
@@ -99,7 +99,7 @@ d=dict(
 
 );
 
-pbsfmt = 'new3d{:02}_p={:0.2f}_I={:0.0e}'
+pbsfmt = 'r863d{:02}_p={:0.2f}_I={:0.0e}'
 def mkpbsbase(N,phi,I): return pbsfmt.format(N,phi,I);
 descrfmt = 'Tight, phase={}, I={}'
 def mkdescr(N,phi,I): return descrfmt.format(N,phi,I);
