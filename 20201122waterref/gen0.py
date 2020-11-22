@@ -34,7 +34,7 @@ creation = plasmacs + h2o_creation_other;
 
 ###########
 d=dict(
-    dens_flags=(True,False,False),
+    dens_flags=(True,True,True),
     lim = (-11.0e-4,11.0e-4,
            -11.0e-4,11.0e-4,
            -11.0e-4,11.0e-4),
