@@ -366,7 +366,7 @@ plasma ; O+
 from -6.717514e-04 -6.717514e-04 -0.000000e+00
 to 6.717514e-04 6.717514e-04 0.000000e+00
 species 2
-discrete_numbers 2 2 2
+discrete_numbers 2 5 1
 density_function 4
 reference_point 0 0 0
 density_flags 1 1 0
@@ -378,7 +378,7 @@ plasma ; p
 from -6.717514e-04 -6.717514e-04 -0.000000e+00
 to 6.717514e-04 6.717514e-04 0.000000e+00
 species 11
-discrete_numbers 2 2 2
+discrete_numbers 2 5 1
 density_function 5
 reference_point 0 0 0
 density_flags 1 1 0
@@ -390,7 +390,7 @@ plasma ; e
 from -6.717514e-04 -6.717514e-04 -0.000000e+00
 to 6.717514e-04 6.717514e-04 0.000000e+00
 species 12
-discrete_numbers 2 2 2
+discrete_numbers 2 5 1
 density_function 6
 reference_point 0 0 0
 density_flags 1 1 0
