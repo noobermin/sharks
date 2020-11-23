@@ -9,7 +9,7 @@ simulation_title "Water reference with 60fs pulse, I=1"
 ;;Restarts
 dump_restart_flag ON
 rename_restart_flag ON
-restart_interval 20
+restart_interval 25
 
 ;;Load Balancing
 balance_interval 0
