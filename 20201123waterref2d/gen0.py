@@ -50,7 +50,7 @@ d=dict(
     #misc
     lspexec='lsp-10-xy -r',
     dir=True,
-    totaltime=1000e-12,
+    totaltime=1e-12,
     timestep =4e-17,
     restart_interval=25,
     dump_restart_flag=True,
@@ -116,6 +116,8 @@ d=dict(
              measurement_type = 'field_energy'),
         dict(type = 'performance',
              measurement_type = 'cpu_time')],
+    #pext
+    pext_species=(11,12)
 );
 
 pbsfmt = 'h2oref2d_{:02}_I={:0.0e}'
