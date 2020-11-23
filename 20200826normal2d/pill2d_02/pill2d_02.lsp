@@ -192,7 +192,7 @@ selection_ratio 1.0
 ;
 [Particle Creation]
 plasma ; p
-from -4.100000e-04 -9.100000e-04 0.000000e+00
+from -4.100000e-04 -9.100000e-04 -0.000000e+00
 to 4.100000e-04 9.100000e-04 0.000000e+00
 species 2
 discrete_numbers 3 3 1
@@ -204,7 +204,7 @@ drift_momentum 0 0 0
 thermal_energy 1.0
 
 plasma ; e
-from -4.100000e-04 -9.100000e-04 0.000000e+00
+from -4.100000e-04 -9.100000e-04 -0.000000e+00
 to 4.100000e-04 9.100000e-04 0.000000e+00
 species 3
 discrete_numbers 3 3 1

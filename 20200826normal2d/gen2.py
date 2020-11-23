@@ -83,13 +83,13 @@ d = dict(
     n_s   = 1e23,
     n_min = np.exp(-3.6/0.3)*1e23,
     length = 10e-4,
-    trans_margin = 4.2e-4,
-    long_margin  = 9.2e-4,
+    ymargin = 4.2e-4,
+    xmargin  = 9.2e-4,
     species = species,
     new_create=True,
     creation= creation,
     fracs = [1,1],
-    keep_lims = True,
+    keep_lim = True,
     #probes
     probes = [
         dict(type = 'energy',

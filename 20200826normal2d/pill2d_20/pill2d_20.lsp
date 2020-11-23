@@ -192,7 +192,7 @@ selection_ratio 1.0
 ;
 [Particle Creation]
 plasma ; H
-from -4.500000e-04 -9.500000e-04 0.000000e+00
+from -4.500000e-04 -9.500000e-04 -0.000000e+00
 to 4.500000e-04 9.500000e-04 0.000000e+00
 species 1
 discrete_numbers 3 3 1
