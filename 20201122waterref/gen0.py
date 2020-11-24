@@ -41,7 +41,7 @@ d=dict(
     tlim=( -2e-4,1.8e-4,
            -5e-4,5.0e-4,
            -5e-4,5.0e-4),
-    res = (880,880,440),
+    res = (440,440,440),
     description = "tight3d",
     #no outputs because we do restarts now!
     restarts_only = True,
@@ -55,7 +55,7 @@ d=dict(
     restart_interval=20,
     dump_restart_flag=True,
     email='ngirmang.1@osu.edu',
-    pbses='defaults',
+    pbses='2020defaults',
     #units
     ux=1.0,
     #computational division
@@ -66,9 +66,9 @@ d=dict(
     new_multilaser=True,
     starting_funcnum = 1,
     I=1e19,
-    T = 60.0e-15,#fitted elsewhere
+    T = 60.0e-15,
     l = 0.800e-4,
-    w0= 1.52788e-4, #f/3
+    w0= 3 * 0.8e-4 * 2/np.pi,
     # shifting up for the sake of focus
     fp= (1.0e-4/np.sqrt(2), 1.0e-4/np.sqrt(2), 0.0),
     multilaser=[
@@ -123,7 +123,7 @@ pbsfmt = 'h2oref{:02}_I={:0.0e}'
 def mkpbsbase(N,I): return pbsfmt.format(N,I);
 descrfmt = 'Water reference with 60fs pulse, I={}'
 def mkdescr(N,I): return descrfmt.format(N,I);
-N    = 1
+N    = 0
 Is   = [1e19];
 ds   = [ sd(d,
             pbsbase  =  mkpbsbase(N,I),
