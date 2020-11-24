@@ -60,8 +60,8 @@ d=dict(
     ux=1.0,
     #computational division
     region_dom_split='y',
-    region_splits = [('x',2),('y',5),('z',1)],
-    domains=10*44,
+    region_splits = [('x',2),('y',2),('z',3)],
+    domains=12*44,
     #newlaser
     new_multilaser=True,
     starting_funcnum = 1,
