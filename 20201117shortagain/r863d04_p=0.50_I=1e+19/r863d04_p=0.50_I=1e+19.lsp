@@ -68,11 +68,11 @@ x-cells          528
 
 ymin             -1.100000e-03
 ymax             1.100000e-03
-y-cells          528
+y-cells          440
 
 zmin             -1.100000e-03
 zmax             1.100000e-03
-z-cells          528
+z-cells          440
 
 [Regions]
 ;total number of domains: 176
