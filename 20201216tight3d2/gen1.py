@@ -54,7 +54,7 @@ d=dict(
     restart_interval=20,
     dump_restart_flag=True,
     email='ngirmang.1@osu.edu',
-    pbses='defaults',
+    pbses='2020defaults',
     #units
     ux=1.0,
     #computational division
@@ -78,7 +78,7 @@ d=dict(
                 dat = 'gaussEy.dat',),
             Ez = dict(
                 type=60,
-                dat = 'gaussEy.dat',),
+                dat = 'gaussEz.dat',),
             laser_dat = 'tfunc.dat',
         ),
     ],
@@ -177,7 +177,7 @@ def process_d(
     zmin,zmax = d['lim'][4:6];
     sh = d['res'];
 
-    t  = np.arange(t_st,t_end + dt, dt);
+    t  = np.arange(t_st-dt,t_end + 2*dt, dt);
     
     # dimensions
     
@@ -190,6 +190,8 @@ def process_d(
     gensim(**d);
     print("making Ey for {}".format(pbsbase));
     Ey = gauss_Ey(T,X,Y,Z);
+    Ey[ 0,:,:,:] = 0.0;
+    Ey[-1,:,:,:] = 0.0;
     nbna.output(
         '{}/{}'.format(pbsbase,'gaussEy.dat'),
         [t-t[0],x,y,z],
@@ -198,6 +200,9 @@ def process_d(
     
     print("making Ez for {}".format(pbsbase));
     Ez = gauss_Ey(T,X,Y,Z);
+    Ez[ 0,:,:,:] = 0.0;
+    Ez[-1,:,:,:] = 0.0;
+
     nbna.output(
         '{}/{}'.format(pbsbase,'gaussEz.dat'),
         [t-t[0],x,y,z],
