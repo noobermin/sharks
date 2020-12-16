@@ -125,7 +125,7 @@ w0 = 2*l*F/np.pi;
 def gauss_w(x,xr,w0,fp=[0.0,0.0,0.0]):
     return w0*np.sqrt(1 + (np.abs(x-fp[0])/xr)**2);
 
-def gauss_Ey(x,y,z,t,fp=[0,0,0]):
+def gauss_Ey(t,x,y,z,fp=[0,0,0]):
     x-=fp[0];
     rs = (y-fp[1])**2 + (z-fp[2])**2;
     xa = np.abs(x)
@@ -146,7 +146,7 @@ def gauss_Ey(x,y,z,t,fp=[0,0,0]):
     Ey2 += -q**2 * np.cos(k*h -4*phi)*rs**2/(w**3*w0)
     return (Ey0 + Ey2)*np.exp(-((t+gs/c)/tau)**2)
 
-def gauss_Ez(x,y,z,t,fp=[0,0,0]):
+def gauss_Ez(t,x,y,z,fp=[0,0,0]):
     x-=fp[0];
     rs = (y-fp[1])**2 + (z-fp[2])**2;
     xa = np.abs(x)
