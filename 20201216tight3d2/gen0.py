@@ -34,13 +34,13 @@ creation = plasmacs + h2o_creation_other;
 ###########
 d=dict(
     dens_flags=(True,False,False),
-    lim = (-8.8e-4,4.4e-4,
+    lim = (-7.8e-4,3.2e-4,
            -5.5e-4,5.5e-4,
            -5.5e-4,5.5e-4),
     tlim=( -2e-4,1.8e-4,
            -5e-4,5.0e-4,
            -5e-4,5.0e-4),
-    res = (440,220,220),
+    res = (220,220,220),
     description = "tight3d",
     #no outputs because we do restarts now!
     restarts_only = True,
@@ -151,7 +151,7 @@ def gauss_Ez(t,x,y,z,fp=[0,0,0]):
     rs = (y-fp[1])**2 + (z-fp[2])**2;
     xa = np.abs(x)
     w  = w0*np.sqrt(1 + (x/xr)**2);
-    gs = rs*x/( x**2 + xr**2);
+    gs = 0.5*rs*x/( x**2 + xr**2);
     k  = 2*np.pi/l;
     phi = np.arctan(x/xr);
     T0  = 7e-6;
@@ -167,8 +167,8 @@ def gauss_Ez(t,x,y,z,fp=[0,0,0]):
 
 def process_d(
         d,
-        t_st =-7e-6,
-        t_end=+7e-6,
+        t_st =-10.6e-6,
+        t_end=+10.6e-6,
         dt = 5e-8,):
     pbsbase = d['pbsbase'];
     # get limits
