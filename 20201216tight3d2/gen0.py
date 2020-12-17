@@ -199,7 +199,7 @@ def process_d(
     del Ey;
     
     print("making Ez for {}".format(pbsbase));
-    Ez = gauss_Ey(T,X,Y,Z);
+    Ez = gauss_Ez(T,X,Y,Z);
     Ez[ 0,:,:,:] = 0.0;
     Ez[-1,:,:,:] = 0.0;
 
