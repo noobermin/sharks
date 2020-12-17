@@ -58,7 +58,7 @@ d=dict(
     #units
     ux=1.0,
     #computational division
-    region_dom_split='x',
+    region_dom_split='z',
     region_splits = [('x',2),('y',2),('z',1)],
     domains=4*40,
     #newlaser
