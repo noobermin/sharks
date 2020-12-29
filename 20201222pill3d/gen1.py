@@ -116,6 +116,7 @@ d=dict(
              measurement_type = 'field_energy'),
         dict(type = 'performance',
              measurement_type = 'cpu_time')],
+    pext_species=(11,12),
 
 );
 
