@@ -124,7 +124,7 @@ pbsfmt = 'tar2_{:02}_p={:0.2f}_I={:0.0e}'
 def mkpbsbase(N,phi,I): return pbsfmt.format(N,phi,I);
 descrfmt = 'Target larger buffer, phase={}, I={}'
 def mkdescr(N,phi,I): return descrfmt.format(N,phi,I);
-N    = 1
+N    = 2
 phis = [0.0,0.5];
 Is   = [1e19];
 ds   = [ sd(d,
