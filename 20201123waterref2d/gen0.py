@@ -22,7 +22,7 @@ c = 299792458.0
 
 from genlsp.h2o_species import h2o_species_explicit as h2o_species;
 from genlsp.h2o_species import h2o_creation_plasma_single, h2o_creation_other;
-discrete=(2,5,1)
+discrete=(3,3,1)
 species = h2o_species;
 plasmacs = sdl(h2o_creation_plasma_single,
                lim = 'tlim',
