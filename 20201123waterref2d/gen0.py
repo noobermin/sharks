@@ -122,7 +122,7 @@ d=dict(
 
 pbsfmt = 'h2oref2d_{:02}_I={:0.0e}'
 def mkpbsbase(N,I): return pbsfmt.format(N,I);
-descrfmt = 'Water reference with 60fs pulse, I={}'
+descrfmt = 'Water reference no. {} with 60fs pulse, I={}'
 def mkdescr(N,I): return descrfmt.format(N,I);
 N    = 1
 Is   = [1e19];

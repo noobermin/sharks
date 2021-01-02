@@ -1,5 +1,5 @@
 [Title]
-simulation_title "Water reference with 60fs pulse, I=1"
+simulation_title "Water reference no. 1 with 60fs pulse, I=1e+19"
 ;
 [Control]
 ;Time-advance
