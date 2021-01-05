@@ -59,14 +59,14 @@ d=dict(
     #units
     ux=1.0,
     #computational division
-    region_dom_split='z',
-    region_splits = [('x',1),('y',5),('z',1)],
-    domains=5*40,
+    region_dom_split='x',
+    region_splits = [('x',1),('y',3),('z',2)],
+    domains=6*40,
     #newlaser
     new_multilaser=True,
     starting_funcnum = 1,
     I=1e19,
-    T = 40e-15,
+    T = 54e-15,
     l = 0.710e-4,
     w0= 1.05e-4,
     fp= (0.0, 0.0, 0.0),
@@ -74,8 +74,8 @@ d=dict(
         dict(
             laser_tfunctype = 16,
             laser_func_type = 86,
-            laser_t0        = -11e-6/c + 60e-15,
-            laser_tcutoff   =  60.0e-15,
+            laser_t0        = -11e-6/c + 81e-15,
+            laser_tcutoff   =  81.0e-15,
             timeshift_type  =   2.0,
             outlet='xmin',
             laser_dir = (1,0,0),
