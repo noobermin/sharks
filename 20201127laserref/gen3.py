@@ -80,7 +80,6 @@ d=dict(
             timeshift_type  =  2.0,
             outlet='xmin',
             lpmode = (0,0),
-            laser_pol = (0, 1, 0),
             laser_pol_type = 87,
         ),
     ],
@@ -114,7 +113,10 @@ ds   = [ sd(d,
             pbsbase  =  mkpbsbase(N,I,angle),
             description = mkdescr(N,I,angle),
             laser_dir   = (
-                np.cos(angle/180*np.pi), np.sin(angle/180*np.pi), 0.0 ),
+                 np.cos(angle/180*np.pi), np.sin(angle/180*np.pi), 0.0 ),
+            laser_pol = (
+                -np.sin(angle/180*np.pi), np.cos(angle/180*np.pi), 0.0 ),
+
             I = I)
          for I     in Is
          for angle in angles];

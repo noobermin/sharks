@@ -404,7 +404,7 @@ coefficients 8.680211e+07 2.972626e-06 1.050000e-05 -1.284949e-05 end
 
 function2 ; 
 type 87
-coefficients 0.000000e+00 1.000000e+00 0.000000e+00 end
+coefficients -1.736482e-01 9.848078e-01 0.000000e+00 end
 
 
 
