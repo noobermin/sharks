@@ -4,12 +4,12 @@ simulation_title "2d laser pulse simulation, I=4, angle of incidence=1e+19"
 [Control]
 ;Time-advance
  time_limit   8.0000e-05
- time_step_ns 4.0000e-08
+ time_step_ns 5.0000e-08
 
 ;;Restarts
 dump_restart_flag ON
 rename_restart_flag ON
-restart_interval 25
+restart_interval 20
 
 ;;Load Balancing
 balance_interval 0
