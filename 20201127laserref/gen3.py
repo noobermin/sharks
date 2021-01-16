@@ -17,7 +17,7 @@ import numpy as np;
 import shutil as sh;
 import re;
 e0=8.854e-12
-c = 299792458.0
+c_cgs = 29979245800.0
 #E = 0.5e-3; # 5mJ
 
 from genlsp.h2o_species import h2o_species_explicit as h2o_species;
@@ -35,13 +35,13 @@ creation = plasmacs + h2o_creation_other;
 ###########
 d=dict(
     dens_flags=(True,True,True),
-    lim = (-11.0e-4,11.0e-4,
+    lim = ( -7.0e-4, 7.0e-4,
            -11.0e-4,11.0e-4,
              0.0e-4, 0.0e-4),
     tlim=(  -1.0e-4, 1.0e-4,
             -1.0e-4, 1.0e-4,
             -0.0e-4, 0.0e-4),
-    res = (880,880,0),
+    res = (560,880,0),
     description = "tight3d",
     #no outputs because we do restarts now!
     restarts_only = True,
@@ -50,9 +50,9 @@ d=dict(
     #misc
     lspexec='lsp-10-xy',
     dir=True,
-    totaltime=100e-15,
-    timestep =5e-17,
-    restart_interval=20,
+    totaltime=80e-15,
+    timestep =40e-18,
+    restart_interval=25,
     dump_restart_flag=True,
     email='ngirmang.1@osu.edu',
     pbses='2020defaults',
@@ -74,8 +74,8 @@ d=dict(
             l = 0.710e-4,
             w0= 1.05e-4,
             laser_tfunctype = 16,
-            laser_func_type = 19,
-            laser_t0        = -11e-6/c + 7e-15,
+            laser_func_type = 85,
+            laser_t0        =  -7.0e-4/c_cgs + 7e-15,
             laser_tcutoff   =  10.5e-15,
             timeshift_type  =  0.0,
             outlet='xmin',

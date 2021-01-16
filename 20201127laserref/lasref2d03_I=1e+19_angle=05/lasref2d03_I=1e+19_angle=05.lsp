@@ -3,13 +3,13 @@ simulation_title "2d laser pulse simulation, I=3, angle of incidence=1e+19"
 ;
 [Control]
 ;Time-advance
- time_limit   1.0000e-04
- time_step_ns 5.0000e-08
+ time_limit   8.0000e-05
+ time_step_ns 4.0000e-08
 
 ;;Restarts
 dump_restart_flag ON
 rename_restart_flag ON
-restart_interval 20
+restart_interval 25
 
 ;;Load Balancing
 balance_interval 0
@@ -62,9 +62,9 @@ domain_boundary_check ON
 
 [Grid]
 
-xmin             -1.100000e-03
-xmax             1.100000e-03
-x-cells          880
+xmin             -7.000000e-04
+xmax             7.000000e-04
+x-cells          560
 
 ymin             -1.100000e-03
 ymax             1.100000e-03
@@ -75,7 +75,7 @@ y-cells          880
 ;total number of domains: 80
 ;
 region1
-xmin             -1.100000e-03
+xmin             -7.000000e-04
 xmax             0.000000e+00
 
 ymin             -1.100000e-03
@@ -91,7 +91,7 @@ number_of_cells AUTO;
 ;
 region2
 xmin             0.000000e+00
-xmax             1.100000e-03
+xmax             7.000000e-04
 
 ymin             -1.100000e-03
 ymax             1.100000e-03
@@ -128,35 +128,35 @@ energy_units EV
 
 ;laser
 outlet
-from -1.100000e-03  -1.100000e-03 0.000000e+00
-to   -1.100000e-03  1.100000e-03 0.000000e+00
+from -7.000000e-04  -1.100000e-03 0.000000e+00
+to   -7.000000e-04  1.100000e-03 0.000000e+00
 phase_velocity 1.0
 drive_model LASER
 reference_point 0.0 0.0 0.0
 components 0 1 0
 phases 0 0 0
 temporal_function 1
-analytic_function 2
+analytic_function 3
 time_delay 0.0
 
 ;back
 outlet
-from 1.100000e-03  -1.100000e-03 0.000000e+00
-to   1.100000e-03  1.100000e-03 0.000000e+00
+from 7.000000e-04  -1.100000e-03 0.000000e+00
+to   7.000000e-04  1.100000e-03 0.000000e+00
 phase_velocity 1.0
 drive_model NONE
 
 ;left
 outlet
-from -1.100000e-03  -1.100000e-03 0.000000e+00
-to   1.100000e-03  -1.100000e-03 0.000000e+00
+from -7.000000e-04  -1.100000e-03 0.000000e+00
+to   7.000000e-04  -1.100000e-03 0.000000e+00
 phase_velocity 1.0
 drive_model NONE
 
 ;right
 outlet
-from -1.100000e-03  1.100000e-03 0.000000e+00
-to   1.100000e-03  1.100000e-03 0.000000e+00
+from -7.000000e-04  1.100000e-03 0.000000e+00
+to   7.000000e-04  1.100000e-03 0.000000e+00
 phase_velocity 1.0
 drive_model NONE
 
@@ -343,7 +343,7 @@ direction X
 maximum_number  1000000000
 start_time 0
 stop_time  1
-at -0.0011 0 0
+at -0.0007 0 0
 
  
 ;
@@ -353,7 +353,7 @@ direction X
 maximum_number  1000000000
 start_time 0
 stop_time  1
-at 0.0011 0 0
+at 0.0007 0 0
 
  
 ;
@@ -399,14 +399,29 @@ at 0 0.0011 0
 
 function1 ; temporal laser function
 type 16
-coefficients 8.680211e+07 2.547965e-05 1.050000e-05 -2.969205e-05 end
+coefficients 8.680211e+07 2.547965e-05 1.050000e-05 -1.634949e-05 end
+
+
+function2 ; 
+type 87
+coefficients 0.000000e+00 1.000000e+00 0.000000e+00 end
 
 
 
-function2 ; laser
-type 19
-coefficients 7.100000e-05 1.050000e-04 end
+function3 ; laser
+type 85
+laser
+  temporal_function     1
+  polarization_function 2
+  wavelength     7.100000e-05
+  spotsize       1.050000e-04
+  phase          0.000000e+00
+  timeshift_type 0.0
+  lp_mode        0 0
+  focal_point    0.0 0.0 0.0
+  direction      0.9961946980917455 0.08715574274765817 0.0
 
+end
 
 ;
 [Probes];
