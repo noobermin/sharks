@@ -416,7 +416,7 @@ laser
   wavelength     7.100000e-05
   spotsize       1.050000e-04
   phase          0.000000e+00
-  timeshift_type 0.0
+  timeshift_type 2.0
   lp_mode        0 0
   focal_point    0.0 0.0 0.0
   direction      0.9961946980917455 0.08715574274765817 0.0
