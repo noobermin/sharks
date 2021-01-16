@@ -80,7 +80,8 @@ d=dict(
             timeshift_type  =  2.0,
             outlet='xmin',
             lpmode = (0,0),
-            components = (0,1,0),
+            laser_pol = (0, 1, 0),
+            laser_pol_type = 87,
         ),
     ],
     #target
