@@ -72,7 +72,7 @@ y-cells          880
 
 
 [Regions]
-;total number of domains: 160
+;total number of domains: 80
 ;
 region1
 xmin             -1.100000e-03
@@ -84,7 +84,7 @@ ymax             1.100000e-03
 zmin             0.000000e+00
 zmax             0.000000e+00
 ;
-number_of_domains 80
+number_of_domains 40
 split_direction YSPLIT
 number_of_cells AUTO; 
 ;
@@ -99,7 +99,7 @@ ymax             1.100000e-03
 zmin             0.000000e+00
 zmax             0.000000e+00
 ;
-number_of_domains 80
+number_of_domains 40
 split_direction YSPLIT
 number_of_cells AUTO; 
 ;
