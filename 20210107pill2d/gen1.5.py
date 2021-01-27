@@ -50,7 +50,7 @@ d=dict(
     #misc
     lspexec='lsp-10-3d',
     dir=True,
-    totaltime=800e-15,
+    totaltime=100e-15,
     timestep = 20e-18,
     restart_interval=50,
     dump_restart_flag=True,
@@ -110,7 +110,7 @@ descrfmt = '2D target, near normal, phase={}, I={}'
 def mkdescr(N,phi,I,angle): return descrfmt.format(N,phi,I,angle);
 N     = 1
 phis  = [0.0,0.5];
-angles= [0]
+angles= [0];
 Is   = [1e19];
 ds   = [ sd(d,
             pbsbase  =  mkpbsbase(N,phi,I,angle),
