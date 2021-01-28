@@ -36,12 +36,12 @@ creation = plasmacs + h2o_creation_other;
 d=dict(
     dens_flags=(True,True,False),
     lim = ( -8.8e-4,  8.8e-4,
-           -11.0e-4, 11.0e-4,
+           -17.6e-4,  8.8e-4,
              0.0e-4,  0.0e-4),
     tlim=( -2.0e-4, 2.0e-4,
            -8.0e-4, 8.0e-4,
            -0.0e-4, 0.0e-4),
-    res = (1760,2200,0),
+    res = (1760,2640,0),
     description = "tight3d",
     #no outputs because we do restarts now!
     restarts_only = True,
@@ -50,7 +50,7 @@ d=dict(
     #misc
     lspexec='lsp-10-3d',
     dir=True,
-    totaltime=500e-15,
+    totaltime=400e-15,
     timestep = 20e-18,
     restart_interval=50,
     dump_restart_flag=True,
