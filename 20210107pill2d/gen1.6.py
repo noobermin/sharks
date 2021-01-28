@@ -108,7 +108,7 @@ pbsfmt = 'spill2d_nomatter{:02}_p={:0.2f}_I={:0.0e}_angle={:02}'
 def mkpbsbase(N,phi,I,angle): return pbsfmt.format(N,phi,I,angle);
 descrfmt = '2D target, near normal, phase={}, I={}'
 def mkdescr(N,phi,I,angle): return descrfmt.format(N,phi,I,angle);
-N     = 1
+N     = 2
 phis  = [0.0,0.5];
 angles= [45];
 Is   = [1e19];
