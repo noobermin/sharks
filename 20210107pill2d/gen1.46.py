@@ -52,7 +52,7 @@ d=dict(
     #misc
     lspexec='lsp-10-3d',
     dir=True,
-    totaltime=100e-15,
+    totaltime= 20e-15,
     timestep = 20e-18,
     restart_interval=50,
     dump_restart_flag=True,
@@ -88,7 +88,6 @@ d=dict(
     #target
     species  = species,
     creation = creation,
-    no_laser  = True,
     no_matter = True,
     fracs = [1,2,3],
     #probes
