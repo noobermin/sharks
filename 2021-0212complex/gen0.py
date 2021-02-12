@@ -132,12 +132,8 @@ d = dict(
              measurement_type = 'field_energy'),
         dict(type = 'performance',
              measurement_type = 'cpu_time')],
-    #splittime to reduce timestep around
-    splittime = [
-        [ 90e-15, dict(timestep = 50e-18)],
-        [200e-15, dict(timestep = 25e-18)]],
     #pext
-    pext_species=(12,),
+    pext_species=(11,12),
 );
 
 N  = 0;
