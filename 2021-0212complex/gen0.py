@@ -142,7 +142,7 @@ d = dict(
 
 N  = 0;
 Is = [5e19,1e20,5e20,1e21,5e21];
-pbsfmt = 'noura{:02}_{:0.0e}'
+pbsfmt = 'nourc{:02}_{:0.0e}'
 def mkpbsbase(I): return pbsfmt.format(N,I);
 descrfmt = 'High Intensity Complex beam interacting with matter, I={}'
 def mkdescr(I): return descrfmt.format(N,I);
