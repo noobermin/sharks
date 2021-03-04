@@ -75,7 +75,7 @@ d=dict(
     #target
     species  = species,
     creation = creation,
-    fracs = [1,2],
+    fracs = [2,1],
     pill2D = dict(
         n_s  = 3.34e22,
         n_min= 1e17,
