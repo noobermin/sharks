@@ -48,7 +48,7 @@ d=dict(
     #density
     tref = (0.0, 0.0, 0.0),
     #misc
-    lspexec='lsp-10-3d',
+    lspexec='lsp-10-xy',
     dir=True,
     totaltime=100.0e-15,
     timestep = 20.0e-18,

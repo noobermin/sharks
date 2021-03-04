@@ -35,13 +35,13 @@ creation = plasmacs + h2o_creation_other;
 ###########
 d=dict(
     dens_flags=(True,True,False),
-    lim = (-10.0e-4, 10.0e-4,
+    lim = (-11.0e-4, 11.0e-4,
            -11.0e-4, 11.0e-4,
              0.0e-4,  0.0e-4),
     tlim=( -2.0e-4, 2.0e-4,
            -8.0e-4, 8.0e-4,
            -0.0e-4, 0.0e-4),
-    res = (2000,2200,0),
+    res = (2200,2200,0),
     description = "tight3d",
     #no outputs because we do restarts now!
     restarts_only = True,
@@ -84,7 +84,7 @@ d=dict(
         #height = 14e-4,
         length = 14e-4,
         half_width = 0.25e-4,
-        rot    =    0,
+        rot    =    135,
         roundup_pp = True,
         keep_lim  = True,
         round_unit = 1e-4,
@@ -110,9 +110,9 @@ pbsfmt = 'spill2d_matteronly{:02}_p={:0.2f}_I={:0.0e}'
 def mkpbsbase(N,phi,I): return pbsfmt.format(N,phi,I);
 descrfmt = '2D target, near normal, phase={}, I={}'
 def mkdescr(N,phi,I): return descrfmt.format(N,phi,I);
-N     = 1
+N     = 2
 phis  = [0.0,0.5];
-Is   = [1e19,1e20,1e21,1e22];
+Is   = [1e19];
 ds   = [ sd(d,
             pbsbase  =  mkpbsbase(N,phi,I),
             description = mkdescr(N,phi,I),
