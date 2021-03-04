@@ -35,13 +35,13 @@ creation = plasmacs + h2o_creation_other;
 ###########
 d=dict(
     dens_flags=(True,True,False),
-    lim = (-11.0e-4, 11.0e-4,
+    lim = (-13.0e-4, 11.0e-4,
            -11.0e-4, 11.0e-4,
              0.0e-4,  0.0e-4),
     tlim=( -2.0e-4, 2.0e-4,
            -8.0e-4, 8.0e-4,
            -0.0e-4, 0.0e-4),
-    res = (2200,2200,0),
+    res = (2400,2200,0),
     description = "tight3d",
     #no outputs because we do restarts now!
     restarts_only = True,
