@@ -29,7 +29,7 @@ plasmacs = sdl(h2o_creation_neutral,
                discrete_numbers = discrete,
                reference_point  = (0.0,0.0,0.0),
                drift_momentum   = (0.0,0.0,0.0),
-               thermal_energy   = 1.0);
+               thermal_energy   = 0.035);
 creation = plasmacs + h2o_creation_other;
 
 ###########
