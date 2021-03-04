@@ -106,11 +106,11 @@ d=dict(
 
 );
 
-pbsfmt = 'spill2d_matteronly{:02}_p={:0.2f}_I={:0.0e}'
+pbsfmt = 'spill2d_neutrals{:02}_p={:0.2f}_I={:0.0e}'
 def mkpbsbase(N,phi,I): return pbsfmt.format(N,phi,I);
 descrfmt = '2D target, near normal, phase={}, I={}'
 def mkdescr(N,phi,I): return descrfmt.format(N,phi,I);
-N     = 2
+N     = 1
 phis  = [0.0,0.5];
 Is   = [1e19];
 ds   = [ sd(d,
