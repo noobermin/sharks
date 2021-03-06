@@ -118,18 +118,15 @@ d=dict(
 );
 
 pbsfmt = 'third_neutral{:02}_I={:0.0e}'
-def mkpbsbase(N,phi,I): return pbsfmt.format(N,phi,I);
+def mkpbsbase(N,phi,I): return pbsfmt.format(N,I);
 descrfmt = 'ti:saph 3rd harmonic target, 45 deg, I={}'
-def mkdescr(N,phi,I): return descrfmt.format(N,phi,I);
-N     = 2
-phis  = [0.0,0.5];
-Is   = [1e19];
+def mkdescr(N,phi,I): return descrfmt.format(N,I);
+N     = 1
+Is   = [1e20];
 ds   = [ sd(d,
-            pbsbase  =  mkpbsbase(N,phi,I),
-            description = mkdescr(N,phi,I),
-            I = I,
-            phase = phi)
-         for phi   in phis
+            pbsbase  =  mkpbsbase(N,I),
+            description = mkdescr(N,I),
+            I = I)
          for I     in Is];
     
 for di in ds:
