@@ -51,7 +51,7 @@ d=dict(
     lspexec='lsp-10-xy',
     dir=True,
     totaltime=  1.05e-12,
-    timestep = 20.0e-18,
+    timestep = 10.0e-18,
     restart_interval=50,
     dump_restart_flag=True,
     email='ngirmang.1@osu.edu',
@@ -79,7 +79,7 @@ d=dict(
     pill2D = dict(
         n_s  = 3.34e22,
         n_min= 1e17,
-        L    = 0.02e-4,
+        L    = 0.01e-4,
         #Lz   = 0.02e-4,
         #height = 14e-4,
         length = 14e-4,
@@ -87,7 +87,7 @@ d=dict(
         rot    =    0,
         roundup_pp = True,
         keep_lim  = True,
-        round_unit = 1e-4,
+        round_unit = 0.1e-4,
         #zmargin    = 3e-4,
     ),
     #probes
