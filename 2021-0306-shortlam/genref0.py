@@ -50,7 +50,7 @@ d=dict(
     #misc
     lspexec='lsp-10-xy',
     dir=True,
-    totaltime=  1.05e-12,
+    totaltime=  1.50e-12,
     timestep = 20.0e-18,
     restart_interval=50,
     dump_restart_flag=True,
@@ -65,17 +65,17 @@ d=dict(
     #newlaser
     new_multilaser=True,
     starting_funcnum = 1,
-    I=1e20,
-    T = 50e-15,#fitted elsewhere
-    l = 0.260e-4,
-    w0= 0.662e-4,#f/4
+    I = 1.11e19,
+    T = 150e-15,#fitted elsewhere
+    l = 0.780e-4, 
+    w0= 1.986e-4,#f/4
     fp= (0.0, 0.0, 0.0),
     multilaser=[
         dict(
             laser_tfunctype = 16,
             laser_func_type = 85,
-            laser_t0        = -8.8e-6/c + 75e-15,
-            laser_tcutoff   =  75e-15,
+            laser_t0        = -8.8e-6/c + 225e-15,
+            laser_tcutoff   = 225e-15,
             timeshift_type  =     2.0,
             outlet='xmin',
             lpmode = (0,0),
@@ -117,17 +117,18 @@ d=dict(
 
 );
 
-pbsfmt = 'third_neutral{:02}_I={:0.0e}'
+pbsfmt = 'ref_neutral{:02}_I={:0.0e}'
 def mkpbsbase(N,I): return pbsfmt.format(N,I);
-descrfmt = 'ti:saph 3rd harmonic target, 45 deg, I={}'
-def mkdescr(N,I): return descrfmt.format(I);
-N     = 1
-Is   = [1e20];
-ds   = [ sd(d,
-            pbsbase  =  mkpbsbase(N,I),
-            description = mkdescr(N,I),
-            I = I)
-         for I     in Is];
-    
-for di in ds:
-    gensim(**di);
+descrfmt = 'ti:saph ref, 45 deg, I={}, rev={}'
+def mkdescr(N,I): return descrfmt.format(I,N);
+N = 1;
+d = sd(pbsbase  = mkpbsbase(N,I),
+       description = mkdescr(N,I));
+gensim(**d);
+
+N  = 2;
+d1 = sd(pbsbase = mkpbsbase(N,I),
+        description = mkdescr(N,I),
+        totaltime   = 1.05e-12,
+        T       = 50e-15);
+gensim(**d1);
