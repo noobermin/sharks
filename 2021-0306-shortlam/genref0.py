@@ -123,13 +123,15 @@ descrfmt = 'ti:saph ref, 45 deg, I={}, rev={}'
 def mkdescr(N,I): return descrfmt.format(I,N);
 N = 1;
 I = d['I'];
-d = sd(pbsbase  = mkpbsbase(N,I),
+d = sd(d,
+       pbsbase  = mkpbsbase(N,I),
        description = mkdescr(N,I));
 gensim(**d);
 
 N  = 2;
 I  = d['I'];
-d1 = sd(pbsbase = mkpbsbase(N,I),
+d1 = sd(d,
+        pbsbase = mkpbsbase(N,I),
         description = mkdescr(N,I),
         totaltime   = 1.05e-12,
         T       = 50e-15);
