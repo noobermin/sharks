@@ -50,9 +50,9 @@ d=dict(
     #misc
     lspexec='lsp-10-xy',
     dir=True,
-    totaltime=  1.05e-12,
+    totaltime=100.0e-15,
     timestep = 20.0e-18,
-    restart_interval=50,
+    restart_interval=10,
     dump_restart_flag=True,
     email='ngirmang.1@osu.edu',
     pbses='2020defaults',
@@ -106,13 +106,13 @@ d=dict(
 
 );
 
-pbsfmt = 'spill2d_matteronly{:02}_p={:0.2f}_I={:0.0e}'
+pbsfmt = 'spill2d_matteronly{:02}r1_p={:0.2f}_I={:0.0e}'
 def mkpbsbase(N,phi,I): return pbsfmt.format(N,phi,I);
 descrfmt = '2D target, near normal, phase={}, I={}'
 def mkdescr(N,phi,I): return descrfmt.format(N,phi,I);
 N     = 1
 phis  = [0.0,0.5];
-Is   = [1e19,1e20,1e21,1e22];
+Is   = [1e19];
 ds   = [ sd(d,
             pbsbase  =  mkpbsbase(N,phi,I),
             description = mkdescr(N,phi,I),

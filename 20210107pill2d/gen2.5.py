@@ -21,27 +21,27 @@ c = 299792458
 #E = 0.5e-3; # 5mJ
 
 from genlsp.h2o_species import h2o_species_explicit as h2o_species;
-from genlsp.h2o_species import h2o_creation_plasma_single, h2o_creation_other;
+from genlsp.h2o_species import h2o_creation_neutral, h2o_creation_other;
 discrete=(4,4,1)
 species = h2o_species;
-plasmacs = sdl(h2o_creation_plasma_single,
+plasmacs = sdl(h2o_creation_neutral,
                lim = 'tlim',
                discrete_numbers = discrete,
                reference_point  = (0.0,0.0,0.0),
                drift_momentum   = (0.0,0.0,0.0),
-               thermal_energy   = 1.0);
+               thermal_energy   = 0.035);
 creation = plasmacs + h2o_creation_other;
 
 ###########
 d=dict(
     dens_flags=(True,True,False),
-    lim = (-10.0e-4, 10.0e-4,
+    lim = (-11.0e-4, 11.0e-4,
            -11.0e-4, 11.0e-4,
              0.0e-4,  0.0e-4),
     tlim=( -2.0e-4, 2.0e-4,
            -8.0e-4, 8.0e-4,
            -0.0e-4, 0.0e-4),
-    res = (2000,2200,0),
+    res = (4400,2200,0),
     description = "tight3d",
     #no outputs because we do restarts now!
     restarts_only = True,
@@ -51,7 +51,7 @@ d=dict(
     lspexec='lsp-10-xy',
     dir=True,
     totaltime=  1.05e-12,
-    timestep = 20.0e-18,
+    timestep = 10.0e-18,
     restart_interval=50,
     dump_restart_flag=True,
     email='ngirmang.1@osu.edu',
@@ -60,8 +60,8 @@ d=dict(
     ux=1.0,
     #computational division
     region_dom_split='y',
-    region_splits = [('x',2),('y',1),('z',1)],
-    domains=2*40,
+    region_splits = [('x',2),('y',2),('z',1)],
+    domains=4*40,
     #newlaser
     new_multilaser=True,
     starting_funcnum = 1,
@@ -75,19 +75,19 @@ d=dict(
     #target
     species  = species,
     creation = creation,
-    fracs = [1,2,3],
+    fracs = [2,1],
     pill2D = dict(
         n_s  = 3.34e22,
         n_min= 1e17,
-        L    = 0.02e-4,
+        L    = 0.01e-4,
         #Lz   = 0.02e-4,
         #height = 14e-4,
         length = 14e-4,
-        half_width = 0.25e-4,
+        half_width = 0.05e-4,
         rot    =    0,
         roundup_pp = True,
         keep_lim  = True,
-        round_unit = 1e-4,
+        round_unit = 0.1e-4,
         #zmargin    = 3e-4,
     ),
     #probes
@@ -106,13 +106,13 @@ d=dict(
 
 );
 
-pbsfmt = 'spill2d_matteronly{:02}_p={:0.2f}_I={:0.0e}'
+pbsfmt = 'spill2d_neutrals{:02}_p={:0.2f}_I={:0.0e}'
 def mkpbsbase(N,phi,I): return pbsfmt.format(N,phi,I);
 descrfmt = '2D target, near normal, phase={}, I={}'
 def mkdescr(N,phi,I): return descrfmt.format(N,phi,I);
-N     = 1
+N     = 2
 phis  = [0.0,0.5];
-Is   = [1e19,1e20,1e21,1e22];
+Is   = [1e19];
 ds   = [ sd(d,
             pbsbase  =  mkpbsbase(N,phi,I),
             description = mkdescr(N,phi,I),
