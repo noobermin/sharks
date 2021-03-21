@@ -50,7 +50,7 @@ d = dict(
     #density
     tref = (0.0, 0.0, 0.0),
     #misc
-    lspexec='lsp-10-3d',
+    lspexec='lsp-10-3d -r',
     dir=True,
     totaltime=600e-15,
     timestep =5e-17,
