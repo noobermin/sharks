@@ -48,7 +48,7 @@ d=dict(
     #density
     tref = (0.0, 0.0, 0.0),
     #misc
-    lspexec='lsp-10-xy',
+    lspexec='lsp-10-xy -r',
     dir=True,
     totaltime=  1.05e-12,
     timestep = 20.0e-18,
@@ -113,7 +113,7 @@ def mkdescr(N,phi,I): return descrfmt.format(N,phi,I);
 N     = 1
 movs   = [0]
 phis  = [0.0,0.25,0.5,0.75];
-Is   = [1e19,1e20,1e21];
+Is   = [1e19,1e20,1e21,1e22];
 ds   = [ sd(d,
             pbsbase  =  mkpbsbase(N,phi,I,mov),
             description = mkdescr(N,phi,I),
