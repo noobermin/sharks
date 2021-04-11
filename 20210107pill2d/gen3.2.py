@@ -21,15 +21,15 @@ c = 299792458
 #E = 0.5e-3; # 5mJ
 
 from genlsp.h2o_species import h2o_species_explicit as h2o_species;
-from genlsp.h2o_species import h2o_creation_plasma_single, h2o_creation_other;
-discrete=(4,4,1)
+from genlsp.h2o_species import h2o_creation_neutral, h2o_creation_other;
+discrete=(5,4,1)
 species = h2o_species;
-plasmacs = sdl(h2o_creation_plasma_single,
+plasmacs = sdl(h2o_creation_neutral,
                lim = 'tlim',
                discrete_numbers = discrete,
                reference_point  = (0.0,0.0,0.0),
                drift_momentum   = (0.0,0.0,0.0),
-               thermal_energy   = 1.0);
+               thermal_energy   = 0.035);
 creation = plasmacs + h2o_creation_other;
 
 ###########
@@ -48,10 +48,10 @@ d=dict(
     #density
     tref = (0.0, 0.0, 0.0),
     #misc
-    lspexec='lsp-10-3d',
+    lspexec='lsp-10-xy -r',
     dir=True,
-    totaltime= 80e-15,
-    timestep = 20e-18,
+    totaltime=  1.05e-12,
+    timestep = 20.0e-18,
     restart_interval=50,
     dump_restart_flag=True,
     email='ngirmang.1@osu.edu',
@@ -71,23 +71,25 @@ d=dict(
     w0= 1.05e-4,
     fp= (0.0, 0.0, 0.0),
     multilaser=[
-        dict(
-            laser_tfunctype = 16,
-            laser_func_type = 85,
-            laser_t0        = -8.8e-6/c + 90e-15,
-            laser_tcutoff   =  90e-15,
-            timeshift_type  =   2.0,
-            outlet='xmin',
-            lpmode = (0,0),
-            laser_pol_type = 87,
-            laser_pol= (0,1,0),
-        ),
     ],
     #target
     species  = species,
     creation = creation,
-    no_matter = True,
-    fracs = [1,2,3],
+    fracs = [2,1],
+    pill2D = dict(
+        n_s  = 3.34e22,
+        n_min= 1e17,
+        L    = 0.05e-4,
+        #Lz   = 0.02e-4,
+        #height = 14e-4,
+        length = 14e-4,
+        half_width = 0.1e-4,
+        rot    =    0,
+        roundup_pp = True,
+        keep_lim  = True,
+        round_unit = 0.1e-4,
+        #zmargin    = 3e-4,
+    ),
     #probes
     probes = [
         dict(type = 'energy',
@@ -104,23 +106,22 @@ d=dict(
 
 );
 
-pbsfmt = 'spill2d_nomatter{:02}_p={:0.2f}_I={:0.0e}_angle={:02}'
-def mkpbsbase(N,phi,I,angle): return pbsfmt.format(N,phi,I,angle);
+pbsfmt = 'spill2d_n{:02}_mov={:02}_p={:0.2f}_I={:0.0e}'
+def mkpbsbase(N,phi,I,mov): return pbsfmt.format(N,mov,phi,I);
 descrfmt = '2D target, near normal, phase={}, I={}'
-def mkdescr(N,phi,I,angle): return descrfmt.format(N,phi,I,angle);
-N     = 3
-phis  = [0.0,0.5];
-angles= [0];
-Is   = [1e19];
+def mkdescr(N,phi,I): return descrfmt.format(N,phi,I);
+N     = 1
+movs   = [0]
+phis  = [0.0,0.25,0.5,0.75];
+Is   = [1e19,1e20,1e21,1e22];
 ds   = [ sd(d,
-            pbsbase  =  mkpbsbase(N,phi,I,angle),
-            description = mkdescr(N,phi,I,angle),
+            pbsbase  =  mkpbsbase(N,phi,I,mov),
+            description = mkdescr(N,phi,I),
             I = I,
-            phase = phi,
-            laser_dir = (np.cos(angle/180*np.pi), np.sin(angle/180*np.pi), 0),)
+            phase = phi)
          for phi   in phis
          for I     in Is
-         for angle in angles];
+         for mov   in movs];
     
 for di in ds:
     gensim(**di);
