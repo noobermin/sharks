@@ -37,10 +37,12 @@ creation = plasmacs + h2o_creation_other;
 N=1
 pbsbase0=f'nourc{N:02}';
 las_fnum = 3;
+xmin     = -10e-4;
+c_cgs = 29979245800;
 ###########
 d = dict(
     dens_flags=(True,False,False),
-    lim = (-10.0e-4,10.0e-4,
+    lim = (xmin,    10.0e-4,
            -10.0e-4,16.4e-4,
            -13.2e-4,13.2e-4),
     tlim=( -2e-4,1.8e-4,
@@ -96,9 +98,9 @@ d = dict(
                 type= 60,
                 imul= 1.0,
                 dmul= 1.0),),],
-    laser_t0 = -20e-15,
+    laser_t0 = -abs(xmin)/c_cgs + 60e-15,
     laser_tfunctype=16,
-    laser_tcutoff = 80e-15,
+    laser_tcutoff = 60e-15,
     l = 0.8e-4,
     w0= 0.8e-4,
     fp = (0.0,0.0,0.0),
