@@ -76,7 +76,7 @@ if __name__ == '__main__':
     print("basic statistics for Ersq");
     print("max: {:e}".format(np.max(Ersq)));
     print("min: {:e}".format(np.min(Ersq)));
-    print("min: {:e}".format(np.averag(eErsq)));
+    print("min: {:e}".format(np.average(Ersq)));
 
     out = dict(
         Ey_real=np.real(Ey), Ey_imag=np.imag(Ey),
