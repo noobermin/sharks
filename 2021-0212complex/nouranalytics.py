@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 '''
 Usage:
-    ./nour2.py [options] <namefmt>
+    ./nouranalytic.py [options] <namefmt>
+    ./nouranalytic.py [options] --show
 
 Options:
      --help -h        Help me.
@@ -10,6 +11,7 @@ Options:
      --z-dims=Z       Set Z dimensions. [default: (-13.2e-4,13.2e-4,201)]
      --f-num=F        Set f-number. [default: 2]
      --t0=T           Set t0. [default: 40e-6]
+     --show           Just show the spatial.
 '''
 from docopt import docopt;
 import numpy as np;
@@ -54,9 +56,9 @@ if __name__ == '__main__':
     ymin,ymax,yres = parse_ftuple(opts['--y-dims'],3);
     zmin,zmax,zres = parse_ftuple(opts['--z-dims'],3);
     xres,yres,zres = int(xres),int(yres),int(zres);
-    x = np.linspace(xmax, xmin, xres);
-    y = np.linspace(ymax, ymin, yres);
-    z = np.linspace(zmax, zmin, zres);
+    x = np.linspace(xmin, xmax, xres);
+    y = np.linspace(ymin, ymax, yres);
+    z = np.linspace(zmin, zmax, zres);
     
     X,Y,Z = np.meshgrid(x,y,z,indexing='ij');
     
@@ -71,15 +73,30 @@ if __name__ == '__main__':
     Ey = cs*Er_sp;
     Ez = sn*Er_sp;
     Ersq = np.sqrt(np.abs(Ey)**2 + np.abs(Ez)**2);
+    print("basic statistics for Ersq");
+    print("max: {:e}".format(np.max(Ersq)));
+    print("min: {:e}".format(np.min(Ersq)));
+    print("min: {:e}".format(np.averag(eErsq)));
+
     out = dict(
         Ey_real=np.real(Ey), Ey_imag=np.imag(Ey),
         Ez_real=np.real(Ez), Ez_imag=np.imag(Ez));
+    Ey_real = out['Ey_real'];
+    print("basic statistics for Ey_real");
+    print("max: {:e}".format(np.max(Ey_real)));
+    print("min: {:e}".format(np.min(Ey_real)));
+    print("min: {:e}".format(np.average(Ey_real)));
+
+    if opts['--show']:
+        import matplotlib.pyplot as plt;
+        from lspplot.pc import pc;
+        pc(Ersq[1,:,:].T,p=(y,z),log=True,lims=(1e-8,1.0));
+        plt.axis('equal');
+        plt.show();
+        quit();
     namefmt = opts['<namefmt>'];
     names = {
         k : namefmt.format(k) for k in out };
-    print("basic statistics");
-    print("max: {:e}".format(np.max(Ersq)));
-    print("min: {:e}".format(np.min(Ersq)));
     #np.savez(opts['<output>'],Ey=Ey,Ez=Ez);
     from noobna import output;
     for k in out:

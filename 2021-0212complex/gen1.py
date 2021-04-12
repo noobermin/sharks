@@ -40,7 +40,7 @@ las_fnum = 3;
 ###########
 d = dict(
     dens_flags=(True,False,False),
-    lim = (-10.0e-4,10.0e-4, #<<<<<<<<<<<<<<<< HERE
+    lim = (-10.0e-4,10.0e-4,
            -10.0e-4,16.4e-4,
            -13.2e-4,13.2e-4),
     tlim=( -2e-4,1.8e-4,
@@ -104,7 +104,6 @@ d = dict(
     fp = (0.0,0.0,0.0),
     I = 5e18,
     T = 60e-15,
-    las_tau = 40e-15, #not used in genlsp but used in nouranalytic.py
     #target
     pbsbase = 'noura02',
     species = species,
@@ -187,8 +186,8 @@ cmdl = ['./nouranalytics.py',
         '--y-dims={}'.format(tlim2str(d['lim'],d['res'],1)),
         '--z-dims={}'.format(tlim2str(d['lim'],d['res'],2)),
         f'--f-num={las_fnum}',
-        f'--t0={d["las_tau"]*1e9}',
         f'{pbsbase0}{{}}.dat'];
+print(cmdl);
 subprocess.run(cmdl);
 
 dirs = [ f for f in os.listdir('.') if re.match(pbsbase0+'_',f) ]
