@@ -24,14 +24,15 @@ mkmovB = lambda d, I: sd(d['movB'],clim=(BfromI(I*1e-5),BfromI(I*2)))
 
 from genlsp.h2o_species import h2o_species_explicit as h2o_species;
 from genlsp.h2o_species import h2o_creation_plasma_single, h2o_creation_other;
+from genlsp.h2o_species import h2o_creation_neutral;
 discrete=(2,2,2)
 species = h2o_species;
-plasmacs = sdl(h2o_creation_plasma_single,
+plasmacs = sdl(h2o_creation_neutral,
                lim = 'tlim',
                discrete_numbers = discrete,
                reference_point  = (0.0,0.0,0.0),
                drift_momentum   = (0.0,0.0,0.0),
-               thermal_energy   = 1.0);
+               thermal_energy   = 0.035);
 creation = plasmacs + h2o_creation_other;
 
 N=1
@@ -48,7 +49,7 @@ d = dict(
     tlim=( -2e-4,1.8e-4,
            -5e-4,5.0e-4,
            -5e-4,5.0e-4),
-    res = (500, 660, 528),
+    res = (800, 1056, 528),
     description = "attempt to use nour's stuff",
     #no outputs because we do restarts now!
     restarts_only = True,
@@ -112,15 +113,15 @@ d = dict(
     new_create=True,
     creation= creation,
     #scale
-    fracs = [1,2,3],
+    fracs = [2,1],
     pill2_5D = dict(
         n_s  = 3.34e22,
         n_min= 1e17,
-        L    = 0.01e-4,
+        L    = 0.05e-4,
         Lz   = 0.01e-4,
         height = 14e-4,
         length = 16e-4,
-        half_width = 0.25e-4,
+        half_width = 0.1e-4,
         rot    = 135,
         roundup_pp = True,
         round_unit = 0.1e-4,
@@ -145,7 +146,7 @@ d = dict(
     pext_species=(11,12),
 );
 
-Is = [5e19,1e20,5e20,1e21,5e21];
+Is = [5e19];
 pbsfmt = pbsbase0+'_{:0.0e}';
 def mkpbsbase(I): return pbsfmt.format(I);
 descrfmt = 'High Intensity Complex beam interacting with matter, I={}'
