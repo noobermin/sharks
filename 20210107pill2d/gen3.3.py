@@ -60,7 +60,7 @@ d=dict(
     ux=1.0,
     #computational division
     region_dom_split='y',
-    region_splits = [('x',2),('y',1),('z',1)],
+    region_splits = [('x',2),('y',2),('z',1)],
     domains=2*40,
     #newlaser
     new_multilaser=True,
