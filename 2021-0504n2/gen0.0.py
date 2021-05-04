@@ -161,6 +161,7 @@ plasmacs = sdl(N_creation_neutral,
                discrete_numbers = discrete,
                reference_point  = (0.0,0.0,0.0),
                drift_momentum   = (0.0,0.0,0.0),
+               density_flags    = (True,True,False),
                thermal_energy   = 0.007);
 #liquid nitrogen density
 # N2 : 0.8064 g/cc
