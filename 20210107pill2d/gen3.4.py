@@ -22,7 +22,7 @@ c = 299792458
 
 from genlsp.h2o_species import h2o_species_explicit as h2o_species;
 from genlsp.h2o_species import h2o_creation_neutral, h2o_creation_other;
-discrete=(5,4,1)
+discrete=(4,4,1)
 species = h2o_species;
 plasmacs = sdl(h2o_creation_neutral,
                lim = 'tlim',
@@ -41,7 +41,7 @@ d=dict(
     tlim=( -2.0e-4, 2.0e-4,
            -8.0e-4, 8.0e-4,
            -0.0e-4, 0.0e-4),
-    res = (4400,4400,0),
+    res = (8800,4400,0),
     description = "tight3d",
     #no outputs because we do restarts now!
     restarts_only = True,
@@ -50,9 +50,9 @@ d=dict(
     #misc
     lspexec='lsp-10-xy -r',
     dir=True,
-    totaltime=  0.65e-12,
-    timestep = 12.5e-18,
-    restart_interval=50,
+    totaltime=  0.624e-12,
+    timestep =   8.0e-18,
+    restart_interval=125,
     dump_restart_flag=True,
     email='ngirmang.1@osu.edu',
     pbses='2020defaults',
@@ -60,7 +60,7 @@ d=dict(
     ux=1.0,
     #computational division
     region_dom_split='y',
-    region_splits = [('x',2),('y',2),('z',1)],
+    region_splits = [('x',4),('y',1),('z',1)],
     domains=4*40,
     #newlaser
     new_multilaser=True,
@@ -87,7 +87,7 @@ d=dict(
         rot    =    0,
         roundup_pp = True,
         keep_lim  = True,
-        round_unit = 0.1e-4,
+        round_unit = 0.01e-4,
         #zmargin    = 3e-4,
     ),
     #probes
@@ -106,22 +106,29 @@ d=dict(
 
 );
 
-pbsfmt = 'spill2d_n{:02}_mov={:02}_p={:0.2f}_I={:0.0e}'
-def mkpbsbase(N,phi,I,mov): return pbsfmt.format(N,mov,phi,I);
+pbsfmt = 'spill2d_n{:02}_p={:0.2f}_I={:0.0e}'
+def mkpbsbase(N,phi,I): return pbsfmt.format(N,phi,I);
 descrfmt = '2D target, near normal, phase={}, I={}'
 def mkdescr(N,phi,I): return descrfmt.format(N,phi,I);
 N     = 3
-movs   = [0]
+
 phis  = [0.0,0.5];
 Is   = [1e20,1e21,1e22];
+
+
+tls  = dict();
+tls[1e20] = 624e-15;
+tls[1e21] = 424e-15;
+tls[1e22] = 224e-15;
+
 ds   = [ sd(d,
-            pbsbase  =  mkpbsbase(N,phi,I,mov),
+            pbsbase     =  mkpbsbase(N,phi,I),
             description = mkdescr(N,phi,I),
+            totaltime   = tls[I],
             I = I,
             phase = phi)
          for phi   in phis
-         for I     in Is
-         for mov   in movs];
+         for I     in Is];
     
 for di in ds:
     gensim(**di);
