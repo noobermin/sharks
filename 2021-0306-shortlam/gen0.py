@@ -22,7 +22,7 @@ c = 299792458
 
 from genlsp.h2o_species import h2o_species_explicit as h2o_species;
 from genlsp.h2o_species import h2o_creation_neutral, h2o_creation_other;
-discrete=(4,4,1)
+discrete=(4,5,1)
 species = h2o_species;
 plasmacs = sdl(h2o_creation_neutral,
                lim = 'tlim',
@@ -35,13 +35,13 @@ creation = plasmacs + h2o_creation_other;
 ###########
 d=dict(
     dens_flags=(True,True,False),
-    lim = (-11.0e-4, 11.0e-4,
-           -11.0e-4, 11.0e-4,
+    lim = (-13.2e-4, 13.2e-4,
+           -13.2e-4, 13.2e-4,
              0.0e-4,  0.0e-4),
     tlim=( -2.0e-4, 2.0e-4,
            -8.0e-4, 8.0e-4,
            -0.0e-4, 0.0e-4),
-    res = (2200,2200,0),
+    res = (2640,2640,0),
     description = "tight3d",
     #no outputs because we do restarts now!
     restarts_only = True,
@@ -93,12 +93,12 @@ d=dict(
         L    = 0.05e-4,
         #Lz   = 0.02e-4,
         #height = 14e-4,
-        length = 14e-4,
-        half_width = 0.20e-4,
+        length = 30e-4,
+        half_width = 0.10e-4,
         rot    =    135,
         roundup_pp = True,
         keep_lim  = True,
-        round_unit = 0.1e-4,
+        round_unit = 0.01e-4,
         #zmargin    = 3e-4,
     ),
     #probes
@@ -121,8 +121,8 @@ pbsfmt = 'third_neutral{:02}_I={:0.0e}'
 def mkpbsbase(N,I): return pbsfmt.format(N,I);
 descrfmt = 'ti:saph 3rd harmonic target, 45 deg, I={}'
 def mkdescr(N,I): return descrfmt.format(I);
-N     = 1
-Is   = [1e20];
+N    = 1
+Is   = [1e19,1e20,1e21];
 ds   = [ sd(d,
             pbsbase  =  mkpbsbase(N,I),
             description = mkdescr(N,I),
