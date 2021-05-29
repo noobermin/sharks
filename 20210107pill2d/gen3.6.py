@@ -113,10 +113,11 @@ def mkdescr(N,phi,I): return descrfmt.format(N,phi,I);
 N     = 5;
 
 phis  = [0.0,0.5];
-Is   = [1e19,1e20,1e21,1e22];
+Is   = [1e18,1e19,1e20,1e21,1e22];
 
 
 tls  = dict();
+tls[1e18] =1219e-15;
 tls[1e19] =1019e-15;
 tls[1e20] = 619e-15;
 tls[1e21] = 419e-15;
