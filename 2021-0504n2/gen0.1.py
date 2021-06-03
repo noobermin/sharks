@@ -174,15 +174,16 @@ plasmacs[0]['density_function'] = dict(
     data=[0]);
 #N2
 plasmacs[1]['density_function'] = dict(
-    type=1,
-    data=[0]);
+    type=51,
+    #     rmin, n0,        L,    rmax
+    data=[5e-4, N2_0, 0.4e-4,   10e-4]);
 creation = plasmacs + N_creation_other;
 
 ###########
 d=dict(
     dens_flags=(True,True,False),
-    lim = (-17.6e-4, 17.6e-4,
-           -17.6e-4, 17.6e-4,
+    lim = (-35.2e-4, 35.2e-4,
+           -35.2e-4, 35.2e-4,
              0.0e-4,  0.0e-4),
     tlim=( -10.0e-4, 10.0e-4,
            -10.0e-4, 10.0e-4,
@@ -197,7 +198,7 @@ d=dict(
     lspexec='lsp-10-xy -r',
     dir=True,
     totaltime=1168.0e-15, #call zero at 168e-15
-    timestep =  40.0e-18,
+    timestep =  80.0e-18,
     #restart_interval_ns=1e-15,
     restart_interval=25,
     dump_restart_flag=True,
@@ -218,18 +219,18 @@ d=dict(
     w0= 1.528e-4, #f/3
     fp= (0.0, 0.0, 0.0),
     multilaser=[
-        dict(
-            outlet          = 'xmin',
-            laser_func_type = 85,
-            laser_tfunctype = 16,
-            laser_tcutoff   = 126e-15,
-            laser_t0        = -17.6e-4*1e-2/c + 126e-15,
+        # dict(
+        #     outlet          = 'xmin',
+        #     laser_func_type = 85,
+        #     laser_tfunctype = 16,
+        #     laser_tcutoff   = 126e-15,
+        #     laser_t0        = -17.6e-4*1e-2/c + 126e-15,
             
-            laser_dir       = (1,0,0),
-            laser_pol       = (0,1,0),
-            laser_pol_type  = 87,
-            lpmode          = (0,0),
-        )],
+        #     laser_dir       = (1,0,0),
+        #     laser_pol       = (0,1,0),
+        #     laser_pol_type  = 87,
+        #     lpmode          = (0,0),)
+    ],
     #target
     species  = species,
     creation = creation,
@@ -249,12 +250,13 @@ d=dict(
 
 );
 
-N=0
-pbsfmt = 'N2_n{:02}_I={:0.0e}'
-def mkpbsbase(N,I): return pbsfmt.format(N,I);
+N=0;
+r=1;
+pbsfmt = 'N2_n{:02}_I={:0.0e}r{}'
+def mkpbsbase(N,I,r): return pbsfmt.format(N,I,r);
 descrfmt = 'Liquid Nitrogen, I={}'
 def mkdescr(N,I): return descrfmt.format(I);
 
-d['pbsbase']     = mkpbsbase(N,d['I']);
+d['pbsbase']     = mkpbsbase(N,d['I'],r);
 d['description'] = mkdescr(N,d['I']);
 gensim(**d);
