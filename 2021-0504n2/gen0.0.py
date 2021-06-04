@@ -174,8 +174,9 @@ plasmacs[0]['density_function'] = dict(
     data=[0]);
 #N2
 plasmacs[1]['density_function'] = dict(
-    type=1,
-    data=[0]);
+    type=51,
+    #     rmin, n0,        L,    rmax
+    data=[5e-4, N2_0, 0.4e-4,   10e-4]);
 creation = plasmacs + N_creation_other;
 
 ###########
