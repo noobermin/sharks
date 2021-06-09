@@ -78,8 +78,8 @@ d = dict(
     #newlaser
     new_multilaser=True,
     starting_funcnum = 1,
-    multilaser=[],
-    dict(
+    multilaser=[
+        dict(
             laser_func_type = 56,
             outlet='xmin',
             laser_dir = (1,0,0),
