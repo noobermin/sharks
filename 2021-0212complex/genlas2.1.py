@@ -116,7 +116,8 @@ d = dict(
     pbsbase = 'noura02',
     species = species,
     new_create=True,
-    creation= creation,
+    creation  =[],
+    no_matter =True
     #scale
     fracs = [2,1],
     #probes
