@@ -117,7 +117,7 @@ d = dict(
     species = species,
     new_create=True,
     creation  =[],
-    no_matter =True
+    no_matter =True,
     #scale
     fracs = [2,1],
     #probes
