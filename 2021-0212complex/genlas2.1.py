@@ -46,12 +46,12 @@ c_cgs = 29979245800;
 d = dict(
     dens_flags=(True,False,False),
     lim = (xmin,    10.0e-4,
-           -10.0e-4,16.4e-4,
+           -10.0e-4,10.0e-4,
            -13.2e-4,13.2e-4),
     tlim=( -2e-4,1.8e-4,
            -5e-4,5.0e-4,
            -5e-4,5.0e-4),
-    res = (800, 1056, 528),
+    res = (400, 400, 528),
     description = "attempt to use nour's stuff",
     #no outputs because we do restarts now!
     restarts_only = True,
@@ -74,8 +74,8 @@ d = dict(
     #region_splits = [('x',1),('y',4),('z',3)],
     #domains=12*44,
     region_dom_split='z',
-    region_splits = [('x',5),('y',2),('z',1)],
-    domains=10*44,
+    region_splits = [('x',2),('y',2),('z',1)],
+    domains=4*44,
     #newlaser
     new_multilaser=True,
     starting_funcnum = 1,
