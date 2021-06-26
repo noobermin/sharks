@@ -201,8 +201,8 @@ d=dict(
     #misc
     lspexec='lsp-10-xy -r',
     dir=True,
-    totaltime=1086.0e-15, #call zero at 286e-15, 900fs after
-    timestep =  40.0e-18,
+    totaltime=3086.0e-15, #call zero at 286e-15
+    timestep =  80.0e-18,
     #restart_interval_ns=1e-15,
     restart_interval=25,
     dump_restart_flag=True,
