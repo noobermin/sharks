@@ -50,7 +50,7 @@ d=dict(
     #misc
     lspexec='lsp-10-2d',
     dir=True,
-    totaltime=100e-15,
+    totaltime=360e-15,
     timestep = 50e-18,
     restart_interval=20,
     dump_restart_flag=True,
