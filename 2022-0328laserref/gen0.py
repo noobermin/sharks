@@ -48,7 +48,7 @@ d=dict(
     #density
     tref = (0.0, 0.0, 0.0),
     #misc
-    lspexec='lsp-10-2d',
+    lspexec='lsp-10-xy',
     dir=True,
     totaltime=360e-15,
     timestep = 50e-18,
@@ -60,8 +60,8 @@ d=dict(
     ux=1.0,
     #computational division
     region_dom_split='x',
-    region_splits = [('x',1),('y',1),('z',1)],
-    domains=1*44,
+    region_splits = [('x',1),('y',2),('z',1)],
+    domains=2*44,
     #newlaser
     new_multilaser=True,
     starting_funcnum = 1,
