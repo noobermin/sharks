@@ -35,13 +35,13 @@ creation = plasmacs + h2o_creation_other;
 ###########
 d=dict(
     dens_flags=(True,True,True),
-    lim = ( -25.0e-4, 25.0e-4,
-            -25.0e-4, 25.0e-4,
+    lim = ( -30.0e-4, 30.0e-4,
+            -20.0e-4, 20.0e-4,
                  0.0, 0.0),
     tlim=(  -1.0e-4, 1.0e-4,
             -1.0e-4, 1.0e-4,
                 0.0, 0.0),
-    res = (2000,2000,0),
+    res = (2400,1600,0),
     description = "tight2d",
     #no outputs because we do restarts now!
     restarts_only = True,
@@ -70,13 +70,13 @@ d=dict(
     fp= (0.0, 0.0, 0.0),
     multilaser=[
         dict(
-            T = 80.0e-15,
+            T = 60.0e-15,
             l = 0.80e-4,
             w0= 1.5278875e-4, # f/3
             laser_tfunctype = 16,
             laser_func_type = 85,
-            laser_t0        =  -25.0e-4/c_cgs + 120.0e-15,
-            laser_tcutoff   =  120e-15,
+            laser_t0        =  -25.0e-4/c_cgs + 90.0e-15,
+            laser_tcutoff   =  90e-15,
             outlet='xmin',
             lpmode = (0,0),
             laser_pol      = (0,1,0),
